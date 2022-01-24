@@ -192,7 +192,24 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day3question2() -> String {
-        return ""
+        let input = readCSV("InputYear2016Day3").trimmingCharacters(in: .whitespacesAndNewlines)
+        let items =  input.components(separatedBy: "\n  ")
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "   ", with: " ").replacingOccurrences(of: "  ", with: " ")
+            .components(separatedBy: " ")
+                .map { Int($0)! } }
+        var result = 0
+        for column in 0...2 {
+            var row = 0
+            while row < items.count-2 {
+                if items[row][column] + items[row+1][column] > items[row+2][column]
+                && items[row+1][column] + items[row+2][column] > items[row][column]
+                && items[row][column] + items[row+2][column] > items[row+1][column] {
+                  result += 1
+                }
+                row += 3
+            }
+        }
+        return String(result)
     }
     
 }
