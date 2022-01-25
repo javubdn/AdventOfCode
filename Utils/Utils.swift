@@ -92,4 +92,13 @@ class Utils {
         return result
     }
     
+    static func countChars(_ input: String) -> [String: Int] {
+        var counts: [String: Int] = [:]
+        for character in input {
+            if counts[String(character)] == nil { counts[String(character)] = 0 }
+            counts[String(character)]! += 1
+        }
+        return counts
+    }
+    
 }
