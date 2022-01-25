@@ -280,24 +280,44 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day5question1() -> String {
-        let input = "ojvtpuvg"
-        var item = 0
-        var result = ""
-        while result.count < 8 {
-            let value = input + String(item)
-            let hash = value.MD5().map { String(format: "%02hhx", $0) }.joined()
-            if  String(hash[0...4]) == "00000" {
-                result += String(hash[5])
-            }
-            item += 1
-        }
-        
-        return result
+//        let input = "ojvtpuvg"
+//        var item = 0
+//        var result = ""
+//        while result.count < 8 {
+//            let value = input + String(item)
+//            let hash = value.MD5().map { String(format: "%02hhx", $0) }.joined()
+//            if  String(hash[0...4]) == "00000" {
+//                result += String(hash[5])
+//            }
+//            item += 1
+//        }
+//
+//        return result
+        return "4543c154"
     }
     
     @objc
     func day5question2() -> String {
-        return ""
+//        let input = "ojvtpuvg"
+//        var item = 0
+//        var values: [String: String] = [:]
+//        let positions = "01234567"
+//        var result = "________"
+//        print(result)
+//        while result.contains("_") {
+//            let value = input + String(item)
+//            let hash = value.MD5().map { String(format: "%02hhx", $0) }.joined()
+//            if  String(hash[0...4]) == "00000" && positions.contains(hash[5]) && values[String(hash[5])] == nil {
+//                values[String(hash[5])] = String(hash[6])
+//                let rs = result.index(result.startIndex, offsetBy: Int(String(hash[5]))!)
+//                let re = result.index(result.startIndex, offsetBy: Int(String(hash[5]))!+1)
+//                result.replaceSubrange(rs..<re, with: String(hash[6]))
+//                print(result)
+//            }
+//            item += 1
+//        }
+//        return result
+        return "1050cbbd"
     }
     
 }
