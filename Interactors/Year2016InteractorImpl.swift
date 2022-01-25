@@ -212,4 +212,58 @@ extension Year2016InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day4question1() -> String {
+        let input = readCSV("InputYear2016Day4").components(separatedBy: "\n")
+        let words = input.map { getWordRoom($0) }
+        var result = 0
+        for word in words {
+            if validateWordRoom(word) {
+                result += word.sectorId
+            }
+        }
+        return String(result)
+    }
+    
+    @objc
+    func day4question2() -> String {
+        return ""
+    }
+    
+    struct WordRoom {
+        let name: String
+        let sectorId: Int
+        let checksum: String
+    }
+    
+    private func getWordRoom(_ input: String) -> WordRoom {
+        var values = input.components(separatedBy: "[")
+        values[1].removeLast()
+        let checksum  = values[1]
+        var names = values[0].components(separatedBy: "-")
+        let sectorId = Int(names.last!)!
+        names.removeLast()
+        let joinedName = names.joined()
+        return WordRoom(name: joinedName, sectorId: sectorId, checksum: checksum)
+    }
+    
+    private func validateWordRoom(_ word: WordRoom) -> Bool {
+        var counts: [String: Int] = [:]
+        for charName in word.name {
+            if counts[String(charName)] != nil {
+                counts[String(charName)]! += 1
+            } else {
+                counts[String(charName)] = 1
+            }
+        }
+        let sortedCounts = counts.sorted { item1, item2 in
+            item1.value > item2.value || (item1.value == item2.value && item1.key < item2.key)
+        }
+        var valueRoom = ""
+        for index in 0...4 {
+            valueRoom += sortedCounts[index].key
+        }
+        return valueRoom == word.checksum
+    }
+    
 }
