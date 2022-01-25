@@ -227,7 +227,14 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day4question2() -> String {
-        return ""
+        let input = readCSV("InputYear2016Day4").components(separatedBy: "\n")
+        let words = input.map { getWordRoom($0) }
+        let correctWords = words.filter { validateWordRoom($0) }
+        correctWords.forEach { print(rotateWordRoom($0)) }
+        if let correctWord = correctWords.first( where: { rotateWordRoom($0) == "northpoleobjectstorage" } ) {
+            return String(correctWord.sectorId)
+        }
+        return "No room found"
     }
     
     struct WordRoom {
@@ -264,6 +271,12 @@ extension Year2016InteractorImpl: YearInteractor {
             valueRoom += sortedCounts[index].key
         }
         return valueRoom == word.checksum
+    }
+    
+    private func rotateWordRoom(_ word: WordRoom) -> String {
+        let rotation = word.sectorId % 26
+        let chars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+        return word.name.map { chars[(chars.firstIndex(of: String($0))! + rotation) % 26] }.reduce("", +)
     }
     
 }
