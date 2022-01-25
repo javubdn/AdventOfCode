@@ -230,7 +230,6 @@ extension Year2016InteractorImpl: YearInteractor {
         let input = readCSV("InputYear2016Day4").components(separatedBy: "\n")
         let words = input.map { getWordRoom($0) }
         let correctWords = words.filter { validateWordRoom($0) }
-        correctWords.forEach { print(rotateWordRoom($0)) }
         if let correctWord = correctWords.first( where: { rotateWordRoom($0) == "northpoleobjectstorage" } ) {
             return String(correctWord.sectorId)
         }
@@ -277,6 +276,28 @@ extension Year2016InteractorImpl: YearInteractor {
         let rotation = word.sectorId % 26
         let chars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         return word.name.map { chars[(chars.firstIndex(of: String($0))! + rotation) % 26] }.reduce("", +)
+    }
+    
+    @objc
+    func day5question1() -> String {
+        let input = "ojvtpuvg"
+        var item = 0
+        var result = ""
+        while result.count < 8 {
+            let value = input + String(item)
+            let hash = value.MD5().map { String(format: "%02hhx", $0) }.joined()
+            if  String(hash[0...4]) == "00000" {
+                result += String(hash[5])
+            }
+            item += 1
+        }
+        
+        return result
+    }
+    
+    @objc
+    func day5question2() -> String {
+        return ""
     }
     
 }
