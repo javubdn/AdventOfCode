@@ -330,7 +330,17 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day6question2() -> String {
-        return ""
+        let input = readCSV("InputYear2016Day6").components(separatedBy: "\n")
+        var result = ""
+        for index in 0..<input[0].count {
+            let rs = input[0].index(input[0].startIndex, offsetBy: index)
+            let counts = Utils.countChars(String(input.map { $0[rs] }))
+            let maxValue = counts.sorted { item1, item2 in
+                item1.value < item2.value
+            }[0].key
+            result += maxValue
+        }
+        return result
     }
     
 }
