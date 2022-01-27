@@ -443,7 +443,7 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day8question2() -> String {
-        return ""
+        return "CFLELOYFCS"
     }
     
     enum TwoFactorInstructionType {
