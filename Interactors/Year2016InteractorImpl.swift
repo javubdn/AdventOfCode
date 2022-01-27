@@ -520,7 +520,30 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day9question2() -> String {
-        return ""
+        let input = readCSV("InputYear2016Day9").replacingOccurrences(of: "\n", with: "")
+        let result = numberCharsDecompressed(input)
+        return String(result)
+    }
+    
+    private func numberCharsDecompressed(_ input: String) -> Int {
+        var input = input
+        let pattern = #"\(?[a-zA-Z0-9]+\)?"#
+        guard let range = input.range(of: pattern, options: .regularExpression) else { return 0 }
+        let currentItem = input[range]
+        let count: Int
+        var extraItems = 0
+        if currentItem.starts(with: "(") {
+            let factors = currentItem.replacingOccurrences(of: "(", with: "")
+                .replacingOccurrences(of: ")", with: "")
+                .components(separatedBy: "x")
+                .map { Int($0)! }
+            count = numberCharsDecompressed(String(input[currentItem.count...currentItem.count+factors[0]-1])) * factors[1]
+            extraItems = factors[0]
+        } else {
+            count = currentItem.count
+        }
+        input.removeFirst(currentItem.count + extraItems)
+        return count + numberCharsDecompressed(input)
     }
     
 }
