@@ -492,4 +492,35 @@ extension Year2016InteractorImpl: YearInteractor {
         return panel
     }
     
+    @objc
+    func day9question1() -> String {
+        var input = readCSV("InputYear2016Day9").replacingOccurrences(of: "\n", with: "")
+        var count = 0
+        
+        while input.count > 0 {
+            let pattern = #"\(?[a-zA-Z0-9]+\)?"#
+            if let range = input.range(of: pattern, options: .regularExpression) {
+                let currentItem = input[range]
+                if currentItem.starts(with: "(") {
+                    let factors = currentItem.replacingOccurrences(of: "(", with: "")
+                        .replacingOccurrences(of: ")", with: "")
+                        .components(separatedBy: "x")
+                        .map { Int($0)! }
+                    count += factors[0] * factors[1]
+                    input.removeFirst(currentItem.count + factors[0])
+                } else {
+                    count += currentItem.count
+                    input.removeFirst(currentItem.count)
+                }
+            }
+        }
+
+        return String(count)
+    }
+    
+    @objc
+    func day9question2() -> String {
+        return ""
+    }
+    
 }
