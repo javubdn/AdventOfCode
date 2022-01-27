@@ -343,4 +343,42 @@ extension Year2016InteractorImpl: YearInteractor {
         return result
     }
     
+    @objc
+    func day7question1() -> String {
+        let input = readCSV("InputYear2016Day7").components(separatedBy: "\n")
+        var result = 0
+        for value in input {
+            do {
+                let regex = try NSRegularExpression(pattern: #"([a-z])+"#)
+                var shouldContainABBA = true
+                var failedInBrackets = false
+                var containsABBA = false
+                regex.enumerateMatches(in: value, range: NSRange(value.startIndex..., in: value)) { result, _, _ in
+                    let currentValue = String(value[Range(result!.range, in: value)!])
+                    if shouldContainABBA && containsAbba(currentValue) {
+                        containsABBA = true
+                    }
+                    if !shouldContainABBA && containsAbba(currentValue) {
+                        failedInBrackets = true
+                    }
+                    shouldContainABBA = !shouldContainABBA
+                }
+                result += containsABBA && !failedInBrackets ? 1 : 0
+            } catch _ {
+                return "Error"
+            }
+        }
+        return String(result)
+    }
+    
+    private func containsAbba(_ input: String) -> Bool {
+        guard !input.isEmpty else { return false }
+        for index in 0..<input.count-3 {
+            if input[index] == input[index+3] && input[index+1] == input[index+2] && input[index] != input[index+1] {
+                return true
+            }
+        }
+        return false
+    }
+    
 }
