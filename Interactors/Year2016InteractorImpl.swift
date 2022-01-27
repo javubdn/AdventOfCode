@@ -429,4 +429,67 @@ extension Year2016InteractorImpl: YearInteractor {
         return abaList
     }
     
+    @objc
+    func day8question1() -> String {
+        let input = readCSV("InputYear2016Day8").components(separatedBy: "\n")
+        let items = input.map { getTwoFactorInstruction($0) }
+        var panel = [[String]](repeating: [String](repeating: ".", count: 50), count: 6)
+        for item in items {
+            panel = executeTwoFactorInstruction(item, in: panel)
+        }
+        let result = panel.map { $0.filter { $0 == "#" }.count }.reduce(0, +)
+        return String(result)
+    }
+    
+    @objc
+    func day8question2() -> String {
+        return ""
+    }
+    
+    enum TwoFactorInstructionType {
+        case rect
+        case rotateRow
+        case rotateColumn
+    }
+    struct TwoFactorInstruction {
+        let instruction: TwoFactorInstructionType
+        let firstParameter: Int
+        let secondParameter: Int
+    }
+    
+    private func getTwoFactorInstruction(_ input: String) -> TwoFactorInstruction {
+        let items = input.components(separatedBy: " ")
+        if items.count == 2 {
+            let parameters = items[1].components(separatedBy: "x")
+            return TwoFactorInstruction(instruction: .rect, firstParameter: Int(parameters[0])!, secondParameter: Int(parameters[1])!)
+        } else {
+            let instruction: TwoFactorInstructionType = items[1] == "row" ? .rotateRow : .rotateColumn
+            let parameter = items[2].components(separatedBy: "=")
+            return TwoFactorInstruction(instruction: instruction, firstParameter: Int(parameter[1])!, secondParameter: Int(items[4])!)
+        }
+    }
+    
+    private func executeTwoFactorInstruction(_ instruction: TwoFactorInstruction, in input: [[String]] ) -> [[String]] {
+        var panel = input
+        switch instruction.instruction {
+        case .rect:
+            for row in 0..<instruction.secondParameter {
+                for column in 0..<instruction.firstParameter {
+                    panel[row][column] = "#"
+                }
+            }
+        case .rotateRow:
+            let row = panel[instruction.firstParameter]
+            for index in 0..<row.count {
+                panel[instruction.firstParameter][index] = row[(index + panel[0].count - instruction.secondParameter)%panel[0].count]
+            }
+        case .rotateColumn:
+            let column = panel.map { $0[instruction.firstParameter] }
+            for index in 0..<column.count {
+                panel[index][instruction.firstParameter] = column[(index + panel.count - instruction.secondParameter)%panel.count]
+            }
+        }
+        return panel
+    }
+    
 }
