@@ -371,6 +371,43 @@ extension Year2016InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day7question2() -> String {
+        let input = readCSV("InputYear2016Day7").components(separatedBy: "\n")
+        var result = 0
+        for value in input {
+            do {
+                let regex = try NSRegularExpression(pattern: #"([a-z])+"#)
+                var supernet = true
+                var abaList: [String] = []
+                regex.enumerateMatches(in: value, range: NSRange(value.startIndex..., in: value)) { result, _, _ in
+                    if supernet {
+                        let currentValue = String(value[Range(result!.range, in: value)!])
+                        abaList.append(contentsOf: getABA(currentValue))
+                    }
+                    supernet = !supernet
+                }
+                supernet = true
+                var containsABA = false
+                regex.enumerateMatches(in: value, range: NSRange(value.startIndex..., in: value)) { result, _, _ in
+                    if !supernet {
+                        let currentValue = String(value[Range(result!.range, in: value)!])
+                        for abaItem in abaList {
+                            if currentValue.contains(abaItem) {
+                                containsABA = true
+                            }
+                        }
+                    }
+                    supernet = !supernet
+                }
+                result += containsABA ? 1 : 0
+            } catch _ {
+                return "Error"
+            }
+        }
+        return String(result)
+    }
+    
     private func containsAbba(_ input: String) -> Bool {
         guard !input.isEmpty else { return false }
         for index in 0..<input.count-3 {
@@ -379,6 +416,17 @@ extension Year2016InteractorImpl: YearInteractor {
             }
         }
         return false
+    }
+    
+    private func getABA(_ input: String) -> [String] {
+        var abaList: [String] = []
+        for index in 0..<input.count-2 {
+            if input[index] == input[index+2] && input[index] != input[index+1] {
+                let bab = String(input[index+1]) + String(input[index]) + String(input[index+1])
+                abaList.append(bab)
+            }
+        }
+        return abaList
     }
     
 }
