@@ -546,6 +546,66 @@ extension Year2016InteractorImpl: YearInteractor {
         return count + numberCharsDecompressed(input)
     }
     
+    @objc
+    func day10question1() -> String {
+        let input = readCSV("InputYear2016Day10").components(separatedBy: "\n")
+        let instructions = input.map { getBotInstruction($0) }
+        let initialInstructions: [BotInstructionFromInput] = instructions.filter { $0 is BotInstructionFromInput }.map { $0 as! BotInstructionFromInput }
+        let botsInstructions: [BotInstructionFromBot] = instructions.filter { $0 is BotInstructionFromBot }.map { $0 as! BotInstructionFromBot }
+        var bots: [Bot] = []
+        initialInstructions.forEach { instruction in
+            let bot = bots.filter { $0.id == instruction.destiny }
+            if bot.isEmpty {
+                let newBot = Bot(id: instruction.destiny)
+                newBot.items.append(instruction.value)
+                bots.append(newBot)
+            } else {
+                bot[0].items.append(instruction.value)
+            }
+        }
+        while !bots.isEmpty {
+            guard let bot = bots.first(where: { $0.items.count == 2 } ) else { return "Error" }
+            if (bot.items[0] == 61 && bot.items[1] == 17) || (bot.items[0] == 17 && bot.items[1] == 61) {
+                return String(bot.id)
+            }
+            guard let instruction = botsInstructions.first(where: { $0.origin == bot.id }) else { return "Error" }
+            if let botLower = bots.first(where: { $0.id == instruction.destinyLower }) {
+                botLower.items.append(min(bot.items[0], bot.items[1]))
+            } else {
+                let newBotLower = Bot(id: instruction.destinyLower)
+                newBotLower.items.append(min(bot.items[0], bot.items[1]))
+                bots.append(newBotLower)
+            }
+            if let botHigher = bots.first(where: { $0.id == instruction.destinyHigher }) {
+                botHigher.items.append(max(bot.items[0], bot.items[1]))
+            } else {
+                let newBotHigher = Bot(id: instruction.destinyHigher)
+                newBotHigher.items.append(max(bot.items[0], bot.items[1]))
+                bots.append(newBotHigher)
+            }
+            bots.removeAll { $0.id == bot.id }
+        }
+        return "Error"
+    }
+    
+    @objc
+    func day10question2() -> String {
+        return ""
+    }
+        
+    private func getBotInstruction(_ input: String) -> BotInstruction {
+        let items = input.components(separatedBy: " ")
+        if items.count == 6 {
+            return BotInstructionFromInput(destiny: Int(items[5])!, value: Int(items[1])!)
+        } else {
+            return BotInstructionFromBot(origin: Int(items[1])!,
+                                         destinyLower: items[3] == "low" ? Int(items[6])! : Int(items[11])!,
+                                         destinyHigher: items[3] == "low" ? Int(items[11])! : Int(items[6])!)
+        }
+    }
+    
+}
+
 protocol BotInstruction { }
 
 struct BotInstructionFromInput: BotInstruction {
