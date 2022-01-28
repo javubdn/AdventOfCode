@@ -546,4 +546,24 @@ extension Year2016InteractorImpl: YearInteractor {
         return count + numberCharsDecompressed(input)
     }
     
+protocol BotInstruction { }
+
+struct BotInstructionFromInput: BotInstruction {
+    let destiny: Int
+    let value: Int
+}
+
+struct BotInstructionFromBot: BotInstruction {
+    let origin: Int
+    let destinyLower: Int
+    let destinyHigher: Int
+}
+
+class Bot {
+    let id: Int
+    var items: [Int] = []
+    
+    init(id: Int) {
+        self.id = id
+    }
 }
