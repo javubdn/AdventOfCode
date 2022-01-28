@@ -548,7 +548,52 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day10question1() -> String {
-        let input = readCSV("InputYear2016Day10").components(separatedBy: "\n")
+        let input = readCSV("InputYear2016Day10")
+        var (bots, botsInstructions) = getInitialBotDistribution(input)
+        while !bots.isEmpty {
+            guard let bot = bots.first(where: { $0.items.count == 2 } ) else { return "Error" }
+            if (bot.items[0] == 61 && bot.items[1] == 17) || (bot.items[0] == 17 && bot.items[1] == 61) {
+                return String(bot.id)
+            }
+            guard let instruction = botsInstructions.first(where: { $0.origin == bot.id }) else { return "Error" }
+            (bots, _) = executeBotInstruction(instruction, bot: bot, bots: bots, outputs: [:])
+            bots.removeAll { $0.id == bot.id }
+        }
+        return "Error"
+    }
+    
+    @objc
+    func day10question2() -> String {
+        let input = readCSV("InputYear2016Day10")
+        var (bots, botsInstructions) = getInitialBotDistribution(input)
+        var outputs: [Int: Int] = [:]
+        while outputs[0] == nil || outputs[1] == nil || outputs[2] == nil {
+            guard let bot = bots.first(where: { $0.items.count == 2 } ),
+                  let instruction = botsInstructions.first(where: { $0.origin == bot.id }) else {
+                      return "Error"
+                  }
+            (bots, outputs) = executeBotInstruction(instruction, bot: bot, bots: bots, outputs: outputs)
+            bots.removeAll { $0.id == bot.id }
+        }
+        let result = outputs[0]! * outputs[1]! * outputs[2]!
+        return String(result)
+    }
+        
+    private func getBotInstruction(_ input: String) -> BotInstruction {
+        let items = input.components(separatedBy: " ")
+        if items.count == 6 {
+            return BotInstructionFromInput(destiny: Int(items[5])!, value: Int(items[1])!)
+        } else {
+            return BotInstructionFromBot(origin: Int(items[1])!,
+                                         isDestinyLowerBot: items[5] == "bot",
+                                         destinyLower: items[3] == "low" ? Int(items[6])! : Int(items[11])!,
+                                         isDestinyHigherBot: items[10] == "bot",
+                                         destinyHigher: items[3] == "low" ? Int(items[11])! : Int(items[6])!)
+        }
+    }
+    
+    private func getInitialBotDistribution(_ input: String) -> ([Bot], [BotInstructionFromBot]) {
+        let input = input.components(separatedBy: "\n")
         let instructions = input.map { getBotInstruction($0) }
         let initialInstructions: [BotInstructionFromInput] = instructions.filter { $0 is BotInstructionFromInput }.map { $0 as! BotInstructionFromInput }
         let botsInstructions: [BotInstructionFromBot] = instructions.filter { $0 is BotInstructionFromBot }.map { $0 as! BotInstructionFromBot }
@@ -563,45 +608,33 @@ extension Year2016InteractorImpl: YearInteractor {
                 bot[0].items.append(instruction.value)
             }
         }
-        while !bots.isEmpty {
-            guard let bot = bots.first(where: { $0.items.count == 2 } ) else { return "Error" }
-            if (bot.items[0] == 61 && bot.items[1] == 17) || (bot.items[0] == 17 && bot.items[1] == 61) {
-                return String(bot.id)
-            }
-            guard let instruction = botsInstructions.first(where: { $0.origin == bot.id }) else { return "Error" }
-            if let botLower = bots.first(where: { $0.id == instruction.destinyLower }) {
-                botLower.items.append(min(bot.items[0], bot.items[1]))
-            } else {
-                let newBotLower = Bot(id: instruction.destinyLower)
-                newBotLower.items.append(min(bot.items[0], bot.items[1]))
-                bots.append(newBotLower)
-            }
-            if let botHigher = bots.first(where: { $0.id == instruction.destinyHigher }) {
-                botHigher.items.append(max(bot.items[0], bot.items[1]))
-            } else {
-                let newBotHigher = Bot(id: instruction.destinyHigher)
-                newBotHigher.items.append(max(bot.items[0], bot.items[1]))
-                bots.append(newBotHigher)
-            }
-            bots.removeAll { $0.id == bot.id }
-        }
-        return "Error"
+        return (bots, botsInstructions)
     }
     
-    @objc
-    func day10question2() -> String {
-        return ""
+    private func executeBotInstruction(_ instruction: BotInstructionFromBot, bot: Bot, bots: [Bot], outputs: [Int: Int]) -> ([Bot], [Int: Int]) {
+        var bots = bots
+        var outputs = outputs
+        (bots, outputs) = applyBotAction(bot: bot, destinyBot: instruction.isDestinyLowerBot, destiny: instruction.destinyLower, minimum: true, bots: bots, outputs: outputs)
+        (bots, outputs) = applyBotAction(bot: bot, destinyBot: instruction.isDestinyHigherBot, destiny: instruction.destinyHigher, minimum: false, bots: bots, outputs: outputs)
+        return (bots, outputs)
     }
-        
-    private func getBotInstruction(_ input: String) -> BotInstruction {
-        let items = input.components(separatedBy: " ")
-        if items.count == 6 {
-            return BotInstructionFromInput(destiny: Int(items[5])!, value: Int(items[1])!)
+    
+    private func applyBotAction(bot: Bot, destinyBot: Bool, destiny: Int, minimum: Bool, bots: [Bot], outputs: [Int: Int]) -> ([Bot], [Int: Int]) {
+        var bots = bots
+        var outputs = outputs
+        let newValue = minimum ? min(bot.items[0], bot.items[1]) : max(bot.items[0], bot.items[1])
+        if destinyBot {
+            if let botHigher = bots.first(where: { $0.id == destiny }) {
+                botHigher.items.append(newValue)
+            } else {
+                let newBotHigher = Bot(id: destiny)
+                newBotHigher.items.append(newValue)
+                bots.append(newBotHigher)
+            }
         } else {
-            return BotInstructionFromBot(origin: Int(items[1])!,
-                                         destinyLower: items[3] == "low" ? Int(items[6])! : Int(items[11])!,
-                                         destinyHigher: items[3] == "low" ? Int(items[11])! : Int(items[6])!)
+            outputs[destiny] = newValue
         }
+        return (bots, outputs)
     }
     
 }
@@ -615,7 +648,9 @@ struct BotInstructionFromInput: BotInstruction {
 
 struct BotInstructionFromBot: BotInstruction {
     let origin: Int
+    let isDestinyLowerBot: Bool
     let destinyLower: Int
+    let isDestinyHigherBot: Bool
     let destinyHigher: Int
 }
 
