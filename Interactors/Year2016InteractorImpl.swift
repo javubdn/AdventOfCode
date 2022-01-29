@@ -637,6 +637,16 @@ extension Year2016InteractorImpl: YearInteractor {
         return (bots, outputs)
     }
     
+    @objc
+    func day11question1() -> String {
+        return ""
+    }
+    
+    @objc
+    func day11question2() -> String {
+        return ""
+    }
+    
 }
 
 protocol BotInstruction { }
