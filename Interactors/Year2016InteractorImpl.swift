@@ -647,6 +647,14 @@ extension Year2016InteractorImpl: YearInteractor {
         return ""
     }
     
+    struct Microchip {
+        let name: String
+    }
+    
+    struct Generator {
+        let name: String
+    }
+    
 }
 
 protocol BotInstruction { }
