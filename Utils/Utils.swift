@@ -57,6 +57,31 @@ class Utils {
         return variations(elements: ArraySlice(elements), k: k)
     }
     
+    private static func nonOrderedVariations<T>(elements: ArraySlice<T>, k: Int) -> [[T]] {
+        if k == 0 {
+            return [[]]
+        }
+
+        guard let first = elements.first else {
+            return []
+        }
+
+        let subVariations: [[T]] = nonOrderedVariations(elements: elements.dropFirst(), k: k - 1)
+        var result: [[T]] = []
+        subVariations.forEach { subVariation in
+            var sub = subVariation
+            sub.insert(first, at: subVariation.count)
+            result.append(sub)
+        }
+        result += nonOrderedVariations(elements: elements.dropFirst(), k: k)
+
+        return result
+    }
+    
+    static func nonOrderedVariations<T>(elements: Array<T>, k: Int) -> [[T]] {
+        return nonOrderedVariations(elements: ArraySlice(elements), k: k)
+    }
+    
     static func combinations(_ number: Int, in parts: Int) -> [[Int]] {
         if parts == 0 { return [[Int]]() }
         if parts == 1 { return [[number]] }
