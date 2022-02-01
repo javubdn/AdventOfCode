@@ -828,6 +828,72 @@ extension Year2016InteractorImpl: YearInteractor {
         return status
     }
     
+    @objc
+    func day13question1() -> String {
+        let favourite = 1350
+        var office = [[(Bool, Bool)]](repeating: [(Bool, Bool)](repeating: (false, false), count: 50), count: 50)
+        
+        var nextPositions: [((x: Int, y: Int), Int)] = [((1, 1), 0)]
+        office[1][1].1 = true
+        
+        while !nextPositions.isEmpty {
+            let currentItem = nextPositions.removeFirst()
+            let currentPosition = currentItem.0
+            let currentPathValue = currentItem.1
+            
+            if currentPosition.x == 31 && currentPosition.y == 39 {
+                return String(currentPathValue)
+            }
+            for move in [MoveDirection.right, MoveDirection.down, MoveDirection.left, MoveDirection.up]{
+                (office, nextPositions) = applyMove(office: office, position: currentPosition, favourite: favourite, move: move, pathValue: currentPathValue, nextPositions: nextPositions)
+            }
+        }
+        
+        return ""
+    }
+    
+    @objc
+    func day13question2() -> String {
+        return ""
+    }
+    
+    private func isWall(x: Int, y: Int, favourite: Int) -> Bool {
+        let value = x*x + 3*x + 2*x*y + y + y*y + favourite
+        let binary = String(value, radix: 2)
+        return binary.filter { $0 == "1" }.count % 2 == 1
+    }
+    
+    enum MoveDirection {
+        case right
+        case left
+        case down
+        case up
+    }
+    
+    private func applyMove(office: [[(Bool, Bool)]],
+                           position: (x: Int, y: Int),
+                           favourite: Int,
+                           move: MoveDirection,
+                           pathValue: Int,
+                           nextPositions: [((x: Int, y: Int), Int)]) -> ([[(Bool, Bool)]], [((x: Int, y: Int), Int)]) {
+        guard (move != .left || position.x > 0) && (move != .up || position.y > 0) else { return (office, nextPositions) }
+        let newX = position.x + (move == .left ? -1 : move == .right ? 1 : 0)
+        let newY = position.y + (move == .up ? -1 : move == .down ? 1 : 0)
+        let nextElement = office[newY][newX]
+        var office = office
+        var nextPositions = nextPositions
+        if !nextElement.1 && !isWall(x: newX, y: newY, favourite: favourite) {
+            let newElement = ((newX, newY), pathValue + 1)
+            if let index = nextPositions.firstIndex(where: { $0.1 > newElement.1 }) {
+                nextPositions.insert(newElement, at: index)
+            } else {
+                nextPositions.append(newElement)
+            }
+            office[newY][newX].1 = true
+        }
+        return (office, nextPositions)
+    }
+    
 }
 
 protocol BotInstruction { }
