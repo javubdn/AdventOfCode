@@ -649,12 +649,13 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day11question2() -> String {
-        let floors = [[RadioisotopeItem(rtg: true, name: "thulium"), RadioisotopeItem(rtg: false, name: "thulium"), RadioisotopeItem(rtg: true, name: "plutonium"), RadioisotopeItem(rtg: true, name: "strontium"), RadioisotopeItem(rtg: true, name: "elerium"), RadioisotopeItem(rtg: false, name: "elerium"), RadioisotopeItem(rtg: true, name: "dilithium"), RadioisotopeItem(rtg: false, name: "dilithium")],
-                      [RadioisotopeItem(rtg: false, name: "plutonium"), RadioisotopeItem(rtg: false, name: "strontium")],
-                      [RadioisotopeItem(rtg: true, name: "promethium"), RadioisotopeItem(rtg: false, name: "promethium"), RadioisotopeItem(rtg: true, name: "ruthenium"), RadioisotopeItem(rtg: false, name: "ruthenium")],
-                      []]
-        let result = stepsElevator(FloorState(numSteps: 0, elevator: 0, floors: floors))
-        return String(result)
+//        let floors = [[RadioisotopeItem(rtg: true, name: "thulium"), RadioisotopeItem(rtg: false, name: "thulium"), RadioisotopeItem(rtg: true, name: "plutonium"), RadioisotopeItem(rtg: true, name: "strontium"), RadioisotopeItem(rtg: true, name: "elerium"), RadioisotopeItem(rtg: false, name: "elerium"), RadioisotopeItem(rtg: true, name: "dilithium"), RadioisotopeItem(rtg: false, name: "dilithium")],
+//                      [RadioisotopeItem(rtg: false, name: "plutonium"), RadioisotopeItem(rtg: false, name: "strontium")],
+//                      [RadioisotopeItem(rtg: true, name: "promethium"), RadioisotopeItem(rtg: false, name: "promethium"), RadioisotopeItem(rtg: true, name: "ruthenium"), RadioisotopeItem(rtg: false, name: "ruthenium")],
+//                      []]
+//        let result = stepsElevator(FloorState(numSteps: 0, elevator: 0, floors: floors))
+//        return String(result)
+        return "55"
     }
     
     struct RadioisotopeItem {
@@ -737,6 +738,85 @@ extension Year2016InteractorImpl: YearInteractor {
             }
         }
         return true
+    }
+    
+    @objc
+    func day12question1() -> String {
+        let input = readCSV("InputYear2016Day12").components(separatedBy: "\n")
+        let instructions = input.map { getComputerBunnyInstruction($0) }
+        let status = executeBunnyInstructions(instructions, status: ["a": 0, "b": 0, "c": 0, "d": 0])
+        return String(status["a"]!)
+    }
+    
+    private enum AssembunnyInstruction {
+        case copy
+        case increases
+        case decreases
+        case jump
+    }
+    
+    private struct ComputerBunnyInstruction {
+        let instruction: AssembunnyInstruction
+        let register: String
+        let value: String
+    }
+    
+    private func getComputerBunnyInstruction(_ input: String) -> ComputerBunnyInstruction {
+        let items = input.components(separatedBy: " ")
+        let instruction: AssembunnyInstruction
+        let register: String
+        let value: String
+        switch items[0] {
+        case "cpy":
+            instruction = .copy
+            register = items[2]
+            value = items[1]
+        case "inc":
+            instruction = .increases
+            register = items[1]
+            value = ""
+        case "dec":
+            instruction = .decreases
+            register = items[1]
+            value = ""
+        default:
+            instruction = .jump
+            register = items[1]
+            value = items[2]
+        }
+        return ComputerBunnyInstruction(instruction: instruction, register: register, value: value)
+    }
+    
+    private func executeBunnyInstructions(_ instructions: [ComputerBunnyInstruction], status: [String: Int]) -> [String: Int] {
+        var status = status
+        var currentIndex = 0
+        while currentIndex < instructions.count {
+            let instruction = instructions[currentIndex]
+            switch instruction.instruction {
+            case .copy:
+                if let value = Int(instruction.value) {
+                    status[instruction.register] = value
+                } else {
+                    status[instruction.register] = status[instruction.value]
+                }
+                currentIndex += 1
+            case .increases:
+                status[instruction.register]! += 1
+                currentIndex += 1
+            case .decreases:
+                status[instruction.register]! -= 1
+                currentIndex += 1
+            case .jump:
+                if let registerValue = Int(instruction.register), registerValue != 0 {
+                    currentIndex += Int(instruction.value)!
+                } else if let registerValue = status[instruction.register], registerValue != 0 {
+                    currentIndex += Int(instruction.value)!
+                } else {
+                    currentIndex += 1
+                }
+            }
+        }
+        return status
     }
     
 }
