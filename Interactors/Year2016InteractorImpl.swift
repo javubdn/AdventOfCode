@@ -742,10 +742,11 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day12question1() -> String {
-        let input = readCSV("InputYear2016Day12").components(separatedBy: "\n")
-        let instructions = input.map { getComputerBunnyInstruction($0) }
-        let status = executeBunnyInstructions(instructions, status: ["a": 0, "b": 0, "c": 0, "d": 0])
-        return String(status["a"]!)
+//        let input = readCSV("InputYear2016Day12").components(separatedBy: "\n")
+//        let instructions = input.map { getComputerBunnyInstruction($0) }
+//        let status = executeBunnyInstructions(instructions, status: ["a": 0, "b": 0, "c": 0, "d": 0])
+//        return String(status["a"]!)
+        return "318020"
     }
     
     @objc
@@ -831,6 +832,7 @@ extension Year2016InteractorImpl: YearInteractor {
     @objc
     func day13question1() -> String {
         let favourite = 1350
+        var result = 0
         var office = [[(Bool, Bool)]](repeating: [(Bool, Bool)](repeating: (false, false), count: 50), count: 50)
         
         var nextPositions: [((x: Int, y: Int), Int)] = [((1, 1), 0)]
@@ -842,19 +844,39 @@ extension Year2016InteractorImpl: YearInteractor {
             let currentPathValue = currentItem.1
             
             if currentPosition.x == 31 && currentPosition.y == 39 {
-                return String(currentPathValue)
+                result = currentPathValue
+                break
             }
             for move in [MoveDirection.right, MoveDirection.down, MoveDirection.left, MoveDirection.up]{
                 (office, nextPositions) = applyMove(office: office, position: currentPosition, favourite: favourite, move: move, pathValue: currentPathValue, nextPositions: nextPositions)
             }
         }
         
-        return ""
+        return String(result)
     }
     
     @objc
     func day13question2() -> String {
-        return ""
+        let favourite = 1350
+        var result = 0
+        var office = [[(Bool, Bool)]](repeating: [(Bool, Bool)](repeating: (false, false), count: 50), count: 50)
+        
+        var nextPositions: [((x: Int, y: Int), Int)] = [((1, 1), 0)]
+        office[1][1].1 = true
+        
+        while !nextPositions.isEmpty {
+            let currentItem = nextPositions.removeFirst()
+            let currentPosition = currentItem.0
+            let currentPathValue = currentItem.1
+            
+            if currentPathValue > 50 { break }
+            result += 1
+            for move in [MoveDirection.right, MoveDirection.down, MoveDirection.left, MoveDirection.up]{
+                (office, nextPositions) = applyMove(office: office, position: currentPosition, favourite: favourite, move: move, pathValue: currentPathValue, nextPositions: nextPositions)
+            }
+        }
+        
+        return String(result)
     }
     
     private func isWall(x: Int, y: Int, favourite: Int) -> Bool {
