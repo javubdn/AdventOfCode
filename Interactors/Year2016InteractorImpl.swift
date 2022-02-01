@@ -639,7 +639,12 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day11question1() -> String {
-        return ""
+        let floors = [[RadioisotopeItem(rtg: true, name: "thulium"), RadioisotopeItem(rtg: false, name: "thulium"), RadioisotopeItem(rtg: true, name: "plutonium"), RadioisotopeItem(rtg: true, name: "strontium")],
+                      [RadioisotopeItem(rtg: false, name: "plutonium"), RadioisotopeItem(rtg: false, name: "strontium")],
+                      [RadioisotopeItem(rtg: true, name: "promethium"), RadioisotopeItem(rtg: false, name: "promethium"), RadioisotopeItem(rtg: true, name: "ruthenium"), RadioisotopeItem(rtg: false, name: "ruthenium")],
+                      []]
+        let result = stepsElevator(FloorState(numSteps: 0, elevator: 0, floors: floors))
+        return String(result)
     }
     
     @objc
@@ -647,12 +652,86 @@ extension Year2016InteractorImpl: YearInteractor {
         return ""
     }
     
-    struct Microchip {
+    struct RadioisotopeItem {
+        let rtg: Bool
         let name: String
     }
     
-    struct Generator {
-        let name: String
+    struct FloorState: Hashable {
+        let numSteps: Int
+        let elevator: Int
+        let floors: [[RadioisotopeItem]]
+                
+        func hash(into hasher: inout Hasher) { }
+
+        static func == (lhs: FloorState, rhs: FloorState) -> Bool {
+            var equals = lhs.elevator == rhs.elevator
+            for numberFloor in 0..<lhs.floors.count {
+                equals = equals
+                && lhs.floors[numberFloor].count == rhs.floors[numberFloor].count
+                && lhs.floors[numberFloor].filter { $0.rtg }.count == rhs.floors[numberFloor].filter { $0.rtg }.count
+            }
+            return equals
+        }
+    }
+        
+    private func stepsElevator(_ state: FloorState) -> Int {
+        var seen: Set<FloorState> = Set()
+        var states = [state]
+        
+        while !states.isEmpty {
+            let state = states.removeFirst()
+            if isFinalFloorState(state) { return state.numSteps }
+            for nextState in nextStateFloors(state) {
+                if !seen.contains(nextState) {
+                    seen.insert(nextState)
+                    states.append(nextState)
+                }
+            }
+        }
+        
+        return -1
+    }
+    
+    private func nextStateFloors(_ state: FloorState) -> [FloorState] {
+        let possibleMoves = Utils.nonOrderedVariations(elements: state.floors[state.elevator], k: 2) + Utils.nonOrderedVariations(elements: state.floors[state.elevator], k: 1)
+        var nextStates: [FloorState] = []
+        for move in possibleMoves {
+            for direction in [-1, 1] {
+                let nextElevator = state.elevator + direction
+                if nextElevator < 0 || nextElevator >= state.floors.count || (direction == -1 && move.count == 2) { continue }
+                var nextFloors = state.floors
+                nextFloors[state.elevator].removeAll { item in
+                    move.contains { variation in
+                        variation.rtg == item.rtg && variation.name == item.name
+                    }
+                }
+                nextFloors[nextElevator].append(contentsOf: move)
+                if isCorrectFloor(nextFloors[state.elevator]) && isCorrectFloor(nextFloors[nextElevator]) {
+                    nextStates.append(FloorState(numSteps: state.numSteps + 1, elevator: nextElevator, floors: nextFloors))
+                }
+            }
+        }
+        return nextStates
+    }
+    
+    private func isCorrectFloor(_ floor: [RadioisotopeItem]) -> Bool {
+        let chips = floor.filter { !$0.rtg }
+        let generators = floor.filter { $0.rtg }
+        if generators.isEmpty { return true }
+        for chip in chips {
+            if generators.first(where: { $0.name == chip.name }) == nil { return false }
+        }
+        return true
+    }
+    
+    private func isFinalFloorState(_ state: FloorState) -> Bool {
+        for floorNumber in 0..<state.floors.count-1 {
+            if state.floors[floorNumber].count > 0 {
+                return false
+            }
+        }
+        return true
     }
     
 }
