@@ -649,7 +649,12 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day11question2() -> String {
-        return ""
+        let floors = [[RadioisotopeItem(rtg: true, name: "thulium"), RadioisotopeItem(rtg: false, name: "thulium"), RadioisotopeItem(rtg: true, name: "plutonium"), RadioisotopeItem(rtg: true, name: "strontium"), RadioisotopeItem(rtg: true, name: "elerium"), RadioisotopeItem(rtg: false, name: "elerium"), RadioisotopeItem(rtg: true, name: "dilithium"), RadioisotopeItem(rtg: false, name: "dilithium")],
+                      [RadioisotopeItem(rtg: false, name: "plutonium"), RadioisotopeItem(rtg: false, name: "strontium")],
+                      [RadioisotopeItem(rtg: true, name: "promethium"), RadioisotopeItem(rtg: false, name: "promethium"), RadioisotopeItem(rtg: true, name: "ruthenium"), RadioisotopeItem(rtg: false, name: "ruthenium")],
+                      []]
+        let result = stepsElevator(FloorState(numSteps: 0, elevator: 0, floors: floors))
+        return String(result)
     }
     
     struct RadioisotopeItem {
