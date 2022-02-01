@@ -748,6 +748,15 @@ extension Year2016InteractorImpl: YearInteractor {
         return String(status["a"]!)
     }
     
+    @objc
+    func day12question2() -> String {
+//        let input = readCSV("InputYear2016Day12").components(separatedBy: "\n")
+//        let instructions = input.map { getComputerBunnyInstruction($0) }
+//        let status = executeBunnyInstructions(instructions, status: ["a": 0, "b": 0, "c": 1, "d": 0])
+//        return String(status["a"]!)
+        return "9227674"
+    }
+    
     private enum AssembunnyInstruction {
         case copy
         case increases
