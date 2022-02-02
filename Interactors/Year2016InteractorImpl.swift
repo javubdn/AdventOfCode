@@ -916,6 +916,53 @@ extension Year2016InteractorImpl: YearInteractor {
         return (office, nextPositions)
     }
     
+    @objc
+    func day14question1() -> String {
+        let input = "ihaygndm"
+        var item = 0
+        var candidates: [Int: (String, Int)] = [:]
+        var validValues: [Int] = []
+        while validValues.count < 64 {
+            let value = input + String(item)
+            let hash = value.MD5().map { String(format: "%02hhx", $0) }.joined()
+            if let repeatedItem = containsRepeatedSequence(hash, times: 3) {
+                if let repeated5Item = containsRepeatedSequence(hash, times: 5) {
+                    let valids = candidates.filter { $0.value.0 == repeated5Item }.map { $0.key }
+                    validValues.append(contentsOf: valids)
+                    candidates = candidates.filter { $0.value.0 != repeated5Item }
+                }
+                candidates[item] = (repeatedItem, 0)
+            }
+            candidates.forEach { element in
+                candidates[element.key] = (element.value.0, element.value.1 + 1)
+            }
+            candidates = candidates.filter { $0.value.1 <= 1000 }
+            item += 1
+        }
+        validValues = validValues.sorted()
+        return String(validValues.last!)
+    }
+    
+    @objc
+    func day14question2() -> String {
+        return ""
+    }
+    
+    private func containsRepeatedSequence(_ input: String, times: Int) -> String? {
+        var lastCharacter = ""
+        var count = 0
+        for character in input {
+            if String(character) == lastCharacter {
+                count += 1
+                if count == times { return String(character) }
+            } else {
+                lastCharacter = String(character)
+                count = 1
+            }
+        }
+        return nil
+    }
+    
 }
 
 protocol BotInstruction { }
