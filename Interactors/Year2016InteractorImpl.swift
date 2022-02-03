@@ -1012,6 +1012,19 @@ extension Year2016InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day15question2() -> String {
+        let discs = [Disc(positions: 13, originalPosition: 10),
+                     Disc(positions: 17, originalPosition: 15),
+                     Disc(positions: 19, originalPosition: 17),
+                     Disc(positions: 7, originalPosition: 1),
+                     Disc(positions: 5, originalPosition: 0),
+                     Disc(positions: 3, originalPosition: 1),
+                     Disc(positions: 11, originalPosition: 0)]
+        let result = getSecondThrow(discs)
+        return String(result)
+    }
+    
     struct Disc {
         let positions: Int
         let originalPosition: Int
