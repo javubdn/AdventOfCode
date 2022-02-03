@@ -918,39 +918,40 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day14question1() -> String {
-        let input = "ihaygndm"
-        var item = 0
-        var candidates: [Int: (String, Int)] = [:]
-        var validValues: [Int] = []
-        let lastKey = 64
-        while validValues.count < lastKey {
-            (candidates, validValues, item) = updateCandidates(input: input, item: item, candidates: candidates, validValues: validValues, newCandidates: true, keyStretching: false)
-        }
-        candidates = candidates.filter { $0.key < validValues.max()! }
-        while !candidates.isEmpty {
-            (candidates, validValues, item) = updateCandidates(input: input, item: item, candidates: candidates, validValues: validValues, newCandidates: false, keyStretching: false)
-        }
-        validValues = validValues.sorted()
-        return String(validValues[lastKey-1])
+//        let input = "ihaygndm"
+//        var item = 0
+//        var candidates: [Int: (String, Int)] = [:]
+//        var validValues: [Int] = []
+//        let lastKey = 64
+//        while validValues.count < lastKey {
+//            (candidates, validValues, item) = updateCandidates(input: input, item: item, candidates: candidates, validValues: validValues, newCandidates: true, keyStretching: false)
+//        }
+//        candidates = candidates.filter { $0.key < validValues.max()! }
+//        while !candidates.isEmpty {
+//            (candidates, validValues, item) = updateCandidates(input: input, item: item, candidates: candidates, validValues: validValues, newCandidates: false, keyStretching: false)
+//        }
+//        validValues = validValues.sorted()
+//        return String(validValues[lastKey-1])
+        return "15035"
     }
     
     @objc
     func day14question2() -> String {
-        let input = "ihaygndm"
-        var item = 0
-        var candidates: [Int: (String, Int)] = [:]
-        var validValues: [Int] = []
-        let lastKey = 64
-        while validValues.count < lastKey {
-            (candidates, validValues, item) = updateCandidates(input: input, item: item, candidates: candidates, validValues: validValues, newCandidates: true, keyStretching: true)
-        }
-        candidates = candidates.filter { $0.key < validValues.max()! }
-        while !candidates.isEmpty {
-            (candidates, validValues, item) = updateCandidates(input: input, item: item, candidates: candidates, validValues: validValues, newCandidates: false, keyStretching: true)
-        }
-        validValues = validValues.sorted()
-        return String(validValues[lastKey-1])
-//        return "19968"
+//        let input = "ihaygndm"
+//        var item = 0
+//        var candidates: [Int: (String, Int)] = [:]
+//        var validValues: [Int] = []
+//        let lastKey = 64
+//        while validValues.count < lastKey {
+//            (candidates, validValues, item) = updateCandidates(input: input, item: item, candidates: candidates, validValues: validValues, newCandidates: true, keyStretching: true)
+//        }
+//        candidates = candidates.filter { $0.key < validValues.max()! }
+//        while !candidates.isEmpty {
+//            (candidates, validValues, item) = updateCandidates(input: input, item: item, candidates: candidates, validValues: validValues, newCandidates: false, keyStretching: true)
+//        }
+//        validValues = validValues.sorted()
+//        return String(validValues[lastKey-1])
+        return "19968"
 
     }
     
@@ -999,6 +1000,40 @@ extension Year2016InteractorImpl: YearInteractor {
         return (candidates, validValues, item + 1)
     }
     
+    @objc
+    func day15question1() -> String {
+        let discs = [Disc(positions: 13, originalPosition: 10),
+                     Disc(positions: 17, originalPosition: 15),
+                     Disc(positions: 19, originalPosition: 17),
+                     Disc(positions: 7, originalPosition: 1),
+                     Disc(positions: 5, originalPosition: 0),
+                     Disc(positions: 3, originalPosition: 1),]
+        let result = getSecondThrow(discs)
+        return String(result)
+    }
+    
+    struct Disc {
+        let positions: Int
+        let originalPosition: Int
+    }
+    
+    private func getSecondThrow(_ discs: [Disc]) -> Int {
+        var n = 0
+        while true {
+            let secondThrow = discs[0].positions - discs[0].originalPosition - 1 + discs[0].positions * n
+            var found = true
+            for index in 1..<discs.count {
+                if (discs[index].originalPosition + secondThrow + index + 1) % discs[index].positions != 0 {
+                    found = false
+                    break
+                }
+            }
+            if found {
+                return secondThrow
+            }
+            n += 1
+        }
+    }
 }
 
 protocol BotInstruction { }
