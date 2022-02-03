@@ -922,25 +922,16 @@ extension Year2016InteractorImpl: YearInteractor {
         var item = 0
         var candidates: [Int: (String, Int)] = [:]
         var validValues: [Int] = []
-        while validValues.count < 64 {
-            let value = input + String(item)
-            let hash = value.MD5String()
-            if let repeatedItem = containsRepeatedSequence(hash, times: 3) {
-                if let repeated5Item = containsRepeatedSequence(hash, times: 5) {
-                    let valids = candidates.filter { $0.value.0 == repeated5Item }.map { $0.key }
-                    validValues.append(contentsOf: valids)
-                    candidates = candidates.filter { $0.value.0 != repeated5Item }
-                }
-                candidates[item] = (repeatedItem, 0)
-            }
-            candidates.forEach { element in
-                candidates[element.key] = (element.value.0, element.value.1 + 1)
-            }
-            candidates = candidates.filter { $0.value.1 <= 1000 }
-            item += 1
+        let lastKey = 64
+        while validValues.count < lastKey {
+            (candidates, validValues, item) = updateCandidates(input: input, item: item, candidates: candidates, validValues: validValues, newCandidates: true, keyStretching: false)
+        }
+        candidates = candidates.filter { $0.key < validValues.max()! }
+        while !candidates.isEmpty {
+            (candidates, validValues, item) = updateCandidates(input: input, item: item, candidates: candidates, validValues: validValues, newCandidates: false, keyStretching: false)
         }
         validValues = validValues.sorted()
-        return String(validValues.last!)
+        return String(validValues[lastKey-1])
     }
     
     @objc
@@ -949,28 +940,17 @@ extension Year2016InteractorImpl: YearInteractor {
         var item = 0
         var candidates: [Int: (String, Int)] = [:]
         var validValues: [Int] = []
-        while validValues.count < 64 {
-            let value = input + String(item)
-            var hash = value
-            for _ in 0...2016 {
-                hash = hash.MD5String()
-            }
-            if let repeatedItem = containsRepeatedSequence(hash, times: 3) {
-                if let repeated5Item = containsRepeatedSequence(hash, times: 5) {
-                    let valids = candidates.filter { $0.value.0 == repeated5Item }.map { $0.key }
-                    validValues.append(contentsOf: valids)
-                    candidates = candidates.filter { $0.value.0 != repeated5Item }
-                }
-                candidates[item] = (repeatedItem, 0)
-            }
-            candidates.forEach { element in
-                candidates[element.key] = (element.value.0, element.value.1 + 1)
-            }
-            candidates = candidates.filter { $0.value.1 <= 1000 }
-            item += 1
+        let lastKey = 64
+        while validValues.count < lastKey {
+            (candidates, validValues, item) = updateCandidates(input: input, item: item, candidates: candidates, validValues: validValues, newCandidates: true, keyStretching: true)
+        }
+        candidates = candidates.filter { $0.key < validValues.max()! }
+        while !candidates.isEmpty {
+            (candidates, validValues, item) = updateCandidates(input: input, item: item, candidates: candidates, validValues: validValues, newCandidates: false, keyStretching: true)
         }
         validValues = validValues.sorted()
-        return String(validValues[63])
+        return String(validValues[lastKey-1])
+//        return "19968"
 
     }
     
@@ -987,6 +967,36 @@ extension Year2016InteractorImpl: YearInteractor {
             }
         }
         return nil
+    }
+    
+    private func updateCandidates(input: String,
+                                  item: Int,
+                                  candidates: [Int: (String, Int)],
+                                  validValues: [Int],
+                                  newCandidates: Bool,
+                                  keyStretching: Bool) -> ([Int: (String, Int)], [Int], Int) {
+        var candidates = candidates
+        var validValues = validValues
+        let value = input + String(item)
+        var hash = value.MD5String()
+        if keyStretching {
+            for _ in 0...2015 {
+                hash = hash.MD5String()
+            }
+        }
+        if let repeated5Item = containsRepeatedSequence(hash, times: 5) {
+            let valids = candidates.filter { $0.value.0 == repeated5Item }.map { $0.key }
+            validValues.append(contentsOf: valids)
+            candidates = candidates.filter { $0.value.0 != repeated5Item }
+        }
+        if newCandidates, let repeatedItem = containsRepeatedSequence(hash, times: 3) {
+            candidates[item] = (repeatedItem, 0)
+        }
+        candidates.forEach { element in
+            candidates[element.key] = (element.value.0, element.value.1 + 1)
+        }
+        candidates = candidates.filter { $0.value.1 <= 1000 }
+        return (candidates, validValues, item + 1)
     }
     
 }
