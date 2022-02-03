@@ -155,7 +155,7 @@ private extension Year2015InteractorImpl {
 //        var item = 1
 //        while true {
 //            let value = input + String(item)
-//            let prefix = value.MD5().map { String(format: "%02hhx", $0) }.joined()[0...4]
+//            let prefix = value.MD5String()
 //            if  String(prefix) == "00000" {
 //                return String(item)
 //            }
@@ -170,7 +170,7 @@ private extension Year2015InteractorImpl {
 //        var item = 1
 //        while true {
 //            let value = input + String(item)
-//            let prefix = value.MD5().map { String(format: "%02hhx", $0) }.joined()[0...5]
+//            let prefix = value.MD5String()
 //            if  String(prefix) == "000000" {
 //                return String(item)
 //            }

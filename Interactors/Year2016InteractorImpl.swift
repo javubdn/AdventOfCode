@@ -278,7 +278,7 @@ extension Year2016InteractorImpl: YearInteractor {
 //        var result = ""
 //        while result.count < 8 {
 //            let value = input + String(item)
-//            let hash = value.MD5().map { String(format: "%02hhx", $0) }.joined()
+//            let hash = value.MD5String()
 //            if  String(hash[0...4]) == "00000" {
 //                result += String(hash[5])
 //            }
@@ -299,7 +299,7 @@ extension Year2016InteractorImpl: YearInteractor {
 //        print(result)
 //        while result.contains("_") {
 //            let value = input + String(item)
-//            let hash = value.MD5().map { String(format: "%02hhx", $0) }.joined()
+//            let hash = value.MD5String()
 //            if  String(hash[0...4]) == "00000" && positions.contains(hash[5]) && values[String(hash[5])] == nil {
 //                values[String(hash[5])] = String(hash[6])
 //                let rs = result.index(result.startIndex, offsetBy: Int(String(hash[5]))!)
@@ -924,7 +924,7 @@ extension Year2016InteractorImpl: YearInteractor {
         var validValues: [Int] = []
         while validValues.count < 64 {
             let value = input + String(item)
-            let hash = value.MD5().map { String(format: "%02hhx", $0) }.joined()
+            let hash = value.MD5String()
             if let repeatedItem = containsRepeatedSequence(hash, times: 3) {
                 if let repeated5Item = containsRepeatedSequence(hash, times: 5) {
                     let valids = candidates.filter { $0.value.0 == repeated5Item }.map { $0.key }
@@ -953,7 +953,7 @@ extension Year2016InteractorImpl: YearInteractor {
             let value = input + String(item)
             var hash = value
             for _ in 0...2016 {
-                hash = hash.MD5().map { String(format: "%02hhx", $0) }.joined()
+                hash = hash.MD5String()
             }
             if let repeatedItem = containsRepeatedSequence(hash, times: 3) {
                 if let repeated5Item = containsRepeatedSequence(hash, times: 5) {

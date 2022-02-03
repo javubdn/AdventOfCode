@@ -17,7 +17,7 @@ extension String {
         return String((item1 + item2).filter{ set.insert($0).inserted }.sorted())
     }
     
-    func MD5() -> Data {
+    private func MD5() -> Data {
         let length = Int(CC_MD5_DIGEST_LENGTH)
         let messageData = data(using:.utf8)!
         var digestData = Data(count: length)
@@ -32,5 +32,9 @@ extension String {
             }
         }
         return digestData
+    }
+    
+    func MD5String() -> String {
+        MD5().map { String(format: "%02hhx", $0) }.joined()
     }
 }
