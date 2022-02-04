@@ -1047,6 +1047,41 @@ extension Year2016InteractorImpl: YearInteractor {
             n += 1
         }
     }
+    
+    @objc
+    func day16question1() -> String {
+        var data = "11100010111110100"
+        let dataLength = 272
+        while data.count < dataLength {
+            data = dragonCurve(data)
+        }
+        let rs = data.index(data.startIndex, offsetBy: dataLength)
+        var checkSum = checkSumDragon(String(data[..<rs]))
+        while checkSum.count % 2 == 0 {
+            checkSum = checkSumDragon(checkSum)
+        }
+        return checkSum
+    }
+    
+    @objc
+    func day16question2() -> String {
+        return ""
+    }
+    
+    private func dragonCurve(_ input: String) -> String {
+        var value = String(input.reversed())
+        value = value.map {  $0 == "0" ? "1" : "0" }.joined()
+        return input + "0" + value
+    }
+    
+    private func checkSumDragon(_ input: String) -> String {
+        var result = ""
+        for index in stride(from: 0, through: input.count-1, by: 2) {
+            result.append(input[index] == input[index+1] ? "1" : "0")
+        }
+        return result
+    }
+    
 }
 
 protocol BotInstruction { }
