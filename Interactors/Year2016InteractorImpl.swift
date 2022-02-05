@@ -1050,22 +1050,15 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day16question1() -> String {
-        var data = "11100010111110100"
-        let dataLength = 272
-        while data.count < dataLength {
-            data = dragonCurve(data)
-        }
-        let rs = data.index(data.startIndex, offsetBy: dataLength)
-        var checkSum = checkSumDragon(String(data[..<rs]))
-        while checkSum.count % 2 == 0 {
-            checkSum = checkSumDragon(checkSum)
-        }
-        return checkSum
+        let result = dragonAndChecksum("11100010111110100", dataLength: 272)
+        return result
     }
     
     @objc
     func day16question2() -> String {
-        return ""
+        let result = dragonAndChecksum("11100010111110100", dataLength: 35651584)
+        return result
+    }
     
     private func dragonAndChecksum(_ input: String, dataLength: Int) -> String {
         var input = input
