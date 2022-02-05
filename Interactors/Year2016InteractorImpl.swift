@@ -1066,6 +1066,15 @@ extension Year2016InteractorImpl: YearInteractor {
     @objc
     func day16question2() -> String {
         return ""
+    
+    private func dragonAndChecksum(_ input: String, dataLength: Int) -> String {
+        var input = input
+        while input.count < dataLength {
+            input = dragonCurve(input)
+        }
+        let rs = input.index(input.startIndex, offsetBy: dataLength)
+        let checkSum = getCheckSum(String(input[..<rs]))
+        return checkSum
     }
     
     private func dragonCurve(_ input: String) -> String {
@@ -1074,10 +1083,22 @@ extension Year2016InteractorImpl: YearInteractor {
         return input + "0" + value
     }
     
-    private func checkSumDragon(_ input: String) -> String {
+    private func getCheckSum(_ input: String) -> String {
+        var lenght = input.count
+        var divisions = 0
+        while lenght % 2 == 0 {
+            divisions += 1
+            lenght /= 2
+        }
+        let size = Int(pow(Double(2), Double(divisions)))
+        var index = 0
         var result = ""
-        for index in stride(from: 0, through: input.count-1, by: 2) {
-            result.append(input[index] == input[index+1] ? "1" : "0")
+        while index < input.count {
+            let sindex = input.index(input.startIndex, offsetBy: index)
+            let findex = input.index(input.startIndex, offsetBy: index+size)
+            let number1 = String(input[sindex..<findex]).filter { $0 == "1"}.count
+            result.append(number1%2==0 ? "1" : "0")
+            index += size
         }
         return result
     }
