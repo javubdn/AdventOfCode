@@ -1062,9 +1062,10 @@ extension Year2016InteractorImpl: YearInteractor {
     
     private func dragonAndChecksum(_ input: String, dataLength: Int) -> String {
         var input = input
-        while input.count < dataLength {
-            input = dragonCurve(input)
-        }
+//        while input.count < dataLength {
+//            input = dragonCurve(input)
+//        }
+        input = dragonCurve(input, minLength: dataLength)
         let rs = input.index(input.startIndex, offsetBy: dataLength)
         let checkSum = getCheckSum(String(input[..<rs]))
         return checkSum
@@ -1074,6 +1075,32 @@ extension Year2016InteractorImpl: YearInteractor {
         var value = String(input.reversed())
         value = value.map {  $0 == "0" ? "1" : "0" }.joined()
         return input + "0" + value
+    }
+    
+    private func dragonCurve(_ input: String, minLength: Int) -> String {
+        let reversedInput = String(input.reversed()).map {  $0 == "0" ? "1" : "0" }.joined()
+        var result = input + "0" + reversedInput
+        var intermedies = "0"
+        while result.count < minLength {
+            result += "0"
+            result += input
+            var addI = false
+            var temp = ""
+            var times = 0
+            for index in stride(from: intermedies.count-1, to: -1, by: -1) {
+                let newValue = intermedies[index] == "0" ? "1" : "0"
+                result += newValue
+                temp.append(newValue)
+                result += addI ? input : reversedInput
+                addI = !addI
+                times += 1
+            }
+            print(times)
+            
+            intermedies += "0"
+            intermedies += temp
+        }
+        return result
     }
     
     private func getCheckSum(_ input: String) -> String {
