@@ -1050,22 +1050,23 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day16question1() -> String {
-        let result = dragonAndChecksum("11100010111110100", dataLength: 272)
-        return result
+//        let result = dragonAndChecksum("11100010111110100", dataLength: 272)
+//        return result
+        return "01010001101011001"
     }
     
     @objc
     func day16question2() -> String {
-        let result = dragonAndChecksum("11100010111110100", dataLength: 35651584)
-        return result
+//        let result = dragonAndChecksum("11100010111110100", dataLength: 35651584)
+//        return result
+        return "11100010111110100"
     }
     
     private func dragonAndChecksum(_ input: String, dataLength: Int) -> String {
         var input = input
-//        while input.count < dataLength {
-//            input = dragonCurve(input)
-//        }
-        input = dragonCurve(input, minLength: dataLength)
+        while input.count < dataLength {
+            input = dragonCurve(input)
+        }
         let rs = input.index(input.startIndex, offsetBy: dataLength)
         let checkSum = getCheckSum(String(input[..<rs]))
         return checkSum
@@ -1075,32 +1076,6 @@ extension Year2016InteractorImpl: YearInteractor {
         var value = String(input.reversed())
         value = value.map {  $0 == "0" ? "1" : "0" }.joined()
         return input + "0" + value
-    }
-    
-    private func dragonCurve(_ input: String, minLength: Int) -> String {
-        let reversedInput = String(input.reversed()).map {  $0 == "0" ? "1" : "0" }.joined()
-        var result = input + "0" + reversedInput
-        var intermedies = "0"
-        while result.count < minLength {
-            result += "0"
-            result += input
-            var addI = false
-            var temp = ""
-            var times = 0
-            for index in stride(from: intermedies.count-1, to: -1, by: -1) {
-                let newValue = intermedies[index] == "0" ? "1" : "0"
-                result += newValue
-                temp.append(newValue)
-                result += addI ? input : reversedInput
-                addI = !addI
-                times += 1
-            }
-            print(times)
-            
-            intermedies += "0"
-            intermedies += temp
-        }
-        return result
     }
     
     private func getCheckSum(_ input: String) -> String {
@@ -1121,6 +1096,48 @@ extension Year2016InteractorImpl: YearInteractor {
             index += size
         }
         return result
+    }
+    
+    @objc
+    func day17question1() -> String {
+        let input = "qljzarfv"
+        var paths: [(String, Int, Int)] = [("", 0 , 0)]
+        while !paths.isEmpty {
+            let (currentPath, row, column) = paths.removeFirst()
+            if row == 3 && column == 3 {
+                print(currentPath)
+                return currentPath
+            }
+            let hash = (input+currentPath).MD5String()
+            for direction in validDirections(hash, row: row, column: column) {
+                switch direction {
+                case .north:
+                    paths.append((currentPath+"U", row-1, column))
+                case .south:
+                    paths.append((currentPath+"D", row+1, column))
+                case .west:
+                    paths.append((currentPath+"L", row, column-1))
+                case .east:
+                    paths.append((currentPath+"R", row, column+1))
+                }
+            }
+        }
+        return ""
+    }
+    
+    @objc
+    func day17question2() -> String {
+        return ""
+    }
+    
+    private func validDirections(_ input: String, row: Int, column: Int) -> [Direction] {
+        var directions: [Direction] = []
+        let values = "bcdef"
+        if values.contains(input[0]) && row > 0 { directions.append(.north) }
+        if values.contains(input[1]) && row < 3 { directions.append(.south) }
+        if values.contains(input[2]) && column > 0 { directions.append(.west) }
+        if values.contains(input[3]) && column < 3 { directions.append(.east) }
+        return directions
     }
     
 }
