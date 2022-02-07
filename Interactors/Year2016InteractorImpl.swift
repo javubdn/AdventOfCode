@@ -1127,7 +1127,31 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day17question2() -> String {
-        return ""
+        let input = "qljzarfv"
+        var paths: [(String, Int, Int)] = [("", 0 , 0)]
+        var solutions: [Int] = []
+        while !paths.isEmpty {
+            let (currentPath, row, column) = paths.removeFirst()
+            if row == 3 && column == 3 {
+                solutions.append(currentPath.count)
+                continue
+            }
+            let hash = (input+currentPath).MD5String()
+            for direction in validDirections(hash, row: row, column: column) {
+                switch direction {
+                case .north:
+                    paths.append((currentPath+"U", row-1, column))
+                case .south:
+                    paths.append((currentPath+"D", row+1, column))
+                case .west:
+                    paths.append((currentPath+"L", row, column-1))
+                case .east:
+                    paths.append((currentPath+"R", row, column+1))
+                }
+            }
+        }
+        
+        return String(solutions.max()!)
     }
     
     private func validDirections(_ input: String, row: Int, column: Int) -> [Direction] {
