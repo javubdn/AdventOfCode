@@ -1108,19 +1108,7 @@ extension Year2016InteractorImpl: YearInteractor {
                 print(currentPath)
                 return currentPath
             }
-            let hash = (input+currentPath).MD5String()
-            for direction in validDirections(hash, row: row, column: column) {
-                switch direction {
-                case .north:
-                    paths.append((currentPath+"U", row-1, column))
-                case .south:
-                    paths.append((currentPath+"D", row+1, column))
-                case .west:
-                    paths.append((currentPath+"L", row, column-1))
-                case .east:
-                    paths.append((currentPath+"R", row, column+1))
-                }
-            }
+            paths = calculateValidDirections(input: input, currentPath: currentPath, row: row, column: column, paths: paths)
         }
         return ""
     }
@@ -1136,19 +1124,7 @@ extension Year2016InteractorImpl: YearInteractor {
                 solutions.append(currentPath.count)
                 continue
             }
-            let hash = (input+currentPath).MD5String()
-            for direction in validDirections(hash, row: row, column: column) {
-                switch direction {
-                case .north:
-                    paths.append((currentPath+"U", row-1, column))
-                case .south:
-                    paths.append((currentPath+"D", row+1, column))
-                case .west:
-                    paths.append((currentPath+"L", row, column-1))
-                case .east:
-                    paths.append((currentPath+"R", row, column+1))
-                }
-            }
+            paths = calculateValidDirections(input: input, currentPath: currentPath, row: row, column: column, paths: paths)
         }
         
         return String(solutions.max()!)
@@ -1162,6 +1138,24 @@ extension Year2016InteractorImpl: YearInteractor {
         if values.contains(input[2]) && column > 0 { directions.append(.west) }
         if values.contains(input[3]) && column < 3 { directions.append(.east) }
         return directions
+    }
+    
+    private func calculateValidDirections(input: String, currentPath: String, row: Int, column: Int, paths: [(String, Int, Int)]) -> [(String, Int, Int)] {
+        var paths = paths
+        let hash = (input+currentPath).MD5String()
+        for direction in validDirections(hash, row: row, column: column) {
+            switch direction {
+            case .north:
+                paths.append((currentPath+"U", row-1, column))
+            case .south:
+                paths.append((currentPath+"D", row+1, column))
+            case .west:
+                paths.append((currentPath+"L", row, column-1))
+            case .east:
+                paths.append((currentPath+"R", row, column+1))
+            }
+        }
+        return paths
     }
     
 }
