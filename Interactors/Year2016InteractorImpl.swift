@@ -1171,7 +1171,13 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day18question2() -> String {
-        return ""
+        var input = "^^^^......^...^..^....^^^.^^^.^.^^^^^^..^...^^...^^^.^^....^..^^^.^.^^...^.^...^^.^^^.^^^^.^^.^..^.^"
+        var result = input.filter { $0 == "." }.count
+        for _ in 0..<399999 {
+            input = nextTilesRow(input)
+            result += input.filter { $0 == "." }.count
+        }
+        return String(result)
     }
     
     private func nextTilesRow(_ input: String) -> String {
