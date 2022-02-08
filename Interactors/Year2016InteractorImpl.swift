@@ -1158,6 +1158,38 @@ extension Year2016InteractorImpl: YearInteractor {
         return paths
     }
     
+    @objc
+    func day18question1() -> String {
+        var input = "^^^^......^...^..^....^^^.^^^.^.^^^^^^..^...^^...^^^.^^....^..^^^.^.^^...^.^...^^.^^^.^^^^.^^.^..^.^"
+        var result = input.filter { $0 == "." }.count
+        for _ in 0..<39 {
+            input = nextTilesRow(input)
+            result += input.filter { $0 == "." }.count
+        }
+        return String(result)
+    }
+    
+    @objc
+    func day18question2() -> String {
+        return ""
+    }
+    
+    private func nextTilesRow(_ input: String) -> String {
+        let newInput = "."+input+"."
+        var result = ""
+        var index = 1
+        while index < newInput.count-1 {
+            if (newInput[index-1] == "^" && newInput[index+1] == ".")
+                || (newInput[index-1] == "." && newInput[index+1] == "^") {
+                result += "^"
+            } else {
+                result += "."
+            }
+            index += 1
+        }
+        return result
+    }
+    
 }
 
 protocol BotInstruction { }
