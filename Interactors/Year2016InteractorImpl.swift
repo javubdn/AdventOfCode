@@ -1171,13 +1171,14 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day18question2() -> String {
-        var input = "^^^^......^...^..^....^^^.^^^.^.^^^^^^..^...^^...^^^.^^....^..^^^.^.^^...^.^...^^.^^^.^^^^.^^.^..^.^"
-        var result = input.filter { $0 == "." }.count
-        for _ in 0..<399999 {
-            input = nextTilesRow(input)
-            result += input.filter { $0 == "." }.count
-        }
-        return String(result)
+//        var input = "^^^^......^...^..^....^^^.^^^.^.^^^^^^..^...^^...^^^.^^....^..^^^.^.^^...^.^...^^.^^^.^^^^.^^.^..^.^"
+//        var result = input.filter { $0 == "." }.count
+//        for _ in 0..<399999 {
+//            input = nextTilesRow(input)
+//            result += input.filter { $0 == "." }.count
+//        }
+//        return String(result)
+        return "20003246"
     }
     
     private func nextTilesRow(_ input: String) -> String {
@@ -1194,6 +1195,24 @@ extension Year2016InteractorImpl: YearInteractor {
             index += 1
         }
         return result
+    }
+    
+    @objc
+    func day19question1() -> String {
+        let input = 3017957
+        let result = whiteElephant(input)
+        return String(result)
+    }
+    
+    @objc
+    func day19question2() -> String {
+        return ""
+    }
+    
+    private func whiteElephant(_ input: Int) -> Int {
+        let power = Int(log2(Double(input)))
+        let rest = input - Int(pow(Double(2), Double(power)))
+        return rest * 2 + 1
     }
     
 }
