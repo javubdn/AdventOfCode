@@ -1206,13 +1206,25 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day19question2() -> String {
-        return ""
+        let input = 3017957
+        let result = whiteElephantExpert(input)
+        return String(result)
     }
     
     private func whiteElephant(_ input: Int) -> Int {
         let power = Int(log2(Double(input)))
         let rest = input - Int(pow(Double(2), Double(power)))
         return rest * 2 + 1
+    }
+    
+    private func whiteElephantExpert(_ input: Int) -> Int {
+        guard input > 1 else { return 1 }
+        let power = Int(log(Double(input-1))/log(3.0))
+        var rest = input - Int(pow(Double(3), Double(power)))
+        if rest > Int(pow(Double(3), Double(power))) {
+            rest += rest-Int(pow(Double(3), Double(power)))
+        }
+        return rest
     }
     
 }
