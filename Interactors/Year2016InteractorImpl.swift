@@ -1219,12 +1219,8 @@ extension Year2016InteractorImpl: YearInteractor {
     
     private func whiteElephantExpert(_ input: Int) -> Int {
         guard input > 1 else { return 1 }
-        let power = Int(log(Double(input-1))/log(3.0))
-        var rest = input - Int(pow(Double(3), Double(power)))
-        if rest > Int(pow(Double(3), Double(power))) {
-            rest += rest-Int(pow(Double(3), Double(power)))
-        }
-        return rest
+        let power = Int(pow(Double(3), Double(Int(log(Double(input-1))/log(3.0)))))
+        return input > 2 * power ? 2 * input - power : input - power
     }
     
 }
