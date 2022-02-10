@@ -1223,6 +1223,40 @@ extension Year2016InteractorImpl: YearInteractor {
         return input > 2 * power ? 2 * input - power : input - power
     }
     
+    @objc
+    func day20question1() -> String {
+        let input = readCSV("InputYear2016Day20").components(separatedBy: "\n")
+        let intervals = input.map { getInterval($0) }
+        var result = 0
+        
+        while true {
+            let minIntervals = intervals.filter { $0.initial <= result && $0.end > result }.sorted { item1, item2 in
+                item1.end > item2.end
+            }
+            if let minValue = minIntervals.first {
+                result = minValue.end + 1
+            } else {
+                break
+            }
+        }
+        return String(result)
+    }
+    
+    @objc
+    func day20question2() -> String {
+        return ""
+    }
+    
+    struct Interval {
+        let initial: Int
+        let end: Int
+    }
+    
+    private func getInterval(_ input: String) -> Interval {
+        let items = input.components(separatedBy: "-")
+        return Interval(initial: Int(items[0])!, end: Int(items[1])!)
+    }
+    
 }
 
 protocol BotInstruction { }
