@@ -1280,6 +1280,106 @@ extension Year2016InteractorImpl: YearInteractor {
         return Interval(initial: Int(items[0])!, end: Int(items[1])!)
     }
     
+    @objc
+    func day21question1() -> String {
+        let input = readCSV("InputYear2016Day21").components(separatedBy: "\n")
+        let operations = input.map { getScramblingOperation($0)! }
+        let result = executeScrambling(operations, input: "abcdefgh")
+        return result
+    }
+    
+    @objc
+    func day21question2() -> String {
+        return ""
+    }
+    
+    enum ScramblingOperation {
+        case swapPosition
+        case swapLetter
+        case rotate
+        case rotateLetter
+        case reverse
+        case move
+    }
+    
+    struct Scrambling {
+        let operation: ScramblingOperation
+        let letter1: String
+        let letter2: String
+        let position1: Int
+        let position2: Int
+    }
+    
+    private func getScramblingOperation(_ input: String) -> Scrambling? {
+        let items = input.components(separatedBy: " ")
+        if items[0] == "rotate" {
+            if items[1] == "based" {
+                return Scrambling(operation: .rotateLetter, letter1: items[6], letter2: "", position1: 0, position2: 0)
+            } else if items[1] == "right" {
+                return Scrambling(operation: .rotate, letter1: "", letter2: "", position1: Int(items[2])!, position2: 0)
+            } else {
+                return Scrambling(operation: .rotate, letter1: "", letter2: "", position1: -Int(items[2])!, position2: 0)
+            }
+        } else if items[0] == "swap" {
+            if items[1] == "letter" {
+                return Scrambling(operation: .swapLetter, letter1: items[2], letter2: items[5], position1: 0, position2: 0)
+            } else {
+                return Scrambling(operation: .swapPosition, letter1: "", letter2: "", position1: Int(items[2])!, position2: Int(items[5])!)
+            }
+        } else if items[0] == "move" {
+            return Scrambling(operation: .move, letter1: "", letter2: "", position1: Int(items[2])!, position2: Int(items[5])!)
+        } else if items[0] == "reverse" {
+            return Scrambling(operation: .reverse, letter1: "", letter2: "", position1: Int(items[2])!, position2: Int(items[4])!)
+        }
+        return nil
+    }
+    
+    private func executeScrambling(_ operations: [Scrambling], input: String) -> String {
+        var input = input
+        for operation in operations {
+            switch operation.operation {
+            case .swapPosition:
+                var characters = Array(input)
+                characters.swapAt(operation.position1, operation.position2)
+                input = String(characters)
+            case .swapLetter:
+                var characters = Array(input)
+                let position1 = characters.firstIndex(of: operation.letter1[0])!
+                let position2 = characters.firstIndex(of: operation.letter2[0])!
+                characters.swapAt(position1, position2)
+                input = String(characters)
+            case .rotate:
+                let rotation = (operation.position1 + input.count) % input.count
+                let initial = input.suffix(rotation)
+                input.removeLast(rotation)
+                input = initial + input
+            case .rotateLetter:
+                let position1 = Array(input).firstIndex(of: operation.letter1[0])!
+                let rotation = (1 + position1 + (position1 >= 4 ? 1 : 0)) % input.count
+                let initial = input.suffix(rotation)
+                input.removeLast(rotation)
+                input = initial + input
+            case .reverse:
+                let sindex = input.index(input.startIndex, offsetBy: operation.position1)
+                let findex = input.index(input.startIndex, offsetBy: operation.position2)
+                let reversed = String(String(input[sindex...findex]).reversed())
+                let findex2 = input.index(input.startIndex, offsetBy: operation.position2+1)
+                if operation.position1 > 0 {
+                    let sindex2 = input.index(input.startIndex, offsetBy: operation.position1-1)
+                    input = input[...sindex2] + reversed + input[findex2...]
+                } else {
+                    input = reversed + input[findex2...]
+                }
+            case .move:
+                let sindex = input.index(input.startIndex, offsetBy: operation.position1)
+                let findex = input.index(input.startIndex, offsetBy: operation.position2)
+                let item = input.remove(at: sindex)
+                input.insert(item, at: findex)
+            }
+        }
+        return input
+    }
+    
 }
 
 protocol BotInstruction { }
