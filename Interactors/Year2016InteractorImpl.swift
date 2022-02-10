@@ -1395,6 +1395,47 @@ extension Year2016InteractorImpl: YearInteractor {
         return input
     }
     
+    @objc
+    func day22question1() -> String {
+        let input = readCSV("InputYear2016Day22").components(separatedBy: "\n")
+        let nodes = input.map { getNode($0) }
+        var result = 0
+        for node1 in nodes {
+            for node2 in nodes {
+                if node1.used > 0 && (node1.x != node2.x || node1.y != node2.y) && node1.used <= node2.avail {
+                    result += 1
+                }
+            }
+        }
+        return String(result)
+    }
+    
+    @objc
+    func day22question2() -> String {
+        return ""
+    }
+    
+    struct Node {
+        let x: Int
+        let y: Int
+        let used: Int
+        let avail: Int
+    }
+    
+    private func getNode(_ input: String) -> Node {
+        let items = input.replacingOccurrences(of: "     ", with: " ")
+            .replacingOccurrences(of: "    ", with: " ")
+            .replacingOccurrences(of: "   ", with: " ")
+            .replacingOccurrences(of: "  ", with: " ")
+            .components(separatedBy: " ")
+        let positions = items[0].components(separatedBy: "-")
+        let x = Int(positions[1].replacingOccurrences(of: "x", with: ""))!
+        let y = Int(positions[2].replacingOccurrences(of: "y", with: ""))!
+        let used = Int(items[2].replacingOccurrences(of: "T", with: ""))!
+        let avail = Int(items[3].replacingOccurrences(of: "T", with: ""))!
+        return Node(x: x, y: y, used: used, avail: avail)
+    }
+    
 }
 
 protocol BotInstruction { }
