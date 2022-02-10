@@ -1357,25 +1357,22 @@ extension Year2016InteractorImpl: YearInteractor {
                 input.removeLast(rotation)
                 input = initial + input
             case .rotateLetter:
+                let rotation: Int
                 if inverse {
                     let position1 = Array(input).firstIndex(of: operation.letter1[0])!
-                    let rotation: Int
                     if position1%2 == 0 {
-                        let rest = position1 - 2 >= 0 ? position1 - 2 + input.count : position1 - 2 + 2 * input.count
+                        let rest = position1 >= 2 ? position1 - 2 + input.count : position1 - 2 + 2 * input.count
                         rotation = (rest/2) - position1
                     } else {
-                        rotation = input.count - (position1 - (position1 - 1)/2)
+                        rotation = input.count - (position1 + 1)/2
                     }
-                    let initial = input.suffix(rotation)
-                    input.removeLast(rotation)
-                    input = initial + input
                 } else {
                     let position1 = Array(input).firstIndex(of: operation.letter1[0])!
-                    let rotation = (1 + position1 + (position1 >= 4 ? 1 : 0)) % input.count
-                    let initial = input.suffix(rotation)
-                    input.removeLast(rotation)
-                    input = initial + input
+                    rotation = (1 + position1 + (position1 >= 4 ? 1 : 0)) % input.count
                 }
+                let initial = input.suffix(rotation)
+                input.removeLast(rotation)
+                input = initial + input
                 
             case .reverse:
                 let sindex = input.index(input.startIndex, offsetBy: operation.position1)
