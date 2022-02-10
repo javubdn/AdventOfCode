@@ -1290,7 +1290,10 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day21question2() -> String {
-        return ""
+        let input = readCSV("InputYear2016Day21").components(separatedBy: "\n")
+        let operations = input.map { getScramblingOperation($0)! }
+        let result = executeScrambling(operations.reversed(), input: "fbgdceah", inverse: true)
+        return result
     }
     
     enum ScramblingOperation {
@@ -1334,7 +1337,7 @@ extension Year2016InteractorImpl: YearInteractor {
         return nil
     }
     
-    private func executeScrambling(_ operations: [Scrambling], input: String) -> String {
+    private func executeScrambling(_ operations: [Scrambling], input: String, inverse: Bool = false) -> String {
         var input = input
         for operation in operations {
             switch operation.operation {
@@ -1349,16 +1352,31 @@ extension Year2016InteractorImpl: YearInteractor {
                 characters.swapAt(position1, position2)
                 input = String(characters)
             case .rotate:
-                let rotation = (operation.position1 + input.count) % input.count
+                let rotation = ( (inverse ? -1 : 1) * operation.position1 + input.count) % input.count
                 let initial = input.suffix(rotation)
                 input.removeLast(rotation)
                 input = initial + input
             case .rotateLetter:
-                let position1 = Array(input).firstIndex(of: operation.letter1[0])!
-                let rotation = (1 + position1 + (position1 >= 4 ? 1 : 0)) % input.count
-                let initial = input.suffix(rotation)
-                input.removeLast(rotation)
-                input = initial + input
+                if inverse {
+                    let position1 = Array(input).firstIndex(of: operation.letter1[0])!
+                    let rotation: Int
+                    if position1%2 == 0 {
+                        let rest = position1 - 2 >= 0 ? position1 - 2 + input.count : position1 - 2 + 2 * input.count
+                        rotation = (rest/2) - position1
+                    } else {
+                        rotation = input.count - (position1 - (position1 - 1)/2)
+                    }
+                    let initial = input.suffix(rotation)
+                    input.removeLast(rotation)
+                    input = initial + input
+                } else {
+                    let position1 = Array(input).firstIndex(of: operation.letter1[0])!
+                    let rotation = (1 + position1 + (position1 >= 4 ? 1 : 0)) % input.count
+                    let initial = input.suffix(rotation)
+                    input.removeLast(rotation)
+                    input = initial + input
+                }
+                
             case .reverse:
                 let sindex = input.index(input.startIndex, offsetBy: operation.position1)
                 let findex = input.index(input.startIndex, offsetBy: operation.position2)
@@ -1371,8 +1389,8 @@ extension Year2016InteractorImpl: YearInteractor {
                     input = reversed + input[findex2...]
                 }
             case .move:
-                let sindex = input.index(input.startIndex, offsetBy: operation.position1)
-                let findex = input.index(input.startIndex, offsetBy: operation.position2)
+                let sindex = input.index(input.startIndex, offsetBy: inverse ? operation.position2 : operation.position1)
+                let findex = input.index(input.startIndex, offsetBy: inverse ? operation.position1 : operation.position2)
                 let item = input.remove(at: sindex)
                 input.insert(item, at: findex)
             }
