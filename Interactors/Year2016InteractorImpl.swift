@@ -1412,6 +1412,8 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day22question2() -> String {
+        let input = readCSV("InputYear2016Day22").components(separatedBy: "\n")
+        var nodes = input.map { getNode($0) }
         return ""
     }
     
