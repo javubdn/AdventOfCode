@@ -1413,8 +1413,23 @@ extension Year2016InteractorImpl: YearInteractor {
     @objc
     func day22question2() -> String {
         let input = readCSV("InputYear2016Day22").components(separatedBy: "\n")
-        var nodes = input.map { getNode($0) }
-        return ""
+        let nodes = input.map { getNode($0) }
+        var initialStatus = (getBlocks(nodes), 0)
+        initialStatus.0[0][37] = .target
+        for file in initialStatus.0 {
+            var s = ""
+            for col in file {
+                if col == .empty { s.append("_")}
+                else if col == .blocked { s.append("#") }
+                else if col == .busy { s.append(".") }
+                else if col == .target { s.append("G") }
+            }
+            print(s)
+        }
+        let emptyNode = nodes.first{ $0.used == 0 }!
+        let stepsEmptyToTarget = emptyNode.x + emptyNode.y + initialStatus.0[0].count - 1
+        let result = stepsEmptyToTarget + 5 * (initialStatus.0[0].count - 2)
+        return String(result)
     }
     
     struct Node {
@@ -1422,6 +1437,13 @@ extension Year2016InteractorImpl: YearInteractor {
         let y: Int
         let used: Int
         let avail: Int
+    }
+    
+    enum Block {
+        case empty
+        case blocked
+        case busy
+        case target
     }
     
     private func getNode(_ input: String) -> Node {
@@ -1436,6 +1458,31 @@ extension Year2016InteractorImpl: YearInteractor {
         let used = Int(items[2].replacingOccurrences(of: "T", with: ""))!
         let avail = Int(items[3].replacingOccurrences(of: "T", with: ""))!
         return Node(x: x, y: y, used: used, avail: avail)
+    }
+    
+    private func getBlocks(_ nodes: [Node]) -> [[Block]] {
+        var nodes = nodes
+        var currentRow = 0
+        var blocks: [[Block]] = []
+        while !nodes.isEmpty {
+            let nodesCurrentRow = nodes.filter { $0.y == currentRow }.sorted { node1, node2 in
+                node1.x < node2.x
+            }
+            var nodesRow: [Block] = []
+            for nodeCurrentRow in nodesCurrentRow {
+                if nodeCurrentRow.used == 0 {
+                    nodesRow.append(.empty)
+                } else if nodeCurrentRow.used+nodeCurrentRow.avail >= 500 {
+                    nodesRow.append(.blocked)
+                } else {
+                    nodesRow.append(.busy)
+                }
+            }
+            nodes.removeAll { $0.y == currentRow }
+            blocks.append(nodesRow)
+            currentRow += 1
+        }
+        return blocks
     }
     
 }
