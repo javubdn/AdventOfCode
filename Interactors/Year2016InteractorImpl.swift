@@ -763,6 +763,7 @@ extension Year2016InteractorImpl: YearInteractor {
         case increases
         case decreases
         case jump
+        case toogle
     }
     
     private struct ComputerBunnyInstruction {
@@ -789,15 +790,20 @@ extension Year2016InteractorImpl: YearInteractor {
             instruction = .decreases
             register = items[1]
             value = ""
-        default:
+        case "jnz":
             instruction = .jump
             register = items[1]
             value = items[2]
+        default:
+            instruction = .toogle
+            register = items[1]
+            value = ""
         }
         return ComputerBunnyInstruction(instruction: instruction, register: register, value: value)
     }
     
     private func executeBunnyInstructions(_ instructions: [ComputerBunnyInstruction], status: [String: Int]) -> [String: Int] {
+        var instructions = instructions
         var status = status
         var currentIndex = 0
         while currentIndex < instructions.count {
@@ -817,13 +823,54 @@ extension Year2016InteractorImpl: YearInteractor {
                 status[instruction.register]! -= 1
                 currentIndex += 1
             case .jump:
-                if let registerValue = Int(instruction.register), registerValue != 0 {
-                    currentIndex += Int(instruction.value)!
-                } else if let registerValue = status[instruction.register], registerValue != 0 {
-                    currentIndex += Int(instruction.value)!
+                let valuableJumpOption: Int
+                if let registerValue = Int(instruction.register) {
+                    valuableJumpOption = registerValue
+                } else if let registerValue = status[instruction.register] {
+                    valuableJumpOption = registerValue
+                } else {
+                    valuableJumpOption = 0
+                }
+                if valuableJumpOption != 0 {
+                    let stepsToJump: Int
+                    if let value = Int(instruction.value) {
+                        stepsToJump = value
+                    } else if let value = status[instruction.value] {
+                        stepsToJump = value
+                    } else {
+                        stepsToJump = 1
+                    }
+                    currentIndex += stepsToJump
                 } else {
                     currentIndex += 1
                 }
+            case .toogle:
+                if let registerValue = status[instruction.register] {
+                    let toogleInstructionIndex  = currentIndex + registerValue
+                    if toogleInstructionIndex >= instructions.count {
+                        currentIndex += 1
+                        continue
+                    }
+                    let toogleInstruction  = instructions[toogleInstructionIndex]
+                    switch toogleInstruction.instruction {
+                    case .copy:
+                        let newInstruction = ComputerBunnyInstruction(instruction: .jump, register: toogleInstruction.register, value: toogleInstruction.value)
+                        instructions[toogleInstructionIndex] = newInstruction
+                    case .increases:
+                        let newInstruction = ComputerBunnyInstruction(instruction: .decreases, register: toogleInstruction.register, value: "")
+                        instructions[toogleInstructionIndex] = newInstruction
+                    case .decreases:
+                        let newInstruction = ComputerBunnyInstruction(instruction: .increases, register: toogleInstruction.register, value: "")
+                        instructions[toogleInstructionIndex] = newInstruction
+                    case .jump:
+                        let newInstruction = ComputerBunnyInstruction(instruction: .copy, register: toogleInstruction.value, value: toogleInstruction.register)
+                        instructions[toogleInstructionIndex] = newInstruction
+                    case .toogle:
+                        let newInstruction = ComputerBunnyInstruction(instruction: .increases, register: toogleInstruction.register, value: "")
+                        instructions[toogleInstructionIndex] = newInstruction
+                    }
+                }
+                currentIndex += 1
             }
         }
         return status
