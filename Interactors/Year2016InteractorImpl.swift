@@ -1532,6 +1532,20 @@ extension Year2016InteractorImpl: YearInteractor {
         return blocks
     }
     
+    @objc
+    func day23question1() -> String {
+        let input = readCSV("InputYear2016Day23").components(separatedBy: "\n")
+        let instructions = input.map { getComputerBunnyInstruction($0) }
+        let status = executeBunnyInstructions(instructions, status: ["a": 7, "b": 0, "c": 0, "d": 0])
+        return String(status["a"]!)
+        
+    }
+    
+    @objc
+    func day23question2() -> String {
+        return ""
+    }
+    
 }
 
 protocol BotInstruction { }
