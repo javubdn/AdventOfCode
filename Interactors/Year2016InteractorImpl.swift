@@ -1553,6 +1553,110 @@ extension Year2016InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day24question1() -> String {
+        let input = readCSV("InputYear2016Day24").components(separatedBy: "\n")
+        let mapDucts = input.map { $0.map { String($0) } }
+        let result = getBestPaths(mapDucts: mapDucts)
+        return String(result)
+    }
+    
+    @objc
+    func day24question2() -> String {
+        return ""
+    }
+    
+    struct HVAC {
+        let path: [(Int, Int)]
+        let heuristic: Int
+    }
+    
+    private func getCoordenates(mapDucts: [[String]], value: String) -> (Int, Int) {
+        Utils.cartesianProduct(lhs: Array(0..<mapDucts.count),
+                               rhs: Array(0..<mapDucts[0].count))
+            .filter { mapDucts[$0.0][$0.1] == value }.first!
+    }
+    
+    private func getBestPaths(mapDucts: [[String]]) -> Int {
+        let target = mapDucts.flatMap{ $0.filter { $0 != "." && String($0) != "#" } }.map { Int($0)! }
+        var distancePointsMatrix = [[Int]](repeating: [Int](repeating: 0, count: target.count), count: target.count)
+        for originValue in target {
+            let originPoint = getCoordenates(mapDucts: mapDucts, value: String(originValue))
+            for destinyValue in target {
+                guard originValue < destinyValue else { continue }
+                let destinyPoint = getCoordenates(mapDucts: mapDucts, value: String(destinyValue))
+                let closestTarget = getBestPath(mapDucts: mapDucts, origin: originPoint, destiny: destinyPoint)
+                distancePointsMatrix[originValue][destinyValue] = closestTarget
+                distancePointsMatrix[destinyValue][originValue] = closestTarget
+            }
+        }
+        
+        let initialState = [0]
+        var states = [(initialState, 0)]
+        
+        while !states.isEmpty {
+            let currentState = states.removeFirst()
+            if currentState.0.count == target.count {
+                return currentState.1
+            }
+            let nextVisits = target.filter { !currentState.0.contains($0) }
+            nextVisits.forEach { item in
+                var newState = currentState.0
+                newState.append(item)
+                let newDistance = currentState.1 + distancePointsMatrix[currentState.0.last!][item]
+                if let index = states.firstIndex(where: { $0.1 > newDistance }) {
+                    states.insert((newState, newDistance), at: index)
+                } else {
+                    states.append((newState, newDistance))
+                }
+            }
+        }
+        return 0
+    }
+    
+    private func getBestPath(mapDucts: [[String]], origin: (Int, Int), destiny: (Int, Int)) -> Int {
+        var mapDucts = mapDucts.map{ $0.map { ($0, false) } }
+        mapDucts[origin.0][origin.1].1 = true
+        let initialState = HVAC(path: [origin], heuristic: Utils.manhattanDistance(origin, destiny))
+        var states = [initialState]
+        while !states.isEmpty {
+            let currentState = states.removeFirst()
+            if currentState.path.last! == destiny {
+                return currentState.path.count - 1
+            }
+            for move in [MoveDirection.right, MoveDirection.down, MoveDirection.left, MoveDirection.up] {
+                let movementApplied = applyMoveHVAC(currentState, mapDucts: mapDucts, move: move, destiny: destiny)
+                if let newHVACMove = movementApplied.0 {
+                    mapDucts = movementApplied.1
+                    if let index = states.firstIndex(where: { $0.heuristic > newHVACMove.heuristic }) {
+                        states.insert(newHVACMove, at: index)
+                    } else {
+                        states.append(newHVACMove)
+                    }
+                }
+            }
+        }
+        return 0
+    }
+    
+    private func applyMoveHVAC(_ currentHVAC: HVAC,
+                               mapDucts: [[(String, Bool)]],
+                               move: MoveDirection,
+                               destiny: (Int, Int)) -> (HVAC?, [[(String, Bool)]]) {
+        let lastPosition = currentHVAC.path.last!
+        let nextRow = lastPosition.0 + (move == .up ? -1 : move == .down ? 1 : 0)
+        let nextColumn = lastPosition.1 + (move == .left ? -1 : move == .right ? 1 : 0)
+        if mapDucts[nextRow][nextColumn].0 != "#", !mapDucts[nextRow][nextColumn].1 {
+            var newMapDucts = mapDucts
+            newMapDucts[nextRow][nextColumn].1 = true
+            var newPath = currentHVAC.path
+            newPath.append((nextRow, nextColumn))
+            let heuristic = newPath.count + Utils.manhattanDistance((nextRow, nextColumn), destiny)
+            return (HVAC(path: newPath, heuristic: heuristic), newMapDucts)
+        }
+        return (nil, mapDucts)
+    }
+    
 }
 
 protocol BotInstruction { }
