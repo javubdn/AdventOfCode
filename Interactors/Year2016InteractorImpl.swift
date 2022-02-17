@@ -1557,13 +1557,16 @@ extension Year2016InteractorImpl: YearInteractor {
     func day24question1() -> String {
         let input = readCSV("InputYear2016Day24").components(separatedBy: "\n")
         let mapDucts = input.map { $0.map { String($0) } }
-        let result = getBestPaths(mapDucts: mapDucts)
+        let result = getBestPaths(mapDucts: mapDucts, cicle: false)
         return String(result)
     }
     
     @objc
     func day24question2() -> String {
-        return ""
+        let input = readCSV("InputYear2016Day24").components(separatedBy: "\n")
+        let mapDucts = input.map { $0.map { String($0) } }
+        let result = getBestPaths(mapDucts: mapDucts, cicle: true)
+        return String(result)
     }
     
     struct HVAC {
@@ -1577,7 +1580,7 @@ extension Year2016InteractorImpl: YearInteractor {
             .filter { mapDucts[$0.0][$0.1] == value }.first!
     }
     
-    private func getBestPaths(mapDucts: [[String]]) -> Int {
+    private func getBestPaths(mapDucts: [[String]], cicle: Bool) -> Int {
         let target = mapDucts.flatMap{ $0.filter { $0 != "." && String($0) != "#" } }.map { Int($0)! }
         var distancePointsMatrix = [[Int]](repeating: [Int](repeating: 0, count: target.count), count: target.count)
         for originValue in target {
@@ -1594,10 +1597,15 @@ extension Year2016InteractorImpl: YearInteractor {
         let initialState = [0]
         var states = [(initialState, 0)]
         
+        var bestDistances: [Int] = []
         while !states.isEmpty {
             let currentState = states.removeFirst()
             if currentState.0.count == target.count {
-                return currentState.1
+                if cicle {
+                    bestDistances.append(currentState.1 + distancePointsMatrix[currentState.0.last!][0])
+                } else {
+                    return currentState.1
+                }
             }
             let nextVisits = target.filter { !currentState.0.contains($0) }
             nextVisits.forEach { item in
@@ -1611,7 +1619,7 @@ extension Year2016InteractorImpl: YearInteractor {
                 }
             }
         }
-        return 0
+        return bestDistances.min()!
     }
     
     private func getBestPath(mapDucts: [[String]], origin: (Int, Int), destiny: (Int, Int)) -> Int {
