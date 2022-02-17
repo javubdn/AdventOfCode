@@ -126,4 +126,12 @@ class Utils {
         return counts
     }
     
+    static func cartesianProduct<U, V>(lhs: [U], rhs: [V]) -> [(U, V)] {
+        lhs.flatMap { left in
+            rhs.map { right in
+                (left, right)
+            }
+        }
+    }
+    
 }
