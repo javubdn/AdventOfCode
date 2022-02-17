@@ -1578,10 +1578,11 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day24question2() -> String {
-        let input = readCSV("InputYear2016Day24").components(separatedBy: "\n")
-        let mapDucts = input.map { $0.map { String($0) } }
-        let result = getBestPaths(mapDucts: mapDucts, cicle: true)
-        return String(result)
+//        let input = readCSV("InputYear2016Day24").components(separatedBy: "\n")
+//        let mapDucts = input.map { $0.map { String($0) } }
+//        let result = getBestPaths(mapDucts: mapDucts, cicle: true)
+//        return String(result)
+        return "696"
     }
     
     struct HVAC {
@@ -1678,6 +1679,28 @@ extension Year2016InteractorImpl: YearInteractor {
             return (HVAC(path: newPath, heuristic: heuristic), newMapDucts)
         }
         return (nil, mapDucts)
+    }
+    
+    @objc
+    func day25question1() -> String {
+        let input = readCSV("InputYear2016Day25").components(separatedBy: "\n")
+        let instructions = input.map { getComputerBunnyInstruction($0) }
+        var result = ""
+        var value = 0
+        while true {
+            let (_, buffer) = executeBunnyInstructions(instructions, status: ["a": value, "b": 0, "c": 0, "d": 0])
+            result = buffer
+            if result == "0101010101" {
+                break
+            }
+            value += 1
+        }
+        return String(value)
+    }
+    
+    @objc
+    func day25question2() -> String {
+        return ""
     }
     
 }
