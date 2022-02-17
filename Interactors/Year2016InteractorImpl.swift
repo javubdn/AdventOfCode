@@ -764,6 +764,7 @@ extension Year2016InteractorImpl: YearInteractor {
         case decreases
         case jump
         case toogle
+        case out
     }
     
     private struct ComputerBunnyInstruction {
@@ -794,19 +795,24 @@ extension Year2016InteractorImpl: YearInteractor {
             instruction = .jump
             register = items[1]
             value = items[2]
-        default:
+        case "tgl":
             instruction = .toogle
+            register = items[1]
+            value = ""
+        default:
+            instruction = .out
             register = items[1]
             value = ""
         }
         return ComputerBunnyInstruction(instruction: instruction, register: register, value: value)
     }
     
-    private func executeBunnyInstructions(_ instructions: [ComputerBunnyInstruction], status: [String: Int]) -> [String: Int] {
+    private func executeBunnyInstructions(_ instructions: [ComputerBunnyInstruction], status: [String: Int]) -> ([String: Int], String) {
         var instructions = instructions
         var status = status
         var currentIndex = 0
-        while currentIndex < instructions.count {
+        var buffer = ""
+        while currentIndex < instructions.count && buffer.count < 10 {
             let instruction = instructions[currentIndex]
             switch instruction.instruction {
             case .copy:
@@ -868,12 +874,21 @@ extension Year2016InteractorImpl: YearInteractor {
                     case .toogle:
                         let newInstruction = ComputerBunnyInstruction(instruction: .increases, register: toogleInstruction.register, value: "")
                         instructions[toogleInstructionIndex] = newInstruction
+                    case .out:
+                        continue
                     }
+                }
+                currentIndex += 1
+            case .out:
+                if let _ = Int(instruction.register) {
+                    buffer.append(instruction.register)
+                } else if let registerValue = status[instruction.register] {
+                    buffer.append(String(registerValue))
                 }
                 currentIndex += 1
             }
         }
-        return status
+        return (status, buffer)
     }
     
     @objc
@@ -1537,7 +1552,7 @@ extension Year2016InteractorImpl: YearInteractor {
         let input = readCSV("InputYear2016Day23").components(separatedBy: "\n")
         let instructions = input.map { getComputerBunnyInstruction($0) }
         let status = executeBunnyInstructions(instructions, status: ["a": 7, "b": 0, "c": 0, "d": 0])
-        return String(status["a"]!)
+        return String(status.0["a"]!)
         
     }
     
