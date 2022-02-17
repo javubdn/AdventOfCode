@@ -134,4 +134,7 @@ class Utils {
         }
     }
     
+    static func manhattanDistance(_ point1: (Int, Int), _ point2: (Int, Int)) -> Int {
+        abs(point2.0 - point1.0) + abs(point2.1 - point1.1)
+    }
 }
