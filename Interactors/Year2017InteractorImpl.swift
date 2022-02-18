@@ -46,7 +46,7 @@ extension Year2017InteractorImpl: YearInteractor {
     func day2question1() -> String {
         let input = readCSV("InputYear2017Day2")
             .components(separatedBy: "\n")
-            .map { $0.components(separatedBy: .whitespaces).map { Int($0)! } }
+            .map { $0.components(separatedBy: .whitespaces).map { Int($0)! } }
         var result = 0
         for item in input {
             let maximum = item.max()!
@@ -58,7 +58,19 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day2question2() -> String {
-        return ""
+        let input = readCSV("InputYear2017Day2")
+            .components(separatedBy: "\n")
+            .map { $0.components(separatedBy: .whitespaces).map { Int($0)! } }
+        var result = 0
+        for item in input {
+            for value in item {
+                if let divisor = item.first(where: { $0 != value && value % $0 == 0}) {
+                    result += value/divisor
+                    break
+                }
+            }
+        }
+        return String(result)
     }
     
 }
