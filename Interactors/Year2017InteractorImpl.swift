@@ -29,7 +29,17 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day1question2() -> String {
-        return ""
+        let input = readCSV("InputYear2017Day1")
+        var result = 0
+        let size = input.count/2
+        for index in 0..<input.count {
+            let fi = input.index(input.startIndex, offsetBy: index)
+            let si = input.index(input.startIndex, offsetBy: (index+size)%input.count)
+            if input[fi] == input[si] {
+                result += Int(String(input[fi]))!
+            }
+        }
+        return String(result)
     }
     
 }
