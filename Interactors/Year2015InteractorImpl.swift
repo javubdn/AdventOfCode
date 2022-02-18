@@ -285,7 +285,7 @@ private extension Year2015InteractorImpl {
     }
     
     func getInstructionLight(from input: String) -> InstructionForLights {
-        let items = input.components(separatedBy: " ")
+        let items = input.components(separatedBy: .whitespaces)
         let coordinateInit: [Int]
         let coordinateEnd: [Int]
         let instruction: LightInstruction
@@ -372,7 +372,7 @@ private extension Year2015InteractorImpl {
     }
     
     func getInstructionWire(from input: String) -> InstructionForWire {
-        let items = input.components(separatedBy: " ")
+        let items = input.components(separatedBy: .whitespaces)
         let instruction: WireInstruction
         let firstInitValue: String
         var secondInitValue: String? = nil
@@ -518,7 +518,7 @@ private extension Year2015InteractorImpl {
     }
     
     func getJourney(_ input: String) -> Journey {
-        let values = input.components(separatedBy: " ")
+        let values = input.components(separatedBy: .whitespaces)
         return Journey(initCity: values[0], endCity: values[2], distance: Int(values[4])!)
     }
     
@@ -775,7 +775,7 @@ private extension Year2015InteractorImpl {
     }
     
     func getHapiness(_ input: String) -> Hapiness {
-        let items = input.components(separatedBy: " ")
+        let items = input.components(separatedBy: .whitespaces)
         return Hapiness(person1: items[0], person2: items[10], hapiness: Int(items[3])! * (items[2] == "gain" ? 1 : -1) )
     }
     
@@ -885,7 +885,7 @@ private extension Year2015InteractorImpl {
     }
     
     func getReindeer(_ input: String) -> Reindeer {
-        let items = input.components(separatedBy: " ")
+        let items = input.components(separatedBy: .whitespaces)
         return Reindeer(name: items[0], speed: Int(items[3])!, runTime: Int(items[6])!, restTime: Int(items[13])!)
     }
     
@@ -939,7 +939,7 @@ private extension Year2015InteractorImpl {
     }
     
     func getIngredient(_ input: String) -> Ingredient {
-        let items = input.components(separatedBy: " ")
+        let items = input.components(separatedBy: .whitespaces)
         return Ingredient(name: items[0], capacity: Int(items[2])!, durability: Int(items[4])!, flavor: Int(items[6])!, texture: Int(items[8])!, calories: Int(items[10])!)
     }
     
@@ -1027,7 +1027,7 @@ private extension Year2015InteractorImpl {
     }
     
     func getAuntSue(_ input: String) -> AuntSue {
-        let items = input.replacingOccurrences(of: ",", with: "").replacingOccurrences(of: ":", with: "").components(separatedBy: " ")
+        let items = input.replacingOccurrences(of: ",", with: "").replacingOccurrences(of: ":", with: "").components(separatedBy: .whitespaces)
         let sueNumber = Int(items[1])!
         
         var values: [String: Int] = [:]
@@ -1531,7 +1531,7 @@ private extension Year2015InteractorImpl {
     }
     
     private func getComputerInstruction(_ input: String) -> ComputerInstruction {
-        let items = input.replacingOccurrences(of: ",", with: "").components(separatedBy: " ")
+        let items = input.replacingOccurrences(of: ",", with: "").components(separatedBy: .whitespaces)
         let instruction: AssembleInstruction
         let register: String
         let value: Int
@@ -1598,7 +1598,7 @@ private extension Year2015InteractorImpl {
     
     @objc
     func day24question1() -> String {
-//        let input = "1 3 5 11 13 17 19 23 29 31 37 41 43 47 53 59 67 71 73 79 83 89 97 101 103 107 109 113".components(separatedBy: " ").map { Int($0)! }
+//        let input = "1 3 5 11 13 17 19 23 29 31 37 41 43 47 53 59 67 71 73 79 83 89 97 101 103 107 109 113".components(separatedBy: .whitespaces).map { Int($0)! }
 //        let target = input.reduce(0, +)/3
 //        var result = 0
 //        for numberElements in 2...input.count {
@@ -1620,7 +1620,7 @@ private extension Year2015InteractorImpl {
     
     @objc
     func day24question2() -> String {
-//        let input = "1 3 5 11 13 17 19 23 29 31 37 41 43 47 53 59 67 71 73 79 83 89 97 101 103 107 109 113".components(separatedBy: " ").map { Int($0)! }
+//        let input = "1 3 5 11 13 17 19 23 29 31 37 41 43 47 53 59 67 71 73 79 83 89 97 101 103 107 109 113".components(separatedBy: .whitespaces).map { Int($0)! }
 //        let target = input.reduce(0, +)/4
 //        var result = 0
 //        for numberElements in 2...input.count {

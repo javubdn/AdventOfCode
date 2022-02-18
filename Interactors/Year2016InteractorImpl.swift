@@ -15,7 +15,7 @@ extension Year2016InteractorImpl: YearInteractor {
 
     @objc
     func day1question1() -> String {
-        let input = readCSV("InputYear2016Day1").replacingOccurrences(of: ",", with: "").components(separatedBy: " ")
+        let input = readCSV("InputYear2016Day1").replacingOccurrences(of: ",", with: "").components(separatedBy: .whitespaces)
         var direction = Direction.north
         var xAxis = 0
         var yAxis = 0
@@ -35,7 +35,7 @@ extension Year2016InteractorImpl: YearInteractor {
     
     @objc
     func day1question2() -> String {
-        let input = readCSV("InputYear2016Day1").replacingOccurrences(of: ",", with: "").components(separatedBy: " ")
+        let input = readCSV("InputYear2016Day1").replacingOccurrences(of: ",", with: "").components(separatedBy: .whitespaces)
         var direction = Direction.north
         var xAxis = 0
         var yAxis = 0
@@ -176,8 +176,7 @@ extension Year2016InteractorImpl: YearInteractor {
     func day3question1() -> String {
         let input = readCSV("InputYear2016Day3").trimmingCharacters(in: .whitespacesAndNewlines)
         let items =  input.components(separatedBy: "\n  ")
-            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "   ", with: " ").replacingOccurrences(of: "  ", with: " ")
-            .components(separatedBy: " ")
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: .whitespaces)
                 .map { Int($0)! } }
         var result = 0
         for item in items {
@@ -194,8 +193,7 @@ extension Year2016InteractorImpl: YearInteractor {
     func day3question2() -> String {
         let input = readCSV("InputYear2016Day3").trimmingCharacters(in: .whitespacesAndNewlines)
         let items =  input.components(separatedBy: "\n  ")
-            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "   ", with: " ").replacingOccurrences(of: "  ", with: " ")
-            .components(separatedBy: " ")
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: .whitespaces)
                 .map { Int($0)! } }
         var result = 0
         for column in 0...2 {
@@ -458,7 +456,7 @@ extension Year2016InteractorImpl: YearInteractor {
     }
     
     private func getTwoFactorInstruction(_ input: String) -> TwoFactorInstruction {
-        let items = input.components(separatedBy: " ")
+        let items = input.components(separatedBy: .whitespaces)
         if items.count == 2 {
             let parameters = items[1].components(separatedBy: "x")
             return TwoFactorInstruction(instruction: .rect, firstParameter: Int(parameters[0])!, secondParameter: Int(parameters[1])!)
@@ -580,7 +578,7 @@ extension Year2016InteractorImpl: YearInteractor {
     }
         
     private func getBotInstruction(_ input: String) -> BotInstruction {
-        let items = input.components(separatedBy: " ")
+        let items = input.components(separatedBy: .whitespaces)
         if items.count == 6 {
             return BotInstructionFromInput(destiny: Int(items[5])!, value: Int(items[1])!)
         } else {
@@ -774,7 +772,7 @@ extension Year2016InteractorImpl: YearInteractor {
     }
     
     private func getComputerBunnyInstruction(_ input: String) -> ComputerBunnyInstruction {
-        let items = input.components(separatedBy: " ")
+        let items = input.components(separatedBy: .whitespaces)
         let instruction: AssembunnyInstruction
         let register: String
         let value: String
@@ -1376,7 +1374,7 @@ extension Year2016InteractorImpl: YearInteractor {
     }
     
     private func getScramblingOperation(_ input: String) -> Scrambling? {
-        let items = input.components(separatedBy: " ")
+        let items = input.components(separatedBy: .whitespaces)
         if items[0] == "rotate" {
             if items[1] == "based" {
                 return Scrambling(operation: .rotateLetter, letter1: items[6], letter2: "", position1: 0, position2: 0)
@@ -1509,11 +1507,7 @@ extension Year2016InteractorImpl: YearInteractor {
     }
     
     private func getNode(_ input: String) -> Node {
-        let items = input.replacingOccurrences(of: "     ", with: " ")
-            .replacingOccurrences(of: "    ", with: " ")
-            .replacingOccurrences(of: "   ", with: " ")
-            .replacingOccurrences(of: "  ", with: " ")
-            .components(separatedBy: " ")
+        let items = input.components(separatedBy: .whitespaces)
         let positions = items[0].components(separatedBy: "-")
         let x = Int(positions[1].replacingOccurrences(of: "x", with: ""))!
         let y = Int(positions[2].replacingOccurrences(of: "y", with: ""))!

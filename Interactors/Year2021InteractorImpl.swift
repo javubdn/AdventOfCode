@@ -103,7 +103,7 @@ private extension Year2021InteractorImpl {
         
         var answer = (0, 0)
         input.forEach { action in
-            let values = action.components(separatedBy: " ")
+            let values = action.components(separatedBy: .whitespaces)
             switch movement.movementFromValue(values[0]) {
             case .forward: answer.0 += Int(values[1])!
             case .up: answer.1 -= Int(values[1])!
@@ -124,7 +124,7 @@ private extension Year2021InteractorImpl {
         var answer = (0, 0)
         var aim = 0
         input.forEach { action in
-            let values = action.components(separatedBy: " ")
+            let values = action.components(separatedBy: .whitespaces)
             let increment = Int(values[1])!
             switch movement.movementFromValue(values[0]) {
             case .forward:
@@ -202,7 +202,7 @@ private extension Year2021InteractorImpl {
             .map{ $0.trimmingCharacters(in: .whitespacesAndNewlines)
             .components(separatedBy: "\\\n")
                 .map{ $0.trimmingCharacters(in: .whitespacesAndNewlines)
-                    .components(separatedBy: " ") } }
+                    .components(separatedBy: .whitespaces) } }
         
         for currentNumber in numbers {
             bingos = bingos.map { markNumber(bingo: $0, number: currentNumber) }
@@ -223,7 +223,7 @@ private extension Year2021InteractorImpl {
             .map{ $0.trimmingCharacters(in: .whitespacesAndNewlines)
             .components(separatedBy: "\\\n")
                 .map{ $0.trimmingCharacters(in: .whitespacesAndNewlines)
-                    .components(separatedBy: " ") } }
+                    .components(separatedBy: .whitespaces) } }
         var loserBingo: [[String]] = [[]]
         for currentNumber in numbers {
             bingos = bingos.map { markNumber(bingo: $0, number: currentNumber) }
@@ -449,7 +449,7 @@ private extension Year2021InteractorImpl {
         let input = readCSV("InputDay8")
             .components(separatedBy: "\\\n")
             .map{ $0.components(separatedBy: " | ")
-                .map{ $0.components(separatedBy: " ") } }
+                .map{ $0.components(separatedBy: .whitespaces) } }
                 
         let finalItems = input.flatMap { $0[1] }
         let result = finalItems.filter { $0.count == 2 || $0.count == 3 || $0.count == 4 || $0.count == 7 }.count
@@ -461,7 +461,7 @@ private extension Year2021InteractorImpl {
         let input = readCSV("InputDay8")
             .components(separatedBy: "\\\n")
             .map{ $0.components(separatedBy: " | ")
-                .map{ $0.components(separatedBy: " ") } }
+                .map{ $0.components(separatedBy: .whitespaces) } }
         let numbers = input.map { item -> Int in
             let values = getOrderedNumbers(item[0])
             let solution = Int(item[1].map { number in
@@ -886,7 +886,7 @@ private extension Year2021InteractorImpl {
         let input = readCSV("InputDay13")
             .components(separatedBy: "\n\n")
         let coordinates = input[0].components(separatedBy: "\n").map { $0.components(separatedBy: ",").map { Int($0)! } }
-        let instructions = input[1].components(separatedBy: "\n").map { $0.components(separatedBy: " ")}.map { $0[2] }.map { $0.components(separatedBy: "=") }
+        let instructions = input[1].components(separatedBy: "\n").map { $0.components(separatedBy: .whitespaces)}.map { $0[2] }.map { $0.components(separatedBy: "=") }
         
         let instruction0 = instructions[0]
         let items = applyFoldInstruction(input: coordinates, instruction: instruction0[0], coordinate: Int(instruction0[1])!)
@@ -899,7 +899,7 @@ private extension Year2021InteractorImpl {
         let input = readCSV("InputDay13")
             .components(separatedBy: "\n\n")
         let coordinates = input[0].components(separatedBy: "\n").map { $0.components(separatedBy: ",").map { Int($0)! } }
-        let instructions = input[1].components(separatedBy: "\n").map { $0.components(separatedBy: " ")}.map { $0[2] }.map { $0.components(separatedBy: "=") }
+        let instructions = input[1].components(separatedBy: "\n").map { $0.components(separatedBy: .whitespaces)}.map { $0[2] }.map { $0.components(separatedBy: "=") }
         
         var items = coordinates
         
