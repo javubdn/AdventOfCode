@@ -42,4 +42,23 @@ extension Year2017InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day2question1() -> String {
+        let input = readCSV("InputYear2017Day2")
+            .components(separatedBy: "\n")
+            .map { $0.components(separatedBy: .whitespaces).map { Int($0)! } }
+        var result = 0
+        for item in input {
+            let maximum = item.max()!
+            let minimum = item.min()!
+            result += maximum - minimum
+        }
+        return String(result)
+    }
+    
+    @objc
+    func day2question2() -> String {
+        return ""
+    }
+    
 }
