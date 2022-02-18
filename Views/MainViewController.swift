@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
     
     private func prepareViews() {
         yearLabel.text = String(currentYear.value())
-        let numberDaysPerYear = [Year.fifteen: 25, Year.sixteen: 25, Year.twenty: 0, Year.twentyOne: 17]
+        let numberDaysPerYear = [Year.fifteen: 25, Year.sixteen: 25, Year.seventeen: 1, Year.twenty: 0, Year.twentyOne: 17]
         for index in 0..<numberDaysPerYear[currentYear]! {
             let dayView = UIView()
             dayView.layer.borderWidth = 2
@@ -101,8 +101,8 @@ class MainViewController: UIViewController {
         let queue = DispatchQueue(label: "com.AdventOfCode.queue")
         for index in 0..<answerViews.count {
             queue.async {
-                let answer1 = self.presenter.calculate(year: 2016, day: index+1, question: 1)
-                let answer2 = self.presenter.calculate(year: 2016, day: index+1, question: 2)
+                let answer1 = self.presenter.calculate(year: 2017, day: index+1, question: 1)
+                let answer2 = self.presenter.calculate(year: 2017, day: index+1, question: 2)
                 DispatchQueue.main.async {
                     self.answerViews[index][0].text = answer1
                     self.answerViews[index][1].text = answer2

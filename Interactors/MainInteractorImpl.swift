@@ -20,6 +20,8 @@ extension MainInteractorImpl: MainInteractor {
             interactor = Year2015InteractorImpl()
         case 2016:
             interactor = Year2016InteractorImpl()
+        case 2017:
+            interactor = Year2017InteractorImpl()
         case 2021:
             interactor = Year2021InteractorImpl()
         default:
