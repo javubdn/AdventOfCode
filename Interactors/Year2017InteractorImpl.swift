@@ -12,4 +12,24 @@ class Year2017InteractorImpl: NSObject {
 }
 
 extension Year2017InteractorImpl: YearInteractor {
+    
+    @objc
+    func day1question1() -> String {
+        let input = readCSV("InputYear2017Day1")
+        var result = 0
+        for index in 0..<input.count {
+            let fi = input.index(input.startIndex, offsetBy: index)
+            let si = input.index(input.startIndex, offsetBy: (index+1)%input.count)
+            if input[fi] == input[si] {
+                result += Int(String(input[fi]))!
+            }
+        }
+        return String(result)
+    }
+    
+    @objc
+    func day1question2() -> String {
+        return ""
+    }
+    
 }
