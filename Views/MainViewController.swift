@@ -37,7 +37,7 @@ class MainViewController: UIViewController {
         yearLabel.text = String(currentYear.value())
         let numberDaysPerYear = [Year.fifteen: 25,
                                  Year.sixteen: 25,
-                                 Year.seventeen: 2,
+                                 Year.seventeen: 3,
                                  Year.twenty: 0,
                                  Year.twentyOne: 17]
         for index in 0..<numberDaysPerYear[currentYear]! {

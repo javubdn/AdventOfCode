@@ -73,4 +73,25 @@ extension Year2017InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day3question1() -> String {
+        return String(positionInSquare(277678))
+    }
+    
+    @objc
+    func day3question2() -> String {
+        return ""
+    }
+    
+    private func positionInSquare(_ input: Int) -> Int {
+        let row = (Int(sqrt(Double(input-1))) + 3) / 2
+        let firstCenter = (row*2-3) * (row*2-3) + row - 1
+        let diff = 2*row - 2
+        let minDistance = [abs(input-firstCenter),
+                           abs(input-firstCenter-diff),
+                           abs(input-firstCenter-2*diff),
+                           abs(input-firstCenter-3*diff)].min()!
+        return row - 1 + minDistance
+    }
+    
 }
