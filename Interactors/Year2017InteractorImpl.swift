@@ -131,4 +131,31 @@ extension Year2017InteractorImpl: YearInteractor {
         + matrix[row+1][col+1]
     }
     
+    @objc
+    func day4question1() -> String {
+        let input = readCSV("InputYear2017Day4")
+            .components(separatedBy: "\n")
+            .map { $0.components(separatedBy: .whitespaces) }
+        var result = 0
+        for passPhrase in input {
+            var twoEquals = false
+        second:
+            for index in 0..<passPhrase.count-1 {
+                for index2 in index+1..<passPhrase.count{
+                    if passPhrase[index] == passPhrase[index2] {
+                        twoEquals = true
+                        break second
+                    }
+                }
+            }
+            if !twoEquals { result += 1 }
+        }
+        return String(result)
+    }
+    
+    @objc
+    func day4question2() -> String {
+        return ""
+    }
+    
 }
