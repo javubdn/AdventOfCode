@@ -170,30 +170,29 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day5question1() -> String {
-        var input = readCSV("InputYear2017Day5").components(separatedBy: "\n").map { Int($0)! }
-        var index = 0
-        var result = 0
-        while index >= 0 && index < input.count {
-            let previousIndex = index
-            index += input[index]
-            result += 1
-            input[previousIndex] += 1
-        }
+        let input = readCSV("InputYear2017Day5").components(separatedBy: "\n").map { Int($0)! }
+        let result = jumpsToEscape(input, condition3: false)
         return String(result)
     }
     
     @objc
     func day5question2() -> String {
-        var input = readCSV("InputYear2017Day5").components(separatedBy: "\n").map { Int($0)! }
+        let input = readCSV("InputYear2017Day5").components(separatedBy: "\n").map { Int($0)! }
+        let result = jumpsToEscape(input, condition3: true)
+        return String(result)
+    }
+    
+    private func jumpsToEscape(_ input: [Int], condition3: Bool) -> Int {
+        var input = input
         var index = 0
         var result = 0
         while index >= 0 && index < input.count {
             let previousIndex = index
             index += input[index]
             result += 1
-            input[previousIndex] += input[previousIndex] >= 3 ? -1 : 1
+            input[previousIndex] += condition3 && input[previousIndex] >= 3 ? -1 : 1
         }
-        return String(result)
+        return result
     }
     
 }
