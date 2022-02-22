@@ -136,20 +136,7 @@ extension Year2017InteractorImpl: YearInteractor {
         let input = readCSV("InputYear2017Day4")
             .components(separatedBy: "\n")
             .map { $0.components(separatedBy: .whitespaces) }
-        var result = 0
-        for passPhrase in input {
-            var twoEquals = false
-        second:
-            for index in 0..<passPhrase.count-1 {
-                for index2 in index+1..<passPhrase.count{
-                    if passPhrase[index] == passPhrase[index2] {
-                        twoEquals = true
-                        break second
-                    }
-                }
-            }
-            if !twoEquals { result += 1 }
-        }
+        let result = validPassPhrases(input, sorted: false)
         return String(result)
     }
     
@@ -158,13 +145,19 @@ extension Year2017InteractorImpl: YearInteractor {
         let input = readCSV("InputYear2017Day4")
             .components(separatedBy: "\n")
             .map { $0.components(separatedBy: .whitespaces) }
+        let result = validPassPhrases(input, sorted: true)
+        return String(result)
+    }
+    
+    private func validPassPhrases(_ input: [[String]], sorted: Bool) -> Int {
         var result = 0
         for passPhrase in input {
             var twoEquals = false
         second:
             for index in 0..<passPhrase.count-1 {
                 for index2 in index+1..<passPhrase.count{
-                    if passPhrase[index].sorted() == passPhrase[index2].sorted() {
+                    if (sorted && passPhrase[index].sorted() == passPhrase[index2].sorted())
+                        || (!sorted && passPhrase[index] == passPhrase[index2]) {
                         twoEquals = true
                         break second
                     }
@@ -172,7 +165,7 @@ extension Year2017InteractorImpl: YearInteractor {
             }
             if !twoEquals { result += 1 }
         }
-        return String(result)
+        return result
     }
     
 }
