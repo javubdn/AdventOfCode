@@ -155,7 +155,24 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day4question2() -> String {
-        return ""
+        let input = readCSV("InputYear2017Day4")
+            .components(separatedBy: "\n")
+            .map { $0.components(separatedBy: .whitespaces) }
+        var result = 0
+        for passPhrase in input {
+            var twoEquals = false
+        second:
+            for index in 0..<passPhrase.count-1 {
+                for index2 in index+1..<passPhrase.count{
+                    if passPhrase[index].sorted() == passPhrase[index2].sorted() {
+                        twoEquals = true
+                        break second
+                    }
+                }
+            }
+            if !twoEquals { result += 1 }
+        }
+        return String(result)
     }
     
 }
