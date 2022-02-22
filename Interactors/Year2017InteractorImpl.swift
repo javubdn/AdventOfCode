@@ -197,31 +197,23 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day6question1() -> String {
-//        var input = [14, 0, 15, 12, 11, 11, 3, 5, 1, 6, 8, 4, 9, 1, 8, 4]
-//        var result = 0
-//        var previousBlocks: [String] = []
-//        var currentBlock = input.map { String($0) }.joined(separator: "-")
-//        while !previousBlocks.contains(currentBlock) {
-//            let maxValue = input.max()!
-//            let index = input.firstIndex { $0 == maxValue }!
-//            input[index] = 0
-//            let sum = Int(ceil(Double(maxValue)/Double(16)))
-//            let itemsAfected = max(maxValue, 16)
-//            for i in 1...itemsAfected {
-//                input[(index+i)%16] += i <= maxValue%16 ? sum : sum-1
-//            }
-//            previousBlocks.append(currentBlock)
-//            currentBlock = input.map { String($0) }.joined(separator: "-")
-//            result += 1
-//        }
-//        return String(result)
-        return "11137"
+        let input = [14, 0, 15, 12, 11, 11, 3, 5, 1, 6, 8, 4, 9, 1, 8, 4]
+        let (result, _) = distributeBlocks(input)
+        return String(result)
+        //return "1137"
     }
     
     @objc
     func day6question2() -> String {
-        var input = [14, 0, 15, 12, 11, 11, 3, 5, 1, 6, 8, 4, 9, 1, 8, 4]
-        var result = 0
+        let input = [14, 0, 15, 12, 11, 11, 3, 5, 1, 6, 8, 4, 9, 1, 8, 4]
+        let (_, result) = distributeBlocks(input)
+        return String(result)
+        //return "1037"
+    }
+    
+    private func distributeBlocks(_ input: [Int]) -> (Int, Int) {
+        var input = input
+        var jumps = 0
         var previousBlocks: [String] = []
         var currentBlock = input.map { String($0) }.joined(separator: "-")
         while !previousBlocks.contains(currentBlock) {
@@ -235,10 +227,10 @@ extension Year2017InteractorImpl: YearInteractor {
             }
             previousBlocks.append(currentBlock)
             currentBlock = input.map { String($0) }.joined(separator: "-")
-            result += 1
+            jumps += 1
         }
         let previousCombination = previousBlocks.firstIndex { $0 == currentBlock }!
-        return String(result - previousCombination)
+        return (jumps, jumps - previousCombination)
     }
     
 }
