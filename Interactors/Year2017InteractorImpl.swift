@@ -242,4 +242,77 @@ extension Year2017InteractorImpl: YearInteractor {
         return bottomProgram.name
     }
     
+    @objc
+    func day7question2() -> String {
+        let input = readCSV("InputYear2017Day7")
+            .components(separatedBy: "\n")
+            .map { $0.components(separatedBy: .whitespaces) }
+        let bottomProgram = getBottomProgram(input)
+        return String(balancedWeight(bottomProgram))
+    }
+    
+    struct DiscProgram {
+        let name: String
+        let weight: Int
+        let totalWeight: Int
+        let programsAbove: [DiscProgram]
+    }
+    
+    private func getBottomProgram(_ input: [[String]]) -> DiscProgram {
+        var input = input
+        var discs: [DiscProgram] = []
+        while !input.isEmpty {
+            let currentDisc: DiscProgram
+            (currentDisc, input, discs) = getDiscProgram(input.first!, items: input, discs: discs)
+            discs.append(currentDisc)
+        }
+        return discs.first!
+    }
+    
+    private func getDiscProgram(_ item: [String],
+                                items: [[String]],
+                                discs: [DiscProgram]) -> (DiscProgram, [[String]], [DiscProgram]) {
+        var items = items
+        var discs = discs
+        let name = item[0]
+        let weight = Int(item[1].replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: ""))!
+        let indexCurrentItem = items.firstIndex { $0[0] == name }!
+        items.remove(at: indexCurrentItem)
+        if item.count == 2 {
+            return (DiscProgram(name: name,
+                                weight: weight,
+                                totalWeight: weight,
+                                programsAbove: []),
+                    items, discs)
+        }
+        var totalWeight = weight
+        var programsAbove: [DiscProgram] = []
+        for index in 3..<item.count {
+            let programName = item[index].replacingOccurrences(of: ",", with: "")
+            if let discIndex = discs.firstIndex(where: { $0.name == programName }) {
+                totalWeight += discs[discIndex].totalWeight
+                programsAbove.append(discs[discIndex])
+                discs.remove(at: discIndex)
+                continue
+            }
+            let program = items.first { $0[0] == programName }!
+            let programTree: DiscProgram
+            (programTree, items, discs) = getDiscProgram(program, items: items, discs: discs)
+            programsAbove.append(programTree)
+            totalWeight += programTree.totalWeight
+        }
+        return (DiscProgram(name: name, weight: weight, totalWeight: totalWeight, programsAbove: programsAbove), items, discs)
+    }
+    
+    private func balancedWeight(_ item: DiscProgram) -> Int {
+        if item.programsAbove.isEmpty { return 0 }
+        let discs = item.programsAbove.map { $0.totalWeight }
+        let counts = Utils.countItems(discs)
+        if counts.count == 1 { return 0 }
+        let sortedCounts = counts.sorted { $0.value < $1.value }
+        let differentDisc = item.programsAbove.first { $0.totalWeight == sortedCounts[0].key }!
+        let differentDiscWeight = balancedWeight(differentDisc)
+        return differentDiscWeight == 0 ? differentDisc.weight - sortedCounts[0].key + sortedCounts[1].key : differentDiscWeight
+    }
+    
 }
