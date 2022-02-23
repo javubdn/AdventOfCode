@@ -328,4 +328,69 @@ extension Year2017InteractorImpl: YearInteractor {
         return String(result!)
     }
     
+    @objc
+    func day8question2() -> String {
+        let input = readCSV("InputYear2017Day8")
+            .components(separatedBy: "\n")
+            .map { $0.components(separatedBy: .whitespaces) }
+            .map { getJumpInstruction($0) }
+        var registers: [String: Int] = [:]
+        input.map { $0.register }.forEach { registers[$0] = 0 }
+        let (_,  result) = executeJumpInstructions(input, registers: registers)
+        return String(result)
+    }
+    
+    enum JumpComparative {
+        case gr
+        case ge
+        case ls
+        case le
+        case df
+        case eq
+    }
+    
+    struct JumpInstruction {
+        let register: String
+        let increment: Int
+        let registerCondition: String
+        let comparative: JumpComparative
+        let value: Int
+    }
+    
+    private func getJumpInstruction(_ input: [String]) -> JumpInstruction {
+        let register = input[0]
+        let increment = Int(input[2])! * (input[1] == "inc" ? 1 : -1)
+        let registerCondition = input[4]
+        let comparative: JumpComparative = input[5] == ">" ? .gr :
+        input[5] == ">=" ? .ge :
+        input[5] == "<" ? .ls :
+        input[5] == "<=" ? .le :
+        input[5] == "!=" ? .df : .eq
+        let value = Int(input[6])!
+        return JumpInstruction(register: register, increment: increment, registerCondition: registerCondition, comparative: comparative, value: value)
+    }
+    
+    private func executeJumpInstructions(_ instructions: [JumpInstruction], registers: [String: Int]) -> ([String: Int], Int) {
+        var registers = registers
+        var maxValue = 0
+        for instruction in instructions {
+            switch instruction.comparative {
+            case .gr:
+                registers[instruction.register]! += registers[instruction.registerCondition]! > instruction.value ? instruction.increment : 0
+            case .ge:
+                registers[instruction.register]! += registers[instruction.registerCondition]! >= instruction.value ? instruction.increment : 0
+            case .ls:
+                registers[instruction.register]! += registers[instruction.registerCondition]! < instruction.value ? instruction.increment : 0
+            case .le:
+                registers[instruction.register]! += registers[instruction.registerCondition]! <= instruction.value ? instruction.increment : 0
+            case .df:
+                registers[instruction.register]! += registers[instruction.registerCondition]! != instruction.value ? instruction.increment : 0
+            case .eq:
+                registers[instruction.register]! += registers[instruction.registerCondition]! == instruction.value ? instruction.increment : 0
+            }
+            maxValue = max(maxValue, registers[instruction.register]!)
+        }
+        return (registers, maxValue)
+    }
+    
 }
