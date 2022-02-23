@@ -197,18 +197,18 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day6question1() -> String {
-        let input = [14, 0, 15, 12, 11, 11, 3, 5, 1, 6, 8, 4, 9, 1, 8, 4]
-        let (result, _) = distributeBlocks(input)
-        return String(result)
-        //return "1137"
+//        let input = [14, 0, 15, 12, 11, 11, 3, 5, 1, 6, 8, 4, 9, 1, 8, 4]
+//        let (result, _) = distributeBlocks(input)
+//        return String(result)
+        return "1137"
     }
     
     @objc
     func day6question2() -> String {
-        let input = [14, 0, 15, 12, 11, 11, 3, 5, 1, 6, 8, 4, 9, 1, 8, 4]
-        let (_, result) = distributeBlocks(input)
-        return String(result)
-        //return "1037"
+//        let input = [14, 0, 15, 12, 11, 11, 3, 5, 1, 6, 8, 4, 9, 1, 8, 4]
+//        let (_, result) = distributeBlocks(input)
+//        return String(result)
+        return "1037"
     }
     
     private func distributeBlocks(_ input: [Int]) -> (Int, Int) {
@@ -231,6 +231,15 @@ extension Year2017InteractorImpl: YearInteractor {
         }
         let previousCombination = previousBlocks.firstIndex { $0 == currentBlock }!
         return (jumps, jumps - previousCombination)
+    }
+    
+    @objc
+    func day7question1() -> String {
+        let input = readCSV("InputYear2017Day7")
+            .components(separatedBy: "\n")
+            .map { $0.components(separatedBy: .whitespaces) }
+        let bottomProgram = getBottomProgram(input)
+        return bottomProgram.name
     }
     
 }
