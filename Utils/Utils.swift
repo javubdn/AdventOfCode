@@ -126,6 +126,15 @@ class Utils {
         return counts
     }
     
+    static func countItems<U>(_ input: [U]) -> [U: Int] {
+        var counts: [U: Int] = [:]
+        for item in input {
+            if counts[item] == nil { counts[item] = 0 }
+            counts[item]! += 1
+        }
+        return counts
+    }
+    
     static func cartesianProduct<U, V>(lhs: [U], rhs: [V]) -> [(U, V)] {
         lhs.flatMap { left in
             rhs.map { right in
