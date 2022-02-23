@@ -315,4 +315,17 @@ extension Year2017InteractorImpl: YearInteractor {
         return differentDiscWeight == 0 ? differentDisc.weight - sortedCounts[0].key + sortedCounts[1].key : differentDiscWeight
     }
     
+    @objc
+    func day8question1() -> String {
+        let input = readCSV("InputYear2017Day8")
+            .components(separatedBy: "\n")
+            .map { $0.components(separatedBy: .whitespaces) }
+            .map { getJumpInstruction($0) }
+        var registers: [String: Int] = [:]
+        input.map { $0.register }.forEach { registers[$0] = 0 }
+        (registers, _) = executeJumpInstructions(input, registers: registers)
+        let result = registers.max { $0.value < $1.value }?.value
+        return String(result!)
+    }
+    
 }
