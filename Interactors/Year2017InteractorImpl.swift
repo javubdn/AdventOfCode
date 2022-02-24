@@ -500,81 +500,7 @@ extension Year2017InteractorImpl: YearInteractor {
         let input = readCSV("InputYear2017Day11").components(separatedBy: ",")
         var steps: [String] = []
         for item in input {
-            switch item {
-            case "n":
-                if let index = steps.firstIndex(where: { $0 == "s" }) {
-                    steps.remove(at: index)
-                } else if let index = steps.firstIndex(where: { $0 == "sw" }) {
-                    steps.remove(at: index)
-                    steps.append("nw")
-                } else if let index = steps.firstIndex(where: { $0 == "se" }) {
-                    steps.remove(at: index)
-                    steps.append("ne")
-                } else {
-                    steps.append("n")
-                }
-            case "nw":
-                if let index = steps.firstIndex(where: { $0 == "se" }) {
-                    steps.remove(at: index)
-                } else if let index = steps.firstIndex(where: { $0 == "ne" }) {
-                    steps.remove(at: index)
-                    steps.append("n")
-                } else if let index = steps.firstIndex(where: { $0 == "s" }) {
-                    steps.remove(at: index)
-                    steps.append("sw")
-                } else {
-                    steps.append("nw")
-                }
-            case "ne":
-                if let index = steps.firstIndex(where: { $0 == "sw" }) {
-                    steps.remove(at: index)
-                } else if let index = steps.firstIndex(where: { $0 == "nw" }) {
-                    steps.remove(at: index)
-                    steps.append("n")
-                } else if let index = steps.firstIndex(where: { $0 == "s" }) {
-                    steps.remove(at: index)
-                    steps.append("se")
-                } else {
-                    steps.append("ne")
-                }
-            case "s":
-                if let index = steps.firstIndex(where: { $0 == "n" }) {
-                    steps.remove(at: index)
-                } else if let index = steps.firstIndex(where: { $0 == "nw" }) {
-                    steps.remove(at: index)
-                    steps.append("sw")
-                } else if let index = steps.firstIndex(where: { $0 == "ne" }) {
-                    steps.remove(at: index)
-                    steps.append("se")
-                } else {
-                    steps.append("s")
-                }
-            case "sw":
-                if let index = steps.firstIndex(where: { $0 == "ne" }) {
-                    steps.remove(at: index)
-                } else if let index = steps.firstIndex(where: { $0 == "n" }) {
-                    steps.remove(at: index)
-                    steps.append("nw")
-                } else if let index = steps.firstIndex(where: { $0 == "se" }) {
-                    steps.remove(at: index)
-                    steps.append("s")
-                } else {
-                    steps.append("sw")
-                }
-            case "se":
-                if let index = steps.firstIndex(where: { $0 == "nw" }) {
-                    steps.remove(at: index)
-                } else if let index = steps.firstIndex(where: { $0 == "n" }) {
-                    steps.remove(at: index)
-                    steps.append("ne")
-                } else if let index = steps.firstIndex(where: { $0 == "sw" }) {
-                    steps.remove(at: index)
-                    steps.append("s")
-                } else {
-                    steps.append("se")
-                }
-            default: break
-            }
+            steps = updateListSteps(steps: steps, value: item)
         }
         let result = steps.count
         return String(result)
@@ -583,6 +509,30 @@ extension Year2017InteractorImpl: YearInteractor {
     @objc
     func day11question2() -> String {
         return ""
+    }
+    
+    private func updateListSteps(steps: [String], value: String) -> [String] {
+        var steps = steps
+        let opAlt = ["n": [["s", ""], ["sw", "nw"], ["se", "ne"]],
+                     "s": [["n", ""], ["nw", "sw"], ["ne", "se"]],
+                     "nw": [["se", ""], ["ne", "n"], ["s", "sw"]],
+                     "ne": [["sw", ""], ["nw", "n"], ["s", "se"]],
+                     "sw": [["ne", ""], ["n", "nw"], ["se", "s"]],
+                     "se": [["nw", ""], ["n", "ne"], ["sw", "s"]]]
+        var found = false
+        for item in opAlt[value]! {
+            if let index = steps.firstIndex(where: { $0 == item[0] }) {
+                steps.remove(at: index)
+                steps.append(item[1])
+                found = true
+                break
+            }
+        }
+        if !found {
+            steps.append(value)
+        }
+        steps.removeAll { $0 == "" }
+        return steps
     }
     
 }
