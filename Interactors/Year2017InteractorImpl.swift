@@ -443,10 +443,38 @@ extension Year2017InteractorImpl: YearInteractor {
     @objc
     func day10question1() -> String {
         let input = [34, 88, 2, 222, 254, 93, 150, 0, 199, 255, 39, 32, 137, 136, 1, 167]
-        var items = Array(0...255)
+        let (items, _, _) = knot(Array(0...255), lengths: input, index: 0, skip: 0)
+        return String(items[0]*items[1])
+    }
+    
+    @objc
+    func day10question2() -> String {
+        let input = "34,88,2,222,254,93,150,0,199,255,39,32,137,136,1,167"
+        var lengths: [Int] = []
+        for element in input {
+            lengths.append(Int(element.asciiValue!))
+        }
+        lengths += [17, 31, 73, 47, 23]
         var index = 0
         var skip = 0
-        for lenght in input {
+        var values = Array(0...255)
+        for _ in 0..<64 {
+            (values, index, skip) = knot(values, lengths: lengths, index: index, skip: skip)
+        }
+        var xorItems: [Int] = []
+        for index in 0..<16 {
+            xorItems.append(values[index*16..<index*16+16].reduce(0, ^))
+        }
+        let result = xorItems.map { String(format:"%02X", $0) }.joined().lowercased()
+        print(result)
+        return result
+    }
+    
+    private func knot(_ input: [Int], lengths: [Int], index: Int, skip: Int) -> ([Int], Int, Int) {
+        var items = input
+        var index = index
+        var skip = skip
+        for lenght in lengths {
             let limitEnd = (index+lenght)%items.count
             var values: [Int]
             if limitEnd >= index {
@@ -464,12 +492,7 @@ extension Year2017InteractorImpl: YearInteractor {
             index = (index + lenght + skip) % items.count
             skip += 1
         }
-        return String(items[0]*items[1])
-    }
-    
-    @objc
-    func day10question2() -> String {
-        return ""
+        return (items, index, skip)
     }
     
 }
