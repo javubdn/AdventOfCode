@@ -418,7 +418,26 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day9question2() -> String {
-        return ""
+        let input = readCSV("InputYear2017Day9")
+        var result = 0
+        var garbage = false
+        var cancel = false
+        for item in input {
+            if cancel {
+                cancel = false
+                continue
+            }
+            switch item {
+            case ">": garbage = false
+            case "!": cancel = true
+            default:
+                result += garbage ? 1 : 0
+                if item == "<" {
+                    garbage = true
+                }
+            }
+        }
+        return String(result)
     }
     
 }
