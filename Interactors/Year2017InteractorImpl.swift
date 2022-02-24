@@ -263,18 +263,18 @@ extension Year2017InteractorImpl: YearInteractor {
         var discs: [DiscProgram] = []
         while !input.isEmpty {
             let currentDisc: DiscProgram
-            (currentDisc, input, discs) = getDiscProgram(input.first!, items: input, discs: discs)
+            (currentDisc, input, discs) = getDiscProgram(input.first![0], items: input, discs: discs)
             discs.append(currentDisc)
         }
         return discs.first!
     }
     
-    private func getDiscProgram(_ item: [String],
+    private func getDiscProgram(_ name: String,
                                 items: [[String]],
                                 discs: [DiscProgram]) -> (DiscProgram, [[String]], [DiscProgram]) {
         var items = items
         var discs = discs
-        let name = item[0]
+        let item = items.first { $0[0] == name }!
         let weight = Int(item[1].replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: ""))!
         let indexCurrentItem = items.firstIndex { $0[0] == name }!
         items.remove(at: indexCurrentItem)
@@ -295,9 +295,8 @@ extension Year2017InteractorImpl: YearInteractor {
                 discs.remove(at: discIndex)
                 continue
             }
-            let program = items.first { $0[0] == programName }!
             let programTree: DiscProgram
-            (programTree, items, discs) = getDiscProgram(program, items: items, discs: discs)
+            (programTree, items, discs) = getDiscProgram(programName, items: items, discs: discs)
             programsAbove.append(programTree)
             totalWeight += programTree.totalWeight
         }
