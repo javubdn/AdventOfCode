@@ -440,4 +440,36 @@ extension Year2017InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day10question1() -> String {
+        let input = [34, 88, 2, 222, 254, 93, 150, 0, 199, 255, 39, 32, 137, 136, 1, 167]
+        var items = Array(0...255)
+        var index = 0
+        var skip = 0
+        for lenght in input {
+            let limitEnd = (index+lenght)%items.count
+            var values: [Int]
+            if limitEnd >= index {
+                values = Array(items[index..<index+lenght])
+            } else {
+                values = Array(items[index..<items.count]) + items[0..<(index+lenght)%items.count]
+            }
+            values = values.reversed()
+            if limitEnd >= index {
+                items[index..<index+lenght] = values[0..<values.count]
+            } else {
+                items[index..<items.count] = values[0..<items.count-index]
+                items[0..<limitEnd] = values[items.count-index..<values.count]
+            }
+            index = (index + lenght + skip) % items.count
+            skip += 1
+        }
+        return String(items[0]*items[1])
+    }
+    
+    @objc
+    func day10question2() -> String {
+        return ""
+    }
+    
 }
