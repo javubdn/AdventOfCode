@@ -498,27 +498,32 @@ extension Year2017InteractorImpl: YearInteractor {
     @objc
     func day11question1() -> String {
         let input = readCSV("InputYear2017Day11").components(separatedBy: ",")
-        var steps: [String] = []
+        var steps: [String: Int] = ["n": 0, "s": 0, "nw": 0, "ne": 0, "sw": 0, "se": 0]
         for item in input {
             steps = updateListSteps(steps: steps, value: item)
         }
-        let result = steps.count
+        let result = steps.reduce(into:0) { partialResult, currentItem in
+            partialResult = partialResult + currentItem.value
+        }
         return String(result)
     }
     
     @objc
     func day11question2() -> String {
         let input = readCSV("InputYear2017Day11").components(separatedBy: ",")
-        var steps: [String] = []
+        var steps: [String: Int] = ["n": 0, "s": 0, "nw": 0, "ne": 0, "sw": 0, "se": 0]
         var result = 0
         for item in input {
             steps = updateListSteps(steps: steps, value: item)
-            result = max(result, steps.count)
+            let numberSteps = steps.reduce(into:0) { partialResult, currentItem in
+                partialResult = partialResult + currentItem.value
+            }
+            result = max(result, numberSteps)
         }
         return String(result)
     }
     
-    private func updateListSteps(steps: [String], value: String) -> [String] {
+    private func updateListSteps(steps: [String: Int], value: String) -> [String: Int] {
         var steps = steps
         let opAlt = ["n": [["s", ""], ["sw", "nw"], ["se", "ne"]],
                      "s": [["n", ""], ["nw", "sw"], ["ne", "se"]],
@@ -528,17 +533,16 @@ extension Year2017InteractorImpl: YearInteractor {
                      "se": [["nw", ""], ["n", "ne"], ["sw", "s"]]]
         var found = false
         for item in opAlt[value]! {
-            if let index = steps.firstIndex(where: { $0 == item[0] }) {
-                steps.remove(at: index)
-                steps.append(item[1])
+            if steps[item[0]]! > 0 {
+                steps[item[0]]! -= 1
+                if let n = steps[item[1]] { steps[item[1]] = n + 1 }
                 found = true
                 break
             }
         }
         if !found {
-            steps.append(value)
+            steps[value]! += 1
         }
-        steps.removeAll { $0 == "" }
         return steps
     }
     
