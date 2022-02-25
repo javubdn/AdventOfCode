@@ -508,7 +508,14 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day11question2() -> String {
-        return ""
+        let input = readCSV("InputYear2017Day11").components(separatedBy: ",")
+        var steps: [String] = []
+        var result = 0
+        for item in input {
+            steps = updateListSteps(steps: steps, value: item)
+            result = max(result, steps.count)
+        }
+        return String(result)
     }
     
     private func updateListSteps(steps: [String], value: String) -> [String] {
