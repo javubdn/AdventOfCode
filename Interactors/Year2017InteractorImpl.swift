@@ -546,4 +546,28 @@ extension Year2017InteractorImpl: YearInteractor {
         return steps
     }
     
+    @objc
+    func day12question1() -> String {
+        let input = readCSV("InputYear2017Day12").components(separatedBy: "\n").map { $0.components(separatedBy: .whitespaces) }
+        var total = [0]
+        var currentIndex = 0
+        while currentIndex < total.count {
+            let currentValue = total[currentIndex]
+            let elements = input[currentValue]
+            for index in 2..<elements.count {
+                let connection = Int(elements[index].replacingOccurrences(of: ",", with: ""))!
+                if !total.contains(connection) {
+                    total.append(connection)
+                }
+            }
+            currentIndex += 1
+        }
+        return String(total.count)
+    }
+    
+    @objc
+    func day12question2() -> String {
+        return ""
+    }
+    
 }
