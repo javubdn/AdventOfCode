@@ -646,7 +646,68 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day14question2() -> String {
-        return ""
+        let input = "hfdlxzhv"
+        let represent = ["0": [false, false, false, false],
+                        "1": [false, false, false, true],
+                        "2": [false, false, true, false],
+                        "3": [false, false, true, true],
+                        "4": [false, true, false, false],
+                        "5": [false, true, false, true],
+                        "6": [false, true, true, false],
+                        "7": [false, true, true, true],
+                        "8": [true, false, false, false],
+                        "9": [true, false, false, true],
+                        "a": [true, false, true, false],
+                        "b": [true, false, true, true],
+                        "c": [true, true, false, false],
+                        "d": [true, true, false, true],
+                        "e": [true, true, true, false],
+                        "f": [true, true, true, true]]
+        var mapItems: [[Bool]] = []
+        for i in 0...127 {
+            let value = "\(input)-\(i)"
+            let k = knot(value)
+            mapItems.append(k.map { represent[String($0)]! }.reduce([], +))
+        }
+        let result = numberRegions(mapItems)
+        
+        return String(result)
+    }
+    
+    private func numberRegions(_ mapItems: [[Bool]]) -> Int {
+        let size = mapItems.count
+        var visited = [[Bool]](repeating: [Bool](repeating: false, count: size), count: size)
+        var regions = 0
+        for row in 0..<size {
+            for col in 0..<size {
+                guard !visited[row][col] else { continue }
+                if mapItems[row][col] {
+                    regions += 1
+                    visited = markRegion(mapItems, visited, row: row, col: col)
+                }
+            }
+        }
+        return regions
+    }
+    
+    private func markRegion(_ mapItems: [[Bool]],_ visited: [[Bool]], row: Int, col: Int) -> [[Bool]] {
+        var visited = visited
+        visited[row][col] = true
+        
+        for move in 0...3 {
+            guard (move != 0 || col > 0)
+                    && (move != 1 || col < visited.count-1)
+                    && (move != 2 || row > 0)
+                    && (move != 3 || row < visited.count-1)
+            else { continue }
+            let newCol = col + (move == 0 ? -1 : move == 1 ? 1 : 0)
+            let newRow = row + (move == 2 ? -1 : move == 3 ? 1 : 0)
+            if mapItems[newRow][newCol] && !visited[newRow][newCol] {
+                visited = markRegion(mapItems, visited, row: newRow, col: newCol)
+            }
+        }
+        
+        return visited
     }
     
 }
