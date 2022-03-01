@@ -633,45 +633,47 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day14question1() -> String {
-        let input = "hfdlxzhv"
-        let number1s = ["0": 0, "1": 1, "2": 1, "3": 2, "4": 1, "5": 2, "6": 2, "7": 3, "8": 1, "9": 2, "a": 2, "b": 3, "c": 2, "d": 3, "e": 3, "f": 4]
-        var result = 0
-        for i in 0...127 {
-            let value = "\(input)-\(i)"
-            let k = knot(value)
-            result += k.map { number1s[String($0)]! }.reduce(0, +)
-        }
-        return String(result)
+//        let input = "hfdlxzhv"
+//        let number1s = ["0": 0, "1": 1, "2": 1, "3": 2, "4": 1, "5": 2, "6": 2, "7": 3, "8": 1, "9": 2, "a": 2, "b": 3, "c": 2, "d": 3, "e": 3, "f": 4]
+//        var result = 0
+//        for i in 0...127 {
+//            let value = "\(input)-\(i)"
+//            let k = knot(value)
+//            result += k.map { number1s[String($0)]! }.reduce(0, +)
+//        }
+//        return String(result)
+        return "8230"
     }
     
     @objc
     func day14question2() -> String {
-        let input = "hfdlxzhv"
-        let represent = ["0": [false, false, false, false],
-                        "1": [false, false, false, true],
-                        "2": [false, false, true, false],
-                        "3": [false, false, true, true],
-                        "4": [false, true, false, false],
-                        "5": [false, true, false, true],
-                        "6": [false, true, true, false],
-                        "7": [false, true, true, true],
-                        "8": [true, false, false, false],
-                        "9": [true, false, false, true],
-                        "a": [true, false, true, false],
-                        "b": [true, false, true, true],
-                        "c": [true, true, false, false],
-                        "d": [true, true, false, true],
-                        "e": [true, true, true, false],
-                        "f": [true, true, true, true]]
-        var mapItems: [[Bool]] = []
-        for i in 0...127 {
-            let value = "\(input)-\(i)"
-            let k = knot(value)
-            mapItems.append(k.map { represent[String($0)]! }.reduce([], +))
-        }
-        let result = numberRegions(mapItems)
-        
-        return String(result)
+//        let input = "hfdlxzhv"
+//        let represent = ["0": [false, false, false, false],
+//                        "1": [false, false, false, true],
+//                        "2": [false, false, true, false],
+//                        "3": [false, false, true, true],
+//                        "4": [false, true, false, false],
+//                        "5": [false, true, false, true],
+//                        "6": [false, true, true, false],
+//                        "7": [false, true, true, true],
+//                        "8": [true, false, false, false],
+//                        "9": [true, false, false, true],
+//                        "a": [true, false, true, false],
+//                        "b": [true, false, true, true],
+//                        "c": [true, true, false, false],
+//                        "d": [true, true, false, true],
+//                        "e": [true, true, true, false],
+//                        "f": [true, true, true, true]]
+//        var mapItems: [[Bool]] = []
+//        for i in 0...127 {
+//            let value = "\(input)-\(i)"
+//            let k = knot(value)
+//            mapItems.append(k.map { represent[String($0)]! }.reduce([], +))
+//        }
+//        let result = numberRegions(mapItems)
+//
+//        return String(result)
+        return "1103"
     }
     
     private func numberRegions(_ mapItems: [[Bool]]) -> Int {
@@ -708,6 +710,24 @@ extension Year2017InteractorImpl: YearInteractor {
         }
         
         return visited
+    }
+    
+    @objc
+    func day15question1() -> String {
+        var valueA = 591
+        var valueB = 393
+        var result = 0
+        for _ in 0..<40000000 {
+            valueA = (valueA * 16807) % 2147483647
+            valueB = (valueB * 48271) % 2147483647
+            result += valueA%65536 == valueB%65536 ? 1 : 0
+        }
+        return String(result)
+    }
+    
+    @objc
+    func day15question2() -> String {
+        return ""
     }
     
 }
