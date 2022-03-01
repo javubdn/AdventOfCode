@@ -741,4 +741,36 @@ extension Year2017InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day16question1() -> String {
+        let input = readCSV("InputYear2017Day16").components(separatedBy: ",")
+        var value = "abcdefghijklmnop"
+        for item in input {
+            if String(item[0]) == "s" {
+                let rotation = Int(item.dropFirst())!
+                let fi = value.index(value.startIndex, offsetBy: value.count-rotation)
+                let si = value.index(value.startIndex, offsetBy: value.count)
+                value = String(value[fi..<si] + value[value.startIndex..<fi])
+            } else if String(item[0]) == "x" {
+                let indexes = item.dropFirst().components(separatedBy: "/").map { Int($0)! }
+                var characters = Array(value)
+                characters.swapAt(indexes[0], indexes[1])
+                value = String(characters)
+            } else if String(item[0]) == "p" {
+                let letters = item.dropFirst().components(separatedBy: "/")
+                var characters = Array(value)
+                let position1 = characters.firstIndex(of: letters[0][0])!
+                let position2 = characters.firstIndex(of: letters[1][0])!
+                characters.swapAt(position1, position2)
+                value = String(characters)
+            }
+        }
+        return value
+    }
+    
+    @objc
+    func day16question2() -> String {
+        return ""
+    }
+    
 }
