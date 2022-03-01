@@ -714,20 +714,31 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day15question1() -> String {
-        var valueA = 591
-        var valueB = 393
-        var result = 0
-        for _ in 0..<40000000 {
-            valueA = (valueA * 16807) % 2147483647
-            valueB = (valueB * 48271) % 2147483647
-            result += valueA%65536 == valueB%65536 ? 1 : 0
-        }
-        return String(result)
+//        var valueA = 591
+//        var valueB = 393
+//        var result = 0
+//        for _ in 0..<40000000 {
+//            valueA = (valueA * 16807) % 2147483647
+//            valueB = (valueB * 48271) % 2147483647
+//            result += valueA%65536 == valueB%65536 ? 1 : 0
+//        }
+//        return String(result)
+        return "619"
     }
     
     @objc
     func day15question2() -> String {
-        return ""
+        var valueA = 591
+        var valueB = 393
+        var result = 0
+        for _ in 0..<5000000 {
+            valueA = (valueA * 16807) % 2147483647
+            while valueA%4 != 0 { valueA = (valueA * 16807) % 2147483647 }
+            valueB = (valueB * 48271) % 2147483647
+            while valueB%8 != 0 { valueB = (valueB * 48271) % 2147483647 }
+            result += valueA%65536 == valueB%65536 ? 1 : 0
+        }
+        return String(result)
     }
     
 }
