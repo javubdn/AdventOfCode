@@ -744,8 +744,28 @@ extension Year2017InteractorImpl: YearInteractor {
     @objc
     func day16question1() -> String {
         let input = readCSV("InputYear2017Day16").components(separatedBy: ",")
+        let result = dance(value: "abcdefghijklmnop", moves: input)
+        return result
+    }
+    
+    @objc
+    func day16question2() -> String {
+        let input = readCSV("InputYear2017Day16").components(separatedBy: ",")
         var value = "abcdefghijklmnop"
-        for item in input {
+        var danceEvolution: [String] = []
+        let numberMoves = 1000000000
+        for _ in 0..<numberMoves {
+            guard !danceEvolution.contains(value) else { break }
+            danceEvolution.append(value)
+            value = dance(value: value, moves: input)
+        }
+        let index = numberMoves%danceEvolution.count
+        return danceEvolution[index]
+    }
+    
+    private func dance(value: String, moves: [String]) -> String {
+        var value = value
+        for item in moves {
             if String(item[0]) == "s" {
                 let rotation = Int(item.dropFirst())!
                 let fi = value.index(value.startIndex, offsetBy: value.count-rotation)
@@ -766,11 +786,6 @@ extension Year2017InteractorImpl: YearInteractor {
             }
         }
         return value
-    }
-    
-    @objc
-    func day16question2() -> String {
-        return ""
     }
     
 }
