@@ -815,4 +815,40 @@ extension Year2017InteractorImpl: YearInteractor {
         return "10150888"
     }
     
+    @objc
+    func day18question1() -> String {
+        let input = readCSV("InputYear2017Day18").components(separatedBy: "\n").map { getDuetInstructions($0) }
+        var registers: [String: Int] = [:]
+        for instruction in input {
+            if instruction.register.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) != nil {
+                registers[instruction.register] = 0
+            }
+        }
+        let result = executeDuetInstructions(input, state: (0, registers, [], [], 0, 0))
+        return String(result.4)
+    }
+    enum DuetInstructionType: String {
+        case snd = "snd"
+        case set = "set"
+        case add = "add"
+        case mul = "mul"
+        case mod = "mod"
+        case rcv = "rcv"
+        case jgz = "jgz"
+    }
+    
+    struct DuetInstruction {
+        let instruction: DuetInstructionType
+        let register: String
+        let value: String
+    }
+    
+    private func getDuetInstructions(_ input: String) -> DuetInstruction {
+        let items = input.components(separatedBy: .whitespaces)
+        let instruction = DuetInstructionType(rawValue: items[0])!
+        let register = items[1]
+        let value = items.count == 3 ? items[2] : ""
+        return DuetInstruction(instruction: instruction, register: register, value: value)
+    }
+    
 }
