@@ -788,4 +788,15 @@ extension Year2017InteractorImpl: YearInteractor {
         return value
     }
     
+    @objc
+    func day17question1() -> String {
+        let steps = 394
+        var values = [0]
+        var index = 0
+        for item in 1...2017 {
+            index = ((index + steps) % values.count) + 1
+            values.insert(item, at: index)
+        }
+        return String(values[(index+1)%values.count])
+    }
 }
