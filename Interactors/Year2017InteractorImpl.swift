@@ -827,6 +827,14 @@ extension Year2017InteractorImpl: YearInteractor {
         let result = executeDuetInstructions(input, state: (0, registers, [], [], 0, 0))
         return String(result.4)
     }
+    
+    @objc
+    func day18question2() -> String {
+        let input = readCSV("InputYear2017Day18").components(separatedBy: "\n").map { getDuetInstructions($0) }
+        let result = executeDuetInstructions2Processes(input)
+        return String(result)
+    }
+    
     enum DuetInstructionType: String {
         case snd = "snd"
         case set = "set"
@@ -849,6 +857,151 @@ extension Year2017InteractorImpl: YearInteractor {
         let register = items[1]
         let value = items.count == 3 ? items[2] : ""
         return DuetInstruction(instruction: instruction, register: register, value: value)
+    }
+    
+    private func executeDuetInstructions(_ instructions: [DuetInstruction],
+                                         numberProcesses: Int = 1,
+                                         state: (Int, [String: Int], [Int], [Int], Int, Int) ) -> ([String: Int], [Int], [Int], Int, Int, Bool) {
+        var registers = state.1
+        var entry = state.2
+        var exit = state.3
+        var index = state.4
+        var lastSound = state.5
+        var finished = true
+    instructions:
+        while index < instructions.count {
+            let instruction = instructions[index]
+            switch instruction.instruction {
+            case .snd:
+                if numberProcesses == 1 {
+                    lastSound = registers[instruction.register] ?? 0
+                } else {
+                    exit.append(registers[instruction.register] ?? 0)
+                }
+                index += 1
+            case .set:
+                if let value = Int(instruction.value) {
+                    registers[instruction.register] = value
+                } else {
+                    registers[instruction.register] = registers[instruction.value]
+                }
+                index += 1
+            case .add:
+                if let value = Int(instruction.value) {
+                    registers[instruction.register]! += value
+                } else {
+                    registers[instruction.register]! += registers[instruction.value]!
+                }
+                index += 1
+            case .mul:
+                if let value = Int(instruction.value) {
+                    registers[instruction.register]! *= value
+                } else {
+                    registers[instruction.register]! *= registers[instruction.value]!
+                }
+                index += 1
+            case .mod:
+                if let value = Int(instruction.value) {
+                    registers[instruction.register]! %= value
+                } else {
+                    registers[instruction.register]! %= registers[instruction.value]!
+                }
+                index += 1
+            case .rcv:
+                if numberProcesses == 1 {
+                    if let value = registers[instruction.register], value != 0 {
+                        break instructions
+                    }
+                } else {
+                    if entry.isEmpty {
+                        finished = false
+                        break instructions
+                    } else {
+                        registers[instruction.register] = entry.removeFirst()
+                    }
+                }
+                index += 1
+            case .jgz:
+                if let jumpConditionInt = Int(instruction.register) {
+                    if jumpConditionInt > 0 {
+                        if let value = Int(instruction.value) {
+                            index += value
+                        } else {
+                            index += registers[instruction.value]!
+                        }
+                    } else {
+                        index += 1
+                    }
+                } else if let registerValue = registers[instruction.register], registerValue > 0 {
+                    if let value = Int(instruction.value) {
+                        index += value
+                    } else {
+                        index += registers[instruction.value]!
+                    }
+                } else {
+                    index += 1
+                }
+            }
+        }
+        return (registers, entry, exit, index, lastSound, finished)
+    }
+    
+    private func executeDuetInstructions2Processes(_ instructions: [DuetInstruction]) -> Int {
+        var process = 0
+        var registers0: [String: Int] = [:]
+        var entry0: [Int] = []
+        var exit0: [Int] = []
+        var index0 = 0
+        var lastSound0 = 0
+        var registers1: [String: Int] = [:]
+        var entry1: [Int] = []
+        var exit1: [Int] = []
+        var index1 = 0
+        var lastSound1 = 0
+        for instruction in instructions {
+            if instruction.register.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) != nil {
+                registers0[instruction.register] = 0
+                registers1[instruction.register] = 0
+            }
+        }
+        registers1["p"] = 1
+        var sentMessages = 0
+        while true {
+            let result = executeDuetInstructions(instructions,
+                                                 numberProcesses: 2,
+                                                 state: (process,
+                                                         process == 0 ? registers0 : registers1,
+                                                         process == 0 ? entry0 : entry1,
+                                                         process == 0 ? exit0 : exit1,
+                                                         process == 0 ? index0 : index1,
+                                                         process == 0 ? lastSound0 : lastSound1))
+            if process == 0 {
+                registers0 = result.0
+                entry0 = result.1
+                exit0 = result.2
+                index0 = result.3
+                lastSound0 = result.4
+                entry1 = exit0
+                exit1 = entry0
+                if entry0.isEmpty && exit0.isEmpty {
+                    break
+                }
+            } else {
+                registers1 = result.0
+                entry1 = result.1
+                exit1 = result.2
+                sentMessages += exit1.count
+                index1 = result.3
+                lastSound1 = result.4
+                entry0 = exit1
+                exit0 = entry1
+                if entry1.isEmpty && exit1.isEmpty {
+                    break
+                }
+            }
+            process = 1 - process
+        }
+        return sentMessages
     }
     
 }
