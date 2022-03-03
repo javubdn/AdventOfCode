@@ -940,10 +940,24 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day19question1() -> String {
-        var diagram = readCSV("InputYear2017Day19").components(separatedBy: "\n").map { Array($0).map { String($0) } }
+        let input = readCSV("InputYear2017Day19")
+        let (result, _) = followRoutingPath(input)
+        return result
+    }
+    
+    @objc
+    func day19question2() -> String {
+        let input = readCSV("InputYear2017Day19")
+        let (_, result) = followRoutingPath(input)
+        return String(result)
+    }
+    
+    private func followRoutingPath(_ input: String) -> (String, Int) {
+        var diagram = input.components(separatedBy: "\n").map { Array($0).map { String($0) } }
         let width = diagram.max { $0.count < $1.count }!.count
         diagram = diagram.map { $0 + [String](repeating: " ", count: width - $0.count)}
-        var result = ""
+        var letters = ""
+        var steps = 1
         var row = 0
         var col = diagram[0].firstIndex { $0 == "|" } ?? 0
         var direction = Direction.south
@@ -954,7 +968,7 @@ extension Year2017InteractorImpl: YearInteractor {
                 break
             }
             if diagram[row][col][0].isLetter {
-                result.append(diagram[row][col])
+                letters.append(diagram[row][col])
             } else if diagram[row][col] == "+" {
                 let turn: TurnDirection = (direction == .south && col > 0 && diagram[row][col-1] != " ")
                 || (direction == .north && !(col > 0 && diagram[row][col-1] != " "))
@@ -962,35 +976,9 @@ extension Year2017InteractorImpl: YearInteractor {
                 || (direction == .east && !(row > 0 && diagram[row-1][col] != " ")) ? .right : .left
                 direction = direction.turn(turn)
             }
+            steps += 1
         }
-        return result
-    }
-    
-    @objc
-    func day19question2() -> String {
-        var diagram = readCSV("InputYear2017Day19").components(separatedBy: "\n").map { Array($0).map { String($0) } }
-        let width = diagram.max { $0.count < $1.count }!.count
-        diagram = diagram.map { $0 + [String](repeating: " ", count: width - $0.count)}
-        var result = 1
-        var row = 0
-        var col = diagram[0].firstIndex { $0 == "|" } ?? 0
-        var direction = Direction.south
-        while true {
-            row += direction == .south ? 1 : direction == .north ? -1 : 0
-            col += direction == .east ? 1 : direction == .west ? -1 : 0
-            if row < 0 || row >= diagram.count || col < 0 || col >= diagram[row].count || diagram[row][col] == " " {
-                break
-            }
-            if diagram[row][col] == "+" {
-                let turn: TurnDirection = (direction == .south && col > 0 && diagram[row][col-1] != " ")
-                || (direction == .north && !(col > 0 && diagram[row][col-1] != " "))
-                || (direction == .west && row > 0 && diagram[row-1][col] != " ")
-                || (direction == .east && !(row > 0 && diagram[row-1][col] != " ")) ? .right : .left
-                direction = direction.turn(turn)
-            }
-            result += 1
-        }
-        return String(result)
+        return (letters, steps)
     }
     
 }
