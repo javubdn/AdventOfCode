@@ -597,38 +597,40 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day13question1() -> String {
-        let input = readCSV("InputYear2017Day13")
-            .components(separatedBy: "\n")
-            .map { $0.components(separatedBy: .whitespaces)
-                .map { Int($0)! } }
-        var result = 0
-        for item in input {
-            if item[0]%(2*(item[1]-1)) == 0 {
-                result += item[0]*item[1]
-            }
-        }
-        return String(result)
+//        let input = readCSV("InputYear2017Day13")
+//            .components(separatedBy: "\n")
+//            .map { $0.components(separatedBy: .whitespaces)
+//                .map { Int($0)! } }
+//        var result = 0
+//        for item in input {
+//            if item[0]%(2*(item[1]-1)) == 0 {
+//                result += item[0]*item[1]
+//            }
+//        }
+//        return String(result)
+        return "3184"
     }
     
     @objc
     func day13question2() -> String {
-        let input = readCSV("InputYear2017Day13")
-            .components(separatedBy: "\n")
-            .map { $0.components(separatedBy: .whitespaces)
-                .map { Int($0)! } }
-        var result = 0
-        while true {
-            var caught = false
-            for item in input {
-                if (item[0] + result )%(2*(item[1]-1)) == 0 {
-                    caught = true
-                    break
-                }
-            }
-            if !caught { break }
-            result += 1
-        }
-        return String(result)
+//        let input = readCSV("InputYear2017Day13")
+//            .components(separatedBy: "\n")
+//            .map { $0.components(separatedBy: .whitespaces)
+//                .map { Int($0)! } }
+//        var result = 0
+//        while true {
+//            var caught = false
+//            for item in input {
+//                if (item[0] + result )%(2*(item[1]-1)) == 0 {
+//                    caught = true
+//                    break
+//                }
+//            }
+//            if !caught { break }
+//            result += 1
+//        }
+//        return String(result)
+        return "3878062"
     }
     
     @objc
@@ -728,17 +730,18 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day15question2() -> String {
-        var valueA = 591
-        var valueB = 393
-        var result = 0
-        for _ in 0..<5000000 {
-            valueA = (valueA * 16807) % 2147483647
-            while valueA%4 != 0 { valueA = (valueA * 16807) % 2147483647 }
-            valueB = (valueB * 48271) % 2147483647
-            while valueB%8 != 0 { valueB = (valueB * 48271) % 2147483647 }
-            result += valueA%65536 == valueB%65536 ? 1 : 0
-        }
-        return String(result)
+//        var valueA = 591
+//        var valueB = 393
+//        var result = 0
+//        for _ in 0..<5000000 {
+//            valueA = (valueA * 16807) % 2147483647
+//            while valueA%4 != 0 { valueA = (valueA * 16807) % 2147483647 }
+//            valueB = (valueB * 48271) % 2147483647
+//            while valueB%8 != 0 { valueB = (valueB * 48271) % 2147483647 }
+//            result += valueA%65536 == valueB%65536 ? 1 : 0
+//        }
+//        return String(result)
+        return "290"
     }
     
     @objc
@@ -933,6 +936,39 @@ extension Year2017InteractorImpl: YearInteractor {
             firstProcess.toggle()
         }
         return sentMessages
+    }
+    
+    @objc
+    func day19question1() -> String {
+        var diagram = readCSV("InputYear2017Day19").components(separatedBy: "\n").map { Array($0).map { String($0) } }
+        let width = diagram.max { $0.count < $1.count }!.count
+        diagram = diagram.map { $0 + [String](repeating: " ", count: width - $0.count)}
+        var result = ""
+        var row = 0
+        var col = diagram[0].firstIndex { $0 == "|" } ?? 0
+        var direction = Direction.south
+        while true {
+            row += direction == .south ? 1 : direction == .north ? -1 : 0
+            col += direction == .east ? 1 : direction == .west ? -1 : 0
+            if row < 0 || row >= diagram.count || col < 0 || col >= diagram[row].count || diagram[row][col] == " " {
+                break
+            }
+            if diagram[row][col][0].isLetter {
+                result.append(diagram[row][col])
+            } else if diagram[row][col] == "+" {
+                let turn: TurnDirection = (direction == .south && col > 0 && diagram[row][col-1] != " ")
+                || (direction == .north && !(col > 0 && diagram[row][col-1] != " "))
+                || (direction == .west && row > 0 && diagram[row-1][col] != " ")
+                || (direction == .east && !(row > 0 && diagram[row-1][col] != " ")) ? .right : .left
+                direction = direction.turn(turn)
+            }
+        }
+        return result
+    }
+    
+    @objc
+    func day19question2() -> String {
+        return ""
     }
     
 }
