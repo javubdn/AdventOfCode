@@ -990,7 +990,10 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day20question2() -> String {
-        return ""
+        let input = readCSV("InputYear2017Day20").components(separatedBy: "\n").map { getParticle($0) }
+        let particles = getParticlesAfter(input, after: 50)
+        let result = particles.count
+        return String(result)
     }
     
     struct Particle {
@@ -1005,7 +1008,7 @@ extension Year2017InteractorImpl: YearInteractor {
         for item in items {
             do {
                 var currentValue: [Int] = []
-                let regex = try NSRegularExpression(pattern: #"[0-9]+"#)
+                let regex = try NSRegularExpression(pattern: #"-*[0-9]+"#)
                 regex.enumerateMatches(in: item, range: NSRange(item.startIndex..., in: item)) { result, _, _ in
                     let currentElement = String(item[Range(result!.range, in: item)!])
                     currentValue.append(Int(currentElement)!)
@@ -1033,6 +1036,30 @@ extension Year2017InteractorImpl: YearInteractor {
         return (particle.point.x + particle.speed.x*time + particle.acceleration.x*timesAcceleration,
                 particle.point.y + particle.speed.y*time + particle.acceleration.y*timesAcceleration,
                 particle.point.z + particle.speed.z*time + particle.acceleration.z*timesAcceleration)
+    }
+    
+    private func nonColisionParticles(_ particles: [Particle], in time: Int) -> [Particle] {
+        var newPoints = particles.map { (positionParticle($0, in: time), true) }
+        var uniqueParticles: [Particle] = []
+        for index in 0..<particles.count {
+            let currentPoint = newPoints[index]
+            let numberItems = newPoints.filter { $0.0.0 == currentPoint.0.0 && $0.0.1 == currentPoint.0.1 && $0.0.2 == currentPoint.0.2 }.count
+            if numberItems > 1 {
+                newPoints[index].1 = false
+            }
+        }
+        for index in 0..<particles.count {
+            if newPoints[index].1 { uniqueParticles.append(particles[index]) }
+        }
+        return uniqueParticles
+    }
+    
+    private func getParticlesAfter(_ particles: [Particle], after times: Int) -> [Particle] {
+        var particles = particles
+        for time in 1...times {
+            particles = nonColisionParticles(particles, in: time)
+        }
+        return particles
     }
     
 }
