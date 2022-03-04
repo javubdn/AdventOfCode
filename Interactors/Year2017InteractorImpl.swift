@@ -981,4 +981,54 @@ extension Year2017InteractorImpl: YearInteractor {
         return (letters, steps)
     }
     
+    @objc
+    func day20question1() -> String {
+        let input = readCSV("InputYear2017Day20").components(separatedBy: "\n").map { getParticle($0) }
+        let result = closestParticle(input)
+        return String(result)
+    }
+    
+    @objc
+    func day20question2() -> String {
+        return ""
+    }
+    
+    struct Particle {
+        var point: (x: Int, y: Int, z: Int)
+        var speed: (x: Int, y: Int, z: Int)
+        var acceleration: (x: Int, y: Int, z: Int)
+    }
+    
+    private func getParticle(_ input: String) -> Particle {
+        let items = input.components(separatedBy: ", ")
+        var values: [[Int]] = []
+        for item in items {
+            do {
+                var currentValue: [Int] = []
+                let regex = try NSRegularExpression(pattern: #"[0-9]+"#)
+                regex.enumerateMatches(in: item, range: NSRange(item.startIndex..., in: item)) { result, _, _ in
+                    let currentElement = String(item[Range(result!.range, in: item)!])
+                    currentValue.append(Int(currentElement)!)
+                }
+                values.append(currentValue)
+            } catch _ {
+            }
+        }
+        let point = (x: values[0][0], y: values[0][1], values[0][2])
+        let speed = (x: values[1][0], y: values[1][1], values[1][2])
+        let acceleration = (x: values[2][0], y: values[2][1], values[2][2])
+        return Particle(point: point, speed: speed, acceleration: acceleration)
+    }
+    
+    private func closestParticle(_ particles: [Particle]) -> Int {
+        let times = 1000000
+        let timesAcceleration = (1+times)*times/2
+        let newPoints = particles.map { ( $0.point.x + $0.speed.x*times + $0.acceleration.x*timesAcceleration,
+                                          $0.point.y + $0.speed.y*times + $0.acceleration.y*timesAcceleration,
+                                          $0.point.z + $0.speed.z*times + $0.acceleration.z*timesAcceleration) }
+        let distances = newPoints.map { abs($0.0) + abs($0.1) + abs($0.2) }
+        let bestDistance = distances.min()
+        return distances.firstIndex { $0 == bestDistance }!
+    }
+    
 }
