@@ -1021,14 +1021,18 @@ extension Year2017InteractorImpl: YearInteractor {
     }
     
     private func closestParticle(_ particles: [Particle]) -> Int {
-        let times = 1000000
-        let timesAcceleration = (1+times)*times/2
-        let newPoints = particles.map { ( $0.point.x + $0.speed.x*times + $0.acceleration.x*timesAcceleration,
-                                          $0.point.y + $0.speed.y*times + $0.acceleration.y*timesAcceleration,
-                                          $0.point.z + $0.speed.z*times + $0.acceleration.z*timesAcceleration) }
+        let time = 1000000
+        let newPoints = particles.map { positionParticle($0, in: time) }
         let distances = newPoints.map { abs($0.0) + abs($0.1) + abs($0.2) }
         let bestDistance = distances.min()
         return distances.firstIndex { $0 == bestDistance }!
+    }
+    
+    private func positionParticle(_ particle: Particle, in time: Int) -> (Int, Int, Int) {
+        let timesAcceleration = (1+time)*time/2
+        return (particle.point.x + particle.speed.x*time + particle.acceleration.x*timesAcceleration,
+                particle.point.y + particle.speed.y*time + particle.acceleration.y*timesAcceleration,
+                particle.point.z + particle.speed.z*time + particle.acceleration.z*timesAcceleration)
     }
     
 }
