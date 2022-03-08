@@ -84,3 +84,12 @@ class FractalGrid {
     }
 }
 
+extension FractalGrid: Hashable {
+    
+    func hash(into hasher: inout Hasher) { }
+    
+    static func == (lhs: FractalGrid, rhs: FractalGrid) -> Bool {
+        !lhs.combinations().filter { $0.stringValue() == rhs.stringValue() }.isEmpty
+    }
+    
+}
