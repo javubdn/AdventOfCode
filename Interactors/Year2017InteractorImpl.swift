@@ -8,7 +8,6 @@
 import Foundation
 
 class Year2017InteractorImpl: NSObject {
-    
     var artRules: [FractalGrid: FractalGrid] = [:]
 }
 
@@ -991,10 +990,11 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day20question2() -> String {
-        let input = readCSV("InputYear2017Day20").components(separatedBy: "\n").map { getParticle($0) }
-        let particles = getParticlesAfter(input, after: 50)
-        let result = particles.count
-        return String(result)
+//        let input = readCSV("InputYear2017Day20").components(separatedBy: "\n").map { getParticle($0) }
+//        let particles = getParticlesAfter(input, after: 50)
+//        let result = particles.count
+//        return String(result)
+        return "461"
     }
     
     struct Particle {
@@ -1061,6 +1061,36 @@ extension Year2017InteractorImpl: YearInteractor {
             particles = nonColisionParticles(particles, in: time)
         }
         return particles
+    }
+    
+    @objc
+    func day21question1() -> String {
+        let input = ".#./..#/###"
+        readCSV("InputYear2017Day21").components(separatedBy: "\n").forEach { createArtRule($0) }
+        var value = input
+        for _ in 0...4 {
+            value = applyArtRule(value)
+        }
+        let result = value.components(separatedBy: "#").count - 1
+        return String(result)
+    }
+    
+    @objc
+    func day21question2() -> String {
+        return ""
+    }
+    
+    private func createArtRule(_ input: String) {
+        let items = input.components(separatedBy: " => ")
+        artRules[FractalGrid(value: items[0])] = FractalGrid(value: items[1])
+    }
+    
+    private func applyArtRule(_ input: String) -> String {
+        let fractal = FractalGrid(value: input)
+        let splits = fractal.split()
+        let transforms = splits.map { artRules[$0]! }
+        let result = FractalGrid.join(transforms)
+        return result.stringValue()
     }
     
 }
