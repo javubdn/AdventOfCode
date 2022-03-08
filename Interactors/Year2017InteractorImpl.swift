@@ -9,6 +9,7 @@ import Foundation
 
 class Year2017InteractorImpl: NSObject {
     
+    var artRules: [FractalGrid: FractalGrid] = [:]
 }
 
 extension Year2017InteractorImpl: YearInteractor {
