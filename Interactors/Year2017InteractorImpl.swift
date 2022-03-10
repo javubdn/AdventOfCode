@@ -1113,4 +1113,39 @@ extension Year2017InteractorImpl: YearInteractor {
         return result
     }
     
+    @objc
+    func day22question1() -> String {
+        let input = readCSV("InputYear2017Day22")
+        var grid = createGridComputerCluster(input)
+        var currentIndex = ( 499, 499)
+        var direction = Direction.north
+        var result = 0
+        for _ in 0..<10000 {
+            direction = direction.turn(grid[currentIndex.0][currentIndex.1] ? .right : .left)
+            grid[currentIndex.0][currentIndex.1].toggle()
+            if grid[currentIndex.0][currentIndex.1] { result += 1 }
+            currentIndex.0 += direction == .north ? -1 : direction == .south ? 1 : 0
+            currentIndex.1 += direction == .west ? -1 : direction == .east ? 1 : 0
+        }
+        return String(result)
+    }
+    
+    @objc
+    func day22question2() -> String {
+        return ""
+    }
+    
+    private func createGridComputerCluster(_ input: String) -> [[Bool]] {
+        let items = input.components(separatedBy: .newlines)
+        var grid: [[Bool]] = [[Bool]](repeating: [Bool](repeating: false, count: 1000), count: 1000)
+        let firstRow = (1000 - items.count) / 2
+        let firstColumn = (1000 - items[0].count) / 2
+        for row in 0..<items.count {
+            for column in 0..<items[0].count {
+                grid[firstRow+row][firstColumn+column] = items[row][column] == "#"
+            }
+        }
+        return grid
+    }
+    
 }
