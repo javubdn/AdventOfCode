@@ -9,6 +9,7 @@ import Foundation
 
 class Year2017InteractorImpl: NSObject {
     var artRules: [FractalGrid: FractalGrid] = [:]
+    var squaresByFractal: [FractalGrid: [Int: Int]] = [:]
 }
 
 extension Year2017InteractorImpl: YearInteractor {
@@ -1091,6 +1092,34 @@ extension Year2017InteractorImpl: YearInteractor {
         let transforms = splits.map { artRules[$0]! }
         let result = FractalGrid.join(transforms)
         return result.stringValue()
+    }
+    
+    private func squaresInArt(_ fractal: FractalGrid, steps: Int) -> Int {
+        if let currentStep = squaresByFractal[fractal],
+            let numberSquares = currentStep[steps] {
+            return numberSquares
+        }
+        if steps == 0 { return fractal.stringValue().components(separatedBy: "#").count - 1 }
+        
+        var result = 0
+        let splits = fractal.split()
+        let transforms = splits.map { artRules[$0]! }
+        if fractal.size % 3 == 0 {
+            for transform in transforms {
+                result += squaresInArt(transform, steps: steps-1)
+            }
+        } else {
+            let newFractal = FractalGrid.join(transforms)
+            result = squaresInArt(newFractal, steps: steps-1)
+        }
+        
+        if let _ = squaresByFractal[fractal] {
+            squaresByFractal[fractal]![steps] = result
+        } else {
+            squaresByFractal[fractal] = [steps: result]
+        }
+        
+        return result
     }
     
 }
