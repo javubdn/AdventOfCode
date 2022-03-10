@@ -46,7 +46,7 @@ extension Year2017InteractorImpl: YearInteractor {
     @objc
     func day2question1() -> String {
         let input = readCSV("InputYear2017Day2")
-            .components(separatedBy: "\n")
+            .components(separatedBy: .newlines)
             .map { $0.components(separatedBy: .whitespaces).map { Int($0)! } }
         var result = 0
         for item in input {
@@ -60,7 +60,7 @@ extension Year2017InteractorImpl: YearInteractor {
     @objc
     func day2question2() -> String {
         let input = readCSV("InputYear2017Day2")
-            .components(separatedBy: "\n")
+            .components(separatedBy: .newlines)
             .map { $0.components(separatedBy: .whitespaces).map { Int($0)! } }
         var result = 0
         for item in input {
@@ -135,7 +135,7 @@ extension Year2017InteractorImpl: YearInteractor {
     @objc
     func day4question1() -> String {
         let input = readCSV("InputYear2017Day4")
-            .components(separatedBy: "\n")
+            .components(separatedBy: .newlines)
             .map { $0.components(separatedBy: .whitespaces) }
         let result = validPassPhrases(input, sorted: false)
         return String(result)
@@ -144,7 +144,7 @@ extension Year2017InteractorImpl: YearInteractor {
     @objc
     func day4question2() -> String {
         let input = readCSV("InputYear2017Day4")
-            .components(separatedBy: "\n")
+            .components(separatedBy: .newlines)
             .map { $0.components(separatedBy: .whitespaces) }
         let result = validPassPhrases(input, sorted: true)
         return String(result)
@@ -171,14 +171,14 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day5question1() -> String {
-        let input = readCSV("InputYear2017Day5").components(separatedBy: "\n").map { Int($0)! }
+        let input = readCSV("InputYear2017Day5").components(separatedBy: .newlines).map { Int($0)! }
         let result = jumpsToEscape(input, condition3: false)
         return String(result)
     }
     
     @objc
     func day5question2() -> String {
-        let input = readCSV("InputYear2017Day5").components(separatedBy: "\n").map { Int($0)! }
+        let input = readCSV("InputYear2017Day5").components(separatedBy: .newlines).map { Int($0)! }
         let result = jumpsToEscape(input, condition3: true)
         return String(result)
     }
@@ -237,7 +237,7 @@ extension Year2017InteractorImpl: YearInteractor {
     @objc
     func day7question1() -> String {
         let input = readCSV("InputYear2017Day7")
-            .components(separatedBy: "\n")
+            .components(separatedBy: .newlines)
             .map { $0.components(separatedBy: .whitespaces) }
         let bottomProgram = getBottomProgram(input)
         return bottomProgram.name
@@ -246,7 +246,7 @@ extension Year2017InteractorImpl: YearInteractor {
     @objc
     func day7question2() -> String {
         let input = readCSV("InputYear2017Day7")
-            .components(separatedBy: "\n")
+            .components(separatedBy: .newlines)
             .map { $0.components(separatedBy: .whitespaces) }
         let bottomProgram = getBottomProgram(input)
         return String(balancedWeight(bottomProgram))
@@ -318,7 +318,7 @@ extension Year2017InteractorImpl: YearInteractor {
     @objc
     func day8question1() -> String {
         let input = readCSV("InputYear2017Day8")
-            .components(separatedBy: "\n")
+            .components(separatedBy: .newlines)
             .map { $0.components(separatedBy: .whitespaces) }
             .map { getJumpInstruction($0) }
         var registers: [String: Int] = [:]
@@ -331,7 +331,7 @@ extension Year2017InteractorImpl: YearInteractor {
     @objc
     func day8question2() -> String {
         let input = readCSV("InputYear2017Day8")
-            .components(separatedBy: "\n")
+            .components(separatedBy: .newlines)
             .map { $0.components(separatedBy: .whitespaces) }
             .map { getJumpInstruction($0) }
         var registers: [String: Int] = [:]
@@ -554,7 +554,7 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day12question1() -> String {
-        let input = readCSV("InputYear2017Day12").components(separatedBy: "\n").map { $0.components(separatedBy: .whitespaces) }
+        let input = readCSV("InputYear2017Day12").components(separatedBy: .newlines).map { $0.components(separatedBy: .whitespaces) }
         var total = [0]
         var currentIndex = 0
         while currentIndex < total.count {
@@ -573,7 +573,7 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day12question2() -> String {
-        var input = readCSV("InputYear2017Day12").components(separatedBy: "\n").map { $0.components(separatedBy: .whitespaces) }
+        var input = readCSV("InputYear2017Day12").components(separatedBy: .newlines).map { $0.components(separatedBy: .whitespaces) }
         var numberGroups = 0
         while !input.isEmpty {
             var currentIndex = 0
@@ -599,7 +599,7 @@ extension Year2017InteractorImpl: YearInteractor {
     @objc
     func day13question1() -> String {
 //        let input = readCSV("InputYear2017Day13")
-//            .components(separatedBy: "\n")
+//            .components(separatedBy: .newlines)
 //            .map { $0.components(separatedBy: .whitespaces)
 //                .map { Int($0)! } }
 //        var result = 0
@@ -615,7 +615,7 @@ extension Year2017InteractorImpl: YearInteractor {
     @objc
     func day13question2() -> String {
 //        let input = readCSV("InputYear2017Day13")
-//            .components(separatedBy: "\n")
+//            .components(separatedBy: .newlines)
 //            .map { $0.components(separatedBy: .whitespaces)
 //                .map { Int($0)! } }
 //        var result = 0
@@ -821,7 +821,7 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day18question1() -> String {
-        let input = readCSV("InputYear2017Day18").components(separatedBy: "\n").map { getDuetInstructions($0) }
+        let input = readCSV("InputYear2017Day18").components(separatedBy: .newlines).map { getDuetInstructions($0) }
         var registers: [String: Int] = [:]
         for instruction in input {
             if instruction.register.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) != nil {
@@ -835,7 +835,7 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day18question2() -> String {
-        let input = readCSV("InputYear2017Day18").components(separatedBy: "\n").map { getDuetInstructions($0) }
+        let input = readCSV("InputYear2017Day18").components(separatedBy: .newlines).map { getDuetInstructions($0) }
         let result = executeDuetInstructions2Processes(input)
         return String(result)
     }
@@ -954,7 +954,7 @@ extension Year2017InteractorImpl: YearInteractor {
     }
     
     private func followRoutingPath(_ input: String) -> (String, Int) {
-        var diagram = input.components(separatedBy: "\n").map { Array($0).map { String($0) } }
+        var diagram = input.components(separatedBy: .newlines).map { Array($0).map { String($0) } }
         let width = diagram.max { $0.count < $1.count }!.count
         diagram = diagram.map { $0 + [String](repeating: " ", count: width - $0.count)}
         var letters = ""
@@ -984,14 +984,14 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day20question1() -> String {
-        let input = readCSV("InputYear2017Day20").components(separatedBy: "\n").map { getParticle($0) }
+        let input = readCSV("InputYear2017Day20").components(separatedBy: .newlines).map { getParticle($0) }
         let result = closestParticle(input)
         return String(result)
     }
     
     @objc
     func day20question2() -> String {
-//        let input = readCSV("InputYear2017Day20").components(separatedBy: "\n").map { getParticle($0) }
+//        let input = readCSV("InputYear2017Day20").components(separatedBy: .newlines).map { getParticle($0) }
 //        let particles = getParticlesAfter(input, after: 50)
 //        let result = particles.count
 //        return String(result)
@@ -1067,7 +1067,7 @@ extension Year2017InteractorImpl: YearInteractor {
     @objc
     func day21question1() -> String {
         let input = ".#./..#/###"
-        readCSV("InputYear2017Day21").components(separatedBy: "\n").forEach { createArtRule($0) }
+        readCSV("InputYear2017Day21").components(separatedBy: .newlines).forEach { createArtRule($0) }
         let result = squaresInArt(FractalGrid(value: input), steps: 5)
         return String(result)
     }
@@ -1075,7 +1075,7 @@ extension Year2017InteractorImpl: YearInteractor {
     @objc
     func day21question2() -> String {
         let input = ".#./..#/###"
-        readCSV("InputYear2017Day21").components(separatedBy: "\n").forEach { createArtRule($0) }
+        readCSV("InputYear2017Day21").components(separatedBy: .newlines).forEach { createArtRule($0) }
         let result = squaresInArt(FractalGrid(value: input), steps: 18)
         return String(result)
     }
