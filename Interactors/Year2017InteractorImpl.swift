@@ -1068,11 +1068,7 @@ extension Year2017InteractorImpl: YearInteractor {
     func day21question1() -> String {
         let input = ".#./..#/###"
         readCSV("InputYear2017Day21").components(separatedBy: "\n").forEach { createArtRule($0) }
-        var value = input
-        for _ in 0...4 {
-            value = applyArtRule(value)
-        }
-        let result = value.components(separatedBy: "#").count - 1
+        let result = squaresInArt(FractalGrid(value: input), steps: 5)
         return String(result)
     }
     
