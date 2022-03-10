@@ -1085,14 +1085,6 @@ extension Year2017InteractorImpl: YearInteractor {
         artRules[FractalGrid(value: items[0])] = FractalGrid(value: items[1])
     }
     
-    private func applyArtRule(_ input: String) -> String {
-        let fractal = FractalGrid(value: input)
-        let splits = fractal.split()
-        let transforms = splits.map { artRules[$0]! }
-        let result = FractalGrid.join(transforms)
-        return result.stringValue()
-    }
-    
     private func squaresInArt(_ fractal: FractalGrid, steps: Int) -> Int {
         if let currentStep = squaresByFractal[fractal],
             let numberSquares = currentStep[steps] {
