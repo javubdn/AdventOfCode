@@ -8,6 +8,8 @@
 enum TurnDirection {
     case left
     case right
+    case reverse
+    case same
 }
 
 enum Direction {
@@ -36,10 +38,10 @@ enum Direction {
     
     func turn(_ turn: TurnDirection) -> Direction {
         switch self {
-        case .north: return turn == .left ? .west : .east
-        case .south: return turn == .left ? .east : .west
-        case .west: return turn == .left ? .south : .north
-        case .east: return turn == .left ? .north : .south
+        case .north: return turn == .left ? .west : turn == .right ? .east : turn == .reverse ? .south : .north
+        case .south: return turn == .left ? .east : turn == .right ? .west : turn == .reverse ? .north : .south
+        case .west: return turn == .left ? .south : turn == .right ? .north : turn == .reverse ? .east : .west
+        case .east: return turn == .left ? .north : turn == .right ? .south : turn == .reverse ? .west : .east
         }
     }
     
