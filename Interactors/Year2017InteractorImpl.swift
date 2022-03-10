@@ -1117,7 +1117,7 @@ extension Year2017InteractorImpl: YearInteractor {
     func day22question1() -> String {
         let input = readCSV("InputYear2017Day22")
         var grid = createGridComputerCluster(input)
-        var currentIndex = ( 499, 499)
+        var currentIndex = (499, 499)
         var direction = Direction.north
         var result = 0
         for _ in 0..<10000 {
@@ -1132,7 +1132,21 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day22question2() -> String {
-        return ""
+        let input = readCSV("InputYear2017Day22")
+        var grid = createGridComputerClusterEvolved(input)
+        var currentIndex = (499, 499)
+        var direction = Direction.north
+        var result = 0
+        for _ in 0..<10000000 {
+            direction = direction.turn(grid[currentIndex.0][currentIndex.1] == 0 ? .left :
+                                        grid[currentIndex.0][currentIndex.1] == 1 ? .same :
+                                        grid[currentIndex.0][currentIndex.1] == 2 ? .right : .reverse)
+            grid[currentIndex.0][currentIndex.1] = (grid[currentIndex.0][currentIndex.1] + 1) % 4
+            if grid[currentIndex.0][currentIndex.1] == 2 { result += 1 }
+            currentIndex.0 += direction == .north ? -1 : direction == .south ? 1 : 0
+            currentIndex.1 += direction == .west ? -1 : direction == .east ? 1 : 0
+        }
+        return String(result)
     }
     
     private func createGridComputerCluster(_ input: String) -> [[Bool]] {
@@ -1143,6 +1157,19 @@ extension Year2017InteractorImpl: YearInteractor {
         for row in 0..<items.count {
             for column in 0..<items[0].count {
                 grid[firstRow+row][firstColumn+column] = items[row][column] == "#"
+            }
+        }
+        return grid
+    }
+    
+    private func createGridComputerClusterEvolved(_ input: String) -> [[Int]] {
+        let items = input.components(separatedBy: .newlines)
+        var grid: [[Int]] = [[Int]](repeating: [Int](repeating: 0, count: 1000), count: 1000)
+        let firstRow = (1000 - items.count) / 2
+        let firstColumn = (1000 - items[0].count) / 2
+        for row in 0..<items.count {
+            for column in 0..<items[0].count {
+                grid[firstRow+row][firstColumn+column] = items[row][column] == "#" ? 2 : 0
             }
         }
         return grid
