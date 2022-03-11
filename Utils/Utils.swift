@@ -146,4 +146,11 @@ class Utils {
     static func manhattanDistance(_ point1: (Int, Int), _ point2: (Int, Int)) -> Int {
         abs(point2.0 - point1.0) + abs(point2.1 - point1.1)
     }
+    
+    static func isPrime(_ n: Int) -> Bool {
+        guard n > 1 else { return false }
+        guard n > 2 else { return true  }
+        guard n % 2 != 0 else { return false }
+        return !stride(from: 3, through: Int(sqrt(Double(n))), by: 2).contains { n % $0 == 0 }
+    }
 }
