@@ -1208,4 +1208,45 @@ extension Year2017InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day24question1() -> String {
+//        let input = readCSV("InputYear2017Day24").components(separatedBy: .newlines).map { getBridgeComponent($0) }
+//        let result = bestBridge(input, lastValue: 0, byLong: false)
+//        return String(result.0)
+        "1656"
+    }
+    
+    
+    struct BridgeComponent {
+        let port1: Int
+        let port2: Int
+    }
+    
+    private func getBridgeComponent(_ input: String) -> BridgeComponent {
+        let items = input.components(separatedBy: "/")
+        return BridgeComponent(port1: Int(items[0])!, port2: Int(items[1])!)
+    }
+    
+    private func bestBridge(_ input: [BridgeComponent], lastValue: Int, byLong: Bool) -> (Int, Int) {
+        let pieces = input.filter { $0.port1 == lastValue || $0.port2 == lastValue }
+        var bestValue = (0, 0)
+        for piece in pieces {
+            var newInput = input
+            newInput.removeAll { $0.port1 == piece.port1 && $0.port2 == piece.port2 }
+            let newLastValue = lastValue == piece.port1 ? piece.port2 : piece.port1
+            let newBestBridge = bestBridge(newInput, lastValue: newLastValue, byLong: byLong)
+            let newStrongBridge = newBestBridge.0 + piece.port1 + piece.port2
+            let newLongBridge = newBestBridge.1 + 1
+            let strongerBridge = newStrongBridge > bestValue.0
+            let bestPath = byLong ? (newLongBridge > bestValue.1
+                                     || (newLongBridge == bestValue.1
+                                         && strongerBridge)) : strongerBridge
+            if bestPath {
+                bestValue = (newStrongBridge, newLongBridge)
+            }
+            
+        }
+        return bestValue
+    }
+    
 }
