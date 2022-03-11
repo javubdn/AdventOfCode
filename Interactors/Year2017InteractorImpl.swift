@@ -1198,4 +1198,14 @@ extension Year2017InteractorImpl: YearInteractor {
         return String(result.2)
     }
     
+    @objc
+    func day23question2() -> String {
+        // El código lo que hace es mirar la cantidad de números NO primos que hay entre el primer y segundo números
+        var result = 0
+        for value in Array(stride(from: 106500, to: 123501, by: 17)) {
+            result += Utils.isPrime(value) ? 0 : 1
+        }
+        return String(result)
+    }
+    
 }
