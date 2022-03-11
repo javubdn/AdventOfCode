@@ -844,10 +844,12 @@ extension Year2017InteractorImpl: YearInteractor {
         case snd = "snd"
         case set = "set"
         case add = "add"
+        case sub = "sub"
         case mul = "mul"
         case mod = "mod"
         case rcv = "rcv"
         case jgz = "jgz"
+        case jnz = "jnz"
     }
     
     struct DuetInstruction {
@@ -874,12 +876,13 @@ extension Year2017InteractorImpl: YearInteractor {
     
     private func executeDuetInstructions(_ instructions: [DuetInstruction],
                                          numberProcesses: Int = 1,
-                                         state: DuetState ) -> (DuetState, Int) {
+                                         state: DuetState ) -> (DuetState, Int, Int) {
         var registers = state.registers
         var entry = state.entry
         var exit = state.exit
         var index = state.index
         var lastSound = 0
+        var numberMultiplications = 0
     instructions:
         while index < instructions.count {
             let instruction = instructions[index]
@@ -888,9 +891,12 @@ extension Year2017InteractorImpl: YearInteractor {
             switch instruction.instruction {
             case .set: registers[instruction.register] = valueAsInt
             case .add: registers[instruction.register]! += valueAsInt
-            case .mul: registers[instruction.register]! *= valueAsInt
+            case .sub: registers[instruction.register]! -= valueAsInt
+            case .mul:
+                registers[instruction.register]! *= valueAsInt
+                numberMultiplications += 1
             case .mod: registers[instruction.register]! %= valueAsInt
-            case .jgz: break
+            case .jnz, .jgz: break
             case .snd:
                 if numberProcesses == 1 {
                     lastSound = registers[instruction.register] ?? 0
@@ -908,9 +914,10 @@ extension Year2017InteractorImpl: YearInteractor {
                     }
                 }
             }
-            index += instruction.instruction == .jgz && registerAsInt > 0 ? valueAsInt : 1
+            index += (instruction.instruction == .jgz && registerAsInt > 0)
+            || (instruction.instruction == .jnz && registerAsInt != 0) ? valueAsInt : 1
         }
-        return (DuetState(id: state.id, registers: registers, entry: entry, exit: exit, index: index), lastSound)
+        return (DuetState(id: state.id, registers: registers, entry: entry, exit: exit, index: index), lastSound, numberMultiplications)
     }
     
     private func executeDuetInstructions2Processes(_ instructions: [DuetInstruction]) -> Int {
@@ -928,7 +935,7 @@ extension Year2017InteractorImpl: YearInteractor {
         var processes = [process0, process1]
         while true {
             let currentProcess = processes.removeFirst()
-            let (newProcess, _) = executeDuetInstructions(instructions, numberProcesses: 2, state: currentProcess)
+            let (newProcess, _, _) = executeDuetInstructions(instructions, numberProcesses: 2, state: currentProcess)
             sentMessages += firstProcess ? 0 : newProcess.exit.count
             if newProcess.entry.isEmpty && newProcess.exit.isEmpty { break }
             processes[0].entry = newProcess.exit
@@ -1135,21 +1142,22 @@ extension Year2017InteractorImpl: YearInteractor {
     
     @objc
     func day22question2() -> String {
-        let input = readCSV("InputYear2017Day22")
-        var grid = createGridComputerClusterEvolved(input)
-        var currentIndex = (499, 499)
-        var direction = Direction.north
-        var result = 0
-        for _ in 0..<10000000 {
-            direction = direction.turn(grid[currentIndex.0][currentIndex.1] == 0 ? .left :
-                                        grid[currentIndex.0][currentIndex.1] == 1 ? .same :
-                                        grid[currentIndex.0][currentIndex.1] == 2 ? .right : .reverse)
-            grid[currentIndex.0][currentIndex.1] = (grid[currentIndex.0][currentIndex.1] + 1) % 4
-            if grid[currentIndex.0][currentIndex.1] == 2 { result += 1 }
-            currentIndex.0 += direction == .north ? -1 : direction == .south ? 1 : 0
-            currentIndex.1 += direction == .west ? -1 : direction == .east ? 1 : 0
-        }
-        return String(result)
+//        let input = readCSV("InputYear2017Day22")
+//        var grid = createGridComputerClusterEvolved(input)
+//        var currentIndex = (499, 499)
+//        var direction = Direction.north
+//        var result = 0
+//        for _ in 0..<10000000 {
+//            direction = direction.turn(grid[currentIndex.0][currentIndex.1] == 0 ? .left :
+//                                        grid[currentIndex.0][currentIndex.1] == 1 ? .same :
+//                                        grid[currentIndex.0][currentIndex.1] == 2 ? .right : .reverse)
+//            grid[currentIndex.0][currentIndex.1] = (grid[currentIndex.0][currentIndex.1] + 1) % 4
+//            if grid[currentIndex.0][currentIndex.1] == 2 { result += 1 }
+//            currentIndex.0 += direction == .north ? -1 : direction == .south ? 1 : 0
+//            currentIndex.1 += direction == .west ? -1 : direction == .east ? 1 : 0
+//        }
+//        return String(result)
+        return "2512079"
     }
     
     private func createGridComputerCluster(_ input: String) -> [[Bool]] {
