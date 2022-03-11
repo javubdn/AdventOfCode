@@ -1186,4 +1186,16 @@ extension Year2017InteractorImpl: YearInteractor {
         return grid
     }
     
+    @objc
+    func day23question1() -> String {
+        let input = readCSV("InputYear2017Day23").components(separatedBy: .newlines).map { getDuetInstructions($0) }
+        var registers: [String: Int] = [:]
+        for item in "abcdefgh" {
+            registers[String(item)] = 0
+        }
+        let state = DuetState(id: 0, registers: registers, entry: [], exit: [], index: 0)
+        let result = executeDuetInstructions(input, state: state)
+        return String(result.2)
+    }
+    
 }
