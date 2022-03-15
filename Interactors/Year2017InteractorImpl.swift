@@ -1256,4 +1256,36 @@ extension Year2017InteractorImpl: YearInteractor {
         return bestValue
     }
     
+    @objc
+    func day25question1() -> String {
+        let steps = 12794428
+        let states = createStates()
+        var tape = [Int](repeating: 0, count: 1000000)
+        var index = 500000
+        var currentState = "A"
+        for _ in 0..<steps {
+            let state = states[currentState]!
+            let value = state[tape[index]]!
+            tape[index] = value.0
+            index += value.1 == .west ? -1 : 1
+            currentState = value.2
+        }
+        let result = tape.reduce(0, +)
+        return String(result)
+    }
+    
+    @objc
+    func day25question2() -> String {
+        ""
+    }
+        
+    private func createStates() -> [String: [Int : (Int, Direction, String)]] {
+        ["A": [0: (1, .east, "B"), 1: (0, .west, "F")],
+         "B": [0: (0, .east, "C"), 1: (0, .east, "D")],
+         "C": [0: (1, .west, "D"), 1: (1, .east, "E")],
+         "D": [0: (0, .west, "E"), 1: (0, .west, "D")],
+         "E": [0: (0, .east, "A"), 1: (1, .east, "C")],
+         "F": [0: (1, .west, "A"), 1: (1, .east, "A")]]
+    }
+    
 }
