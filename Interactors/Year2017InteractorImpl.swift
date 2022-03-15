@@ -1216,6 +1216,13 @@ extension Year2017InteractorImpl: YearInteractor {
         "1656"
     }
     
+    @objc
+    func day24question2() -> String {
+//        let input = readCSV("InputYear2017Day24").components(separatedBy: .newlines).map { getBridgeComponent($0) }
+//        let result = bestBridge(input, lastValue: 0, byLong: true)
+//        return String(result.0)
+        "1642"
+    }
     
     struct BridgeComponent {
         let port1: Int
