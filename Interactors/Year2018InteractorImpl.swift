@@ -19,4 +19,19 @@ extension Year2018InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day1question2() -> String {
+        let input = readCSV("InputYear2018Day1").components(separatedBy: .newlines).map { Int($0)! }
+        var repeated: Set<Int> = [0]
+        var sum = 0
+        var index = 0
+        while true {
+            sum += input[index]
+            if repeated.contains(sum) { break }
+            repeated.insert(sum)
+            index = (index + 1) % input.count
+        }
+        return String(sum)
+    }
+    
 }
