@@ -11,6 +11,7 @@ enum Year {
     case fifteen
     case sixteen
     case seventeen
+    case eighteen
     case twentyOne
     case twenty
     
@@ -22,6 +23,8 @@ enum Year {
             return 2016
         case .seventeen:
             return 2017
+        case .eighteen:
+            return 2018
         case .twenty:
             return 2020
         case .twentyOne:
