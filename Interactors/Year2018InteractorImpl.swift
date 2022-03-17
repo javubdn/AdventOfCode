@@ -85,6 +85,20 @@ extension Year2018InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day3question2() -> String {
+        let input = readCSV("InputYear2018Day3").components(separatedBy: .newlines).map { createClaim($0) }
+        var result = 0
+        for claim in input {
+            let collisions = input.filter { $0.id != claim.id && (claimsCollision($0, claim)) }.count
+            if collisions == 0 {
+                result = claim.id
+                break
+            }
+        }
+        return String(result)
+    }
+    
     struct Claim {
         let id: Int
         let position: (x: Int, y: Int)
@@ -111,6 +125,14 @@ extension Year2018InteractorImpl: YearInteractor {
             }
         }
         return fabric
+    }
+    
+    private func claimsCollision(_ claim1: Claim, _ claim2: Claim) -> Bool {
+        let center1 = (claim1.position.x + claim1.size.w/2, claim1.position.y + claim1.size.h/2)
+        let center2 = (claim2.position.x + claim2.size.w/2, claim2.position.y + claim2.size.h/2)
+        let absX = abs(center1.0 - center2.0)
+        let absY = abs(center1.1 - center2.1)
+        return (claim1.size.w/2 + claim2.size.w/2) >= absX && (claim1.size.h/2 + claim2.size.h/2) >= absY
     }
     
 }
