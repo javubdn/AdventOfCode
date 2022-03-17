@@ -135,4 +135,29 @@ extension Year2018InteractorImpl: YearInteractor {
         return (claim1.size.w/2 + claim2.size.w/2) >= absX && (claim1.size.h/2 + claim2.size.h/2) >= absY
     }
     
+    enum DutyEventType {
+        case shift
+        case sleep
+        case wakeUp
+    }
+    
+    struct DutyEvent {
+        let date: DutyDate
+        let type: DutyEventType
+        let id: Int
+    }
+    
+    private func getDutyEvent(_ input: String) -> DutyEvent {
+        var date: DutyDate? = nil
+        let regex = try! NSRegularExpression(pattern: #"\[(.*)\]"#)
+        regex.enumerateMatches(in: input, range: NSRange(input.startIndex..., in: input)) { result, _, _ in
+            let currentElement = String(input[Range(result!.range, in: input)!])
+            date = DutyDate(currentElement)
+        }
+        let items = input.components(separatedBy: .whitespaces)
+        let type: DutyEventType = items[2] == "Guard" ? .shift : items[2] == "wakes" ? .wakeUp : .sleep
+        let id = type == .shift ? Int(items[3].replacingOccurrences(of: "#", with: ""))! : 0
+        return DutyEvent(date: date!, type: type, id: id)
+    }
+    
 }
