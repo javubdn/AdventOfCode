@@ -47,4 +47,34 @@ extension Year2018InteractorImpl: YearInteractor {
         return String(counts2 * counts3)
     }
     
+    @objc
+    func day2question2() -> String {
+        let input = readCSV("InputYear2018Day2").components(separatedBy: .newlines)
+        for item in input {
+            if let item2 = input.first(where: { $0 != item && differentStringBy1($0, item) }) {
+                let result = commonString(item, item2)
+                print(result)
+                return result
+            }
+        }
+        return ""
+    }
+    
+    private func differentStringBy1(_ value1: String, _ value2: String) -> Bool {
+        var differences = 0
+        for index in 0..<value1.count {
+            if value1[index] != value2[index] { differences += 1 }
+            if differences > 1 { return false }
+        }
+        return true
+    }
+    
+    private func commonString(_ value1: String, _ value2: String) -> String {
+        var common = ""
+        for index in 0..<value1.count {
+            if value1[index] == value2[index] { common.append(value1[index]) }
+        }
+        return common
+    }
+    
 }
