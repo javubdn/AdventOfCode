@@ -77,4 +77,40 @@ extension Year2018InteractorImpl: YearInteractor {
         return common
     }
     
+    @objc
+    func day3question1() -> String {
+        let input = readCSV("InputYear2018Day3").components(separatedBy: .newlines).map { createClaim($0) }
+        let fabric = getFabricWithClaims(input)
+        let result = fabric.map { $0.filter { $0 > 1 }.count }.reduce(0, +)
+        return String(result)
+    }
+    
+    struct Claim {
+        let id: Int
+        let position: (x: Int, y: Int)
+        let size: (w: Int, h: Int)
+    }
+    
+    private func createClaim(_ input: String) -> Claim {
+        let items = input.components(separatedBy: .whitespaces)
+        let id = Int(items[0].replacingOccurrences(of: "#", with: ""))!
+        let position = items[2].replacingOccurrences(of: ":", with: "").components(separatedBy: ",")
+        let size = items[3].components(separatedBy: "x")
+        return Claim(id: id,
+                     position: (x: Int(position[0])!, y: Int(position[1])!),
+                     size: (w: Int(size[0])!, h: Int(size[1])!))
+    }
+    
+    private func getFabricWithClaims(_ claims: [Claim]) -> [[Int]] {
+        var fabric = [[Int]](repeating: [Int](repeating: 0, count: 1000), count: 1000)
+        for claim in claims {
+            for row in 0..<claim.size.h {
+                for col in 0..<claim.size.w {
+                    fabric[claim.position.y + row][claim.position.x + col] += 1
+                }
+            }
+        }
+        return fabric
+    }
+    
 }
