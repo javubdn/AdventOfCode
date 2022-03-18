@@ -135,6 +135,13 @@ extension Year2018InteractorImpl: YearInteractor {
         return (claim1.size.w/2 + claim2.size.w/2) >= absX && (claim1.size.h/2 + claim2.size.h/2) >= absY
     }
     
+    @objc
+    func day4question1() -> String {
+        let input = readCSV("InputYear2018Day4").components(separatedBy: .newlines).map { getDutyEvent($0) }
+        let result = mostAsleepGuard(input)
+        return String(result)
+    }
+    
     enum DutyEventType {
         case shift
         case sleep
@@ -182,6 +189,39 @@ extension Year2018InteractorImpl: YearInteractor {
             }
         }
         return sleepTimes
+    }
+    
+    private func mostAsleepGuard(_ events: [DutyEvent]) -> Int {
+        let sleepTimes = executeDutyEvents(events)
+        let mostSleep = sleepTimes.max { item1, item2 in
+            let minutesItem1 = item1.value.reduce(into: 0) { partialResult, value in
+                partialResult += value.0.minutesTo(value.1)
+            }
+            let minutesItem2 = item2.value.reduce(into: 0) { partialResult, value in
+                partialResult += value.0.minutesTo(value.1)
+            }
+            return minutesItem1 < minutesItem2
+        }
+        let minTime = mostSleep?.value.min(by: { date1, date2 in
+            (date1.0.hour < date2.0.hour) || (date1.0.hour == date2.0.hour && date1.0.minute < date2.0.minute)
+        })?.0
+        let maxTime = mostSleep?.value.max(by: { date1, date2 in
+            (date1.1.hour < date2.1.hour) || (date1.1.hour == date2.1.hour && date1.1.minute < date2.1.minute)
+        })?.1
+        var time = minTime!
+        var bestTime = -1
+        var bestOcurrences = 0
+        while (time.hour < maxTime!.hour) || (time.hour == maxTime!.hour && time.minute <= maxTime!.minute) {
+            let ocurrences = mostSleep!.value.filter {
+                ($0.0.hour < time.hour || ($0.0.hour == time.hour && $0.0.minute <= time.minute)) && ($0.1.hour > time.hour || ($0.1.hour == time.hour && $0.1.minute >= time.minute))
+            }.count
+            if ocurrences > bestOcurrences {
+                bestOcurrences = ocurrences
+                bestTime = time.minute
+            }
+            time = time.addMinute()
+        }
+        return mostSleep!.key * bestTime
     }
     
 }
