@@ -160,4 +160,28 @@ extension Year2018InteractorImpl: YearInteractor {
         return DutyEvent(date: date!, type: type, id: id)
     }
     
+    private func executeDutyEvents(_ events: [DutyEvent]) -> [Int: [(DutyDate, DutyDate)]] {
+        let events = events.sorted { event1, event2 in
+            event1.date < event2.date
+        }
+        var currentGuard = 0
+        var initDateSleep: DutyDate? = nil
+        var sleepTimes: [Int: [(DutyDate, DutyDate)]] = [:]
+        for event in events {
+            switch event.type {
+            case .shift:
+                currentGuard = event.id
+                if sleepTimes[currentGuard] == nil {
+                    sleepTimes[currentGuard] = []
+                }
+            case .sleep: initDateSleep = event.date
+            case .wakeUp:
+                var sleeps = sleepTimes[currentGuard]!
+                sleeps.append((initDateSleep!, event.date))
+                sleepTimes[currentGuard] = sleeps
+            }
+        }
+        return sleepTimes
+    }
+    
 }
