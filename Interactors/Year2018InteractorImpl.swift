@@ -142,6 +142,13 @@ extension Year2018InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day4question2() -> String {
+        let input = readCSV("InputYear2018Day4").components(separatedBy: .newlines).map { getDutyEvent($0) }
+        let result = mostMinuteAsleepGuard(input)
+        return String(result)
+    }
+    
     enum DutyEventType {
         case shift
         case sleep
@@ -222,6 +229,39 @@ extension Year2018InteractorImpl: YearInteractor {
             time = time.addMinute()
         }
         return mostSleep!.key * bestTime
+    }
+    
+    private func mostMinuteAsleepGuard(_ events: [DutyEvent]) -> Int {
+        let sleepTimes = executeDutyEvents(events)
+        
+        let mostFrequentTimes = sleepTimes.map { guardian -> (Int, Int, Int) in
+            guard guardian.value.count > 0 else { return (guardian.key, 0, 0) }
+            guard guardian.value.count > 1 else { return (guardian.key, 1, 0) }
+            let minTime = guardian.value.min(by: { date1, date2 in
+                (date1.0.hour < date2.0.hour) || (date1.0.hour == date2.0.hour && date1.0.minute < date2.0.minute)
+            })?.0
+            let maxTime = guardian.value.max(by: { date1, date2 in
+                (date1.1.hour < date2.1.hour) || (date1.1.hour == date2.1.hour && date1.1.minute < date2.1.minute)
+            })?.1
+            var time = minTime!
+            var bestTime = -1
+            var bestOcurrences = 0
+            while (time.hour < maxTime!.hour) || (time.hour == maxTime!.hour && time.minute <= maxTime!.minute) {
+                let ocurrences = guardian.value.filter {
+                    ($0.0.hour < time.hour || ($0.0.hour == time.hour && $0.0.minute <= time.minute)) && ($0.1.hour > time.hour || ($0.1.hour == time.hour && $0.1.minute >= time.minute))
+                }.count
+                if ocurrences > bestOcurrences {
+                    bestOcurrences = ocurrences
+                    bestTime = time.minute
+                }
+                time = time.addMinute()
+            }
+            return (guardian.key, bestOcurrences, bestTime)
+        }
+        let mostFrequentTime = mostFrequentTimes.max { item1, item2 in
+            item1.1 < item2.1
+        }
+        return mostFrequentTime!.0 * mostFrequentTime!.2
     }
     
 }
