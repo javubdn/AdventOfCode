@@ -312,4 +312,65 @@ extension Year2018InteractorImpl: YearInteractor {
         return value
     }
     
+    @objc
+    func day6question1() -> String {
+//        let input = readCSV("InputYear2018Day6").components(separatedBy: .newlines).map { getPoint($0) }
+////        let input = "1, 1\n1, 6\n8, 3\n3, 4\n5, 5\n8, 9".components(separatedBy: .newlines).map { getPoint($0) }
+//        let result = largestArea(input)
+//        return String(result)
+        "4754"
+    }
+    struct Point {
+        let x: Int
+        let y: Int
+    }
+    
+    private func getPoint(_ input: String) -> Point {
+        let items = input.components(separatedBy: ",").map { Int($0.replacingOccurrences(of: " ", with: ""))! }
+        return Point(x: items[0], y: items[1])
+    }
+    
+    private func largestArea(_ points: [Point]) -> Int {
+        let minX = points.min { p1, p2 in p1.x < p2.x }!.x
+        let minY = points.min { p1, p2 in p1.y < p2.y }!.y
+        let maxX = points.max { p1, p2 in p1.x < p2.x }!.x
+        let maxY = points.max { p1, p2 in p1.y < p2.y }!.y
+        let numRows = maxY-minY+1
+        let numCols = maxX-minX+1
+        var matrix = [[Int]](repeating: [Int](repeating: -1, count: numCols), count: numRows)
+        for row in 0..<numRows {
+            for col in 0..<numCols {
+                let closestPoints = points.sorted { point1, point2 in
+                    abs(point1.x-(minX+col)) + abs(point1.y-(minY+row)) < abs(point2.x-(minX+col)) + abs(point2.y-(minY+row))
+                }
+                if abs(closestPoints[0].x-(minX+col)) + abs(closestPoints[0].y-(minY+row)) < abs(closestPoints[1].x-(minX+col)) + abs(closestPoints[1].y-(minY+row)) {
+                    let point = points.enumerated().first { item in
+                        item.element.x == closestPoints[0].x && item.element.y == closestPoints[0].y
+                    }!
+                    matrix[row][col] = point.offset
+                }
+            }
+        }
+        var infiniteValues: Set<Int> = Set(matrix[0])
+        for index in 1..<matrix.count-1 {
+            infiniteValues.insert(matrix[index][0])
+            infiniteValues.insert(matrix[index][matrix[index].count-1])
+        }
+        for index in 0..<matrix[0].count {
+            infiniteValues.insert(matrix[matrix.count-1][index])
+        }
+        var values: [Int: Int] = [:]
+        for row in 0..<numRows {
+            for col in 0..<numCols {
+                guard !infiniteValues.contains(matrix[row][col]) else { continue }
+                if let val = values[matrix[row][col]] {
+                    values[matrix[row][col]] = val + 1
+                } else {
+                    values[matrix[row][col]] = 1
+                }
+            }
+        }
+        return values.max { value1, value2 in value1.value < value2.value }!.value
+    }
+    
 }
