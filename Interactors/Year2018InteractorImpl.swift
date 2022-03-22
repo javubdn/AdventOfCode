@@ -264,4 +264,38 @@ extension Year2018InteractorImpl: YearInteractor {
         return mostFrequentTime!.0 * mostFrequentTime!.2
     }
     
+    @objc
+    func day5question1() -> String {
+//        let input = readCSV("InputYear2018Day5")
+//        let value = reactPolymer(input)
+//        let result = value.count
+//        return String(result)
+        "10564"
+    }
+    
+    private func reactPolymer(_ polimer: String) -> String {
+        var removeItems: [String] = []
+        for char in "abcdefghijklmnopqrstuvwxyz" {
+            let upper = char.uppercased()
+            removeItems.append(String(char)+upper)
+            removeItems.append(upper+String(char))
+        }
+        var value = polimer
+        var previousValue = value
+        var index = 0
+        while true {
+            value = value.replacingOccurrences(of: removeItems[index], with: "")
+            index += 1
+            if index == removeItems.count {
+                if previousValue == value {
+                    break
+                } else {
+                    previousValue = value
+                    index = 0
+                }
+            }
+        }
+        return value
+    }
+    
 }
