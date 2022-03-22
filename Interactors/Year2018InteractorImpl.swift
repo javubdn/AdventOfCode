@@ -398,4 +398,35 @@ extension Year2018InteractorImpl: YearInteractor {
         return result
     }
     
+    @objc
+    func day7question1() -> String {
+        var dependencies = readCSV("InputYear2018Day7").components(separatedBy: .newlines).map { getDependency($0) }
+        var result = ""
+        while !dependencies.isEmpty {
+            let firstNonDepending = dependencies.filter { dependency1 in
+                !dependencies.contains { dependency2 in
+                    dependency1.origin == dependency2.destiny
+                }
+            }.map { $0.origin }.sorted().first!
+            result += firstNonDepending
+            if dependencies.count == 1 {
+                result += dependencies[0].destiny
+                break
+            } else {
+                dependencies = dependencies.filter { $0.origin != firstNonDepending }
+            }
+        }
+        return result
+    }
+    
+    struct Dependency {
+        let origin: String
+        let destiny: String
+    }
+    
+    private func getDependency(_ input: String) -> Dependency {
+        let items = input.components(separatedBy: .whitespaces)
+        return Dependency(origin: items[1], destiny: items[7])
+    }
+    
 }
