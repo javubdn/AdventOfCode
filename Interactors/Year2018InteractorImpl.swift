@@ -320,6 +320,14 @@ extension Year2018InteractorImpl: YearInteractor {
 //        return String(result)
         "4754"
     }
+    
+    @objc
+    func day6question2() -> String {
+        let input = readCSV("InputYear2018Day6").components(separatedBy: .newlines).map { getPoint($0) }
+        let result = safeArea(input)
+        return String(result)
+    }
+    
     struct Point {
         let x: Int
         let y: Int
@@ -371,6 +379,23 @@ extension Year2018InteractorImpl: YearInteractor {
             }
         }
         return values.max { value1, value2 in value1.value < value2.value }!.value
+    }
+    
+    private func safeArea(_ points: [Point]) -> Int {
+        let minX = points.min { p1, p2 in p1.x < p2.x }!.x
+        let minY = points.min { p1, p2 in p1.y < p2.y }!.y
+        let maxX = points.max { p1, p2 in p1.x < p2.x }!.x
+        let maxY = points.max { p1, p2 in p1.y < p2.y }!.y
+        let numRows = maxY-minY+1
+        let numCols = maxX-minX+1
+        var matrix = [[Int]](repeating: [Int](repeating: 0, count: numCols), count: numRows)
+        for row in 0..<numRows {
+            for col in 0..<numCols {
+                points.forEach { matrix[row][col] += abs($0.x-(minX+col)) + abs($0.y-(minY+row)) }
+            }
+        }
+        let result = matrix.map { $0.filter { $0 < 10000 }.count }.reduce(0, +)
+        return result
     }
     
 }
