@@ -273,6 +273,20 @@ extension Year2018InteractorImpl: YearInteractor {
         "10564"
     }
     
+    @objc
+    func day5question2() -> String {
+//        let input = readCSV("InputYear2018Day5")
+//        var bestReaction = Int.max
+//        for char in "abcdefghijklmnopqrstuvwxyz" {
+//            var polimer = input.replacingOccurrences(of: String(char), with: "")
+//            polimer = polimer.replacingOccurrences(of: char.uppercased(), with: "")
+//            let newPolimer = reactPolymer(polimer)
+//            bestReaction = min(bestReaction, newPolimer.count)
+//        }
+//        return String(bestReaction)
+        "6336"
+    }
+    
     private func reactPolymer(_ polimer: String) -> String {
         var removeItems: [String] = []
         for char in "abcdefghijklmnopqrstuvwxyz" {
