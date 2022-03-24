@@ -479,82 +479,46 @@ extension Year2018InteractorImpl: YearInteractor {
     @objc
     func day8question1() -> String {
         let input = readCSV("InputYear2018Day8").components(separatedBy: .whitespaces).map { Int($0)! }
-        let result = metadataSum(input)
+        let result = metadataSum(input, isMetadataIndex: false)
         return String(result)
     }
     
     @objc
     func day8question2() -> String {
         let input = readCSV("InputYear2018Day8").components(separatedBy: .whitespaces).map { Int($0)! }
-        let result = metadataValue(input)
+        let result = metadataSum(input, isMetadataIndex: true)
         return String(result)
     }
     
-    private func metadataSum(_ input: [Int]) -> Int {
+    private func metadataSum(_ input: [Int], isMetadataIndex: Bool) -> Int {
         var nodes: [Int] = []
         var metadates: [Int] = []
+        var references: [(Int, Int)] = []
         var index = 0
         var result = 0
-        while index < input.count {
-            if input[index] == 0 {
-                for index2 in 0..<input[index+1] {
-                    result += input[index+index2+2]
-                }
-                index += input[index+1]+2
-                while !nodes.isEmpty {
-                    nodes[nodes.count-1] -= 1
-                    if nodes[nodes.count-1] == 0 {
-                        for index2 in 0..<metadates[nodes.count-1] {
-                            result += input[index+index2]
-                        }
-                        index += metadates[nodes.count-1]
-                        nodes = nodes.dropLast()
-                        metadates = metadates.dropLast()
-                    } else {
-                        break
-                    }
-                }
-            } else {
-                nodes.append(input[index])
-                metadates.append(input[index+1])
-                index += 2
-            }
-        }
-        return result
-    }
-    
-    private func metadataValue(_ input: [Int]) -> Int {
-        var references: [(Int, Int)] = []
-        var nodes: [Int] = []
-        var metadates: [Int] = []
-        var index = 0
         var currentParent = -1
         while index < input.count {
             if input[index] == 0 {
-                var metadata = 0
-                for index2 in 0..<input[index+1] {
-                    metadata += input[index+index2+2]
-                }
+                let metadata = input[index+2..<index+2+input[index+1]].reduce(0, +)
+                result += metadata
                 references.append((currentParent, metadata))
                 index += input[index+1]+2
                 while !nodes.isEmpty {
                     nodes[nodes.count-1] -= 1
-                    if nodes[nodes.count-1] == 0 {
-                        for index2 in 0..<metadates[nodes.count-1] {
-                            if currentParent+input[index+index2]+1 <= references.count {
-                                references[currentParent].1 += references[currentParent+input[index+index2]].1
-                            }
+                    guard nodes[nodes.count-1] == 0 else { break }
+                    for index2 in 0..<metadates[nodes.count-1] {
+                        result += input[index+index2]
+                        if currentParent+input[index+index2]+1 <= references.count {
+                            references[currentParent].1 += references[currentParent+input[index+index2]].1
                         }
-                        index += metadates[nodes.count-1]
-                        nodes = nodes.dropLast()
-                        metadates = metadates.dropLast()
-                        while !references.isEmpty && references[references.count-1].0 == currentParent {
-                            references = references.dropLast()
-                        }
-                        currentParent = references[references.count-1].0
-                    } else {
-                        break
                     }
+                    index += metadates[nodes.count-1]
+                    nodes = nodes.dropLast()
+                    metadates = metadates.dropLast()
+                    while !references.isEmpty && references[references.count-1].0 == currentParent {
+                        references = references.dropLast()
+                    }
+                    currentParent = references[references.count-1].0
                 }
             } else {
                 nodes.append(input[index])
@@ -564,7 +528,7 @@ extension Year2018InteractorImpl: YearInteractor {
                 index += 2
             }
         }
-        return references[0].1
+        return isMetadataIndex ? references[0].1 : result
     }
     
 }
