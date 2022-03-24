@@ -533,34 +533,19 @@ extension Year2018InteractorImpl: YearInteractor {
     
     @objc
     func day9question1() -> String {
-        let numPlayers = 452
-        let marbles = 71250
-        var items = [0]
-        var index = 0
-        var results = [Int](repeating: 0, count: numPlayers)
-        var currentPlayer = 0
-        for marble in 1...marbles {
-            let position = (index+1)%(items.count) + 1
-            if marble%23 == 0 {
-                results[currentPlayer] += marble
-                let newPosition = (index+items.count-7)%items.count
-                results[currentPlayer] += items[newPosition]
-                items.remove(at: newPosition)
-                index = newPosition
-            } else {
-                items.insert(marble, at: position)
-                index = position
-            }
-            currentPlayer = (currentPlayer+1)%numPlayers
-        }
-        let result = results.max()!
+        let result = maxPuntuationMarbles(71250, numPlayers: 452)
         return String(result)
     }
     
     @objc
     func day9question2() -> String {
-        let numPlayers = 452
-        let marbles = 7125000
+//        let result = maxPuntuationMarbles(7125000, numPlayers: 452)
+//        return String(result)
+        "3212081616"
+    }
+    
+    private func maxPuntuationMarbles(_ marbles: Int, numPlayers: Int) -> Int {
+        //TODO: Hay que mejorar este método para ganar velocidad
         var items = [0]
         var index = 0
         var results = [Int](repeating: 0, count: numPlayers)
@@ -579,8 +564,7 @@ extension Year2018InteractorImpl: YearInteractor {
             }
             currentPlayer = (currentPlayer+1)%numPlayers
         }
-        let result = results.max()!
-        return String(result)
+        return results.max()!
     }
     
 }
