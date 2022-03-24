@@ -419,6 +419,13 @@ extension Year2018InteractorImpl: YearInteractor {
         return result
     }
     
+    @objc
+    func day7question2() -> String {
+        let dependencies = readCSV("InputYear2018Day7").components(separatedBy: .newlines).map { getDependency($0) }
+        let result = timeExecuteDependencies(dependencies, workers: 5)
+        return String(result)
+    }
+    
     struct Dependency {
         let origin: String
         let destiny: String
@@ -427,6 +434,46 @@ extension Year2018InteractorImpl: YearInteractor {
     private func getDependency(_ input: String) -> Dependency {
         let items = input.components(separatedBy: .whitespaces)
         return Dependency(origin: items[1], destiny: items[7])
+    }
+    
+    private func timeExecuteDependencies(_ dependencies: [Dependency], workers: Int) -> Int {
+        var dependencies = dependencies
+        let alphabetValue = zip("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1...26).reduce(into: [:]) { $0[String($1.0)] = $1.1 }
+        var assignedTasks: [String] = []
+        var tasks: [(String, Int)] = []
+        var time = 0
+        var freeWorkers = workers
+        
+        while !dependencies.isEmpty {
+            let nonDepending = Set(dependencies.filter { dependency1 in
+                !dependencies.contains { dependency2 in
+                    dependency1.origin == dependency2.destiny
+                }
+            }.map { $0.origin }).sorted()
+            
+            for item in nonDepending {
+                if freeWorkers > 0 && !assignedTasks.contains(item) {
+                    freeWorkers -= 1
+                    assignedTasks.append(item)
+                    tasks.append((item, 60 + alphabetValue[item]!))
+                }
+            }
+            
+            tasks = tasks.sorted { $0.1 < $1.1 }
+            let finishedTask = tasks.removeFirst()
+            time += finishedTask.1
+            tasks = tasks.map { ($0.0, $0.1 - finishedTask.1) }
+            freeWorkers += 1
+            
+            if dependencies.count == 1 {
+                time += 60 + alphabetValue[dependencies[0].destiny]!
+                break
+            } else {
+                dependencies = dependencies.filter { $0.origin != finishedTask.0 }
+            }
+        }
+        
+        return time
     }
     
 }
