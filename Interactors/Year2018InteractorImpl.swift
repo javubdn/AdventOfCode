@@ -559,7 +559,28 @@ extension Year2018InteractorImpl: YearInteractor {
     
     @objc
     func day9question2() -> String {
-        return ""
+        let numPlayers = 452
+        let marbles = 7125000
+        var items = [0]
+        var index = 0
+        var results = [Int](repeating: 0, count: numPlayers)
+        var currentPlayer = 0
+        for marble in 1...marbles {
+            let position = (index+1)%(items.count) + 1
+            if marble%23 == 0 {
+                results[currentPlayer] += marble
+                let newPosition = (index+items.count-7)%items.count
+                results[currentPlayer] += items[newPosition]
+                items.remove(at: newPosition)
+                index = newPosition
+            } else {
+                items.insert(marble, at: position)
+                index = position
+            }
+            currentPlayer = (currentPlayer+1)%numPlayers
+        }
+        let result = results.max()!
+        return String(result)
     }
     
 }
