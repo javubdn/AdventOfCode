@@ -476,4 +476,44 @@ extension Year2018InteractorImpl: YearInteractor {
         return time
     }
     
+    @objc
+    func day8question1() -> String {
+        let input = readCSV("InputYear2018Day8").components(separatedBy: .whitespaces).map { Int($0)! }
+        let result = metadataSum(input)
+        return String(result)
+    }
+    
+    private func metadataSum(_ input: [Int]) -> Int {
+        var nodes: [Int] = []
+        var metadates: [Int] = []
+        var index = 0
+        var result = 0
+        while index < input.count {
+            if input[index] == 0 {
+                for index2 in 0..<input[index+1] {
+                    result += input[index+index2+2]
+                }
+                index += input[index+1]+2
+                while !nodes.isEmpty {
+                    nodes[nodes.count-1] -= 1
+                    if nodes[nodes.count-1] == 0 {
+                        for index2 in 0..<metadates[nodes.count-1] {
+                            result += input[index+index2]
+                        }
+                        index += metadates[nodes.count-1]
+                        nodes = nodes.dropLast()
+                        metadates = metadates.dropLast()
+                    } else {
+                        break
+                    }
+                }
+            } else {
+                nodes.append(input[index])
+                metadates.append(input[index+1])
+                index += 2
+            }
+        }
+        return result
+    }
+    
 }
