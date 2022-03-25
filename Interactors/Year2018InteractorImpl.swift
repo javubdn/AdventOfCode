@@ -569,41 +569,14 @@ extension Year2018InteractorImpl: YearInteractor {
     @objc
     func day10question1() -> String {
         let input = readCSV("InputYear2018Day10").components(separatedBy: .newlines).map { getLightPoint($0) }
-        var items = input
-        for count in 0..<15000 {
-            let minX = items.min { $0.position.x < $1.position.x }!.position.x
-            let minY = items.min { $0.position.y < $1.position.y }!.position.y
-            let maxX = items.min { $0.position.x > $1.position.x }!.position.x
-            let maxY = items.min { $0.position.y > $1.position.y }!.position.y
-            if (maxX-minX) <= 65 && (maxY-minY) <= 11 {
-                var screen = [[String]](repeating: [String](repeating: ".", count: 65), count: 11)
-                items.forEach { screen[$0.position.y - minY][$0.position.x - minX] = "#" }
-                let screenShot = screen.map { $0.joined() }
-                print("NUMBER SECONDS -> \(count)")
-                screenShot.forEach { print($0) }
-                break
-            }
-            items = items.map { LightPoint(position: (x: $0.position.x+$0.speed.x, y: $0.position.y+$0.speed.y), speed: $0.speed) }
-        }
-        return "ZAEKAJGC"
+        let (result, _) = createMessage(input)
+        return result
     }
     
     @objc
     func day10question2() -> String {
         let input = readCSV("InputYear2018Day10").components(separatedBy: .newlines).map { getLightPoint($0) }
-        var items = input
-        var result = 0
-        for count in 0..<15000 {
-            let minX = items.min { $0.position.x < $1.position.x }!.position.x
-            let minY = items.min { $0.position.y < $1.position.y }!.position.y
-            let maxX = items.min { $0.position.x > $1.position.x }!.position.x
-            let maxY = items.min { $0.position.y > $1.position.y }!.position.y
-            if (maxX-minX) <= 65 && (maxY-minY) <= 11 {
-                result = count
-                break
-            }
-            items = items.map { LightPoint(position: (x: $0.position.x+$0.speed.x, y: $0.position.y+$0.speed.y), speed: $0.speed) }
-        }
+        let (_, result) = createMessage(input)
         return String(result)
     }
     
@@ -621,6 +594,27 @@ extension Year2018InteractorImpl: YearInteractor {
         let speedX = Int(speeds[0].trimmingCharacters(in: .whitespaces))!
         let speedY = Int(speeds[1].replacingOccurrences(of: ">", with: "").trimmingCharacters(in: .whitespaces))!
         return LightPoint(position: (x: positionX, y: positionY), speed: (x: speedX, y: speedY))
+    }
+    
+    private func createMessage(_ lightPoints: [LightPoint]) -> (String, Int) {
+        var items = lightPoints
+        var result = 0
+        for count in 0..<15000 {
+            let minX = items.min { $0.position.x < $1.position.x }!.position.x
+            let minY = items.min { $0.position.y < $1.position.y }!.position.y
+            let maxX = items.min { $0.position.x > $1.position.x }!.position.x
+            let maxY = items.min { $0.position.y > $1.position.y }!.position.y
+            if (maxX-minX) <= 65 && (maxY-minY) <= 11 {
+                var screen = [[String]](repeating: [String](repeating: ".", count: 65), count: 11)
+                items.forEach { screen[$0.position.y - minY][$0.position.x - minX] = "#" }
+                let screenShot = screen.map { $0.joined() }
+                screenShot.forEach { print($0) }
+                result = count
+                break
+            }
+            items = items.map { LightPoint(position: (x: $0.position.x+$0.speed.x, y: $0.position.y+$0.speed.y), speed: $0.speed) }
+        }
+        return ("ZAEKAJGC", result)
     }
     
 }
