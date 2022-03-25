@@ -545,7 +545,6 @@ extension Year2018InteractorImpl: YearInteractor {
     }
     
     private func maxPuntuationMarbles(_ marbles: Int, numPlayers: Int) -> Int {
-        //TODO: Hay que mejorar este método para ganar velocidad
         var items = [0]
         var index = 0
         var results = [Int](repeating: 0, count: numPlayers)
