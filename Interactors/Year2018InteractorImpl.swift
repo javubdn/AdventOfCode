@@ -596,15 +596,24 @@ extension Year2018InteractorImpl: YearInteractor {
         return LightPoint(position: (x: positionX, y: positionY), speed: (x: speedX, y: speedY))
     }
     
+    private func sizeImageLights(_ items: [LightPoint]) -> (Int, Int, Int, Int) {
+        let minX = items.min { $0.position.x < $1.position.x }!.position.x
+        let minY = items.min { $0.position.y < $1.position.y }!.position.y
+        let maxX = items.min { $0.position.x > $1.position.x }!.position.x
+        let maxY = items.min { $0.position.y > $1.position.y }!.position.y
+        let width = maxX-minX
+        let height = maxY-minY
+        return (width, height, minX, minY)
+    }
+    
     private func createMessage(_ lightPoints: [LightPoint]) -> (String, Int) {
         var items = lightPoints
         var result = 0
-        for count in 0..<15000 {
-            let minX = items.min { $0.position.x < $1.position.x }!.position.x
-            let minY = items.min { $0.position.y < $1.position.y }!.position.y
-            let maxX = items.min { $0.position.x > $1.position.x }!.position.x
-            let maxY = items.min { $0.position.y > $1.position.y }!.position.y
-            if (maxX-minX) <= 65 && (maxY-minY) <= 11 {
+        var count = 0
+        var countSpeed = 64
+        var (currentWidth, currentHeight, minX, minY) = sizeImageLights(items)
+        while count < 15000 {
+            if currentWidth <= 65 && currentHeight <= 11 {
                 var screen = [[String]](repeating: [String](repeating: ".", count: 65), count: 11)
                 items.forEach { screen[$0.position.y - minY][$0.position.x - minX] = "#" }
                 let screenShot = screen.map { $0.joined() }
@@ -612,7 +621,21 @@ extension Year2018InteractorImpl: YearInteractor {
                 result = count
                 break
             }
-            items = items.map { LightPoint(position: (x: $0.position.x+$0.speed.x, y: $0.position.y+$0.speed.y), speed: $0.speed) }
+            while true {
+                let newItems = items.map { LightPoint(position: (x: $0.position.x+$0.speed.x*countSpeed, y: $0.position.y+$0.speed.y*countSpeed), speed: $0.speed) }
+                let (nextWidth, nextHeight, minX2, minY2) = sizeImageLights(newItems)
+                if nextWidth > currentWidth || nextHeight > currentHeight {
+                    countSpeed = 1
+                } else {
+                    items = newItems
+                    count += countSpeed
+                    currentWidth = nextWidth
+                    currentHeight = nextHeight
+                    minX = minX2
+                    minY = minY2
+                    break
+                }
+            }
         }
         return ("ZAEKAJGC", result)
     }
