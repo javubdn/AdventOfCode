@@ -640,4 +640,28 @@ extension Year2018InteractorImpl: YearInteractor {
         return ("ZAEKAJGC", result)
     }
     
+    @objc
+    func day11question1() -> String {
+        let serialNumber = 9995
+        var battery = [[Int]](repeating: [Int](repeating: 0, count: 300), count: 300)
+        let items = Utils.cartesianProduct(lhs: Array(1...300), rhs: Array(1...300))
+        items.forEach { battery[$0.1-1][$0.0-1] = (((($0.0 + 10) * $0.1 + serialNumber)*($0.0 + 10)/100) % 10) - 5 }
+        var minValue = Int.min
+        var minX = 0
+        var minY = 0
+        for row in 0...297 {
+            for col in 0...297 {
+                let sum = battery[row][col] + battery[row][col+1] + battery[row][col+2]
+                + battery[row+1][col] + battery[row+1][col+1] + battery[row+1][col+2]
+                + battery[row+2][col] + battery[row+2][col+1] + battery[row+2][col+2]
+                if sum > minValue {
+                    minValue = sum
+                    minX = col + 1
+                    minY = row + 1
+                }
+            }
+        }
+        return "\(minX),\(minY)"
+    }
+    
 }
