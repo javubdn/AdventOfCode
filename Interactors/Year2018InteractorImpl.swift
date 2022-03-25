@@ -566,4 +566,26 @@ extension Year2018InteractorImpl: YearInteractor {
         return results.max()!
     }
     
+    @objc
+    func day10question1() -> String {
+        let input = readCSV("InputYear2018Day10").components(separatedBy: .newlines).map { getLightPoint($0) }
+        var items = input
+        for count in 0..<15000 {
+            let minX = items.min { $0.position.x < $1.position.x }!.position.x
+            let minY = items.min { $0.position.y < $1.position.y }!.position.y
+            let maxX = items.min { $0.position.x > $1.position.x }!.position.x
+            let maxY = items.min { $0.position.y > $1.position.y }!.position.y
+            if (maxX-minX) <= 65 && (maxY-minY) <= 11 {
+                var screen = [[String]](repeating: [String](repeating: ".", count: 65), count: 11)
+                items.forEach { screen[$0.position.y - minY][$0.position.x - minX] = "#" }
+                let screenShot = screen.map { $0.joined() }
+                print("NUMBER SECONDS -> \(count)")
+                screenShot.forEach { print($0) }
+                break
+            }
+            items = items.map { LightPoint(position: (x: $0.position.x+$0.speed.x, y: $0.position.y+$0.speed.y), speed: $0.speed) }
+        }
+        return "ZAEKAJGC"
+    }
+    
 }
