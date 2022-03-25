@@ -588,4 +588,39 @@ extension Year2018InteractorImpl: YearInteractor {
         return "ZAEKAJGC"
     }
     
+    @objc
+    func day10question2() -> String {
+        let input = readCSV("InputYear2018Day10").components(separatedBy: .newlines).map { getLightPoint($0) }
+        var items = input
+        var result = 0
+        for count in 0..<15000 {
+            let minX = items.min { $0.position.x < $1.position.x }!.position.x
+            let minY = items.min { $0.position.y < $1.position.y }!.position.y
+            let maxX = items.min { $0.position.x > $1.position.x }!.position.x
+            let maxY = items.min { $0.position.y > $1.position.y }!.position.y
+            if (maxX-minX) <= 65 && (maxY-minY) <= 11 {
+                result = count
+                break
+            }
+            items = items.map { LightPoint(position: (x: $0.position.x+$0.speed.x, y: $0.position.y+$0.speed.y), speed: $0.speed) }
+        }
+        return String(result)
+    }
+    
+    struct LightPoint {
+        let position: (x: Int, y: Int)
+        let speed: (x: Int, y: Int)
+    }
+    
+    private func getLightPoint(_ input: String) -> LightPoint {
+        let items = input.components(separatedBy: "<")
+        let positions = items[1].components(separatedBy: ">")[0].components(separatedBy: ",")
+        let speeds = items[2].components(separatedBy: ",")
+        let positionX = Int(positions[0].trimmingCharacters(in: .whitespaces))!
+        let positionY = Int(positions[1].trimmingCharacters(in: .whitespaces))!
+        let speedX = Int(speeds[0].trimmingCharacters(in: .whitespaces))!
+        let speedY = Int(speeds[1].replacingOccurrences(of: ">", with: "").trimmingCharacters(in: .whitespaces))!
+        return LightPoint(position: (x: positionX, y: positionY), speed: (x: speedX, y: speedY))
+    }
+    
 }
