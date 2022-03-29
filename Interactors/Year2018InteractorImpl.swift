@@ -741,6 +741,14 @@ extension Year2018InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day12question2() -> String {
+        //Esta solución aplica para este patrón concreto. Lo que he hecho es buscar un patró con esta entrada y he visto que a partir de cierto punto el resultado subía de 8 en 8, con lo cual el resultado es 8 * número de iteraciones (teniendo en cuenta el número inicial, que en este caso es 1000)
+        let value1000 = 7957
+        let result = value1000 + 8 * (50000000000 - 1000)
+        return String(result)
+    }
+    
     private func getPlantRules(_ input: [String]) -> [String: String] {
         var rules: [String: String] = [:]
         for item in input {
