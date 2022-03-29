@@ -8,6 +8,7 @@
 import Foundation
 
 class Year2018InteractorImpl: NSObject {
+    var batterySums: [String: Int] = [:]
 }
 
 extension Year2018InteractorImpl: YearInteractor {
@@ -662,6 +663,46 @@ extension Year2018InteractorImpl: YearInteractor {
             }
         }
         return "\(minX),\(minY)"
+    }
+    
+    @objc
+    func day11question2() -> String {
+        let serialNumber = 9995
+        var battery = [[Int]](repeating: [Int](repeating: 0, count: 300), count: 300)
+        let items = Utils.cartesianProduct(lhs: Array(1...300), rhs: Array(1...300))
+        items.forEach { battery[$0.1-1][$0.0-1] = (((($0.0 + 10) * $0.1 + serialNumber)*($0.0 + 10)/100) % 10) - 5 }
+        var minValue = Int.min
+        var minX = 0
+        var minY = 0
+        var minSize = 0
+        for row in 0...299 {
+            for col in 0...299 {
+                for size in 0..<min(300-row, 300-col) {
+                    let sum = sumSubMatrix(battery, position: (x: col, y: row), size: size)
+                    if sum > minValue {
+                        minValue = sum
+                        minX = col + 1
+                        minY = row + 1
+                        minSize = size
+                    }
+                }
+            }
+        }
+        return "\(minX),\(minY),\(minSize)"
+    }
+    
+    private func sumSubMatrix(_ battery: [[Int]], position: (x: Int, y: Int), size: Int) -> Int {
+        guard position.y + size <= battery.count && position.x + size <= battery[0].count && size > 0 else { return Int.min }
+        if size == 1 { return battery[position.y][position.x] }
+        if let value = batterySums["\(position.x)-\(position.y)-\(size)"] { return value }
+        var sum = sumSubMatrix(battery, position: (x: position.x+1, y: position.y+1), size: size-1)
+        for index in 1..<size {
+            sum += battery[position.y+index][position.x]
+            sum += battery[position.y][position.x+index]
+        }
+        sum += battery[position.y][position.x]
+        batterySums["\(position.x)-\(position.y)-\(size)"] = sum
+        return sum
     }
     
 }
