@@ -823,4 +823,26 @@ extension Year2018InteractorImpl: YearInteractor {
         }
         return firstCollision ? "\(collisionX),\(collisionY)" : "\(mineCarts[0].position.x),\(mineCarts[0].position.y)"
     }
+    
+    @objc
+    func day14question1() -> String {
+        let input = 147061
+        var items = [3, 7]
+        var index1 = 0
+        var index2 = 1
+        while items.count < input + 10 {
+            let newReceipt = items[index1] + items[index2]
+            if newReceipt > 9 {
+                items.append(1)
+                items.append(newReceipt%10)
+            } else {
+                items.append(newReceipt)
+            }
+            index1 = (index1 + 1 + items[index1]) % items.count
+            index2 = (index2 + 1 + items[index2]) % items.count
+        }
+        let result = items[input...input+9].map { String($0) }.joined()
+        return result
+    }
+    
 }
