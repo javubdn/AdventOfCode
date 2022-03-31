@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreXLSX
 
 class Year2018InteractorImpl: NSObject {
     var batterySums: [String: Int] = [:]
@@ -778,6 +779,24 @@ extension Year2018InteractorImpl: YearInteractor {
             }
         }
         return "\(collisionX),\(collisionY)"
+    }
+    
+    @objc
+    func day13question2() -> String {
+        var (cartsMap, mineCarts) = getMineCarts(getCartsMap(readCSV("InputYear2018Day13")))
+        while mineCarts.count > 1 {
+            mineCarts = mineCarts.sorted { $0.position.y < $1.position.y || ($0.position.y == $1.position.y && $0.position.x < $1.position.x) }
+            for mineCart in mineCarts {
+                mineCart.position.x += mineCart.address == .west ? -1 : mineCart.address == .east ? 1 : 0
+                mineCart.position.y += mineCart.address == .north ? -1 : mineCart.address == .south ? 1 : 0
+                if let collisionMineCart = mineCarts.first(where: { $0.id != mineCart.id && $0.position.x == mineCart.position.x && $0.position.y == mineCart.position.y }) {
+                    mineCarts.removeAll { $0.id == mineCart.id || $0.id == collisionMineCart.id }
+                } else {
+                    mineCart.updateMovement(cartsMap)
+                }
+            }
+        }
+        return "\(mineCarts[0].position.x),\(mineCarts[0].position.y)"
     }
     
     private func getCartsMap(_ input: String) -> [[String]] {
