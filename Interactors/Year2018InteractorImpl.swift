@@ -845,4 +845,28 @@ extension Year2018InteractorImpl: YearInteractor {
         return result
     }
     
+    @objc
+    func day14question2() -> String {
+        let input = "147061"
+        var value = "37"
+        var index1 = 0
+        var index2 = 1
+        while true {
+            let value1 = Int(String(value[index1]))!
+            let value2 = Int(String(value[index2]))!
+            let newReceipt = value1 + value2
+            value += String(newReceipt)
+            index1 = (index1 + 1 + value1) % value.count
+            index2 = (index2 + 1 + value2) % value.count
+            if value.hasSuffix(input) {
+                break
+            }
+            if value.count % 10000 == 0 || value.count % 10000 == 1 {
+                print(value.count)
+            }
+        }
+        let result = value.count - input.count
+        return String(result)
+    }
+    
 }
