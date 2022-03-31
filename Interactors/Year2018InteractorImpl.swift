@@ -761,42 +761,14 @@ extension Year2018InteractorImpl: YearInteractor {
     
     @objc
     func day13question1() -> String {
-        var (cartsMap, mineCarts) = getMineCarts(getCartsMap(readCSV("InputYear2018Day13")))
-        var collisionX = 0
-        var collisionY = 0
-    externalLoop:
-        while true {
-            mineCarts = mineCarts.sorted { $0.position.y < $1.position.y || ($0.position.y == $1.position.y && $0.position.x < $1.position.x) }
-            for mineCart in mineCarts {
-                mineCart.position.x += mineCart.address == .west ? -1 : mineCart.address == .east ? 1 : 0
-                mineCart.position.y += mineCart.address == .north ? -1 : mineCart.address == .south ? 1 : 0
-                if let _ = mineCarts.first(where: { $0.id != mineCart.id && $0.position.x == mineCart.position.x && $0.position.y == mineCart.position.y }) {
-                    collisionX = mineCart.position.x
-                    collisionY = mineCart.position.y
-                    break externalLoop
-                }
-                mineCart.updateMovement(cartsMap)
-            }
-        }
-        return "\(collisionX),\(collisionY)"
+        let (cartsMap, mineCarts) = getMineCarts(getCartsMap(readCSV("InputYear2018Day13")))
+        return executeCarts(mineCarts, cartsMap, true)
     }
     
     @objc
     func day13question2() -> String {
-        var (cartsMap, mineCarts) = getMineCarts(getCartsMap(readCSV("InputYear2018Day13")))
-        while mineCarts.count > 1 {
-            mineCarts = mineCarts.sorted { $0.position.y < $1.position.y || ($0.position.y == $1.position.y && $0.position.x < $1.position.x) }
-            for mineCart in mineCarts {
-                mineCart.position.x += mineCart.address == .west ? -1 : mineCart.address == .east ? 1 : 0
-                mineCart.position.y += mineCart.address == .north ? -1 : mineCart.address == .south ? 1 : 0
-                if let collisionMineCart = mineCarts.first(where: { $0.id != mineCart.id && $0.position.x == mineCart.position.x && $0.position.y == mineCart.position.y }) {
-                    mineCarts.removeAll { $0.id == mineCart.id || $0.id == collisionMineCart.id }
-                } else {
-                    mineCart.updateMovement(cartsMap)
-                }
-            }
-        }
-        return "\(mineCarts[0].position.x),\(mineCarts[0].position.y)"
+        let (cartsMap, mineCarts) = getMineCarts(getCartsMap(readCSV("InputYear2018Day13")))
+        return executeCarts(mineCarts, cartsMap, false)
     }
     
     private func getCartsMap(_ input: String) -> [[String]] {
@@ -827,4 +799,28 @@ extension Year2018InteractorImpl: YearInteractor {
         return (cartsMap, mineCarts)
     }
     
+    private func executeCarts(_ mineCarts: [MineCart], _ cartsMap: [[String]], _ firstCollision: Bool) -> String {
+        var mineCarts = mineCarts
+        var collisionX = 0
+        var collisionY = 0
+    externalLoop:
+        while mineCarts.count > 1 {
+            mineCarts = mineCarts.sorted { $0.position.y < $1.position.y || ($0.position.y == $1.position.y && $0.position.x < $1.position.x) }
+            for mineCart in mineCarts {
+                mineCart.position.x += mineCart.address == .west ? -1 : mineCart.address == .east ? 1 : 0
+                mineCart.position.y += mineCart.address == .north ? -1 : mineCart.address == .south ? 1 : 0
+                if let collisionMineCart = mineCarts.first(where: { $0.id != mineCart.id && $0.position.x == mineCart.position.x && $0.position.y == mineCart.position.y }) {
+                    if firstCollision {
+                        collisionX = mineCart.position.x
+                        collisionY = mineCart.position.y
+                        break externalLoop
+                    }
+                    mineCarts.removeAll { $0.id == mineCart.id || $0.id == collisionMineCart.id }
+                } else {
+                    mineCart.updateMovement(cartsMap)
+                }
+            }
+        }
+        return firstCollision ? "\(collisionX),\(collisionY)" : "\(mineCarts[0].position.x),\(mineCarts[0].position.y)"
+    }
 }
