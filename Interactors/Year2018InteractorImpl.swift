@@ -758,4 +758,54 @@ extension Year2018InteractorImpl: YearInteractor {
         return rules
     }
     
+    @objc
+    func day13question1() -> String {
+        var (cartsMap, mineCarts) = getMineCarts(getCartsMap(readCSV("InputYear2018Day13")))
+        var collisionX = 0
+        var collisionY = 0
+    externalLoop:
+        while true {
+            mineCarts = mineCarts.sorted { $0.position.y < $1.position.y || ($0.position.y == $1.position.y && $0.position.x < $1.position.x) }
+            for mineCart in mineCarts {
+                mineCart.position.x += mineCart.address == .west ? -1 : mineCart.address == .east ? 1 : 0
+                mineCart.position.y += mineCart.address == .north ? -1 : mineCart.address == .south ? 1 : 0
+                if let _ = mineCarts.first(where: { $0.id != mineCart.id && $0.position.x == mineCart.position.x && $0.position.y == mineCart.position.y }) {
+                    collisionX = mineCart.position.x
+                    collisionY = mineCart.position.y
+                    break externalLoop
+                }
+                mineCart.updateMovement(cartsMap)
+            }
+        }
+        return "\(collisionX),\(collisionY)"
+    }
+    
+    private func getCartsMap(_ input: String) -> [[String]] {
+        var cartsMap = input.components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+        let width = cartsMap.max { $0.count < $1.count }!.count
+        cartsMap = cartsMap.map { $0 + [String](repeating: " ", count: width - $0.count)}
+        return cartsMap
+    }
+    
+    private func getMineCarts(_ cartsMap: [[String]]) -> ([[String]], [MineCart]) {
+        var cartsMap = cartsMap
+        var mineCarts: [MineCart] = []
+        var currentId = 1
+        for row in 0..<cartsMap.count {
+            for col in 0..<cartsMap[0].count {
+                let item = cartsMap[row][col]
+                if "<>^v".contains(item) {
+                    let mineCart = MineCart(id: currentId,
+                                            address: item == "<" ? .west : item == ">" ? .east : item == "^" ? .north : .south,
+                                            nextMovement: .left,
+                                            position: (x: col, y: row))
+                    mineCarts.append(mineCart)
+                    currentId += 1
+                    cartsMap[row][col] = mineCart.address == .north || mineCart.address == .south ? "|" : "-"
+                }
+            }
+        }
+        return (cartsMap, mineCarts)
+    }
+    
 }
