@@ -904,8 +904,7 @@ extension Year2018InteractorImpl: YearInteractor {
             }
             rounds += 1
         }
-        let result = value.count - input.count
-        let result = characters.map { $0.health }.reduce(0, +) * (rounds)
+        let result = characters.map { $0.health }.reduce(0, +) * rounds
         return String(result)
     }
     
