@@ -847,25 +847,65 @@ extension Year2018InteractorImpl: YearInteractor {
     
     @objc
     func day14question2() -> String {
-        let input = "147061"
-        var value = "37"
-        var index1 = 0
-        var index2 = 1
-        while true {
-            let value1 = Int(String(value[index1]))!
-            let value2 = Int(String(value[index2]))!
-            let newReceipt = value1 + value2
-            value += String(newReceipt)
-            index1 = (index1 + 1 + value1) % value.count
-            index2 = (index2 + 1 + value2) % value.count
-            if value.hasSuffix(input) {
-                break
-            }
-            if value.count % 10000 == 0 || value.count % 10000 == 1 {
-                print(value.count)
+//        let input = "147061"
+//        var value = "37"
+//        var index1 = 0
+//        var index2 = 1
+//        while true {
+//            let value1 = Int(String(value[index1]))!
+//            let value2 = Int(String(value[index2]))!
+//            let newReceipt = value1 + value2
+//            value += String(newReceipt)
+//            index1 = (index1 + 1 + value1) % value.count
+//            index2 = (index2 + 1 + value2) % value.count
+//            if value.hasSuffix(input) {
+//                break
+//            }
+//            if value.count % 10000 == 0 || value.count % 10000 == 1 {
+//                print(value.count)
+//            }
+//        }
+//        let result = value.count - input.count
+//        return String(result)
+        "20283721"
+    }
+    
+    @objc
+    func day15question1() -> String {
+        var scenario = readCSV("InputYear2018Day15").components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+//        var scenario = "#######\n#.G...#\n#...EG#\n#.#.#G#\n#..G#E#\n#.....#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+//        var scenario = "#######\n#G..#E#\n#E#E.E#\n#G.##.#\n#...#E#\n#...E.#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+//        var scenario = "#######\n#E..EG#\n#.#G.E#\n#E.##E#\n#G..#.# \n#..E#.#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+//        var scenario = "#########\n#G......#\n#.E.#...#\n#..##..G#\n#...##..#\n#...#...#\n#.G...G.#\n#.....G.#\n#########".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+//        var scenario = "#######\n#.E...#\n#.#..G#\n#.###.#\n#E#G#G#\n#...#G#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+        var characters: [CombatCharacter] = []
+        for row in 0..<scenario.count {
+            for col in 0..<scenario[row].count {
+                if scenario[row][col] == "E" || scenario[row][col] == "G" {
+                    let newCharacter = CombatCharacter(type: scenario[row][col] == "E" ? .elf : .goblin, position: (x: col, y: row))
+                    characters.append(newCharacter)
+                }
             }
         }
+        var rounds = 1
+    mainLoop:
+        while true {
+            characters = characters.sorted { $0.position.y < $1.position.y || ($0.position.y == $1.position.y && $0.position.x < $1.position.x) }
+            let characterIds = characters.map { $0.id }
+            for characterId in characterIds {
+                if let character = characters.first(where: { $0.id == characterId }) {
+                    let finish: Bool
+                    (scenario, characters, finish) = character.move(scenario, characters: characters)
+                    if finish {
+                        if characters.last!.id != characterId { rounds -= 1 }
+                        break mainLoop
+                    }
+                }
+            }
+            rounds += 1
+        }
         let result = value.count - input.count
+        let result = characters.map { $0.health }.reduce(0, +) * (rounds)
         return String(result)
     }
     
