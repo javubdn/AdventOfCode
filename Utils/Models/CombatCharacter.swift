@@ -43,89 +43,74 @@ class CombatCharacter {
         if attacked {
             return (scenario, characters, isGameOver(characters))
         }
-        var inRangePositions: [(Int, Int)] = []
+        var inRangePositions: [((Int, Int), Int, (Int, Int))] = []
         enemies.forEach { enemy in
             let x = enemy.position.x
             let y = enemy.position.y
-            if x > 0 && scenario[y][x-1] == "." { inRangePositions.append((x-1, y)) }
-            if y > 0 && scenario[y-1][x] == "." { inRangePositions.append((x, y-1)) }
-            if x < scenario[y].count-1 && scenario[y][x+1] == "." { inRangePositions.append((x+1, y)) }
-            if y < scenario.count-1 && scenario[y+1][x] == "." { inRangePositions.append((x, y+1)) }
+            for (newX, newY) in [(x, y-1), (x-1, y), (x+1, y), (x, y+1)] {
+                if scenario[newY][newX] == "." {
+                    let movementLengthNew = movementLength(self.position, (x: newX, y: newY), scenario)
+                    inRangePositions.append(((newX, newY), movementLengthNew.0, movementLengthNew.1))
+                }
+            }
         }
         inRangePositions = inRangePositions.sorted { position1, position2 in
-            let movementLength1 = movementLength(self.position, position1, scenario)
-            let movementLength2 = movementLength(self.position, position2, scenario)
-            return movementLength1 < movementLength2 || (movementLength1 == movementLength2 && Utils.firstReadingOrder(position1, position2))
+            position1.1 < position2.1 || (position1.1 == position2.1 && Utils.firstReadingOrder(position1.0, position2.0))
         }
-        if let nextPosition = inRangePositions.first, isReachable(nextPosition, scenario) {
-            scenario = moveTo(nextPosition, in: scenario)
+        if let nextPosition = inRangePositions.first, nextPosition.1 != Int.max {
+            scenario[self.position.y][self.position.x] = "."
+            self.position = nextPosition.2
+            scenario[self.position.y][self.position.x] = self.type == .elf ? "E" : "G"
         }
+        
         (_, scenario, characters) = attackClosestEnemy(enemies, characters, scenario)
         
         return (scenario, characters, isGameOver(characters))
     }
     
     private func isReachable(_ position: (x: Int, y: Int), _ scenario: [[String]]) -> Bool {
-        movementLength(self.position, position, scenario) != Int.max
+        movementLength(self.position, position, scenario).0 != Int.max
     }
     
-    private func moveTo(_ position: (x: Int, y: Int), in scenario: [[String]]) -> [[String]] {
-        let x = self.position.x
-        let y = self.position.y
-        var movements: [(Int, Int)] = []
-        for index in [(x-1, y), (x, y-1), (x+1, y), (x, y+1)] {
-            if index.0 >= 0 && index.0 < scenario[0].count
-                && index.1 >= 0 && index.1 < scenario.count
-                && scenario[index.1][index.0] == "." {
-                movements.append((index.0, index.1))
+    private func movementLength(_ positionI: (x: Int, y: Int), _ positionF: (x: Int, y: Int), _ scenario: [[String]]) -> (Int, (Int, Int)) {
+        var movements: [(Int, Int, Int, (Int, Int))] = []
+        var visited = [[Bool]](repeating: [Bool](repeating: false, count: scenario[0].count), count: scenario.count)
+        visited[positionI.y][positionI.x] = true
+        for (nextX, nextY) in [(positionI.x, positionI.y-1), (positionI.x-1, positionI.y), (positionI.x+1, positionI.y), (positionI.x, positionI.y+1)] {
+            if scenario[nextY][nextX] == "." {
+                movements.append((nextX, nextY, 1, (nextX, nextY)))
+                visited[nextY][nextX] = true
             }
         }
-        movements = movements.sorted { movement1, movement2 in
-            let movementLength1 = movementLength(movement1, position, scenario)
-            let movementLength2 = movementLength(movement2, position, scenario)
-            return movementLength1 < movementLength2 || (movementLength1 == movementLength2 && Utils.firstReadingOrder(movement1, movement2))
-        }
-        var scenario = scenario
-        scenario[self.position.y][self.position.x] = "."
-        if let nextMovement = movements.first {
-            self.position = nextMovement
-            scenario[self.position.y][self.position.x] = self.type == .elf ? "E" : "G"
-        }
-        return scenario
-    }
-    
-    private func movementLength(_ positionI: (x: Int, y: Int), _ positionF: (x: Int, y: Int), _ scenario: [[String]]) -> Int {
-        var movements: [(Int, Int, Int)] = [(positionI.x, positionI.y, 0)]
-        var visited = [[Bool]](repeating: [Bool](repeating: false, count: scenario[0].count), count: scenario.count)
+        
         while !movements.isEmpty {
             let movement = movements.removeFirst()
             let x = movement.0
             let y = movement.1
-            if x == positionF.x && y == positionF.y { return movement.2 }
-            if x > 0 && scenario[y][x-1] == "." && !visited[y][x-1] { movements.append((x-1, y, movement.2+1)) }
-            if y > 0 && scenario[y-1][x] == "." && !visited[y-1][x] { movements.append((x, y-1, movement.2+1)) }
-            if x < scenario[y].count-1 && scenario[y][x+1] == "."  && !visited[y][x+1] { movements.append((x+1, y, movement.2+1)) }
-            if y < scenario.count-1 && scenario[y+1][x] == "." && !visited[y+1][x] { movements.append((x, y+1, movement.2+1)) }
-            for index in [(x-1, y), (x, y-1), (x+1, y), (x, y+1)] {
-                if index.0 >= 0 && index.0 < scenario[0].count
-                    && index.1 >= 0 && index.1 < scenario.count
-                    && scenario[index.1][index.0] == "." && !visited[index.1][index.0] {
-                    movements.append((index.0, index.1, movement.2+1))
-                    visited[index.1][index.0] = true
+            if x == positionF.x && y == positionF.y { return (movement.2, movement.3) }
+            for (nextX, nextY) in [(x-1, y), (x, y-1), (x+1, y), (x, y+1)] {
+                if scenario[nextY][nextX] == "." && !visited[nextY][nextX] {
+                    movements.append((nextX, nextY, movement.2+1, movement.3))
+                    visited[nextY][nextX] = true
                 }
             }
         }
-        return Int.max
+        return (Int.max, (0, 0))
     }
     
     private func attackClosestEnemy(_ enemies: [CombatCharacter], _ characters: [CombatCharacter], _ scenario: [[String]]) -> (Bool, [[String]], [CombatCharacter]) {
         var characters = characters
         var scenario = scenario
-        var closerEnemies = enemies.filter { Utils.manhattanDistance(position, $0.position) == 1 }
-        if closerEnemies.count > 0 {
+        
+        var closerEnemies: [CombatCharacter] = []
+        for close in [(-1, 0), (0, -1), (0, 1), (1, 0)] {
+            let newP = (position.x + close.1, position.y + close.0)
+            if let enemy = enemies.first(where: { $0.position == newP }) { closerEnemies.append(enemy) }
+        }
+        if !closerEnemies.isEmpty {
             closerEnemies = closerEnemies.sorted { $0.health < $1.health || ($0.health == $1.health && Utils.firstReadingOrder($0.position, $1.position)) }
-            attack(closerEnemies[0])
-            if closerEnemies[0].health <= 0 {
+            attack(closerEnemies.first!)
+            if closerEnemies.first!.health <= 0 {
                 characters.removeAll { $0.id == closerEnemies[0].id }
                 scenario[closerEnemies[0].position.y][closerEnemies[0].position.x] = "."
             }
