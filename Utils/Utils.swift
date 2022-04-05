@@ -153,4 +153,9 @@ class Utils {
         guard n % 2 != 0 else { return false }
         return !stride(from: 3, through: Int(sqrt(Double(n))), by: 2).contains { n % $0 == 0 }
     }
+    
+    static func firstReadingOrder(_ point1: (x: Int, y: Int), _ point2: (x: Int, y: Int)) -> Bool {
+        point1.y < point2.y || ( point1.y == point2.y && point1.x < point2.x)
+    }
+    
 }
