@@ -967,13 +967,24 @@ extension Year2018InteractorImpl: YearInteractor {
     
     @objc
     func day16question1() -> String {
-        let chronals = evaluateInputChronalClassification(readCSV("InputYear2018Day16"))
+        let (chronals, _) = evaluateInputChronalClassification(readCSV("InputYear2018Day16"))
         var result = 0
         for chronal in chronals {
-            let possibleInstructions = evaluateChronal(chronal)
+            let (possibleInstructions, _) = evaluateChronal(chronal)
             result += possibleInstructions >= 3 ? 1 : 0
         }
         return String(result)
+    }
+    
+    @objc
+    func day16question2() -> String {
+        let (chronals, instructions) = evaluateInputChronalClassification(readCSV("InputYear2018Day16"))
+        let associations = associateInstNumber(chronals)
+        var register = [0, 0, 0, 0]
+        for instruction in instructions {
+            register = executeChronal(register, inst: instruction, associations: associations)
+        }
+        return String(register[0])
     }
     
     struct ChronalInstruction {
@@ -982,7 +993,7 @@ extension Year2018InteractorImpl: YearInteractor {
         let after: [Int]
     }
     
-    private func evaluateInputChronalClassification(_ input: String) -> [ChronalInstruction] {
+    private func evaluateInputChronalClassification(_ input: String) -> ([ChronalInstruction], [[Int]]) {
         let data = input.components(separatedBy: "\n\n\n\n")
         let items = data[0].components(separatedBy: "\n\n")
         var chronalInstructions: [ChronalInstruction] = []
@@ -993,10 +1004,11 @@ extension Year2018InteractorImpl: YearInteractor {
             let after = parts[2].components(separatedBy: ": ")[1].compactMap { Int(String($0)) }
             chronalInstructions.append(ChronalInstruction(before: before, instruction: instruction, after: after))
         }
-        return chronalInstructions
+        let instructions = data[1].components(separatedBy: .newlines).map { $0.components(separatedBy: .whitespaces).compactMap { Int($0) } }
+        return (chronalInstructions, instructions)
     }
     
-    private func evaluateChronal(_ chronal: ChronalInstruction) -> Int {
+    private func evaluateChronal(_ chronal: ChronalInstruction) -> (Int, [String]) {
         let before = chronal.before
         let instruction = chronal.instruction
         let finalValue = chronal.after[instruction[3]]
@@ -1004,13 +1016,17 @@ extension Year2018InteractorImpl: YearInteractor {
         let validRegisterB = instruction[2] <= 3
         
         var count = 0
+        var inst: [String] = []
         
         count += finalValue == instruction[1] ? 1 : 0
+        if finalValue == instruction[1] { inst.append("seti") }
         if validRegisterB {
             let greater = instruction[1] > before[instruction[2]] ? 1 : 0
             let equal = instruction[1] == before[instruction[2]] ? 1 : 0
             count += finalValue == greater ? 1 : 0
             count += finalValue == equal ? 1 : 0
+            if finalValue == greater { inst.append("gtir") }
+            if finalValue == equal { inst.append("eqir") }
         }
         
         if validRegisterA {
@@ -1024,6 +1040,14 @@ extension Year2018InteractorImpl: YearInteractor {
             count += finalValue == greater ? 1 : 0
             count += finalValue == equal ? 1 : 0
             
+            if finalValue == before[instruction[1]] + instruction[2] { inst.append("addi") }
+            if finalValue == before[instruction[1]] * instruction[2] { inst.append("muli") }
+            if finalValue == before[instruction[1]] & instruction[2] { inst.append("bani") }
+            if finalValue == before[instruction[1]] | instruction[2] { inst.append("bori") }
+            if finalValue == before[instruction[1]] { inst.append("setr") }
+            if finalValue == greater { inst.append("gtri") }
+            if finalValue == equal { inst.append("eqri") }
+            
             if validRegisterB {
                 count += finalValue == before[instruction[1]] + before[instruction[2]] ? 1 : 0
                 count += finalValue == before[instruction[1]] * before[instruction[2]] ? 1 : 0
@@ -1033,10 +1057,72 @@ extension Year2018InteractorImpl: YearInteractor {
                 let equal = before[instruction[1]] == before[instruction[2]] ? 1 : 0
                 count += finalValue == greater ? 1 : 0
                 count += finalValue == equal ? 1 : 0
+                
+                if finalValue == before[instruction[1]] + before[instruction[2]] { inst.append("addr") }
+                if finalValue == before[instruction[1]] * before[instruction[2]] { inst.append("mulr") }
+                if finalValue == before[instruction[1]] & before[instruction[2]] { inst.append("banr") }
+                if finalValue == before[instruction[1]] | before[instruction[2]] { inst.append("borr") }
+                if finalValue == greater { inst.append("gtrr") }
+                if finalValue == equal { inst.append("eqrr") }
             }
         }
         
-        return count
+        return (count, inst)
+    }
+    
+    private func associateInstNumber(_ chronals: [ChronalInstruction]) -> [Int: String] {
+        var associations: [Int: String] = [:]
+        var options: [Int: [String]] = [:]
+        for chronal in chronals {
+            let (possibleInstructions, inst) = evaluateChronal(chronal)
+            if possibleInstructions == 1 {
+                associations[chronal.instruction[0]] = inst[0]
+            } else {
+                if let values = options[chronal.instruction[0]] {
+                    let commonItems = values.filter { inst.contains($0) }
+                    options[chronal.instruction[0]] = commonItems
+                } else {
+                    options[chronal.instruction[0]] = inst
+                }
+            }
+        }
+        
+        while !options.isEmpty {
+            for option in options {
+                options[option.key] = option.value.filter { !associations.values.contains($0) }
+                if options[option.key]?.count == 1 {
+                    associations[option.key] = options[option.key]![0]
+                    options[option.key] = nil
+                }
+            }
+        }
+        
+        return associations
+    }
+    
+    private func executeChronal(_ input: [Int], inst: [Int], associations: [Int: String]) -> [Int] {
+        let instValue = associations[inst[0]]!
+        var result = input
+        switch instValue {
+        case "addr": result[inst[3]] = input[inst[1]] + input[inst[2]]
+        case "addi": result[inst[3]] = input[inst[1]] + inst[2]
+        case "mulr": result[inst[3]] = input[inst[1]] * input[inst[2]]
+        case "muli": result[inst[3]] = input[inst[1]] * inst[2]
+        case "banr": result[inst[3]] = input[inst[1]] & input[inst[2]]
+        case "bani": result[inst[3]] = input[inst[1]] & inst[2]
+        case "borr": result[inst[3]] = input[inst[1]] | input[inst[2]]
+        case "bori": result[inst[3]] = input[inst[1]] | inst[2]
+        case "setr": result[inst[3]] = input[inst[1]]
+        case "seti": result[inst[3]] = inst[1]
+        case "gtir": result[inst[3]] = inst[1] > input[inst[2]] ? 1 : 0
+        case "gtri": result[inst[3]] = input[inst[1]] > inst[2] ? 1 : 0
+        case "gtrr": result[inst[3]] = input[inst[1]] > input[inst[2]] ? 1 : 0
+        case "eqir": result[inst[3]] = inst[1] == input[inst[2]] ? 1 : 0
+        case "eqri": result[inst[3]] = input[inst[1]] == inst[2] ? 1 : 0
+        case "eqrr": result[inst[3]] = input[inst[1]] == input[inst[2]] ? 1 : 0
+        default: break
+        }
+        return result
     }
     
 }
