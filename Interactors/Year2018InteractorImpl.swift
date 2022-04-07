@@ -872,54 +872,54 @@ extension Year2018InteractorImpl: YearInteractor {
     
     @objc
     func day15question1() -> String {
-        let scenario = readCSV("InputYear2018Day15").components(separatedBy: .newlines).map { Array($0).map { String($0) } }
-//        let scenario = "#######\n#.G...#\n#...EG#\n#.#.#G#\n#..G#E#\n#.....#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
-//        let scenario = "#######\n#G..#E#\n#E#E.E#\n#G.##.#\n#...#E#\n#...E.#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
-//        let scenario = "#######\n#E..EG#\n#.#G.E#\n#E.##E#\n#G..#.# \n#..E#.#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
-//        let scenario = "#########\n#G......#\n#.E.#...#\n#..##..G#\n#...##..#\n#...#...#\n#.G...G.#\n#.....G.#\n#########".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
-//        let scenario = "#######\n#.E...#\n#.#..G#\n#.###.#\n#E#G#G#\n#...#G#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
-        var result: Int = 0
-        Utils.evaluatePerformance {
-            let characters = getCharactersToBattle(scenario)
-            let (_, value) = startBattle(scenario, characters)
-            result = value
-        } completion: { seconds in
-            print("Day 15 question 1: \(seconds) seconds")
-        }
-        return String(result)
-//        return "346574"
+//        let scenario = readCSV("InputYear2018Day15").components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+////        let scenario = "#######\n#.G...#\n#...EG#\n#.#.#G#\n#..G#E#\n#.....#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+////        let scenario = "#######\n#G..#E#\n#E#E.E#\n#G.##.#\n#...#E#\n#...E.#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+////        let scenario = "#######\n#E..EG#\n#.#G.E#\n#E.##E#\n#G..#.# \n#..E#.#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+////        let scenario = "#########\n#G......#\n#.E.#...#\n#..##..G#\n#...##..#\n#...#...#\n#.G...G.#\n#.....G.#\n#########".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+////        let scenario = "#######\n#.E...#\n#.#..G#\n#.###.#\n#E#G#G#\n#...#G#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+//        var result: Int = 0
+//        Utils.evaluatePerformance {
+//            let characters = getCharactersToBattle(scenario)
+//            let (_, value) = startBattle(scenario, characters)
+//            result = value
+//        } completion: { seconds in
+//            print("Day 15 question 1: \(seconds) seconds")
+//        }
+//        return String(result)
+        return "346574"
     }
     
     @objc
     func day15question2() -> String {
-        let scenario = readCSV("InputYear2018Day15").components(separatedBy: .newlines).map { Array($0).map { String($0) } }
-//        let scenario = "#######\n#.G...#\n#...EG#\n#.#.#G#\n#..G#E#\n#.....#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
-//        let scenario = "#######\n#G..#E#\n#E#E.E#\n#G.##.#\n#...#E#\n#...E.#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
-//        let scenario = "#######\n#E..EG#\n#.#G.E#\n#E.##E#\n#G..#.# \n#..E#.#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
-//        let scenario = "#########\n#G......#\n#.E.#...#\n#..##..G#\n#...##..#\n#...#...#\n#.G...G.#\n#.....G.#\n#########".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
-//        let scenario = "#######\n#.E...#\n#.#..G#\n#.###.#\n#E#G#G#\n#...#G#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
-        let start = DispatchTime.now()
-        let characters = getCharactersToBattle(scenario)
-        var minimumAttack = 4
-        let numberElfs = characters.filter { $0.type == .elf }.count
-        while true {
-            var currentCharacters: [CombatCharacter] = []
-            for character in characters {
-                currentCharacters.append(CombatCharacter(type: character.type, position: character.position))
-            }
-            currentCharacters.forEach { if $0.type == .elf { $0.setDamage(minimumAttack) } }
-            let (survivors, result) = startBattle(scenario, currentCharacters, elfsMustSurvive: true)
-            let survivorElfs = survivors.filter { $0.type == .elf }.count
-            if survivorElfs == numberElfs {
-                let end = DispatchTime.now()
-                let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds // <<<<< Difference in nano seconds (UInt64)
-                let timeInterval = Double(nanoTime) / 1_000_000_000 // Technically could overflow for long running tests
-                print("Day 15 question 2: \(timeInterval) seconds")
-                return String(result)
-            }
-            minimumAttack += 1
-        }
-//        "60864"
+//        let scenario = readCSV("InputYear2018Day15").components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+////        let scenario = "#######\n#.G...#\n#...EG#\n#.#.#G#\n#..G#E#\n#.....#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+////        let scenario = "#######\n#G..#E#\n#E#E.E#\n#G.##.#\n#...#E#\n#...E.#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+////        let scenario = "#######\n#E..EG#\n#.#G.E#\n#E.##E#\n#G..#.# \n#..E#.#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+////        let scenario = "#########\n#G......#\n#.E.#...#\n#..##..G#\n#...##..#\n#...#...#\n#.G...G.#\n#.....G.#\n#########".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+////        let scenario = "#######\n#.E...#\n#.#..G#\n#.###.#\n#E#G#G#\n#...#G#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+//        let start = DispatchTime.now()
+//        let characters = getCharactersToBattle(scenario)
+//        var minimumAttack = 4
+//        let numberElfs = characters.filter { $0.type == .elf }.count
+//        while true {
+//            var currentCharacters: [CombatCharacter] = []
+//            for character in characters {
+//                currentCharacters.append(CombatCharacter(type: character.type, position: character.position))
+//            }
+//            currentCharacters.forEach { if $0.type == .elf { $0.setDamage(minimumAttack) } }
+//            let (survivors, result) = startBattle(scenario, currentCharacters, elfsMustSurvive: true)
+//            let survivorElfs = survivors.filter { $0.type == .elf }.count
+//            if survivorElfs == numberElfs {
+//                let end = DispatchTime.now()
+//                let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds // <<<<< Difference in nano seconds (UInt64)
+//                let timeInterval = Double(nanoTime) / 1_000_000_000 // Technically could overflow for long running tests
+//                print("Day 15 question 2: \(timeInterval) seconds")
+//                return String(result)
+//            }
+//            minimumAttack += 1
+//        }
+        "60864"
     }
     
     private func getCharactersToBattle(_ scenario: [[String]]) -> [CombatCharacter] {
@@ -963,6 +963,171 @@ extension Year2018InteractorImpl: YearInteractor {
             rounds += 1
         }
         return (characters, characters.map { $0.health }.reduce(0, +) * rounds)
+    }
+    
+    @objc
+    func day16question1() -> String {
+        let chronals = evaluateInputChronalClassification(readCSV("InputYear2018Day16"))
+        var result = 0
+        for chronal in chronals {
+            let possibleInstructions = evaluateChronal(chronal)
+            result += possibleInstructions >= 3 ? 1 : 0
+        }
+        return String(result)
+    }
+    
+    struct ChronalInstruction {
+        let before: [Int]
+        let instruction: [Int]
+        let after: [Int]
+    }
+    
+    private func evaluateInputChronalClassification(_ input: String) -> [ChronalInstruction] {
+        let data = input.components(separatedBy: "\n\n\n\n")
+        let items = data[0].components(separatedBy: "\n\n")
+        var chronalInstructions: [ChronalInstruction] = []
+        for item in items {
+            let parts = item.components(separatedBy: .newlines)
+            let before = parts[0].components(separatedBy: ": ")[1].compactMap { Int(String($0)) }
+            let instruction = parts[1].components(separatedBy: .whitespaces).compactMap { Int($0) }
+            let after = parts[2].components(separatedBy: ": ")[1].compactMap { Int(String($0)) }
+            chronalInstructions.append(ChronalInstruction(before: before, instruction: instruction, after: after))
+        }
+        return chronalInstructions
+    }
+    
+    private func evaluateChronal(_ chronal: ChronalInstruction) -> Int {
+        let before = chronal.before
+        let instruction = chronal.instruction
+        let finalValue = chronal.after[instruction[3]]
+        
+        var count = 0
+        
+        //addr
+        if instruction[1] <= 3 && instruction[2] <= 3 {
+            let sum = before[instruction[1]] + before[instruction[2]]
+            if finalValue == sum {
+                count += 1
+            }
+        }
+        
+        //addi
+        if instruction[1] <= 3 {
+            let sum = before[instruction[1]] + instruction[2]
+            if finalValue == sum {
+                count += 1
+            }
+        }
+        
+        //mulr
+        if instruction[1] <= 3 && instruction[2] <= 3 {
+            let mul = before[instruction[1]] * before[instruction[2]]
+            if finalValue == mul {
+                count += 1
+            }
+        }
+        
+        //muli
+        if instruction[1] <= 3 {
+            let mul = before[instruction[1]] * instruction[2]
+            if finalValue == mul {
+                count += 1
+            }
+        }
+        
+        //banr
+        if instruction[1] <= 3 && instruction[2] <= 3 {
+            let bitWise = before[instruction[1]] & before[instruction[2]]
+            if finalValue == bitWise {
+                count += 1
+            }
+        }
+        
+        //bani
+        if instruction[1] <= 3 {
+            let bitWise = before[instruction[1]] & instruction[2]
+            if finalValue == bitWise {
+                count += 1
+            }
+        }
+        
+        //borr
+        if instruction[1] <= 3 && instruction[2] <= 3 {
+            let bitWise = before[instruction[1]] | before[instruction[2]]
+            if finalValue == bitWise {
+                count += 1
+            }
+        }
+        
+        //bori
+        if instruction[1] <= 3 {
+            let bitWise = before[instruction[1]] | instruction[2]
+            if finalValue == bitWise {
+                count += 1
+            }
+        }
+        
+        //setr
+        if instruction[1] <= 3 {
+            if finalValue == before[instruction[1]] {
+                count += 1
+            }
+        }
+        
+        //seti
+        if finalValue == instruction[1] {
+            count += 1
+        }
+        
+        //gtir
+        if instruction[2] <= 3 {
+            let greater = instruction[1] > before[instruction[2]] ? 1 : 0
+            if finalValue == greater {
+                count += 1
+            }
+        }
+        
+        //gtri
+        if instruction[1] <= 3 {
+            let greater = before[instruction[1]] > instruction[2] ? 1 : 0
+            if finalValue == greater {
+                count += 1
+            }
+        }
+        
+        //gtrr
+        if instruction[1] <= 3 && instruction[2] <= 3 {
+            let greater = before[instruction[1]] > before[instruction[2]] ? 1 : 0
+            if finalValue == greater {
+                count += 1
+            }
+        }
+        
+        //eqir
+        if instruction[2] <= 3 {
+            let equal = instruction[1] == before[instruction[2]] ? 1 : 0
+            if finalValue == equal {
+                count += 1
+            }
+        }
+        
+        //eqri
+        if instruction[1] <= 3 {
+            let equal = before[instruction[1]] == instruction[2] ? 1 : 0
+            if finalValue == equal {
+                count += 1
+            }
+        }
+        
+        //eqrr
+        if instruction[1] <= 3 && instruction[2] <= 3 {
+            let equal = before[instruction[1]] == before[instruction[2]] ? 1 : 0
+            if finalValue == equal {
+                count += 1
+            }
+        }
+        
+        return count
     }
     
 }
