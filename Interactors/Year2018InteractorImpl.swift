@@ -872,12 +872,57 @@ extension Year2018InteractorImpl: YearInteractor {
     
     @objc
     func day15question1() -> String {
-        var scenario = readCSV("InputYear2018Day15").components(separatedBy: .newlines).map { Array($0).map { String($0) } }
-//        var scenario = "#######\n#.G...#\n#...EG#\n#.#.#G#\n#..G#E#\n#.....#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
-//        var scenario = "#######\n#G..#E#\n#E#E.E#\n#G.##.#\n#...#E#\n#...E.#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
-//        var scenario = "#######\n#E..EG#\n#.#G.E#\n#E.##E#\n#G..#.# \n#..E#.#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
-//        var scenario = "#########\n#G......#\n#.E.#...#\n#..##..G#\n#...##..#\n#...#...#\n#.G...G.#\n#.....G.#\n#########".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
-//        var scenario = "#######\n#.E...#\n#.#..G#\n#.###.#\n#E#G#G#\n#...#G#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+        let scenario = readCSV("InputYear2018Day15").components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+//        let scenario = "#######\n#.G...#\n#...EG#\n#.#.#G#\n#..G#E#\n#.....#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+//        let scenario = "#######\n#G..#E#\n#E#E.E#\n#G.##.#\n#...#E#\n#...E.#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+//        let scenario = "#######\n#E..EG#\n#.#G.E#\n#E.##E#\n#G..#.# \n#..E#.#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+//        let scenario = "#########\n#G......#\n#.E.#...#\n#..##..G#\n#...##..#\n#...#...#\n#.G...G.#\n#.....G.#\n#########".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+//        let scenario = "#######\n#.E...#\n#.#..G#\n#.###.#\n#E#G#G#\n#...#G#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+        var result: Int = 0
+        Utils.evaluatePerformance {
+            let characters = getCharactersToBattle(scenario)
+            let (_, value) = startBattle(scenario, characters)
+            result = value
+        } completion: { seconds in
+            print("Day 15 question 1: \(seconds) seconds")
+        }
+        return String(result)
+//        return "346574"
+    }
+    
+    @objc
+    func day15question2() -> String {
+        let scenario = readCSV("InputYear2018Day15").components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+//        let scenario = "#######\n#.G...#\n#...EG#\n#.#.#G#\n#..G#E#\n#.....#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+//        let scenario = "#######\n#G..#E#\n#E#E.E#\n#G.##.#\n#...#E#\n#...E.#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+//        let scenario = "#######\n#E..EG#\n#.#G.E#\n#E.##E#\n#G..#.# \n#..E#.#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+//        let scenario = "#########\n#G......#\n#.E.#...#\n#..##..G#\n#...##..#\n#...#...#\n#.G...G.#\n#.....G.#\n#########".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+//        let scenario = "#######\n#.E...#\n#.#..G#\n#.###.#\n#E#G#G#\n#...#G#\n#######".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+        let start = DispatchTime.now()
+        let characters = getCharactersToBattle(scenario)
+        var minimumAttack = 4
+        let numberElfs = characters.filter { $0.type == .elf }.count
+        while true {
+            var currentCharacters: [CombatCharacter] = []
+            for character in characters {
+                currentCharacters.append(CombatCharacter(type: character.type, position: character.position))
+            }
+            currentCharacters.forEach { if $0.type == .elf { $0.setDamage(minimumAttack) } }
+            let (survivors, result) = startBattle(scenario, currentCharacters)
+            let survivorElfs = survivors.filter { $0.type == .elf }.count
+            if survivorElfs == numberElfs {
+                let end = DispatchTime.now()
+                let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds // <<<<< Difference in nano seconds (UInt64)
+                let timeInterval = Double(nanoTime) / 1_000_000_000 // Technically could overflow for long running tests
+                print("Day 15 question 2: \(timeInterval) seconds")
+                return String(result)
+            }
+            minimumAttack += 1
+        }
+//        "60864"
+    }
+    
+    private func getCharactersToBattle(_ scenario: [[String]]) -> [CombatCharacter] {
         var characters: [CombatCharacter] = []
         for row in 0..<scenario.count {
             for col in 0..<scenario[row].count {
@@ -887,6 +932,12 @@ extension Year2018InteractorImpl: YearInteractor {
                 }
             }
         }
+        return characters
+    }
+    
+    private func startBattle(_ scenario: [[String]], _ characters: [CombatCharacter]) -> ([CombatCharacter], Int) {
+        var scenario = scenario
+        var characters = characters
         var rounds = 1
     mainLoop:
         while true {
@@ -904,8 +955,7 @@ extension Year2018InteractorImpl: YearInteractor {
             }
             rounds += 1
         }
-        let result = characters.map { $0.health }.reduce(0, +) * rounds
-        return String(result)
+        return (characters, characters.map { $0.health }.reduce(0, +) * rounds)
     }
     
 }
