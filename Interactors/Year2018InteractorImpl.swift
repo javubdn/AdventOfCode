@@ -1000,130 +1000,39 @@ extension Year2018InteractorImpl: YearInteractor {
         let before = chronal.before
         let instruction = chronal.instruction
         let finalValue = chronal.after[instruction[3]]
+        let validRegisterA = instruction[1] <= 3
+        let validRegisterB = instruction[2] <= 3
         
         var count = 0
         
-        //addr
-        if instruction[1] <= 3 && instruction[2] <= 3 {
-            let sum = before[instruction[1]] + before[instruction[2]]
-            if finalValue == sum {
-                count += 1
-            }
-        }
-        
-        //addi
-        if instruction[1] <= 3 {
-            let sum = before[instruction[1]] + instruction[2]
-            if finalValue == sum {
-                count += 1
-            }
-        }
-        
-        //mulr
-        if instruction[1] <= 3 && instruction[2] <= 3 {
-            let mul = before[instruction[1]] * before[instruction[2]]
-            if finalValue == mul {
-                count += 1
-            }
-        }
-        
-        //muli
-        if instruction[1] <= 3 {
-            let mul = before[instruction[1]] * instruction[2]
-            if finalValue == mul {
-                count += 1
-            }
-        }
-        
-        //banr
-        if instruction[1] <= 3 && instruction[2] <= 3 {
-            let bitWise = before[instruction[1]] & before[instruction[2]]
-            if finalValue == bitWise {
-                count += 1
-            }
-        }
-        
-        //bani
-        if instruction[1] <= 3 {
-            let bitWise = before[instruction[1]] & instruction[2]
-            if finalValue == bitWise {
-                count += 1
-            }
-        }
-        
-        //borr
-        if instruction[1] <= 3 && instruction[2] <= 3 {
-            let bitWise = before[instruction[1]] | before[instruction[2]]
-            if finalValue == bitWise {
-                count += 1
-            }
-        }
-        
-        //bori
-        if instruction[1] <= 3 {
-            let bitWise = before[instruction[1]] | instruction[2]
-            if finalValue == bitWise {
-                count += 1
-            }
-        }
-        
-        //setr
-        if instruction[1] <= 3 {
-            if finalValue == before[instruction[1]] {
-                count += 1
-            }
-        }
-        
-        //seti
-        if finalValue == instruction[1] {
-            count += 1
-        }
-        
-        //gtir
-        if instruction[2] <= 3 {
+        count += finalValue == instruction[1] ? 1 : 0
+        if validRegisterB {
             let greater = instruction[1] > before[instruction[2]] ? 1 : 0
-            if finalValue == greater {
-                count += 1
-            }
-        }
-        
-        //gtri
-        if instruction[1] <= 3 {
-            let greater = before[instruction[1]] > instruction[2] ? 1 : 0
-            if finalValue == greater {
-                count += 1
-            }
-        }
-        
-        //gtrr
-        if instruction[1] <= 3 && instruction[2] <= 3 {
-            let greater = before[instruction[1]] > before[instruction[2]] ? 1 : 0
-            if finalValue == greater {
-                count += 1
-            }
-        }
-        
-        //eqir
-        if instruction[2] <= 3 {
             let equal = instruction[1] == before[instruction[2]] ? 1 : 0
-            if finalValue == equal {
-                count += 1
-            }
+            count += finalValue == greater ? 1 : 0
+            count += finalValue == equal ? 1 : 0
         }
         
-        //eqri
-        if instruction[1] <= 3 {
+        if validRegisterA {
+            count += finalValue == before[instruction[1]] + instruction[2] ? 1 : 0
+            count += finalValue == before[instruction[1]] * instruction[2] ? 1 : 0
+            count += finalValue == before[instruction[1]] & instruction[2] ? 1 : 0
+            count += finalValue == before[instruction[1]] | instruction[2] ? 1 : 0
+            count += finalValue == before[instruction[1]] ? 1 : 0
+            let greater = before[instruction[1]] > instruction[2] ? 1 : 0
             let equal = before[instruction[1]] == instruction[2] ? 1 : 0
-            if finalValue == equal {
-                count += 1
-            }
-        }
-        
-        //eqrr
-        if instruction[1] <= 3 && instruction[2] <= 3 {
-            let equal = before[instruction[1]] == before[instruction[2]] ? 1 : 0
-            if finalValue == equal {
-                count += 1
+            count += finalValue == greater ? 1 : 0
+            count += finalValue == equal ? 1 : 0
+            
+            if validRegisterB {
+                count += finalValue == before[instruction[1]] + before[instruction[2]] ? 1 : 0
+                count += finalValue == before[instruction[1]] * before[instruction[2]] ? 1 : 0
+                count += finalValue == before[instruction[1]] & before[instruction[2]] ? 1 : 0
+                count += finalValue == before[instruction[1]] | before[instruction[2]] ? 1 : 0
+                let greater = before[instruction[1]] > before[instruction[2]] ? 1 : 0
+                let equal = before[instruction[1]] == before[instruction[2]] ? 1 : 0
+                count += finalValue == greater ? 1 : 0
+                count += finalValue == equal ? 1 : 0
             }
         }
         
