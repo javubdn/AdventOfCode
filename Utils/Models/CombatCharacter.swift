@@ -17,12 +17,16 @@ class CombatCharacter {
     let type: CombatCharacterType
     var position: (x: Int, y: Int)
     private(set) var health = 200
-    private let damage = 3
+    private var damage = 3
     
     init(type: CombatCharacterType, position: (x: Int, y: Int)) {
         id = UUID()
         self.type = type
         self.position = position
+    }
+    
+    func setDamage(_ attack: Int) {
+        damage = attack
     }
     
     func receiveDamage(_ damage: Int) {
