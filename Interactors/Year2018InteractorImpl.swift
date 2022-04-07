@@ -908,7 +908,7 @@ extension Year2018InteractorImpl: YearInteractor {
                 currentCharacters.append(CombatCharacter(type: character.type, position: character.position))
             }
             currentCharacters.forEach { if $0.type == .elf { $0.setDamage(minimumAttack) } }
-            let (survivors, result) = startBattle(scenario, currentCharacters)
+            let (survivors, result) = startBattle(scenario, currentCharacters, elfsMustSurvive: true)
             let survivorElfs = survivors.filter { $0.type == .elf }.count
             if survivorElfs == numberElfs {
                 let end = DispatchTime.now()
@@ -935,9 +935,10 @@ extension Year2018InteractorImpl: YearInteractor {
         return characters
     }
     
-    private func startBattle(_ scenario: [[String]], _ characters: [CombatCharacter]) -> ([CombatCharacter], Int) {
+    private func startBattle(_ scenario: [[String]], _ characters: [CombatCharacter], elfsMustSurvive: Bool = false) -> ([CombatCharacter], Int) {
         var scenario = scenario
         var characters = characters
+        let numberElfs = characters.filter { $0.type == .elf }.count
         var rounds = 1
     mainLoop:
         while true {
@@ -951,6 +952,12 @@ extension Year2018InteractorImpl: YearInteractor {
                         if characters.last!.id != characterId { rounds -= 1 }
                         break mainLoop
                     }
+                }
+            }
+            if elfsMustSurvive {
+                let elfsSurvivors = characters.filter { $0.type == .elf }.count
+                if elfsSurvivors != numberElfs {
+                    return (characters, 0)
                 }
             }
             rounds += 1
