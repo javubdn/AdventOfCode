@@ -1125,4 +1125,9 @@ extension Year2018InteractorImpl: YearInteractor {
         return result
     }
     
+    struct ClayLine {
+        let x: (Int, Int)
+        let y: (Int, Int)
+    }
+    
 }
