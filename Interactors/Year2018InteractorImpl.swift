@@ -1130,4 +1130,20 @@ extension Year2018InteractorImpl: YearInteractor {
         let y: (Int, Int)
     }
     
+    private func createClayLine(_ input: String) -> ClayLine {
+        let x: (Int, Int)
+        let y: (Int, Int)
+        let items = input.components(separatedBy: ", ")
+        let left = items[0].components(separatedBy: "=")
+        let rigth = items[1].components(separatedBy: "=")[1].components(separatedBy: "..")
+        if left[0] == "x" {
+            x = (Int(left[1])!, Int(left[1])!)
+            y = (Int(rigth[0])!, Int(rigth[1])!)
+        } else {
+            y = (Int(left[1])!, Int(left[1])!)
+            x = (Int(rigth[0])!, Int(rigth[1])!)
+        }
+        return ClayLine(x: x, y: y)
+    }
+    
 }
