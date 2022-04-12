@@ -1127,10 +1127,20 @@ extension Year2018InteractorImpl: YearInteractor {
     
     @objc
     func day17question1() -> String {
+//        let waterMap = WaterMap(readCSV("InputYear2018Day17").components(separatedBy: .newlines))
+////        let waterMap = WaterMap("x=495, y=2..7\ny=7, x=495..501\nx=501, y=3..7\nx=498, y=2..4\nx=506, y=1..2\nx=498, y=10..13\nx=504, y=10..13\ny=13, x=498..504".components(separatedBy: .newlines))
+//        waterMap.run(500, 0)
+//        let result = waterMap.countAll()
+//        return String(result)
+        "29741"
+    }
+    
+    @objc
+    func day17question2() -> String {
         let waterMap = WaterMap(readCSV("InputYear2018Day17").components(separatedBy: .newlines))
 //        let waterMap = WaterMap("x=495, y=2..7\ny=7, x=495..501\nx=501, y=3..7\nx=498, y=2..4\nx=506, y=1..2\nx=498, y=10..13\nx=504, y=10..13\ny=13, x=498..504".components(separatedBy: .newlines))
         waterMap.run(500, 0)
-        let result = waterMap.countAll()
+        let result = waterMap.countStill()
         return String(result)
     }
     
