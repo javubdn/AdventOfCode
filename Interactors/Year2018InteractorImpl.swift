@@ -1147,4 +1147,41 @@ extension Year2018InteractorImpl: YearInteractor {
         "24198"
     }
     
+    @objc
+    func day18question1() -> String {
+        var lumberMap = readCSV("InputYear2018Day18").components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+        for _ in 0..<10 {
+            let previousMap = lumberMap
+            for row in 0..<lumberMap.count {
+                for col in 0..<lumberMap[row].count {
+                    lumberMap[row][col] = getLumberValue(previousMap, (x: col, y: row))
+                }
+            }
+        }
+        let trees = lumberMap.map { $0.filter { $0 == "|" }.count }.reduce(0, +)
+        let lumberYards = lumberMap.map { $0.filter { $0 == "#" }.count }.reduce(0, +)
+        let result = trees * lumberYards
+        return String(result)
+    }
+    
+    private func getLumberValue(_ lumberMap: [[String]], _ position: (x: Int, y: Int)) -> String {
+        let nRows = lumberMap.count
+        let nCols = lumberMap[0].count
+        var values: [String] = []
+        values.append(position.y > 0 && position.x > 0 ? lumberMap[position.y-1][position.x-1] : "")
+        values.append(position.y > 0 ? lumberMap[position.y-1][position.x] : "")
+        values.append(position.y > 0 && position.x < nCols-1 ? lumberMap[position.y-1][position.x+1] : "")
+        values.append(position.x > 0 ? lumberMap[position.y][position.x-1] : "")
+        values.append(position.x < nCols-1 ? lumberMap[position.y][position.x+1] : "")
+        values.append(position.y < nRows-1 && position.x > 0 ? lumberMap[position.y+1][position.x-1] : "")
+        values.append(position.y < nRows-1 ? lumberMap[position.y+1][position.x] : "")
+        values.append(position.y < nRows-1 && position.x < nCols-1 ? lumberMap[position.y+1][position.x+1] : "")
+        switch lumberMap[position.y][position.x] {
+        case ".": return values.filter { $0 == "|" }.count >= 3 ? "|" : "."
+        case "|": return values.filter { $0 == "#" }.count >= 3 ? "#" : "|"
+        case "#": return values.filter { $0 == "#" }.count >= 1 && values.filter { $0 == "|" }.count >= 1 ? "#" : "."
+        default: return ""
+        }
+    }
+    
 }
