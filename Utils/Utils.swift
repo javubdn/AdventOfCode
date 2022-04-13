@@ -158,13 +158,13 @@ class Utils {
         point1.y < point2.y || ( point1.y == point2.y && point1.x < point2.x)
     }
     
-    static func evaluatePerformance(_ code: () -> Void, completion: (Double) -> Void) {
+    static func evaluatePerformance<T>(_ code: () -> T) -> (T, Double) {
         let start = DispatchTime.now()
-        code()
+        let result = code()
         let end = DispatchTime.now()
         let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds
         let timeInterval = Double(nanoTime) / 1_000_000_000
-        completion(timeInterval)
+        return (result, timeInterval)
     }
     
 }
