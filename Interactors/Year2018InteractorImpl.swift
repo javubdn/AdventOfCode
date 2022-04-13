@@ -10,6 +10,7 @@ import CoreXLSX
 
 class Year2018InteractorImpl: NSObject {
     var batterySums: [String: Int] = [:]
+    var lumberInts: [Int: Int] = [:]
 }
 
 extension Year2018InteractorImpl: YearInteractor {
@@ -1156,6 +1157,34 @@ extension Year2018InteractorImpl: YearInteractor {
                 for col in 0..<lumberMap[row].count {
                     lumberMap[row][col] = getLumberValue(previousMap, (x: col, y: row))
                 }
+            }
+        }
+        let trees = lumberMap.map { $0.filter { $0 == "|" }.count }.reduce(0, +)
+        let lumberYards = lumberMap.map { $0.filter { $0 == "#" }.count }.reduce(0, +)
+        let result = trees * lumberYards
+        return String(result)
+    }
+    
+    @objc
+    func day18question2() -> String {
+        var lumberMap = readCSV("InputYear2018Day18").components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+        var hash: Int?
+        for index in 1...1000000000 {
+            let previousMap = lumberMap
+            for row in 0..<lumberMap.count {
+                for col in 0..<lumberMap[row].count {
+                    lumberMap[row][col] = getLumberValue(previousMap, (x: col, y: row))
+                }
+            }
+            let lumberMapHash = lumberMap.hashValue
+            if hash == lumberMapHash {
+                break
+            }
+            if let existingIndex = lumberInts[lumberMapHash] {
+                let targetIndex = (1_000_000_000 - existingIndex) % (index - existingIndex) + existingIndex
+                hash = lumberInts.first { $0.value == targetIndex }?.key
+            } else {
+                lumberInts[lumberMapHash] = index
             }
         }
         let trees = lumberMap.map { $0.filter { $0 == "|" }.count }.reduce(0, +)
