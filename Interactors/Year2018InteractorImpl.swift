@@ -1235,6 +1235,29 @@ extension Year2018InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day19question2() -> String {
+        //Usando el código se genera un bucle que tarda demasiado, examinando el código se puede ver que lo que hace es calcular los divisores
+        //de un número muy grande y los suma
+        let number = 4*19*11 + 5*22 + 1 + (27 * 28 + 29 ) * 30 * 14 * 32
+        let sqrtn = Int(Double(number).squareRoot())
+        var factors: [Int] = []
+        factors.reserveCapacity(2 * sqrtn)
+        for i in 1...sqrtn {
+            if number % i == 0 {
+                factors.append(i)
+            }
+        }
+        var j = factors.count - 1
+        if factors[j] * factors[j] == number { j -= 1 }
+        while j >= 0 {
+            factors.append(number / factors[j])
+            j -= 1
+        }
+        let result = factors.reduce(0, +)
+        return String(result)
+    }
+    
     private func createChronalInstruction(_ input: String) -> [Int] {
         let items = input.components(separatedBy: .whitespaces)
         guard items.count == 4 else { return [-1, Int(items[1])!] }
