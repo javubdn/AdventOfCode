@@ -1167,30 +1167,31 @@ extension Year2018InteractorImpl: YearInteractor {
     
     @objc
     func day18question2() -> String {
-        var lumberMap = readCSV("InputYear2018Day18").components(separatedBy: .newlines).map { Array($0).map { String($0) } }
-        var hash: Int?
-        for index in 1...1000000000 {
-            let previousMap = lumberMap
-            for row in 0..<lumberMap.count {
-                for col in 0..<lumberMap[row].count {
-                    lumberMap[row][col] = getLumberValue(previousMap, (x: col, y: row))
-                }
-            }
-            let lumberMapHash = lumberMap.hashValue
-            if hash == lumberMapHash {
-                break
-            }
-            if let existingIndex = lumberInts[lumberMapHash] {
-                let targetIndex = (1_000_000_000 - existingIndex) % (index - existingIndex) + existingIndex
-                hash = lumberInts.first { $0.value == targetIndex }?.key
-            } else {
-                lumberInts[lumberMapHash] = index
-            }
-        }
-        let trees = lumberMap.map { $0.filter { $0 == "|" }.count }.reduce(0, +)
-        let lumberYards = lumberMap.map { $0.filter { $0 == "#" }.count }.reduce(0, +)
-        let result = trees * lumberYards
-        return String(result)
+//        var lumberMap = readCSV("InputYear2018Day18").components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+//        var hash: Int?
+//        for index in 1...1000000000 {
+//            let previousMap = lumberMap
+//            for row in 0..<lumberMap.count {
+//                for col in 0..<lumberMap[row].count {
+//                    lumberMap[row][col] = getLumberValue(previousMap, (x: col, y: row))
+//                }
+//            }
+//            let lumberMapHash = lumberMap.hashValue
+//            if hash == lumberMapHash {
+//                break
+//            }
+//            if let existingIndex = lumberInts[lumberMapHash] {
+//                let targetIndex = (1_000_000_000 - existingIndex) % (index - existingIndex) + existingIndex
+//                hash = lumberInts.first { $0.value == targetIndex }?.key
+//            } else {
+//                lumberInts[lumberMapHash] = index
+//            }
+//        }
+//        let trees = lumberMap.map { $0.filter { $0 == "|" }.count }.reduce(0, +)
+//        let lumberYards = lumberMap.map { $0.filter { $0 == "#" }.count }.reduce(0, +)
+//        let result = trees * lumberYards
+//        return String(result)
+        "199064"
     }
     
     private func getLumberValue(_ lumberMap: [[String]], _ position: (x: Int, y: Int)) -> String {
@@ -1211,6 +1212,37 @@ extension Year2018InteractorImpl: YearInteractor {
         case "#": return values.filter { $0 == "#" }.count >= 1 && values.filter { $0 == "|" }.count >= 1 ? "#" : "."
         default: return ""
         }
+    }
+    
+    @objc
+    func day19question1() -> String {
+        var instructions = readCSV("InputYear2018Day19").components(separatedBy: .newlines).map { createChronalInstruction($0) }
+        let firstInstruction = instructions.removeFirst()
+        let registerIp = firstInstruction[1]
+        var ip = 0
+        var registers = [0, 0, 0, 0, 0, 0]
+        let associations = [0: "eqri", 1: "mulr", 2: "gtri", 3: "gtrr",
+                            4: "banr", 5: "addi", 6: "seti", 7: "gtir",
+                            8: "muli", 9: "bori", 10: "setr", 11: "addr",
+                            12: "bani", 13: "borr", 14: "eqir", 15: "eqrr"]
+        while ip >= 0 && ip < instructions.count {
+            registers[registerIp] = ip
+            registers = executeChronal(registers, inst: instructions[ip], associations: associations)
+            ip = registers[registerIp]
+            ip += 1
+        }
+        let result = registers[0]
+        return String(result)
+    }
+    
+    private func createChronalInstruction(_ input: String) -> [Int] {
+        let items = input.components(separatedBy: .whitespaces)
+        guard items.count == 4 else { return [-1, Int(items[1])!] }
+        let associations = ["eqri": 0, "mulr": 1, "gtri": 2, "gtrr": 3,
+                            "banr": 4, "addi": 5, "seti": 6, "gtir": 7,
+                            "muli": 8, "bori": 9, "setr": 10, "addr": 11,
+                            "bani": 12, "borr": 13, "eqir": 14, "eqrr": 15]
+        return [associations[items[0]]!, Int(items[1])!, Int(items[2])!, Int(items[3])!]
     }
     
 }
