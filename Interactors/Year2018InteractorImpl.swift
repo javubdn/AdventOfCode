@@ -1312,4 +1312,26 @@ extension Year2018InteractorImpl: YearInteractor {
         return rooms
     }
     
+    @objc
+    func day21question1() -> String {
+        var instructions = readCSV("InputYear2018Day21").components(separatedBy: .newlines).map { createChronalInstruction($0) }
+        let firstInstruction = instructions.removeFirst()
+        let registerIp = firstInstruction[1]
+        var ip = 0
+        var registers = [0, 0, 0, 0, 0, 0]
+        let associations = [0: "eqri", 1: "mulr", 2: "gtri", 3: "gtrr",
+                            4: "banr", 5: "addi", 6: "seti", 7: "gtir",
+                            8: "muli", 9: "bori", 10: "setr", 11: "addr",
+                            12: "bani", 13: "borr", 14: "eqir", 15: "eqrr"]
+        while ip >= 0 && ip < instructions.count {
+            if ip == 28 { return String(registers[1]) }
+            registers[registerIp] = ip
+            registers = executeChronal(registers, inst: instructions[ip], associations: associations)
+            ip = registers[registerIp]
+            ip += 1
+        }
+        let result = registers[0]
+        return String(result)
+    }
+    
 }
