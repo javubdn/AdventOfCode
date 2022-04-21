@@ -1299,4 +1299,35 @@ extension Year2018InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day20question2() -> String {
+        let input = readCSV("InputYear2018Day20")
+        let entry = input[1..<input.count-1]
+        var (x, y, steps) = (0, 0, 0)
+        var rooms: [String: Int] = ["0-0": 0]
+        var parents: [(Int, Int)] = []
+        for value in entry {
+            switch value {
+            case "(":
+                parents.append((x, y))
+            case ")", "|":
+                (x, y) = parents.last!
+                steps = rooms["\(x)-\(y)"]!
+                if value == ")" { _ = parents.removeLast() }
+            case "N", "S", "W", "E":
+                x += value == "W" ? -1 : value == "E" ? 1 : 0
+                y += value == "N" ? -1 : value == "S" ? 1 : 0
+                if let _ = rooms["\(x)-\(y)"] {
+                    steps -= 1
+                } else {
+                    steps += 1
+                    rooms["\(x)-\(y)"] = steps
+                }
+            default: break
+            }
+        }
+        let result = rooms.values.filter { $0 >= 1000 }.count
+        return String(result)
+    }
+    
 }
