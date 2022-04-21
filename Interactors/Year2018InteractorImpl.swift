@@ -1268,4 +1268,63 @@ extension Year2018InteractorImpl: YearInteractor {
         return [associations[items[0]]!, Int(items[1])!, Int(items[2])!, Int(items[3])!]
     }
     
+    @objc
+    func day20question1() -> String {
+        let input = readCSV("InputYear2018Day20")
+        let entry = input[1..<input.count-1]
+        var x = 0
+        var y = 0
+        var rooms: [String: Int] = ["0-0": 0]
+        var steps = 0
+        var parents: [(Int, Int)] = []
+        for value in entry {
+            switch value {
+            case "(":
+                parents.append((x, y))
+            case ")":
+                (x, y) = parents.last!
+                _ = parents.removeLast()
+                steps = rooms["\(x)-\(y)"]!
+            case "|":
+                (x, y) = parents.last!
+                steps = rooms["\(x)-\(y)"]!
+            case "N":
+                y -= 1
+                if let _ = rooms["\(x)-\(y)"] {
+                    steps -= 1
+                } else {
+                    steps += 1
+                    rooms["\(x)-\(y)"] = steps
+                }
+            case "S":
+                y += 1
+                if let _ = rooms["\(x)-\(y)"] {
+                    steps -= 1
+                } else {
+                    steps += 1
+                    rooms["\(x)-\(y)"] = steps
+                }
+            case "W":
+                x -= 1
+                if let _ = rooms["\(x)-\(y)"] {
+                    steps -= 1
+                } else {
+                    steps += 1
+                    rooms["\(x)-\(y)"] = steps
+                }
+            case "E":
+                x += 1
+                if let _ = rooms["\(x)-\(y)"] {
+                    steps -= 1
+                } else {
+                    steps += 1
+                    rooms["\(x)-\(y)"] = steps
+                }
+            default: break
+            }
+        }
+        let result = rooms.values.max()!
+        return String(result)
+    }
+    
 }
