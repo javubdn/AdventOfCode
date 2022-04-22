@@ -1346,27 +1346,30 @@ extension Year2018InteractorImpl: YearInteractor {
     
     @objc
     func day22question1() -> String {
-        let depht = 6084
-        let target = (14, 709)
+        let cave = createCave(6084, target: (14, 709))
+        let result = cave.map { $0.reduce(0, +) }.reduce(0, +)
+        return String(result)
+    }
+    
+    private func createCave(_ depth: Int, target: (Int, Int)) -> [[Int]] {
         var cave = [[(Int, Int)]](repeating: [(Int, Int)](repeating: (0, 0), count: target.0+1), count: target.1+1)
-        cave[0][0] = (0, (0+depht)%20183)
+        cave[0][0] = (0, (0+depth)%20183)
         for col in 1...target.0 {
             cave[0][col].0 = col*16807
-            cave[0][col].1 = (cave[0][col].0 + depht) % 20183
+            cave[0][col].1 = (cave[0][col].0 + depth) % 20183
         }
         for row in 1...target.1 {
             cave[row][0].0 = row*48271
-            cave[row][0].1 = (cave[row][0].0 + depht) % 20183
+            cave[row][0].1 = (cave[row][0].0 + depth) % 20183
         }
         for row in 1...target.1 {
             for col in 1...target.0 {
                 cave[row][col].0 = cave[row-1][col].1 * cave[row][col-1].1
-                cave[row][col].1 = (cave[row][col].0 + depht) % 20183
+                cave[row][col].1 = (cave[row][col].0 + depth) % 20183
             }
         }
-        cave[target.1][target.0] = (0, (0+depht)%20183)
-        let result = cave.map { $0.map { $0.1%3 }.reduce(0, +) }.reduce(0, +)
-        return String(result)
+        cave[target.1][target.0] = (0, (0+depth)%20183)
+        return cave.map { $0.map { $0.1%3 } }
     }
     
 }
