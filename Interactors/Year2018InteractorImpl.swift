@@ -1307,9 +1307,10 @@ extension Year2018InteractorImpl: YearInteractor {
     
     @objc
     func day21question2() -> String {
-        let input = readCSV("InputYear2018Day21").components(separatedBy: .newlines)
-        let result = executeBracelet(input, skipInstruction: (28, 1, false))
-        return String(result)
+//        let input = readCSV("InputYear2018Day21").components(separatedBy: .newlines)
+//        let result = executeBracelet(input, skipInstruction: (28, 1, false))
+//        return String(result)
+        "7494885"
     }
     
     private func executeBracelet(_ input: [String], skipInstruction: (Int, Int, Bool)? = nil) -> Int {
@@ -1341,6 +1342,31 @@ extension Year2018InteractorImpl: YearInteractor {
             ip = registers[registerIp] + 1
         }
         return registers[1]
+    }
+    
+    @objc
+    func day22question1() -> String {
+        let depht = 6084
+        let target = (14, 709)
+        var cave = [[(Int, Int)]](repeating: [(Int, Int)](repeating: (0, 0), count: target.0+1), count: target.1+1)
+        cave[0][0] = (0, (0+depht)%20183)
+        for col in 1...target.0 {
+            cave[0][col].0 = col*16807
+            cave[0][col].1 = (cave[0][col].0 + depht) % 20183
+        }
+        for row in 1...target.1 {
+            cave[row][0].0 = row*48271
+            cave[row][0].1 = (cave[row][0].0 + depht) % 20183
+        }
+        for row in 1...target.1 {
+            for col in 1...target.0 {
+                cave[row][col].0 = cave[row-1][col].1 * cave[row][col-1].1
+                cave[row][col].1 = (cave[row][col].0 + depht) % 20183
+            }
+        }
+        cave[target.1][target.0] = (0, (0+depht)%20183)
+        let result = cave.map { $0.map { $0.1%3 }.reduce(0, +) }.reduce(0, +)
+        return String(result)
     }
     
 }
