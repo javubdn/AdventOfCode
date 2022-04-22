@@ -1216,22 +1216,8 @@ extension Year2018InteractorImpl: YearInteractor {
     
     @objc
     func day19question1() -> String {
-        var instructions = readCSV("InputYear2018Day19").components(separatedBy: .newlines).map { createChronalInstruction($0) }
-        let firstInstruction = instructions.removeFirst()
-        let registerIp = firstInstruction[1]
-        var ip = 0
-        var registers = [0, 0, 0, 0, 0, 0]
-        let associations = [0: "eqri", 1: "mulr", 2: "gtri", 3: "gtrr",
-                            4: "banr", 5: "addi", 6: "seti", 7: "gtir",
-                            8: "muli", 9: "bori", 10: "setr", 11: "addr",
-                            12: "bani", 13: "borr", 14: "eqir", 15: "eqrr"]
-        while ip >= 0 && ip < instructions.count {
-            registers[registerIp] = ip
-            registers = executeChronal(registers, inst: instructions[ip], associations: associations)
-            ip = registers[registerIp]
-            ip += 1
-        }
-        let result = registers[0]
+        let input = readCSV("InputYear2018Day19").components(separatedBy: .newlines)
+        let result = executeBracelet(input)
         return String(result)
     }
     
@@ -1314,29 +1300,20 @@ extension Year2018InteractorImpl: YearInteractor {
     
     @objc
     func day21question1() -> String {
-        var instructions = readCSV("InputYear2018Day21").components(separatedBy: .newlines).map { createChronalInstruction($0) }
-        let firstInstruction = instructions.removeFirst()
-        let registerIp = firstInstruction[1]
-        var ip = 0
-        var registers = [0, 0, 0, 0, 0, 0]
-        let associations = [0: "eqri", 1: "mulr", 2: "gtri", 3: "gtrr",
-                            4: "banr", 5: "addi", 6: "seti", 7: "gtir",
-                            8: "muli", 9: "bori", 10: "setr", 11: "addr",
-                            12: "bani", 13: "borr", 14: "eqir", 15: "eqrr"]
-        while ip >= 0 && ip < instructions.count {
-            if ip == 28 { return String(registers[1]) }
-            registers[registerIp] = ip
-            registers = executeChronal(registers, inst: instructions[ip], associations: associations)
-            ip = registers[registerIp]
-            ip += 1
-        }
-        let result = registers[0]
+        let input = readCSV("InputYear2018Day21").components(separatedBy: .newlines)
+        let result = executeBracelet(input, skipInstruction: (28, 1, true))
         return String(result)
     }
     
     @objc
     func day21question2() -> String {
-        var instructions = readCSV("InputYear2018Day21").components(separatedBy: .newlines).map { createChronalInstruction($0) }
+        let input = readCSV("InputYear2018Day21").components(separatedBy: .newlines)
+        let result = executeBracelet(input, skipInstruction: (28, 1, false))
+        return String(result)
+    }
+    
+    private func executeBracelet(_ input: [String], skipInstruction: (Int, Int, Bool)? = nil) -> Int {
+        var instructions = input.map { createChronalInstruction($0) }
         let firstInstruction = instructions.removeFirst()
         let registerIp = firstInstruction[1]
         var ip = 0
@@ -1348,21 +1325,22 @@ extension Year2018InteractorImpl: YearInteractor {
         var solutions: Set<Int> = [0]
         var lastSolution = 0
         while ip >= 0 && ip < instructions.count {
-            if ip == 28 {
-                if solutions.contains(registers[1]) {
-                    return String(lastSolution)
-                } else {
-                    lastSolution = registers[1]
-                    solutions.insert(lastSolution)
+            if let skipInstruction = skipInstruction {
+                if ip == skipInstruction.0 {
+                    if skipInstruction.2 { return registers[skipInstruction.1] }
+                    if solutions.contains(registers[skipInstruction.1]) {
+                        return lastSolution
+                    } else {
+                        lastSolution = registers[skipInstruction.1]
+                        solutions.insert(lastSolution)
+                    }
                 }
             }
             registers[registerIp] = ip
             registers = executeChronal(registers, inst: instructions[ip], associations: associations)
-            ip = registers[registerIp]
-            ip += 1
+            ip = registers[registerIp] + 1
         }
-        let result = registers[0]
-        return String(result)
+        return registers[1]
     }
     
 }
