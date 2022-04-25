@@ -1372,4 +1372,42 @@ extension Year2018InteractorImpl: YearInteractor {
         return cave.map { $0.map { $0.1%3 } }
     }
     
+    private func addCaveMovements(_ cave: [[Int]], _ visited: [[(Bool, Bool)]], position: (Int, Int), currentObject: Int, currentDistance: Int) -> ([((Int, Int), Int, Int)], [[(Bool, Bool)]])  {
+        var movements: [((Int, Int), Int, Int)] = []
+        var visited = visited
+        for nextMovement in 0...3 {
+            let nextX = nextMovement == 2 ? position.0 - 1 : nextMovement == 3 ? position.0 + 1 : position.0
+            let nextY = nextMovement == 0 ? position.1 - 1 : nextMovement == 1 ? position.1 + 1 : position.1
+            if nextX >= 0 && nextX < cave[0].count && nextY >= 0 && nextY < cave.count {
+                if !visited[nextY][nextX].0 || !visited[nextY][nextX].0 {
+//                let nextObject = currentObject == cave[nextY][nextX] ? (currentObject+1)%3 : currentObject
+//                let nextDistance = currentObject == cave[nextY][nextX] ? currentDistance + 8 : currentDistance + 1
+//                let movement = ((nextX, nextY), nextObject, nextDistance)
+//                movements.append(movement)
+                
+                    if currentObject == cave[nextY][nextX] {
+                        if !visited[nextY][nextX].0 {
+                            movements.append(((nextX, nextY), (currentObject+1)%3, currentDistance + 8))
+                            visited[nextY][nextX].0 = true
+                        }
+                        if !visited[nextY][nextX].1 {
+                            movements.append(((nextX, nextY), (currentObject+2)%3, currentDistance + 8))
+                            visited[nextY][nextX].1 = true
+                        }
+                    } else {
+                        movements.append(((nextX, nextY), currentObject, currentDistance + 1))
+                        if (currentObject+1)%3 == cave[nextY][nextX] {
+                            visited[nextY][nextX].0 = true
+                        } else {
+                            visited[nextY][nextX].1 = true
+                        }
+                    }
+                }
+//                visited[nextY][nextX] = true
+            }
+        }
+        
+        return (movements, visited)
+    }
+    
 }
