@@ -1379,12 +1379,6 @@ extension Year2018InteractorImpl: YearInteractor {
             let nextX = nextMovement == 2 ? position.0 - 1 : nextMovement == 3 ? position.0 + 1 : position.0
             let nextY = nextMovement == 0 ? position.1 - 1 : nextMovement == 1 ? position.1 + 1 : position.1
             if nextX >= 0 && nextX < cave[0].count && nextY >= 0 && nextY < cave.count {
-                if !visited[nextY][nextX].0 || !visited[nextY][nextX].0 {
-//                let nextObject = currentObject == cave[nextY][nextX] ? (currentObject+1)%3 : currentObject
-//                let nextDistance = currentObject == cave[nextY][nextX] ? currentDistance + 8 : currentDistance + 1
-//                let movement = ((nextX, nextY), nextObject, nextDistance)
-//                movements.append(movement)
-                
                     if currentObject == cave[nextY][nextX] {
                         if !visited[nextY][nextX].0 {
                             movements.append(((nextX, nextY), (currentObject+1)%3, currentDistance + 8))
