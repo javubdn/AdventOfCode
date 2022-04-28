@@ -1353,22 +1353,26 @@ extension Year2018InteractorImpl: YearInteractor {
     
     private func createCave(_ depth: Int, target: (Int, Int)) -> [[Int]] {
         var cave = [[(Int, Int)]](repeating: [(Int, Int)](repeating: (0, 0), count: target.0+1), count: target.1+1)
+    private func createCave(_ depth: Int, target: (Int, Int), size: (Int, Int)) -> [[Int]] {
+        var cave = [[(Int, Int)]](repeating: [(Int, Int)](repeating: (0, 0), count: size.0+1), count: size.1+1)
         cave[0][0] = (0, (0+depth)%20183)
-        for col in 1...target.0 {
+        cave[target.1][target.0] = (0, (0+depth)%20183)
+        for col in 1...size.0 {
             cave[0][col].0 = col*16807
             cave[0][col].1 = (cave[0][col].0 + depth) % 20183
         }
-        for row in 1...target.1 {
+        for row in 1...size.1 {
             cave[row][0].0 = row*48271
             cave[row][0].1 = (cave[row][0].0 + depth) % 20183
         }
-        for row in 1...target.1 {
-            for col in 1...target.0 {
+        for row in 1...size.1 {
+            for col in 1...size.0 {
+                guard row != target.1 || col != target.0 else { continue }
                 cave[row][col].0 = cave[row-1][col].1 * cave[row][col-1].1
                 cave[row][col].1 = (cave[row][col].0 + depth) % 20183
             }
         }
-        cave[target.1][target.0] = (0, (0+depth)%20183)
+        
         return cave.map { $0.map { $0.1%3 } }
     }
     
