@@ -1376,7 +1376,7 @@ extension Year2018InteractorImpl: YearInteractor {
         return cave.map { $0.map { $0.1%3 } }
     }
     
-    private func addCaveMovements(_ cave: [[Int]], _ visited: [[(Bool, Bool)]], position: (Int, Int), currentObject: Int, currentDistance: Int) -> ([((Int, Int), Int, Int)], [[(Bool, Bool)]])  {
+    private func addCaveMovements(_ cave: [[Int]], position: (Int, Int), currentObject: Int, currentDistance: Int, treated: [String: Int]) -> ([((Int, Int), Int, Int)], [String: Int])  {
         var movements: [((Int, Int), Int, Int)] = []
         var visited = visited
         for nextMovement in 0...3 {
