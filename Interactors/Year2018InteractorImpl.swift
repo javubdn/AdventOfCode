@@ -1346,13 +1346,45 @@ extension Year2018InteractorImpl: YearInteractor {
     
     @objc
     func day22question1() -> String {
-        let cave = createCave(6084, target: (14, 709))
+        let cave = createCave(6084, target: (14, 709), size: (14, 709))
         let result = cave.map { $0.reduce(0, +) }.reduce(0, +)
         return String(result)
     }
     
-    private func createCave(_ depth: Int, target: (Int, Int)) -> [[Int]] {
-        var cave = [[(Int, Int)]](repeating: [(Int, Int)](repeating: (0, 0), count: target.0+1), count: target.1+1)
+    @objc
+    func day22question2() -> String {
+        let depth = 6084 //510
+        let target = (14, 709)//(10, 10)
+        let cave = createCave(depth, target: target, size: (target.0*4, target.1*2))
+//        let cave = createCave(depth, target: target, size: target)
+
+        var treated: [String: Int] = ["0-0-1": 0]
+        //neither -> 0, torch -> 1, climbing gear -> 2
+        var movements: [((Int, Int), Int, Int)] = [((0,0), 1, 0)]
+//        var solutions: [Int] = []
+        while !movements.isEmpty {
+            let movement = movements.removeFirst()
+//            if movement.0 == target && movement.1 == 1 {
+//                solutions.append(movement.2)
+//                continue
+//                return "\(movement.2)"
+//            }
+            let nextMovements: [((Int, Int), Int, Int)]
+            (nextMovements, treated) = addCaveMovements(cave, position: movement.0, currentObject: movement.1, currentDistance: movement.2, treated: treated)
+            for nextMovement in nextMovements {
+                if let index = movements.firstIndex(where: { $0.2 > nextMovement.2 }) {
+                    movements.insert(nextMovement, at: index)
+                } else {
+                    movements.append(nextMovement)
+                }
+            }
+//            movements.append(contentsOf: nextMovements)
+        }
+        let result = treated["\(target.0)-\(target.1)-1"]!
+//        let result = solutions.min()!
+        return String(result)
+    }
+    
     private func createCave(_ depth: Int, target: (Int, Int), size: (Int, Int)) -> [[Int]] {
         var cave = [[(Int, Int)]](repeating: [(Int, Int)](repeating: (0, 0), count: size.0+1), count: size.1+1)
         cave[0][0] = (0, (0+depth)%20183)
@@ -1378,26 +1410,71 @@ extension Year2018InteractorImpl: YearInteractor {
     
     private func addCaveMovements(_ cave: [[Int]], position: (Int, Int), currentObject: Int, currentDistance: Int, treated: [String: Int]) -> ([((Int, Int), Int, Int)], [String: Int])  {
         var movements: [((Int, Int), Int, Int)] = []
-        var visited = visited
+        var treated = treated
         for nextMovement in 0...3 {
             let nextX = nextMovement == 2 ? position.0 - 1 : nextMovement == 3 ? position.0 + 1 : position.0
             let nextY = nextMovement == 0 ? position.1 - 1 : nextMovement == 1 ? position.1 + 1 : position.1
             if nextX >= 0 && nextX < cave[0].count && nextY >= 0 && nextY < cave.count {
+                if currentObject != cave[nextY][nextX] {
+                    if let tr = treated["\(nextX)-\(nextY)-\(currentObject)"] {
+                        if tr > currentDistance + 1 {
+                            movements.append(((nextX, nextY), currentObject, currentDistance + 1))
+                            treated["\(nextX)-\(nextY)-\(currentObject)"] = currentDistance + 1
                         }
                     } else {
                         movements.append(((nextX, nextY), currentObject, currentDistance + 1))
-                        if (currentObject+1)%3 == cave[nextY][nextX] {
-                            visited[nextY][nextX].0 = true
-                        } else {
-                            visited[nextY][nextX].1 = true
-                        }
+                        treated["\(nextX)-\(nextY)-\(currentObject)"] = currentDistance + 1
                     }
                 }
-//                visited[nextY][nextX] = true
             }
         }
+//        for nextObject in [(currentObject+1)%3, (currentObject+2)%3] {
+//            let tr = treated["\(position.0)-\(position.1)-\(nextObject)"]
+//
+//            if tr == nil || tr! > currentDistance + 7 {
+//                movements.append((position, nextObject, currentDistance + 7))
+//                treated["\(position.0)-\(position.1)-\(nextObject)"] = currentDistance + 7
+//            }
+//        }
         
-        return (movements, visited)
+        let nextObject = 3 - (currentObject + cave[position.1][position.0])
+        let tr = treated["\(position.0)-\(position.1)-\(nextObject)"]
+        if tr == nil || tr! > currentDistance + 7 {
+            movements.append((position, nextObject, currentDistance + 7))
+            treated["\(position.0)-\(position.1)-\(nextObject)"] = currentDistance + 7
+        }
+        
+//            if let tr = treated["\(position.0)-\(position.1)-\(nextObject)"] {
+//                if tr > currentDistance + 7 {
+//                    movements.append((position, nextObject, currentDistance + 7))
+//                    treated["\(position.0)-\(position.1)-\(nextObject)"] = currentDistance + 7
+//                }
+//            } else {
+//                movements.append((position, nextObject, currentDistance + 7))
+//                treated["\(position.0)-\(position.1)-\(nextObject)"] = currentDistance + 7
+//            }
+        
+//        if let tr = treated["\(position.0)-\(position.1)-\((currentObject+1)%3)"] {
+//            if tr > currentDistance + 7 {
+//                movements.append((position, (currentObject+1)%3, currentDistance + 7))
+//                treated["\(position.0)-\(position.1)-\((currentObject+1)%3)"] = currentDistance + 7
+//            }
+//        } else {
+//            movements.append((position, (currentObject+1)%3, currentDistance + 7))
+//            treated["\(position.0)-\(position.1)-\((currentObject+1)%3)"] = currentDistance + 7
+//        }
+//
+//        if let tr = treated["\(position.0)-\(position.1)-\((currentObject+2)%3)"] {
+//            if tr > currentDistance + 7 {
+//                movements.append((position, (currentObject+2)%3, currentDistance + 7))
+//                treated["\(position.0)-\(position.1)-\((currentObject+2)%3)"] = currentDistance + 7
+//            }
+//        } else {
+//            movements.append((position, (currentObject+2)%3, currentDistance + 7))
+//            treated["\(position.0)-\(position.1)-\((currentObject+2)%3)"] = currentDistance + 7
+//        }
+        
+        return (movements, treated)
     }
     
 }
