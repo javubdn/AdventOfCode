@@ -1362,11 +1362,9 @@ extension Year2018InteractorImpl: YearInteractor {
         var movements: [((Int, Int), Int, Int)] = [((0,0), 1, 0)]
         while !movements.isEmpty {
             let movement = movements.removeFirst()
-//            if movement.0 == target && movement.1 == 1 {
-//                solutions.append(movement.2)
-//                continue
-//                return "\(movement.2)"
-//            }
+            if movement.0 == target && movement.1 == 1 {
+                return "\(movement.2)"
+            }
             let nextMovements: [((Int, Int), Int, Int)]
             (nextMovements, treated) = addCaveMovements(cave, position: movement.0, currentObject: movement.1, currentDistance: movement.2, treated: treated)
             for nextMovement in nextMovements {
