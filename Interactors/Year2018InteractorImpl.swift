@@ -1405,23 +1405,22 @@ extension Year2018InteractorImpl: YearInteractor {
     private func addCaveMovements(_ cave: [[Int]], position: (Int, Int), currentObject: Int, currentDistance: Int, treated: [String: Int]) -> ([((Int, Int), Int, Int)], [String: Int])  {
         var movements: [((Int, Int), Int, Int)] = []
         var treated = treated
+        var possibleMovements: [((Int, Int), Int, Int)] = []
         for nextMovement in 0...3 {
             let nextX = nextMovement == 2 ? position.0 - 1 : nextMovement == 3 ? position.0 + 1 : position.0
             let nextY = nextMovement == 0 ? position.1 - 1 : nextMovement == 1 ? position.1 + 1 : position.1
             if nextX >= 0 && nextX < cave[0].count && nextY >= 0 && nextY < cave.count && currentObject != cave[nextY][nextX] {
-                let tr = treated["\(nextX)-\(nextY)-\(currentObject)"]
-                if tr == nil || tr! > currentDistance + 1 {
-                    movements.append(((nextX, nextY), currentObject, currentDistance + 1))
-                    treated["\(nextX)-\(nextY)-\(currentObject)"] = currentDistance + 1
-                }
+                possibleMovements.append(((nextX, nextY), currentObject, currentDistance + 1))
             }
         }
-        
         let nextObject = 3 - (currentObject + cave[position.1][position.0])
-        let tr = treated["\(position.0)-\(position.1)-\(nextObject)"]
-        if tr == nil || tr! > currentDistance + 7 {
-            movements.append((position, nextObject, currentDistance + 7))
-            treated["\(position.0)-\(position.1)-\(nextObject)"] = currentDistance + 7
+        possibleMovements.append((position, nextObject, currentDistance + 7))        
+        for possibleMovement in possibleMovements {
+            let tr = treated["\(possibleMovement.0.0)-\(possibleMovement.0.1)-\(possibleMovement.1)"]
+            if tr == nil || tr! > possibleMovement.2 {
+                movements.append((possibleMovement.0, possibleMovement.1, possibleMovement.2))
+                treated["\(possibleMovement.0.0)-\(possibleMovement.0.1)-\(possibleMovement.1)"] = possibleMovement.2
+            }
         }
         
         return (movements, treated)
