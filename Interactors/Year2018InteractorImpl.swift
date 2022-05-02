@@ -1408,17 +1408,11 @@ extension Year2018InteractorImpl: YearInteractor {
         for nextMovement in 0...3 {
             let nextX = nextMovement == 2 ? position.0 - 1 : nextMovement == 3 ? position.0 + 1 : position.0
             let nextY = nextMovement == 0 ? position.1 - 1 : nextMovement == 1 ? position.1 + 1 : position.1
-            if nextX >= 0 && nextX < cave[0].count && nextY >= 0 && nextY < cave.count {
-                if currentObject != cave[nextY][nextX] {
-                    if let tr = treated["\(nextX)-\(nextY)-\(currentObject)"] {
-                        if tr > currentDistance + 1 {
-                            movements.append(((nextX, nextY), currentObject, currentDistance + 1))
-                            treated["\(nextX)-\(nextY)-\(currentObject)"] = currentDistance + 1
-                        }
-                    } else {
-                        movements.append(((nextX, nextY), currentObject, currentDistance + 1))
-                        treated["\(nextX)-\(nextY)-\(currentObject)"] = currentDistance + 1
-                    }
+            if nextX >= 0 && nextX < cave[0].count && nextY >= 0 && nextY < cave.count && currentObject != cave[nextY][nextX] {
+                let tr = treated["\(nextX)-\(nextY)-\(currentObject)"]
+                if tr == nil || tr! > currentDistance + 1 {
+                    movements.append(((nextX, nextY), currentObject, currentDistance + 1))
+                    treated["\(nextX)-\(nextY)-\(currentObject)"] = currentDistance + 1
                 }
             }
         }
