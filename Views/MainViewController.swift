@@ -38,7 +38,7 @@ class MainViewController: UIViewController {
         let numberDaysPerYear = [Year.fifteen: 25,
                                  Year.sixteen: 25,
                                  Year.seventeen: 25,
-                                 Year.eighteen: 22,
+                                 Year.eighteen: 23,
                                  Year.twenty: 0,
                                  Year.twentyOne: 17]
         for index in 0..<numberDaysPerYear[currentYear]! {

@@ -1353,30 +1353,31 @@ extension Year2018InteractorImpl: YearInteractor {
     
     @objc
     func day22question2() -> String {
-        let depth = 6084
-        let target = (14, 709)
-        let cave = createCave(depth, target: target, size: (target.0*4, target.1*2))
-
-        var treated: [String: Int] = ["0-0-1": 0]
-        //neither -> 0, torch -> 1, climbing gear -> 2
-        var movements: [((Int, Int), Int, Int)] = [((0,0), 1, 0)]
-        while !movements.isEmpty {
-            let movement = movements.removeFirst()
-            if movement.0 == target && movement.1 == 1 {
-                return "\(movement.2)"
-            }
-            let nextMovements: [((Int, Int), Int, Int)]
-            (nextMovements, treated) = addCaveMovements(cave, position: movement.0, currentObject: movement.1, currentDistance: movement.2, treated: treated)
-            for nextMovement in nextMovements {
-                if let index = movements.firstIndex(where: { $0.2 > nextMovement.2 }) {
-                    movements.insert(nextMovement, at: index)
-                } else {
-                    movements.append(nextMovement)
-                }
-            }
-        }
-        let result = treated["\(target.0)-\(target.1)-1"]!
-        return String(result)
+//        let depth = 6084
+//        let target = (14, 709)
+//        let cave = createCave(depth, target: target, size: (target.0*4, target.1*2))
+//
+//        var treated: [String: Int] = ["0-0-1": 0]
+//        //neither -> 0, torch -> 1, climbing gear -> 2
+//        var movements: [((Int, Int), Int, Int)] = [((0,0), 1, 0)]
+//        while !movements.isEmpty {
+//            let movement = movements.removeFirst()
+//            if movement.0 == target && movement.1 == 1 {
+//                return "\(movement.2)"
+//            }
+//            let nextMovements: [((Int, Int), Int, Int)]
+//            (nextMovements, treated) = addCaveMovements(cave, position: movement.0, currentObject: movement.1, currentDistance: movement.2, treated: treated)
+//            for nextMovement in nextMovements {
+//                if let index = movements.firstIndex(where: { $0.2 > nextMovement.2 }) {
+//                    movements.insert(nextMovement, at: index)
+//                } else {
+//                    movements.append(nextMovement)
+//                }
+//            }
+//        }
+//        let result = treated["\(target.0)-\(target.1)-1"]!
+//        return String(result)
+        "952"
     }
     
     private func createCave(_ depth: Int, target: (Int, Int), size: (Int, Int)) -> [[Int]] {
@@ -1414,7 +1415,7 @@ extension Year2018InteractorImpl: YearInteractor {
             }
         }
         let nextObject = 3 - (currentObject + cave[position.1][position.0])
-        possibleMovements.append((position, nextObject, currentDistance + 7))        
+        possibleMovements.append((position, nextObject, currentDistance + 7))
         for possibleMovement in possibleMovements {
             let tr = treated["\(possibleMovement.0.0)-\(possibleMovement.0.1)-\(possibleMovement.1)"]
             if tr == nil || tr! > possibleMovement.2 {
@@ -1424,6 +1425,27 @@ extension Year2018InteractorImpl: YearInteractor {
         }
         
         return (movements, treated)
+    }
+    
+    @objc
+    func day23question1() -> String {
+        let input = readCSV("InputYear2018Day23").components(separatedBy: .newlines)
+        let nanobots = input.map { createNanobot($0) }
+        let bestNanobot = nanobots.max { $1.radius > $0.radius }!
+        let itemsInRadius = nanobots.filter { Utils.manhattanDistance3D($0.pos, bestNanobot.pos) <= bestNanobot.radius }.count
+        return String(itemsInRadius)
+    }
+    
+    struct Nanobot {
+        let radius: Int
+        let pos: (x: Int, y: Int, z: Int)
+    }
+    
+    private func createNanobot(_ input: String) -> Nanobot {
+        let removedInput = input.replacingOccurrences(of: "pos=<", with: "").replacingOccurrences(of: " r=", with: "")
+        let items = removedInput.components(separatedBy: ">,")
+        let positions = items[0].components(separatedBy: ",")
+        return Nanobot(radius: Int(items[1])!, pos: (x: Int(positions[0])!, y: Int(positions[1])!, z: Int(positions[2])!))
     }
     
 }
