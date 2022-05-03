@@ -147,6 +147,10 @@ class Utils {
         abs(point2.0 - point1.0) + abs(point2.1 - point1.1)
     }
     
+    static func manhattanDistance3D(_ point1: (Int, Int, Int), _ point2: (Int, Int, Int)) -> Int {
+        abs(point2.0 - point1.0) + abs(point2.1 - point1.1) + abs(point2.2 - point1.2)
+    }
+    
     static func isPrime(_ n: Int) -> Bool {
         guard n > 1 else { return false }
         guard n > 2 else { return true  }
