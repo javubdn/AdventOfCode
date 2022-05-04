@@ -7,28 +7,25 @@
 
 import Foundation
 
-class Bronkerbosch<T: Hashable> {
+class Bronkerbosch {
     
-    private var bestR: Set<T> = Set()
-    private var neighbors: [T: Set<T>]
-    var counter = 1
-    init(_ neighbors: [T: Set<T>]) {
+    private var bestR: Set<Int> = Set()
+    private var neighbors: [Int: Set<Int>]
+    init(_ neighbors: [Int: Set<Int>]) {
         self.neighbors = neighbors
     }
     
-    func largestClique() -> Set<T> {
+    func largestClique() -> Set<Int> {
         execute(p: Set(neighbors.keys))
         return bestR
     }
     
-    private func execute(p: Set<T>, r: Set<T> = Set(), x: Set<T> = Set()) {
-        print(counter)
-        counter += 1
+    private func execute(p: Set<Int>, r: Set<Int> = Set(), x: Set<Int> = Set()) {
         guard !p.isEmpty || !x.isEmpty else {
             if r.count > bestR.count { bestR = r }
             return
         }
-        let mostNeighborsOfPandX: T = p.union(x).max { item1, item2 in
+        let mostNeighborsOfPandX: Int = p.union(x).max { item1, item2 in
             let n1 = neighbors[item1]
             let n2 = neighbors[item2]
             let count1 = n1!.count
