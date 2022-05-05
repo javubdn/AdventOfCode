@@ -1430,22 +1430,64 @@ extension Year2018InteractorImpl: YearInteractor {
     @objc
     func day23question1() -> String {
         let input = readCSV("InputYear2018Day23").components(separatedBy: .newlines)
-        let nanobots = input.map { createNanobot($0) }
+        var id = 1
+        var nanobots: [Nanobot] = []
+        input.forEach { item in
+            nanobots.append(createNanobot(item, id: id))
+            id += 1
+        }
         let bestNanobot = nanobots.max { $1.radius > $0.radius }!
         let itemsInRadius = nanobots.filter { Utils.manhattanDistance3D($0.pos, bestNanobot.pos) <= bestNanobot.radius }.count
         return String(itemsInRadius)
     }
     
-    struct Nanobot {
-        let radius: Int
-        let pos: (x: Int, y: Int, z: Int)
+    @objc
+    func day23question2() -> String {
+        let input = readCSV("InputYear2018Day23").components(separatedBy: .newlines)
+        var id = 1
+        var nanobots: [Nanobot] = []
+        for item in input {
+            nanobots.append(createNanobot(item, id: id))
+            id += 1
+        }
+        
+        var neighbors: [Int: Set<Int>] = [:]
+        nanobots.forEach { bot in
+            neighbors[bot.id] = Set(nanobots.filter { $0 != bot }.filter { bot.withinRangeOfSharedPoint($0) }.map { $0.id })
+        }
+        let bronkerbosch = Bronkerbosch(neighbors)
+        let clique: Set<Int> = bronkerbosch.largestClique()
+        let bots = clique.compactMap { nanobotId in
+            nanobots.first { $0.id == nanobotId }
+        }
+        let result = bots.map { Utils.manhattanDistance3D($0.pos, (0, 0, 0)) - $0.radius }.max()!
+        return String(result)
     }
     
-    private func createNanobot(_ input: String) -> Nanobot {
+    struct Nanobot: Hashable {
+        
+        static func == (lhs: Year2018InteractorImpl.Nanobot, rhs: Year2018InteractorImpl.Nanobot) -> Bool {
+            lhs.id == rhs.id
+        }
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(id)
+        }
+        
+        let id: Int
+        let radius: Int
+        let pos: (x: Int, y: Int, z: Int)
+        
+        func withinRangeOfSharedPoint(_ other: Nanobot) -> Bool {
+            Utils.manhattanDistance3D(pos, other.pos) <= radius + other.radius
+        }
+    }
+    
+    private func createNanobot(_ input: String, id: Int) -> Nanobot {
         let removedInput = input.replacingOccurrences(of: "pos=<", with: "").replacingOccurrences(of: " r=", with: "")
         let items = removedInput.components(separatedBy: ">,")
         let positions = items[0].components(separatedBy: ",")
-        return Nanobot(radius: Int(items[1])!, pos: (x: Int(positions[0])!, y: Int(positions[1])!, z: Int(positions[2])!))
+        return Nanobot(id: id, radius: Int(items[1])!, pos: (x: Int(positions[0])!, y: Int(positions[1])!, z: Int(positions[2])!))
     }
     
 }
