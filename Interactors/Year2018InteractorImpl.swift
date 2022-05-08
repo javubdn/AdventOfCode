@@ -1490,4 +1490,50 @@ extension Year2018InteractorImpl: YearInteractor {
         return Nanobot(id: id, radius: Int(items[1])!, pos: (x: Int(positions[0])!, y: Int(positions[1])!, z: Int(positions[2])!))
     }
     
+    private func getInmuneSystem(_ input: String, _ isInmuneSystem: Bool, _ minId: Int) -> [InmuneGroup] {
+        let items = input.components(separatedBy: .newlines)
+        var id = minId
+        var inmuneGroups: [InmuneGroup] = []
+        for item in items {
+            let regex = try! NSRegularExpression(pattern: #"^(\d+) units each with (\d+) hit points (\([,; a-z]+\) )?with an attack that does (\d+) (\w+) damage at initiative (\d+)$"#)
+            let matches = regex.matches(in: item, options: [], range: NSRange(item.startIndex..., in: item))
+            if let match = matches.first {
+                let units = Int(item[Range(match.range(at: 1), in: item)!])!
+                let hit = Int(item[Range(match.range(at: 2), in: item)!])!
+                let attack = Int(item[Range(match.range(at: 4), in: item)!])!
+                let attackType = AttackType.attackTypeFromValue(String(item[Range(match.range(at: 5), in: item)!]))
+                let initiative = Int(item[Range(match.range(at: 6), in: item)!])!
+                var weaknesses: [AttackType] = []
+                var inmunesses: [AttackType] = []
+                if let extra = Range(match.range(at: 3), in: item) {
+                    let weakInmunities = item[extra]
+
+                    let foundWeak = String(String(weakInmunities.dropFirst().dropLast(2))).components(separatedBy: "; ").filter { $0.starts(with: "weak")}
+                    if let weaknessesString = foundWeak.first {
+                        let weakTo = weaknessesString.replacingOccurrences(of: "weak to ", with: "").components(separatedBy: ", ")
+                        weaknesses.append(contentsOf: weakTo.map { AttackType.attackTypeFromValue($0) })
+                    }
+                    let foundInmune = String(String(weakInmunities.dropFirst().dropLast(2))).components(separatedBy: "; ").filter { $0.starts(with: "immune")}
+                    if let inmunessesString = foundInmune.first {
+                        let immuneTo = inmunessesString.replacingOccurrences(of: "immune to ", with: "").components(separatedBy: ", ")
+                        inmunesses.append(contentsOf: immuneTo.map { AttackType.attackTypeFromValue($0) })
+                    }
+                }
+                let inmuneGroup = InmuneGroup(id: id,
+                                              units: units,
+                                              hit: hit,
+                                              attack: attack,
+                                              attackType: attackType,
+                                              initiative: initiative,
+                                              inmunities: inmunesses,
+                                              weaknesses: weaknesses,
+                                              isInmuneSystem: isInmuneSystem)
+                inmuneGroups.append(inmuneGroup)
+            }
+            id += 1
+
+        }
+        return inmuneGroups
+    }
+    
 }
