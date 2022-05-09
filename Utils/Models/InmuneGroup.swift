@@ -36,9 +36,9 @@ class InmuneGroup {
     let inmunities: [AttackType]
     let weaknesses: [AttackType]
     let isInmuneSystem: Bool
-    lazy var effectivePower: Int = {
+    var effectivePower: Int {
         units * attack
-    }()
+    }
     var nextTargetId: Int = -1
     
     init(id: Int, units: Int, hit: Int, attack: Int, attackType: AttackType, initiative: Int, inmunities: [AttackType], weaknesses: [AttackType], isInmuneSystem: Bool) {
