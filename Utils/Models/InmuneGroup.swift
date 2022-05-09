@@ -54,9 +54,7 @@ class InmuneGroup {
     }
     
     func attack(_ enemy: InmuneGroup) -> Int {
-        let damage = enemy.inmunities.contains(attackType) ? 0 :
-                     enemy.weaknesses.contains(attackType) ? (units * attack) * 2 : (units * attack)
-        let unitsLost = damage / enemy.hit
+        let unitsLost = enemy.potentialDamage(self) / enemy.hit
         enemy.units -= unitsLost
         return unitsLost
     }
