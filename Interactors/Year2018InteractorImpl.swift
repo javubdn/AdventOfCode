@@ -1515,23 +1515,7 @@ extension Year2018InteractorImpl: YearInteractor {
                     item.units > 0
                     && selector.isInmuneSystem != item.isInmuneSystem
                     && !selectedItems.contains(where: { $0.id == item.id }) }
-//                    && !item.inmunities.contains(selector.attackType) }
                 .sorted { item1, item2 in
-//                    if item1.inmunities.contains(selector.attackType) && !item2.inmunities.contains(selector.attackType) {
-//                        return true
-//                    } else if !item1.inmunities.contains(selector.attackType) && item2.inmunities.contains(selector.attackType) {
-//                        return false
-//                    }
-//                    if item1.weaknesses.contains(selector.attackType) && !item2.weaknesses.contains(selector.attackType) {
-//                        return true
-//                    } else if !item1.weaknesses.contains(selector.attackType) && item2.weaknesses.contains(selector.attackType) {
-//                        return false
-//                    }
-//                    if item1.weaknesses.contains(selector.attackType) && !item2.weaknesses.contains(selector.attackType) {
-//                        return true
-//                    } else if !item1.weaknesses.contains(selector.attackType) && item2.weaknesses.contains(selector.attackType) {
-//                        return false
-//                    }
                     let potentialDamage1 = item1.potentialDamage(selector)
                     let potentialDamage2 = item2.potentialDamage(selector)
                     if potentialDamage1 > potentialDamage2 { return true }
@@ -1545,12 +1529,8 @@ extension Year2018InteractorImpl: YearInteractor {
                     return true
                 }
                 if let selectableEnemy = selectableEnemies.first {
-                    if selectableEnemy.inmunities.contains(selector.attackType) {
-                        selector.nextTargetId = -1
-                    } else {
-                        selector.nextTargetId = selectableEnemy.id
-                        selectedItems.append(selectableEnemy)
-                    }
+                    selector.nextTargetId = selectableEnemy.id
+                    selectedItems.append(selectableEnemy)
                 } else {
                     selector.nextTargetId = -1
                 }
@@ -1566,19 +1546,6 @@ extension Year2018InteractorImpl: YearInteractor {
                 return attacker.attack(enemy)
             }.reduce(0, +)
             
-//            for attacker in attackers {
-//                guard let enemy = fighters.first(where: { $0.id == attacker.nextTargetId }) else { continue }
-//
-//                let damage = (attacker.units * attacker.attack) / enemy.hit
-//                let extraDamage = (attacker.units * attacker.attack * 2) / enemy.hit
-//                enemy.units -= enemy.weaknesses.contains(attacker.attackType) ? extraDamage : damage
-//                if enemy.units <= 0 {
-//                    fighters.removeAll { $0.id == enemy.id }
-//                    attackers.removeAll { $0.id == enemy.id }
-//                }
-//            }
-//            inmuneSystems = fighters.filter { $0.isInmuneSystem }
-//            infections = fighters.filter { !$0.isInmuneSystem }
         }
         let result = fighters.filter { $0.units > 0 }.map { $0.units }.reduce(0, +)
         return String(result)
