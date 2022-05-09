@@ -13,6 +13,16 @@ enum AttackType: Int {
     case slashing
     case radiation
     case bludgeoning
+    
+    static func attackTypeFromValue(_ value: String) -> AttackType {
+        switch value {
+        case "fire": return .fire
+        case "cold": return .cold
+        case "slashing": return .slashing
+        case "radiation": return .radiation
+        default: return .bludgeoning
+        }
+    }
 }
 
 class InmuneGroup {
