@@ -1552,13 +1552,6 @@ extension Year2018InteractorImpl: YearInteractor {
         return String(result)
     }
     
-    struct Unit {
-        let hit: Int
-        let attack: Int
-        let attackType: String
-        let initiative: Int
-        let inmunities: [String]
-        let weaknesses: [String]
     }
     
     private func getInmuneSystem(_ input: String, _ isInmuneSystem: Bool, _ minId: Int) -> [InmuneGroup] {
