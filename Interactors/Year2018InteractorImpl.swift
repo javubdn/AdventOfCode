@@ -1511,23 +1511,24 @@ extension Year2018InteractorImpl: YearInteractor {
                         && $1.initiative < $0.initiative) }
             var selectedItems: [InmuneGroup] = []
             for selector in selectors {
-                let selectableEnemies = fighters.filter { item in
-                    item.units > 0
-                    && selector.isInmuneSystem != item.isInmuneSystem
-                    && !selectedItems.contains(where: { $0.id == item.id }) }
-                .sorted { item1, item2 in
-                    let potentialDamage1 = item1.potentialDamage(selector)
-                    let potentialDamage2 = item2.potentialDamage(selector)
-                    if potentialDamage1 > potentialDamage2 { return true }
-                    if potentialDamage1 < potentialDamage2 { return false }
-                    if item2.effectivePower > item1.effectivePower {
-                        return false
+                let selectableEnemies = fighters
+                    .filter { item in
+                        item.units > 0
+                        && selector.isInmuneSystem != item.isInmuneSystem
+                        && !selectedItems.contains(where: { $0.id == item.id }) }
+                    .sorted { item1, item2 in
+                        let potentialDamage1 = item1.potentialDamage(selector)
+                        let potentialDamage2 = item2.potentialDamage(selector)
+                        if potentialDamage1 > potentialDamage2 { return true }
+                        if potentialDamage1 < potentialDamage2 { return false }
+                        if item2.effectivePower > item1.effectivePower {
+                            return false
+                        }
+                        if item1.effectivePower == item2.effectivePower {
+                            return item2.initiative < item1.initiative
+                        }
+                        return true
                     }
-                    if item1.effectivePower == item2.effectivePower {
-                        return item2.initiative < item1.initiative
-                    }
-                    return true
-                }
                 if let selectableEnemy = selectableEnemies.first {
                     selector.nextTargetId = selectableEnemy.id
                     selectedItems.append(selectableEnemy)
