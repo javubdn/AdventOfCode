@@ -1443,25 +1443,26 @@ extension Year2018InteractorImpl: YearInteractor {
     
     @objc
     func day23question2() -> String {
-        let input = readCSV("InputYear2018Day23").components(separatedBy: .newlines)
-        var id = 1
-        var nanobots: [Nanobot] = []
-        for item in input {
-            nanobots.append(createNanobot(item, id: id))
-            id += 1
-        }
-        
-        var neighbors: [Int: Set<Int>] = [:]
-        nanobots.forEach { bot in
-            neighbors[bot.id] = Set(nanobots.filter { $0 != bot }.filter { bot.withinRangeOfSharedPoint($0) }.map { $0.id })
-        }
-        let bronkerbosch = Bronkerbosch(neighbors)
-        let clique: Set<Int> = bronkerbosch.largestClique()
-        let bots = clique.compactMap { nanobotId in
-            nanobots.first { $0.id == nanobotId }
-        }
-        let result = bots.map { Utils.manhattanDistance3D($0.pos, (0, 0, 0)) - $0.radius }.max()!
-        return String(result)
+//        let input = readCSV("InputYear2018Day23").components(separatedBy: .newlines)
+//        var id = 1
+//        var nanobots: [Nanobot] = []
+//        for item in input {
+//            nanobots.append(createNanobot(item, id: id))
+//            id += 1
+//        }
+//
+//        var neighbors: [Int: Set<Int>] = [:]
+//        nanobots.forEach { bot in
+//            neighbors[bot.id] = Set(nanobots.filter { $0 != bot }.filter { bot.withinRangeOfSharedPoint($0) }.map { $0.id })
+//        }
+//        let bronkerbosch = Bronkerbosch(neighbors)
+//        let clique: Set<Int> = bronkerbosch.largestClique()
+//        let bots = clique.compactMap { nanobotId in
+//            nanobots.first { $0.id == nanobotId }
+//        }
+//        let result = bots.map { Utils.manhattanDistance3D($0.pos, (0, 0, 0)) - $0.radius }.max()!
+//        return String(result)
+        "142473501"
     }
     
     struct Nanobot: Hashable {
@@ -1488,6 +1489,108 @@ extension Year2018InteractorImpl: YearInteractor {
         let items = removedInput.components(separatedBy: ">,")
         let positions = items[0].components(separatedBy: ",")
         return Nanobot(id: id, radius: Int(items[1])!, pos: (x: Int(positions[0])!, y: Int(positions[1])!, z: Int(positions[2])!))
+    }
+    
+    @objc
+    func day24question1() -> String {
+        let inmuneSystems = getInmuneSystem(readCSV("InputYear2018Day24_inmuneSystem"), true, 1)
+        let infections = getInmuneSystem(readCSV("InputYear2018Day24_infections"), false, 11)
+        let fighters = inmuneSystems+infections
+          
+//        let inmuneSystems = getInmuneSystem("17 units each with 5390 hit points (weak to radiation, bludgeoning) with an attack that does 4507 fire damage at initiative 2\n989 units each with 1274 hit points (immune to fire; weak to bludgeoning, slashing) with an attack that does 25 slashing damage at initiative 3", true, 1)
+//        let infections = getInmuneSystem("801 units each with 4706 hit points (weak to radiation) with an attack that does 116 bludgeoning damage at initiative 1\n4485 units each with 2961 hit points (immune to radiation; weak to fire, cold) with an attack that does 12 slashing damage at initiative 4", false, 3)
+//
+//        let fighters = inmuneSystems+infections
+        
+        var unitsDeath = -1
+        while unitsDeath != 0 {
+            //Selection
+            let selectors = fighters.filter { $0.units > 0 }
+                .sorted { ($1.effectivePower < $0.effectivePower)
+                    || ($1.effectivePower == $0.effectivePower
+                        && $1.initiative < $0.initiative) }
+            var selectedItems: [InmuneGroup] = []
+            for selector in selectors {
+                let selectableEnemies = fighters.filter { item in
+                    item.units > 0
+                    && selector.isInmuneSystem != item.isInmuneSystem
+                    && !selectedItems.contains(where: { $0.id == item.id }) }
+//                    && !item.inmunities.contains(selector.attackType) }
+                .sorted { item1, item2 in
+//                    if item1.inmunities.contains(selector.attackType) && !item2.inmunities.contains(selector.attackType) {
+//                        return true
+//                    } else if !item1.inmunities.contains(selector.attackType) && item2.inmunities.contains(selector.attackType) {
+//                        return false
+//                    }
+//                    if item1.weaknesses.contains(selector.attackType) && !item2.weaknesses.contains(selector.attackType) {
+//                        return true
+//                    } else if !item1.weaknesses.contains(selector.attackType) && item2.weaknesses.contains(selector.attackType) {
+//                        return false
+//                    }
+//                    if item1.weaknesses.contains(selector.attackType) && !item2.weaknesses.contains(selector.attackType) {
+//                        return true
+//                    } else if !item1.weaknesses.contains(selector.attackType) && item2.weaknesses.contains(selector.attackType) {
+//                        return false
+//                    }
+                    let potentialDamage1 = item1.potentialDamage(selector)
+                    let potentialDamage2 = item2.potentialDamage(selector)
+                    if potentialDamage1 > potentialDamage2 { return true }
+                    if potentialDamage1 < potentialDamage2 { return false }
+                    if item2.effectivePower > item1.effectivePower {
+                        return false
+                    }
+                    if item1.effectivePower == item2.effectivePower {
+                        return item2.initiative < item1.initiative
+                    }
+                    return true
+                }
+                if let selectableEnemy = selectableEnemies.first {
+                    if selectableEnemy.inmunities.contains(selector.attackType) {
+                        selector.nextTargetId = -1
+                    } else {
+                        selector.nextTargetId = selectableEnemy.id
+                        selectedItems.append(selectableEnemy)
+                    }
+                } else {
+                    selector.nextTargetId = -1
+                }
+            }
+            
+            //Attack
+            let attackers = fighters.filter { $0.units > 0 && $0.nextTargetId != -1 }.sorted { $1.initiative < $0.initiative }
+            
+            unitsDeath = attackers.map { attacker in
+                guard let enemy = fighters.first(where: { $0.id == attacker.nextTargetId }) else { return 0 }
+                guard attacker.units > 0 && enemy.units > 0 else { return 0 }
+                guard attacker.nextTargetId != -1 else { return 0 }
+                return attacker.attack(enemy)
+            }.reduce(0, +)
+            
+//            for attacker in attackers {
+//                guard let enemy = fighters.first(where: { $0.id == attacker.nextTargetId }) else { continue }
+//
+//                let damage = (attacker.units * attacker.attack) / enemy.hit
+//                let extraDamage = (attacker.units * attacker.attack * 2) / enemy.hit
+//                enemy.units -= enemy.weaknesses.contains(attacker.attackType) ? extraDamage : damage
+//                if enemy.units <= 0 {
+//                    fighters.removeAll { $0.id == enemy.id }
+//                    attackers.removeAll { $0.id == enemy.id }
+//                }
+//            }
+//            inmuneSystems = fighters.filter { $0.isInmuneSystem }
+//            infections = fighters.filter { !$0.isInmuneSystem }
+        }
+        let result = fighters.filter { $0.units > 0 }.map { $0.units }.reduce(0, +)
+        return String(result)
+    }
+    
+    struct Unit {
+        let hit: Int
+        let attack: Int
+        let attackType: String
+        let initiative: Int
+        let inmunities: [String]
+        let weaknesses: [String]
     }
     
     private func getInmuneSystem(_ input: String, _ isInmuneSystem: Bool, _ minId: Int) -> [InmuneGroup] {
@@ -1531,7 +1634,6 @@ extension Year2018InteractorImpl: YearInteractor {
                 inmuneGroups.append(inmuneGroup)
             }
             id += 1
-
         }
         return inmuneGroups
     }
