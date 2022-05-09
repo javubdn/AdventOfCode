@@ -1570,18 +1570,9 @@ extension Year2018InteractorImpl: YearInteractor {
                 var weaknesses: [AttackType] = []
                 var inmunesses: [AttackType] = []
                 if let extra = Range(match.range(at: 3), in: item) {
-                    let weakInmunities = item[extra]
-
-                    let foundWeak = String(String(weakInmunities.dropFirst().dropLast(2))).components(separatedBy: "; ").filter { $0.starts(with: "weak")}
-                    if let weaknessesString = foundWeak.first {
-                        let weakTo = weaknessesString.replacingOccurrences(of: "weak to ", with: "").components(separatedBy: ", ")
-                        weaknesses.append(contentsOf: weakTo.map { AttackType.attackTypeFromValue($0) })
-                    }
-                    let foundInmune = String(String(weakInmunities.dropFirst().dropLast(2))).components(separatedBy: "; ").filter { $0.starts(with: "immune")}
-                    if let inmunessesString = foundInmune.first {
-                        let immuneTo = inmunessesString.replacingOccurrences(of: "immune to ", with: "").components(separatedBy: ", ")
-                        inmunesses.append(contentsOf: immuneTo.map { AttackType.attackTypeFromValue($0) })
-                    }
+                    let weakInmunities = String(item[extra])
+                    weaknesses = getWeaksOrInmunities(weakInmunities, true)
+                    inmunesses = getWeaksOrInmunities(weakInmunities, false)
                 }
                 let inmuneGroup = InmuneGroup(id: id,
                                               units: units,
@@ -1597,6 +1588,15 @@ extension Year2018InteractorImpl: YearInteractor {
             id += 1
         }
         return inmuneGroups
+    }
+    
+    private func getWeaksOrInmunities(_ weakInmunities: String, _ weak: Bool) -> [AttackType] {
+        let foundWeakInmune = String(String(weakInmunities.dropFirst().dropLast(2))).components(separatedBy: "; ").filter { $0.starts(with: weak ? "weak" : "immune")}
+        if let weakInmuneString = foundWeakInmune.first {
+            let weakInmuneTo = weakInmuneString.replacingOccurrences(of: weak ? "weak to " : "immune to ", with: "").components(separatedBy: ", ")
+            return weakInmuneTo.map { AttackType.attackTypeFromValue($0) }
+        }
+        return []
     }
     
 }
