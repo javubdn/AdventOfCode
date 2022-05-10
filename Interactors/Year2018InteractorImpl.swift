@@ -1496,45 +1496,17 @@ extension Year2018InteractorImpl: YearInteractor {
         let inmuneSystems = getInmuneSystem(readCSV("InputYear2018Day24_inmuneSystem"), true, 1)
         let infections = getInmuneSystem(readCSV("InputYear2018Day24_infections"), false, 11)
         let fighters = inmuneSystems+infections
+        let survivors = fight(fighters)
+        let result = survivors.map { $0.units }.reduce(0, +)
+        return String(result)
+    }
+    
           
 //        let inmuneSystems = getInmuneSystem("17 units each with 5390 hit points (weak to radiation, bludgeoning) with an attack that does 4507 fire damage at initiative 2\n989 units each with 1274 hit points (immune to fire; weak to bludgeoning, slashing) with an attack that does 25 slashing damage at initiative 3", true, 1)
 //        let infections = getInmuneSystem("801 units each with 4706 hit points (weak to radiation) with an attack that does 116 bludgeoning damage at initiative 1\n4485 units each with 2961 hit points (immune to radiation; weak to fire, cold) with an attack that does 12 slashing damage at initiative 4", false, 3)
-//
-//        let fighters = inmuneSystems+infections
+
+//        var fighters = inmuneSystems+infections
         
-        var unitsDeath = -1
-        while unitsDeath != 0 {
-            //Selection
-            let selectors = fighters.filter { $0.units > 0 }
-                .sorted { ($1.effectivePower < $0.effectivePower)
-                    || ($1.effectivePower == $0.effectivePower
-                        && $1.initiative < $0.initiative) }
-            var selectedItems: [InmuneGroup] = []
-            for selector in selectors {
-                let selectableEnemies = fighters
-                    .filter { item in
-                        item.units > 0
-                        && selector.isInmuneSystem != item.isInmuneSystem
-                        && !selectedItems.contains(where: { $0.id == item.id }) }
-                    .sorted { item1, item2 in
-                        let potentialDamage1 = item1.potentialDamage(selector)
-                        let potentialDamage2 = item2.potentialDamage(selector)
-                        if potentialDamage1 > potentialDamage2 { return true }
-                        if potentialDamage1 < potentialDamage2 { return false }
-                        if item2.effectivePower > item1.effectivePower {
-                            return false
-                        }
-                        if item1.effectivePower == item2.effectivePower {
-                            return item2.initiative < item1.initiative
-                        }
-                        return true
-                    }
-                if let selectableEnemy = selectableEnemies.first {
-                    selector.nextTargetId = selectableEnemy.id
-                    selectedItems.append(selectableEnemy)
-                } else {
-                    selector.nextTargetId = -1
-                }
             }
             
             //Attack
@@ -1597,6 +1569,56 @@ extension Year2018InteractorImpl: YearInteractor {
             return weakInmuneTo.map { AttackType.attackTypeFromValue($0) }
         }
         return []
+    }
+    
+    private func fight(_ fighters: [InmuneGroup]) -> [InmuneGroup] {
+        var unitsDeath = -1
+        while unitsDeath != 0 {
+            //Selection
+            let selectors = fighters.filter { $0.units > 0 }
+                .sorted { ($1.effectivePower < $0.effectivePower)
+                    || ($1.effectivePower == $0.effectivePower
+                        && $1.initiative < $0.initiative) }
+            var selectedItems: [InmuneGroup] = []
+            for selector in selectors {
+                let selectableEnemies = fighters
+                    .filter { item in
+                        item.units > 0
+                        && selector.isInmuneSystem != item.isInmuneSystem
+                        && !selectedItems.contains(where: { $0.id == item.id }) }
+                    .sorted { item1, item2 in
+                        let potentialDamage1 = item1.potentialDamage(selector)
+                        let potentialDamage2 = item2.potentialDamage(selector)
+                        if potentialDamage1 > potentialDamage2 { return true }
+                        if potentialDamage1 < potentialDamage2 { return false }
+                        if item2.effectivePower > item1.effectivePower {
+                            return false
+                        }
+                        if item1.effectivePower == item2.effectivePower {
+                            return item2.initiative < item1.initiative
+                        }
+                        return true
+                    }
+                if let selectableEnemy = selectableEnemies.first {
+                    selector.nextTargetId = selectableEnemy.id
+                    selectedItems.append(selectableEnemy)
+                } else {
+                    selector.nextTargetId = -1
+                }
+            }
+            
+            //Attack
+            let attackers = fighters.filter { $0.units > 0 && $0.nextTargetId != -1 }.sorted { $1.initiative < $0.initiative }
+            
+            unitsDeath = attackers.map { attacker in
+                guard let enemy = fighters.first(where: { $0.id == attacker.nextTargetId }) else { return 0 }
+                guard attacker.units > 0 && enemy.units > 0 else { return 0 }
+                guard attacker.nextTargetId != -1 else { return 0 }
+                return attacker.attack(enemy)
+            }.reduce(0, +)
+            
+        }
+        return fighters.filter { $0.units > 0 }
     }
     
 }
