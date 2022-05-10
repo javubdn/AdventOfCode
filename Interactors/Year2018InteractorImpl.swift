@@ -1501,29 +1501,23 @@ extension Year2018InteractorImpl: YearInteractor {
         return String(result)
     }
     
-          
-//        let inmuneSystems = getInmuneSystem("17 units each with 5390 hit points (weak to radiation, bludgeoning) with an attack that does 4507 fire damage at initiative 2\n989 units each with 1274 hit points (immune to fire; weak to bludgeoning, slashing) with an attack that does 25 slashing damage at initiative 3", true, 1)
-//        let infections = getInmuneSystem("801 units each with 4706 hit points (weak to radiation) with an attack that does 116 bludgeoning damage at initiative 1\n4485 units each with 2961 hit points (immune to radiation; weak to fire, cold) with an attack that does 12 slashing damage at initiative 4", false, 3)
-
-//        var fighters = inmuneSystems+infections
-        
+    @objc
+    func day24question2() -> String {
+        let inmuneSystems = getInmuneSystem(readCSV("InputYear2018Day24_inmuneSystem"), true, 1)
+        let infections = getInmuneSystem(readCSV("InputYear2018Day24_infections"), false, 11)
+        var boost = 1
+        while true {
+            let fighters = (inmuneSystems+infections).map {
+                InmuneGroup(id: $0.id, units: $0.units, hit: $0.hit, attack: $0.isInmuneSystem ? $0.attack+boost : $0.attack, attackType: $0.attackType, initiative: $0.initiative, inmunities: $0.inmunities, weaknesses: $0.weaknesses, isInmuneSystem: $0.isInmuneSystem)
             }
-            
-            //Attack
-            let attackers = fighters.filter { $0.units > 0 && $0.nextTargetId != -1 }.sorted { $1.initiative < $0.initiative }
-            
-            unitsDeath = attackers.map { attacker in
-                guard let enemy = fighters.first(where: { $0.id == attacker.nextTargetId }) else { return 0 }
-                guard attacker.units > 0 && enemy.units > 0 else { return 0 }
-                guard attacker.nextTargetId != -1 else { return 0 }
-                return attacker.attack(enemy)
-            }.reduce(0, +)
-            
+            let survivors = fight(fighters)
+                        
+            if survivors.allSatisfy({ $0.isInmuneSystem }) {
+                let result = survivors.map { $0.units }.reduce(0, +)
+                return String(result)
+            }
+            boost += 1
         }
-        let result = fighters.filter { $0.units > 0 }.map { $0.units }.reduce(0, +)
-        return String(result)
-    }
-    
     }
     
     private func getInmuneSystem(_ input: String, _ isInmuneSystem: Bool, _ minId: Int) -> [InmuneGroup] {
