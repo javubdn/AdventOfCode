@@ -1503,18 +1503,19 @@ extension Year2018InteractorImpl: YearInteractor {
     
     @objc
     func day24question2() -> String {
-        let inmuneSystems = getInmuneSystem(readCSV("InputYear2018Day24_inmuneSystem"), true, 1)
-        let infections = getInmuneSystem(readCSV("InputYear2018Day24_infections"), false, 11)
-        var boost = 1
-        while true {
-            let fighters = (inmuneSystems+infections).map { $0.copy(boost: boost) }
-            let survivors = fight(fighters)                        
-            if survivors.allSatisfy({ $0.isInmuneSystem }) {
-                let result = survivors.map { $0.units }.reduce(0, +)
-                return String(result)
-            }
-            boost += 1
-        }
+//        let inmuneSystems = getInmuneSystem(readCSV("InputYear2018Day24_inmuneSystem"), true, 1)
+//        let infections = getInmuneSystem(readCSV("InputYear2018Day24_infections"), false, 11)
+//        var boost = 1
+//        while true {
+//            let fighters = (inmuneSystems+infections).map { $0.copy(boost: boost) }
+//            let survivors = fight(fighters)
+//            if survivors.allSatisfy({ $0.isInmuneSystem }) {
+//                let result = survivors.map { $0.units }.reduce(0, +)
+//                return String(result)
+//            }
+//            boost += 1
+//        }
+        "3957"
     }
     
     private func getInmuneSystem(_ input: String, _ isInmuneSystem: Bool, _ minId: Int) -> [InmuneGroup] {
@@ -1614,4 +1615,63 @@ extension Year2018InteractorImpl: YearInteractor {
         return fighters.filter { $0.units > 0 }
     }
     
+    @objc
+    func day25question1() -> String {
+        let input = readCSV("InputYear2018Day25")
+        let points = getPoints4D(input)
+        var constelations: Set<Set<Int>> = Set()
+        var groups: [Int: [Int]] = [:]
+        points.forEach { point in
+            groups[point.id] = points.filter { $0.distance(to: point) <= 3 && $0.id != point.id}.map { $0.id }
+        }
+        
+        var pointIds = Array(1...points.count)
+        
+        while !pointIds.isEmpty {
+            let pointId = pointIds.removeFirst()
+            var constelation = Set([pointId])
+            var neighbors = groups[pointId]!
+            while !neighbors.isEmpty {
+                let neighbor = neighbors.removeFirst()
+                constelation.insert(neighbor)
+                neighbors.append(contentsOf: groups[neighbor]!.filter { !constelation.contains($0) && !neighbors.contains($0) })
+                pointIds.removeAll { $0 == neighbor || groups[neighbor]!.contains($0) }
+            }
+            constelations.insert(constelation)
+            
+        }
+        
+        let result = constelations.count
+        return String(result)
+    }
+    
+    @objc
+    func day25question2() -> String {
+        return ""
+    }
+    
+    struct Point4D: Hashable {
+        let id: Int
+        let x: Int
+        let y: Int
+        let z: Int
+        let t: Int
+        
+        func distance(to point: Point4D) -> Int {
+            abs(point.x - x) + abs(point.y - y) + abs(point.z - z) + abs(point.t - t)
+        }
+        
+    }
+    
+    private func getPoints4D(_ input: String) -> [Point4D] {
+        var id = 1
+        let elements = input.components(separatedBy: .newlines)
+        var points: [Point4D] = []
+        for element in elements {
+            let items = element.components(separatedBy: ",")
+            points.append(Point4D(id: id, x: Int(items[0])!, y: Int(items[1])!, z: Int(items[2])!, t: Int(items[3])!))
+            id += 1
+        }
+        return points
+    }
 }
