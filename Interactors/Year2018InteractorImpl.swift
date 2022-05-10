@@ -1585,7 +1585,9 @@ extension Year2018InteractorImpl: YearInteractor {
                     .filter { item in
                         item.units > 0
                         && selector.isInmuneSystem != item.isInmuneSystem
-                        && !selectedItems.contains(where: { $0.id == item.id }) }
+                        && !selectedItems.contains(where: { $0.id == item.id })
+                        && !item.inmunities.contains(selector.attackType)
+                    }
                     .sorted { item1, item2 in
                         let potentialDamage1 = item1.potentialDamage(selector)
                         let potentialDamage2 = item2.potentialDamage(selector)
