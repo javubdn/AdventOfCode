@@ -53,6 +53,18 @@ class InmuneGroup {
         self.isInmuneSystem = isInmuneSystem
     }
     
+    func copy(boost: Int) -> InmuneGroup {
+        InmuneGroup(id: id,
+                    units: units,
+                    hit: hit,
+                    attack: isInmuneSystem ? attack+boost : attack,
+                    attackType: attackType,
+                    initiative: initiative,
+                    inmunities: inmunities,
+                    weaknesses: weaknesses,
+                    isInmuneSystem: isInmuneSystem)
+    }
+    
     func attack(_ enemy: InmuneGroup) -> Int {
         let unitsLost = enemy.potentialDamage(self) / enemy.hit
         enemy.units -= unitsLost

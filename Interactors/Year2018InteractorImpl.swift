@@ -1507,11 +1507,8 @@ extension Year2018InteractorImpl: YearInteractor {
         let infections = getInmuneSystem(readCSV("InputYear2018Day24_infections"), false, 11)
         var boost = 1
         while true {
-            let fighters = (inmuneSystems+infections).map {
-                InmuneGroup(id: $0.id, units: $0.units, hit: $0.hit, attack: $0.isInmuneSystem ? $0.attack+boost : $0.attack, attackType: $0.attackType, initiative: $0.initiative, inmunities: $0.inmunities, weaknesses: $0.weaknesses, isInmuneSystem: $0.isInmuneSystem)
-            }
-            let survivors = fight(fighters)
-                        
+            let fighters = (inmuneSystems+infections).map { $0.copy(boost: boost) }
+            let survivors = fight(fighters)                        
             if survivors.allSatisfy({ $0.isInmuneSystem }) {
                 let result = survivors.map { $0.units }.reduce(0, +)
                 return String(result)
