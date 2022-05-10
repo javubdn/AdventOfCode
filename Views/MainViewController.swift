@@ -106,8 +106,8 @@ class MainViewController: UIViewController {
         let queue = DispatchQueue(label: "com.AdventOfCode.queue")
         for index in 0..<answerViews.count {
             queue.async {
-                let answer1 = self.presenter.calculate(year: 2018, day: index+1, question: 1)
-                let answer2 = self.presenter.calculate(year: 2018, day: index+1, question: 2)
+                let answer1 = self.presenter.calculate(year: 2019, day: index+1, question: 1)
+                let answer2 = self.presenter.calculate(year: 2019, day: index+1, question: 2)
                 DispatchQueue.main.async {
                     self.answerViews[index][0].text = answer1
                     self.answerViews[index][1].text = answer2

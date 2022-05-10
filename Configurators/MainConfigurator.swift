@@ -12,7 +12,7 @@ class MainConfigurator {
     static func configure() -> UIViewController {
         let interactor = MainInteractorImpl()
         let presenter = MainPresenterImpl(interactor: interactor)
-        let viewController = MainViewController(presenter: presenter, currentYear: .eighteen)
+        let viewController = MainViewController(presenter: presenter, currentYear: .nineteen)
         return viewController
     }
     
