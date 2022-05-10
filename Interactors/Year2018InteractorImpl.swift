@@ -1638,7 +1638,6 @@ extension Year2018InteractorImpl: YearInteractor {
                 pointIds.removeAll { $0 == neighbor || groups[neighbor]!.contains($0) }
             }
             constelations.insert(constelation)
-            
         }
         
         let result = constelations.count
