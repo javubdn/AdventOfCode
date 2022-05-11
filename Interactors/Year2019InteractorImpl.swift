@@ -19,4 +19,17 @@ extension Year2019InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day1question2() -> String {
+        let input = readCSV("InputYear2019Day1").components(separatedBy: .newlines).map { Int($0)! }
+        let result = input.map { calculateFuel($0) }.reduce(0, +)
+        return String(result)
+    }
+    
+    func calculateFuel(_ mass: Int) -> Int {
+        let fuel = mass/3 - 2
+        if fuel <= 0 { return 0 }
+        return fuel + calculateFuel(fuel)
+    }
+    
 }
