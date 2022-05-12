@@ -72,4 +72,50 @@ extension Year2019InteractorImpl: YearInteractor {
         return instructions[0]
     }
     
+    @objc
+    func day3question1() -> String {
+        let input = readCSV("InputYear2019Day3").components(separatedBy: .newlines).map { $0.components(separatedBy: ",") }
+        
+        let segmentsFirstWire = getSegmentsWire(from: input[0])
+        let segmentsSecondWire = getSegmentsWire(from: input[1])
+        
+        var pointsIntersect: [(Int, Int)] = []
+        for segmentsFirstWireH in segmentsFirstWire[0] {
+            let pointsH = Utils.intersectsSegment(segmentsFirstWireH, in: segmentsSecondWire[1], horizontal: true)
+            pointsIntersect.append(contentsOf: pointsH)
+        }
+        for segmentsFirstWireV in segmentsFirstWire[1] {
+            let pointsV = Utils.intersectsSegment(segmentsFirstWireV, in: segmentsSecondWire[0], horizontal: false)
+            pointsIntersect.append(contentsOf: pointsV)
+        }
+        let result = pointsIntersect.filter { $0 != (0, 0) }.map { Utils.manhattanDistance($0, (0, 0)) }.min()!
+        return String(result)
+    }
+    
+    private func getSegmentsWire(from items: [String]) -> [[((Int, Int), (Int, Int))]] {
+        var horizontalSegments: [((Int, Int), (Int, Int))] = []
+        var verticalSegments: [((Int, Int), (Int, Int))] = []
+        var lastPoint = (0, 0)
+        for item in items {
+            var nextPoint = lastPoint
+            switch item[0] {
+            case "U":
+                nextPoint.1 -= Int(item[1..<item.count])!
+                verticalSegments.append((nextPoint, lastPoint))
+            case "D":
+                nextPoint.1 += Int(item[1..<item.count])!
+                verticalSegments.append((lastPoint, nextPoint))
+            case "L":
+                nextPoint.0 -= Int(item[1..<item.count])!
+                horizontalSegments.append((nextPoint, lastPoint))
+            case "R":
+                nextPoint.0 += Int(item[1..<item.count])!
+                horizontalSegments.append((lastPoint, nextPoint))
+            default: break
+            }
+            lastPoint = nextPoint
+        }
+        return [horizontalSegments, verticalSegments]
+    }
+    
 }
