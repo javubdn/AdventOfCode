@@ -92,6 +92,35 @@ extension Year2019InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day3question2() -> String {
+        let input = readCSV("InputYear2019Day3").components(separatedBy: .newlines).map { $0.components(separatedBy: ",") }
+        let segmentsFirstWire = getSegmentsWire(from: input[0])
+        let segmentsSecondWire = getSegmentsWire(from: input[1])
+        var pointsIntersect: [(Int, Int)] = []
+        for segmentsFirstWireH in segmentsFirstWire[0] {
+            let pointsH = Utils.intersectsSegment(segmentsFirstWireH, in: segmentsSecondWire[1], horizontal: true)
+            pointsIntersect.append(contentsOf: pointsH)
+        }
+        for segmentsFirstWireV in segmentsFirstWire[1] {
+            let pointsV = Utils.intersectsSegment(segmentsFirstWireV, in: segmentsSecondWire[0], horizontal: false)
+            pointsIntersect.append(contentsOf: pointsV)
+        }
+        
+        let allSegmentsFirstWire = getAllSegmentsWire(from: input[0])
+        let allSegmentsSecondWire = getAllSegmentsWire(from: input[1])
+        
+        let result = pointsIntersect.filter { $0 != (0, 0) }.map { point -> Int in
+            if let distance1 = distanceToPoint(point, segmentList: allSegmentsFirstWire),
+                let distance2 = distanceToPoint(point, segmentList: allSegmentsSecondWire) {
+                return distance1 + distance2
+            }
+            return Int.max
+        }.min()!
+        
+        return String(result)
+    }
+    
     private func getSegmentsWire(from items: [String]) -> [[((Int, Int), (Int, Int))]] {
         var horizontalSegments: [((Int, Int), (Int, Int))] = []
         var verticalSegments: [((Int, Int), (Int, Int))] = []
@@ -116,6 +145,46 @@ extension Year2019InteractorImpl: YearInteractor {
             lastPoint = nextPoint
         }
         return [horizontalSegments, verticalSegments]
+    }
+    
+    private func getAllSegmentsWire(from items: [String]) -> [((Int, Int), (Int, Int))] {
+        var segments: [((Int, Int), (Int, Int))] = []
+        var lastPoint = (0, 0)
+        for item in items {
+            var nextPoint = lastPoint
+            switch item[0] {
+            case "U":
+                nextPoint.1 -= Int(item[1..<item.count])!
+            case "D":
+                nextPoint.1 += Int(item[1..<item.count])!
+            case "L":
+                nextPoint.0 -= Int(item[1..<item.count])!
+            case "R":
+                nextPoint.0 += Int(item[1..<item.count])!
+            default: break
+            }
+            segments.append((lastPoint, nextPoint))
+            lastPoint = nextPoint
+        }
+        return segments
+    }
+    
+    private func distanceToPoint(_ point: (Int, Int), segmentList: [((Int, Int), (Int, Int))]) -> Int? {
+        var distance = 0
+        for segment in segmentList {
+            if point.0 == segment.0.0 && point.0 == segment.1.0
+                && (point.1 >= segment.0.1 && point.1 <= segment.1.1
+                || point.1 <= segment.0.1 && point.1 >= segment.1.1) {
+                return distance + abs(point.1 - segment.0.1)
+            }
+            if point.1 == segment.0.1 && point.1 == segment.1.1
+                && (point.0 >= segment.0.0 && point.0 <= segment.1.0
+                || point.0 <= segment.0.0 && point.0 >= segment.1.0) {
+                return distance + abs(point.0 - segment.0.0)
+            }
+            distance += Utils.manhattanDistance(segment.0, segment.1)
+        }
+        return nil
     }
     
 }
