@@ -194,13 +194,49 @@ extension Year2019InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day4question2() -> String {
+        let input = Array(367479...893698)
+        let result = input.filter { passwordHasImprovedCriteria($0) }.count
+        return String(result)
+    }
+    
     private func passwordHasCriteria(_ password: Int) -> Bool {
         var twoEquals = false
         for index in 0...4 {
-            let currentDigit = password/Int(NSDecimalNumber(decimal: pow(10, 5-index))) % 10
-            let nextDigit = password/Int(NSDecimalNumber(decimal: pow(10, 5-index-1))) % 10
+            let currentDigit = password/Int(truncating: NSDecimalNumber(decimal: pow(10, 5-index))) % 10
+            let nextDigit = password/Int(truncating: NSDecimalNumber(decimal: pow(10, 5-index-1))) % 10
             if nextDigit < currentDigit { return false }
             if nextDigit == currentDigit { twoEquals = true }
+        }
+        return twoEquals
+    }
+    
+    private func passwordHasImprovedCriteria(_ password: Int) -> Bool {
+        var twoEquals = false
+        var secuence2 = false
+        var secuence2G = false
+        for index in 0...4 {
+            let currentDigit = password/Int(truncating: NSDecimalNumber(decimal: pow(10, 5-index))) % 10
+            let nextDigit = password/Int(truncating: NSDecimalNumber(decimal: pow(10, 5-index-1))) % 10
+            if nextDigit < currentDigit { return false }
+            if nextDigit == currentDigit {
+                if secuence2 {
+                    secuence2G = true
+                } else {
+                    if index == 4 {
+                        twoEquals = true
+                    } else {
+                        secuence2 = true
+                    }
+                }
+            } else {
+                if secuence2 && !secuence2G {
+                    twoEquals = true
+                }
+                secuence2 = false
+                secuence2G = false
+            }
         }
         return twoEquals
     }
