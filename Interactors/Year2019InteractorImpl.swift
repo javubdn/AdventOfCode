@@ -37,7 +37,7 @@ extension Year2019InteractorImpl: YearInteractor {
         var instructions = readCSV("InputYear2019Day2").components(separatedBy: ",").map { Int($0)! }
         instructions[1] = 12
         instructions[2] = 2
-        let result = executeIntCode(instructions)
+        let (result, _) = Intcode.execute(instructions, input: [])
         return String(result)
     }
     
@@ -49,26 +49,13 @@ extension Year2019InteractorImpl: YearInteractor {
                 var instructions = input.components(separatedBy: ",").map { Int($0)! }
                 instructions[1] = noun
                 instructions[2] = verb
-                let result = executeIntCode(instructions)
+                let (result, _) = Intcode.execute(instructions, input: [])
                 if result == 19690720 {
                     return String(100 * noun + verb)
                 }
             }
         }
         return ""
-    }
-    
-    private func executeIntCode(_ instructions: [Int]) -> Int {
-        var instructions = instructions
-        for index in stride(from: 0, through: instructions.count, by: 4) {
-            switch instructions[index] {
-            case 1: instructions[instructions[index+3]] = instructions[instructions[index+1]] + instructions[instructions[index+2]]
-            case 2: instructions[instructions[index+3]] = instructions[instructions[index+1]] * instructions[instructions[index+2]]
-            case 99: return instructions[0]
-            default: break
-            }
-        }
-        return instructions[0]
     }
     
     @objc
@@ -232,7 +219,7 @@ extension Year2019InteractorImpl: YearInteractor {
     @objc
     func day5question1() -> String {
         let input = readCSV("InputYear2019Day5").components(separatedBy: ",").map { Int($0)! }
-        let (_, output) = Intcode.executeIntCode(input, input: [1])
+        let (_, output) = Intcode.execute(input, input: [1])
         let result = output.last!
         return String(result)
     }
@@ -240,7 +227,7 @@ extension Year2019InteractorImpl: YearInteractor {
     @objc
     func day5question2() -> String {
         let input = readCSV("InputYear2019Day5").components(separatedBy: ",").map { Int($0)! }
-        let (_, output) = Intcode.executeIntCode(input, input: [5])
+        let (_, output) = Intcode.execute(input, input: [5])
         let result = output.last!
         return String(result)
     }

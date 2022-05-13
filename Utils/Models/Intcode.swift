@@ -9,7 +9,7 @@ import Foundation
 
 class Intcode {
     
-    static func executeIntCode(_ instructions: [Int], input: [Int]) -> (Int, [Int]) {
+    static func execute(_ instructions: [Int], input: [Int]) -> (Int, [Int]) {
         var instructions = instructions
         var output: [Int] = []
         var index = 0
