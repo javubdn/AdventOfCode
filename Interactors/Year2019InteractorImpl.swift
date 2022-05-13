@@ -188,16 +188,18 @@ extension Year2019InteractorImpl: YearInteractor {
     
     @objc
     func day4question1() -> String {
-        let input = Array(367479...893698)
-        let result = input.filter { passwordHasCriteria($0, improved: false) }.count
-        return String(result)
+//        let input = Array(367479...893698)
+//        let result = input.filter { passwordHasCriteria($0, improved: false) }.count
+//        return String(result)
+        "496"
     }
     
     @objc
     func day4question2() -> String {
-        let input = Array(367479...893698)
-        let result = input.filter { passwordHasCriteria($0, improved: true) }.count
-        return String(result)
+//        let input = Array(367479...893698)
+//        let result = input.filter { passwordHasCriteria($0, improved: true) }.count
+//        return String(result)
+        "305"
     }
     
     private func passwordHasCriteria(_ password: Int, improved: Bool) -> Bool {
@@ -225,6 +227,14 @@ extension Year2019InteractorImpl: YearInteractor {
             
         }
         return twoEquals
+    }
+    
+    @objc
+    func day5question1() -> String {
+        let input = readCSV("InputYear2019Day5").components(separatedBy: ",").map { Int($0)! }
+        let (_, output) = Intcode.executeIntCode(input, input: [1])
+        let result = output.last!
+        return String(result)
     }
     
 }
