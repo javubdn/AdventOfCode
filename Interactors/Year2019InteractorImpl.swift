@@ -245,4 +245,68 @@ extension Year2019InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day6question1() -> String {
+        let directOrbits = readCSV("InputYear2019Day6")
+            .components(separatedBy: .newlines)
+            .map { $0.components(separatedBy: ")") }
+            .map { ($0[0], $0[1]) }
+        let mainOrbit = getMainOrbit(directOrbits)
+        let result = getNumberOrbits(mainOrbit, numberParents: 0)
+        return String(result)
+    }
+    
+    struct Orbit {
+        let id: String
+        let orbits: [Orbit]
+    }
+    
+    private func getMainOrbit(_ input: [(String, String)]) -> Orbit {
+        var input = input
+        var orbits: [Orbit] = []
+        while !input.isEmpty {
+            let currentOrbit: Orbit
+            (currentOrbit, input, orbits) = getOrbit(input.first!.0, items: input, orbits: orbits)
+            orbits.append(currentOrbit)
+        }
+        return orbits.first!
+    }
+        
+    private func getOrbit(_ name: String,
+                          items: [(String, String)],
+                          orbits: [Orbit]) -> (Orbit, [(String, String)], [Orbit]) {
+        let sons = items.filter { $0.0 == name }
+        guard sons.count > 0 else {
+            return (Orbit(id: name, orbits: []), items, orbits)
+        }
+        var items = items
+        var orbits = orbits
+        let indexCurrentItem = items.firstIndex { $0.0 == name }!
+        items.remove(at: indexCurrentItem)
+        
+        var orbiting: [Orbit] = []
+        
+        for son in sons {
+            if let sonInOrbit = orbits.first(where: { $0.id == son.1 }) {
+                orbiting.append(sonInOrbit)
+                orbits.removeAll { $0.id == son.1 }
+                continue
+            }
+            let newOrbit: Orbit
+            (newOrbit, items, orbits) = getOrbit(son.1, items: items, orbits: orbits)
+            orbiting.append(newOrbit)
+            items.removeAll { $0.1 == son.1 }
+        }
+        return (Orbit(id: name, orbits: orbiting), items, orbits)
+    }
+    
+    private func getNumberOrbits(_ orbit: Orbit, numberParents: Int) -> Int {
+        guard orbit.orbits.count > 0 else { return numberParents }
+        var numberOrbits = numberParents
+        for orbited in orbit.orbits {
+            numberOrbits += getNumberOrbits(orbited, numberParents: numberParents+1)
+        }
+        return numberOrbits
+    }
+    
 }
