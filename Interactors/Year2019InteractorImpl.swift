@@ -256,6 +256,23 @@ extension Year2019InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day6question2() -> String {
+        let directOrbits = readCSV("InputYear2019Day6")
+            .components(separatedBy: .newlines)
+            .map { $0.components(separatedBy: ")") }
+            .map { ($0[0], $0[1]) }
+        let mainOrbit = getMainOrbit(directOrbits)
+        let youWay = getOrbitWay("YOU", orbit: mainOrbit)!
+        let sanWay = getOrbitWay("SAN", orbit: mainOrbit)!
+        var index = 0
+        while youWay[index] == sanWay[index] {
+            index += 1
+        }
+        let result = youWay.count + sanWay.count - 2 * index - 2
+        return String(result)
+    }
+    
     struct Orbit {
         let id: String
         let orbits: [Orbit]
@@ -309,4 +326,14 @@ extension Year2019InteractorImpl: YearInteractor {
         return numberOrbits
     }
     
+    private func getOrbitWay(_ name: String, orbit: Orbit) -> [String]? {
+        if orbit.id == name { return [name] }
+        for son in orbit.orbits {
+            if let way = getOrbitWay(name, orbit: son) {
+                return [orbit.id] + way
+            }
+        }
+        return nil
+    }
+        
 }
