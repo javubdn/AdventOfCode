@@ -9,9 +9,9 @@ import Foundation
 
 class Utils {
     
-    static func permutations(_ array: [String]) -> [[String]] {
+    static func permutations<T>(_ array: [T]) -> [[T]] {
         let n = array.count
-        var result: [[String]] = []
+        var result: [[T]] = []
         guard n > 0 else { return [[]] }
         
         for i in 0..<n {
