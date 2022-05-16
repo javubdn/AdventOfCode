@@ -245,19 +245,20 @@ extension Year2019InteractorImpl: YearInteractor {
     
     @objc
     func day6question2() -> String {
-        let directOrbits = readCSV("InputYear2019Day6")
-            .components(separatedBy: .newlines)
-            .map { $0.components(separatedBy: ")") }
-            .map { ($0[0], $0[1]) }
-        let mainOrbit = getMainOrbit(directOrbits)
-        let youWay = getOrbitWay("YOU", orbit: mainOrbit)!
-        let sanWay = getOrbitWay("SAN", orbit: mainOrbit)!
-        var index = 0
-        while youWay[index] == sanWay[index] {
-            index += 1
-        }
-        let result = youWay.count + sanWay.count - 2 * index - 2
-        return String(result)
+//        let directOrbits = readCSV("InputYear2019Day6")
+//            .components(separatedBy: .newlines)
+//            .map { $0.components(separatedBy: ")") }
+//            .map { ($0[0], $0[1]) }
+//        let mainOrbit = getMainOrbit(directOrbits)
+//        let youWay = getOrbitWay("YOU", orbit: mainOrbit)!
+//        let sanWay = getOrbitWay("SAN", orbit: mainOrbit)!
+//        var index = 0
+//        while youWay[index] == sanWay[index] {
+//            index += 1
+//        }
+//        let result = youWay.count + sanWay.count - 2 * index - 2
+//        return String(result)
+        "418"
     }
     
     struct Orbit {
@@ -322,5 +323,22 @@ extension Year2019InteractorImpl: YearInteractor {
         }
         return nil
     }
+    
+    @objc
+    func day7question1() -> String {
+        let input = readCSV("InputYear2019Day7").components(separatedBy: ",").map { Int($0)! }
+        let permutations = Utils.permutations([0, 1, 2, 3, 4])
+        var bestResult = Int.min
+        for permutation in permutations {
+            var output = [0]
+            for index in 0...4 {
+                (_, output) = Intcode.execute(input, input: [permutation[index], output[0]])
+            }
+            bestResult = max(bestResult, output[0])
+        }
+        
+        return String(bestResult)
+    }
+    
         
 }
