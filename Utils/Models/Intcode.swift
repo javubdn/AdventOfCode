@@ -7,7 +7,26 @@
 
 import Foundation
 
+enum Mode {
+    case full
+    case partial
+}
+
 class Intcode {
+    
+    var instructions: [Int]
+    var ip = 0
+    var input: [Int] = []
+    var output: [Int] = []
+    var completed = false
+    
+    init(instructions: [Int]) {
+        self.instructions = instructions
+    }
+    
+    func addInput(_ input: [Int]) {
+        self.input.append(contentsOf: input)
+    }
     
     static func execute(_ instructions: [Int], input: [Int]) -> (Int, [Int]) {
         var instructions = instructions
