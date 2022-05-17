@@ -25,8 +25,9 @@ class Intcode {
                 + (secondParamReference ? instructions[instructions[index+2]] : instructions[index+2])
                 index += 4
             case 2:
-                instructions[instructions[index+3]] = (firstParamReference ? instructions[instructions[index+1]] : instructions[index+1])
-                * (secondParamReference ? instructions[instructions[index+2]] : instructions[index+2])
+                let firstParam = firstParamReference ? instructions[instructions[index+1]] : instructions[index+1]
+                let secondParam = secondParamReference ? instructions[instructions[index+2]] : instructions[index+2]
+                instructions[instructions[index+3]] = firstParam * secondParam
                 index += 4
             case 3:
                 if indexInput < input.count {
