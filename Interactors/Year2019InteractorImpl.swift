@@ -340,5 +340,36 @@ extension Year2019InteractorImpl: YearInteractor {
         return String(bestResult)
     }
     
+    @objc
+    func day7question2() -> String {
+        let input = readCSV("InputYear2019Day7").components(separatedBy: ",").map { Int($0)! }
+        let permutations = Utils.permutations(Array(5...9))
+        var bestResult = Int.min
+        for permutation in permutations {
+            var intCodes: [Intcode] = []
+            for index in 0...4 {
+                let intCode = Intcode(instructions: input)
+                intCode.input = [permutation[index]]
+                intCodes.append(intCode)
+            }
+            var output = [0]
+            var maintainLoop = true
+            while maintainLoop {
+                for index in 0...4 {
+                    let intcode = intCodes[index]
+                    intcode.input.append(contentsOf: output)
+                    intcode.execute(.partial)
+                    output = [intcode.output.last!]
+                }
+                let completed = intCodes.filter { $0.completed }.count
+                if completed == 5 {
+                    maintainLoop = false
+                }
+            }
+            bestResult = max(bestResult, intCodes.last!.output.last!)
+        }
+        
+        return String(bestResult)
+    }
         
 }
