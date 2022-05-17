@@ -37,7 +37,9 @@ extension Year2019InteractorImpl: YearInteractor {
         var instructions = readCSV("InputYear2019Day2").components(separatedBy: ",").map { Int($0)! }
         instructions[1] = 12
         instructions[2] = 2
-        let (result, _) = Intcode.execute(instructions, input: [])
+        let intCode = Intcode(instructions: instructions)
+        intCode.execute(.full)
+        let result = intCode.instructions[0]
         return String(result)
     }
     
@@ -49,7 +51,9 @@ extension Year2019InteractorImpl: YearInteractor {
                 var instructions = input.components(separatedBy: ",").map { Int($0)! }
                 instructions[1] = noun
                 instructions[2] = verb
-                let (result, _) = Intcode.execute(instructions, input: [])
+                let intCode = Intcode(instructions: instructions)
+                intCode.execute(.full)
+                let result = intCode.instructions[0]
                 if result == 19690720 {
                     return String(100 * noun + verb)
                 }
