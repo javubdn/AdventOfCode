@@ -340,11 +340,13 @@ extension Year2019InteractorImpl: YearInteractor {
         for permutation in permutations {
             var output = [0]
             for index in 0...4 {
-                (_, output) = Intcode.execute(input, input: [permutation[index], output[0]])
+                let intcode = Intcode(instructions: input)
+                intcode.addInput([permutation[index]] + output)
+                intcode.execute(.full)
+                output = intcode.output
             }
             bestResult = max(bestResult, output[0])
         }
-        
         return String(bestResult)
     }
     
