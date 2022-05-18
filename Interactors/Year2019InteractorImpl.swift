@@ -381,5 +381,21 @@ extension Year2019InteractorImpl: YearInteractor {
         
         return String(bestResult)
     }
+    
+    @objc
+    func day8question1() -> String {
+        let input = readCSV("InputYear2019Day8").map { Int(String($0))! }
+        var layers: [(Int, Int, Int)] = []
+        for index in Array(stride(from: 0, to: input.count, by: 25*6)) {
+            let num0 = input[index..<index+25*6].filter { $0 == 0 }.count
+            let num1 = input[index..<index+25*6].filter { $0 == 1 }.count
+            let num2 = input[index..<index+25*6].filter { $0 == 2 }.count
+            layers.append((num0, num1, num2))
+        }
+        let bestLayer = layers.sorted { $0.0 < $1.0 }.first!
+        let result = bestLayer.1 * bestLayer.2
+        return String(result)
+    }
+    
         
 }
