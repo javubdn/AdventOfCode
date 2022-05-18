@@ -397,5 +397,24 @@ extension Year2019InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day8question2() -> String {
+        let input = readCSV("InputYear2019Day8").map { Int(String($0))! }
+        var layer: [[Int]] = [[Int]](repeating: [Int](repeating: -1, count: 25), count: 6)
+        for row in 0..<6 {
+            for col in 0..<25 {
+                for index in Array(stride(from: 0, to: input.count, by: 25*6)) {
+                    if input[index + row*25 + col] != 2 {
+                        layer[row][col] = input[index + row*25 + col]
+                        break
+                    }
+                }
+            }
+        }
+        let text = layer.map { $0.map{ $0 == 0 ? "." : "*" }.joined() }
+        text.forEach{ print($0) }
+        return "HFYAK"
+    }
+    
         
 }
