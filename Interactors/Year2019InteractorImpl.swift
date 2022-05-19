@@ -426,5 +426,14 @@ extension Year2019InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day9question2() -> String {
+        let input = readCSV("InputYear2019Day9").components(separatedBy: ",").map { Int($0)! }
+        let intcode = Intcode(instructions: input)
+        intcode.addInput([2])
+        intcode.execute(.full)
+        let result = intcode.output.first!
+        return String(result)
+    }
         
 }
