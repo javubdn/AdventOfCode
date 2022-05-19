@@ -435,5 +435,29 @@ extension Year2019InteractorImpl: YearInteractor {
         let result = intcode.output.first!
         return String(result)
     }
+    
+    @objc
+    func day10question1() -> String {
+        let input = readCSV("InputYear2019Day10").components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+        let coordenates = Utils.cartesianProduct(lhs: Array(0..<input.count), rhs: Array(0..<input[0].count)).filter { input[$0.0][$0.1] == "#" }
+        let result = coordenates.map { visibleAsteroids(from: $0, in: coordenates) }.max()!
+        return String(result)
+    }
+    
+    struct Vector: Hashable {
+        let x: Int
+        let y: Int
+    }
+    
+    private func visibleAsteroids(from coordenate: (Int, Int), in asteroids: [(Int, Int)]) -> Int {
+        let vectors = asteroids.filter { $0.0 != coordenate.0 || $0.1 != coordenate.1 }.map { asteroid -> Vector in
+            let diffY = asteroid.0 - coordenate.0
+            let diffX = asteroid.1 - coordenate.1
+            let commonDivisor = Utils.gcd(diffX, diffY)
+            return Vector(x: commonDivisor == 0 ? diffX : diffX/commonDivisor, y: commonDivisor == 0 ? diffY : diffY/commonDivisor)
+        }
+        return Set(vectors).count
+        
+    }
         
 }
