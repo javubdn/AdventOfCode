@@ -490,8 +490,9 @@ extension Year2019InteractorImpl: YearInteractor {
     private func bestAngleAsteroid(_ bestCoordenate: (Int, Int), _ asteroid1: (Int, Int), _ asteroid2: (Int, Int)) -> Bool {
         let distance1 = distanceToAsteroid(bestCoordenate, asteroid1)
         let distance2 = distanceToAsteroid(bestCoordenate, asteroid2)
-        let q1 = distance1.0.0 == 0 && distance1.0.1 < 0 ? 1 : distance1.0.0 > 0 && distance1.0.1 < 0 ? 2 : distance1.0.1 == 0 && distance1.0.0 > 0 ? 3 : distance1.0.1 > 0 && distance1.0.0 > 0 ? 4 : distance1.0.0 == 0 && distance1.0.1 > 0 ? 5 : distance1.0.0 < 0 && distance1.0.1 > 0 ? 6 : distance1.0.0 < 0 && distance1.0.1 == 0 ? 7 : 8
-        let q2 = distance2.0.0 == 0 && distance2.0.1 < 0 ? 1 : distance2.0.0 > 0 && distance2.0.1 < 0 ? 2 : distance2.0.1 == 0 && distance2.0.0 > 0 ? 3 : distance2.0.1 > 0 && distance2.0.0 > 0 ? 4 : distance2.0.0 == 0 && distance2.0.1 > 0 ? 5 : distance2.0.0 < 0 && distance2.0.1 > 0 ? 6 : distance2.0.0 < 0 && distance2.0.1 == 0 ? 7 : 8
+        let quadrants = ["01": 1, "21": 2, "20": 3, "22": 4, "02": 5, "12": 6, "10": 7, "11": 8]
+        let q1 = quadrants[(distance1.0.0 == 0 ? "0" : distance1.0.0 < 0 ? "1" : "2") + (distance1.0.1 == 0 ? "0" : distance1.0.1 < 0 ? "1" : "2")]!
+        let q2 = quadrants[(distance2.0.0 == 0 ? "0" : distance2.0.0 < 0 ? "1" : "2") + (distance2.0.1 == 0 ? "0" : distance2.0.1 < 0 ? "1" : "2")]!
         let angle1 = distance1.0.0 == 0 ? 0 : Double(distance1.0.1)/Double(distance1.0.0)
         let angle2 = distance2.0.0 == 0 ? 0 : Double(distance2.0.1)/Double(distance2.0.0)
         return q1 < q2 || ( q1 == q2 && ( angle1 < angle2 || (angle1 == angle2 && distance1.1 < distance2.1) ) )
