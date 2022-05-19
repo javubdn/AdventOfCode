@@ -444,6 +444,26 @@ extension Year2019InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day10question2() -> String {
+        let input = readCSV("InputYear2019Day10").components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+        let coordenates = Utils.cartesianProduct(lhs: Array(0..<input.count), rhs: Array(0..<input[0].count)).filter { input[$0.0][$0.1] == "#" }
+        let bestCoordenate = coordenates.sorted { visibleAsteroids(from: $0, in: coordenates) > visibleAsteroids(from: $1, in: coordenates) }.first!
+        let sortedCoordenates = coordenates.filter { $0.0 != bestCoordenate.0 || $0.1 != bestCoordenate.1 }.sorted { bestAngleAsteroid(bestCoordenate, $0, $1) }
+        var cycleCoordinates = sortedCoordenates.map { ($0, 0) }
+        var index = 1
+        while index < cycleCoordinates.count {
+            if distanceToAsteroid(bestCoordenate, cycleCoordinates[index].0).0 == distanceToAsteroid(bestCoordenate, cycleCoordinates[index-1].0).0 {
+                cycleCoordinates[index].1 = cycleCoordinates[index-1].1 + 1
+            }
+            index += 1
+        }
+        let sortedCycleCoordinates = cycleCoordinates.enumerated().sorted { $0.element.1 < $1.element.1 || ($0.element.1 == $1.element.1 && $0.offset < $1.offset ) }
+        let coordenate200 = sortedCycleCoordinates[199].element.0
+        let result = coordenate200.1 * 100 + coordenate200.0
+        return String(result)
+    }
+    
     struct Vector: Hashable {
         let x: Int
         let y: Int
@@ -458,6 +478,23 @@ extension Year2019InteractorImpl: YearInteractor {
         }
         return Set(vectors).count
         
+    }
+    
+    private func distanceToAsteroid(_ reference: (Int, Int), _ asteroid: (Int, Int)) -> ((Int, Int), Int) {
+        let diffY = asteroid.0 - reference.0
+        let diffX = asteroid.1 - reference.1
+        let commonDivisor = Utils.gcd(diffX, diffY)
+        return ((commonDivisor == 0 ? diffX : diffX/commonDivisor, commonDivisor == 0 ? diffY : diffY/commonDivisor), commonDivisor)
+    }
+    
+    private func bestAngleAsteroid(_ bestCoordenate: (Int, Int), _ asteroid1: (Int, Int), _ asteroid2: (Int, Int)) -> Bool {
+        let distance1 = distanceToAsteroid(bestCoordenate, asteroid1)
+        let distance2 = distanceToAsteroid(bestCoordenate, asteroid2)
+        let q1 = distance1.0.0 == 0 && distance1.0.1 < 0 ? 1 : distance1.0.0 > 0 && distance1.0.1 < 0 ? 2 : distance1.0.1 == 0 && distance1.0.0 > 0 ? 3 : distance1.0.1 > 0 && distance1.0.0 > 0 ? 4 : distance1.0.0 == 0 && distance1.0.1 > 0 ? 5 : distance1.0.0 < 0 && distance1.0.1 > 0 ? 6 : distance1.0.0 < 0 && distance1.0.1 == 0 ? 7 : 8
+        let q2 = distance2.0.0 == 0 && distance2.0.1 < 0 ? 1 : distance2.0.0 > 0 && distance2.0.1 < 0 ? 2 : distance2.0.1 == 0 && distance2.0.0 > 0 ? 3 : distance2.0.1 > 0 && distance2.0.0 > 0 ? 4 : distance2.0.0 == 0 && distance2.0.1 > 0 ? 5 : distance2.0.0 < 0 && distance2.0.1 > 0 ? 6 : distance2.0.0 < 0 && distance2.0.1 == 0 ? 7 : 8
+        let angle1 = distance1.0.0 == 0 ? 0 : Double(distance1.0.1)/Double(distance1.0.0)
+        let angle2 = distance2.0.0 == 0 ? 0 : Double(distance2.0.1)/Double(distance2.0.0)
+        return q1 < q2 || ( q1 == q2 && ( angle1 < angle2 || (angle1 == angle2 && distance1.1 < distance2.1) ) )
     }
         
 }
