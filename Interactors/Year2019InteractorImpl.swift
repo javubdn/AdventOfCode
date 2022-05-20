@@ -525,11 +525,7 @@ extension Year2019InteractorImpl: YearInteractor {
             let output = intcode.output
             panel[position.0][position.1] = output[outputIndex]
             changed[position.0][position.1] = true
-            if output[outputIndex+1] == 0 {
-                orientation = orientation.turnLeft()
-            } else {
-                orientation = orientation.turnRight()
-            }
+            orientation = orientation.turn(output[outputIndex+1] == 0 ? .left : .right)
             position.0 += orientation == .north ? -1 : orientation == .south ? 1 : 0
             position.1 += orientation == .west ? -1 : orientation == .east ? 1 : 0
             outputIndex += 2
