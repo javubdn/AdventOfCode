@@ -500,11 +500,23 @@ extension Year2019InteractorImpl: YearInteractor {
     
     @objc
     func day11question1() -> String {
+        let (result, _) = paintPanel(mode: 0, panelSize: (58, 107), initialPosition: (96, 6))
+        return String(result)
+    }
+    
+    @objc
+    func day11question2() -> String {
+        let (_, result) = paintPanel(mode: 1, panelSize: (43, 6), initialPosition: (0, 0))
+        return result
+    }
+    
+    private func paintPanel(mode: Int, panelSize: (Int, Int), initialPosition: (Int, Int)) -> (Int, String) {
         let input = readCSV("InputYear2019Day11").components(separatedBy: ",").map { Int($0)! }
         let intcode = Intcode(instructions: input)
-        var panel = [[Int]](repeating: [Int](repeating: 0, count: 1000), count: 1000)
-        var changed = [[Bool]](repeating: [Bool](repeating: false, count: 1000), count: 1000)
-        var position = (500, 500)
+        var panel = [[Int]](repeating: [Int](repeating: 0, count: panelSize.0), count: panelSize.1)
+        var position = initialPosition
+        panel[position.0][position.1] = mode
+        var changed = [[Bool]](repeating: [Bool](repeating: false, count: panelSize.0), count: panelSize.1)
         var orientation = Direction.north
         var outputIndex = 0
         while !intcode.completed {
@@ -522,37 +534,12 @@ extension Year2019InteractorImpl: YearInteractor {
             position.1 += orientation == .west ? -1 : orientation == .east ? 1 : 0
             outputIndex += 2
         }
-        let result = changed.map { $0.filter { $0 }.count }.reduce(0, +)
-        return String(result)
-    }
-    
-    @objc
-    func day11question2() -> String {
-        let input = readCSV("InputYear2019Day11").components(separatedBy: ",").map { Int($0)! }
-        let intcode = Intcode(instructions: input)
-        var panel = [[Int]](repeating: [Int](repeating: 0, count: 43), count: 6)
-        var position = (0, 0)
-        panel[position.0][position.1] = 1
-        var orientation = Direction.north
-        var outputIndex = 0
-        while !intcode.completed {
-            intcode.addInput([panel[position.0][position.1]])
-            intcode.execute(.partial)
-            let output = intcode.output
-            panel[position.0][position.1] = output[outputIndex]
-            if output[outputIndex+1] == 0 {
-                orientation = orientation.turnLeft()
-            } else {
-                orientation = orientation.turnRight()
-            }
-            position.0 += orientation == .north ? -1 : orientation == .south ? 1 : 0
-            position.1 += orientation == .west ? -1 : orientation == .east ? 1 : 0
-            outputIndex += 2
-        }
         
         let panelString = panel.map { $0.map { $0 == 0 ? "." : "#" }.joined() }
         panelString.forEach { print($0) }
-        return "HAFULAPE"
+        let result = changed.map { $0.filter { $0 }.count }.reduce(0, +)
+        return (result, "HAFULAPE")
+        
     }
         
 }
