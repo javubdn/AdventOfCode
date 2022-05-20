@@ -497,5 +497,34 @@ extension Year2019InteractorImpl: YearInteractor {
         let angle2 = distance2.0.0 == 0 ? 0 : Double(distance2.0.1)/Double(distance2.0.0)
         return q1 < q2 || ( q1 == q2 && ( angle1 < angle2 || (angle1 == angle2 && distance1.1 < distance2.1) ) )
     }
+    
+    @objc
+    func day11question1() -> String {
+        let input = readCSV("InputYear2019Day11").components(separatedBy: ",").map { Int($0)! }
+        let intcode = Intcode(instructions: input)
+        var panel = [[Int]](repeating: [Int](repeating: 0, count: 1000), count: 1000)
+        var changed = [[Bool]](repeating: [Bool](repeating: false, count: 1000), count: 1000)
+        var position = (500, 500)
+        var orientation = Direction.north
+        var outputIndex = 0
+        while !intcode.completed {
+            intcode.addInput([panel[position.0][position.1]])
+            intcode.execute(.partial)
+            let output = intcode.output
+            panel[position.0][position.1] = output[outputIndex]
+            changed[position.0][position.1] = true
+            if output[outputIndex+1] == 0 {
+                orientation = orientation.turnLeft()
+            } else {
+                orientation = orientation.turnRight()
+            }
+            position.0 += orientation == .north ? -1 : orientation == .south ? 1 : 0
+            position.1 += orientation == .west ? -1 : orientation == .east ? 1 : 0
+            outputIndex += 2
+        }
+        let result = changed.map { $0.filter { $0 }.count }.reduce(0, +)
+        return String(result)
+    }
+    
         
 }
