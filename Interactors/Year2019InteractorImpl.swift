@@ -526,5 +526,33 @@ extension Year2019InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day11question2() -> String {
+        let input = readCSV("InputYear2019Day11").components(separatedBy: ",").map { Int($0)! }
+        let intcode = Intcode(instructions: input)
+        var panel = [[Int]](repeating: [Int](repeating: 0, count: 43), count: 6)
+        var position = (0, 0)
+        panel[position.0][position.1] = 1
+        var orientation = Direction.north
+        var outputIndex = 0
+        while !intcode.completed {
+            intcode.addInput([panel[position.0][position.1]])
+            intcode.execute(.partial)
+            let output = intcode.output
+            panel[position.0][position.1] = output[outputIndex]
+            if output[outputIndex+1] == 0 {
+                orientation = orientation.turnLeft()
+            } else {
+                orientation = orientation.turnRight()
+            }
+            position.0 += orientation == .north ? -1 : orientation == .south ? 1 : 0
+            position.1 += orientation == .west ? -1 : orientation == .east ? 1 : 0
+            outputIndex += 2
+        }
+        
+        let panelString = panel.map { $0.map { $0 == 0 ? "." : "#" }.joined() }
+        panelString.forEach { print($0) }
+        return "HAFULAPE"
+    }
         
 }
