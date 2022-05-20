@@ -43,14 +43,13 @@ class Intcode {
             case 3:
                 if !input.isEmpty {
                     instructions[getParam(1, read: false)] = input.removeFirst()
+                } else {
+                    return
                 }
                 ip += 2
             case 4:
                 output.append(getParam(1, read: true))
                 ip += 2
-                if mode == .partial {
-                    return
-                }
             case 5:
                 if getParam(1, read: true) != 0 {
                     ip = getParam(2, read: true)
