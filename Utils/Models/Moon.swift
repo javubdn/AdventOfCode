@@ -41,4 +41,21 @@ class Moon {
         (abs(position.x) + abs(position.y) + abs(position.z)) * (abs(speed.x) + abs(speed.y) + abs(speed.z))
     }
     
+    struct MoonPair: Hashable {
+        let position: Int
+        let speed: Int
+    }
+    
+    func getX() -> MoonPair {
+        MoonPair(position: position.x, speed: speed.x)
+    }
+    
+    func getY() -> MoonPair {
+        MoonPair(position: position.y, speed: speed.y)
+    }
+    
+    func getZ() -> MoonPair {
+        MoonPair(position: position.z, speed: speed.z)
+    }
+    
 }
