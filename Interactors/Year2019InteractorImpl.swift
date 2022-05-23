@@ -554,6 +554,33 @@ extension Year2019InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day12question2() -> String {
+        let input = readCSV("InputYear2019Day12")
+        let moons = getMoons(input)
+        let startingX = moons.map { $0.getX() }
+        let startingY = moons.map { $0.getY() }
+        let startingZ = moons.map { $0.getZ() }
+        var foundX: Int? = nil
+        var foundY: Int? = nil
+        var foundZ: Int? = nil
+        var numSteps = 0
+        while foundX == nil || foundY == nil || foundZ == nil {
+            for moon in moons {
+                moon.updateSpeed(moons)
+            }
+            for moon in moons {
+                moon.move()
+            }
+            numSteps += 1
+            foundX = foundX == nil && startingX == moons.map { $0.getX() } ? numSteps : foundX
+            foundY = foundY == nil && startingY == moons.map { $0.getY() } ? numSteps : foundY
+            foundZ = foundZ == nil && startingZ == moons.map { $0.getZ() } ? numSteps : foundZ
+        }
+        let result = Utils.lcm(foundX!, Utils.lcm(foundY!, foundZ!))
+        return String(result)
+    }
+    
     private func getMoons(_ input: String) -> [Moon] {
         let items = input.components(separatedBy: .newlines).map { $0.dropFirst().dropLast() }
         var id = 1
