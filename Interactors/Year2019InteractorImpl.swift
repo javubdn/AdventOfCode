@@ -537,5 +537,37 @@ extension Year2019InteractorImpl: YearInteractor {
         return (result, "HAFULAPE")
         
     }
+    
+    @objc
+    func day12question1() -> String {
+        let input = readCSV("InputYear2019Day12")
+        let moons = getMoons(input)
+        for _ in 1...1000 {
+            for moon in moons {
+                moon.updateSpeed(moons)
+            }
+            for moon in moons {
+                moon.move()
+            }
+        }
+        let result = moons.map { $0.energy() }.reduce(0, +)
+        return String(result)
+    }
+    
+    private func getMoons(_ input: String) -> [Moon] {
+        let items = input.components(separatedBy: .newlines).map { $0.dropFirst().dropLast() }
+        var id = 1
+        var moons: [Moon] = []
+        for item in items {
+            let positions = item.components(separatedBy: ", ")
+            let x = Int(positions[0].components(separatedBy: "=")[1])!
+            let y = Int(positions[1].components(separatedBy: "=")[1])!
+            let z = Int(positions[2].components(separatedBy: "=")[1])!
+            let moon = Moon(id, position: (x: x, y: y, z: z))
+            moons.append(moon)
+            id += 1
+        }
+        return moons
+    }
         
 }
