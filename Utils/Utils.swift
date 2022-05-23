@@ -195,4 +195,8 @@ class Utils {
         return a % b == 0 ? abs(b) : gcd(b, a % b)
     }
     
+    static func lcm(_ a: Int, _ b: Int) -> Int {
+        a / gcd(a, b) * b
+    }
+    
 }
