@@ -611,5 +611,36 @@ extension Year2019InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day13question2() -> String {
+        let input = readCSV("InputYear2019Day13").components(separatedBy: ",").map { Int($0)! }
+        let intCode = Intcode(instructions: input)
+        intCode.instructions[0] = 2
+        var score = 0
+        var outputIndex = 0
+        var paddleX = 0
+        var ballX = 0
+        while !intCode.completed {
+            intCode.execute()
+            let newOutput = intCode.output
+            let output = newOutput[outputIndex...]
+            for index in stride(from: 0, to: output.count, by: 3) {
+                let x = output[outputIndex+index]
+                let value = output[outputIndex+index+2]
+                if x == -1 {
+                    score = value
+                }
+                else if value == 3 {
+                    paddleX = x
+                }
+                else if value == 4 {
+                    ballX = x
+                }
+            }
+            intCode.addInput([ballX < paddleX ? -1 : ballX > paddleX ? 1 : 0])
+            outputIndex = newOutput.count
+        }
+        return String(score)
+    }
         
 }
