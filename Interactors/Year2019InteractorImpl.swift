@@ -642,5 +642,9 @@ extension Year2019InteractorImpl: YearInteractor {
         }
         return String(score)
     }
+    struct Reaction {
+        let ingredients: [(name: String, quantity: Int)]
+        let result: (name: String, quantity: Int)
+    }
         
 }
