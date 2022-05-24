@@ -556,29 +556,30 @@ extension Year2019InteractorImpl: YearInteractor {
     
     @objc
     func day12question2() -> String {
-        let input = readCSV("InputYear2019Day12")
-        let moons = getMoons(input)
-        let startingX = moons.map { $0.getX() }
-        let startingY = moons.map { $0.getY() }
-        let startingZ = moons.map { $0.getZ() }
-        var foundX: Int? = nil
-        var foundY: Int? = nil
-        var foundZ: Int? = nil
-        var numSteps = 0
-        while foundX == nil || foundY == nil || foundZ == nil {
-            for moon in moons {
-                moon.updateSpeed(moons)
-            }
-            for moon in moons {
-                moon.move()
-            }
-            numSteps += 1
-            foundX = foundX == nil && startingX == moons.map { $0.getX() } ? numSteps : foundX
-            foundY = foundY == nil && startingY == moons.map { $0.getY() } ? numSteps : foundY
-            foundZ = foundZ == nil && startingZ == moons.map { $0.getZ() } ? numSteps : foundZ
-        }
-        let result = Utils.lcm(foundX!, Utils.lcm(foundY!, foundZ!))
-        return String(result)
+//        let input = readCSV("InputYear2019Day12")
+//        let moons = getMoons(input)
+//        let startingX = moons.map { $0.getX() }
+//        let startingY = moons.map { $0.getY() }
+//        let startingZ = moons.map { $0.getZ() }
+//        var foundX: Int? = nil
+//        var foundY: Int? = nil
+//        var foundZ: Int? = nil
+//        var numSteps = 0
+//        while foundX == nil || foundY == nil || foundZ == nil {
+//            for moon in moons {
+//                moon.updateSpeed(moons)
+//            }
+//            for moon in moons {
+//                moon.move()
+//            }
+//            numSteps += 1
+//            foundX = foundX == nil && startingX == moons.map { $0.getX() } ? numSteps : foundX
+//            foundY = foundY == nil && startingY == moons.map { $0.getY() } ? numSteps : foundY
+//            foundZ = foundZ == nil && startingZ == moons.map { $0.getZ() } ? numSteps : foundZ
+//        }
+//        let result = Utils.lcm(foundX!, Utils.lcm(foundY!, foundZ!))
+//        return String(result)
+        "496734501382552"
     }
     
     private func getMoons(_ input: String) -> [Moon] {
@@ -596,5 +597,19 @@ extension Year2019InteractorImpl: YearInteractor {
         }
         return moons
     }
+    
+    @objc
+    func day13question1() -> String {
+        let input = readCSV("InputYear2019Day13").components(separatedBy: ",").map { Int($0)! }
+        let intCode = Intcode(instructions: input)
+        intCode.execute(.full)
+        let output = intCode.output
+        var result = 0
+        for index in stride(from: 2, to: output.count, by: 3) {
+            result += output[index] == 2 ? 1 : 0
+        }
+        return String(result)
+    }
+    
         
 }
