@@ -7,11 +7,6 @@
 
 import Foundation
 
-enum Mode {
-    case full
-    case partial
-}
-
 class Intcode {
     
     var instructions: [Int]
@@ -29,7 +24,7 @@ class Intcode {
         self.input.append(contentsOf: input)
     }
     
-    func execute(_ mode: Mode) {
+    func execute() {
         while ip < instructions.count {
             let instruction = instructions[ip]
             let opcode = instruction % 100

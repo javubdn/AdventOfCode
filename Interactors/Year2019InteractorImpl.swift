@@ -38,7 +38,7 @@ extension Year2019InteractorImpl: YearInteractor {
         instructions[1] = 12
         instructions[2] = 2
         let intCode = Intcode(instructions: instructions)
-        intCode.execute(.full)
+        intCode.execute()
         let result = intCode.instructions[0]
         return String(result)
     }
@@ -52,7 +52,7 @@ extension Year2019InteractorImpl: YearInteractor {
                 instructions[1] = noun
                 instructions[2] = verb
                 let intCode = Intcode(instructions: instructions)
-                intCode.execute(.full)
+                intCode.execute()
                 let result = intCode.instructions[0]
                 if result == 19690720 {
                     return String(100 * noun + verb)
@@ -225,7 +225,7 @@ extension Year2019InteractorImpl: YearInteractor {
         let input = readCSV("InputYear2019Day5").components(separatedBy: ",").map { Int($0)! }
         let intCode = Intcode(instructions: input)
         intCode.addInput([1])
-        intCode.execute(.full)
+        intCode.execute()
         let result = intCode.output.last!
         return String(result)
     }
@@ -235,7 +235,7 @@ extension Year2019InteractorImpl: YearInteractor {
         let input = readCSV("InputYear2019Day5").components(separatedBy: ",").map { Int($0)! }
         let intCode = Intcode(instructions: input)
         intCode.addInput([5])
-        intCode.execute(.full)
+        intCode.execute()
         let result = intCode.output.last!
         return String(result)
     }
@@ -342,7 +342,7 @@ extension Year2019InteractorImpl: YearInteractor {
             for index in 0...4 {
                 let intcode = Intcode(instructions: input)
                 intcode.addInput([permutation[index]] + output)
-                intcode.execute(.full)
+                intcode.execute()
                 output = intcode.output
             }
             bestResult = max(bestResult, output[0])
@@ -368,7 +368,7 @@ extension Year2019InteractorImpl: YearInteractor {
                 for index in 0...4 {
                     let intcode = intCodes[index]
                     intcode.input.append(contentsOf: output)
-                    intcode.execute(.partial)
+                    intcode.execute()
                     output = [intcode.output.last!]
                 }
                 let completed = intCodes.filter { $0.completed }.count
@@ -421,7 +421,7 @@ extension Year2019InteractorImpl: YearInteractor {
         let input = readCSV("InputYear2019Day9").components(separatedBy: ",").map { Int($0)! }
         let intcode = Intcode(instructions: input)
         intcode.addInput([1])
-        intcode.execute(.full)
+        intcode.execute()
         let result = intcode.output.first!
         return String(result)
     }
@@ -431,7 +431,7 @@ extension Year2019InteractorImpl: YearInteractor {
         let input = readCSV("InputYear2019Day9").components(separatedBy: ",").map { Int($0)! }
         let intcode = Intcode(instructions: input)
         intcode.addInput([2])
-        intcode.execute(.full)
+        intcode.execute()
         let result = intcode.output.first!
         return String(result)
     }
@@ -521,7 +521,7 @@ extension Year2019InteractorImpl: YearInteractor {
         var outputIndex = 0
         while !intcode.completed {
             intcode.addInput([panel[position.0][position.1]])
-            intcode.execute(.partial)
+            intcode.execute()
             let output = intcode.output
             panel[position.0][position.1] = output[outputIndex]
             changed[position.0][position.1] = true
@@ -602,7 +602,7 @@ extension Year2019InteractorImpl: YearInteractor {
     func day13question1() -> String {
         let input = readCSV("InputYear2019Day13").components(separatedBy: ",").map { Int($0)! }
         let intCode = Intcode(instructions: input)
-        intCode.execute(.full)
+        intCode.execute()
         let output = intCode.output
         var result = 0
         for index in stride(from: 2, to: output.count, by: 3) {
