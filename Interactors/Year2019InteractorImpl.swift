@@ -646,5 +646,18 @@ extension Year2019InteractorImpl: YearInteractor {
         let ingredients: [(name: String, quantity: Int)]
         let result: (name: String, quantity: Int)
     }
+    private func getReaction(_ input: String) -> Reaction {
+        let elements = input.components(separatedBy: " => ")
+        let ingredients = elements[0].components(separatedBy: ", ")
+        var ingr: [(String, Int)] = []
+        ingredients.forEach { ingredient in
+            let values = ingredient.components(separatedBy: .whitespaces)
+            ingr.append((values[1], Int(values[0])!))
+        }
+        let resultValues = elements[1].components(separatedBy: .whitespaces)
+        let result = (resultValues[1], Int(resultValues[0])!)
+        return Reaction(ingredients: ingr, result: result)
+    }
+    
         
 }
