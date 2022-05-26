@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreText
 
 class Year2019InteractorImpl: NSObject {
 }
@@ -642,10 +643,34 @@ extension Year2019InteractorImpl: YearInteractor {
         }
         return String(score)
     }
+    
+    @objc
+    func day14question1() -> String {
+        let input = """
+2 VPVL, 7 FWMGM, 2 CXFTF, 11 MNCFX => 1 STKFG
+17 NVRVD, 3 JNWZP => 8 VPVL
+53 STKFG, 6 MNCFX, 46 VJHF, 81 HVMC, 68 CXFTF, 25 GNMV => 1 FUEL
+22 VJHF, 37 MNCFX => 5 FWMGM
+139 ORE => 4 NVRVD
+144 ORE => 7 JNWZP
+5 MNCFX, 7 RFSQX, 2 FWMGM, 2 VPVL, 19 CXFTF => 3 HVMC
+5 VJHF, 7 MNCFX, 9 VPVL, 37 CXFTF => 6 GNMV
+145 ORE => 6 MNCFX
+1 NVRVD => 8 CXFTF
+1 VJHF, 6 MNCFX => 4 RFSQX
+176 ORE => 6 VJHF
+""".components(separatedBy: .newlines)
+//        let input = readCSV("InputYear2019Day14").components(separatedBy: .newlines)
+        let reactions = input.map { getReaction($0) }
+        let result = getOre("FUEL", 1, reactions)
+        return String(result)
+    }
+    
     struct Reaction {
         let ingredients: [(name: String, quantity: Int)]
         let result: (name: String, quantity: Int)
     }
+    
     private func getReaction(_ input: String) -> Reaction {
         let elements = input.components(separatedBy: " => ")
         let ingredients = elements[0].components(separatedBy: ", ")
@@ -659,5 +684,46 @@ extension Year2019InteractorImpl: YearInteractor {
         return Reaction(ingredients: ingr, result: result)
     }
     
+    private func getOre(_ material: String, _ quantity: Int, _ reactions: [Reaction]) -> Int {
+//        let reaction = reactions.first { $0.result.name == material }!
+//        if reaction.ingredients.count == 1 && reaction.ingredients[0].name == "ORE" {
+//            let numReactions = quantity/reaction.result.quantity + (quantity%reaction.result.quantity == 0 ? 0 : 1 )
+//            return numReactions * reaction.ingredients[0].quantity
+//        }
+//        var sum = 0
+//        for ingredient in reaction.ingredients {
+//            sum += getOre(ingredient.name, ingredient.quantity, reactions)
+//        }
+//        return sum * quantity
+        let primaryElements = getPrimaryElements(material, quantity, reactions)
+        var ore = 0
+        for primaryElement in primaryElements {
+            let reaction = reactions.first { $0.result.name == primaryElement.key }!
+            if reaction.ingredients.count == 1 && reaction.ingredients[0].name == "ORE" {
+                let numReactions = primaryElement.value/reaction.result.quantity + (primaryElement.value%reaction.result.quantity == 0 ? 0 : 1 )
+                ore += numReactions * reaction.ingredients[0].quantity
+            }
+        }
+        return ore
+    }
+    
+    private func getPrimaryElements(_ material: String, _ quantity: Int, _ reactions: [Reaction]) -> [String: Int] {
+        let reaction = reactions.first { $0.result.name == material }!
+        if reaction.ingredients.count == 1 && reaction.ingredients[0].name == "ORE" {
+            return [material: quantity]
+        }
+        var primaryElements: [String: Int] = [:]
+        for ingredient in reaction.ingredients {
+            let elements = getPrimaryElements(ingredient.name, ingredient.quantity, reactions)
+            for element in elements {
+                if primaryElements[element.key] != nil {
+                    primaryElements[element.key]! += element.value * (quantity / reaction.result.quantity + (quantity%reaction.result.quantity == 0 ? 0 : 1 ))
+                } else {
+                    primaryElements[element.key] = element.value * (quantity / reaction.result.quantity + (quantity%reaction.result.quantity == 0 ? 0 : 1 ))
+                }
+            }
+        }
+        return primaryElements
+    }
         
 }
