@@ -199,4 +199,20 @@ class Utils {
         a / gcd(a, b) * b
     }
     
+    static func binarySearchBy(_ range: (Int, Int), fn: (Int) -> Int) -> Int {
+        var low = range.0
+        var high = range.1
+        while low <= high {
+            let mid = (low + high) / 2
+            let val = fn(mid)
+            let sign = val < 0 ? -1 : val > 0 ? 1 : 0
+            switch sign {
+            case -1: high = mid - 1
+            case 1: low = mid + 1
+            default: return mid
+            }
+        }
+        return low - 1
+    }
+    
 }
