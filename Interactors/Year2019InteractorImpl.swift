@@ -647,32 +647,9 @@ extension Year2019InteractorImpl: YearInteractor {
     
     @objc
     func day14question1() -> String {
-//        let input = """
-//171 ORE => 8 CNZTR
-//7 ZLQW, 3 BMBT, 9 XCVML, 26 XMNCP, 1 WPTQ, 2 MZWV, 1 RJRHP => 4 PLWSL
-//114 ORE => 4 BHXH
-//14 VRPVC => 6 BMBT
-//6 BHXH, 18 KTJDG, 12 WPTQ, 7 PLWSL, 31 FHTLT, 37 ZDVW => 1 FUEL
-//6 WPTQ, 2 BMBT, 8 ZLQW, 18 KTJDG, 1 XMNCP, 6 MZWV, 1 RJRHP => 6 FHTLT
-//15 XDBXC, 2 LTCX, 1 VRPVC => 6 ZLQW
-//13 WPTQ, 10 LTCX, 3 RJRHP, 14 XMNCP, 2 MZWV, 1 ZLQW => 1 ZDVW
-//5 BMBT => 4 WPTQ
-//189 ORE => 9 KTJDG
-//1 MZWV, 17 XDBXC, 3 XCVML => 2 XMNCP
-//12 VRPVC, 27 CNZTR => 2 XDBXC
-//15 KTJDG, 12 BHXH => 5 XCVML
-//3 BHXH, 2 VRPVC => 7 MZWV
-//121 ORE => 7 VRPVC
-//7 XCVML => 6 RJRHP
-//5 BHXH, 4 VRPVC => 5 LTCX
-//""".components(separatedBy: .newlines)
         let input = readCSV("InputYear2019Day14").components(separatedBy: .newlines)
         let cost: [String: (Int, [(Int, String)])] = getReactionCosts(input)
-        
         let result = calculateCost(cost: cost)
-        
-//        let reactions = input.map { getReaction($0) }
-//        let result = getOre("FUEL", 1, reactions)
         return String(result)
     }
     
@@ -707,54 +684,10 @@ extension Year2019InteractorImpl: YearInteractor {
         return costs
     }
     
-    private func getOre(_ material: String, _ quantity: Int, _ reactions: [Reaction]) -> Int {
-//        let reaction = reactions.first { $0.result.name == material }!
-//        if reaction.ingredients.count == 1 && reaction.ingredients[0].name == "ORE" {
-//            let numReactions = quantity/reaction.result.quantity + (quantity%reaction.result.quantity == 0 ? 0 : 1 )
-//            return numReactions * reaction.ingredients[0].quantity
-//        }
-//        var sum = 0
-//        for ingredient in reaction.ingredients {
-//            sum += getOre(ingredient.name, ingredient.quantity, reactions)
-//        }
-//        return sum * quantity
-        let primaryElements = getPrimaryElements(material, quantity, reactions)
-        var ore = 0
-        for primaryElement in primaryElements {
-            let reaction = reactions.first { $0.result.name == primaryElement.key }!
-            if reaction.ingredients.count == 1 && reaction.ingredients[0].name == "ORE" {
-                let numReactions = primaryElement.value/reaction.result.quantity + (primaryElement.value%reaction.result.quantity == 0 ? 0 : 1 )
-                ore += numReactions * reaction.ingredients[0].quantity
-            }
-        }
-        return ore
-    }
-    
-    private func getPrimaryElements(_ material: String, _ quantity: Int, _ reactions: [Reaction]) -> [String: Int] {
-        let reaction = reactions.first { $0.result.name == material }!
-        if reaction.ingredients.count == 1 && reaction.ingredients[0].name == "ORE" {
-            return [material: quantity]
-        }
-        var primaryElements: [String: Int] = [:]
-        for ingredient in reaction.ingredients {
-            let elements = getPrimaryElements(ingredient.name, ingredient.quantity, reactions)
-            for element in elements {
-                if primaryElements[element.key] != nil {
-                    primaryElements[element.key]! += element.value * (quantity / reaction.result.quantity + (quantity%reaction.result.quantity == 0 ? 0 : 1 ))
-                } else {
-                    primaryElements[element.key] = element.value * (quantity / reaction.result.quantity + (quantity%reaction.result.quantity == 0 ? 0 : 1 ))
-                }
-            }
-        }
-        return primaryElements
-    }
-    
     private func calculateCost(material: String = "FUEL",
                                amount: Int = 1,
-//                               inventory: [String: Int] = [:],
                                cost: [String: (Int, [(Int, String)])]) -> Int {
         guard material != "ORE" else { return amount }
-//        var inventory = inventory
         let inventoryQuantity = inventory[material] ?? 0
         var needQuantity = 0
         if inventoryQuantity > 0 {
