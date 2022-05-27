@@ -9,6 +9,7 @@ import Foundation
 import CoreText
 
 class Year2019InteractorImpl: NSObject {
+    var inventory: [String: Int] = [:]
 }
 
 extension Year2019InteractorImpl: YearInteractor {
@@ -646,23 +647,32 @@ extension Year2019InteractorImpl: YearInteractor {
     
     @objc
     func day14question1() -> String {
-        let input = """
-2 VPVL, 7 FWMGM, 2 CXFTF, 11 MNCFX => 1 STKFG
-17 NVRVD, 3 JNWZP => 8 VPVL
-53 STKFG, 6 MNCFX, 46 VJHF, 81 HVMC, 68 CXFTF, 25 GNMV => 1 FUEL
-22 VJHF, 37 MNCFX => 5 FWMGM
-139 ORE => 4 NVRVD
-144 ORE => 7 JNWZP
-5 MNCFX, 7 RFSQX, 2 FWMGM, 2 VPVL, 19 CXFTF => 3 HVMC
-5 VJHF, 7 MNCFX, 9 VPVL, 37 CXFTF => 6 GNMV
-145 ORE => 6 MNCFX
-1 NVRVD => 8 CXFTF
-1 VJHF, 6 MNCFX => 4 RFSQX
-176 ORE => 6 VJHF
-""".components(separatedBy: .newlines)
-//        let input = readCSV("InputYear2019Day14").components(separatedBy: .newlines)
-        let reactions = input.map { getReaction($0) }
-        let result = getOre("FUEL", 1, reactions)
+//        let input = """
+//171 ORE => 8 CNZTR
+//7 ZLQW, 3 BMBT, 9 XCVML, 26 XMNCP, 1 WPTQ, 2 MZWV, 1 RJRHP => 4 PLWSL
+//114 ORE => 4 BHXH
+//14 VRPVC => 6 BMBT
+//6 BHXH, 18 KTJDG, 12 WPTQ, 7 PLWSL, 31 FHTLT, 37 ZDVW => 1 FUEL
+//6 WPTQ, 2 BMBT, 8 ZLQW, 18 KTJDG, 1 XMNCP, 6 MZWV, 1 RJRHP => 6 FHTLT
+//15 XDBXC, 2 LTCX, 1 VRPVC => 6 ZLQW
+//13 WPTQ, 10 LTCX, 3 RJRHP, 14 XMNCP, 2 MZWV, 1 ZLQW => 1 ZDVW
+//5 BMBT => 4 WPTQ
+//189 ORE => 9 KTJDG
+//1 MZWV, 17 XDBXC, 3 XCVML => 2 XMNCP
+//12 VRPVC, 27 CNZTR => 2 XDBXC
+//15 KTJDG, 12 BHXH => 5 XCVML
+//3 BHXH, 2 VRPVC => 7 MZWV
+//121 ORE => 7 VRPVC
+//7 XCVML => 6 RJRHP
+//5 BHXH, 4 VRPVC => 5 LTCX
+//""".components(separatedBy: .newlines)
+        let input = readCSV("InputYear2019Day14").components(separatedBy: .newlines)
+        let cost: [String: (Int, [(Int, String)])] = getReactionCosts(input)
+        
+        let result = calculateCost(cost: cost)
+        
+//        let reactions = input.map { getReaction($0) }
+//        let result = getOre("FUEL", 1, reactions)
         return String(result)
     }
     
@@ -682,6 +692,19 @@ extension Year2019InteractorImpl: YearInteractor {
         let resultValues = elements[1].components(separatedBy: .whitespaces)
         let result = (resultValues[1], Int(resultValues[0])!)
         return Reaction(ingredients: ingr, result: result)
+    }
+    
+    private func getReactionCosts(_ input: [String]) -> [String: (Int, [(Int, String)])] {
+        let reactions = input.map { getReaction($0) }
+        var costs: [String: (Int, [(Int, String)])] = [:]
+        for reaction in reactions {
+            var ingredients: [(Int, String)] = []
+            for item in reaction.ingredients {
+                ingredients.append((item.quantity, item.name))
+            }
+            costs[reaction.result.name] = (reaction.result.quantity, ingredients)
+        }
+        return costs
     }
     
     private func getOre(_ material: String, _ quantity: Int, _ reactions: [Reaction]) -> Int {
@@ -724,6 +747,32 @@ extension Year2019InteractorImpl: YearInteractor {
             }
         }
         return primaryElements
+    }
+    
+    private func calculateCost(material: String = "FUEL",
+                               amount: Int = 1,
+//                               inventory: [String: Int] = [:],
+                               cost: [String: (Int, [(Int, String)])]) -> Int {
+        guard material != "ORE" else { return amount }
+//        var inventory = inventory
+        let inventoryQuantity = inventory[material] ?? 0
+        var needQuantity = 0
+        if inventoryQuantity > 0 {
+            inventory[material] = max(inventoryQuantity - amount, 0)
+            needQuantity = amount - inventoryQuantity
+        } else {
+            needQuantity = amount
+        }
+        if needQuantity > 0 {
+            let recipe = cost[material]!
+            let iterations = Int(ceil(Double(needQuantity) / Double(recipe.0)))
+            let actuallyProduced = recipe.0 * iterations
+            if needQuantity < actuallyProduced {
+                inventory[material] = (inventory[material] ?? 0) + actuallyProduced - needQuantity
+            }
+            return recipe.1.map { calculateCost(material: $0.1, amount: $0.0*iterations, cost: cost) }.reduce(0, +)
+        }
+        return 0
     }
         
 }
