@@ -653,6 +653,17 @@ extension Year2019InteractorImpl: YearInteractor {
         return String(result)
     }
     
+    @objc
+    func day14question2() -> String {
+        let input = readCSV("InputYear2019Day14").components(separatedBy: .newlines)
+        let cost: [String: (Int, [(Int, String)])] = getReactionCosts(input)
+        let result = Utils.binarySearchBy((0, 1_000_000_000_000)) { value in
+            inventory = [:]
+            return 1_000_000_000_000 - calculateCost(amount: value, cost: cost)
+        }
+        return String(result)
+    }
+    
     struct Reaction {
         let ingredients: [(name: String, quantity: Int)]
         let result: (name: String, quantity: Int)
@@ -707,5 +718,5 @@ extension Year2019InteractorImpl: YearInteractor {
         }
         return 0
     }
-        
+    
 }
