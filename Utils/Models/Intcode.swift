@@ -24,6 +24,12 @@ class Intcode {
         self.input.append(contentsOf: input)
     }
     
+    func readOutput() -> [Int] {
+        let result = output
+        output = []
+        return result
+    }
+    
     func execute() {
         while ip < instructions.count {
             let instruction = instructions[ip]
