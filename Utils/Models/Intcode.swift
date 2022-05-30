@@ -11,8 +11,8 @@ class Intcode {
     
     var instructions: [Int]
     var ip = 0
-    var input: [Int] = []
-    var output: [Int] = []
+    private var input: [Int] = []
+    private var output: [Int] = []
     var completed = false
     var relativeBase = 0
     
