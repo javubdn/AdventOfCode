@@ -369,9 +369,9 @@ extension Year2019InteractorImpl: YearInteractor {
             while maintainLoop {
                 for index in 0...4 {
                     let intcode = intCodes[index]
-                    intcode.input.append(contentsOf: output)
+                    intcode.addInput(output)
                     intcode.execute()
-                    output = [intcode.output.last!]
+                    output = intcode.readOutput()
                 }
                 let completed = intCodes.filter { $0.completed }.count
                 if completed == 5 {
