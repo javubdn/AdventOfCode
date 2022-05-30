@@ -228,7 +228,7 @@ extension Year2019InteractorImpl: YearInteractor {
         let intCode = Intcode(instructions: input)
         intCode.addInput([1])
         intCode.execute()
-        let result = intCode.output.last!
+        let result = intCode.readOutput().last!
         return String(result)
     }
     
@@ -238,7 +238,7 @@ extension Year2019InteractorImpl: YearInteractor {
         let intCode = Intcode(instructions: input)
         intCode.addInput([5])
         intCode.execute()
-        let result = intCode.output.last!
+        let result = intCode.readOutput().last!
         return String(result)
     }
     
@@ -345,7 +345,7 @@ extension Year2019InteractorImpl: YearInteractor {
                 let intcode = Intcode(instructions: input)
                 intcode.addInput([permutation[index]] + output)
                 intcode.execute()
-                output = intcode.output
+                output = intcode.readOutput()
             }
             bestResult = max(bestResult, output[0])
         }
@@ -361,7 +361,7 @@ extension Year2019InteractorImpl: YearInteractor {
             var intCodes: [Intcode] = []
             for index in 0...4 {
                 let intCode = Intcode(instructions: input)
-                intCode.input = [permutation[index]]
+                intCode.addInput([permutation[index]])
                 intCodes.append(intCode)
             }
             var output = [0]
@@ -378,7 +378,7 @@ extension Year2019InteractorImpl: YearInteractor {
                     maintainLoop = false
                 }
             }
-            bestResult = max(bestResult, intCodes.last!.output.last!)
+            bestResult = max(bestResult, output.last!)
         }
         
         return String(bestResult)
@@ -424,7 +424,7 @@ extension Year2019InteractorImpl: YearInteractor {
         let intcode = Intcode(instructions: input)
         intcode.addInput([1])
         intcode.execute()
-        let result = intcode.output.first!
+        let result = intcode.readOutput().first!
         return String(result)
     }
     
@@ -434,7 +434,7 @@ extension Year2019InteractorImpl: YearInteractor {
         let intcode = Intcode(instructions: input)
         intcode.addInput([2])
         intcode.execute()
-        let result = intcode.output.first!
+        let result = intcode.readOutput()[0]
         return String(result)
     }
     
@@ -520,17 +520,15 @@ extension Year2019InteractorImpl: YearInteractor {
         panel[position.0][position.1] = mode
         var changed = [[Bool]](repeating: [Bool](repeating: false, count: panelSize.0), count: panelSize.1)
         var orientation = Direction.north
-        var outputIndex = 0
         while !intcode.completed {
             intcode.addInput([panel[position.0][position.1]])
             intcode.execute()
-            let output = intcode.output
-            panel[position.0][position.1] = output[outputIndex]
+            let output = intcode.readOutput()
+            panel[position.0][position.1] = output[0]
             changed[position.0][position.1] = true
-            orientation = orientation.turn(output[outputIndex+1] == 0 ? .left : .right)
+            orientation = orientation.turn(output[1] == 0 ? .left : .right)
             position.0 += orientation == .north ? -1 : orientation == .south ? 1 : 0
             position.1 += orientation == .west ? -1 : orientation == .east ? 1 : 0
-            outputIndex += 2
         }
         
         let panelString = panel.map { $0.map { $0 == 0 ? "." : "#" }.joined() }
@@ -605,7 +603,7 @@ extension Year2019InteractorImpl: YearInteractor {
         let input = readCSV("InputYear2019Day13").components(separatedBy: ",").map { Int($0)! }
         let intCode = Intcode(instructions: input)
         intCode.execute()
-        let output = intCode.output
+        let output = intCode.readOutput() //intCode.output
         var result = 0
         for index in stride(from: 2, to: output.count, by: 3) {
             result += output[index] == 2 ? 1 : 0
@@ -619,16 +617,14 @@ extension Year2019InteractorImpl: YearInteractor {
         let intCode = Intcode(instructions: input)
         intCode.instructions[0] = 2
         var score = 0
-        var outputIndex = 0
         var paddleX = 0
         var ballX = 0
         while !intCode.completed {
             intCode.execute()
-            let newOutput = intCode.output
-            let output = newOutput[outputIndex...]
+            let output = intCode.readOutput()
             for index in stride(from: 0, to: output.count, by: 3) {
-                let x = output[outputIndex+index]
-                let value = output[outputIndex+index+2]
+                let x = output[index]
+                let value = output[index+2]
                 if x == -1 {
                     score = value
                 }
@@ -640,7 +636,6 @@ extension Year2019InteractorImpl: YearInteractor {
                 }
             }
             intCode.addInput([ballX < paddleX ? -1 : ballX > paddleX ? 1 : 0])
-            outputIndex = newOutput.count
         }
         return String(score)
     }
