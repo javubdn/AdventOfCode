@@ -714,4 +714,35 @@ extension Year2019InteractorImpl: YearInteractor {
         return 0
     }
     
+    @objc
+    func day15question1() -> String {
+        let input = readCSV("InputYear2019Day15").components(separatedBy: ",").map { Int($0)! }
+        var movements: [([Int], (Int, Int))] = [([1], (500, 499)),([2], (500, 501)),([3], (499, 500)),([4], (501, 500))]
+        var visited = [[Int]](repeating: [Int](repeating: -1, count: 1000), count: 1000)
+        visited[500][500] = 1
+        while !movements.isEmpty {
+            let movement = movements.removeFirst()
+            let intcode = Intcode(instructions: input)
+            intcode.addInput(movement.0)
+            intcode.execute()
+            let output = intcode.readOutput()
+            let nextValue = output.last!
+            if nextValue == 0 {
+                visited[movement.1.1][movement.1.0] = 2
+            } else if nextValue == 1 {
+                visited[movement.1.1][movement.1.0] = 1
+                for nextMovement in 1...4 {
+                    let nextX = movement.1.0 + (nextMovement == 3 ? -1 : nextMovement == 4 ? 1 : 0)
+                    let nextY = movement.1.1 + (nextMovement == 1 ? -1 : nextMovement == 2 ? 1 : 0)
+                    if visited[nextY][nextX] == -1 {
+                        movements.append((movement.0 + [nextMovement], (nextX, nextY)))
+                    }
+                }
+            } else if nextValue == 2 {
+                return "\(movement.0.count)"
+            }
+        }
+        return ""
+    }
+    
 }
