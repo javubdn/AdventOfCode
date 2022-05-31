@@ -717,9 +717,9 @@ extension Year2019InteractorImpl: YearInteractor {
     @objc
     func day15question1() -> String {
         let input = readCSV("InputYear2019Day15").components(separatedBy: ",").map { Int($0)! }
-        var movements: [([Int], (Int, Int))] = [([1], (500, 499)),([2], (500, 501)),([3], (499, 500)),([4], (501, 500))]
-        var visited = [[Int]](repeating: [Int](repeating: -1, count: 1000), count: 1000)
-        visited[500][500] = 1
+        var movements: [([Int], (Int, Int))] = [([1], (21, 20)),([2], (21, 22)),([3], (20, 21)),([4], (22, 21))]
+        var visited = [[Int]](repeating: [Int](repeating: -1, count: 41), count: 41)
+        visited[21][21] = 1
         while !movements.isEmpty {
             let movement = movements.removeFirst()
             let intcode = Intcode(instructions: input)
@@ -739,10 +739,17 @@ extension Year2019InteractorImpl: YearInteractor {
                     }
                 }
             } else if nextValue == 2 {
+//                let printation = visited.map { $0.map { $0 == -1 ? "?" : $0 == 1 ? "." : "#" }.joined() }
+//                printation.forEach { print($0) }
                 return "\(movement.0.count)"
             }
         }
         return ""
     }
     
+    @objc
+    func day15question2() -> String {
+        
+        return ""
+    }
 }
