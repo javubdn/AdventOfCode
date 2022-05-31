@@ -749,7 +749,48 @@ extension Year2019InteractorImpl: YearInteractor {
     
     @objc
     func day15question2() -> String {
-        
-        return ""
+        let input = readCSV("InputYear2019Day15").components(separatedBy: ",").map { Int($0)! }
+        var movements: [([Int], (Int, Int))] = [([1], (21, 20)),([2], (21, 22)),([3], (20, 21)),([4], (22, 21))]
+        var visited = [[Int]](repeating: [Int](repeating: -1, count: 41), count: 41)
+        visited[21][21] = 1
+        var positionRepair = (0, 0)
+        while !movements.isEmpty {
+            let movement = movements.removeFirst()
+            let intcode = Intcode(instructions: input)
+            intcode.addInput(movement.0)
+            intcode.execute()
+            let output = intcode.readOutput()
+            let nextValue = output.last!
+            if nextValue == 0 {
+                visited[movement.1.1][movement.1.0] = 2
+            } else if nextValue == 1 {
+                visited[movement.1.1][movement.1.0] = 1
+                for nextMovement in 1...4 {
+                    let nextX = movement.1.0 + (nextMovement == 3 ? -1 : nextMovement == 4 ? 1 : 0)
+                    let nextY = movement.1.1 + (nextMovement == 1 ? -1 : nextMovement == 2 ? 1 : 0)
+                    if visited[nextY][nextX] == -1 {
+                        movements.append((movement.0 + [nextMovement], (nextX, nextY)))
+                    }
+                }
+            } else if nextValue == 2 {
+                visited[movement.1.1][movement.1.0] = 0
+                positionRepair = movement.1
+            }
+        }
+        var positions = [(positionRepair, 0)]
+        var time = 0
+        while !positions.isEmpty {
+            let position = positions.removeFirst()
+            visited[position.0.1][position.0.0] = 3
+            for nextMovement in 1...4 {
+                let nextX = position.0.0 + (nextMovement == 3 ? -1 : nextMovement == 4 ? 1 : 0)
+                let nextY = position.0.1 + (nextMovement == 1 ? -1 : nextMovement == 2 ? 1 : 0)
+                if visited[nextY][nextX] == 1 {
+                    positions.append(((nextX, nextY), position.1 + 1))
+                }
+            }
+            time = max(time, position.1)
+        }
+        return "\(time)"
     }
 }
