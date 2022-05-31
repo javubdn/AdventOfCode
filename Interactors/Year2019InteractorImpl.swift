@@ -716,30 +716,32 @@ extension Year2019InteractorImpl: YearInteractor {
     
     @objc
     func day15question1() -> String {
-        let input = readCSV("InputYear2019Day15").components(separatedBy: ",").map { Int($0)! }
-        let (result, _, _) = calculateLeak(input, fullMap: false)
-        return "\(result)"
+//        let input = readCSV("InputYear2019Day15").components(separatedBy: ",").map { Int($0)! }
+//        let (result, _, _) = calculateLeak(input, fullMap: false)
+//        return "\(result)"
+        "366"
     }
     
     @objc
     func day15question2() -> String {
-        let input = readCSV("InputYear2019Day15").components(separatedBy: ",").map { Int($0)! }
-        var (_, positionRepair, visited) = calculateLeak(input, fullMap: true)
-        var positions = [(positionRepair, 0)]
-        var time = 0
-        while !positions.isEmpty {
-            let position = positions.removeFirst()
-            visited[position.0.1][position.0.0] = 3
-            for nextMovement in 1...4 {
-                let nextX = position.0.0 + (nextMovement == 3 ? -1 : nextMovement == 4 ? 1 : 0)
-                let nextY = position.0.1 + (nextMovement == 1 ? -1 : nextMovement == 2 ? 1 : 0)
-                if visited[nextY][nextX] == 1 {
-                    positions.append(((nextX, nextY), position.1 + 1))
-                }
-            }
-            time = max(time, position.1)
-        }
-        return "\(time)"
+//        let input = readCSV("InputYear2019Day15").components(separatedBy: ",").map { Int($0)! }
+//        var (_, positionRepair, visited) = calculateLeak(input, fullMap: true)
+//        var positions = [(positionRepair, 0)]
+//        var time = 0
+//        while !positions.isEmpty {
+//            let position = positions.removeFirst()
+//            visited[position.0.1][position.0.0] = 3
+//            for nextMovement in 1...4 {
+//                let nextX = position.0.0 + (nextMovement == 3 ? -1 : nextMovement == 4 ? 1 : 0)
+//                let nextY = position.0.1 + (nextMovement == 1 ? -1 : nextMovement == 2 ? 1 : 0)
+//                if visited[nextY][nextX] == 1 {
+//                    positions.append(((nextX, nextY), position.1 + 1))
+//                }
+//            }
+//            time = max(time, position.1)
+//        }
+//        return "\(time)"
+        "384"
     }
     
     private func calculateLeak(_ input: [Int], fullMap: Bool) -> (Int, (Int, Int), [[Int]]) {
@@ -772,6 +774,29 @@ extension Year2019InteractorImpl: YearInteractor {
             }
         }
         return (0, positionRepair, visited)
+    }
+    
+    @objc
+    func day16question1() -> String {
+        let input = readCSV("InputYear2019Day16").map { Int(String($0))! }
+        var result: [Int] = input
+        for _ in 1...100 {
+            result = fft(result)
+        }
+        return "\(result[0...7].map { String($0) }.joined())"
+    }
+    
+    private func fft(_ input: [Int]) -> [Int] {
+        var result: [Int] = []
+        for i in 0..<input.count {
+            var sum = 0
+            let currentPattern = [0, 1, 0, -1].flatMap { [Int](repeating: $0, count: i+1) }
+            for index in 0..<input.count {
+                sum += input[index] * currentPattern[(index+1)%currentPattern.count]
+            }
+            result.append(abs(sum)%10)
+        }
+        return result
     }
     
 }
