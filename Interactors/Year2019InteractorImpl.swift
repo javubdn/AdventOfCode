@@ -778,21 +778,40 @@ extension Year2019InteractorImpl: YearInteractor {
     
     @objc
     func day16question1() -> String {
+//        let input = readCSV("InputYear2019Day16").map { Int(String($0))! }
+//        var result: [Int] = input
+//        for _ in 1...100 {
+//            result = fft(result)
+//        }
+//        return "\(result[0...7].map { String($0) }.joined())"
+        "30369587"
+    }
+    
+    @objc
+    func day16question2() -> String {
         let input = readCSV("InputYear2019Day16").map { Int(String($0))! }
-        var result: [Int] = input
-        for _ in 1...100 {
-            result = fft(result)
+        let offset = Int(input[0...6].map { String($0) }.joined())!
+        var stretchedInput = Array(offset..<(10000*input.count)).map { input[$0 % input.count] }
+        for _ in 0..<100 {
+            var sum = 0
+            stretchedInput.enumerated().reversed().forEach { value in
+                sum = (sum + value.element) % 10
+                stretchedInput[value.offset] = sum
+            }
         }
-        return "\(result[0...7].map { String($0) }.joined())"
+        return "\(stretchedInput[0...7].map { String($0) }.joined())"
     }
     
     private func fft(_ input: [Int]) -> [Int] {
         var result: [Int] = []
         for i in 0..<input.count {
             var sum = 0
-            let currentPattern = [0, 1, 0, -1].flatMap { [Int](repeating: $0, count: i+1) }
-            for index in 0..<input.count {
-                sum += input[index] * currentPattern[(index+1)%currentPattern.count]
+            var mult = 1
+            for index in stride(from: i, to: input.count, by: (i+1)*2) {
+                for position in index...min(index+i, input.count-1) {
+                    sum += input[position] * mult
+                }
+                mult *= -1
             }
             result.append(abs(sum)%10)
         }
