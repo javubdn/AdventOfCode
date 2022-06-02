@@ -841,4 +841,73 @@ extension Year2019InteractorImpl: YearInteractor {
         return "\(sum)"
     }
     
+    @objc
+    func day17question2() -> String {
+        let input = readCSV("InputYear2019Day17").components(separatedBy: ",").map { Int($0)! }
+        let actions = calculateScaffoldsRoute(input)
+        print(actions.joined())
+        let intcode = Intcode(instructions: input)
+        intcode.instructions[0] = 2
+        /*
+         A B A B A C A C B C
+
+         A -> R6 L10 R10 R10
+         B -> L10 L12 R10
+         C -> R6 L12 L10
+         */
+        intcode.addInput([65, 44, 66, 44, 65, 44, 66, 44, 65, 44, 67, 44, 65, 44, 67, 44, 66, 44, 67, 10])
+        intcode.addInput([82, 44, 54, 44, 76, 44, 49, 48, 44, 82, 44, 49, 48, 44, 82, 44, 49, 48, 10])
+        intcode.addInput([76, 44, 49, 48, 44, 76, 44, 49, 50, 44, 82, 44, 49, 48, 10])
+        intcode.addInput([82, 44, 54, 44, 76, 44, 49, 50, 44, 76, 44, 49, 48, 10])
+        intcode.addInput([110, 10])
+        intcode.execute()
+        var output = intcode.readOutput()
+        let result = output.removeLast()
+        let lines = output.map { String(UnicodeScalar(UInt8($0))) }.joined().trimmingCharacters(in: .newlines).components(separatedBy: .newlines)
+        lines.forEach { print($0) }
+        return "\(result)"
+    }
+    
+    private func calculateScaffoldsRoute(_ input: [Int]) -> [String] {
+        let intcode = Intcode(instructions: input)
+        intcode.execute()
+        let output = intcode.readOutput()
+        let lines = output.map { String(UnicodeScalar(UInt8($0))) }.joined().trimmingCharacters(in: .newlines).components(separatedBy: .newlines)
+        var position = (0, 0)
+        var orientation = Direction.north
+        for line in lines.enumerated() {
+            if let item = line.element.enumerated().first(where: { $0.element == "^" }) {
+                position = (item.offset, line.offset)
+            }
+        }
+        var actions: [String] = []
+        while true {
+            var movements = 0
+            var nextX = orientation == .west ? position.0 - 1 : orientation == .east ? position.0 + 1 : position.0
+            var nextY = orientation == .north ? position.1 - 1 : orientation == .south ? position.1 + 1 : position.1
+            while nextX >= 0 && nextX < lines[0].count && nextY >= 0 && nextY < lines.count && lines[nextY][nextX] == "#" {
+                movements += 1
+                position = (nextX, nextY)
+                nextX = orientation == .west ? position.0 - 1 : orientation == .east ? position.0 + 1 : position.0
+                nextY = orientation == .north ? position.1 - 1 : orientation == .south ? position.1 + 1 : position.1
+            }
+            actions.append("\(movements)")
+            let leftX = orientation == .north ? position.0 - 1 : orientation == .south ? position.0 + 1 : position.0
+            let leftY = orientation == .west ? position.1 + 1 : orientation == .east ? position.1 - 1 : position.1
+            let rightX = orientation == .north ? position.0 + 1 : orientation == .south ? position.0 - 1 : position.0
+            let rightY = orientation == .west ? position.1 - 1 : orientation == .east ? position.1 + 1 : position.1
+            if leftX >= 0 && leftX < lines[0].count && leftY >= 0 && leftY < lines.count && lines[leftY][leftX] == "#" {
+                actions.append("L")
+                orientation = orientation.turnLeft()
+            } else if rightX >= 0 && rightX < lines[0].count && rightY >= 0 && rightY < lines.count && lines[rightY][rightX] == "#" {
+                actions.append("R")
+                orientation = orientation.turnRight()
+            } else {
+                break
+            }
+        }
+        _ = actions.removeFirst()
+        return actions
+    }
+    
 }
