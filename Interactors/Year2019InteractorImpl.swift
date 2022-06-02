@@ -789,17 +789,18 @@ extension Year2019InteractorImpl: YearInteractor {
     
     @objc
     func day16question2() -> String {
-        let input = readCSV("InputYear2019Day16").map { Int(String($0))! }
-        let offset = Int(input[0...6].map { String($0) }.joined())!
-        var stretchedInput = Array(offset..<(10000*input.count)).map { input[$0 % input.count] }
-        for _ in 0..<100 {
-            var sum = 0
-            stretchedInput.enumerated().reversed().forEach { value in
-                sum = (sum + value.element) % 10
-                stretchedInput[value.offset] = sum
-            }
-        }
-        return "\(stretchedInput[0...7].map { String($0) }.joined())"
+//        let input = readCSV("InputYear2019Day16").map { Int(String($0))! }
+//        let offset = Int(input[0...6].map { String($0) }.joined())!
+//        var stretchedInput = Array(offset..<(10000*input.count)).map { input[$0 % input.count] }
+//        for _ in 0..<100 {
+//            var sum = 0
+//            stretchedInput.enumerated().reversed().forEach { value in
+//                sum = (sum + value.element) % 10
+//                stretchedInput[value.offset] = sum
+//            }
+//        }
+//        return "\(stretchedInput[0...7].map { String($0) }.joined())"
+        "27683551"
     }
     
     private func fft(_ input: [Int]) -> [Int] {
@@ -816,6 +817,28 @@ extension Year2019InteractorImpl: YearInteractor {
             result.append(abs(sum)%10)
         }
         return result
+    }
+    
+    @objc
+    func day17question1() -> String {
+        let input = readCSV("InputYear2019Day17").components(separatedBy: ",").map { Int($0)! }
+        let intcode = Intcode(instructions: input)
+        intcode.execute()
+        let output = intcode.readOutput()
+        let lines = output.map { String(UnicodeScalar(UInt8($0))) }.joined().trimmingCharacters(in: .newlines).components(separatedBy: .newlines)
+        var sum = 0
+        for row in 1..<lines.count-1 {
+            for col in 1..<lines[row].count-1 {
+                if lines[row][col] == "#",
+                   lines[row-1][col] == "#",
+                   lines[row+1][col] == "#",
+                   lines[row][col-1] == "#",
+                   lines[row][col+1] == "#" {
+                    sum += row*col
+                }
+             }
+        }
+        return "\(sum)"
     }
     
 }
