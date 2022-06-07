@@ -926,7 +926,11 @@ extension Year2019InteractorImpl: YearInteractor {
         let position: (Int, Int)
         let keys: Set<String>
         
-        func hash(into hasher: inout Hasher) { }
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(position.0)
+            hasher.combine(position.1)
+            hasher.combine(keys)
+        }
         
         static func == (lhs: PositionAndKey, rhs: PositionAndKey) -> Bool {
             lhs.position.0 == rhs.position.0 && lhs.position.1 == rhs.position.1 && lhs.keys == rhs.keys
