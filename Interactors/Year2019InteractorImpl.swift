@@ -925,7 +925,7 @@ extension Year2019InteractorImpl: YearInteractor {
             }
         }
         var visited: [PositionAndKey: Int] = [:]
-        var movements: [(Set<String>, (Int, Int), Int, Int)] = [(Set(), initialPosition, 0, keysMissing(input))]
+        var movements: [(Set<String>, (Int, Int), Int)] = [(Set(), initialPosition, 0)]
         let totalKeys = keysMissing(input)
         while !movements.isEmpty {
             let movement = movements.removeFirst()
@@ -943,11 +943,11 @@ extension Year2019InteractorImpl: YearInteractor {
                     let visit = PositionAndKey(position: (nextX, nextY), keys: keys)
                     if let steps = visited[visit] {
                         if movement.2+1 < steps {
-                            movements.append((keys, (nextX, nextY), movement.2+1, movement.3))
+                            movements.append((keys, (nextX, nextY), movement.2+1))
                             visited[visit] = movement.2+1
                         }
                     } else {
-                        movements.append((keys, (nextX, nextY), movement.2+1, movement.3))
+                        movements.append((keys, (nextX, nextY), movement.2+1))
                         visited[visit] = movement.2+1
                     }
                 }
