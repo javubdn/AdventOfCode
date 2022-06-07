@@ -910,4 +910,28 @@ extension Year2019InteractorImpl: YearInteractor {
         return actions
     }
     
+    private func keysMissing(_ input: [[String]]) -> Int {
+        input.map { $0.filter { isLowerCase($0) }.count }.reduce(0, +)
+    }
+    
+    private func isCapital(_ input: String) -> Bool {
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ".contains(input)
+    }
+    
+    private func isLowerCase(_ input: String) -> Bool {
+        "abcdefghijklmnopqrstuvwxyz".contains(input)
+    }
+    
+    struct PositionAndKey: Hashable {
+        let position: (Int, Int)
+        let keys: Set<String>
+        
+        func hash(into hasher: inout Hasher) { }
+        
+        static func == (lhs: PositionAndKey, rhs: PositionAndKey) -> Bool {
+            lhs.position.0 == rhs.position.0 && lhs.position.1 == rhs.position.1 && lhs.keys == rhs.keys
+        }
+        
+    }
+    
 }
