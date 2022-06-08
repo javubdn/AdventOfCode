@@ -913,47 +913,115 @@ extension Year2019InteractorImpl: YearInteractor {
     
     @objc
     func day18question1() -> String {
+//        var input = readCSV("InputYear2019Day18").components(separatedBy: .newlines).map { $0.map { String($0) } }
+//        var initialPosition = (0, 0)
+//        for row in 0..<input.count {
+//            for col in 0..<input[0].count {
+//                if input[row][col] == "@" {
+//                    initialPosition = (col, row)
+//                    input[row][col] = "."
+//                    break
+//                }
+//            }
+//        }
+//        var visited: [PositionAndKey: Int] = [:]
+//        var movements: [(Set<String>, (Int, Int), Int)] = [(Set(), initialPosition, 0)]
+//        let totalKeys = keysMissing(input)
+//        while !movements.isEmpty {
+//            let movement = movements.removeFirst()
+//            if movement.0.count == totalKeys {
+//                return "\(movement.2)"
+//            }
+//            for nextPoint in 1...4 {
+//                let nextX = nextPoint == 3 ? movement.1.0 - 1 : nextPoint == 4 ? movement.1.0 + 1 : movement.1.0
+//                let nextY = nextPoint == 1 ? movement.1.1 - 1 : nextPoint == 2 ? movement.1.1 + 1 : movement.1.1
+//                if input[nextY][nextX] != "#" && (!isCapital(input[nextY][nextX]) || movement.0.contains(input[nextY][nextX].lowercased())) {
+//                    var keys = movement.0
+//                    if isLowerCase(input[nextY][nextX]) {
+//                        keys.insert(input[nextY][nextX])
+//                    }
+//                    let visit = PositionAndKey(position: (nextX, nextY), keys: keys)
+//                    if let steps = visited[visit] {
+//                        if movement.2+1 < steps {
+//                            movements.append((keys, (nextX, nextY), movement.2+1))
+//                            visited[visit] = movement.2+1
+//                        }
+//                    } else {
+//                        movements.append((keys, (nextX, nextY), movement.2+1))
+//                        visited[visit] = movement.2+1
+//                    }
+//                }
+//            }
+//        }
+        return "5964"
+    }
+    
+    @objc
+    func day18question2() -> String {
+//        var input = """
+//#############
+//#g#f.D#..h#l#
+//#F###e#E###.#
+//#dCba...BcIJ#
+//#####.@.#####
+//#nK.L...G...#
+//#M###N#H###.#
+//#o#m..#i#jk.#
+//#############
+//""".components(separatedBy: .newlines).map { $0.map { String($0) } }
         var input = readCSV("InputYear2019Day18").components(separatedBy: .newlines).map { $0.map { String($0) } }
         var initialPosition = (0, 0)
         for row in 0..<input.count {
             for col in 0..<input[0].count {
                 if input[row][col] == "@" {
                     initialPosition = (col, row)
-                    input[row][col] = "."
+                    input[row][col] = "#"
                     break
                 }
             }
         }
-        var visited: [PositionAndKey: Int] = [:]
-        var movements: [(Set<String>, (Int, Int), Int)] = [(Set(), initialPosition, 0)]
+        input[initialPosition.1-1][initialPosition.0] = "#"
+        input[initialPosition.1+1][initialPosition.0] = "#"
+        input[initialPosition.1][initialPosition.0-1] = "#"
+        input[initialPosition.1][initialPosition.0+1] = "#"
+        let initialPositions = [(initialPosition.0-1, initialPosition.1-1),
+                                (initialPosition.0-1, initialPosition.1+1),
+                                (initialPosition.0+1, initialPosition.1-1),
+                                (initialPosition.0+1, initialPosition.1+1)]
+        var visited: [PositionsAndKey: Int] = [:]
+        var movements: [(Set<String>, [(Int, Int)], Int)] = [(Set(), initialPositions, 0)]
         let totalKeys = keysMissing(input)
         while !movements.isEmpty {
             let movement = movements.removeFirst()
             if movement.0.count == totalKeys {
                 return "\(movement.2)"
             }
-            for nextPoint in 1...4 {
-                let nextX = nextPoint == 3 ? movement.1.0 - 1 : nextPoint == 4 ? movement.1.0 + 1 : movement.1.0
-                let nextY = nextPoint == 1 ? movement.1.1 - 1 : nextPoint == 2 ? movement.1.1 + 1 : movement.1.1
+            for nextPoint in 1...16 {
+                let point = movement.1[(nextPoint-1)/4]
+                let nextX = nextPoint%4 == 3 ? point.0 - 1 : nextPoint%4 == 0 ? point.0 + 1 : point.0
+                let nextY = nextPoint%4 == 1 ? point.1 - 1 : nextPoint%4 == 2 ? point.1 + 1 : point.1
                 if input[nextY][nextX] != "#" && (!isCapital(input[nextY][nextX]) || movement.0.contains(input[nextY][nextX].lowercased())) {
                     var keys = movement.0
                     if isLowerCase(input[nextY][nextX]) {
                         keys.insert(input[nextY][nextX])
                     }
-                    let visit = PositionAndKey(position: (nextX, nextY), keys: keys)
+                    var nextSteps = movement.1
+                    nextSteps.removeAll { $0.0 == point.0 && $0.1 == point.1 }
+                    nextSteps.insert((nextX, nextY), at: (nextPoint-1)/4)
+                    let visit = PositionsAndKey(positions: nextSteps, keys: keys)
                     if let steps = visited[visit] {
                         if movement.2+1 < steps {
-                            movements.append((keys, (nextX, nextY), movement.2+1))
+                            movements.append((keys, nextSteps, movement.2+1))
                             visited[visit] = movement.2+1
                         }
                     } else {
-                        movements.append((keys, (nextX, nextY), movement.2+1))
+                        movements.append((keys, nextSteps, movement.2+1))
                         visited[visit] = movement.2+1
                     }
                 }
             }
         }
-        return ""
+        return "FAIL"
     }
     
     private func keysMissing(_ input: [[String]]) -> Int {
@@ -980,6 +1048,32 @@ extension Year2019InteractorImpl: YearInteractor {
         
         static func == (lhs: PositionAndKey, rhs: PositionAndKey) -> Bool {
             lhs.position.0 == rhs.position.0 && lhs.position.1 == rhs.position.1 && lhs.keys == rhs.keys
+        }
+        
+    }
+    
+    struct PositionsAndKey: Hashable {
+        let positions: [(Int, Int)]
+        let keys: Set<String>
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(positions[0].0)
+            hasher.combine(positions[0].1)
+            hasher.combine(positions[1].0)
+            hasher.combine(positions[1].1)
+            hasher.combine(positions[2].0)
+            hasher.combine(positions[2].1)
+            hasher.combine(positions[3].0)
+            hasher.combine(positions[3].1)
+            hasher.combine(keys)
+        }
+        
+        static func == (lhs: PositionsAndKey, rhs: PositionsAndKey) -> Bool {
+            lhs.positions[0].0 == rhs.positions[0].0 && lhs.positions[0].1 == rhs.positions[0].1
+            && lhs.positions[1].0 == rhs.positions[1].0 && lhs.positions[1].1 == rhs.positions[1].1
+            && lhs.positions[2].0 == rhs.positions[2].0 && lhs.positions[2].1 == rhs.positions[2].1
+            && lhs.positions[3].0 == rhs.positions[3].0 && lhs.positions[3].1 == rhs.positions[3].1
+            && lhs.keys == rhs.keys
         }
         
     }
