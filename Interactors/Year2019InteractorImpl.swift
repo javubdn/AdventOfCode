@@ -913,46 +913,10 @@ extension Year2019InteractorImpl: YearInteractor {
     
     @objc
     func day18question1() -> String {
-//        var input = readCSV("InputYear2019Day18").components(separatedBy: .newlines).map { $0.map { String($0) } }
-//        var initialPosition = (0, 0)
-//        for row in 0..<input.count {
-//            for col in 0..<input[0].count {
-//                if input[row][col] == "@" {
-//                    initialPosition = (col, row)
-//                    input[row][col] = "."
-//                    break
-//                }
-//            }
-//        }
-//        var visited: [PositionAndKey: Int] = [:]
-//        var movements: [(Set<String>, (Int, Int), Int)] = [(Set(), initialPosition, 0)]
-//        let totalKeys = keysMissing(input)
-//        while !movements.isEmpty {
-//            let movement = movements.removeFirst()
-//            if movement.0.count == totalKeys {
-//                return "\(movement.2)"
-//            }
-//            for nextPoint in 1...4 {
-//                let nextX = nextPoint == 3 ? movement.1.0 - 1 : nextPoint == 4 ? movement.1.0 + 1 : movement.1.0
-//                let nextY = nextPoint == 1 ? movement.1.1 - 1 : nextPoint == 2 ? movement.1.1 + 1 : movement.1.1
-//                if input[nextY][nextX] != "#" && (!isCapital(input[nextY][nextX]) || movement.0.contains(input[nextY][nextX].lowercased())) {
-//                    var keys = movement.0
-//                    if isLowerCase(input[nextY][nextX]) {
-//                        keys.insert(input[nextY][nextX])
-//                    }
-//                    let visit = PositionAndKey(position: (nextX, nextY), keys: keys)
-//                    if let steps = visited[visit] {
-//                        if movement.2+1 < steps {
-//                            movements.append((keys, (nextX, nextY), movement.2+1))
-//                            visited[visit] = movement.2+1
-//                        }
-//                    } else {
-//                        movements.append((keys, (nextX, nextY), movement.2+1))
-//                        visited[visit] = movement.2+1
-//                    }
-//                }
-//            }
-//        }
+//        let input = readCSV("InputYear2019Day18").components(separatedBy: .newlines)
+//        let maze = Maze(from: input)
+//        let result = maze.minimumSteps()
+//        return "\(result)"
         return "5964"
     }
     
