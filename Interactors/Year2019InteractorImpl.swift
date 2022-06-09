@@ -917,15 +917,34 @@ extension Year2019InteractorImpl: YearInteractor {
 //        let maze = Maze(from: input)
 //        let result = maze.minimumSteps()
 //        return "\(result)"
-        return "5964"
+        "5964"
     }
     
     @objc
     func day18question2() -> String {
-        let input = readCSV("InputYear2019Day18Part2").components(separatedBy: .newlines)
-        let maze = Maze(from: input)
-        let result = maze.minimumSteps()
-        return "\(result)"
+//        let input = readCSV("InputYear2019Day18Part2").components(separatedBy: .newlines)
+//        let maze = Maze(from: input)
+//        let result = maze.minimumSteps()
+//        return "\(result)"
+        "1996"
+    }
+    
+    @objc
+    func day19question1() -> String {
+        let input = readCSV("InputYear2019Day19").components(separatedBy: ",").map { Int($0)! }
+        var sum = 0
+        for row in 0..<50 {
+            for col in 0..<50 {
+                let intcode = Intcode(instructions: input)
+                intcode.addInput([col, row])
+                intcode.execute()
+                let output = intcode.readOutput()
+                sum += output[0]
+            }
+        }
+        return "\(sum)"
+    }
+    
     }
     
 }
