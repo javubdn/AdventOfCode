@@ -945,6 +945,48 @@ extension Year2019InteractorImpl: YearInteractor {
         return "\(sum)"
     }
     
+    @objc
+    func day19question2() -> String {
+        let input = readCSV("InputYear2019Day19").components(separatedBy: ",").map { Int($0)! }
+        let target = 100
+        var row = 10
+        var col = 0
+        var consecutiveRows = 0
+        while true {
+            var rowFound = false
+            col = 0
+            var consecutiveCols = 0
+            var firstCol = -1
+            while true {
+                let intcode = Intcode(instructions: input)
+                intcode.addInput([col, row])
+                intcode.execute()
+                let output = intcode.readOutput()
+                if output[0] == 1 {
+                    if firstCol == -1 { firstCol = col }
+                    consecutiveCols += 1
+                    if consecutiveCols == target {
+                        col = firstCol
+                        row += 1
+                        consecutiveRows += 1
+                        if consecutiveRows == target {
+                            return "\(col*10000+row)"
+                        }
+                        break
+                    }
+                    rowFound = true
+                } else {
+                    if rowFound {
+                        col = firstCol
+                        row += 1
+                        consecutiveRows = 0
+                        break
+                    }
+                }
+                col += 1
+            }
+        }
+        return ""
     }
     
 }
