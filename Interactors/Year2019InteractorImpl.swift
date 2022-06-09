@@ -922,70 +922,10 @@ extension Year2019InteractorImpl: YearInteractor {
     
     @objc
     func day18question2() -> String {
-//        var input = """
-//#############
-//#g#f.D#..h#l#
-//#F###e#E###.#
-//#dCba...BcIJ#
-//#####.@.#####
-//#nK.L...G...#
-//#M###N#H###.#
-//#o#m..#i#jk.#
-//#############
-//""".components(separatedBy: .newlines).map { $0.map { String($0) } }
-        var input = readCSV("InputYear2019Day18").components(separatedBy: .newlines).map { $0.map { String($0) } }
-        var initialPosition = (0, 0)
-        for row in 0..<input.count {
-            for col in 0..<input[0].count {
-                if input[row][col] == "@" {
-                    initialPosition = (col, row)
-                    input[row][col] = "#"
-                    break
-                }
-            }
-        }
-        input[initialPosition.1-1][initialPosition.0] = "#"
-        input[initialPosition.1+1][initialPosition.0] = "#"
-        input[initialPosition.1][initialPosition.0-1] = "#"
-        input[initialPosition.1][initialPosition.0+1] = "#"
-        let initialPositions = [(initialPosition.0-1, initialPosition.1-1),
-                                (initialPosition.0-1, initialPosition.1+1),
-                                (initialPosition.0+1, initialPosition.1-1),
-                                (initialPosition.0+1, initialPosition.1+1)]
-        var visited: [PositionsAndKey: Int] = [:]
-        var movements: [(Set<String>, [(Int, Int)], Int)] = [(Set(), initialPositions, 0)]
-        let totalKeys = keysMissing(input)
-        while !movements.isEmpty {
-            let movement = movements.removeFirst()
-            if movement.0.count == totalKeys {
-                return "\(movement.2)"
-            }
-            for nextPoint in 1...16 {
-                let point = movement.1[(nextPoint-1)/4]
-                let nextX = nextPoint%4 == 3 ? point.0 - 1 : nextPoint%4 == 0 ? point.0 + 1 : point.0
-                let nextY = nextPoint%4 == 1 ? point.1 - 1 : nextPoint%4 == 2 ? point.1 + 1 : point.1
-                if input[nextY][nextX] != "#" && (!isCapital(input[nextY][nextX]) || movement.0.contains(input[nextY][nextX].lowercased())) {
-                    var keys = movement.0
-                    if isLowerCase(input[nextY][nextX]) {
-                        keys.insert(input[nextY][nextX])
-                    }
-                    var nextSteps = movement.1
-                    nextSteps.removeAll { $0.0 == point.0 && $0.1 == point.1 }
-                    nextSteps.insert((nextX, nextY), at: (nextPoint-1)/4)
-                    let visit = PositionsAndKey(positions: nextSteps, keys: keys)
-                    if let steps = visited[visit] {
-                        if movement.2+1 < steps {
-                            movements.append((keys, nextSteps, movement.2+1))
-                            visited[visit] = movement.2+1
-                        }
-                    } else {
-                        movements.append((keys, nextSteps, movement.2+1))
-                        visited[visit] = movement.2+1
-                    }
-                }
-            }
-        }
-        return "FAIL"
+        let input = readCSV("InputYear2019Day18Part2").components(separatedBy: .newlines)
+        let maze = Maze(from: input)
+        let result = maze.minimumSteps()
+        return "\(result)"
     }
     
     private func keysMissing(_ input: [[String]]) -> Int {
