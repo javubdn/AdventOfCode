@@ -961,7 +961,16 @@ extension Year2019InteractorImpl: YearInteractor {
                 intcode.execute()
                 let output = intcode.readOutput()
                 if output[0] == 1 {
-                    if firstCol == -1 { firstCol = col }
+                    if firstCol == -1 {
+                        firstCol = col
+                        if let values = markedRows[row-1] {
+                            col = values.1 + 1
+                        } else {
+                            col += 1
+                        }
+                    } else {
+                        col += 1
+                    }
                 } else {
                     if firstCol != -1 {
                         if col - firstCol >= target {
@@ -972,9 +981,10 @@ extension Year2019InteractorImpl: YearInteractor {
                         col = firstCol
                         row += 1
                         break
+                    } else {
+                        col += 1
                     }
                 }
-                col += 1
             }
         }
         let firstRow = rowsTenOrMore[0]
