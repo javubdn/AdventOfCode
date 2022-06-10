@@ -964,27 +964,20 @@ extension Year2019InteractorImpl: YearInteractor {
                     if firstCol == -1 {
                         firstCol = col
                         if let values = markedRows[row-1] {
-                            col = values.1 + 1
-                        } else {
-                            col += 1
+                            col = values.1
                         }
-                    } else {
-                        col += 1
                     }
-                } else {
-                    if firstCol != -1 {
-                        if col - firstCol >= target {
-                            rowsTenOrMore = rowsTenOrMore.filter { markedRows[$0]!.1 - firstCol + 1 >= target }
-                            rowsTenOrMore.append(row)
-                            markedRows[row] = (firstCol, col-1)
-                        }
-                        col = firstCol
-                        row += 1
-                        break
-                    } else {
-                        col += 1
+                } else if firstCol != -1 {
+                    if col - firstCol >= target {
+                        rowsTenOrMore = rowsTenOrMore.filter { markedRows[$0]!.1 - firstCol + 1 >= target }
+                        rowsTenOrMore.append(row)
+                        markedRows[row] = (firstCol, col-1)
                     }
+                    col = firstCol
+                    row += 1
+                    break
                 }
+                col += 1
             }
         }
         let firstRow = rowsTenOrMore[0]
