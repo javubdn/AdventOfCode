@@ -951,10 +951,11 @@ extension Year2019InteractorImpl: YearInteractor {
         var col = 0
         var row = 10
         let target = 100
-        var markedRows: [Int: (Int, Int)] = [:]
+        var markedRows: [Int: Int] = [:]
         var rowsTenOrMore: [Int] = []
+        var firstCol = -1
         while rowsTenOrMore.count < target {
-            var firstCol = -1
+            firstCol = -1
             while true {
                 let intcode = Intcode(instructions: input)
                 intcode.addInput([col, row])
@@ -964,14 +965,14 @@ extension Year2019InteractorImpl: YearInteractor {
                     if firstCol == -1 {
                         firstCol = col
                         if let values = markedRows[row-1] {
-                            col = values.1
+                            col = values
                         }
                     }
                 } else if firstCol != -1 {
                     if col - firstCol >= target {
-                        rowsTenOrMore = rowsTenOrMore.filter { markedRows[$0]!.1 - firstCol + 1 >= target }
+                        rowsTenOrMore = rowsTenOrMore.filter { markedRows[$0]! - firstCol + 1 >= target }
                         rowsTenOrMore.append(row)
-                        markedRows[row] = (firstCol, col-1)
+                        markedRows[row] = col-1
                     }
                     col = firstCol
                     row += 1
@@ -981,7 +982,6 @@ extension Year2019InteractorImpl: YearInteractor {
             }
         }
         let firstRow = rowsTenOrMore[0]
-        let firstCol = markedRows[row-1]!.0
         return "\(firstCol*10000+firstRow)"
     }
     
