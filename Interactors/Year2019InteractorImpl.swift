@@ -947,46 +947,56 @@ extension Year2019InteractorImpl: YearInteractor {
     
     @objc
     func day19question2() -> String {
-        let input = readCSV("InputYear2019Day19").components(separatedBy: ",").map { Int($0)! }
-        var col = 0
-        var row = 10
-        let target = 100
-        var markedRows: [Int: Int] = [:]
-        var minRowTenOrMore = -1
-        var firstCol = -1
-        while minRowTenOrMore == -1 || row - minRowTenOrMore < target {
-            firstCol = -1
-            while true {
-                let intcode = Intcode(instructions: input)
-                intcode.addInput([col, row])
-                intcode.execute()
-                let output = intcode.readOutput()
-                if output[0] == 1 {
-                    if firstCol == -1 {
-                        firstCol = col
-                        if let values = markedRows[row-1] {
-                            col = values
-                        }
-                    }
-                } else if firstCol != -1 {
-                    if col - firstCol >= target {
-                        if minRowTenOrMore != -1,
-                            let newMin = (minRowTenOrMore..<row).first(where: { markedRows[$0]! - firstCol + 1 >= target }) {
-                            minRowTenOrMore = newMin
-                        } else {
-                            minRowTenOrMore = row
-                        }
-                        markedRows[row] = col-1
-                    }
-                    col = firstCol
-                    row += 1
-                    break
-                }
-                col += 1
-            }
-        }
-        return "\(firstCol*10000+minRowTenOrMore)"
+//        let input = readCSV("InputYear2019Day19").components(separatedBy: ",").map { Int($0)! }
+//        var col = 0
+//        var row = 10
+//        let target = 100
+//        var markedRows: [Int: Int] = [:]
+//        var minRowTenOrMore = -1
+//        var firstCol = -1
+//        while minRowTenOrMore == -1 || row - minRowTenOrMore < target {
+//            firstCol = -1
+//            while true {
+//                let intcode = Intcode(instructions: input)
+//                intcode.addInput([col, row])
+//                intcode.execute()
+//                let output = intcode.readOutput()
+//                if output[0] == 1 {
+//                    if firstCol == -1 {
+//                        firstCol = col
+//                        if let values = markedRows[row-1] {
+//                            col = values
+//                        }
+//                    }
+//                } else if firstCol != -1 {
+//                    if col - firstCol >= target {
+//                        if minRowTenOrMore != -1,
+//                            let newMin = (minRowTenOrMore..<row).first(where: { markedRows[$0]! - firstCol + 1 >= target }) {
+//                            minRowTenOrMore = newMin
+//                        } else {
+//                            minRowTenOrMore = row
+//                        }
+//                        markedRows[row] = col-1
+//                    }
+//                    col = firstCol
+//                    row += 1
+//                    break
+//                }
+//                col += 1
+//            }
+//        }
+//        return "\(firstCol*10000+minRowTenOrMore)"
+        "18261982"
     }
+    
+    @objc
+    func day20question1() -> String {
+        let input = readCSV("InputYear2019Day20").components(separatedBy: .newlines)
+        let maze = PlutoMaze(from: input)
+        let result = maze.calculateSteps()
+        return "\(result)"
+    }
+    
     }
     
 }
