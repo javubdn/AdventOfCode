@@ -24,6 +24,7 @@ class PlutoMaze {
     struct PointPortal: Hashable {
         let point: PointPlutoMaze
         let keyName: String
+        let intern: Bool
         func teleport(_ portals: Set<PointPortal>) -> PointPlutoMaze {
             portals.first { $0.keyName == keyName && $0.point != point }!.point
         }
@@ -40,6 +41,7 @@ class PlutoMaze {
     convenience init(from input: [String]) {
         var openSpaces: Set<PointPlutoMaze> = Set()
         var portals: Set<PointPortal> = Set()
+        let hole = PlutoMaze.getHole(input)
         input.enumerated().forEach { y, row in
             row.enumerated().forEach { x, c in
                 let place = PointPlutoMaze(x: x, y: y)
@@ -59,13 +61,40 @@ class PlutoMaze {
                         let portalX = neighbor.offset == 3 && (x == 0 || input[y][x-1] != ".") ? x + 1 : x
                         let portalY = neighbor.offset == 1 && (y == 0 || input[y-1][x] != ".") ? y + 1 : y
                         let keyName = String(c) + String(input[neighbor.element.y][neighbor.element.x])
-                        let portal = PointPortal(point: PointPlutoMaze(x: portalX, y: portalY), keyName: keyName)
+                        let intern = PlutoMaze.isInsideHole(place, hole: hole)
+                        let portal = PointPortal(point: PointPlutoMaze(x: portalX, y: portalY), keyName: keyName, intern: intern)
                         portals.insert(portal)
                     }
                 }
             }
         }
         self.init(openSpaces: openSpaces, portals: portals)
+    }
+    
+    private static func getHole(_ input: [String]) -> ((Int, Int), Int, Int) {
+        var input = input
+        input = input.map { $0.replacingOccurrences(of: ".", with: "#") }
+        let coordinates = Utils.cartesianProduct(lhs: Array(1...input.count-2), rhs: Array(1...input[2].count-2))
+        let firstCorner = coordinates.first { coord in
+            guard coord.0 > 0 && coord.1 > 0 && coord.1 < input[coord.0].count - 1 else { return false }
+            return input[coord.0][coord.1] == " " && input[coord.0][coord.1-1] == "#" && input[coord.0-1][coord.1] == "#"
+        }!
+        let secondCorner = coordinates.first { coord in
+            guard coord.0 > 0 && coord.1 > 0 && coord.1 < input[coord.0].count - 1 else { return false }
+            return input[coord.0][coord.1] == " " && input[coord.0][coord.1+1] == "#" && input[coord.0-1][coord.1] == "#"
+        }!
+        let thirdCorner = coordinates.first { coord in
+            guard coord.0 > 0 && coord.1 > 0 && coord.1 < input[coord.0].count - 1 else { return false }
+            return input[coord.0][coord.1] == " " && input[coord.0][coord.1-1] == "#" && input[coord.0+1][coord.1] == "#"
+        }!
+        
+        let width = secondCorner.1 - firstCorner.1 + 1
+        let height = thirdCorner.0 - firstCorner.0 + 1
+        return ((firstCorner.1, firstCorner.0), width, height)
+    }
+    
+    private static func isInsideHole(_ point: PointPlutoMaze, hole: ((Int, Int), Int, Int)) -> Bool {
+        point.x >= hole.0.0 && point.x < hole.0.0 + hole.1 && point.y >= hole.0.1 && point.y < hole.0.1 + hole.2
     }
     
     func calculateSteps() -> Int {
