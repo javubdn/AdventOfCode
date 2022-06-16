@@ -106,8 +106,8 @@ class PlutoMaze {
         let firstPoint = portals.first { $0.keyName == "AA" }!.point.neighbors().first { openSpaces.contains($0) }!
         let lastPoint = portals.first { $0.keyName == "ZZ" }!.point.neighbors().first { openSpaces.contains($0) }!
         var movements = [(firstPoint, 0, 0)]
-        var visited: [PositionLevel: Int] = [PositionLevel(point: portals.first { $0.keyName == "AA" }!.point, level: 0): 0,
-                                             PositionLevel(point: firstPoint, level: 0): 0]
+        var visited = Set([PositionLevel(point: portals.first { $0.keyName == "AA" }!.point, level: 0),
+                           PositionLevel(point: firstPoint, level: 0)])
         while !movements.isEmpty {
             let movement = movements.removeFirst()
             var position = movement.0
@@ -120,30 +120,21 @@ class PlutoMaze {
                     let newPosition = portal.teleport(portals) {
                     position = newPosition
                     level += !recursiveLevels ? 0 : portal.intern ? 1 : -1
-                    let positionLevel = PositionLevel(point: position, level: level)
-                    if !isVisited(visited, position, level, movement.2) { visited[positionLevel] = movement.2 }                    
+                    visited.insert(PositionLevel(point: position, level: level))
                     position = position.neighbors().first { openSpaces.contains($0) }!
-                    let positionLevel2 = PositionLevel(point: position, level: level)
-                    if !isVisited(visited, position, level, movement.2) { visited[positionLevel2] = movement.2 }
+                    visited.insert(PositionLevel(point: position, level: level))
                 }
             }
             let neighbors = position.neighbors()
                 .filter { (openSpaces.contains($0)
                            || portals.map { $0.point }.contains($0))
-                    && !isVisited(visited, $0, level, movement.2 + 1) }
+                    && !visited.contains(PositionLevel(point: $0, level: level))}
             neighbors.forEach { neighbor in
-                visited[PositionLevel(point: neighbor, level: level)] = movement.2 + 1
+                visited.insert(PositionLevel(point: neighbor, level: level))
                 movements.append((neighbor, level, movement.2 + 1))
             }
         }
         return 0
-    }
-    
-    private func isVisited(_ visited: [PositionLevel: Int], _ point: PointPlutoMaze, _ level: Int, _ steps: Int) -> Bool {
-        guard let visitedSteps = visited[PositionLevel(point: point, level: level)] else {
-            return false
-        }
-        return visitedSteps <= steps
     }
     
 }
