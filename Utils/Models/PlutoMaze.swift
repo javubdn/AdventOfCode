@@ -128,4 +128,46 @@ class PlutoMaze {
         return 0
     }
     
+    func calculateStepsWithLevel() -> Int {
+        let firstPoint = portals.first { $0.keyName == "AA" }!.point.neighbors().first { openSpaces.contains($0) }!
+        let lastPoint = portals.first { $0.keyName == "ZZ" }!.point.neighbors().first { openSpaces.contains($0) }!
+        var movements = [(firstPoint, 0, 0)]
+        var visited: [PositionLevel: Int] = [PositionLevel(point: portals.first { $0.keyName == "AA" }!.point, level: 0): 0,
+                                             PositionLevel(point: firstPoint, level: 0): 0]        
+        while !movements.isEmpty {
+            let movement = movements.removeFirst()
+            var position = movement.0
+            var level = movement.1
+            if position == lastPoint && level == 0 {
+                return movement.2
+            }
+            if let portal = portals.first(where: { $0.point == position }) {
+                if (portal.intern || level > 0),
+                    let newPosition = portal.teleport(portals) {
+                    position = newPosition
+                    level += portal.intern ? 1 : -1
+                    let positionLevel = PositionLevel(point: position, level: level)
+                    if let steps = visited[positionLevel] {
+                        if steps > movement.2 { visited[positionLevel] = movement.2 }
+                    } else {
+                        visited[positionLevel] = movement.2
+                    }
+                    position = position.neighbors().first { openSpaces.contains($0) }!
+                    let positionLevel2 = PositionLevel(point: position, level: level)
+                    if let steps = visited[positionLevel2] {
+                        if steps > movement.2 { visited[positionLevel2] = movement.1 }
+                    } else {
+                        visited[positionLevel2] = movement.2
+                    }
+                }
+            }
+            let neighbors = position.neighbors().filter { (openSpaces.contains($0) || portals.map { $0.point }.contains($0)) && (visited[PositionLevel(point: $0, level: level)] == nil || visited[PositionLevel(point: $0, level: level)]! > movement.2 + 1 ) }
+            neighbors.forEach { neighbor in
+                visited[PositionLevel(point: neighbor, level: level)] = movement.1 + 1
+                movements.append((neighbor, level, movement.2 + 1))
+            }
+        }
+        return 0
+    }
+    
 }
