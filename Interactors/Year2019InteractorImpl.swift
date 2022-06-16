@@ -997,6 +997,12 @@ extension Year2019InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day20question2() -> String {
+        let input = readCSV("InputYear2019Day20").components(separatedBy: .newlines)
+        let maze = PlutoMaze(from: input)
+        let result = maze.calculateStepsWithLevel()
+        return "\(result)"
     }
     
 }
