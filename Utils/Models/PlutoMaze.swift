@@ -121,27 +121,29 @@ class PlutoMaze {
                     position = newPosition
                     level += !recursiveLevels ? 0 : portal.intern ? 1 : -1
                     let positionLevel = PositionLevel(point: position, level: level)
-                    if let steps = visited[positionLevel] {
-                        if steps > movement.2 { visited[positionLevel] = movement.2 }
-                    } else {
-                        visited[positionLevel] = movement.2
-                    }
+                    if !isVisited(visited, position, level, movement.2) { visited[positionLevel] = movement.2 }                    
                     position = position.neighbors().first { openSpaces.contains($0) }!
                     let positionLevel2 = PositionLevel(point: position, level: level)
-                    if let steps = visited[positionLevel2] {
-                        if steps > movement.2 { visited[positionLevel2] = movement.1 }
-                    } else {
-                        visited[positionLevel2] = movement.2
-                    }
+                    if !isVisited(visited, position, level, movement.2) { visited[positionLevel2] = movement.2 }
                 }
             }
-            let neighbors = position.neighbors().filter { (openSpaces.contains($0) || portals.map { $0.point }.contains($0)) && (visited[PositionLevel(point: $0, level: level)] == nil || visited[PositionLevel(point: $0, level: level)]! > movement.2 + 1 ) }
+            let neighbors = position.neighbors()
+                .filter { (openSpaces.contains($0)
+                           || portals.map { $0.point }.contains($0))
+                    && !isVisited(visited, $0, level, movement.2 + 1) }
             neighbors.forEach { neighbor in
-                visited[PositionLevel(point: neighbor, level: level)] = movement.1 + 1
+                visited[PositionLevel(point: neighbor, level: level)] = movement.2 + 1
                 movements.append((neighbor, level, movement.2 + 1))
             }
         }
         return 0
+    }
+    
+    private func isVisited(_ visited: [PositionLevel: Int], _ point: PointPlutoMaze, _ level: Int, _ steps: Int) -> Bool {
+        guard let visitedSteps = visited[PositionLevel(point: point, level: level)] else {
+            return false
+        }
+        return visitedSteps <= steps
     }
     
 }
