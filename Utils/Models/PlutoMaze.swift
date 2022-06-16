@@ -114,7 +114,7 @@ class PlutoMaze {
                 return movement.1
             }
             if let portal = portals.first(where: { $0.point == position }) {
-                position = portal.teleport(portals)
+                position = portal.teleport(portals)!
                 visited.append(position)
                 position = position.neighbors().first { openSpaces.contains($0) }!
                 visited.append(position)
