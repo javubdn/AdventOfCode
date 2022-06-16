@@ -993,7 +993,7 @@ extension Year2019InteractorImpl: YearInteractor {
     func day20question1() -> String {
         let input = readCSV("InputYear2019Day20").components(separatedBy: .newlines)
         let maze = PlutoMaze(from: input)
-        let result = maze.calculateSteps()
+        let result = maze.calculateSteps(recursiveLevels: false)
         return "\(result)"
     }
     
@@ -1001,7 +1001,7 @@ extension Year2019InteractorImpl: YearInteractor {
     func day20question2() -> String {
         let input = readCSV("InputYear2019Day20").components(separatedBy: .newlines)
         let maze = PlutoMaze(from: input)
-        let result = maze.calculateStepsWithLevel()
+        let result = maze.calculateSteps(recursiveLevels: true)
         return "\(result)"
     }
     

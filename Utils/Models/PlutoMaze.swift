@@ -102,38 +102,12 @@ class PlutoMaze {
         point.x >= hole.0.0 && point.x < hole.0.0 + hole.1 && point.y >= hole.0.1 && point.y < hole.0.1 + hole.2
     }
     
-    func calculateSteps() -> Int {
-        let firstPoint = portals.first { $0.keyName == "AA" }!.point.neighbors().first { openSpaces.contains($0) }!
-        let lastPoint = portals.first { $0.keyName == "ZZ" }!.point.neighbors().first { openSpaces.contains($0) }!
-        var movements = [(firstPoint, 0)]
-        var visited = [portals.first { $0.keyName == "AA" }!.point, firstPoint]
-        while !movements.isEmpty {
-            let movement = movements.removeFirst()
-            var position = movement.0
-            if position == lastPoint {
-                return movement.1
-            }
-            if let portal = portals.first(where: { $0.point == position }) {
-                position = portal.teleport(portals)!
-                visited.append(position)
-                position = position.neighbors().first { openSpaces.contains($0) }!
-                visited.append(position)
-            }
-            let neighbors = position.neighbors().filter { (openSpaces.contains($0) || portals.map { $0.point }.contains($0)) && !visited.contains($0) }
-            neighbors.forEach { neighbor in
-                visited.append(neighbor)
-                movements.append((neighbor, movement.1 + 1))
-            }
-        }
-        return 0
-    }
-    
-    func calculateStepsWithLevel() -> Int {
+    func calculateSteps(recursiveLevels: Bool) -> Int {
         let firstPoint = portals.first { $0.keyName == "AA" }!.point.neighbors().first { openSpaces.contains($0) }!
         let lastPoint = portals.first { $0.keyName == "ZZ" }!.point.neighbors().first { openSpaces.contains($0) }!
         var movements = [(firstPoint, 0, 0)]
         var visited: [PositionLevel: Int] = [PositionLevel(point: portals.first { $0.keyName == "AA" }!.point, level: 0): 0,
-                                             PositionLevel(point: firstPoint, level: 0): 0]        
+                                             PositionLevel(point: firstPoint, level: 0): 0]
         while !movements.isEmpty {
             let movement = movements.removeFirst()
             var position = movement.0
@@ -142,10 +116,10 @@ class PlutoMaze {
                 return movement.2
             }
             if let portal = portals.first(where: { $0.point == position }) {
-                if (portal.intern || level > 0),
+                if (portal.intern || level > 0 || !recursiveLevels),
                     let newPosition = portal.teleport(portals) {
                     position = newPosition
-                    level += portal.intern ? 1 : -1
+                    level += !recursiveLevels ? 0 : portal.intern ? 1 : -1
                     let positionLevel = PositionLevel(point: position, level: level)
                     if let steps = visited[positionLevel] {
                         if steps > movement.2 { visited[positionLevel] = movement.2 }
