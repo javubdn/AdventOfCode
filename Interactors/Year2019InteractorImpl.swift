@@ -1039,6 +1039,42 @@ WALK
         return "\(result)"
     }
     
+    @objc
+    func day21question2() -> String {
+        let input = readCSV("InputYear2019Day21").components(separatedBy: ",").map { Int($0)! }
+        let intcode = Intcode(instructions: input)
+        let program = """
+NOT C J
+AND D J
+NOT H T
+NOT T T
+OR E T
+AND T J
+NOT A T
+OR T J
+NOT B T
+NOT T T
+OR E T
+NOT T T
+OR T J
+RUN
+
+"""
+        let asciiProgram = program.asciiValues.map { Int($0) }
+        intcode.addInput(asciiProgram)
+        intcode.execute()
+        let output = intcode.readOutput()
+        let result = output.last!
+        let lines = output.map { value in
+            guard value < UInt8.max else {
+                return String(value)
+            }
+            return String(UnicodeScalar(UInt8(value)))
+        }
+            .joined()
+            .trimmingCharacters(in: .newlines)
+            .components(separatedBy: .newlines)
+        lines.forEach { print($0) }
         return "\(result)"
     }
     
