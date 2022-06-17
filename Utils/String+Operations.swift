@@ -37,4 +37,9 @@ extension String {
     func MD5String() -> String {
         MD5().map { String(format: "%02hhx", $0) }.joined()
     }
+    
+}
+
+extension StringProtocol {
+    var asciiValues: [UInt8] { compactMap(\.asciiValue) }
 }
