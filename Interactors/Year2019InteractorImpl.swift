@@ -991,17 +991,54 @@ extension Year2019InteractorImpl: YearInteractor {
     
     @objc
     func day20question1() -> String {
-        let input = readCSV("InputYear2019Day20").components(separatedBy: .newlines)
-        let maze = PlutoMaze(from: input)
-        let result = maze.calculateSteps(recursiveLevels: false)
-        return "\(result)"
+//        let input = readCSV("InputYear2019Day20").components(separatedBy: .newlines)
+//        let maze = PlutoMaze(from: input)
+//        let result = maze.calculateSteps(recursiveLevels: false)
+//        return "\(result)"
+        "600"
     }
     
     @objc
     func day20question2() -> String {
-        let input = readCSV("InputYear2019Day20").components(separatedBy: .newlines)
-        let maze = PlutoMaze(from: input)
-        let result = maze.calculateSteps(recursiveLevels: true)
+//        let input = readCSV("InputYear2019Day20").components(separatedBy: .newlines)
+//        let maze = PlutoMaze(from: input)
+//        let result = maze.calculateSteps(recursiveLevels: true)
+//        return "\(result)"
+        "6666"
+    }
+    
+    @objc
+    func day21question1() -> String {
+        let input = readCSV("InputYear2019Day21").components(separatedBy: ",").map { Int($0)! }
+        let intcode = Intcode(instructions: input)
+        let program = """
+NOT B J
+NOT C T
+OR T J
+NOT A T
+OR T J
+AND D J
+WALK
+
+"""
+        let asciiProgram = program.asciiValues.map { Int($0) }
+        intcode.addInput(asciiProgram)
+        intcode.execute()
+        let output = intcode.readOutput()
+        let result = output.last!
+        let lines = output.map { value in
+            guard value < UInt8.max else {
+                return String(value)
+            }
+            return String(UnicodeScalar(UInt8(value)))
+        }
+            .joined()
+            .trimmingCharacters(in: .newlines)
+            .components(separatedBy: .newlines)
+        lines.forEach { print($0) }
+        return "\(result)"
+    }
+    
         return "\(result)"
     }
     
