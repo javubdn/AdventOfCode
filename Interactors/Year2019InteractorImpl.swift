@@ -1043,6 +1043,15 @@ extension Year2019InteractorImpl: YearInteractor {
         return result
     }
     
+    @objc
+    func day22question1() -> String {
+        let input = readCSV("InputYear2019Day22").components(separatedBy: .newlines)
+        let shuffler = Shuffler(from: input)
+        let cards = shuffler.shuffle(10007)
+        let result = cards.enumerated().first { $0.element == 2019 }!.offset
+        return "\(result)"
+    }
+    
     }
     
 }
