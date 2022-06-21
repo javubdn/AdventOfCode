@@ -93,7 +93,6 @@ class Shuffler {
         let item2 = memory[1] * (power + numberCardsBI)
         let item3 = memory[0].power(numberCards - 2).modulus(numberCardsBI)
         return Int((item1 + item2 * item3).modulus(numberCardsBI))
-
     }
     
 }
