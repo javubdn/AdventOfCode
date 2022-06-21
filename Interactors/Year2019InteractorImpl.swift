@@ -1054,10 +1054,48 @@ extension Year2019InteractorImpl: YearInteractor {
     
     @objc
     func day22question2() -> String {
-        let input = readCSV("InputYear2019Day22").components(separatedBy: .newlines)
-        let shuffler = Shuffler(from: input)
-        let result = shuffler.modularArithmeticVersion(119_315_717_514_047, 101_741_582_076_661, 2020)
-        return "\(result)"
+//        let input = readCSV("InputYear2019Day22").components(separatedBy: .newlines)
+//        let shuffler = Shuffler(from: input)
+//        let result = shuffler.modularArithmeticVersion(119_315_717_514_047, 101_741_582_076_661, 2020)
+//        return "\(result)"
+        "71345377301237"
+    }
+    
+    @objc
+    func day23question1() -> String {
+        let input = readCSV("InputYear2019Day23").components(separatedBy: ",").map { Int($0)! }
+        var computers: [Intcode] = []
+        for address in 0..<50 {
+            let computer = Intcode(instructions: input)
+            computer.addInput([address])
+            computers.append(computer)
+        }
+        var messages: [Int: [(Int, Int)]] = [:]
+        var currentComputer = 0
+        while true {
+            let computer = computers[currentComputer]
+            if let message = messages[currentComputer] {
+                message.forEach { computer.addInput([$0.0, $0.1]) }
+                messages[currentComputer] = nil
+            } else {
+                computer.addInput([-1])
+            }
+            computer.execute()
+            let output = computer.readOutput()
+            for value in Array(stride(from: 0, to: output.count, by: 3)) {
+                if output[value] == 255 {
+                    return "\(output[value+2])"
+                }
+                if messages[output[value]] != nil {
+                    messages[output[value]]!.append((output[value+1], output[value+2]))
+                } else {
+                    messages[output[value]] = [(output[value+1], output[value+2])]
+                }
+            }
+            currentComputer = (currentComputer+1)%50
+        }
+    }
+    
     }
     
 }
