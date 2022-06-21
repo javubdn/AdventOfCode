@@ -1052,6 +1052,12 @@ extension Year2019InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day22question2() -> String {
+        let input = readCSV("InputYear2019Day22").components(separatedBy: .newlines)
+        let shuffler = Shuffler(from: input)
+        let result = shuffler.modularArithmeticVersion(119_315_717_514_047, 101_741_582_076_661, 2020)
+        return "\(result)"
     }
     
 }
