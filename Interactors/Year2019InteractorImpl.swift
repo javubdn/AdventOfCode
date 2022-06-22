@@ -1070,30 +1070,8 @@ extension Year2019InteractorImpl: YearInteractor {
             computer.addInput([address])
             computers.append(computer)
         }
-        var messages: [Int: [(Int, Int)]] = [:]
-        var currentComputer = 0
-        while true {
-            let computer = computers[currentComputer]
-            if let message = messages[currentComputer] {
-                message.forEach { computer.addInput([$0.0, $0.1]) }
-                messages[currentComputer] = nil
-            } else {
-                computer.addInput([-1])
-            }
-            computer.execute()
-            let output = computer.readOutput()
-            for value in Array(stride(from: 0, to: output.count, by: 3)) {
-                if output[value] == 255 {
-                    return "\(output[value+2])"
-                }
-                if messages[output[value]] != nil {
-                    messages[output[value]]!.append((output[value+1], output[value+2]))
-                } else {
-                    messages[output[value]] = [(output[value+1], output[value+2])]
-                }
-            }
-            currentComputer = (currentComputer+1)%50
-        }
+        let item255 = getItem255(computers, [:], true)
+        return "\(item255.1)"
     }
     
     @objc
@@ -1108,33 +1086,7 @@ extension Year2019InteractorImpl: YearInteractor {
         var lastValue: Int = -1
         var messages: [Int: [(Int, Int)]] = [:]
         while true {
-            var validated = 0
-            var currentComputer = 0
-            var item255: (Int, Int) = (0, 0)
-            while validated < 50 {
-                let computer = computers[currentComputer]
-                if let message = messages[currentComputer] {
-                    message.forEach { computer.addInput([$0.0, $0.1]) }
-                    messages[currentComputer] = nil
-                    validated = 0
-                } else {
-                    computer.addInput([-1])
-                    validated += 1
-                }
-                computer.execute()
-                let output = computer.readOutput()
-                for value in Array(stride(from: 0, to: output.count, by: 3)) {
-                    if output[value] == 255 {
-                        item255 = (output[value+1], output[value+2])
-                    }
-                    if messages[output[value]] != nil {
-                        messages[output[value]]!.append((output[value+1], output[value+2]))
-                    } else {
-                        messages[output[value]] = [(output[value+1], output[value+2])]
-                    }
-                }
-                currentComputer = (currentComputer+1)%50
-            }
+            var item255 = getItem255(computers, messages, false)
             if item255.1 == lastValue {
                 return "\(item255.1)"
             }
@@ -1153,6 +1105,42 @@ extension Year2019InteractorImpl: YearInteractor {
                 }
             }
         }
+    }
+    
+    private func getItem255(_ computers: [Intcode], _ messages: [Int: [(Int, Int)]], _ first: Bool) -> (Int, Int) {
+        var messages = messages
+        var currentComputer = 0
+        var validated = 0
+        var item255: (Int, Int) = (0, 0)
+        while validated < computers.count {
+            let computer = computers[currentComputer]
+            if let message = messages[currentComputer] {
+                message.forEach { computer.addInput([$0.0, $0.1]) }
+                messages[currentComputer] = nil
+                validated = 0
+            } else {
+                computer.addInput([-1])
+                validated += 1
+            }
+            computer.execute()
+            let output = computer.readOutput()
+            for value in Array(stride(from: 0, to: output.count, by: 3)) {
+                if output[value] == 255 {
+                    item255 = (output[value+1], output[value+2])
+                    if first {
+                        return item255
+                    }
+                }
+                if messages[output[value]] != nil {
+                    messages[output[value]]!.append((output[value+1], output[value+2]))
+                } else {
+                    messages[output[value]] = [(output[value+1], output[value+2])]
+                }
+            }
+            currentComputer = (currentComputer+1)%50
+        }
+        return item255
+        
     }
     
 }
