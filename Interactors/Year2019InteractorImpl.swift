@@ -1130,15 +1130,10 @@ extension Year2019InteractorImpl: YearInteractor {
         for value in Array(stride(from: 0, to: output.count, by: 3)) {
             if output[value] == 255 {
                 item255 = (output[value+1], output[value+2])
-                if first {
-                    return (item255, messages)
-                }
+                if first { return (item255, messages) }
             }
-            if messages[output[value]] != nil {
-                messages[output[value]]!.append((output[value+1], output[value+2]))
-            } else {
-                messages[output[value]] = [(output[value+1], output[value+2])]
-            }
+            if messages[output[value]] == nil { messages[output[value]] = [] }
+            messages[output[value]]!.append((output[value+1], output[value+2]))
         }
         return (item255, messages)
     }
