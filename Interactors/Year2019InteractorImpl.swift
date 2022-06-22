@@ -1084,16 +1084,7 @@ extension Year2019InteractorImpl: YearInteractor {
             computers[0].addInput([item255.0, item255.1])
             computers[0].execute()
             let output = computers[0].readOutput()
-            for value in Array(stride(from: 0, to: output.count, by: 3)) {
-                if output[value] == 255 {
-                    item255 = (output[value+1], output[value+2])
-                }
-                if messages[output[value]] != nil {
-                    messages[output[value]]!.append((output[value+1], output[value+2]))
-                } else {
-                    messages[output[value]] = [(output[value+1], output[value+2])]
-                }
-            }
+            (item255, messages) = getItem255FromOuput(output, messages, item255, false)
         }
     }
     
@@ -1124,23 +1115,32 @@ extension Year2019InteractorImpl: YearInteractor {
             }
             computer.execute()
             let output = computer.readOutput()
-            for value in Array(stride(from: 0, to: output.count, by: 3)) {
-                if output[value] == 255 {
-                    item255 = (output[value+1], output[value+2])
-                    if first {
-                        return item255
-                    }
-                }
-                if messages[output[value]] != nil {
-                    messages[output[value]]!.append((output[value+1], output[value+2]))
-                } else {
-                    messages[output[value]] = [(output[value+1], output[value+2])]
-                }
-            }
+            (item255, messages) = getItem255FromOuput(output, messages, item255, first)
             currentComputer = (currentComputer+1)%50
         }
         return item255
-        
+    }
+    
+    private func getItem255FromOuput(_ output: [Int],
+                                     _ messages: [Int: [(Int, Int)]],
+                                     _ item255: (Int, Int),
+                                     _ first: Bool) -> ((Int, Int), [Int: [(Int, Int)]]) {
+        var item255 = item255
+        var messages = messages
+        for value in Array(stride(from: 0, to: output.count, by: 3)) {
+            if output[value] == 255 {
+                item255 = (output[value+1], output[value+2])
+                if first {
+                    return (item255, messages)
+                }
+            }
+            if messages[output[value]] != nil {
+                messages[output[value]]!.append((output[value+1], output[value+2]))
+            } else {
+                messages[output[value]] = [(output[value+1], output[value+2])]
+            }
+        }
+        return (item255, messages)
     }
     
 }
