@@ -1064,12 +1064,7 @@ extension Year2019InteractorImpl: YearInteractor {
     @objc
     func day23question1() -> String {
         let input = readCSV("InputYear2019Day23").components(separatedBy: ",").map { Int($0)! }
-        var computers: [Intcode] = []
-        for address in 0..<50 {
-            let computer = Intcode(instructions: input)
-            computer.addInput([address])
-            computers.append(computer)
-        }
+        let computers = getIntCodeComputers(input)
         let item255 = getItem255(computers, [:], true)
         return "\(item255.1)"
     }
@@ -1077,12 +1072,7 @@ extension Year2019InteractorImpl: YearInteractor {
     @objc
     func day23question2() -> String {
         let input = readCSV("InputYear2019Day23").components(separatedBy: ",").map { Int($0)! }
-        var computers: [Intcode] = []
-        for address in 0..<50 {
-            let computer = Intcode(instructions: input)
-            computer.addInput([address])
-            computers.append(computer)
-        }
+        let computers = getIntCodeComputers(input)
         var lastValue: Int = -1
         var messages: [Int: [(Int, Int)]] = [:]
         while true {
@@ -1105,6 +1095,16 @@ extension Year2019InteractorImpl: YearInteractor {
                 }
             }
         }
+    }
+    
+    private func getIntCodeComputers(_ input: [Int]) -> [Intcode] {
+        var computers: [Intcode] = []
+        for address in 0..<50 {
+            let computer = Intcode(instructions: input)
+            computer.addInput([address])
+            computers.append(computer)
+        }
+        return computers
     }
     
     private func getItem255(_ computers: [Intcode], _ messages: [Int: [(Int, Int)]], _ first: Bool) -> (Int, Int) {
