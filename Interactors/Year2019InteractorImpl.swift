@@ -1096,6 +1096,63 @@ extension Year2019InteractorImpl: YearInteractor {
         }
     }
     
+    @objc
+    func day23question2() -> String {
+        let input = readCSV("InputYear2019Day23").components(separatedBy: ",").map { Int($0)! }
+        var computers: [Intcode] = []
+        for address in 0..<50 {
+            let computer = Intcode(instructions: input)
+            computer.addInput([address])
+            computers.append(computer)
+        }
+        var lastValue: Int = -1
+        var messages: [Int: [(Int, Int)]] = [:]
+        while true {
+            var validated = 0
+            var currentComputer = 0
+            var item255: (Int, Int) = (0, 0)
+            while validated < 50 {
+                let computer = computers[currentComputer]
+                if let message = messages[currentComputer] {
+                    message.forEach { computer.addInput([$0.0, $0.1]) }
+                    messages[currentComputer] = nil
+                    validated = 0
+                } else {
+                    computer.addInput([-1])
+                    validated += 1
+                }
+                computer.execute()
+                let output = computer.readOutput()
+                for value in Array(stride(from: 0, to: output.count, by: 3)) {
+                    if output[value] == 255 {
+                        item255 = (output[value+1], output[value+2])
+                    }
+                    if messages[output[value]] != nil {
+                        messages[output[value]]!.append((output[value+1], output[value+2]))
+                    } else {
+                        messages[output[value]] = [(output[value+1], output[value+2])]
+                    }
+                }
+                currentComputer = (currentComputer+1)%50
+            }
+            if item255.1 == lastValue {
+                return "\(item255.1)"
+            }
+            lastValue = item255.1
+            computers[0].addInput([item255.0, item255.1])
+            computers[0].execute()
+            let output = computers[0].readOutput()
+            for value in Array(stride(from: 0, to: output.count, by: 3)) {
+                if output[value] == 255 {
+                    item255 = (output[value+1], output[value+2])
+                }
+                if messages[output[value]] != nil {
+                    messages[output[value]]!.append((output[value+1], output[value+2]))
+                } else {
+                    messages[output[value]] = [(output[value+1], output[value+2])]
+                }
+            }
+        }
     }
     
 }
