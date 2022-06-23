@@ -1200,11 +1200,7 @@ extension Year2019InteractorImpl: YearInteractor {
                         bugs += input[adjY][adjX] == "#" ? 1 : 0
                     }
                 }
-                if input[row][col] == "#" {
-                    newLand[row][col] = bugs == 1 ? "#" : "."
-                } else {
-                    newLand[row][col] = bugs == 1 || bugs == 2 ? "#" : "."
-                }
+                newLand[row][col] = bugs == 1 || (bugs == 2 && input[row][col] == ".") ? "#" : "."
             }
         }
         newLand[2][2] = "."
@@ -1223,11 +1219,7 @@ extension Year2019InteractorImpl: YearInteractor {
         for row in 1...inputMap.count {
             for col in 1...inputMap[row-1].count {
                 let bugs = adjacentBugs(land, (col, row))
-                if land[row][col] == "#" {
-                    newLand[row][col] = bugs == 1 ? "#" : "."
-                } else {
-                    newLand[row][col] = bugs == 1 || bugs == 2 ? "#" : "."
-                }
+                newLand[row][col] = bugs == 1 || (bugs == 2 && land[row][col] == ".") ? "#" : "."
             }
         }
         var result: [[String]] = [[String]](repeating: [String](repeating: ".", count: input.count), count: input.count)
