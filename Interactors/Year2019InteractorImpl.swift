@@ -1153,6 +1153,84 @@ extension Year2019InteractorImpl: YearInteractor {
         }
     }
     
+    @objc
+    func day24question2() -> String {
+        let input = readCSV("InputYear2019Day24").components(separatedBy: .newlines)
+        var levels: [[String]] = [[String]](repeating: [String](repeating: ".....", count: 5), count: 5)
+        levels[2] = input
+        for _ in 0..<200 {
+            var levelsBackup: [[String]] = []
+            for levelIndex in 1..<levels.count-1 {
+                let newLevel = convertErisLandRecursive(levels[levelIndex], levels[levelIndex-1], levels[levelIndex+1])
+                levelsBackup.append(newLevel)
+            }
+            levels = levelsBackup
+            levels.insert([String](repeating: ".....", count: 5), at: 0)
+            levels.append([String](repeating: ".....", count: 5))
+            let bugsFirst = levels[1].map { $0.map { $0 == "#" ? 1 : 0 }.reduce(0, +) }.reduce(0, +)
+            let bugsLast = levels[levels.count-2].map { $0.map { $0 == "#" ? 1 : 0 }.reduce(0, +) }.reduce(0, +)
+            if bugsFirst != 0 {
+                levels.insert([String](repeating: ".....", count: 5), at: 0)
+            }
+            if bugsLast != 0 {
+                levels.append([String](repeating: ".....", count: 5))
+            }
+        }
+        let result = levels.map { $0.map { $0.map { $0 == "#" ? 1 : 0 }.reduce(0, +) }.reduce(0, +) }.reduce(0, +)
+        return "\(result)"
+    }
+    
+    private func convertErisLandRecursive(_ input: [String], _ container: [String], _ contained: [String]) -> [String] {
+        let numberRows = input.count
+        let numberCols = input[0].count
+        var newLand = [[String]](repeating: [String](repeating: ".", count: input.count), count: input.count)
+        for row in 0..<numberRows {
+            for col in 0..<numberCols {
+                var bugs = 0
+                for index in 1...4 {
+                    let adjX = index == 3 ? col - 1 : index == 4 ? col + 1 : col
+                    let adjY = index == 1 ? row - 1 : index == 2 ? row + 1 : row
+                    if adjX < 0 {
+                        bugs += container[numberRows/2][numberCols/2-1] == "#" ? 1 : 0
+                    } else if adjY < 0 {
+                        bugs += container[numberRows/2-1][numberCols/2] == "#" ? 1 : 0
+                    } else if adjX >= numberCols {
+                        bugs += container[numberRows/2][numberCols/2+1] == "#" ? 1 : 0
+                    } else if adjY >= numberRows {
+                        bugs += container[numberRows/2+1][numberCols/2] == "#" ? 1 : 0
+                    } else if adjX == numberCols/2 && adjY == numberRows/2 {
+                        if row == numberRows/2-1 {
+                            for colIntern in 0..<numberCols {
+                                bugs += contained[0][colIntern] == "#" ? 1 : 0
+                            }
+                        } else if row == numberRows/2+1 {
+                            for colIntern in 0..<numberCols {
+                                bugs += contained[numberRows-1][colIntern] == "#" ? 1 : 0
+                            }
+                        } else if col == numberCols/2-1 {
+                            for rowIntern in 0..<numberRows {
+                                bugs += contained[rowIntern][0] == "#" ? 1 : 0
+                            }
+                        } else {
+                            for rowIntern in 0..<numberRows {
+                                bugs += contained[rowIntern][numberCols-1] == "#" ? 1 : 0
+                            }
+                        }
+                    } else {
+                        bugs += input[adjY][adjX] == "#" ? 1 : 0
+                    }
+                }
+                if input[row][col] == "#" {
+                    newLand[row][col] = bugs == 1 ? "#" : "."
+                } else {
+                    newLand[row][col] = bugs == 1 || bugs == 2 ? "#" : "."
+                }
+            }
+        }
+        newLand[numberRows/2][numberCols/2] = "."
+        return newLand.map { $0.joined() }
+    }
+    
     private func convertErisLand(_ input: [String]) -> [String] {
         var land: [[String]] = [[String]](repeating: [String](repeating: ".", count: input.count+2), count: input.count+2)
         let inputMap = input.map { $0.map { String($0) } }
