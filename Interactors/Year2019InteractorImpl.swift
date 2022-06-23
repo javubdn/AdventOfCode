@@ -1181,28 +1181,20 @@ extension Year2019InteractorImpl: YearInteractor {
     }
     
     private func convertErisLandRecursive(_ input: [String], _ container: [String], _ contained: [String]) -> [String] {
-        let numberRows = input.count
-        let numberCols = input[0].count
-        var newLand = [[String]](repeating: [String](repeating: ".", count: input.count), count: input.count)
-        for row in 0..<numberRows {
-            for col in 0..<numberCols {
+        var newLand = [[String]](repeating: [String](repeating: ".", count: 5), count: 5)
+        for row in 0..<5 {
+            for col in 0..<5 {
                 var bugs = 0
                 for index in 1...4 {
                     let adjX = index == 3 ? col - 1 : index == 4 ? col + 1 : col
                     let adjY = index == 1 ? row - 1 : index == 2 ? row + 1 : row
-                    if adjX < 0 || adjX >= numberCols {
-                        bugs += container[numberRows/2][numberCols/2+(adjX<0 ? -1 : 1)] == "#" ? 1 : 0
-                    } else if adjY < 0 || adjY >= numberRows {
-                        bugs += container[numberRows/2+(adjY<0 ? -1 : 1)][numberCols/2] == "#" ? 1 : 0
-                    } else if adjX == numberCols/2 && adjY == numberRows/2 {
-                        if row == numberRows/2-1 || row == numberRows/2+1 {
-                            for colIntern in 0..<numberCols {
-                                bugs += contained[row == numberRows/2-1 ? 0 : numberRows-1][colIntern] == "#" ? 1 : 0
-                            }
-                        } else {
-                            for rowIntern in 0..<numberRows {
-                                bugs += contained[rowIntern][col == numberCols/2-1 ? 0 : numberCols-1] == "#" ? 1 : 0
-                            }
+                    let adjXOut = adjX < 0 || adjX >= 5
+                    let adjYOut = adjY < 0 || adjY >= 5
+                    if adjXOut || adjYOut {
+                        bugs += container[adjXOut ? 2 : 2+(adjY<0 ? -1 : 1)][adjYOut ? 2 : 2+(adjX<0 ? -1 : 1)] == "#" ? 1 : 0
+                    } else if adjX == 2 && adjY == 2 {
+                        for index in 0..<5 {
+                            bugs += contained[col == 2 ? (row == 1 ? 0 : 4) : index][row == 2 ? (col == 1 ? 0 : 4) : index] == "#" ? 1 : 0
                         }
                     } else {
                         bugs += input[adjY][adjX] == "#" ? 1 : 0
@@ -1215,7 +1207,7 @@ extension Year2019InteractorImpl: YearInteractor {
                 }
             }
         }
-        newLand[numberRows/2][numberCols/2] = "."
+        newLand[2][2] = "."
         return newLand.map { $0.joined() }
     }
     
