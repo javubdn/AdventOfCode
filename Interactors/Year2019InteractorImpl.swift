@@ -1190,30 +1190,18 @@ extension Year2019InteractorImpl: YearInteractor {
                 for index in 1...4 {
                     let adjX = index == 3 ? col - 1 : index == 4 ? col + 1 : col
                     let adjY = index == 1 ? row - 1 : index == 2 ? row + 1 : row
-                    if adjX < 0 {
-                        bugs += container[numberRows/2][numberCols/2-1] == "#" ? 1 : 0
-                    } else if adjY < 0 {
-                        bugs += container[numberRows/2-1][numberCols/2] == "#" ? 1 : 0
-                    } else if adjX >= numberCols {
-                        bugs += container[numberRows/2][numberCols/2+1] == "#" ? 1 : 0
-                    } else if adjY >= numberRows {
-                        bugs += container[numberRows/2+1][numberCols/2] == "#" ? 1 : 0
+                    if adjX < 0 || adjX >= numberCols {
+                        bugs += container[numberRows/2][numberCols/2+(adjX<0 ? -1 : 1)] == "#" ? 1 : 0
+                    } else if adjY < 0 || adjY >= numberRows {
+                        bugs += container[numberRows/2+(adjY<0 ? -1 : 1)][numberCols/2] == "#" ? 1 : 0
                     } else if adjX == numberCols/2 && adjY == numberRows/2 {
-                        if row == numberRows/2-1 {
+                        if row == numberRows/2-1 || row == numberRows/2+1 {
                             for colIntern in 0..<numberCols {
-                                bugs += contained[0][colIntern] == "#" ? 1 : 0
-                            }
-                        } else if row == numberRows/2+1 {
-                            for colIntern in 0..<numberCols {
-                                bugs += contained[numberRows-1][colIntern] == "#" ? 1 : 0
-                            }
-                        } else if col == numberCols/2-1 {
-                            for rowIntern in 0..<numberRows {
-                                bugs += contained[rowIntern][0] == "#" ? 1 : 0
+                                bugs += contained[row == numberRows/2-1 ? 0 : numberRows-1][colIntern] == "#" ? 1 : 0
                             }
                         } else {
                             for rowIntern in 0..<numberRows {
-                                bugs += contained[rowIntern][numberCols-1] == "#" ? 1 : 0
+                                bugs += contained[rowIntern][col == numberCols/2-1 ? 0 : numberCols-1] == "#" ? 1 : 0
                             }
                         }
                     } else {
