@@ -1138,4 +1138,63 @@ extension Year2019InteractorImpl: YearInteractor {
         return (item255, messages)
     }
     
+    @objc
+    func day24question1() -> String {
+        let input = readCSV("InputYear2019Day24").components(separatedBy: .newlines)
+        var visited: Set<Int> = Set()
+        var land = input
+        while true {
+            land = convertErisLand(land)
+            let dioversityRating = getDioversityRating(land.joined())
+            if visited.contains(dioversityRating) {
+                return "\(dioversityRating)"
+            }
+            visited.insert(dioversityRating)
+        }
+    }
+    
+    private func convertErisLand(_ input: [String]) -> [String] {
+        var land: [[String]] = [[String]](repeating: [String](repeating: ".", count: input.count+2), count: input.count+2)
+        let inputMap = input.map { $0.map { String($0) } }
+        for row in 0..<inputMap.count {
+            for col in 0..<inputMap[row].count {
+                land[row+1][col+1] = inputMap[row][col]
+            }
+        }
+        var newLand = land
+        for row in 1...inputMap.count {
+            for col in 1...inputMap[row-1].count {
+                let bugs = adjacentBugs(land, (col, row))
+                if land[row][col] == "#" {
+                    newLand[row][col] = bugs == 1 ? "#" : "."
+                } else {
+                    newLand[row][col] = bugs == 1 || bugs == 2 ? "#" : "."
+                }
+            }
+        }
+        var result: [[String]] = [[String]](repeating: [String](repeating: ".", count: input.count), count: input.count)
+        for row in 0..<result.count {
+            for col in 0..<result[row].count {
+                result[row][col] = newLand[row+1][col+1]
+            }
+        }
+        return result.map { $0.joined() }
+    }
+    
+    private func adjacentBugs(_ input: [[String]], _ position: (Int, Int)) -> Int {
+        var bugs = 0
+        for index in 1...4 {
+            let adjX = index == 3 ? position.0 - 1 : index == 4 ? position.0 + 1 : position.0
+            let adjY = index == 1 ? position.1 - 1 : index == 2 ? position.1 + 1 : position.1
+            bugs += input[adjY][adjX] == "#" ? 1 : 0
+        }
+        return bugs
+    }
+    
+    private func getDioversityRating(_ input: String) -> Int {
+        input.enumerated().map { value in
+            value.element == "#" ? Int(pow(Double(2), Double(value.offset))) : 0
+        }.reduce(0, +)
+    }
+    
 }
