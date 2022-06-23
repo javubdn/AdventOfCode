@@ -1208,24 +1208,12 @@ extension Year2019InteractorImpl: YearInteractor {
     }
     
     private func convertErisLand(_ input: [String]) -> [String] {
-        var land: [[String]] = [[String]](repeating: [String](repeating: ".", count: input.count+2), count: input.count+2)
         let inputMap = input.map { $0.map { String($0) } }
+        var result: [[String]] = [[String]](repeating: [String](repeating: ".", count: input.count), count: input.count)
         for row in 0..<inputMap.count {
             for col in 0..<inputMap[row].count {
-                land[row+1][col+1] = inputMap[row][col]
-            }
-        }
-        var newLand = land
-        for row in 1...inputMap.count {
-            for col in 1...inputMap[row-1].count {
-                let bugs = adjacentBugs(land, (col, row))
-                newLand[row][col] = bugs == 1 || (bugs == 2 && land[row][col] == ".") ? "#" : "."
-            }
-        }
-        var result: [[String]] = [[String]](repeating: [String](repeating: ".", count: input.count), count: input.count)
-        for row in 0..<result.count {
-            for col in 0..<result[row].count {
-                result[row][col] = newLand[row+1][col+1]
+                let bugs = adjacentBugs(inputMap, (col, row))
+                result[row][col] = bugs == 1 || (bugs == 2 && input[row][col] == ".") ? "#" : "."
             }
         }
         return result.map { $0.joined() }
@@ -1236,7 +1224,8 @@ extension Year2019InteractorImpl: YearInteractor {
         for index in 1...4 {
             let adjX = index == 3 ? position.0 - 1 : index == 4 ? position.0 + 1 : position.0
             let adjY = index == 1 ? position.1 - 1 : index == 2 ? position.1 + 1 : position.1
-            bugs += input[adjY][adjX] == "#" ? 1 : 0
+            let outOfBounds = adjX < 0 || adjX >= 5 || adjY < 0 || adjY >= 5
+            bugs += !outOfBounds && input[adjY][adjX] == "#" ? 1 : 0
         }
         return bugs
     }
