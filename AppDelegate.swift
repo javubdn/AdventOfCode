@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window?.rootViewController =  MainConfigurator.configure()
+        window?.rootViewController =  MainConfigurator.configure(navigationController: UINavigationController())
 //        YearSelectorConfigurator.configure(window)
         return true
     }
