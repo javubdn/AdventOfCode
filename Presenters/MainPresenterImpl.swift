@@ -10,9 +10,11 @@ import Foundation
 class MainPresenterImpl: MainPresenter {
     
     let interactor: MainInteractor
+    let router: MainRouter
     
-    init(interactor: MainInteractor) {
+    init(interactor: MainInteractor, router: MainRouter) {
         self.interactor = interactor
+        self.router = router
     }
     
     func calculate(year: Int,day: Int, question: Int) -> String {
