@@ -21,4 +21,8 @@ class MainPresenterImpl: MainPresenter {
         return interactor.calculate(year: year, day: day, question: question)
     }
     
+    func openDetail(_ year: Year, _ day: Int) {
+        router.openDetail(year, day)
+    }
+    
 }
