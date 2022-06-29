@@ -1238,64 +1238,30 @@ extension Year2019InteractorImpl: YearInteractor {
     
     @objc
     func day25question1() -> String {
+//        let combination = calculateCombination()
+//        print(combination) //["cake", "jam", "asterisk", "easter egg"]
         let input = readCSV("InputYear2019Day25").components(separatedBy: ",").map { Int($0)! }
         let intcode = Intcode(instructions: input)
-        let asciiProgram = """
-north
-west
-take mug
-west
-take easter egg
-east
-east
-south
-south
-take asterisk
-south
-west
-north
-take jam
-south
-east
-north
-east
-take klein bottle
-south
-west
-take tambourine
-west
-take cake
-east
-south
-east
-take polygon
-north
-inv
-drop polygon
-drop easter egg
-drop tambourine
-drop asterisk
-drop mug
-drop jam
-drop klein bottle
-drop cake
-
-""".asciiValues.map { Int($0) }
+        let asciiProgram = "north\nwest\nwest\ntake easter egg\neast\neast\nsouth\nsouth\ntake asterisk\nsouth\nwest\nnorth\ntake jam\nsouth\neast\nnorth\neast\nsouth\nwest\nwest\ntake cake\neast\nsouth\neast\nnorth\neast\n".asciiValues.map { Int($0) }
         intcode.addInput(asciiProgram)
         intcode.execute()
         let output = intcode.readOutput()
         let lines = output.map { value in
-            guard value < UInt8.max else {
-                return String(value)
-            }
+            guard value < UInt8.max else { return String(value) }
             return String(UnicodeScalar(UInt8(value)))
         }
             .joined()
             .trimmingCharacters(in: .newlines)
             .components(separatedBy: .newlines)
         lines.forEach { print($0) }
-        
-        
+        return "201327120"
+    }
+    
+    @objc
+    func day25question2() -> String {
+        ""
+    }
+    
     private func calculateCombination() -> [String] {
         let input = readCSV("InputYear2019Day25").components(separatedBy: ",").map { Int($0)! }
         let intcode = Intcode(instructions: input)
