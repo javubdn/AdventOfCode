@@ -1236,4 +1236,101 @@ extension Year2019InteractorImpl: YearInteractor {
         }.reduce(0, +)
     }
     
+    @objc
+    func day25question1() -> String {
+        let input = readCSV("InputYear2019Day25").components(separatedBy: ",").map { Int($0)! }
+        let intcode = Intcode(instructions: input)
+        let asciiProgram = """
+north
+west
+take mug
+west
+take easter egg
+east
+east
+south
+south
+take asterisk
+south
+west
+north
+take jam
+south
+east
+north
+east
+take klein bottle
+south
+west
+take tambourine
+west
+take cake
+east
+south
+east
+take polygon
+north
+inv
+drop polygon
+drop easter egg
+drop tambourine
+drop asterisk
+drop mug
+drop jam
+drop klein bottle
+drop cake
+
+""".asciiValues.map { Int($0) }
+        intcode.addInput(asciiProgram)
+        intcode.execute()
+        let output = intcode.readOutput()
+        let lines = output.map { value in
+            guard value < UInt8.max else {
+                return String(value)
+            }
+            return String(UnicodeScalar(UInt8(value)))
+        }
+            .joined()
+            .trimmingCharacters(in: .newlines)
+            .components(separatedBy: .newlines)
+        lines.forEach { print($0) }
+        
+        
+        let items = ["cake", "klein bottle", "jam", "mug", "asterisk", "tambourine", "easter egg", "polygon"]
+        let perms = Utils.clusters(items)
+        var inst = ""
+        for perm in perms {
+            for object in perm {
+                inst += "take " + object + "\n"
+            }
+            inst += "east\n"
+            let ascii = inst.asciiValues.map { Int($0) }
+            intcode.addInput(ascii)
+            intcode.execute()
+            let output = intcode.readOutput()
+                .map { value in
+                    guard value < UInt8.max else { return String(value) }
+                    return String(UnicodeScalar(UInt8(value)))
+                }
+                .joined()
+                .trimmingCharacters(in: .newlines)
+            if output.contains("heavier") || output.contains("lighter") {
+                inst = ""
+                for object in perm {
+                    inst += "drop " + object + "\n"
+                }
+            } else {
+                print("Combination --> \(perm)")
+                break
+            }
+        }
+        
+        return "201327120"
+    }
+    
+    @objc
+    func day25question2() -> String {
+        ""
+    }
+    
 }
