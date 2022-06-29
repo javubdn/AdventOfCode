@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol DayViewDelegate {
+    func openDetail(_ year: Year, _ day: Int)
+}
+
 class DayView: UIView {
     
     var answer1Label: UILabel
@@ -15,6 +19,9 @@ class DayView: UIView {
     init(_ dayNumber: Int, _ mainStackView: UIStackView) {
         answer1Label = UILabel()
         answer2Label = UILabel()
+        self.delegate = delegate
+        self.year = year
+        self.day = day
         super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         layer.borderWidth = 2
         layer.borderColor = .init(red: 0, green: 0.2, blue: 0.7, alpha: 1)
