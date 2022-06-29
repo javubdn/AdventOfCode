@@ -13,10 +13,13 @@ protocol DayViewDelegate {
 
 class DayView: UIView {
     
-    var answer1Label: UILabel
-    var answer2Label: UILabel
- 
-    init(_ dayNumber: Int, _ mainStackView: UIStackView) {
+    private var answer1Label: UILabel
+    private var answer2Label: UILabel
+    private let delegate: DayViewDelegate?
+    private let year: Year
+    private var day: Int
+    
+    init(_ year: Year, _ day: Int, _ mainStackView: UIStackView, _ delegate: DayViewDelegate) {
         answer1Label = UILabel()
         answer2Label = UILabel()
         self.delegate = delegate
@@ -28,7 +31,7 @@ class DayView: UIView {
         layer.cornerRadius = 5
 
         let titleDayLabel = UILabel()
-        titleDayLabel.text = "Día \(dayNumber + 1)"
+        titleDayLabel.text = "Día \(day + 1)"
         titleDayLabel.textAlignment = .center
         titleDayLabel.font = UIFont(name: "Futura-Medium", size: 20.0)
 
@@ -81,12 +84,20 @@ class DayView: UIView {
     required init?(coder aDecoder: NSCoder) {
         answer1Label = UILabel()
         answer2Label = UILabel()
+        delegate = nil
+        year = .fifteen
+        day = 0
         super.init(coder: aDecoder)
+    }
+    
+    func setAnswers(_ answers: (String, String)) {
+        answer1Label.text = answers.0
+        answer2Label.text = answers.1
     }
     
     @objc
     func clickSection(_ sender: UITapGestureRecognizer) {
-        print("SHIT")
+        delegate?.openDetail(year, day)
     }
     
 }
