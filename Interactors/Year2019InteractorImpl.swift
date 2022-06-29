@@ -1296,6 +1296,13 @@ drop cake
         lines.forEach { print($0) }
         
         
+    private func calculateCombination() -> [String] {
+        let input = readCSV("InputYear2019Day25").components(separatedBy: ",").map { Int($0)! }
+        let intcode = Intcode(instructions: input)
+        let asciiProgram = "north\nwest\ntake mug\nwest\ntake easter egg\neast\neast\nsouth\nsouth\ntake asterisk\nsouth\nwest\nnorth\ntake jam\nsouth\neast\nnorth\neast\ntake klein bottle\nsouth\nwest\ntake tambourine\nwest\ntake cake\neast\nsouth\neast\ntake polygon\nnorth\ndrop polygon\ndrop easter egg\ndrop tambourine\ndrop asterisk\ndrop mug\ndrop jam\ndrop klein bottle\ndrop cake\n".asciiValues.map { Int($0) }
+        intcode.addInput(asciiProgram)
+        intcode.execute()
+        _ = intcode.readOutput()
         let items = ["cake", "klein bottle", "jam", "mug", "asterisk", "tambourine", "easter egg", "polygon"]
         let perms = Utils.clusters(items)
         var inst = ""
@@ -1320,17 +1327,10 @@ drop cake
                     inst += "drop " + object + "\n"
                 }
             } else {
-                print("Combination --> \(perm)")
-                break
+                return perm
             }
         }
-        
-        return "201327120"
-    }
-    
-    @objc
-    func day25question2() -> String {
-        ""
+        return []
     }
     
 }
