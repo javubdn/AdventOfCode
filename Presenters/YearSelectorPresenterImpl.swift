@@ -15,7 +15,7 @@ class YearSelectorPresenterImpl: YearSelectorPresenter {
         self.router = router
     }
     
-    func navigateTo(year: Int) {
+    func navigateTo(year: Year) {
         router.navigateTo(year: year)
     }
     

@@ -43,7 +43,7 @@ class MainViewController: UIViewController {
                                  Year.twenty: 5,
                                  Year.twentyOne: 17]
         for index in 0..<numberDaysPerYear[currentYear]! {
-            let dayView = DayView(.twenty, index, mainStackView, self)
+            let dayView = DayView(currentYear, index, mainStackView, self)
             dayViews.append(dayView)
         }
     }
@@ -52,8 +52,8 @@ class MainViewController: UIViewController {
         let queue = DispatchQueue(label: "com.AdventOfCode.queue")
         for index in 0..<dayViews.count {
             queue.async {
-                let answer1 = self.presenter.calculate(year: .twenty, day: index+1, question: 1)
-                let answer2 = self.presenter.calculate(year: .twenty, day: index+1, question: 2)
+                let answer1 = self.presenter.calculate(year: self.currentYear, day: index+1, question: 1)
+                let answer2 = self.presenter.calculate(year: self.currentYear, day: index+1, question: 2)
                 DispatchQueue.main.async {
                     self.dayViews[index].setAnswers((answer1, answer2))
                 }
