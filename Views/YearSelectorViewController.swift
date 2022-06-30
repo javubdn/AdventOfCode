@@ -22,13 +22,14 @@ class YearSelectorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.navigateTo(year: .twenty)
 
     }
 
     //MARK: - Actions
     
     @IBAction func acceptButtonPressed(_ sender: UIButton) {
-        presenter.navigateTo(year: 2021)
+        presenter.navigateTo(year: .twenty)
     }
     
 }

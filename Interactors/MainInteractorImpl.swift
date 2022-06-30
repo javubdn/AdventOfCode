@@ -13,23 +13,16 @@ class MainInteractorImpl: NSObject {
 
 extension MainInteractorImpl: MainInteractor {
     
-    func calculate(year: Int, day: Int, question: Int) -> String {
+    func calculate(year: Year, day: Int, question: Int) -> String {
         let interactor: YearInteractor
         switch year {
-        case 2015:
-            interactor = Year2015InteractorImpl()
-        case 2016:
-            interactor = Year2016InteractorImpl()
-        case 2017:
-            interactor = Year2017InteractorImpl()
-        case 2018:
-            interactor = Year2018InteractorImpl()
-        case 2019:
-            interactor = Year2019InteractorImpl()
-        case 2021:
-            interactor = Year2021InteractorImpl()
-        default:
-            interactor = Year2021InteractorImpl()
+        case .fifteen: interactor = Year2015InteractorImpl()
+        case .sixteen: interactor = Year2016InteractorImpl()
+        case .seventeen: interactor = Year2017InteractorImpl()
+        case .eighteen: interactor = Year2018InteractorImpl()
+        case .nineteen: interactor = Year2019InteractorImpl()
+        case .twenty: interactor = Year2020InteractorImpl()
+        case .twentyOne: interactor = Year2021InteractorImpl()
         }
         
         return interactor.calculate(day: day, question: question)

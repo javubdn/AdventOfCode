@@ -9,6 +9,6 @@ import Foundation
 
 protocol MainInteractor {
     
-    func calculate(year: Int, day: Int, question: Int) -> String
+    func calculate(year: Year, day: Int, question: Int) -> String
     
 }

@@ -19,8 +19,8 @@ class YearSelectorRouterImpl: YearSelectorRouter {
         self.navigationController = navigationController
     }
     
-    func navigateTo(year: Int) {
-        let mainViewController = MainConfigurator.configure(navigationController: navigationController)
+    func navigateTo(year: Year) {
+        let mainViewController = MainConfigurator.configure(navigationController: navigationController, year: year)
         navigationController.pushViewController(mainViewController, animated: true)
     }
     

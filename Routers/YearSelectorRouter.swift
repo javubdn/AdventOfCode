@@ -9,6 +9,6 @@ import Foundation
 
 protocol YearSelectorRouter {
     
-    func navigateTo(year: Int)
+    func navigateTo(year: Year)
     
 }

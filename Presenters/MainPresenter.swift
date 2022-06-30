@@ -9,7 +9,7 @@ import Foundation
 
 protocol MainPresenter {
     
-    func calculate(year: Int,day: Int, question: Int) -> String
+    func calculate(year: Year, day: Int, question: Int) -> String
     func openDetail(_ year: Year, _ day: Int)
     
 }

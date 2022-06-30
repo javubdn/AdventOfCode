@@ -17,7 +17,7 @@ class MainPresenterImpl: MainPresenter {
         self.router = router
     }
     
-    func calculate(year: Int,day: Int, question: Int) -> String {
+    func calculate(year: Year, day: Int, question: Int) -> String {
         return interactor.calculate(year: year, day: day, question: question)
     }
     
