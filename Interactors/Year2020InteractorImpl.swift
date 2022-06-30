@@ -12,4 +12,11 @@ class Year2020InteractorImpl: NSObject {
 
 extension Year2020InteractorImpl: YearInteractor {
     
+    @objc
+    func day1question1() -> String {
+        let input = readCSV("InputYear2020Day1").components(separatedBy: .newlines).map { Int($0)! }
+        let result = Utils.cartesianProduct(lhs: input, rhs: input).first { $0.0 + $0.1 == 2020 }!
+        return "\(result.0 * result.1)"
+    }
+    
 }
