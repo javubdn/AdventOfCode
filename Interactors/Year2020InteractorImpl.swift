@@ -72,6 +72,15 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day3question2() -> String {
+        let input = readCSV("InputYear2020Day3").components(separatedBy: .newlines).map { $0.map {  String($0) } }
+        let slopes = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
+        let result = slopes.map { getTrees(input, in: $0) }.reduce(1, *)
+        
+        return "\(result)"
+    }
+    
     private func getTrees(_ input: [[String]], in slope: (Int, Int)) -> Int {
         var trees = 0
         var row = 0
