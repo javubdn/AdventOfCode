@@ -26,4 +26,11 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result.0.0 * result.0.1 * result.1)"
     }
     
+    @objc
+    func day2question1() -> String {
+        let input = readCSV("InputYear2020Day2").components(separatedBy: .newlines).map { getPasswordPolicy($0) }
+        let result = input.filter { isPasswordPolicyValid($0, oldMethod: true) }.count
+        return "\(result)"
+    }
+    
 }
