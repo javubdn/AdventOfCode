@@ -19,4 +19,11 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result.0 * result.1)"
     }
     
+    @objc
+    func day1question2() -> String {
+        let input = readCSV("InputYear2020Day1").components(separatedBy: .newlines).map { Int($0)! }
+        let result = Utils.cartesianProduct(lhs: Utils.cartesianProduct(lhs: input, rhs: input), rhs: input)  .first { $0.0.0 + $0.0.1 + $0.1 == 2020 }!
+        return "\(result.0.0 * result.0.1 * result.1)"
+    }
+    
 }
