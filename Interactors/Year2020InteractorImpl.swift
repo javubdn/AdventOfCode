@@ -93,4 +93,17 @@ extension Year2020InteractorImpl: YearInteractor {
         return trees
     }
     
+    @objc
+    func day4question1() -> String {
+        let input = readCSV("InputYear2020Day4").components(separatedBy: "\n\n")
+        let result = input.filter { validPassport($0) }.count
+        return "\(result)"
+    }
+    
+    private func validPassport(_ input: String) -> Bool {
+        let values = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
+        let items = input.components(separatedBy: .newlines).joined(separator: " ").components(separatedBy: .whitespaces)
+        return items.filter { values.contains($0.components(separatedBy: ":")[0]) }.count == 7
+    }
+    
 }
