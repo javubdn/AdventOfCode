@@ -151,4 +151,17 @@ extension Year2020InteractorImpl: YearInteractor {
         return true
     }
     
+    @objc
+    func day5question1() -> String {
+        let input = readCSV("InputYear2020Day5").components(separatedBy: .newlines)
+        let result = input.map { getIdBoardingPass($0) }.max()!
+        return "\(result)"
+    }
+    
+    private func getIdBoardingPass(_ input: String) -> Int {
+        let numRow = input[0...6].enumerated().map { $0.element == "B" ? Int(pow(Double(2), Double(6 - $0.offset))) : 0 }.reduce(0, +)
+        let numCol = input[8...10].enumerated().map { $0.element == "R" ? Int(pow(Double(2), Double(2 - $0.offset))) : 0 }.reduce(0, +)
+        return numRow * 8 + numCol
+    }
+    
 }
