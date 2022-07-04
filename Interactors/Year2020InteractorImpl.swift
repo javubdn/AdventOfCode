@@ -179,4 +179,13 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day6question2() -> String {
+        let input = readCSV("InputYear2020Day6").components(separatedBy: "\n\n").map { $0.components(separatedBy: .newlines) }
+        let result = input.map { answers -> Int in
+            answers[0].filter { item in answers.filter { $0.contains(item) }.count == answers.count }.count
+        }.reduce(0, +)
+        return "\(result)"
+    }
+    
 }
