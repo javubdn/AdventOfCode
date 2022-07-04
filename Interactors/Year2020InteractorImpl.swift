@@ -100,10 +100,55 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day4question2() -> String {
+        let input = readCSV("InputYear2020Day4").components(separatedBy: "\n\n")
+        let result = input.filter { validPassportHD($0) }.count
+        return "\(result)"
+    }
+    
     private func validPassport(_ input: String) -> Bool {
         let values = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
         let items = input.components(separatedBy: .newlines).joined(separator: " ").components(separatedBy: .whitespaces)
         return items.filter { values.contains($0.components(separatedBy: ":")[0]) }.count == 7
+    }
+    
+    private func validPassportHD(_ input: String) -> Bool {
+        guard validPassport(input) else { return false }
+        let items = input.components(separatedBy: .newlines).joined(separator: " ").components(separatedBy: .whitespaces)
+        for item in items {
+            let fields = item.components(separatedBy: ":")
+            let key = fields[0]
+            let value = fields[1]
+            switch key {
+            case "byr":
+                guard let year = Int(value) else { return false }
+                if year < 1920 || year > 2002 { return false }
+            case "iyr":
+                guard let year = Int(value) else { return false }
+                if year < 2010 || year > 2020 { return false }
+            case "eyr":
+                guard let year = Int(value) else { return false }
+                if year < 2020 || year > 2030 { return false }
+            case "hgt":
+                if value.contains("cm") {
+                    let height = Int(value.dropLast(2))!
+                    if height < 150 || height > 193 { return false }
+                } else if value.contains("in") {
+                    let height = Int(value.dropLast(2))!
+                    if height < 59 || height > 76 { return false }
+                } else {
+                    return false
+                }
+            case "hcl": if !value.starts(with: "#") || value.count != 7 { return false }
+            case "ecl": if !["amb", "blu", "brn", "gry", "grn", "hzl", "oth"].contains(value) { return false }
+            case "pid":
+                guard let _ = Int(value) else { return false }
+                if value.count != 9 { return false }
+            default: break
+            }
+        }
+        return true
     }
     
 }
