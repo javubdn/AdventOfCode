@@ -203,4 +203,32 @@ extension Year2020InteractorImpl: YearInteractor {
         let contained: [(Bag, Int)]
     }
     
+    private func getRuleBag(_ input: String, bags: Set<Bag>) -> (RuleBag, Set<Bag>) {
+        var bags = bags
+        let regex = try! NSRegularExpression(pattern: #"([a-z]+) ([a-z]+) bags contain ([,, a-z0-9]+)"#)
+        let matches = regex.matches(in: input, options: [], range: NSRange(input.startIndex..., in: input))
+        let match = matches.first!
+        let containerFeature = String(input[Range(match.range(at: 1), in: input)!])
+        let containerColor = String(input[Range(match.range(at: 2), in: input)!])
+        var subBags: [(Bag, Int)] = []
+        if let subBagsRange = Range(match.range(at: 3), in: input) {
+            let subBagsValue = String(input[subBagsRange])
+            subBagsValue.components(separatedBy: ", ").forEach { subBag in
+                let items = subBag.components(separatedBy: .whitespaces)
+                guard items[0] != "no" else { return }
+                let existingBag = bags.first { $0.feature == items[1] && $0.color == items[2] }
+                let id = existingBag?.id ?? (bags.map { $0.id }.max() ?? 0) + 1
+                let bag = Bag(id: id, feature: items[1], color: items[2])
+                bags.insert(bag)
+                let ocurrences = Int(items[0])!
+                subBags.append((bag, ocurrences))
+            }
+        }
+        let existingBag = bags.first { $0.feature == containerFeature && $0.color == containerColor }
+        let id = existingBag?.id ?? (bags.map { $0.id }.max() ?? 0) + 1
+        let bag = Bag(id: id, feature: containerFeature, color: containerColor)
+        bags.insert(bag)
+        return (RuleBag(container: bag, contained: subBags), bags)
+    }
+    
 }
