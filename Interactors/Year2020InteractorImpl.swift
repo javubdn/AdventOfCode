@@ -206,6 +206,21 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day7question2() -> String {
+        let input = readCSV("InputYear2020Day7").components(separatedBy: .newlines)
+        var bags: Set<Bag> = Set()
+        var rules: [RuleBag] = []
+        input.forEach { ruleString in
+            let rule: RuleBag
+            (rule, bags) = getRuleBag(ruleString, bags: bags)
+            rules.append(rule)
+        }
+        let bagShiny = rules.first { $0.container.feature == "shiny" && $0.container.color == "gold"}!.container
+        let result = numberBags(bagShiny, rules)
+        return "\(result)"
+    }
+    
     struct Bag: Equatable, Hashable {
         let id: Int
         let feature: String
@@ -269,6 +284,16 @@ extension Year2020InteractorImpl: YearInteractor {
         }
         validRules[rule.container.id] = isContained
         return (isContained, validRules)
+    }
+    
+    private func numberBags(_ bag: Bag,_ rules: [RuleBag]) -> Int {
+        guard let rule = rules.first(where: { $0.container.id == bag.id }) else { return 0 }
+        var totalBags = 0
+        for containedBag in rule.contained {
+            let values = numberBags(containedBag.0, rules)
+            totalBags += values * containedBag.1 + containedBag.1
+        }
+        return totalBags
     }
     
     struct BagNode {
