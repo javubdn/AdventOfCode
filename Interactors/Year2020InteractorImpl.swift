@@ -188,6 +188,24 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day7question1() -> String {
+        let input = readCSV("InputYear2020Day7").components(separatedBy: .newlines)
+        var bags: Set<Bag> = Set()
+        var rules: [RuleBag] = []
+        input.forEach { ruleString in
+            let rule: RuleBag
+            (rule, bags) = getRuleBag(ruleString, bags: bags)
+            rules.append(rule)
+        }
+        var validRules: [Int: Bool] = [:]
+        rules.forEach { rule in
+            (_, validRules) = ruleApplies(rule, rules, validRules)
+        }
+        let result = validRules.filter { $0.value }.count
+        return "\(result)"
+    }
+    
     struct Bag: Equatable, Hashable {
         let id: Int
         let feature: String
@@ -229,6 +247,28 @@ extension Year2020InteractorImpl: YearInteractor {
         let bag = Bag(id: id, feature: containerFeature, color: containerColor)
         bags.insert(bag)
         return (RuleBag(container: bag, contained: subBags), bags)
+    }
+    
+    private func ruleApplies(_ rule: RuleBag,_ list: [RuleBag],_ validRules: [Int: Bool]) -> (Bool, [Int: Bool]) {
+        if let validRule = validRules[rule.container.id] { return (validRule, validRules) }
+        let containedRules = rule.contained.filter { $0.0.feature == "shiny" && $0.0.color == "gold" }
+        var validRules = validRules
+        guard containedRules.count == 0 else {
+            validRules[rule.container.id] = true
+            return (true, validRules)
+        }
+        var isContained = false
+        for containedRule in rule.contained {
+            let newRule = list.first { $0.container == containedRule.0 }!
+            let ruleApplicable: Bool
+            (ruleApplicable, validRules) = ruleApplies(newRule, list, validRules)
+            if ruleApplicable {
+                isContained = true
+                break
+            }
+        }
+        validRules[rule.container.id] = isContained
+        return (isContained, validRules)
     }
     
 }
