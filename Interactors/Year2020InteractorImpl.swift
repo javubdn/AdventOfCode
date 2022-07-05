@@ -188,4 +188,14 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    struct Bag: Equatable, Hashable {
+        let id: Int
+        let feature: String
+        let color: String
+        
+        static func == (lhs: Self, rhs: Self) -> Bool {
+            lhs.id == rhs.id
+        }
+    }
+    
 }
