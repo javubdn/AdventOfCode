@@ -198,4 +198,9 @@ extension Year2020InteractorImpl: YearInteractor {
         }
     }
     
+    struct RuleBag {
+        let container: Bag
+        let contained: [(Bag, Int)]
+    }
+    
 }
