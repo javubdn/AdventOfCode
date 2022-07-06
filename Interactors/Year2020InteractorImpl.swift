@@ -366,4 +366,27 @@ extension Year2020InteractorImpl: YearInteractor {
         return ""
     }
     
+    @objc
+    func day9question2() -> String {
+        let input = readCSV("InputYear2020Day9").components(separatedBy: .newlines).map { Int($0)! }
+        let target = 32321523 //Previous problem
+        var firstIndex = 0
+        var lastIndex = 1
+        while lastIndex < input.count {
+            let sum = input[firstIndex...lastIndex].reduce(0, +)
+            guard sum <= target else {
+                firstIndex += 1
+                lastIndex = firstIndex + 1
+                continue
+            }
+            guard sum < target else {
+                let min = input[firstIndex...lastIndex].min()!
+                let max = input[firstIndex...lastIndex].max()!
+                return "\(min+max)"
+            }
+            lastIndex += 1
+        }
+        return ""
+    }
+    
 }
