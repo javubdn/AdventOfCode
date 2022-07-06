@@ -296,4 +296,47 @@ extension Year2020InteractorImpl: YearInteractor {
         return totalBags
     }
     
+    @objc
+    func day8question1() -> String {
+        let input = readCSV("InputYear2020Day8").components(separatedBy: .newlines).map { getConsoleInstruction($0) }
+        let (_, result) = executeConsoleProgram(input)
+        return "\(result)"
+    }
+    
+    enum ConsoleInstType {
+        case acc
+        case jmp
+        case nop
+    }
+    
+    struct ConsoleInst {
+        let type: ConsoleInstType
+        let value: Int
+    }
+    
+    private func getConsoleInstruction(_ input: String) -> ConsoleInst {
+        let items = input.components(separatedBy: .whitespaces)
+        let type: ConsoleInstType = items[0] == "acc" ? .acc : items[0] == "jmp" ? .jmp : .nop
+        let value = Int(items[1])!
+        return ConsoleInst(type: type, value: value)
+    }
+    
+    private func executeConsoleProgram(_ instructions: [ConsoleInst]) -> (Bool, Int) {
+        var usedInst: Set<Int> = Set()
+        var index = 0
+        var accumulator = 0
+        while index < instructions.count {
+            guard !usedInst.contains(index) else { return (false, accumulator) }
+            usedInst.insert(index)
+            let instruction = instructions[index]
+            switch instruction.type {
+            case .acc: accumulator += instruction.value
+            case .jmp: index += instruction.value
+            case .nop: break
+            }
+            index += instruction.type == .jmp ? 0 : 1
+        }
+        return (true, accumulator)
+    }
+    
 }
