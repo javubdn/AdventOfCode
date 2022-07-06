@@ -353,4 +353,17 @@ extension Year2020InteractorImpl: YearInteractor {
         return (true, accumulator)
     }
     
+    @objc
+    func day9question1() -> String {
+        let input = readCSV("InputYear2020Day9").components(separatedBy: .newlines).map { Int($0)! }
+        var index = 25
+        while index < input.count {
+            let preamble = [Int](input[index-25...index-1])
+            let val = Utils.cartesianProduct(lhs: preamble, rhs: preamble).first { $0.0 + $0.1 == input[index] }
+            if val == nil { return "\(input[index])" }
+            index += 1
+        }
+        return ""
+    }
+    
 }
