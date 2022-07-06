@@ -303,6 +303,20 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day8question2() -> String {
+        let input = readCSV("InputYear2020Day8").components(separatedBy: .newlines).map { getConsoleInstruction($0) }
+        for indexChangedInstruction in 0..<input.count {
+            guard input[indexChangedInstruction].type != .acc else { continue }
+            var instructions = input
+            let newInstruction = ConsoleInst(type: input[indexChangedInstruction].type == .jmp ? .nop : .jmp, value: input[indexChangedInstruction].value)
+            instructions[indexChangedInstruction] = newInstruction
+            let (finished, result) = executeConsoleProgram(instructions)
+            if finished { return "\(result)" }
+        }
+        return ""
+    }
+    
     enum ConsoleInstType {
         case acc
         case jmp
