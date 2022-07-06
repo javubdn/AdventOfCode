@@ -389,4 +389,13 @@ extension Year2020InteractorImpl: YearInteractor {
         return ""
     }
     
+    @objc
+    func day10question1() -> String {
+        var input = readCSV("InputYear2020Day10").components(separatedBy: .newlines).map { Int($0)! }.sorted()
+        input.append(input.last!+3)
+        let differences = input.enumerated().map { $0.element - ($0.offset > 0 ? input[$0.offset-1] : 0) }
+        let result = differences.filter { $0 == 1 }.count * differences.filter { $0 == 3 }.count
+        return "\(result)"
+    }
+    
 }
