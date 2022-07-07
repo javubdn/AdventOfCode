@@ -445,12 +445,19 @@ extension Year2020InteractorImpl: YearInteractor {
     private func applyStepSeats(_ input: [[String]], _ modeEasy: Bool) -> [[String]] {
         var seatsEnd = input
         for row in 0..<input.count {
+        externalLoop:
             for col in 0..<input[row].count {
+                if input[row][col] == "." { continue }
                 var busyCollindant = 0
+                let freeSeat = input[row][col] == "L"
                 for direction in 0...7 {
-                    busyCollindant += isBusySeat(input, (col, row), direction, modeEasy) ? 1 : 0
+                    let isBusyCollindant = isBusySeat(input, (col, row), direction, modeEasy)
+                    if freeSeat && isBusyCollindant {
+                        continue externalLoop
+                    }
+                    busyCollindant += isBusyCollindant ? 1 : 0
                 }
-                seatsEnd[row][col] = input[row][col] == "L" && busyCollindant == 0 ? "#" : input[row][col] == "#" && ((modeEasy && busyCollindant >= 4) || (!modeEasy && busyCollindant >= 5)) ? "L" : input[row][col]
+                seatsEnd[row][col] = freeSeat ? "#" : (modeEasy && busyCollindant >= 4) || (!modeEasy && busyCollindant >= 5) ? "L" : "#"
             }
         }
         return seatsEnd
