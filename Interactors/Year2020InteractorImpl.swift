@@ -264,7 +264,7 @@ extension Year2020InteractorImpl: YearInteractor {
         return (RuleBag(container: bag, contained: subBags), bags)
     }
     
-    private func ruleApplies(_ rule: RuleBag,_ list: [RuleBag],_ validRules: [Int: Bool]) -> (Bool, [Int: Bool]) {
+    private func ruleApplies(_ rule: RuleBag, _ list: [RuleBag], _ validRules: [Int: Bool]) -> (Bool, [Int: Bool]) {
         if let validRule = validRules[rule.container.id] { return (validRule, validRules) }
         let containedRules = rule.contained.filter { $0.0.feature == "shiny" && $0.0.color == "gold" }
         var validRules = validRules
@@ -286,7 +286,7 @@ extension Year2020InteractorImpl: YearInteractor {
         return (isContained, validRules)
     }
     
-    private func numberBags(_ bag: Bag,_ rules: [RuleBag]) -> Int {
+    private func numberBags(_ bag: Bag, _ rules: [RuleBag]) -> Int {
         guard let rule = rules.first(where: { $0.container.id == bag.id }) else { return 0 }
         var totalBags = 0
         for containedBag in rule.contained {
@@ -420,9 +420,22 @@ extension Year2020InteractorImpl: YearInteractor {
         while true {
             seats = applyStepSeats(seats)
             seatsString = seats.map { $0.joined() }.joined()
-            if combinations.contains(seatsString) {
-                break
-            }
+            if combinations.contains(seatsString) { break }
+            combinations.insert(seatsString)
+        }
+        let result = seatsString.filter { $0 == "#" }.count
+        return "\(result)"
+    }
+    
+    @objc
+    func day11question2() -> String {
+        var seats = readCSV("InputYear2020Day11").components(separatedBy: .newlines).map { $0.map { String($0) } }
+        var combinations: Set<String> = Set()
+        var seatsString = ""
+        while true {
+            seats = applyStepSeatsPlus(seats)
+            seatsString = seats.map { $0.joined() }.joined()
+            if combinations.contains(seatsString) { break }
             combinations.insert(seatsString)
         }
         let result = seatsString.filter { $0 == "#" }.count
@@ -446,6 +459,37 @@ extension Year2020InteractorImpl: YearInteractor {
             }
         }
         return seatsEnd
+    }
+    
+    private func applyStepSeatsPlus(_ input: [[String]]) -> [[String]] {
+        var seatsEnd = input
+        for row in 0..<input.count {
+            for col in 0..<input[row].count {
+                var busyCollindant = 0
+                for direction in 0...7 {
+                    busyCollindant += isBusySeat(input, (col, row), direction) ? 1 : 0
+                }
+                seatsEnd[row][col] = input[row][col] == "L" && busyCollindant == 0 ? "#" : input[row][col] == "#" && busyCollindant >= 5 ? "L" : input[row][col]
+            }
+        }
+        return seatsEnd
+    }
+    
+    private func isBusySeat(_ input: [[String]], _ position: (Int, Int), _ direction: Int) -> Bool {
+        let movementX = direction > 0 && direction < 4 ? 1 : direction > 4 ? -1 : 0
+        let movementY = direction > 2 && direction < 6 ? 1 : direction < 2 || direction > 6 ? -1 : 0
+        var nextPosition = (position.0+movementX, position.1+movementY)
+        var busy = false
+        while nextPosition.1 >= 0 && nextPosition.1 < input.count && nextPosition.0 >= 0 && nextPosition.0 < input[nextPosition.1].count {
+            if input[nextPosition.1][nextPosition.0] == "#" {
+                busy = true
+                break
+            } else if input[nextPosition.1][nextPosition.0] == "L" {
+                break
+            }
+            nextPosition = (nextPosition.0+movementX, nextPosition.1+movementY)
+        }
+        return busy
     }
     
 }
