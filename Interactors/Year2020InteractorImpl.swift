@@ -479,17 +479,15 @@ extension Year2020InteractorImpl: YearInteractor {
         let movementX = direction > 0 && direction < 4 ? 1 : direction > 4 ? -1 : 0
         let movementY = direction > 2 && direction < 6 ? 1 : direction < 2 || direction > 6 ? -1 : 0
         var nextPosition = (position.0+movementX, position.1+movementY)
-        var busy = false
         while nextPosition.1 >= 0 && nextPosition.1 < input.count && nextPosition.0 >= 0 && nextPosition.0 < input[nextPosition.1].count {
             if input[nextPosition.1][nextPosition.0] == "#" {
-                busy = true
-                break
+                return true
             } else if input[nextPosition.1][nextPosition.0] == "L" {
-                break
+                return false
             }
             nextPosition = (nextPosition.0+movementX, nextPosition.1+movementY)
         }
-        return busy
+        return false
     }
     
 }
