@@ -446,15 +446,10 @@ extension Year2020InteractorImpl: YearInteractor {
         var seatsEnd = input
         for row in 0..<input.count {
             for col in 0..<input[row].count {
-                let busyTop = row > 0 ? input[row-1][col] == "#" ? 1 : 0 : 0
-                let busyBottom = row < input.count-1 ? input[row+1][col] == "#" ? 1 : 0 : 0
-                let busyLeft = col > 0 ? input[row][col-1] == "#" ? 1 : 0 : 0
-                let busyRight = col < input[row].count-1 ? input[row][col+1] == "#" ? 1 : 0 : 0
-                let busyTopLeft = (row > 0 && col > 0) ? input[row-1][col-1] == "#" ? 1 : 0 : 0
-                let busyBottomLeft = row < input.count-1 && col > 0 ? input[row+1][col-1] == "#" ? 1 : 0 : 0
-                let busyTopRight = row > 0 && col < input[row].count-1 ? input[row-1][col+1] == "#" ? 1 : 0 : 0
-                let busyBottomRight = row < input.count-1 && col < input[row].count-1 ? input[row+1][col+1] == "#" ? 1 : 0 : 0
-                let busyCollindant =  busyTop + busyBottom + busyLeft + busyRight + busyTopLeft + busyBottomLeft + busyTopRight + busyBottomRight
+                var busyCollindant = 0
+                for direction in 0...7 {
+                    busyCollindant += isBusySeat(input, (col, row), direction, true) ? 1 : 0
+                }
                 seatsEnd[row][col] = input[row][col] == "L" && busyCollindant == 0 ? "#" : input[row][col] == "#" && busyCollindant >= 4 ? "L" : input[row][col]
             }
         }
@@ -467,7 +462,7 @@ extension Year2020InteractorImpl: YearInteractor {
             for col in 0..<input[row].count {
                 var busyCollindant = 0
                 for direction in 0...7 {
-                    busyCollindant += isBusySeat(input, (col, row), direction) ? 1 : 0
+                    busyCollindant += isBusySeat(input, (col, row), direction, false) ? 1 : 0
                 }
                 seatsEnd[row][col] = input[row][col] == "L" && busyCollindant == 0 ? "#" : input[row][col] == "#" && busyCollindant >= 5 ? "L" : input[row][col]
             }
@@ -475,14 +470,14 @@ extension Year2020InteractorImpl: YearInteractor {
         return seatsEnd
     }
     
-    private func isBusySeat(_ input: [[String]], _ position: (Int, Int), _ direction: Int) -> Bool {
+    private func isBusySeat(_ input: [[String]], _ position: (Int, Int), _ direction: Int, _ stopAtFirst: Bool) -> Bool {
         let movementX = direction > 0 && direction < 4 ? 1 : direction > 4 ? -1 : 0
         let movementY = direction > 2 && direction < 6 ? 1 : direction < 2 || direction > 6 ? -1 : 0
         var nextPosition = (position.0+movementX, position.1+movementY)
         while nextPosition.1 >= 0 && nextPosition.1 < input.count && nextPosition.0 >= 0 && nextPosition.0 < input[nextPosition.1].count {
             if input[nextPosition.1][nextPosition.0] == "#" {
                 return true
-            } else if input[nextPosition.1][nextPosition.0] == "L" {
+            } else if input[nextPosition.1][nextPosition.0] == "L" || stopAtFirst {
                 return false
             }
             nextPosition = (nextPosition.0+movementX, nextPosition.1+movementY)
