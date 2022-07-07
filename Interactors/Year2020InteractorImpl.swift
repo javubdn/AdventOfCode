@@ -418,7 +418,7 @@ extension Year2020InteractorImpl: YearInteractor {
         var combinations: Set<String> = Set()
         var seatsString = ""
         while true {
-            seats = applyStepSeats(seats)
+            seats = applyStepSeats(seats, true)
             seatsString = seats.map { $0.joined() }.joined()
             if combinations.contains(seatsString) { break }
             combinations.insert(seatsString)
@@ -433,7 +433,7 @@ extension Year2020InteractorImpl: YearInteractor {
         var combinations: Set<String> = Set()
         var seatsString = ""
         while true {
-            seats = applyStepSeatsPlus(seats)
+            seats = applyStepSeats(seats, false)
             seatsString = seats.map { $0.joined() }.joined()
             if combinations.contains(seatsString) { break }
             combinations.insert(seatsString)
@@ -442,29 +442,15 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
-    private func applyStepSeats(_ input: [[String]]) -> [[String]] {
+    private func applyStepSeats(_ input: [[String]], _ modeEasy: Bool) -> [[String]] {
         var seatsEnd = input
         for row in 0..<input.count {
             for col in 0..<input[row].count {
                 var busyCollindant = 0
                 for direction in 0...7 {
-                    busyCollindant += isBusySeat(input, (col, row), direction, true) ? 1 : 0
+                    busyCollindant += isBusySeat(input, (col, row), direction, modeEasy) ? 1 : 0
                 }
-                seatsEnd[row][col] = input[row][col] == "L" && busyCollindant == 0 ? "#" : input[row][col] == "#" && busyCollindant >= 4 ? "L" : input[row][col]
-            }
-        }
-        return seatsEnd
-    }
-    
-    private func applyStepSeatsPlus(_ input: [[String]]) -> [[String]] {
-        var seatsEnd = input
-        for row in 0..<input.count {
-            for col in 0..<input[row].count {
-                var busyCollindant = 0
-                for direction in 0...7 {
-                    busyCollindant += isBusySeat(input, (col, row), direction, false) ? 1 : 0
-                }
-                seatsEnd[row][col] = input[row][col] == "L" && busyCollindant == 0 ? "#" : input[row][col] == "#" && busyCollindant >= 5 ? "L" : input[row][col]
+                seatsEnd[row][col] = input[row][col] == "L" && busyCollindant == 0 ? "#" : input[row][col] == "#" && ((modeEasy && busyCollindant >= 4) || (!modeEasy && busyCollindant >= 5)) ? "L" : input[row][col]
             }
         }
         return seatsEnd
