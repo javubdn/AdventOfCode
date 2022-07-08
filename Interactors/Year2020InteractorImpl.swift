@@ -533,7 +533,21 @@ extension Year2020InteractorImpl: YearInteractor {
             default: break
             }
         }
-        let result =  x + y
+        let result = x + y
+        return "\(result)"
+    }
+    
+    @objc
+    func day13question1() -> String {
+        let input = readCSV("InputYear2020Day13").components(separatedBy: .newlines)
+        let earliestTimestamp = Int(input[0])!
+        let times = input[1].components(separatedBy: ",").filter { $0 != "x" }.map { Int($0)! }
+        let minDifference = times.map { (Int(ceil(Double(earliestTimestamp)/Double($0))) * $0) % earliestTimestamp }.min()!
+        let minValue = times.first { (Int(ceil(Double(earliestTimestamp)/Double($0))) * $0) % earliestTimestamp == minDifference }!
+        let result = minValue * ((Int(ceil(Double(earliestTimestamp)/Double(minValue))) * minValue) % earliestTimestamp)
+        return "\(result)"
+    }
+    
         return "\(result)"
     }
     
