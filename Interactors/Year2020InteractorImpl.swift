@@ -548,6 +548,21 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day13question2() -> String {
+        let input = readCSV("InputYear2020Day13").components(separatedBy: .newlines)
+        let times = input[1].components(separatedBy: ",").map { $0 == "x" ? 0 : Int($0)! }
+        let values = times.enumerated().map { ($0.element, $0.offset) }.filter { $0.0 != 0 }
+        var tested = 1
+        var acumulated = values.first!.0 - values.first!.1
+        var result = acumulated
+        while tested < values.count {
+            while (result+values[tested].1) % values[tested].0 != 0 {
+                result += acumulated
+            }
+            acumulated *= values[tested].0
+            tested += 1
+        }
         return "\(result)"
     }
     
