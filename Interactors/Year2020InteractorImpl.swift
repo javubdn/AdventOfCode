@@ -566,4 +566,44 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day14question1() -> String {
+        let input = readCSV("InputYear2020Day14").components(separatedBy: .newlines).map { getBitMaskType($0) }
+        var currentMask = ""
+        var memory: [Int: Int] = [:]
+        for instruction in input {
+            switch instruction {
+            case .mask(let value):
+                currentMask = value
+            case .mem(let position, let value):
+                let newValue = applyBitMask(currentMask, to: value)
+                memory[position] = newValue
+            }
+        }
+        let result = memory.values.reduce(0, +)
+        return "\(result)"
+    }
+    
+    enum BitmaskType {
+        case mask(value: String)
+        case mem(position: Int, value: Int)
+    }
+    
+    private func getBitMaskType(_ input: String) -> BitmaskType {
+        let items = input.components(separatedBy: " = ")
+        if items[0] == "mask" {
+            return .mask(value: items[1])
+        }
+        return .mem(position: Int(String(items[0].dropFirst(4).dropLast()))!, value: Int(items[1])!)
+    }
+    
+    private func applyBitMask(_ mask: String, to value: Int) -> Int {
+        let binaryValue = String((String(repeating: "0", count: 36) + String(value, radix: 2)).suffix(36))
+        var resultString = ""
+        for index in 0..<36 {
+            resultString += mask[index] == "X" ? String(binaryValue[index]) : String(mask[index])
+        }
+        return Int(resultString, radix: 2)!
+    }
+    
 }
