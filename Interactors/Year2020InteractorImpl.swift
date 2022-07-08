@@ -478,4 +478,30 @@ extension Year2020InteractorImpl: YearInteractor {
         return false
     }
     
+    @objc
+    func day12question1() -> String {
+        let instructions = readCSV("InputYear2020Day12").components(separatedBy: .newlines)
+        var x = 0
+        var y = 0
+        var direction = Direction.east
+        for instruction in instructions {
+            let inst = instruction.first!
+            let value = Int(instruction.dropFirst())!
+            switch inst {
+            case "N": y -= value
+            case "S": y += value
+            case "E": x += value
+            case "W": x -= value
+            case "L": direction = direction.turn(value == 90 ? .left : value == 180 ? .reverse : .right)
+            case "R": direction = direction.turn(value == 90 ? .right : value == 180 ? .reverse : .left)
+            case "F":
+                x += direction == .east ? value : direction == .west ? -value : 0
+                y += direction == .south ? value : direction == .north ? -value : 0
+            default: break
+            }
+        }
+        let result =  x + y
+        return "\(result)"
+    }
+    
 }
