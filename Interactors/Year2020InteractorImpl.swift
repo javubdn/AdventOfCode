@@ -504,4 +504,37 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day12question2() -> String {
+        let instructions = readCSV("InputYear2020Day12").components(separatedBy: .newlines)
+        var x = 0
+        var y = 0
+        var wayPointX = 10
+        var wayPointY = -1
+        for instruction in instructions {
+            let inst = instruction.first!
+            let value = Int(instruction.dropFirst())!
+            switch inst {
+            case "N": wayPointY -= value
+            case "S": wayPointY += value
+            case "E": wayPointX += value
+            case "W": wayPointX -= value
+            case "L":
+                let temp = wayPointX
+                wayPointX = value == 90 ? wayPointY : value == 180 ? -wayPointX : -wayPointY
+                wayPointY = value == 90 ? -temp : value == 180 ? -wayPointY : temp
+            case "R":
+                let temp = wayPointX
+                wayPointX = value == 90 ? -wayPointY : value == 180 ? -wayPointX : wayPointY
+                wayPointY = value == 90 ? temp : value == 180 ? -wayPointY : -temp
+            case "F":
+                x += value * wayPointX
+                y += value * wayPointY
+            default: break
+            }
+        }
+        let result =  x + y
+        return "\(result)"
+    }
+    
 }
