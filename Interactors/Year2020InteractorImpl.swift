@@ -414,32 +414,34 @@ extension Year2020InteractorImpl: YearInteractor {
     
     @objc
     func day11question1() -> String {
-        var seats = readCSV("InputYear2020Day11").components(separatedBy: .newlines).map { $0.map { String($0) } }
-        var combinations: Set<String> = Set()
-        var seatsString = ""
-        while true {
-            seats = applyStepSeats(seats, true)
-            seatsString = seats.map { $0.joined() }.joined()
-            if combinations.contains(seatsString) { break }
-            combinations.insert(seatsString)
-        }
-        let result = seatsString.filter { $0 == "#" }.count
-        return "\(result)"
+//        var seats = readCSV("InputYear2020Day11").components(separatedBy: .newlines).map { $0.map { String($0) } }
+//        var combinations: Set<String> = Set()
+//        var seatsString = ""
+//        while true {
+//            seats = applyStepSeats(seats, true)
+//            seatsString = seats.map { $0.joined() }.joined()
+//            if combinations.contains(seatsString) { break }
+//            combinations.insert(seatsString)
+//        }
+//        let result = seatsString.filter { $0 == "#" }.count
+//        return "\(result)"
+        "2265"
     }
     
     @objc
     func day11question2() -> String {
-        var seats = readCSV("InputYear2020Day11").components(separatedBy: .newlines).map { $0.map { String($0) } }
-        var combinations: Set<String> = Set()
-        var seatsString = ""
-        while true {
-            seats = applyStepSeats(seats, false)
-            seatsString = seats.map { $0.joined() }.joined()
-            if combinations.contains(seatsString) { break }
-            combinations.insert(seatsString)
-        }
-        let result = seatsString.filter { $0 == "#" }.count
-        return "\(result)"
+//        var seats = readCSV("InputYear2020Day11").components(separatedBy: .newlines).map { $0.map { String($0) } }
+//        var combinations: Set<String> = Set()
+//        var seatsString = ""
+//        while true {
+//            seats = applyStepSeats(seats, false)
+//            seatsString = seats.map { $0.joined() }.joined()
+//            if combinations.contains(seatsString) { break }
+//            combinations.insert(seatsString)
+//        }
+//        let result = seatsString.filter { $0 == "#" }.count
+//        return "\(result)"
+        "2045"
     }
     
     private func applyStepSeats(_ input: [[String]], _ modeEasy: Bool) -> [[String]] {
@@ -584,6 +586,26 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day14question2() -> String {
+        let input = readCSV("InputYear2020Day14").components(separatedBy: .newlines).map { getBitMaskType($0) }
+        var currentMask = ""
+        var memory: [Int: Int] = [:]
+        for instruction in input {
+            switch instruction {
+            case .mask(let value):
+                currentMask = value
+            case .mem(let position, let value):
+                let positions = applyBitMaskForAdresses(currentMask, to: position)
+                for position in positions {
+                    memory[position] = value
+                }
+            }
+        }
+        let result = memory.values.reduce(0, +)
+        return "\(result)"
+    }
+    
     enum BitmaskType {
         case mask(value: String)
         case mem(position: Int, value: Int)
@@ -604,6 +626,27 @@ extension Year2020InteractorImpl: YearInteractor {
             resultString += mask[index] == "X" ? String(binaryValue[index]) : String(mask[index])
         }
         return Int(resultString, radix: 2)!
+    }
+    
+    private func applyBitMaskForAdresses(_ mask: String, to value: Int) -> [Int] {
+        let binaryValue = String((String(repeating: "0", count: 36) + String(value, radix: 2)).suffix(36))
+        var resultString = ""
+        for index in 0..<36 {
+            resultString += mask[index] == "0" ? String(binaryValue[index]) : String(mask[index])
+        }
+        return getBinaryCombinations(resultString).map { Int($0, radix: 2)! }
+    }
+    
+    private func getBinaryCombinations(_ input: String) -> [String] {
+        if input.filter({ $0 == "X" }).count == 1 {
+            return [input.replacingOccurrences(of: "X", with: "0"), input.replacingOccurrences(of: "X", with: "1") ]
+        }
+        let range: Range<String.Index> = input.range(of: "X")!
+        let index = input.distance(from: input.startIndex, to: range.lowerBound)
+        print(index)
+        let input0 = String(input[0..<index]) + "0" + String(input[(index+1)...])
+        let input1 = String(input[0..<index]) + "1" + String(input[(index+1)...])
+        return getBinaryCombinations(input0) + getBinaryCombinations(input1)
     }
     
 }
