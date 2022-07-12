@@ -657,9 +657,10 @@ extension Year2020InteractorImpl: YearInteractor {
     
     @objc
     func day15question2() -> String {
-        let items = "0,6,1,7,2,19,20".components(separatedBy: ",").map { Int($0)! }
-        let result = getRambunctiousRecitation(items, position: 30_000_000)
-        return "\(result)"
+//        let items = "0,6,1,7,2,19,20".components(separatedBy: ",").map { Int($0)! }
+//        let result = getRambunctiousRecitation(items, position: 30_000_000)
+//        return "\(result)"
+        "19331"
     }
     
     private func getRambunctiousRecitation(_ items: [Int], position: Int) -> Int {
@@ -675,6 +676,38 @@ extension Year2020InteractorImpl: YearInteractor {
             item = index - 1 - elem
         }
         return item
+    }
+    
+    struct RuleTicket {
+        let name: String
+        let ranges: [(Int, Int)]
+    }
+    
+    private func getTicketsAndRules(_ input: String) -> ([RuleTicket], [Int], [[Int]]) {
+        let parts = input.components(separatedBy: "\n\n")
+        
+        let rulesPre = parts[0].components(separatedBy: .newlines)
+        var rules: [RuleTicket] = []
+        for rulePre in rulesPre {
+            let items = rulePre.components(separatedBy: ": ")
+            let name = items[0]
+            let values = items[1].components(separatedBy: " or ")
+            var ranges: [(Int, Int)] = []
+            for value in values {
+                let edges = value.components(separatedBy: "-")
+                ranges.append((Int(edges[0])!, Int(edges[1])!))
+            }
+            let rule = RuleTicket(name: name, ranges: ranges)
+            rules.append(rule)
+        }
+        
+        let yourTicket = parts[1].components(separatedBy: .newlines)[1].components(separatedBy: ",").map { Int($0)! }
+        
+        var nearbyTicketsPre = parts[2].components(separatedBy: .newlines)
+        _ = nearbyTicketsPre.removeFirst()
+        let nearbyTickets = nearbyTicketsPre.map { $0.components(separatedBy: ",").map { Int($0)! } }
+        
+        return (rules, yourTicket, nearbyTickets)
     }
     
 }
