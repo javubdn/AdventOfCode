@@ -670,13 +670,9 @@ extension Year2020InteractorImpl: YearInteractor {
         var item = items.last!
         positions[item] = nil
         for index in items.count..<position {
-            if let elem = positions[item] {
-                positions[item] = index - 1
-                item = index - 1 - elem
-            } else {
-                positions[item] = index - 1
-                item = 0
-            }
+            let elem = positions[item] ?? index - 1
+            positions[item] = index - 1
+            item = index - 1 - elem
         }
         return item
     }
