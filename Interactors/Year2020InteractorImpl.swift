@@ -643,7 +643,6 @@ extension Year2020InteractorImpl: YearInteractor {
         }
         let range: Range<String.Index> = input.range(of: "X")!
         let index = input.distance(from: input.startIndex, to: range.lowerBound)
-        print(index)
         let input0 = String(input[0..<index]) + "0" + String(input[(index+1)...])
         let input1 = String(input[0..<index]) + "1" + String(input[(index+1)...])
         return getBinaryCombinations(input0) + getBinaryCombinations(input1)
