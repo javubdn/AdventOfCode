@@ -661,4 +661,25 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(items.last!)"
     }
     
+    @objc
+    func day15question2() -> String {
+        let items = "0,6,1,7,2,19,20".components(separatedBy: ",").map { Int($0)! }
+        var positions: [Int: Int] = [:]
+        for item in items.enumerated() {
+            positions[item.element] = item.offset
+        }
+        var item = items.last!
+        positions[item] = nil
+        for index in items.count..<30_000_000 {
+            if let elem = positions[item] {
+                positions[item] = index - 1
+                item = index - 1 - elem
+            } else {
+                positions[item] = index - 1
+                item = 0
+            }
+        }
+        return "\(item)"
+    }
+    
 }
