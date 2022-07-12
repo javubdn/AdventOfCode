@@ -650,27 +650,26 @@ extension Year2020InteractorImpl: YearInteractor {
     
     @objc
     func day15question1() -> String {
-        var items = "0,6,1,7,2,19,20".components(separatedBy: ",").map { Int($0)! }
-        for index in items.count..<2020 {
-            var secondIndex = index-2
-            while secondIndex >= 0 && items[secondIndex] != items[index-1] {
-                secondIndex -= 1
-            }
-            items.append(secondIndex == -1 ? 0 : index-1-secondIndex)
-        }
-        return "\(items.last!)"
+        let items = "0,6,1,7,2,19,20".components(separatedBy: ",").map { Int($0)! }
+        let result = getRambunctiousRecitation(items, position: 2020)
+        return "\(result)"
     }
     
     @objc
     func day15question2() -> String {
         let items = "0,6,1,7,2,19,20".components(separatedBy: ",").map { Int($0)! }
+        let result = getRambunctiousRecitation(items, position: 30_000_000)
+        return "\(result)"
+    }
+    
+    private func getRambunctiousRecitation(_ items: [Int], position: Int) -> Int {
         var positions: [Int: Int] = [:]
         for item in items.enumerated() {
             positions[item.element] = item.offset
         }
         var item = items.last!
         positions[item] = nil
-        for index in items.count..<30_000_000 {
+        for index in items.count..<position {
             if let elem = positions[item] {
                 positions[item] = index - 1
                 item = index - 1 - elem
@@ -679,7 +678,7 @@ extension Year2020InteractorImpl: YearInteractor {
                 item = 0
             }
         }
-        return "\(item)"
+        return item
     }
     
 }
