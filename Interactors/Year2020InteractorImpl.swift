@@ -648,4 +648,17 @@ extension Year2020InteractorImpl: YearInteractor {
         return getBinaryCombinations(input0) + getBinaryCombinations(input1)
     }
     
+    @objc
+    func day15question1() -> String {
+        var items = "0,6,1,7,2,19,20".components(separatedBy: ",").map { Int($0)! }
+        for index in items.count..<2020 {
+            var secondIndex = index-2
+            while secondIndex >= 0 && items[secondIndex] != items[index-1] {
+                secondIndex -= 1
+            }
+            items.append(secondIndex == -1 ? 0 : index-1-secondIndex)
+        }
+        return "\(items.last!)"
+    }
+    
 }
