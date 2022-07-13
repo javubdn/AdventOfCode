@@ -710,4 +710,13 @@ extension Year2020InteractorImpl: YearInteractor {
         return (rules, yourTicket, nearbyTickets)
     }
     
+    private func meetsRuleTicket(_ item: Int, _ rule: RuleTicket) -> Bool {
+        for range in rule.ranges {
+            if item >= range.0 && item <= range.1 {
+                return true
+            }
+        }
+        return false
+    }
+    
 }
