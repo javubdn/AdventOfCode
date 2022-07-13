@@ -719,4 +719,20 @@ extension Year2020InteractorImpl: YearInteractor {
         return false
     }
     
+    private func getRulesId(ruleCandidates: [String: [Int]]) -> [(String, Int)] {
+        var ruleCandidates = ruleCandidates
+        var rulesId: [(String, Int)] = []
+        
+        while !ruleCandidates.isEmpty {
+            guard let rule = ruleCandidates.first(where: { $0.value.count == 1 }) else { break }
+            rulesId.append((rule.key, rule.value.first!))
+            ruleCandidates[rule.key] = nil
+            for candidate in ruleCandidates {
+                ruleCandidates[candidate.key] = ruleCandidates[candidate.key]!.filter { $0 != rule.value.first! }
+            }
+        }
+        
+        return rulesId
+    }
+    
 }
