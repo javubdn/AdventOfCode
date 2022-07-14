@@ -682,20 +682,7 @@ extension Year2020InteractorImpl: YearInteractor {
     func day16question1() -> String {
         let input = readCSV("InputYear2020Day16")
         let (rules, _, nearby) = getTicketsAndRules(input)
-        var result = 0
-        for items in nearby {
-            for item in items {
-                var inRange = false
-            rulesLoop:
-                for rule in rules {
-                    if meetsRuleTicket(item, rule) {
-                        inRange = true
-                        break rulesLoop
-                    }
-                }
-                result += inRange ? 0 : item
-            }
-        }
+        let result = nearby.map { $0.filter { !meetsAnyRule($0, rules) }.reduce(0, +) }.reduce(0, +)
         return "\(result)"
     }
     
@@ -765,6 +752,10 @@ extension Year2020InteractorImpl: YearInteractor {
         let nearbyTickets = nearbyTicketsPre.map { $0.components(separatedBy: ",").map { Int($0)! } }
         
         return (rules, yourTicket, nearbyTickets)
+    }
+    
+    private func meetsAnyRule(_ item: Int, _ rules: [RuleTicket]) -> Bool {
+        rules.first { meetsRuleTicket(item, $0) } != nil
     }
     
     private func meetsRuleTicket(_ item: Int, _ rule: RuleTicket) -> Bool {
