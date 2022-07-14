@@ -678,6 +678,27 @@ extension Year2020InteractorImpl: YearInteractor {
         return item
     }
     
+    @objc
+    func day16question1() -> String {
+        let input = readCSV("InputYear2020Day16")
+        let (rules, _, nearby) = getTicketsAndRules(input)
+        var result = 0
+        for items in nearby {
+            for item in items {
+                var inRange = false
+            rulesLoop:
+                for rule in rules {
+                    if meetsRuleTicket(item, rule) {
+                        inRange = true
+                        break rulesLoop
+                    }
+                }
+                result += inRange ? 0 : item
+            }
+        }
+        return "\(result)"
+    }
+    
     struct RuleTicket {
         let name: String
         let ranges: [(Int, Int)]
