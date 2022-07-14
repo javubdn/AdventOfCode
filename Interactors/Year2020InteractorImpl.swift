@@ -699,6 +699,42 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day16question2() -> String {
+        let input = readCSV("InputYear2020Day16")
+        var (rules, your, nearby) = getTicketsAndRules(input)
+        
+        nearby = nearby.filter { items in
+            for item in items {
+                var inRange = false
+            rulesLoop:
+                for rule in rules {
+                    if meetsRuleTicket(item, rule) {
+                        inRange = true
+                        break rulesLoop
+                    }
+                }
+                if !inRange { return false }
+            }
+            return true
+        }
+        
+        var ruleCandidates: [String: [Int]] = [:]
+        for idRule in 0..<rules.count {
+            var candidates: [Int] = []
+            for position in 0..<nearby[0].count {
+                let meetsItems = nearby.filter { meetsRuleTicket($0[position], rules[idRule]) }.count
+                if meetsItems == nearby.count {
+                    candidates.append(position)
+                }
+            }
+            ruleCandidates[rules[idRule].name] = candidates
+        }
+        let ruleIds = getRulesId(ruleCandidates: ruleCandidates)
+        let result = ruleIds.filter { $0.0.starts(with: "departure") }.map { your[$0.1] }.reduce(1, *)
+        return "\(result)"
+    }
+    
     struct RuleTicket {
         let name: String
         let ranges: [(Int, Int)]
