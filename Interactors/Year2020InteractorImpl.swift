@@ -768,11 +768,6 @@ extension Year2020InteractorImpl: YearInteractor {
     @objc
     func day17question1() -> String {
         let input = readCSV("InputYear2020Day17").components(separatedBy: .newlines).map { Array($0).map { String($0) } }
-//        let input = """
-//.#.
-//..#
-//###
-//""".components(separatedBy: .newlines).map { Array($0).map { String($0) } }
         var levels: [[[String]]] = [input]
         
         for _ in 1...6 {
@@ -815,6 +810,66 @@ extension Year2020InteractorImpl: YearInteractor {
             
         }
         let result = levels.map { $0.map { $0.filter { $0 == "#" }.count }.reduce(0, +) }.reduce(0, +)
+        return "\(result)"
+    }
+    
+    @objc
+    func day17question2() -> String {
+        let input = readCSV("InputYear2020Day17").components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+        var levels: [[[[String]]]] = [[input]]
+        
+        for _ in 1...6 {
+
+            levels = levels.map { $0.map { $0.map { ["."]+$0+["."] } } }
+            levels = levels.map { $0.map { [[String](repeating: ".", count: levels[0][0].count+2)] + $0 + [[String](repeating: ".", count: levels[0][0].count+2)] } }
+
+            for levelIndex in 0..<levels.count {
+                levels[levelIndex].insert([[String]](repeating: [String](repeating: ".", count: levels[0][0].count), count: levels[0][0].count), at: 0)
+                levels[levelIndex].append([[String]](repeating: [String](repeating: ".", count: levels[0][0].count), count: levels[0][0].count))
+            }
+            
+            levels.insert([[[String]]](repeating: [[String]](repeating: [String](repeating: ".", count: levels[0][0].count), count: levels[0][0].count), count: levels[0].count),
+                          at: 0)
+            levels.append([[[String]]](repeating: [[String]](repeating: [String](repeating: ".", count: levels[0][0].count), count: levels[0][0].count), count: levels[0].count))
+
+            var levels2 = levels
+
+            for w in 0..<levels.count {
+                for z in 0..<levels[w].count {
+                    for y in 0..<levels[w][z].count {
+                        for x in 0..<levels[w][z][y].count {
+                            var occ = 0
+                            for incW in -1...1 {
+                                for incZ in -1...1 {
+                                    for incY in -1...1 {
+                                        for incX in -1...1 {
+                                            if w+incW >= 0 && w+incW < levels.count
+                                                && z+incZ >= 0 && z+incZ < levels[w].count
+                                                && y+incY >= 0 && y+incY < levels[w][z].count
+                                                && x+incX >= 0 && x+incX < levels[w][z][y].count
+                                                && (incW != 0 || incX != 0 || incY != 0 || incZ != 0) {
+                                                occ += levels[w+incW][z+incZ][y+incY][x+incX] == "#" ? 1 : 0
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            if levels[w][z][y][x] == "#" {
+                                levels2[w][z][y][x] = occ == 2 || occ == 3 ? "#" : "."
+
+                            } else {
+                                levels2[w][z][y][x] = occ == 3 ? "#" : "."
+                            }
+                        }
+                    }
+                }
+            }
+            levels = levels2
+        }
+        var result = 0
+        levels.forEach { level in
+            result +=  level.map { $0.map { $0.filter { $0 == "#" }.count }.reduce(0, +) }.reduce(0, +)
+        }
         return "\(result)"
     }
     
