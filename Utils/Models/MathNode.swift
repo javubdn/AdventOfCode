@@ -44,3 +44,42 @@ class MathNode {
     
 }
 
+enum MathOp {
+    case sum
+    case mul
+}
+
+class MathOperation: MathNode {
+    
+    let operation: MathOp
+    let firstOperand: MathNode
+    let secondOperand: MathNode
+    
+    init(operation: MathOp, firstOperand: MathNode, secondOperand: MathNode) {
+        self.operation = operation
+        self.firstOperand = firstOperand
+        self.secondOperand = secondOperand
+    }
+    
+    override func calculate() -> Int {
+        let firstValue = firstOperand.calculate()
+        let secondValue = secondOperand.calculate()
+        let result = operation == .sum ? firstValue + secondValue : firstValue * secondValue
+        return result
+    }
+    
+}
+
+class MathValue: MathNode {
+    
+    let value: Int
+    
+    init(value: Int) {
+        self.value = value
+    }
+    
+    override func calculate() -> Int {
+        value
+    }
+    
+}
