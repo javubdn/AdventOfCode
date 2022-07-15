@@ -19,11 +19,7 @@ class MathNode {
         if input.last! == ")" {
             var parentesisCount = 1
             while parentesisCount > 0 {
-                if input[index] == ")" {
-                    parentesisCount += 1
-                } else if input[index] == "(" {
-                    parentesisCount -= 1
-                }
+                parentesisCount += input[index] == ")" ? 1 : input[index] == "(" ? -1 : 0
                 index -= 1
             }
             if index == -1 {
@@ -43,7 +39,7 @@ class MathNode {
             return MathValue(value: Int(String(entry[0]))!)
         }
         let input = entry.replacingOccurrences(of: " ", with: "")
-        var operands: [String] = []
+        var operandNodes: [MathNode] = []
         var operators: [MathOp] = []
         var index = 0
         
@@ -52,14 +48,10 @@ class MathNode {
                 var parentesisCount = 1
                 var index2 = index+1
                 while parentesisCount > 0 {
-                    if input[index2] == ")" {
-                        parentesisCount -= 1
-                    } else if input[index2] == "(" {
-                        parentesisCount += 1
-                    }
+                    parentesisCount += input[index2] == ")" ? -1 : input[index2] == "(" ? 1 : 0
                     index2 += 1
                 }
-                operands.append(String(input[index+1..<index2-1]))
+                operandNodes.append(MathNode.createAdvance(from: String(input[index+1..<index2-1])))
                 index = index2
                 continue
             } else if input[index] == "+" {
@@ -67,13 +59,10 @@ class MathNode {
             } else if input[index] == "*" {
                 operators.append(.mul)
             } else {
-                operands.append(String(input[index]))
+                operandNodes.append(MathNode.createAdvance(from: String(input[index])))
             }
             index += 1
         }
-        var operandNodes = operands.map { MathNode.createAdvance(from: $0) }
-        
-        if operandNodes.count == 1 { return operandNodes.first! }
         
         var indexOperator = 0
         while indexOperator < operators.count {
