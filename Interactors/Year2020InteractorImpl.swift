@@ -882,4 +882,11 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day18question2() -> String {
+        let input = readCSV("InputYear2020Day18").components(separatedBy: .newlines).map { MathNode.createAdvance(from: $0) }
+        let result = input.map { $0.calculate() }.reduce(0, +)
+        return "\(result)"
+    }
+    
 }
