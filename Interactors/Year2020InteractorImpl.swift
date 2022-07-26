@@ -889,4 +889,25 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    enum MessageRuleSon {
+        case final(value: String)
+        case sons(items: [[Int]])
+    }
+    
+    struct MessageRule {
+        let id: Int
+        let sons: MessageRuleSon
+    }
+    
+    private func getMessageRule(_ input: String) -> MessageRule {
+        let main = input.components(separatedBy: ": ")
+        let id = Int(main[0])!
+        guard !main[1].contains("\"") else {
+            let value = String(main[1][1])
+            return MessageRule(id: id, sons: .final(value: value))
+        }
+        let sons = main[1].components(separatedBy: " | ").map { $0.components(separatedBy: .whitespaces).map { Int($0)! } }
+        return MessageRule(id: id, sons: .sons(items: sons))
+    }
+    
 }
