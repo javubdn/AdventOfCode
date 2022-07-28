@@ -920,6 +920,19 @@ extension Year2020InteractorImpl: YearInteractor {
         return MessageRule(id: id, sons: .sons(items: sons))
     }
     
+    private func meetsMessageRule(_ message: String, _ idRule: Int, rules: [MessageRule]) -> Bool {
+        let rule = rules.first { $0.id == idRule }
+        guard let rule = rule else { return false }
+        switch rule.sons {
+        case .final(let value):
+            return message == value
+        case .sons(let items):
+            items
+            break
+        }
+        return false
+    }
+    
     private func getAllCombinations(_ idRule: Int, rules: [MessageRule] ) -> [String] {
         let rule = rules.first { $0.id == idRule }
         guard let rule = rule else { return [] }
