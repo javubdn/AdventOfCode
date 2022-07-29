@@ -921,6 +921,22 @@ extension Year2020InteractorImpl: YearInteractor {
         init(_ id: Int) { self.id = id }
     }
     
+    private func parseRules(_ input: [String]) -> [Int: [[Rule]]] {
+        var rules: [Int: [[Rule]]] = [:]
+        input.forEach { line in
+            let elements = line.components(separatedBy: ": ")
+            let (id, rhs) = (Int(elements[0])!, elements[1])
+            let sides = rhs.components(separatedBy: " | ")
+            let values = sides.map { side in
+                side.components(separatedBy: .whitespaces).map { part -> Rule in
+                    part.starts(with: "\"") ? Atom(String(part[1])) : RuleReference(Int(part)!)
+                }
+            }
+            rules[id] = values
+        }
+        return rules
+    }
+    
     private func getMessageRule(_ input: String) -> MessageRule {
         let main = input.components(separatedBy: ": ")
         let id = Int(main[0])!
