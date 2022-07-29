@@ -917,16 +917,6 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
-    enum MessageRuleSon {
-        case final(value: String)
-        case sons(items: [[Int]])
-    }
-    
-    struct MessageRule {
-        let id: Int
-        let sons: MessageRuleSon
-    }
-    
     class Atom: Rule {
         let symbol: String
         init(_ symbol: String) { self.symbol = symbol }
@@ -953,29 +943,6 @@ extension Year2020InteractorImpl: YearInteractor {
         return rules
     }
     
-    private func getMessageRule(_ input: String) -> MessageRule {
-        let main = input.components(separatedBy: ": ")
-        let id = Int(main[0])!
-        guard !main[1].contains("\"") else {
-            let value = String(main[1][1])
-            return MessageRule(id: id, sons: .final(value: value))
-        }
-        let sons = main[1].components(separatedBy: " | ").map { $0.components(separatedBy: .whitespaces).map { Int($0)! } }
-        return MessageRule(id: id, sons: .sons(items: sons))
-    }
-    
-    private func meetsMessageRule(_ message: String, _ idRule: Int, rules: [MessageRule]) -> Bool {
-        let rule = rules.first { $0.id == idRule }
-        guard let rule = rule else { return false }
-        switch rule.sons {
-        case .final(let value):
-            return message == value
-        case .sons(let items):
-            items
-            break
-        }
-        return false
-    }
     private func ruleMatch(message: String, rules: [Int: [[Rule]]], ruleId: Int, position: Int = 0) -> [Int] {
         guard let rule = rules[ruleId] else { return [] }
         return rule.map { listOfRules -> [Int] in
@@ -996,25 +963,6 @@ extension Year2020InteractorImpl: YearInteractor {
             }
             return positions
         }.flatMap { $0 }
-    }
-    
-    private func getAllCombinations(_ idRule: Int, rules: [MessageRule] ) -> [String] {
-        let rule = rules.first { $0.id == idRule }
-        guard let rule = rule else { return [] }
-        switch rule.sons {
-        case .final(let value):
-            return [value]
-        case .sons(let items):
-            var combinations: [String] = []
-            for item in items {
-                if item.count == 1 {
-                    combinations.append(contentsOf: getAllCombinations(item[0], rules: rules))
-                } else {
-                    combinations.append(contentsOf: Utils.cartesianProduct(lhs: getAllCombinations(item[0], rules: rules), rhs: getAllCombinations(item[1], rules: rules)).map { $0.0+$0.1 })
-                }
-            }
-            return combinations
-        }
     }
     
 }
