@@ -894,10 +894,26 @@ extension Year2020InteractorImpl: YearInteractor {
     @objc
     func day19question1() -> String {
         let input = readCSV("InputYear2020Day19").components(separatedBy: "\n\n")
-        let rules = input[0].components(separatedBy: .newlines).map { getMessageRule($0) }
+        let rules = parseRules(input[0].components(separatedBy: .newlines))
         let messages = input[1].components(separatedBy: .newlines)
-        let combinations = getAllCombinations(0, rules: rules)
-        let result = messages.filter { combinations.contains($0) }.count
+        let result = messages.map { message in
+            let rulesA = ruleMatch(message: message, rules: rules, ruleId: 0)
+            return rulesA.count > 0 ? rulesA[0] == message.count : false
+        }.filter { $0 }.count
+        return "\(result)"
+    }
+    
+    @objc
+    func day19question2() -> String {
+        let input = readCSV("InputYear2020Day19").components(separatedBy: "\n\n")
+        var rules = parseRules(input[0].components(separatedBy: .newlines))
+        rules[8] = [[RuleReference(42)], [RuleReference(42), RuleReference(8)]]
+        rules[11] = [[RuleReference(42), RuleReference(31)], [RuleReference(42), RuleReference(11), RuleReference(31)]]
+        let messages = input[1].components(separatedBy: .newlines)
+        let result = messages.map { message in
+            let rulesA = ruleMatch(message: message, rules: rules, ruleId: 0)
+            return rulesA.count > 0 ? rulesA[0] == message.count : false
+        }.filter { $0 }.count
         return "\(result)"
     }
     
