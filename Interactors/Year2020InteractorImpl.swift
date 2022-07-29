@@ -911,6 +911,16 @@ extension Year2020InteractorImpl: YearInteractor {
         let sons: MessageRuleSon
     }
     
+    class Atom: Rule {
+        let symbol: String
+        init(_ symbol: String) { self.symbol = symbol }
+    }
+    
+    class RuleReference: Rule {
+        let id: Int
+        init(_ id: Int) { self.id = id }
+    }
+    
     private func getMessageRule(_ input: String) -> MessageRule {
         let main = input.components(separatedBy: ": ")
         let id = Int(main[0])!
