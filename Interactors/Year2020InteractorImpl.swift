@@ -7,6 +7,8 @@
 
 import Foundation
 
+protocol Rule { }
+
 class Year2020InteractorImpl: NSObject {
 }
 
