@@ -960,6 +960,27 @@ extension Year2020InteractorImpl: YearInteractor {
         }
         return false
     }
+    private func ruleMatch(message: String, rules: [Int: [[Rule]]], ruleId: Int, position: Int = 0) -> [Int] {
+        guard let rule = rules[ruleId] else { return [] }
+        return rule.map { listOfRules -> [Int] in
+            var positions = [position]
+            listOfRules.forEach { rule in
+                positions = positions
+                    .map { idx -> [Int]? in
+                        switch rule {
+                        case let atom as Atom:
+                            return (idx < message.count) && (String(message[idx]) == atom.symbol) ? [idx+1] : nil
+                        case let reference as RuleReference:
+                            return ruleMatch(message: message, rules: rules, ruleId: reference.id, position: idx)
+                        default: return nil
+                        }
+                    }
+                    .compactMap { $0 }
+                    .flatMap { $0 }
+            }
+            return positions
+        }.flatMap { $0 }
+    }
     
     private func getAllCombinations(_ idRule: Int, rules: [MessageRule] ) -> [String] {
         let rule = rules.first { $0.id == idRule }
