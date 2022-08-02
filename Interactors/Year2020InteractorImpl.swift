@@ -965,4 +965,22 @@ extension Year2020InteractorImpl: YearInteractor {
         }.flatMap { $0 }
     }
     
+    @objc
+    func day20question1() -> String {
+        let input = readCSV("InputYear2020Day20").components(separatedBy: "\n\n")
+        let tiles = input.map { Tile(from: $0) }
+        var result = 1
+        tiles.forEach { tile in
+            var sides = 0
+            for t in tiles {
+                if t.id != tile.id {
+                    sides += tile.borderCoincidence(t.piece) ? 1 : 0
+                }
+                if sides == 4 { break }
+            }
+            if sides == 2 { result *= tile.id }
+        }
+        return "\(result)"
+    }
+    
 }
