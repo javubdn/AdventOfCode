@@ -16,6 +16,10 @@ class Tile {
     
     let id: Int
     let piece: [[ValueTile]]
+    var pieceUp: Int?
+    var pieceDown: Int?
+    var pieceLeft: Int?
+    var pieceRight: Int?
     
     init(id: Int, piece: [[ValueTile]]) {
         self.id = id
@@ -59,6 +63,38 @@ class Tile {
     
     func borderRightMatches(_ first: [[ValueTile]], _ second: [[ValueTile]]) -> Bool {
         first.last == second.first
+    }
+    
+    func tryAddPiece(_ tile: Tile) {
+        
+        var numberRotationsFirst = 0
+        var numberRotationsSecond = 0
+        
+        while numberRotationsSecond < 4 {
+            var newPiece = piece
+            while numberRotationsFirst < 4 {
+                if borderRightMatches(newPiece, tile.piece) || borderRightMatches(flip(newPiece), tile.piece) {
+                    switch numberRotationsFirst {
+                    case 0: pieceDown = tile.id
+                    case 1: pieceLeft = tile.id
+                    case 2: pieceUp = tile.id
+                    default: pieceRight = tile.id
+                    }
+                    switch numberRotationsSecond {
+                    case 0: pieceUp = tile.id
+                    case 1: pieceRight = tile.id
+                    case 2: pieceDown = tile.id
+                    default: pieceLeft = tile.id
+                    }
+                    return
+                }
+                newPiece = rotate(newPiece)
+                numberRotationsFirst += 1
+            }
+            numberRotationsFirst = 0
+            numberRotationsSecond += 1
+        }
+        
     }
     
 }
