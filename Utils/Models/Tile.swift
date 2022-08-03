@@ -14,6 +14,13 @@ class Tile {
         case white
     }
     
+    enum Orientation: CaseIterable {
+        case north
+        case east
+        case south
+        case west
+    }
+    
     let id: Int
     let piece: [[ValueTile]]
     var pieceUp: Int?
