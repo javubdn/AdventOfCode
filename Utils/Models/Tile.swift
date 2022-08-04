@@ -100,8 +100,31 @@ class Tile {
             }
             numberRotationsFirst = 0
             numberRotationsSecond += 1
+    func sideFacing(_ dir: Orientation) -> String {
+        Tile.sideFacing(piece, dir)
+    }
+    
+    static func sideFacing(_ piece: [[String]], _ dir: Orientation) -> String {
+        switch dir {
+        case .north: return piece.first!.joined()
+        case .south: return piece.last!.joined()
+        case .west: return piece.map { $0.first! }.joined()
+        case .east: return piece.map { $0.last! }.joined()
         }
-        
+    }
+    
+    func isSideShared(_ dir: Orientation, tiles: [Tile]) -> Bool {
+        tiles.filter { $0.id != id }.filter { $0.hasSide(sideFacing(dir)) }.count > 0
+    }
+    
+    func findAndOrientNeighbor(mySide: Orientation, theirSide: Orientation, tiles: [Tile]) -> Tile {
+        let mySideValue = sideFacing(mySide)
+        let correctTile = tiles.filter { $0.id != id }.first { $0.hasSide(mySideValue) }!
+        return correctTile.orientToSide(side: mySideValue, direction: theirSide)
+    }
+    
+    private func orientToSide(side: String, direction: Orientation) -> Tile {
+        combinations().first { $0.sideFacing(direction) == side }!
     }
     
 }
