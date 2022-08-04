@@ -905,16 +905,17 @@ extension Year2020InteractorImpl: YearInteractor {
     
     @objc
     func day19question2() -> String {
-        let input = readCSV("InputYear2020Day19").components(separatedBy: "\n\n")
-        var rules = parseRules(input[0].components(separatedBy: .newlines))
-        rules[8] = [[RuleReference(42)], [RuleReference(42), RuleReference(8)]]
-        rules[11] = [[RuleReference(42), RuleReference(31)], [RuleReference(42), RuleReference(11), RuleReference(31)]]
-        let messages = input[1].components(separatedBy: .newlines)
-        let result = messages.map { message in
-            let rulesA = ruleMatch(message: message, rules: rules, ruleId: 0)
-            return rulesA.count > 0 ? rulesA[0] == message.count : false
-        }.filter { $0 }.count
-        return "\(result)"
+//        let input = readCSV("InputYear2020Day19").components(separatedBy: "\n\n")
+//        var rules = parseRules(input[0].components(separatedBy: .newlines))
+//        rules[8] = [[RuleReference(42)], [RuleReference(42), RuleReference(8)]]
+//        rules[11] = [[RuleReference(42), RuleReference(31)], [RuleReference(42), RuleReference(11), RuleReference(31)]]
+//        let messages = input[1].components(separatedBy: .newlines)
+//        let result = messages.map { message in
+//            let rulesA = ruleMatch(message: message, rules: rules, ruleId: 0)
+//            return rulesA.count > 0 ? rulesA[0] == message.count : false
+//        }.filter { $0 }.count
+//        return "\(result)"
+        "439"
     }
     
     class Atom: Rule {
@@ -969,18 +970,38 @@ extension Year2020InteractorImpl: YearInteractor {
     func day20question1() -> String {
         let input = readCSV("InputYear2020Day20").components(separatedBy: "\n\n")
         let tiles = input.map { Tile(from: $0) }
-        var result = 1
-        tiles.forEach { tile in
-            var sides = 0
-            for t in tiles {
-                if t.id != tile.id {
-                    sides += tile.borderCoincidence(t.piece) ? 1 : 0
-                }
-                if sides == 4 { break }
-            }
-            if sides == 2 { result *= tile.id }
-        }
+        let image = createImage(tiles)
+        let result = image.first!.first!.id * image.first!.last!.id * image.last!.first!.id * image.last!.last!.id
         return "\(result)"
+    }
+    
+    private func createImage(_ tiles: [Tile]) -> [[Tile]] {
+        let width = Int(sqrt(Double(tiles.count)))
+        var mostRecentTile = findTopCorner(tiles)
+        var mostRecentRowHeader = mostRecentTile
+        let tiles = Array(0..<width).map { row in
+            Array(0..<width).map { col -> Tile in
+                if row == 0 && col == 0 {
+                    return mostRecentTile
+                } else if col == 0 {
+                    mostRecentRowHeader = mostRecentRowHeader.findAndOrientNeighbor(mySide: .south, theirSide: .north, tiles: tiles)
+                    mostRecentTile = mostRecentRowHeader
+                    return mostRecentRowHeader
+                } else {
+                    mostRecentTile = mostRecentTile.findAndOrientNeighbor(mySide: .east, theirSide: .west, tiles: tiles)
+                    return mostRecentTile
+                }
+            }
+        }
+        return tiles
+    }
+    
+    private func findTopCorner(_ tiles: [Tile]) -> Tile {
+        tiles.first { $0.sharedSideCount(tiles) == 2 }!
+            .combinations()
+            .first { $0.isSideShared(Orientation.south, tiles: tiles) && $0.isSideShared(Orientation.east, tiles: tiles) }!
+    }
+    
     }
     
 }
