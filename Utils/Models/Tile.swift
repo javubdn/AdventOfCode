@@ -7,18 +7,18 @@
 
 import Foundation
 
+enum Orientation: CaseIterable {
+    case north
+    case east
+    case south
+    case west
+}
+
 class Tile {
 
     enum ValueTile {
         case black
         case white
-    }
-    
-    enum Orientation: CaseIterable {
-        case north
-        case east
-        case south
-        case west
     }
     
     let id: Int
