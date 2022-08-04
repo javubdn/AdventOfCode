@@ -27,10 +27,14 @@ class Tile {
     var pieceDown: Int?
     var pieceLeft: Int?
     var pieceRight: Int?
+    private var sides: Set<String>
+    private var sidesReversed: Set<String>
     
     init(id: Int, piece: [[ValueTile]]) {
         self.id = id
         self.piece = piece
+        self.sides = Set(Orientation.allCases.map { Tile.sideFacing(piece, $0) })
+        self.sidesReversed = Set(Array(sides).map { String($0.reversed()) })
     }
     
     convenience init(from input: String) {
