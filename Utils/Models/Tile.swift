@@ -71,10 +71,16 @@ class Tile {
         combinations(piece).first { tile in
             combinations(other).first { borderRightMatches($0, tile) } != nil
         } != nil
+    func sharedSideCount(_ tiles: [Tile]) -> Int {
+        sides.filter { side in
+            tiles.filter { $0.id != id }.filter { $0.hasSide(side) }.count > 0
+        }.count
     }
     
     func borderRightMatches(_ first: [[ValueTile]], _ second: [[ValueTile]]) -> Bool {
         first.last == second.first
+    func hasSide(_ side: String) -> Bool {
+        sides.contains(side) || sidesReversed.contains(side)
     }
     
     func tryAddPiece(_ tile: Tile) {
