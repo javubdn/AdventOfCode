@@ -22,7 +22,7 @@ class Tile {
     }
     
     let id: Int
-    let piece: [[ValueTile]]
+    let piece: [[String]]
     var pieceUp: Int?
     var pieceDown: Int?
     var pieceLeft: Int?
@@ -30,7 +30,7 @@ class Tile {
     private var sides: Set<String>
     private var sidesReversed: Set<String>
     
-    init(id: Int, piece: [[ValueTile]]) {
+    init(id: Int, piece: [[String]]) {
         self.id = id
         self.piece = piece
         self.sides = Set(Orientation.allCases.map { Tile.sideFacing(piece, $0) })
@@ -41,7 +41,7 @@ class Tile {
         var lines = input.components(separatedBy: .newlines)
         let firstLine = lines.removeFirst()
         let id = Int(firstLine.components(separatedBy: .whitespaces)[1])!
-        let piece = lines.map { $0.map { $0 == "#" ? ValueTile.black : ValueTile.white } }
+        let piece = lines.map { $0.map { String($0) } }
         self.init(id: id, piece: piece)
     }
     
