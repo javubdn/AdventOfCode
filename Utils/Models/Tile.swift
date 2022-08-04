@@ -23,10 +23,6 @@ class Tile {
     
     let id: Int
     let piece: [[String]]
-    var pieceUp: Int?
-    var pieceDown: Int?
-    var pieceLeft: Int?
-    var pieceRight: Int?
     private var sides: Set<String>
     private var sidesReversed: Set<String>
     
@@ -67,50 +63,16 @@ class Tile {
         return rotations + flips
     }
     
-    func borderCoincidence(_ other: [[ValueTile]]) -> Bool {
-        combinations(piece).first { tile in
-            combinations(other).first { borderRightMatches($0, tile) } != nil
-        } != nil
     func sharedSideCount(_ tiles: [Tile]) -> Int {
         sides.filter { side in
             tiles.filter { $0.id != id }.filter { $0.hasSide(side) }.count > 0
         }.count
     }
     
-    func borderRightMatches(_ first: [[ValueTile]], _ second: [[ValueTile]]) -> Bool {
-        first.last == second.first
     func hasSide(_ side: String) -> Bool {
         sides.contains(side) || sidesReversed.contains(side)
     }
     
-    func tryAddPiece(_ tile: Tile) {
-        
-        var numberRotationsFirst = 0
-        var numberRotationsSecond = 0
-        
-        while numberRotationsSecond < 4 {
-            var newPiece = piece
-            while numberRotationsFirst < 4 {
-                if borderRightMatches(newPiece, tile.piece) || borderRightMatches(flip(newPiece), tile.piece) {
-                    switch numberRotationsFirst {
-                    case 0: pieceDown = tile.id
-                    case 1: pieceLeft = tile.id
-                    case 2: pieceUp = tile.id
-                    default: pieceRight = tile.id
-                    }
-                    switch numberRotationsSecond {
-                    case 0: pieceUp = tile.id
-                    case 1: pieceRight = tile.id
-                    case 2: pieceDown = tile.id
-                    default: pieceLeft = tile.id
-                    }
-                    return
-                }
-                newPiece = rotate(newPiece)
-                numberRotationsFirst += 1
-            }
-            numberRotationsFirst = 0
-            numberRotationsSecond += 1
     func sideFacing(_ dir: Orientation) -> String {
         Tile.sideFacing(piece, dir)
     }
