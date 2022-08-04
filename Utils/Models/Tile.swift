@@ -45,24 +45,25 @@ class Tile {
         self.init(id: id, piece: piece)
     }
     
-    func rotate(_ piece: [[ValueTile]]) -> [[ValueTile]] {
-        Array(0..<piece.count).map { row in
+    func rotate() -> Tile {
+        let newPiece = Array(0..<piece.count).map { row in
             Array(0..<piece.count).map { col in
                 piece[col][piece.count - 1 - row]
             }
         }
+        return Tile(id: id, piece: newPiece)
     }
     
-    func flip(_ piece: [[ValueTile]]) -> [[ValueTile]] {
-        piece.map { $0.reversed() }
+    func flip() -> Tile {
+        Tile(id: id, piece: piece.map { $0.reversed() })
     }
     
-    func combinations(_ piece: [[ValueTile]]) -> [[[ValueTile]]] {
-        var rotations = [piece]
+    func combinations() -> [Tile] {
+        var rotations = [self]
         for _ in 0..<3 {
-            rotations.append(rotate(rotations.last!))
+            rotations.append(rotations.last!.rotate())
         }
-        let flips = rotations.map { flip($0) }
+        let flips = rotations.map { $0.flip() }
         return rotations + flips
     }
     
