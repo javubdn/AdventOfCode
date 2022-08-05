@@ -1050,6 +1050,25 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day21question2() -> String {
+        let input = readCSV("InputYear2020Day21").components(separatedBy: .newlines)
+        let foods = input.map { getFood($0) }
+        
+        let allIngredients = Set(foods.flatMap { $0.ingredients })
+        let allAllergens = Set(foods.flatMap { $0.allergens })
+        var candidates: [String: [String]] = [:]
+        allAllergens.forEach { allergen in
+            let foodsC = foods.filter { $0.allergens.contains(allergen) }
+            let ingredientsCandidate = allIngredients.filter { ing in foodsC.filter { $0.ingredients.contains(ing) }.count == foodsC.count  }
+            candidates[allergen] = Array(ingredientsCandidate)
+        }
+        let relation = getIngredientAllergen(candidates: candidates)
+        let sortedRelation = relation.sorted { $0.0 < $1.0 }
+        let result = sortedRelation.map { $0.1 }.joined(separator: ",")
+        return "\(result)"
+    }
+    
     struct Food {
         let ingredients: [String]
         let allergens: [String]
