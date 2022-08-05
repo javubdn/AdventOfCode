@@ -1030,6 +1030,18 @@ extension Year2020InteractorImpl: YearInteractor {
         }.map { $0.map { String($0) } }
         return Tile(id: 0, piece: newImage)
     }
+    struct Food {
+        let ingredients: [String]
+        let allergens: [String]
+    }
+    
+    private func getFood(_ input: String) -> Food {
+        let components = input.dropLast().components(separatedBy: " (contains ")
+        let ingredients = components[0].components(separatedBy: .whitespaces)
+        let allergens = components[1].components(separatedBy: ", ")
+        return Food(ingredients: ingredients, allergens: allergens)
+    }
+    
     }
     
 }
