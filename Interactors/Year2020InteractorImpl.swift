@@ -1030,6 +1030,26 @@ extension Year2020InteractorImpl: YearInteractor {
         }.map { $0.map { String($0) } }
         return Tile(id: 0, piece: newImage)
     }
+    
+    @objc
+    func day21question1() -> String {
+        let input = readCSV("InputYear2020Day21").components(separatedBy: .newlines)
+        let foods = input.map { getFood($0) }
+        
+        let allIngredients = Set(foods.flatMap { $0.ingredients })
+        let allAllergens = Set(foods.flatMap { $0.allergens })
+        var candidates: [String: [String]] = [:]
+        allAllergens.forEach { allergen in
+            let foodsC = foods.filter { $0.allergens.contains(allergen) }
+            let ingredientsCandidate = allIngredients.filter { ing in foodsC.filter { $0.ingredients.contains(ing) }.count == foodsC.count  }
+            candidates[allergen] = Array(ingredientsCandidate)
+        }
+        let relation = getIngredientAllergen(candidates: candidates)
+        let ingredientsNoAllergens = allIngredients.filter { ing in !(relation.contains { $0.1 == ing }) }
+        let result = ingredientsNoAllergens.map { ing in foods.filter { $0.ingredients.contains(ing) }.count }.reduce(0, +)
+        return "\(result)"
+    }
+    
     struct Food {
         let ingredients: [String]
         let allergens: [String]
@@ -1042,6 +1062,20 @@ extension Year2020InteractorImpl: YearInteractor {
         return Food(ingredients: ingredients, allergens: allergens)
     }
     
+    private func getIngredientAllergen(candidates: [String: [String]]) -> [(String, String)] {
+        var candidates = candidates
+        var ingredientAllergen: [(String, String)] = []
+        
+        while !candidates.isEmpty {
+            guard let candidate = candidates.first(where: { $0.value.count == 1 }) else { break }
+            ingredientAllergen.append((candidate.key, candidate.value.first!))
+            candidates[candidate.key] = nil
+            for candidateI in candidates {
+                candidates[candidateI.key] = candidates[candidateI.key]!.filter { $0 != candidate.value.first! }
+            }
+        }
+        
+        return ingredientAllergen
     }
     
 }
