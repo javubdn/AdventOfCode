@@ -975,6 +975,23 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day20question2() -> String {
+        let input = readCSV("InputYear2020Day20").components(separatedBy: "\n\n")
+        let tiles = input.map { Tile(from: $0) }
+        let image = createImage(tiles)
+        let seaMonsterOffsets = [(0, 18), (1, 0), (1, 5),
+                                 (1, 6), (1, 11), (1, 12),
+                                 (1, 17), (1, 18), (1, 19),
+                                 (2, 1), (2, 4), (2, 7),
+                                 (2, 10), (2, 13), (2, 16)]
+        let bigPicture = imageToSingleTile(tiles, image)
+        let result = bigPicture.combinations().first { $0.maskIfFound(seaMonsterOffsets) }?.piece.map { row in
+            row.filter { $0 == "#" }.count
+        }.reduce(0, +)
+        return "\(result ?? 0)"
+    }
+    
     private func createImage(_ tiles: [Tile]) -> [[Tile]] {
         let width = Int(sqrt(Double(tiles.count)))
         var mostRecentTile = findTopCorner(tiles)
@@ -1002,6 +1019,17 @@ extension Year2020InteractorImpl: YearInteractor {
             .first { $0.isSideShared(Orientation.south, tiles: tiles) && $0.isSideShared(Orientation.east, tiles: tiles) }!
     }
     
+    private func imageToSingleTile(_ tiles: [Tile], _ image: [[Tile]]) -> Tile {
+        let rowsPerTile = tiles.first!.piece.count
+        let newImage = image.flatMap { row in
+            Array(1..<(rowsPerTile-1)).map { y in
+                row.map { tile in
+                    tile.insetRow(y)
+                }.joined()
+            }
+        }.map { $0.map { String($0) } }
+        return Tile(id: 0, piece: newImage)
+    }
     }
     
 }
