@@ -1091,4 +1091,8 @@ extension Year2020InteractorImpl: YearInteractor {
         return (foods, allIngredients, relation)
     }
     
+    private func playCombat(_ players: [[Int]]) -> Int {
+        
+        return 0
+    }
 }
