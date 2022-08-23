@@ -1091,8 +1091,28 @@ extension Year2020InteractorImpl: YearInteractor {
         return (foods, allIngredients, relation)
     }
     
+    @objc
+    func day22question1() -> String {
+        var players = readCSV("InputYear2020Day22")
+            .components(separatedBy: "\n\n")
+            .map { $0.components(separatedBy: .newlines)
+                .map { Int($0)! } }
+        while players[0].count > 0 && players[1].count > 0 {
+            let card1 = players[0].removeFirst()
+            let card2 = players[1].removeFirst()
+            if card1 > card2 {
+                players[0].append(contentsOf: [card1, card2])
+            } else {
+                players[1].append(contentsOf: [card2, card1])
+            }
+        }
+        let cards = players[0].count > 0 ? players[0] : players[1]
+        let result = cards.enumerated().map { $0.element * (cards.count - $0.offset) }.reduce(0, +)
+        return "\(result)"
+    }
     private func playCombat(_ players: [[Int]]) -> Int {
         
         return 0
     }
+    
 }
