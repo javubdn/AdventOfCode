@@ -1094,22 +1094,20 @@ extension Year2020InteractorImpl: YearInteractor {
     
     @objc
     func day22question1() -> String {
-        let players = readCSV("InputYear2020Day22")
-            .components(separatedBy: "\n\n")
-            .map { $0.components(separatedBy: .newlines)
-                .map { Int($0)! } }
-        let (_, cards) = playCombat((players[0], players[1]), false)
-        let result = cards.enumerated().map { $0.element * (cards.count - $0.offset) }.reduce(0, +)
-        return "\(result)"
+        playWithRecursion(false)
     }
     
     @objc
     func day22question2() -> String {
+        playWithRecursion(true)
+    }
+    
+    private func playWithRecursion(_ recursion: Bool) -> String {
         let players = readCSV("InputYear2020Day22")
             .components(separatedBy: "\n\n")
             .map { $0.components(separatedBy: .newlines)
                 .map { Int($0)! } }
-        let (_, cards) = playCombat((players[0], players[1]), true)
+        let (_, cards) = playCombat((players[0], players[1]), recursion)
         let result = cards.enumerated().map { $0.element * (cards.count - $0.offset) }.reduce(0, +)
         return "\(result)"
     }
