@@ -1094,20 +1094,11 @@ extension Year2020InteractorImpl: YearInteractor {
     
     @objc
     func day22question1() -> String {
-        var players = readCSV("InputYear2020Day22")
+        let players = readCSV("InputYear2020Day22")
             .components(separatedBy: "\n\n")
             .map { $0.components(separatedBy: .newlines)
                 .map { Int($0)! } }
-        while players[0].count > 0 && players[1].count > 0 {
-            let card1 = players[0].removeFirst()
-            let card2 = players[1].removeFirst()
-            if card1 > card2 {
-                players[0].append(contentsOf: [card1, card2])
-            } else {
-                players[1].append(contentsOf: [card2, card1])
-            }
-        }
-        let cards = players[0].count > 0 ? players[0] : players[1]
+        let (_, cards) = playCombat((players[0], players[1]), false)
         let result = cards.enumerated().map { $0.element * (cards.count - $0.offset) }.reduce(0, +)
         return "\(result)"
     }
@@ -1118,12 +1109,12 @@ extension Year2020InteractorImpl: YearInteractor {
             .components(separatedBy: "\n\n")
             .map { $0.components(separatedBy: .newlines)
                 .map { Int($0)! } }
-        let (_, cards) = playCombat((players[0], players[1]))
+        let (_, cards) = playCombat((players[0], players[1]), true)
         let result = cards.enumerated().map { $0.element * (cards.count - $0.offset) }.reduce(0, +)
         return "\(result)"
     }
     
-    private func playCombat(_ players: ([Int], [Int])) -> (Bool, [Int]) {
+    private func playCombat(_ players: ([Int], [Int]), _ recursivity: Bool) -> (Bool, [Int]) {
         let cardsP1 = players.0.map { String($0) }.joined(separator: ",")
         let cardsP2 = players.1.map { String($0) }.joined(separator: ",")
         if let game = games["\(cardsP1)-\(cardsP2)"] {
@@ -1142,8 +1133,8 @@ extension Year2020InteractorImpl: YearInteractor {
             let card1 = playersVariable.0.removeFirst()
             let card2 = playersVariable.1.removeFirst()
             
-            if card1 <= playersVariable.0.count && card2 <= playersVariable.1.count {
-                let (winner, _) = playCombat((Array(playersVariable.0[0..<card1]), Array(playersVariable.1[0..<card2])))
+            if card1 <= playersVariable.0.count && card2 <= playersVariable.1.count && recursivity {
+                let (winner, _) = playCombat((Array(playersVariable.0[0..<card1]), Array(playersVariable.1[0..<card2])), recursivity)
                 if winner {
                     playersVariable.0.append(contentsOf: [card1, card2])
                 } else {
