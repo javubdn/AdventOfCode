@@ -10,7 +10,7 @@ import Foundation
 protocol Rule { }
 
 class Year2020InteractorImpl: NSObject {
-    var games: [String: (Bool, [Int])] = [:]
+    var games: [String: Bool] = [:]
 }
 
 extension Year2020InteractorImpl: YearInteractor {
@@ -1116,7 +1116,7 @@ extension Year2020InteractorImpl: YearInteractor {
         let cardsP1 = players.0.map { String($0) }.joined(separator: ",")
         let cardsP2 = players.1.map { String($0) }.joined(separator: ",")
         if let game = games["\(cardsP1)-\(cardsP2)"] {
-            return game
+            return (game, [])
         }
         var playersVariable = players
         var previousGames: [String]  = []
@@ -1124,7 +1124,7 @@ extension Year2020InteractorImpl: YearInteractor {
             let cardsPlayer1 = playersVariable.0.map { String($0) }.joined(separator: ",")
             let cardsPlayer2 = playersVariable.1.map { String($0) }.joined(separator: ",")
             guard !previousGames.contains("\(cardsPlayer1)-\(cardsPlayer2)") else {
-                games["\(cardsP1)-\(cardsP2)"] = (true, [])
+                games["\(cardsP1)-\(cardsP2)"] = true
                 return (true, [])
             }
             previousGames.append("\(cardsPlayer1)-\(cardsPlayer2)")
@@ -1142,7 +1142,7 @@ extension Year2020InteractorImpl: YearInteractor {
         }
         let firstWinner = playersVariable.0.count > 0
         let cards = firstWinner ? playersVariable.0 : playersVariable.1
-        games["\(cardsP1)-\(cardsP2)"] = (firstWinner, cards)
+        games["\(cardsP1)-\(cardsP2)"] = firstWinner
         return (firstWinner, cards)
     }
     
