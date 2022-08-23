@@ -1130,22 +1130,18 @@ extension Year2020InteractorImpl: YearInteractor {
             previousGames.append("\(cardsPlayer1)-\(cardsPlayer2)")
             let card1 = playersVariable.0.removeFirst()
             let card2 = playersVariable.1.removeFirst()
-            
-            if card1 <= playersVariable.0.count && card2 <= playersVariable.1.count && recursivity {
-                let (winner, _) = playCombat((Array(playersVariable.0[0..<card1]), Array(playersVariable.1[0..<card2])), recursivity)
-                if winner {
-                    playersVariable.0.append(contentsOf: [card1, card2])
-                } else {
-                    playersVariable.1.append(contentsOf: [card2, card1])
-                }
-            } else {
-                if card1 > card2 {
-                    playersVariable.0.append(contentsOf: [card1, card2])
-                } else {
-                    playersVariable.1.append(contentsOf: [card2, card1])
-                }
-            }
+            var winner = false
+            let applyRecursivity = card1 <= playersVariable.0.count && card2 <= playersVariable.1.count && recursivity
+            if applyRecursivity {
+                (winner, _) = playCombat((Array(playersVariable.0[0..<card1]), Array(playersVariable.1[0..<card2])), recursivity)
+            } 
+            let cardsForPlayer1 = (applyRecursivity && winner) || (!applyRecursivity && card1 > card2) ? [card1, card2] : []
+            let cardsForPlayer2 = (applyRecursivity && !winner) || (!applyRecursivity && card1 < card2) ? [card2, card1] : []
+            playersVariable.0.append(contentsOf: cardsForPlayer1)
+            playersVariable.1.append(contentsOf: cardsForPlayer2)
         }
+        
+
         let firstWinner = playersVariable.0.count > 0
         let cards = firstWinner ? playersVariable.0 : playersVariable.1
         games["\(cardsP1)-\(cardsP2)"] = (firstWinner, cards)
