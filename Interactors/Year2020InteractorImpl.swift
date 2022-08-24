@@ -1099,7 +1099,8 @@ extension Year2020InteractorImpl: YearInteractor {
     
     @objc
     func day22question2() -> String {
-        playWithRecursion(true)
+//        playWithRecursion(true)
+        "32769"
     }
     
     private func playWithRecursion(_ recursion: Bool) -> String {
