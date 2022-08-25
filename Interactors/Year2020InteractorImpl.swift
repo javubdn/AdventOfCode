@@ -1147,4 +1147,29 @@ extension Year2020InteractorImpl: YearInteractor {
         return (firstWinner, cards)
     }
     
+    @objc
+    func day23question1() -> String {
+        let input = "784235916"
+        var cups = input.map { Int(String($0))! }
+        for _ in 0..<100 {
+            let currentItem = cups.removeFirst()
+            cups.append(currentItem)
+            let extres = cups[0...2]
+            cups.removeSubrange(0...2)
+            var target = currentItem == 1 ? 9 : currentItem-1
+            while true {
+                let item = cups.enumerated().first { $0.element == target }
+                if item != nil {
+                    cups.insert(contentsOf: extres, at: item!.offset+1)
+                    break
+                }
+                target -= 1
+                if target == 0 { target = 9 }
+            }
+        }
+        let index = cups.firstIndex { $0 == 1 }!
+        let result = (cups[(index+1)...] + cups[0..<index]).map { String($0) }.joined()
+        return result
+    }
+    
 }
