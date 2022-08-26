@@ -47,8 +47,11 @@ class Cups {
         self.currentCup = currentCup
     }
     
-    convenience init(from input: String) {
+    convenience init(from input: String, numberCups: Int? = 9) {
         var cups = input.map { Cup(value: Int(String($0))!) }
+        if let numberCups = numberCups, numberCups > cups.count {
+            cups += Array(input.count+1...numberCups).map { Cup(value: $0) }
+        }
         let currentCup = cups[0]
         for index in 1..<cups.count {
             cups[index-1].next = cups[index]
