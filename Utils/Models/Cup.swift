@@ -38,3 +38,52 @@ class Cup {
     
 }
 
+class Cups {
+    let cups: [Cup]
+    var currentCup: Cup
+    
+    init(_ cups: [Cup], _ currentCup: Cup) {
+        self.cups = cups
+        self.currentCup = currentCup
+    }
+    
+    convenience init(from input: String) {
+        let cups = input.map { Cup(value: Int(String($0))!) }
+        let currentCup = cups[0]
+        for index in 1..<cups.count {
+            cups[index-1].next = cups[index]
+        }
+        cups[cups.count-1].next = currentCup
+        self.init(cups, currentCup)
+    }
+    
+    func playRounds(_ numRounds: Int) -> Cup {
+        for _ in 1...numRounds {
+            playRound()
+        }
+        return cups[1]
+    }
+    
+    func playRound() {
+        let next3 = currentCup.nextAsList(3)
+        let destination = calculateDestination(Set(next3.map { $0.value }))
+        moveCups(next3, destination)
+        currentCup = currentCup.next
+    }
+    
+    private func calculateDestination(_ exempt: Set<Int>) -> Cup {
+        var dest = currentCup.value - 1
+        while exempt.contains(dest) || dest == 0 {
+            dest = dest == 0 ? cups.count - 1 : dest - 1
+        }
+        return cups[dest]
+    }
+    
+    private func moveCups(_ cupsToInsert: [Cup], _ destination: Cup) {
+        let prevDest = destination.next
+        currentCup.next = cupsToInsert.last!.next
+        destination.next = cupsToInsert.first!
+        cupsToInsert.last!.next = prevDest
+    }
+    
+}
