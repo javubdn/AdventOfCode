@@ -1155,6 +1155,12 @@ extension Year2020InteractorImpl: YearInteractor {
         return result
     }
     
+    @objc
+    func day23question2() -> String {
+        let cups = Cups(from: "784235916", numberCups: 1_000_000)
+        let cup = cups.playRounds(10_000_000)
+        let result = cup.next.value * cup.next.next.value
+        return "\(result)"
     }
     
 }
