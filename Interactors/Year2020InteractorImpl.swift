@@ -1155,12 +1155,6 @@ extension Year2020InteractorImpl: YearInteractor {
         return result
     }
     
-    private func calculateDestination(_ currentCup: Int, _ items: Int, exempt: [Int]) -> Int {
-        var dest = currentCup - 1
-        while exempt.contains(dest) || dest == 0 {
-            dest = dest == 0 ? items : dest - 1
-        }
-        return dest
     }
     
 }
