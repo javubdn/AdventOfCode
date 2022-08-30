@@ -1203,4 +1203,9 @@ extension Year2020InteractorImpl: YearInteractor {
         }
         return steps
     }
+    
+    private func getOptimumPath(_ steps: [String: Int]) -> String {
+        "\(String(steps["w"]!))-\(String(steps["e"]!))-\(String(steps["nw"]!))-\(String(steps["ne"]!))-\(String(steps["sw"]!))-\(String(steps["se"]!))"
+    }
+    
 }
