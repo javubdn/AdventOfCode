@@ -1164,4 +1164,43 @@ extension Year2020InteractorImpl: YearInteractor {
         "418819514477"
     }
     
+    private func getSteps(for path: String) -> [String: Int] {
+        var steps: [String: Int] = ["w": 0, "e": 0, "nw": 0, "ne": 0, "sw": 0, "se": 0]
+        let opAlt = ["w": [["e", ""], ["ne", "nw"], ["se", "sw"]],
+                     "e": [["w", ""], ["nw", "ne"], ["sw", "se"]],
+                     "nw": [["se", ""], ["e", "ne"], ["sw", "w"]],
+                     "ne": [["sw", ""], ["w", "nw"], ["se", "e"]],
+                     "sw": [["ne", ""], ["nw", "w"], ["e", "se"]],
+                     "se": [["nw", ""], ["ne", "e"], ["w", "sw"]]]
+        
+        var index = 0
+        while index<path.count {
+            let value: String
+            switch path[index] {
+            case "w": value = "w"
+                index += 1
+            case "e": value = "e"
+                index += 1
+            case "n": value = String(path[index...index+1])
+                index += 2
+            case "s": value = String(path[index...index+1])
+                index += 2
+            default: value = ""
+            }
+            
+            var found = false
+            for item in opAlt[value]! {
+                if steps[item[0]]! > 0 {
+                    steps[item[0]]! -= 1
+                    if let n = steps[item[1]] { steps[item[1]] = n + 1 }
+                    found = true
+                    break
+                }
+            }
+            if !found {
+                steps[value]! += 1
+            }
+        }
+        return steps
+    }
 }
