@@ -1218,4 +1218,27 @@ extension Year2020InteractorImpl: YearInteractor {
         "\(String(steps["w"]!))-\(String(steps["e"]!))-\(String(steps["nw"]!))-\(String(steps["ne"]!))-\(String(steps["sw"]!))-\(String(steps["se"]!))"
     }
     
+    private func stepToTiles(_ tiles: [HexagonalTile]) -> [HexagonalTile] {
+        let paths = tiles.map { $0.getPath() }
+        var modifiedTiles = paths.map { HexagonalTile(path: $0) }
+        modifiedTiles.forEach { $0.rotate() }
+        
+        var whiteNeighbours: [String: Int] = [:]
+        modifiedTiles.forEach { tile in
+            let neighbours = tile.neighbours()
+            let blackNeighbours = neighbours.filter { paths.contains($0) }
+            if blackNeighbours.count == 0 || blackNeighbours.count > 2 {
+                tile.rotate()
+            }
+            neighbours.filter { !paths.contains($0) }.forEach { whiteNeighbours[$0] = (whiteNeighbours[$0] ?? 0) + 1 }
+        }
+        whiteNeighbours.filter { $0.value == 2 }
+        .map { HexagonalTile(path: $0.key) }
+        .forEach { tile in
+            tile.rotate()
+            modifiedTiles.append(tile)
+        }
+        return modifiedTiles.filter { !$0.whiteSide }
+    }
+    
 }
