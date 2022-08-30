@@ -1174,6 +1174,24 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day24question2() -> String {
+        let input = readCSV("InputYear2020Day24").components(separatedBy: .newlines)
+        let tilesAll = input.map { HexagonalTile(from: $0)}
+        let groupedValues = Dictionary(grouping: tilesAll, by: { $0 })
+        var tiles = groupedValues.map { item -> HexagonalTile in
+            if !item.value.count.isMultiple(of: 2) {
+                item.value.first!.rotate()
+            }
+            return item.value.first!
+        }.filter { !$0.whiteSide }
+        for _ in 0..<100 {
+            tiles = stepToTiles(tiles)
+        }
+        let result = tiles.count
+        return "\(result)"
+    }
+    
     private func getSteps(for path: String) -> [String: Int] {
         var steps: [String: Int] = ["w": 0, "e": 0, "nw": 0, "ne": 0, "sw": 0, "se": 0]
         let opAlt = ["w": [["e", ""], ["ne", "nw"], ["se", "sw"]],
