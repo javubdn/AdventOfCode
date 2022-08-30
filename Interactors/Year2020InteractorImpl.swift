@@ -1164,6 +1164,16 @@ extension Year2020InteractorImpl: YearInteractor {
         "418819514477"
     }
     
+    @objc
+    func day24question1() -> String {
+        let input = readCSV("InputYear2020Day24").components(separatedBy: .newlines)
+        let stepsList = input.map { getSteps(for: $0) }
+        let paths = stepsList.map { getOptimumPath($0) }
+        let groupedValues = Dictionary(grouping: paths, by: { $0 })
+        let result = groupedValues.filter { !$0.value.count.isMultiple(of: 2) }.count
+        return "\(result)"
+    }
+    
     private func getSteps(for path: String) -> [String: Int] {
         var steps: [String: Int] = ["w": 0, "e": 0, "nw": 0, "ne": 0, "sw": 0, "se": 0]
         let opAlt = ["w": [["e", ""], ["ne", "nw"], ["se", "sw"]],
