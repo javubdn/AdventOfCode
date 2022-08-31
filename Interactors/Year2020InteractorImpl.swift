@@ -1260,4 +1260,27 @@ extension Year2020InteractorImpl: YearInteractor {
         return modifiedTiles.filter { !$0.whiteSide }
     }
     
+    @objc
+    func day25question1() -> String {
+        let publicKeyCard = 12232269
+        var i = 1
+        var loopsCard = 0
+        while i != publicKeyCard {
+            i = (i*7)%20201227
+            loopsCard += 1
+        }
+        let publicKeyDoor = 19452773
+        var j = 1
+        var loopsDoor = 0
+        while j != publicKeyDoor {
+            j = (j*7)%20201227
+            loopsDoor += 1
+        }
+        var encryptionKey = 1
+        for _ in 0..<loopsCard {
+            encryptionKey = (encryptionKey*publicKeyDoor)%20201227
+        }
+        return "\(encryptionKey)"
+    }
+    
 }
