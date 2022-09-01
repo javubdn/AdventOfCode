@@ -1283,4 +1283,9 @@ extension Year2020InteractorImpl: YearInteractor {
         return "\(encryptionKey)"
     }
     
+    @objc
+    func day25question2() -> String {
+        return ""
+    }
+    
 }
