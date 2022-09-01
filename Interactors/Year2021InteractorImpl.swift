@@ -1285,6 +1285,11 @@ private extension Year2021InteractorImpl {
     
     @objc
     func day17question1() -> String {
+//        let initialTargetX = 20
+//        let initialTargetY = -5
+//        let finalTargetX = 30
+//        let finalTargetY = -10
+        
         let initialTargetX = 138
         let initialTargetY = -71
         let finalTargetX = 184
@@ -1292,14 +1297,72 @@ private extension Year2021InteractorImpl {
         
         let minimumXSpeed = Int(ceil(sqrt(Double(initialTargetX*8 + 1))/2 - 0.5))
         
+        var solution = Int.min
         
+        for xSpeed in minimumXSpeed...finalTargetX {
+            var acumulated = 0
+            var speed = xSpeed
+            var values: [(Int, Int)] = []
+            var numberStep = 1
+            var step0In = false
+            while acumulated <= finalTargetX {
+                acumulated += speed
+                if acumulated >= initialTargetX && acumulated <= finalTargetX {
+                    values.append((acumulated, numberStep))
+                }
+                speed -= 1
+                if speed == 0 && acumulated <= finalTargetX {
+                    step0In = true
+                    break
+                }
+                numberStep += 1
+            }
+            
+            for value in values {
+                let calculationInitialTarget = Double(finalTargetY) + ((Double(value.1)-1)*Double(value.1)/2)
+                let yMin = Int(ceil(calculationInitialTarget / Double(value.1)))
+                let yMax = (initialTargetY + ((value.1-1)*value.1/2)) / value.1
+                if yMax >= yMin {
+                    solution = max(solution, yMax)
+                }
+            }
+            
+            if step0In && values.count > 0 {
+                var stepsNow = values.last!.1 + 1
+                while true {
+                    let stepsSum = Double(finalTargetY) + ((Double(stepsNow)-1)*Double(stepsNow)/2)
+                    let yMin = Int(ceil(Double(stepsSum / Double(stepsNow))))
+                    let yMax = (initialTargetY + ((stepsNow-1)*stepsNow/2)) / stepsNow
+                    if yMax >= yMin {
+                        solution = max(solution, yMax)
+                    }
+                    stepsNow += 1
+                    if stepsNow > 1000 {
+                        break
+                    }
+                }
+            }
+        }
         
-        return ""
+        let result = (solution*(solution+1))/2
+        return "\(result)"
     }
     
     @objc
     func day17question2() -> String {
         return ""
+    }
+    
+    private func probePositions(_ speed: (Int, Int), until: (Int, Int)) -> [(Int, Int)] {
+        var position = (0, 0)
+        var actualSpeed = speed
+        var positions = [position]
+        while position.0 <= until.0 && position.1 >= until.1 {
+            position = (position.0 + actualSpeed.0, position.1 + actualSpeed.1)
+            actualSpeed = (actualSpeed.0 + (actualSpeed.0 > 0 ? -1 : 0) , actualSpeed.1 - 1)
+            positions.append(position)
+        }
+        return positions
     }
     
 }
