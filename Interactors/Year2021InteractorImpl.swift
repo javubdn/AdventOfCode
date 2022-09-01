@@ -1314,6 +1314,10 @@ private extension Year2021InteractorImpl {
             }
         }
         
+        if step0In && minStepIn < abs(2*targetY.1) {
+            impulseY = -1 - targetY.1
+            return "\((impulseY*(impulseY+1))/2)"
+        }
         
         for possibleStepsNumber in possibleStepsNumbers {
             let calculationInitialTarget = Double(targetY.1) + ((Double(possibleStepsNumber)-1)*Double(possibleStepsNumber)/2)
