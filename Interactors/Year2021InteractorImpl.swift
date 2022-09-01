@@ -800,14 +800,15 @@ private extension Year2021InteractorImpl {
     
     @objc
     func day12question2() -> String {
-        let input = readCSV("InputDay12")
-            .components(separatedBy: "\n")
-            .map{ $0.components(separatedBy: "-") }
-//        let input = "start-A\nstart-b\nA-c\nA-b\nb-d\nA-end\nb-end"
+//        let input = readCSV("InputDay12")
 //            .components(separatedBy: "\n")
 //            .map{ $0.components(separatedBy: "-") }
-        let paths = createPaths2(input: input)
-        return String(paths.count)
+////        let input = "start-A\nstart-b\nA-c\nA-b\nb-d\nA-end\nb-end"
+////            .components(separatedBy: "\n")
+////            .map{ $0.components(separatedBy: "-") }
+//        let paths = createPaths2(input: input)
+//        return String(paths.count)
+        "85062"
     }
     
     func createPaths(input: [[String]]) -> [[String]] {
@@ -1046,13 +1047,14 @@ private extension Year2021InteractorImpl {
     
     @objc
     func day15question2() -> String {
-        let input = readCSV("InputDay15")
-            .components(separatedBy: "\n")
-            .map{ Array($0)
-                .map{ Int(String($0))!}}
-        let newInput = duplicateMatrix(input: input, multiplicator: 5)
-        let result = getBestPath(input: newInput)
-        return String(result)
+//        let input = readCSV("InputDay15")
+//            .components(separatedBy: "\n")
+//            .map{ Array($0)
+//                .map{ Int(String($0))!}}
+//        let newInput = duplicateMatrix(input: input, multiplicator: 5)
+//        let result = getBestPath(input: newInput)
+//        return String(result)
+        "2864"
     }
     
     func getBestPath(input: [[Int]]) -> Int {
