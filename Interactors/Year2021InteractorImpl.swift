@@ -1285,66 +1285,62 @@ private extension Year2021InteractorImpl {
     
     @objc
     func day17question1() -> String {
-//        let initialTargetX = 20
-//        let initialTargetY = -5
-//        let finalTargetX = 30
-//        let finalTargetY = -10
+        let targetX = (138, 184)
+        let targetY = (-71, -125)
         
-        let initialTargetX = 138
-        let initialTargetY = -71
-        let finalTargetX = 184
-        let finalTargetY = -125
+        let minimumXSpeed = Int(ceil(sqrt(Double(targetX.0*8 + 1))/2 - 0.5))
         
-        let minimumXSpeed = Int(ceil(sqrt(Double(initialTargetX*8 + 1))/2 - 0.5))
+        var impulseY = Int.min
+        var possibleStepsNumbers: Set<Int> = Set()
+        var step0In = false
+        var minStepIn = Int.max
         
-        var solution = Int.min
-        
-        for xSpeed in minimumXSpeed...finalTargetX {
+        for xSpeed in minimumXSpeed...targetX.1 {
             var acumulated = 0
             var speed = xSpeed
-            var values: [(Int, Int)] = []
             var numberStep = 1
-            var step0In = false
-            while acumulated <= finalTargetX {
+            while acumulated <= targetX.1 {
                 acumulated += speed
-                if acumulated >= initialTargetX && acumulated <= finalTargetX {
-                    values.append((acumulated, numberStep))
+                if acumulated >= targetX.0 && acumulated <= targetX.1 {
+                    possibleStepsNumbers.insert(numberStep)
                 }
                 speed -= 1
-                if speed == 0 && acumulated <= finalTargetX {
+                if speed == 0 && acumulated <= targetX.1 {
                     step0In = true
+                    minStepIn = min(minStepIn, numberStep+1)
                     break
                 }
                 numberStep += 1
             }
-            
-            for value in values {
-                let calculationInitialTarget = Double(finalTargetY) + ((Double(value.1)-1)*Double(value.1)/2)
-                let yMin = Int(ceil(calculationInitialTarget / Double(value.1)))
-                let yMax = (initialTargetY + ((value.1-1)*value.1/2)) / value.1
-                if yMax >= yMin {
-                    solution = max(solution, yMax)
-                }
+        }
+        
+        
+        for possibleStepsNumber in possibleStepsNumbers {
+            let calculationInitialTarget = Double(targetY.1) + ((Double(possibleStepsNumber)-1)*Double(possibleStepsNumber)/2)
+            let yMin = Int(ceil(calculationInitialTarget / Double(possibleStepsNumber)))
+            let yMax = (targetY.0 + ((possibleStepsNumber-1)*possibleStepsNumber/2)) / possibleStepsNumber
+            if yMax >= yMin {
+                impulseY = max(impulseY, yMax)
             }
-            
-            if step0In && values.count > 0 {
-                var stepsNow = values.last!.1 + 1
-                while true {
-                    let stepsSum = Double(finalTargetY) + ((Double(stepsNow)-1)*Double(stepsNow)/2)
-                    let yMin = Int(ceil(Double(stepsSum / Double(stepsNow))))
-                    let yMax = (initialTargetY + ((stepsNow-1)*stepsNow/2)) / stepsNow
-                    if yMax >= yMin {
-                        solution = max(solution, yMax)
-                    }
-                    stepsNow += 1
-                    if stepsNow > 1000 {
-                        break
-                    }
+        }
+        
+        if step0In {
+            var stepsNow = minStepIn
+            while true {
+                let stepsSum = Double(targetY.1) + ((Double(stepsNow)-1)*Double(stepsNow)/2)
+                let yMin = Int(ceil(Double(stepsSum / Double(stepsNow))))
+                let yMax = (targetY.0 + ((stepsNow-1)*stepsNow/2)) / stepsNow
+                if yMax >= yMin {
+                    impulseY = max(impulseY, yMax)
+                }
+                stepsNow += 1
+                if stepsNow > abs(2*targetY.1) {
+                    break
                 }
             }
         }
         
-        let result = (solution*(solution+1))/2
+        let result = (impulseY*(impulseY+1))/2
         return "\(result)"
     }
     
