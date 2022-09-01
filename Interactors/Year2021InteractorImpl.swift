@@ -1353,16 +1353,4 @@ private extension Year2021InteractorImpl {
         return ""
     }
     
-    private func probePositions(_ speed: (Int, Int), until: (Int, Int)) -> [(Int, Int)] {
-        var position = (0, 0)
-        var actualSpeed = speed
-        var positions = [position]
-        while position.0 <= until.0 && position.1 >= until.1 {
-            position = (position.0 + actualSpeed.0, position.1 + actualSpeed.1)
-            actualSpeed = (actualSpeed.0 + (actualSpeed.0 > 0 ? -1 : 0) , actualSpeed.1 - 1)
-            positions.append(position)
-        }
-        return positions
-    }
-    
 }
