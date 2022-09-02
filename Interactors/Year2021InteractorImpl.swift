@@ -1296,22 +1296,10 @@ private extension Year2021InteractorImpl {
         var minStepIn = Int.max
         
         for xSpeed in minimumXSpeed...targetX.1 {
-            var acumulated = 0
-            var speed = xSpeed
-            var numberStep = 1
-            while acumulated <= targetX.1 {
-                acumulated += speed
-                if acumulated >= targetX.0 && acumulated <= targetX.1 {
-                    possibleStepsNumbers.insert(numberStep)
-                }
-                speed -= 1
-                if speed == 0 && acumulated <= targetX.1 {
-                    step0In = true
-                    minStepIn = min(minStepIn, numberStep+1)
-                    break
-                }
-                numberStep += 1
-            }
+            let (validSteps, step0IntTemp, minStepIntTemp) = getValidSteps(targetX, xSpeed)
+            validSteps.forEach { possibleStepsNumbers.insert($0) }
+            step0In = step0In || step0IntTemp
+            minStepIn = min(minStepIn, minStepIntTemp)
         }
         
         if step0In && minStepIn < abs(2*targetY.1) {
@@ -1350,36 +1338,15 @@ private extension Year2021InteractorImpl {
     
     @objc
     func day17question2() -> String {
-//        let targetX = (20, 30)
-//        let targetY = (-5, -10)
         let targetX = (138, 184)
         let targetY = (-71, -125)
         
         let minimumXSpeed = Int(ceil(sqrt(Double(targetX.0*8 + 1))/2 - 0.5))
-        
         var combinations: [(Int, Int)] = []
-        
-        
         var validYs: [Int: [Int]] = [:]
         
         for xSpeed in minimumXSpeed...targetX.1 {
-            var step0In = false
-            var acumulated = 0
-            var speed = xSpeed
-            var numberStep = 1
-            var validSteps: [Int] = []
-            while acumulated <= targetX.1 {
-                acumulated += speed
-                if acumulated >= targetX.0 && acumulated <= targetX.1 {
-                    validSteps.append(numberStep)
-                }
-                speed -= 1
-                if speed == 0 && acumulated <= targetX.1 {
-                    step0In = true
-                    break
-                }
-                numberStep += 1
-            }
+            let (validSteps, step0In, _) = getValidSteps(targetX, xSpeed)
             
             for validStep in validSteps {
                 if let validYValues = validYs[validStep] {
@@ -1448,6 +1415,29 @@ private extension Year2021InteractorImpl {
         }
         let result = combinations.count
         return "\(result)"
+    }
+    
+    private func getValidSteps(_ targetX: (Int, Int), _ xSpeed: Int) -> ([Int], Bool, Int) {
+        var step0In = false
+        var minStepIn = Int.max
+        var acumulated = 0
+        var speed = xSpeed
+        var numberStep = 1
+        var validSteps: [Int] = []
+        while acumulated <= targetX.1 {
+            acumulated += speed
+            if acumulated >= targetX.0 && acumulated <= targetX.1 {
+                validSteps.append(numberStep)
+            }
+            speed -= 1
+            if speed == 0 && acumulated <= targetX.1 {
+                step0In = true
+                minStepIn = min(minStepIn, numberStep+1)
+                break
+            }
+            numberStep += 1
+        }
+        return (validSteps, step0In, minStepIn)
     }
     
 }
