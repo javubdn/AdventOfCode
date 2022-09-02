@@ -1438,4 +1438,12 @@ private extension Year2021InteractorImpl {
         return (validSteps, step0In, minStepIn)
     }
     
+    private func getValidYs(_ targetY: (Int, Int), _ steps: Int) -> [Int] {
+        let calculationInitialTarget = Double(targetY.1) + ((Double(steps)-1)*Double(steps)/2)
+        let calculationEndTarget = Double(targetY.0) + ((Double(steps)-1)*Double(steps)/2)
+        let yMin = Int(ceil(calculationInitialTarget / Double(steps)))
+        let yMax = Int(floor(calculationEndTarget / Double(steps)))
+        return yMax >= yMin ? Array(yMin...yMax) : []
+    }
+    
 }
