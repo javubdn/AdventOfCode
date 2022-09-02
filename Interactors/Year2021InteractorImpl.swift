@@ -1308,23 +1308,15 @@ private extension Year2021InteractorImpl {
         }
         
         for possibleStepsNumber in possibleStepsNumbers {
-            let calculationInitialTarget = Double(targetY.1) + ((Double(possibleStepsNumber)-1)*Double(possibleStepsNumber)/2)
-            let yMin = Int(ceil(calculationInitialTarget / Double(possibleStepsNumber)))
-            let yMax = (targetY.0 + ((possibleStepsNumber-1)*possibleStepsNumber/2)) / possibleStepsNumber
-            if yMax >= yMin {
-                impulseY = max(impulseY, yMax)
-            }
+            let validYs = getValidYs(targetY, possibleStepsNumber)
+            impulseY = validYs.count > 0 ? max(impulseY, validYs.last!) : impulseY
         }
         
         if step0In {
             var stepsNow = minStepIn
             while true {
-                let stepsSum = Double(targetY.1) + ((Double(stepsNow)-1)*Double(stepsNow)/2)
-                let yMin = Int(ceil(Double(stepsSum / Double(stepsNow))))
-                let yMax = (targetY.0 + ((stepsNow-1)*stepsNow/2)) / stepsNow
-                if yMax >= yMin {
-                    impulseY = max(impulseY, yMax)
-                }
+                let validYs = getValidYs(targetY, stepsNow)
+                impulseY = validYs.count > 0 ? max(impulseY, validYs.last!) : impulseY
                 stepsNow += 1
                 if stepsNow > abs(2*targetY.1) {
                     break
@@ -1359,19 +1351,13 @@ private extension Year2021InteractorImpl {
                         }
                     }
                 } else {
-                    let calculationInitialTarget = Double(targetY.1) + ((Double(validStep)-1)*Double(validStep)/2)
-                    let calculationEndTarget = Double(targetY.0) + ((Double(validStep)-1)*Double(validStep)/2)
-                    let yMin = Int(ceil(calculationInitialTarget / Double(validStep)))
-                    let yMax = Int(floor(calculationEndTarget / Double(validStep)))
-                    if yMax >= yMin {
-                        validYs[validStep] = Array(yMin...yMax)
-                        let newValues = Array(yMin...yMax).map { (xSpeed, $0) }
-                        newValues.forEach { item in
-                            if !combinations.contains(where: { (x, y) in
-                                x == item.0 && y == item.1
-                            }) {
-                                combinations.append(item)
-                            }
+                    validYs[validStep] = getValidYs(targetY, validStep)
+                    let newValues = validYs[validStep]!.map { (xSpeed, $0) }
+                    newValues.forEach { item in
+                        if !combinations.contains(where: { (x, y) in
+                            x == item.0 && y == item.1
+                        }) {
+                            combinations.append(item)
                         }
                     }
                 }
@@ -1390,18 +1376,13 @@ private extension Year2021InteractorImpl {
                             }
                         }
                     } else {
-                        let stepsSum = Double(targetY.1) + ((Double(stepsNow)-1)*Double(stepsNow)/2)
-                        let yMin = Int(ceil(Double(stepsSum / Double(stepsNow))))
-                        let yMax = (targetY.0 + ((stepsNow-1)*stepsNow/2)) / stepsNow
-                        if yMax >= yMin {
-                            validYs[stepsNow] = Array(yMin...yMax)
-                            let newValues = Array(yMin...yMax).map { (xSpeed, $0) }
-                            newValues.forEach { item in
-                                if !combinations.contains(where: { (x, y) in
-                                    x == item.0 && y == item.1
-                                }) {
-                                    combinations.append(item)
-                                }
+                        validYs[stepsNow] = getValidYs(targetY, stepsNow)
+                        let newValues = validYs[stepsNow]!.map { (xSpeed, $0) }
+                        newValues.forEach { item in
+                            if !combinations.contains(where: { (x, y) in
+                                x == item.0 && y == item.1
+                            }) {
+                                combinations.append(item)
                             }
                         }
                     }
@@ -1434,7 +1415,7 @@ private extension Year2021InteractorImpl {
                 minStepIn = step0In ? min(minStepIn, numberStep+1) : minStepIn
                 break
             }
-        }        
+        }
         return (validSteps, step0In, minStepIn)
     }
     
