@@ -1350,7 +1350,104 @@ private extension Year2021InteractorImpl {
     
     @objc
     func day17question2() -> String {
-        return ""
+//        let targetX = (20, 30)
+//        let targetY = (-5, -10)
+        let targetX = (138, 184)
+        let targetY = (-71, -125)
+        
+        let minimumXSpeed = Int(ceil(sqrt(Double(targetX.0*8 + 1))/2 - 0.5))
+        
+        var combinations: [(Int, Int)] = []
+        
+        
+        var validYs: [Int: [Int]] = [:]
+        
+        for xSpeed in minimumXSpeed...targetX.1 {
+            var step0In = false
+            var acumulated = 0
+            var speed = xSpeed
+            var numberStep = 1
+            var validSteps: [Int] = []
+            while acumulated <= targetX.1 {
+                acumulated += speed
+                if acumulated >= targetX.0 && acumulated <= targetX.1 {
+                    validSteps.append(numberStep)
+                }
+                speed -= 1
+                if speed == 0 && acumulated <= targetX.1 {
+                    step0In = true
+                    break
+                }
+                numberStep += 1
+            }
+            
+            for validStep in validSteps {
+                if let validYValues = validYs[validStep] {
+                    let newValues = validYValues.map { (xSpeed, $0) }
+                    newValues.forEach { item in
+                        if !combinations.contains(where: { (x, y) in
+                            x == item.0 && y == item.1
+                        }) {
+                            combinations.append(item)
+                        }
+                    }
+                } else {
+                    let calculationInitialTarget = Double(targetY.1) + ((Double(validStep)-1)*Double(validStep)/2)
+                    let calculationEndTarget = Double(targetY.0) + ((Double(validStep)-1)*Double(validStep)/2)
+                    let yMin = Int(ceil(calculationInitialTarget / Double(validStep)))
+                    let yMax = Int(floor(calculationEndTarget / Double(validStep)))
+                    if yMax >= yMin {
+                        validYs[validStep] = Array(yMin...yMax)
+                        let newValues = Array(yMin...yMax).map { (xSpeed, $0) }
+                        newValues.forEach { item in
+                            if !combinations.contains(where: { (x, y) in
+                                x == item.0 && y == item.1
+                            }) {
+                                combinations.append(item)
+                            }
+                        }
+                    }
+                }
+            }
+            
+            if step0In && validSteps.count > 0 {
+                var stepsNow = validSteps.last! + 1
+                while true {
+                    if let validYValues = validYs[stepsNow] {
+                        let newValues = validYValues.map { (xSpeed, $0) }
+                        newValues.forEach { item in
+                            if !combinations.contains(where: { (x, y) in
+                                x == item.0 && y == item.1
+                            }) {
+                                combinations.append(item)
+                            }
+                        }
+                    } else {
+                        let stepsSum = Double(targetY.1) + ((Double(stepsNow)-1)*Double(stepsNow)/2)
+                        let yMin = Int(ceil(Double(stepsSum / Double(stepsNow))))
+                        let yMax = (targetY.0 + ((stepsNow-1)*stepsNow/2)) / stepsNow
+                        if yMax >= yMin {
+                            validYs[stepsNow] = Array(yMin...yMax)
+                            let newValues = Array(yMin...yMax).map { (xSpeed, $0) }
+                            newValues.forEach { item in
+                                if !combinations.contains(where: { (x, y) in
+                                    x == item.0 && y == item.1
+                                }) {
+                                    combinations.append(item)
+                                }
+                            }
+                        }
+                    }
+                    stepsNow += 1
+                    if stepsNow > abs(2*targetY.1) {
+                        break
+                    }
+                }
+            }
+            
+        }
+        let result = combinations.count
+        return "\(result)"
     }
     
 }
