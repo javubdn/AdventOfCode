@@ -1422,21 +1422,19 @@ private extension Year2021InteractorImpl {
         var minStepIn = Int.max
         var acumulated = 0
         var speed = xSpeed
-        var numberStep = 1
         var validSteps: [Int] = []
-        while acumulated <= targetX.1 {
+        for numberStep in sequence(first: 1, next: { $0+1 }) {
             acumulated += speed
             if acumulated >= targetX.0 && acumulated <= targetX.1 {
                 validSteps.append(numberStep)
             }
             speed -= 1
-            if speed == 0 && acumulated <= targetX.1 {
-                step0In = true
-                minStepIn = min(minStepIn, numberStep+1)
+            if speed == 0 || acumulated > targetX.1 {
+                step0In = acumulated <= targetX.1
+                minStepIn = step0In ? min(minStepIn, numberStep+1) : minStepIn
                 break
             }
-            numberStep += 1
-        }
+        }        
         return (validSteps, step0In, minStepIn)
     }
     
