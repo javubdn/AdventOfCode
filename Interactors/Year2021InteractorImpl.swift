@@ -1404,14 +1404,11 @@ private extension Year2021InteractorImpl {
     private func combinationsFor(_ validYs: [Int: [Int]], _ step: Int, _ xSpeed: Int, _ combinations: [(Int, Int)], _ targetY: (Int, Int)) -> ([(Int, Int)], [Int: [Int]]) {
         var combinations = combinations
         var validYs = validYs
-        if let validYValues = validYs[step] {
-            let newValues = validYValues.map { (xSpeed, $0) }
-            combinations = updateCombinations(combinations, newValues)
-        } else {
+        if validYs[step] == nil {
             validYs[step] = getValidYs(targetY, step)
-            let newValues = validYs[step]!.map { (xSpeed, $0) }
-            combinations = updateCombinations(combinations, newValues)
         }
+        let newValues = validYs[step]!.map { (xSpeed, $0) }
+        combinations = updateCombinations(combinations, newValues)
         return (combinations, validYs)
     }
 }
