@@ -1313,14 +1313,9 @@ private extension Year2021InteractorImpl {
         }
         
         if step0In {
-            var stepsNow = minStepIn
-            while true {
+            for stepsNow in minStepIn...abs(2*targetY.1) {
                 let validYs = getValidYs(targetY, stepsNow)
                 impulseY = validYs.count > 0 ? max(impulseY, validYs.last!) : impulseY
-                stepsNow += 1
-                if stepsNow > abs(2*targetY.1) {
-                    break
-                }
             }
         }
         
