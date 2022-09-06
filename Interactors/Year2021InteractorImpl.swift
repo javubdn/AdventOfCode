@@ -1343,23 +1343,11 @@ private extension Year2021InteractorImpl {
             for validStep in validSteps {
                 if let validYValues = validYs[validStep] {
                     let newValues = validYValues.map { (xSpeed, $0) }
-                    newValues.forEach { item in
-                        if !combinations.contains(where: { (x, y) in
-                            x == item.0 && y == item.1
-                        }) {
-                            combinations.append(item)
-                        }
-                    }
+                    combinations = updateCombinations(combinations, newValues)
                 } else {
                     validYs[validStep] = getValidYs(targetY, validStep)
                     let newValues = validYs[validStep]!.map { (xSpeed, $0) }
-                    newValues.forEach { item in
-                        if !combinations.contains(where: { (x, y) in
-                            x == item.0 && y == item.1
-                        }) {
-                            combinations.append(item)
-                        }
-                    }
+                    combinations = updateCombinations(combinations, newValues)
                 }
             }
             
@@ -1368,23 +1356,11 @@ private extension Year2021InteractorImpl {
                 while true {
                     if let validYValues = validYs[stepsNow] {
                         let newValues = validYValues.map { (xSpeed, $0) }
-                        newValues.forEach { item in
-                            if !combinations.contains(where: { (x, y) in
-                                x == item.0 && y == item.1
-                            }) {
-                                combinations.append(item)
-                            }
-                        }
+                        combinations = updateCombinations(combinations, newValues)
                     } else {
                         validYs[stepsNow] = getValidYs(targetY, stepsNow)
                         let newValues = validYs[stepsNow]!.map { (xSpeed, $0) }
-                        newValues.forEach { item in
-                            if !combinations.contains(where: { (x, y) in
-                                x == item.0 && y == item.1
-                            }) {
-                                combinations.append(item)
-                            }
-                        }
+                        combinations = updateCombinations(combinations, newValues)
                     }
                     stepsNow += 1
                     if stepsNow > abs(2*targetY.1) {
@@ -1427,4 +1403,15 @@ private extension Year2021InteractorImpl {
         return yMax >= yMin ? Array(yMin...yMax) : []
     }
     
+    private func updateCombinations(_ combinations: [(Int, Int)], _ newValues: [(Int, Int)]) -> [(Int, Int)] {
+        var combinations = combinations
+        newValues.forEach { item in
+            if !combinations.contains(where: { (x, y) in
+                x == item.0 && y == item.1
+            }) {
+                combinations.append(item)
+            }
+        }
+        return combinations
+    }
 }
