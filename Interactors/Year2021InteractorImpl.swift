@@ -1339,23 +1339,16 @@ private extension Year2021InteractorImpl {
         
         for xSpeed in minimumXSpeed...targetX.1 {
             let (validSteps, step0In, _) = getValidSteps(targetX, xSpeed)
-            
             for validStep in validSteps {
                 (combinations, validYs) = combinationsFor(validYs, validStep, xSpeed, combinations, targetY)
             }
-            
             if step0In && validSteps.count > 0 {
-                var stepsNow = validSteps.last! + 1
-                while true {
+                for stepsNow in (validSteps.last! + 1)...abs(2*targetY.1) {
                     (combinations, validYs) = combinationsFor(validYs, stepsNow, xSpeed, combinations, targetY)
-                    stepsNow += 1
-                    if stepsNow > abs(2*targetY.1) {
-                        break
-                    }
                 }
             }
-            
         }
+        
         let result = combinations.count
         return "\(result)"
     }
