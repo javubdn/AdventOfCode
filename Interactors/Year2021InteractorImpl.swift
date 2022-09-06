@@ -1341,27 +1341,13 @@ private extension Year2021InteractorImpl {
             let (validSteps, step0In, _) = getValidSteps(targetX, xSpeed)
             
             for validStep in validSteps {
-                if let validYValues = validYs[validStep] {
-                    let newValues = validYValues.map { (xSpeed, $0) }
-                    combinations = updateCombinations(combinations, newValues)
-                } else {
-                    validYs[validStep] = getValidYs(targetY, validStep)
-                    let newValues = validYs[validStep]!.map { (xSpeed, $0) }
-                    combinations = updateCombinations(combinations, newValues)
-                }
+                (combinations, validYs) = combinationsFor(validYs, validStep, xSpeed, combinations, targetY)
             }
             
             if step0In && validSteps.count > 0 {
                 var stepsNow = validSteps.last! + 1
                 while true {
-                    if let validYValues = validYs[stepsNow] {
-                        let newValues = validYValues.map { (xSpeed, $0) }
-                        combinations = updateCombinations(combinations, newValues)
-                    } else {
-                        validYs[stepsNow] = getValidYs(targetY, stepsNow)
-                        let newValues = validYs[stepsNow]!.map { (xSpeed, $0) }
-                        combinations = updateCombinations(combinations, newValues)
-                    }
+                    (combinations, validYs) = combinationsFor(validYs, stepsNow, xSpeed, combinations, targetY)
                     stepsNow += 1
                     if stepsNow > abs(2*targetY.1) {
                         break
@@ -1413,5 +1399,19 @@ private extension Year2021InteractorImpl {
             }
         }
         return combinations
+    }
+    
+    private func combinationsFor(_ validYs: [Int: [Int]], _ step: Int, _ xSpeed: Int, _ combinations: [(Int, Int)], _ targetY: (Int, Int)) -> ([(Int, Int)], [Int: [Int]]) {
+        var combinations = combinations
+        var validYs = validYs
+        if let validYValues = validYs[step] {
+            let newValues = validYValues.map { (xSpeed, $0) }
+            combinations = updateCombinations(combinations, newValues)
+        } else {
+            validYs[step] = getValidYs(targetY, step)
+            let newValues = validYs[step]!.map { (xSpeed, $0) }
+            combinations = updateCombinations(combinations, newValues)
+        }
+        return (combinations, validYs)
     }
 }
