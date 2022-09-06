@@ -1392,9 +1392,7 @@ private extension Year2021InteractorImpl {
     private func updateCombinations(_ combinations: [(Int, Int)], _ newValues: [(Int, Int)]) -> [(Int, Int)] {
         var combinations = combinations
         newValues.forEach { item in
-            if !combinations.contains(where: { (x, y) in
-                x == item.0 && y == item.1
-            }) {
+            if !combinations.contains(where: { $0.0 == item.0 && $0.1 == item.1 }) {
                 combinations.append(item)
             }
         }
