@@ -1389,16 +1389,6 @@ private extension Year2021InteractorImpl {
         return yMax >= yMin ? Array(yMin...yMax) : []
     }
     
-    private func updateCombinations(_ combinations: [(Int, Int)], _ newValues: [(Int, Int)]) -> [(Int, Int)] {
-        var combinations = combinations
-        newValues.forEach { item in
-            if !combinations.contains(where: { $0.0 == item.0 && $0.1 == item.1 }) {
-                combinations.append(item)
-            }
-        }
-        return combinations
-    }
-    
     private func combinationsFor(_ validYs: [Int: [Int]], _ step: Int, _ xSpeed: Int, _ combinations: [(Int, Int)], _ targetY: (Int, Int)) -> ([(Int, Int)], [Int: [Int]]) {
         var combinations = combinations
         var validYs = validYs
@@ -1406,7 +1396,11 @@ private extension Year2021InteractorImpl {
             validYs[step] = getValidYs(targetY, step)
         }
         let newValues = validYs[step]!.map { (xSpeed, $0) }
-        combinations = updateCombinations(combinations, newValues)
+        newValues.forEach { item in
+            if !combinations.contains(where: { $0.0 == item.0 && $0.1 == item.1 }) {
+                combinations.append(item)
+            }
+        }
         return (combinations, validYs)
     }
 }
