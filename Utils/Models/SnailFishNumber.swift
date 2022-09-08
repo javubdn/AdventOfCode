@@ -20,6 +20,16 @@ class SnailFishNumber {
     
     init() {
     }
+    
+    func sum(_ other: SnailFishNumber) -> SnailFishNumber {
+        let snail = SnailFishPair(left: self, right: other)
+        self.side = .left
+        other.side = .right
+        return snail.optimise()
+    }
+    
+}
+
 extension SnailFishNumber: Equatable {
     static func == (lhs: SnailFishNumber, rhs: SnailFishNumber) -> Bool {
         var current = lhs
