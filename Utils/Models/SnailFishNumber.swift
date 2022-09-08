@@ -90,6 +90,94 @@ class SnailFishPair: SnailFishNumber {
         self.init(left: snailFishNumber.left, right: snailFishNumber.right)
     }
     
+    func optimise() -> SnailFishPair {
+        while true {
+            if let snailToExplode = findLevel4(4) {
+                snailToExplode.explode()
+            } else if let valueMoreThan9 = findGreater9() {
+                
+            } else {
+                break
+            }
+        }
+        
+        return self
+    }
+    
+    func findLevel4(_ level: Int) -> SnailFishPair? {
+        guard level > 0 else {
+            return self
+        }
+        guard !(left is SnailFishValue) else {
+            guard !(right is SnailFishValue) else {
+                return nil
+            }
+            return (right as! SnailFishPair).findLevel4(level-1)
+        }
+        if let snail = (left as! SnailFishPair).findLevel4(level-1) {
+            return snail
+        }
+        if right is SnailFishValue {
+            return nil
+        }
+        return (right as! SnailFishPair).findLevel4(level-1)
+    }
+    
+    func findGreater9() -> SnailFishValue? {
+        return nil
+    }
+    
+    func explode() {
+        var current: SnailFishNumber? = self
+        while true {
+            if let parent = current!.parent {
+                if current != parent.left {
+                    current = parent.left
+                    break
+                } else {
+                    current = parent
+                }
+            } else {
+                current = nil
+                break
+            }
+        }
+        if current != nil {
+            while current is SnailFishPair {
+                current = (current as! SnailFishPair).right
+            }
+            (current as! SnailFishValue).value += (left as! SnailFishValue).value
+        }
+        
+        current = self
+        while true {
+            if let parent = current!.parent {
+                if current != parent.right {
+                    current = parent.right
+                    break
+                } else {
+                    current = parent
+                }
+            } else {
+                current = nil
+                break
+            }
+        }
+        if current != nil {
+            while current is SnailFishPair {
+                current = (current as! SnailFishPair).left
+            }
+            (current as! SnailFishValue).value += (right as! SnailFishValue).value
+        }
+        let newNode = SnailFishValue(value: 0)
+        newNode.parent = parent
+        if side == .left {
+            parent?.left = newNode
+            newNode.side = .left
+        } else {
+            parent?.right = newNode
+            newNode.side = .right
+        }
     }
     
 }
