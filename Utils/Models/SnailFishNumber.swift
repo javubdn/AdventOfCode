@@ -56,6 +56,30 @@ class SnailFishPair: SnailFishNumber {
         self.right = right
     }
     
+    convenience init(from input: String) {
+        var levels: [[SnailFishNumber]] = [[]]
+        for item in input {
+            switch item {
+            case "[": levels.append([])
+            case "]":
+                let currentLevel = levels.removeLast()
+                let snailFishPair = SnailFishPair(left: currentLevel[0], right: currentLevel[1])
+                currentLevel[0].parent = snailFishPair
+                currentLevel[0].side = .left
+                currentLevel[1].parent = snailFishPair
+                currentLevel[1].side = .right
+                levels[levels.count-1].append(snailFishPair)
+            case ",": break
+            default:
+                let value = Int(String(item))!
+                let snailFishValue = SnailFishValue(value: value)
+                levels[levels.count-1].append(snailFishValue)
+            }
+        }
+        let snailFishNumber = levels.first![0] as! SnailFishPair
+        self.init(left: snailFishNumber.left, right: snailFishNumber.right)
+    }
+    
     }
     
 }
