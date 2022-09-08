@@ -46,4 +46,16 @@ class SnailFishValue: SnailFishNumber {
     }
 }
 
+class SnailFishPair: SnailFishNumber {
+    
+    var left: SnailFishNumber
+    var right: SnailFishNumber
+    
+    init(left: SnailFishNumber, right: SnailFishNumber) {
+        self.left = left
+        self.right = right
+    }
+    
+    }
+    
 }
