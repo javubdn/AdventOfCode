@@ -104,6 +104,7 @@ class SnailFishPair: SnailFishNumber {
                 snailToExplode.explode()
             } else if let valueMoreThan9 = findGreater9() {
                 
+                valueMoreThan9.split()
             } else {
                 break
             }
