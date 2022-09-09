@@ -58,6 +58,10 @@ class SnailFishValue: SnailFishNumber {
     init(value: Int) {
         self.value = value
     }
+    override func magnitude() -> Int {
+        value
+    }
+    
 }
 
 class SnailFishPair: SnailFishNumber {
