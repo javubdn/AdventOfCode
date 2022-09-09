@@ -8,6 +8,7 @@
 import Foundation
 
 enum SnailSide {
+enum SnailSide {
     case left
     case right
     case none
@@ -22,9 +23,12 @@ class SnailFishNumber {
     }
     
     func sum(_ other: SnailFishNumber) -> SnailFishNumber {
+    func sum(_ other: SnailFishNumber) -> SnailFishPair {
         let snail = SnailFishPair(left: self, right: other)
         self.side = .left
+        self.parent = snail
         other.side = .right
+        other.parent = snail
         return snail.optimise()
     }
     
