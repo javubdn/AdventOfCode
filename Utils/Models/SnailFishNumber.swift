@@ -72,6 +72,11 @@ class SnailFishPair: SnailFishNumber {
     init(left: SnailFishNumber, right: SnailFishNumber) {
         self.left = left
         self.right = right
+        self.left.side = .left
+        self.right.side = .right
+        super.init()
+        self.left.parent = self
+        self.right.parent = self
     }
     
     convenience init(from input: String) {
