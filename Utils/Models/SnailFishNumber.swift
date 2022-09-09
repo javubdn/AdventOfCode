@@ -28,6 +28,10 @@ class SnailFishNumber {
         return snail.optimise()
     }
     
+    func magnitude() -> Int {
+        0
+    }
+    
 }
 
 extension SnailFishNumber: Equatable {
