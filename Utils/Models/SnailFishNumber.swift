@@ -114,6 +114,11 @@ class SnailFishPair: SnailFishNumber {
     
     func findLevel4(_ level: Int) -> SnailFishPair? {
         guard level > 0 else {
+            if left is SnailFishPair {
+                return (left as! SnailFishPair).findLevel4(level)
+            } else if right is SnailFishPair {
+                return (right as! SnailFishPair).findLevel4(level)
+            }
             return self
         }
         guard !(left is SnailFishValue) else {
