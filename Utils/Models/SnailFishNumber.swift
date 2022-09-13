@@ -139,23 +139,11 @@ class SnailFishPair: SnailFishNumber {
         return right.findLevel4(level-1)
     }
     
-    func findGreater9() -> SnailFishValue? {
-        if let snailValue = left as? SnailFishValue {
-            if snailValue.value > 9 {
-                return snailValue
-            }
-            if let snailValueRight = right as? SnailFishValue {
-                return snailValueRight.value > 9 ? snailValueRight : nil
-            }
-            return (right as! SnailFishPair).findGreater9()
-        }
-        if let foundInLeft = (left as! SnailFishPair).findGreater9() {
+    override func findGreater9() -> SnailFishValue? {
+        if let foundInLeft = left.findGreater9() {
             return foundInLeft
         }
-        if let snailValueRight = right as? SnailFishValue {
-            return snailValueRight.value > 9 ? snailValueRight : nil
-        }
-        return (right as! SnailFishPair).findGreater9()
+        return right.findGreater9()
     }
     
     func explode() {
