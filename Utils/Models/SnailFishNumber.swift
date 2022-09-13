@@ -39,6 +39,11 @@ class SnailFishNumber {
     func getValue() -> String {
         ""
     }
+    
+    func findGreater9() -> SnailFishValue? {
+        nil
+    }
+    
 }
 
 class SnailFishValue: SnailFishNumber {
@@ -71,6 +76,10 @@ class SnailFishValue: SnailFishNumber {
     
     override func getValue() -> String {
         "\(value)"
+    }
+    
+    override func findGreater9() -> SnailFishValue? {
+        value > 9 ? self : nil
     }
     
 }
