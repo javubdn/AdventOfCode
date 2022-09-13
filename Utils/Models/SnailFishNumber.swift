@@ -45,6 +45,24 @@ class SnailFishValue: SnailFishNumber {
     init(value: Int) {
         self.value = value
     }
+    
+    func split() {
+        let leftValue = SnailFishValue(value: value/2)
+        leftValue.side = .left
+        let rightValue = SnailFishValue(value: value/2 + value%2)
+        rightValue.side = .right
+        let newPair = SnailFishPair(left: leftValue, right: rightValue)
+        leftValue.parent = newPair
+        rightValue.parent = newPair
+        newPair.parent = parent
+        newPair.side = side
+        if side == .left {
+            parent?.left = newPair
+        } else {
+            parent?.right = newPair
+        }
+    }
+    
     override func magnitude() -> Int {
         value
     }
