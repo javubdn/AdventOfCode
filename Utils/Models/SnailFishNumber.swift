@@ -123,28 +123,20 @@ class SnailFishPair: SnailFishNumber {
         return self
     }
     
-    func findLevel4(_ level: Int) -> SnailFishPair? {
+    override func findLevel4(_ level: Int) -> SnailFishPair? {
         guard level > 0 else {
-            if left is SnailFishPair {
-                return (left as! SnailFishPair).findLevel4(level)
-            } else if right is SnailFishPair {
-                return (right as! SnailFishPair).findLevel4(level)
+            if let left = left.findLevel4(level) {
+                return left
+            }
+            if let right = right.findLevel4(level) {
+                return right
             }
             return self
         }
-        guard !(left is SnailFishValue) else {
-            guard !(right is SnailFishValue) else {
-                return nil
-            }
-            return (right as! SnailFishPair).findLevel4(level-1)
-        }
-        if let snail = (left as! SnailFishPair).findLevel4(level-1) {
+        if let snail = left.findLevel4(level-1) {
             return snail
         }
-        if right is SnailFishValue {
-            return nil
-        }
-        return (right as! SnailFishPair).findLevel4(level-1)
+        return right.findLevel4(level-1)
     }
     
     func findGreater9() -> SnailFishValue? {
