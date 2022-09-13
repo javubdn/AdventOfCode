@@ -36,6 +36,8 @@ class SnailFishNumber {
         0
     }
     
+    func getValue() -> String {
+        ""
     }
 }
 
@@ -65,6 +67,10 @@ class SnailFishValue: SnailFishNumber {
     
     override func magnitude() -> Int {
         value
+    }
+    
+    override func getValue() -> String {
+        "\(value)"
     }
     
 }
@@ -179,6 +185,16 @@ class SnailFishPair: SnailFishNumber {
     
     override func magnitude() -> Int {
         left.magnitude() * 3 + right.magnitude() * 2
+    }
+    
+    override func getValue() -> String {
+        let leftString = left.getValue()
+        let rightString = right.getValue()
+        return "[\(leftString),\(rightString)]"
+    }
+    
+    func copy() -> SnailFishPair {
+        SnailFishPair(from: getValue())
     }
     
 }
