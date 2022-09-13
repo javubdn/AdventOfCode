@@ -159,33 +159,21 @@ class SnailFishPair: SnailFishNumber {
         newNode.side = side
     }
     
+    private func addValue(to side: SnailSide) {
+        var current: SnailFishNumber? = self
         while true {
-            if let parent = current!.parent {
-                if current != parent.right {
-                    current = parent.right
-                    break
-                } else {
-                    current = parent
-                }
-            } else {
-                current = nil
+            guard let currentInside = current else { break }
+            guard currentInside.side == side else {
+                current = side == .left ? currentInside.parent?.left : currentInside.parent?.right
                 break
             }
+            current = currentInside.parent
         }
         if current != nil {
             while current is SnailFishPair {
-                current = (current as! SnailFishPair).left
+                current = side == .left ? (current as! SnailFishPair).right : (current as! SnailFishPair).left
             }
-            (current as! SnailFishValue).value += (right as! SnailFishValue).value
-        }
-        let newNode = SnailFishValue(value: 0)
-        newNode.parent = parent
-        if side == .left {
-            parent?.left = newNode
-            newNode.side = .left
-        } else {
-            parent?.right = newNode
-            newNode.side = .right
+            (current as! SnailFishValue).value += side == .left ? (left as! SnailFishValue).value : (right as! SnailFishValue).value
         }
     }
     
