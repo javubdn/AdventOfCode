@@ -36,23 +36,6 @@ class SnailFishNumber {
         0
     }
     
-}
-
-extension SnailFishNumber: Equatable {
-    static func == (lhs: SnailFishNumber, rhs: SnailFishNumber) -> Bool {
-        var current = lhs
-        var lhsString = ""
-        var rhsString = ""
-        while current.side != .none {
-            lhsString += current.side == .left ? "L" : "R"
-            current = current.parent!
-        }
-        current = rhs
-        while current.parent != nil {
-            rhsString += current.side == .left ? "L" : "R"
-            current = current.parent!
-        }
-        return lhsString == rhsString
     }
 }
 
