@@ -42,6 +42,10 @@ class SnailFishNumber {
         nil
     }
     
+    func findLevel4(_ level: Int) -> SnailFishPair? {
+        nil
+    }
+    
 }
 
 class SnailFishValue: SnailFishNumber {
