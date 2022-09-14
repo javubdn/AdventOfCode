@@ -7,7 +7,6 @@
 
 import Foundation
 
-enum SnailSide {
 enum SnailSide {
     case left
     case right
