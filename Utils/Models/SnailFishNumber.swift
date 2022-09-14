@@ -76,6 +76,10 @@ class SnailFishValue: SnailFishNumber {
         value
     }
     
+    func copy() -> SnailFishValue {
+        SnailFishValue(value: value)
+    }
+    
     override func getValue() -> String {
         "\(value)"
     }
