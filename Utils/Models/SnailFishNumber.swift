@@ -21,7 +21,6 @@ class SnailFishNumber {
     init() {
     }
     
-    func sum(_ other: SnailFishNumber) -> SnailFishNumber {
     func sum(_ other: SnailFishNumber) -> SnailFishPair {
         let snail = SnailFishPair(left: self, right: other)
         self.side = .left
