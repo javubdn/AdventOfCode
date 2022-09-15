@@ -31,4 +31,9 @@ class Scanner {
         self.init(id: id, beacons: beacons)
     }
     
+    func rotate() -> Scanner {
+        let beacons = beacons.map { ($0.0, -$0.2, $0.1) }
+        return Scanner(id: id, beacons: beacons)
+    }
+    
 }
