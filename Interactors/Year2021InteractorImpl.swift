@@ -1391,4 +1391,17 @@ private extension Year2021InteractorImpl {
         }
         return (combinations, validYs)
     }
+    
+    @objc
+    func day18question1() -> String {
+        let input = readCSV("InputYear2021Day18").components(separatedBy: .newlines)
+        let snails = input.map { SnailFishPair(from: $0) }
+        var snail = snails[0]
+        for index in 1..<snails.count {
+            snail = snail.sum(snails[index])
+        }
+        let result = snail.magnitude()
+        return "\(result)"
+    }
+    
 }
