@@ -43,6 +43,14 @@ class Beacon {
     
 }
 
+extension Beacon: Equatable {
+    
+    static func == (lhs: Beacon, rhs: Beacon) -> Bool {
+        lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z
+    }
+    
+}
+
 class Scanner {
     
     let id: Int
