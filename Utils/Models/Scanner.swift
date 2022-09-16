@@ -7,6 +7,42 @@
 
 import Foundation
 
+class Beacon {
+    
+    var id: Int
+    var x: Int
+    var y: Int
+    var z: Int
+    
+    init(id: Int, x: Int, y: Int, z: Int) {
+        self.id = id
+        self.x = x
+        self.y = y
+        self.z = z
+    }
+    
+    func rotate() -> Beacon {
+        Beacon(id: id, x: x, y: -z, z: y)
+    }
+    
+    func invertAxis() -> Beacon {
+        Beacon(id: id, x: y, y: z, z: x)
+    }
+    
+    func flip() -> Beacon {
+        Beacon(id: id, x: -x, y: -y, z: z)
+    }
+    
+    func substract(_ other: Beacon) -> (Int, Int, Int) {
+        (x-other.x, y-other.y, z-other.z)
+    }
+    
+    func substract(_ diff: (Int, Int, Int)) -> Beacon {
+        Beacon(id: id, x: x-diff.0, y: y-diff.1, z: z-diff.2)
+    }
+    
+}
+
 class Scanner {
     
     let id: Int
