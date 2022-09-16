@@ -81,8 +81,7 @@ class Scanner {
     }
     
     func rotate() -> Scanner {
-        let beacons = beacons.map { ($0.0, -$0.2, $0.1) }
-        return Scanner(id: id, beacons: beacons)
+        Scanner(id: id, beacons: beacons.map { $0.rotate() })
     }
     
     func invertAxis() -> Scanner {
