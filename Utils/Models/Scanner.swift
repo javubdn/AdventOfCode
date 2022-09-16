@@ -54,7 +54,7 @@ extension Beacon: Equatable {
 class Scanner {
     
     let id: Int
-    var beacons: [(Int, Int, Int)]
+    var beacons: [Beacon]
     
     init(id: Int, beacons: [(Int, Int, Int)]) {
         self.id = id
