@@ -55,6 +55,7 @@ class Scanner {
     
     let id: Int
     var beacons: [Beacon]
+    var position: (x: Int, y: Int, z: Int)?
     
     init(id: Int, beacons: [(Int, Int, Int)]) {
         self.id = id
