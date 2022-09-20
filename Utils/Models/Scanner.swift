@@ -84,7 +84,7 @@ class Scanner {
             let beacon = Beacon(id: beaconId, x: Int(values[0])!, y: Int(values[1])!, z: Int(values[2])!)
             beaconId += 1
             return beacon
-        }
+        }.sorted()
         self.init(id: id, beacons: beacons)
     }
     
