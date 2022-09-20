@@ -97,8 +97,9 @@ class Scanner {
     }
     
     func flip() -> Scanner {
-        let beacons = beacons.map { (-$0.0, -$0.1, $0.2) }
-        return Scanner(id: id, beacons: beacons)
+        Scanner(id: id, beacons: beacons.map { $0.flip() })
+    }
+    
     }
     
 }
