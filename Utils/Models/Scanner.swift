@@ -88,6 +88,20 @@ class Scanner {
         self.init(id: id, beacons: beacons)
     }
     
+    func commonBeacons(with other: Scanner) -> [Beacon] {        
+        var bestCombination: [Beacon] = []
+        for scanner in other.combinations() {
+            let commonBeacons = commonBeaconsNoRotation(with: scanner)
+            if commonBeacons.count > bestCombination.count {
+                bestCombination = commonBeacons
+                if bestCombination.count >= 12 {
+                    break
+                }
+            }
+        }
+        
+        return bestCombination
+    }
     func rotate() -> Scanner {
         Scanner(id: id, beacons: beacons.map { $0.rotate() })
     }
