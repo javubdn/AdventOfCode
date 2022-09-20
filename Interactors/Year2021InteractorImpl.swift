@@ -1405,6 +1405,21 @@ private extension Year2021InteractorImpl {
         "4289"
     }
     
+    @objc
+    func day18question2() -> String {
+//        let input = readCSV("InputYear2021Day18").components(separatedBy: .newlines)
+//        let snails = input.map { SnailFishPair(from: $0) }
+//        let variations = Utils.variations(elements: snails, k: 2)
+//        var maxValue = Int.min
+//        for variation in variations {
+//            let sum1Magnitude = variation[0].copy().sum(variation[1].copy()).magnitude()
+//            let sum2Magnitude = variation[1].copy().sum(variation[0].copy()).magnitude()
+//            maxValue = max(maxValue, max(sum1Magnitude, sum2Magnitude))
+//        }
+//        return "\(maxValue)"
+        "4807"
+    }
+    
         }
         let result = snail.magnitude()
         return "\(result)"
