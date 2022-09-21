@@ -90,7 +90,7 @@ extension Beacon: Hashable {
 class Scanner {
     
     let id: Int
-    var beacons: [Beacon]
+    var beacons: Set<Beacon>
     var position: (x: Int, y: Int, z: Int)?
     var reference: Scanner?
     
