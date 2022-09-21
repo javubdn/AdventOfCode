@@ -41,6 +41,19 @@ class Beacon {
         Beacon(id: id, x: x-diff.0, y: y-diff.1, z: z-diff.2)
     }
     
+    func face(_ facing: Int) -> Beacon {
+        switch facing {
+        case 0: return self
+        case 1: return Beacon(id: id, x: x, y: -y, z: -z)
+        case 2: return Beacon(id: id, x: x, y: -z, z: y)
+        case 3: return Beacon(id: id, x: -y, y: -z, z: x)
+        case 4: return Beacon(id: id, x: y, y: -z, z: -x)
+        case 5: return Beacon(id: id, x: -x, y: -z, z: -y)
+        default: assertionFailure("Invalid facing")
+        }
+        return Beacon(id: id, x: 0, y: 0, z: 0)
+    }
+    
 }
 
 extension Beacon: Equatable {
