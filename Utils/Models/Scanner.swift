@@ -83,6 +83,10 @@ extension Beacon: Comparable {
     
 }
 
+extension Beacon: Hashable {
+    func hash(into hasher: inout Hasher) { }
+}
+
 class Scanner {
     
     let id: Int
