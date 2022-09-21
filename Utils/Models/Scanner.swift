@@ -54,6 +54,17 @@ class Beacon {
         return Beacon(id: id, x: 0, y: 0, z: 0)
     }
     
+    func rotate(_ rotating: Int) -> Beacon {
+        switch rotating {
+        case 0: return self
+        case 1: return Beacon(id: id, x: -y, y: x, z: z)
+        case 2: return Beacon(id: id, x: -x, y: -y, z: z)
+        case 3: return Beacon(id: id, x: y, y: -x, z: z)
+        default: assertionFailure("Invalid rotation")
+        }
+        return Beacon(id: id, x: 0, y: 0, z: 0)
+    }
+    
 }
 
 extension Beacon: Equatable {
