@@ -20,7 +20,7 @@ class Beacon {
     }
     
     func rotate() -> Beacon {
-        Beacon(id: id, x: x, y: -z, z: y)
+        Beacon(x, -z, y)
     }
     
     func invertAxis() -> Beacon {
