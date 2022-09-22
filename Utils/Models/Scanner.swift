@@ -24,7 +24,7 @@ class Beacon {
     }
     
     func invertAxis() -> Beacon {
-        Beacon(id: id, x: y, y: z, z: x)
+        Beacon(y, z, x)
     }
     
     func flip() -> Beacon {
