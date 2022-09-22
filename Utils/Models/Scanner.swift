@@ -55,12 +55,12 @@ class Beacon {
     func rotate(_ rotating: Int) -> Beacon {
         switch rotating {
         case 0: return self
-        case 1: return Beacon(id: id, x: -y, y: x, z: z)
-        case 2: return Beacon(id: id, x: -x, y: -y, z: z)
-        case 3: return Beacon(id: id, x: y, y: -x, z: z)
+        case 1: return Beacon(-y, x, z)
+        case 2: return Beacon(-x, -y, z)
+        case 3: return Beacon(y, -x, z)
         default: assertionFailure("Invalid rotation")
         }
-        return Beacon(id: id, x: 0, y: 0, z: 0)
+        return Beacon(0, 0, 0)
     }
     
 }
