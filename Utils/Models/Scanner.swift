@@ -9,13 +9,11 @@ import Foundation
 
 class Beacon {
     
-    var id: Int
     var x: Int
     var y: Int
     var z: Int
     
-    init(id: Int, x: Int, y: Int, z: Int) {
-        self.id = id
+    init(_ x: Int, _ y: Int, _ z: Int) {
         self.x = x
         self.y = y
         self.z = z
