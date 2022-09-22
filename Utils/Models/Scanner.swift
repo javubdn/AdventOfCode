@@ -94,7 +94,7 @@ class Scanner {
     var position: (x: Int, y: Int, z: Int)?
     var reference: Scanner?
     
-    init(id: Int, beacons: [Beacon]) {
+    init(id: Int, beacons: Set<Beacon>) {
         self.id = id
         self.beacons = beacons
     }
