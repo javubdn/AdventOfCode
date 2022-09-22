@@ -28,7 +28,7 @@ class Beacon {
     }
     
     func flip() -> Beacon {
-        Beacon(id: id, x: -x, y: -y, z: z)
+        Beacon(-x, -y, z)
     }
     
     func substract(_ other: Beacon) -> (Int, Int, Int) {
