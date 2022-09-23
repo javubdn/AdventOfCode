@@ -1435,8 +1435,58 @@ private extension Year2021InteractorImpl {
             let sum1Magnitude = variation[0].copy().sum(variation[1].copy()).magnitude()
             let sum2Magnitude = variation[1].copy().sum(variation[0].copy()).magnitude()
             maxValue = max(maxValue, max(sum1Magnitude, sum2Magnitude))
+    private class Point3D: Hashable, Equatable {
+        
+        let x: Int
+        let y: Int
+        let z: Int
+        
+        init(_ x: Int, _ y: Int, _ z: Int) {
+            self.x = x
+            self.y = y
+            self.z = z
         }
-        return "\(maxValue)"
+        
+        static func == (lhs: Year2021InteractorImpl.Point3D, rhs: Year2021InteractorImpl.Point3D) -> Bool {
+            lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z
+        }
+        
+        func hash(into hasher: inout Hasher) { }
+        
+        func plus(other: Point3D) -> Point3D {
+            Point3D(x + other.x, y + other.y, z + other.z)
+        }
+        
+        func minus(other: Point3D) -> Point3D {
+            Point3D(x - other.x, y - other.y, z - other.z)
+        }
+        
+        func face(_ facing: Int) -> Point3D {
+            switch facing {
+            case 0: return self
+            case 1: return Point3D(x, -y, -z)
+            case 2: return Point3D(x, -z, y)
+            case 3: return Point3D(-y, -z, x)
+            case 4: return Point3D(y, -z, -x)
+            case 5: return Point3D(-x, -z, -y)
+            default: assertionFailure("Invalid facing")
+            }
+            return Point3D(0, 0, 0)
+        }
+        
+        func rotate(_ rotating: Int) -> Point3D {
+            switch rotating {
+            case 0: return self
+            case 1: return Point3D(-y, x, z)
+            case 2: return Point3D(-x, -y, z)
+            case 3: return Point3D(y, -x, z)
+            default: assertionFailure("Invalid rotation")
+            }
+            return Point3D(0, 0, 0)
+        }
+        
+    }
+    
     }
     
 }
