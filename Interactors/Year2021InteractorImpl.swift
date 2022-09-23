@@ -1435,6 +1435,22 @@ private extension Year2021InteractorImpl {
             let sum1Magnitude = variation[0].copy().sum(variation[1].copy()).magnitude()
             let sum2Magnitude = variation[1].copy().sum(variation[0].copy()).magnitude()
             maxValue = max(maxValue, max(sum1Magnitude, sum2Magnitude))
+    
+    private func getScanners(_ input: String) -> [Set<Point3D>] {
+        input.components(separatedBy: "\n\n").map { singleScanner in
+            Set(singleScanner.components(separatedBy: .newlines).dropFirst().map { getPoint3D($0) })
+        }
+    }
+    
+    private class Transform {
+        let scanner: Point3D
+        let beacons: Set<Point3D>
+        init(_ scanner: Point3D, _ beacons: Set<Point3D>) {
+            self.scanner = scanner
+            self.beacons = beacons
+        }
+    }
+    
     private class Point3D: Hashable, Equatable {
         
         let x: Int
