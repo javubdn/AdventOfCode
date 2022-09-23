@@ -1420,21 +1420,23 @@ private extension Year2021InteractorImpl {
         "4807"
     }
     
+    @objc
+    func day19question1() -> String {
+        var scanners = readCSV("InputYear2021Day19").components(separatedBy: "\n\n").map { Scanner(from: $0, firstBeaconId: 0) }
+        let reference = scanners.removeFirst()
+        while !scanners.isEmpty {
+            let currentScanner = scanners.removeFirst()
+            if let _ = reference.commonBeacons(with: currentScanner) {
+                print("El scanner \(currentScanner.id) ha sido añadido")
+            } else {
+                print("El scanner \(currentScanner.id) ha sido descartado")
+                scanners.append(currentScanner)
+            }
         }
-        let result = snail.magnitude()
-        return "\(result)"
+        return "\(reference.beacons.count)"
     }
     
     @objc
-    func day18question2() -> String {
-        let input = readCSV("InputYear2021Day18").components(separatedBy: .newlines)
-        let snails = input.map { SnailFishPair(from: $0) }
-        let variations = Utils.variations(elements: snails, k: 2)
-        var maxValue = Int.min
-        for variation in variations {
-            let sum1Magnitude = variation[0].copy().sum(variation[1].copy()).magnitude()
-            let sum2Magnitude = variation[1].copy().sum(variation[0].copy()).magnitude()
-            maxValue = max(maxValue, max(sum1Magnitude, sum2Magnitude))
     
     private func getScanners(_ input: String) -> [Set<Point3D>] {
         input.components(separatedBy: "\n\n").map { singleScanner in
