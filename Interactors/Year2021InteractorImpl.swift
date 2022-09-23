@@ -1437,6 +1437,31 @@ private extension Year2021InteractorImpl {
     }
     
     @objc
+    func day19question2() -> String {
+        var scanners = readCSV("InputYear2021Day19").components(separatedBy: "\n\n").map { Scanner(from: $0, firstBeaconId: 0) }
+        let reference = scanners.removeFirst()
+        var foundScanners = Set([Point3D(0, 0, 0)])
+        while !scanners.isEmpty {
+            let currentScanner = scanners.removeFirst()
+            if let position = reference.commonBeacons(with: currentScanner) {
+                foundScanners.insert(Point3D(position.0, position.1, position.2))
+                print("El scanner \(currentScanner.id) ha sido añadido")
+            } else {
+                print("El scanner \(currentScanner.id) ha sido descartado")
+                scanners.append(currentScanner)
+            }
+        }
+        let distances = foundScanners.map { scanner -> Int in
+            var distanceMax = 0
+            foundScanners.forEach { otherScanner in
+                guard scanner != otherScanner else { return }
+                let distance = abs(scanner.x - otherScanner.x)+abs(scanner.y - otherScanner.y)+abs(scanner.z - otherScanner.z)
+                distanceMax = max(distance, distanceMax)
+            }
+            return distanceMax
+        }
+        return "\(distances.max()!)"
+    }
     
     private func getScanners(_ input: String) -> [Set<Point3D>] {
         input.components(separatedBy: "\n\n").map { singleScanner in
