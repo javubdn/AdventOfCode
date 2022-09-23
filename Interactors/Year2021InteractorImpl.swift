@@ -1487,6 +1487,47 @@ private extension Year2021InteractorImpl {
         
     }
     
+    private func getPoint3D(_ input: String) -> Point3D {
+        let parts = input.components(separatedBy: ",")
+        return Point3D(Int(parts[0])!, Int(parts[1])!, Int(parts[2])!)
     }
+    
+    private func findTransformIfIntersects(left: Set<Point3D>, right: Set<Point3D>) -> Transform? {
+        let best = Utils.cartesianProduct(lhs: Array(0..<6), rhs: Array(0..<4)).first { (face, rotation) in
+            let rightReoriented = right.map { $0.face(face).rotate(rotation) }
+            let bestLeftPoint = left.first { s1 in
+                rightReoriented.first { s2 in
+                    let difference = s1.minus(other: s2)
+                    let moved = Set(rightReoriented.map { $0.plus(other: difference) })
+                    return moved.intersection(left).count >= 12
+                } != nil
+            }
+            return bestLeftPoint != nil
+        }
+        if let best = best {
+            let rightReoriented = right.map { $0.face(best.0).rotate(best.1) }
+            let bestLeftPoint = left.first { s1 in
+                rightReoriented.first { s2 in
+                    let difference = s1.minus(other: s2)
+                    let moved = Set(rightReoriented.map { $0.plus(other: difference) })
+                    return moved.intersection(left).count >= 12
+                } != nil
+            }
+            if let bestLeftPoint = bestLeftPoint {
+                let bestRightPoint = rightReoriented.first { s2 in
+                    let difference = bestLeftPoint.minus(other: s2)
+                    let moved = Set(rightReoriented.map { $0.plus(other: difference) })
+                    return moved.intersection(left).count >= 12
+                }
+                if let bestRightPoint = bestRightPoint {
+                    let difference = bestLeftPoint.minus(other: bestRightPoint)
+                    let moved = Set(rightReoriented.map { $0.plus(other: difference) })
+                    return Transform(difference, moved)
+                }
+            }
+        }
+        return nil
+    }
+    
     
 }
