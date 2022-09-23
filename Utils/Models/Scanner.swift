@@ -140,24 +140,6 @@ class Scanner {
         Scanner(id: id, beacons: beacons.map { $0.flip() })
     }
     
-    func combinations() -> [Scanner] {
-        var axis = [self]
-        for _ in 0..<2 {
-            axis.append(axis.last!.invertAxis())
-        }
-        
-        axis = axis.flatMap { item -> [Scanner] in
-            var rotations: [Scanner] = [item]
-            for _ in 0..<3 {
-                rotations.append(rotations.last!.rotate())
-            }
-            return rotations
-        }
-        
-        let flips = axis.map { $0.flip() }
-        let scanners = axis + flips
-        scanners.forEach { $0.reference = self }
-        return scanners
     }
     
 }
