@@ -1463,15 +1463,6 @@ private extension Year2021InteractorImpl {
         return "\(distances.max()!)"
     }
     
-    private class Transform {
-        let scanner: Point3D
-        let beacons: Set<Point3D>
-        init(_ scanner: Point3D, _ beacons: Set<Point3D>) {
-            self.scanner = scanner
-            self.beacons = beacons
-        }
-    }
-    
     private class Point3D: Hashable, Equatable {
         
         let x: Int
@@ -1489,38 +1480,6 @@ private extension Year2021InteractorImpl {
         }
         
         func hash(into hasher: inout Hasher) { }
-        
-        func plus(other: Point3D) -> Point3D {
-            Point3D(x + other.x, y + other.y, z + other.z)
-        }
-        
-        func minus(other: Point3D) -> Point3D {
-            Point3D(x - other.x, y - other.y, z - other.z)
-        }
-        
-        func face(_ facing: Int) -> Point3D {
-            switch facing {
-            case 0: return self
-            case 1: return Point3D(x, -y, -z)
-            case 2: return Point3D(x, -z, y)
-            case 3: return Point3D(-y, -z, x)
-            case 4: return Point3D(y, -z, -x)
-            case 5: return Point3D(-x, -z, -y)
-            default: assertionFailure("Invalid facing")
-            }
-            return Point3D(0, 0, 0)
-        }
-        
-        func rotate(_ rotating: Int) -> Point3D {
-            switch rotating {
-            case 0: return self
-            case 1: return Point3D(-y, x, z)
-            case 2: return Point3D(-x, -y, z)
-            case 3: return Point3D(y, -x, z)
-            default: assertionFailure("Invalid rotation")
-            }
-            return Point3D(0, 0, 0)
-        }
         
     }
     
