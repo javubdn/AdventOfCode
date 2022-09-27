@@ -107,7 +107,7 @@ class Scanner {
         var beaconId = firstBeaconId
         let beacons = lines.map { item -> Beacon in
             let values = item.components(separatedBy: ",")
-            let beacon = Beacon(id: beaconId, x: Int(values[0])!, y: Int(values[1])!, z: Int(values[2])!)
+            let beacon = Beacon(Int(values[0])!, Int(values[1])!, Int(values[2])!)
             beaconId += 1
             return beacon
         }.sorted()
