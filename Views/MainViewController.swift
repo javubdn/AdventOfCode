@@ -41,7 +41,7 @@ class MainViewController: UIViewController {
                                  Year.eighteen: 25,
                                  Year.nineteen: 25,
                                  Year.twenty: 25,
-                                 Year.twentyOne: 17]
+                                 Year.twentyOne: 20]
         for index in 0..<numberDaysPerYear[currentYear]! {
             let dayView = DayView(currentYear, index, mainStackView, self)
             dayViews.append(dayView)

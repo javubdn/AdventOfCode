@@ -1524,4 +1524,65 @@ private extension Year2021InteractorImpl {
         return "\(result)"
     }
     
+    @objc
+    func day20question2() -> String {
+        //        let input = """
+        //..#.#..#####.#.#.#.###.##.....###.##.#..###.####..#####..#....#..#..##..###..######.###...####..#..#####..##..#.#####...##.#.#..#.##..#.#......#.###.######.###.####...#.##.##..#..#..#####.....#.#....###..#.##......#.....#..#..#..##..#...##.######.####.####.#.#...#.......#..#.#.#...####.##.#......#..#...##.#.##..#...##.#.##..###.#......#.#.......#.#.#.####.###.##...#.....####.#..#..#.##.#....##..#.####....##...##..#...#......#.#.......#.......##..####..#...#.#.#...##..#.#..###..#####........#..####......#..#
+        //
+        //#..#.
+        //#....
+        //##..#
+        //..#..
+        //..###
+        //"""
+                let input = readCSV("InputYear2021Day20")
+                let entry = input.components(separatedBy: "\n\n")
+                let algorithm = entry[0]
+                var image = entry[1].components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+                
+                var borderBlack = true
+                
+                for _ in 0..<50 {
+                    let borderValue = borderBlack ? "." : "#"
+                    image = image.map { [borderValue]+$0+[borderValue] }
+                    image.insert([String](repeating: borderValue, count: image[0].count), at: 0)
+                    image.append([String](repeating: borderValue, count: image[0].count))
+                    
+                    var image2 = image
+                    
+                    for y in 0..<image.count {
+                        for x in 0..<image[0].count {
+                            image2[y][x] = generatePixel(algorithm, image, x, y, borderBlack)
+                        }
+                    }
+                    
+                    image = image2
+                    borderBlack = borderBlack ? (algorithm.first! == ".") : (algorithm.last! == ".")
+                }
+                
+                let result = image.map { $0.filter { $0 == "#" }.count }.reduce(0, +)
+                
+                return "\(result)"
+    }
+    
+    private func generatePixel(_ algorithm: String, _ image: [[String]], _ x: Int, _ y: Int, _ borderBlack: Bool) -> String {
+        var value = ""
+        
+        for yPos in y-1...y+1 {
+            for xPos in x-1...x+1 {
+                guard yPos >= 0 && yPos < image.count && xPos >= 0 && xPos < image[yPos].count else {
+                    value += borderBlack ? "0" : "1"
+                    continue
+                }
+                value += image[yPos][xPos] == "." ? "0" : "1"
+            }
+        }
+        
+        if let number = Int(value, radix: 2) {
+            return String(algorithm[number])
+        }
+        
+        return ""
+    }
+    
 }
