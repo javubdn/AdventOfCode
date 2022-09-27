@@ -111,7 +111,7 @@ class Scanner {
             beaconId += 1
             return beacon
         }.sorted()
-        self.init(id: id, beacons: beacons)
+        self.init(id: id, beacons: Set(beacons))
     }
     
     func commonBeacons(with other: Scanner) -> [Beacon] {        
