@@ -140,6 +140,8 @@ class Scanner {
         Scanner(id: id, beacons: beacons.map { $0.flip() })
     }
     
+    func rotate(_ rotating: Int) -> Scanner {
+        Scanner(id: id, beacons: Set(beacons.map { $0.rotate(rotating) }))
     }
     
 }
