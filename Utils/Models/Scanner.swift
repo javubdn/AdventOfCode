@@ -125,8 +125,7 @@ class Scanner {
                 }
             }
         }
-        
-        return bestCombination
+        return nil
     }
     
     func commonBeaconsNoRotation(with other: Scanner) -> ((Int, Int, Int), Set<Beacon>)? {
