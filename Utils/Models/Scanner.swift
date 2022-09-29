@@ -140,10 +140,6 @@ class Scanner {
         return nil
     }
     
-    func invertAxis() -> Scanner {
-        Scanner(id: id, beacons: Set(beacons.map { $0.invertAxis() }))
-    }
-    
     func face(_ facing: Int) -> Scanner {
         Scanner(id: id, beacons: Set(beacons.map { $0.face(facing) }))
     }
