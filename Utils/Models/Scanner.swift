@@ -128,6 +128,20 @@ class Scanner {
         
         return bestCombination
     }
+    
+    func commonBeaconsNoRotation(with other: Scanner) -> ((Int, Int, Int), Set<Beacon>)? {
+        for currentBeacon in beacons {
+            for otherBeacon in other.beacons {
+                let difference = otherBeacon.substract(currentBeacon)
+                let displacedCoordenates = Set(other.beacons.map { $0.substract(difference) })
+                if beacons.intersection(displacedCoordenates).count >= 12 {
+                    return ((difference.0, difference.1, difference.2), displacedCoordenates)
+                }
+            }
+        }
+        return nil
+    }
+    
     func rotate() -> Scanner {
         Scanner(id: id, beacons: Set(beacons.map { $0.rotate() }))
     }
