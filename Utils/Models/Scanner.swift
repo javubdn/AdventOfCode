@@ -114,14 +114,13 @@ class Scanner {
         self.init(id: id, beacons: Set(beacons))
     }
     
-    func commonBeacons(with other: Scanner) -> [Beacon] {        
-        var bestCombination: [Beacon] = []
-        for scanner in other.combinations() {
-            let commonBeacons = commonBeaconsNoRotation(with: scanner)
-            if commonBeacons.count > bestCombination.count {
-                bestCombination = commonBeacons
-                if bestCombination.count >= 12 {
-                    break
+    func commonBeacons(with other: Scanner) -> (Int, Int, Int)? {
+        for facing in 0..<6 {
+            for rotating in 0..<4 {
+                let scanner = other.face(facing).rotate(rotating)
+                if let (position, newBeacons) = commonBeaconsNoRotation(with: scanner) {
+                    beacons.formUnion(newBeacons)
+                    return position
                 }
             }
         }
