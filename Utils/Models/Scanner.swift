@@ -19,10 +19,6 @@ class Beacon {
         self.z = z
     }
     
-    func rotate() -> Beacon {
-        Beacon(x, -z, y)
-    }
-    
     func invertAxis() -> Beacon {
         Beacon(y, z, x)
     }
