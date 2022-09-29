@@ -140,10 +140,6 @@ class Scanner {
         return nil
     }
     
-    func rotate() -> Scanner {
-        Scanner(id: id, beacons: Set(beacons.map { $0.rotate() }))
-    }
-    
     func invertAxis() -> Scanner {
         Scanner(id: id, beacons: Set(beacons.map { $0.invertAxis() }))
     }
