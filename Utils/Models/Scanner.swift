@@ -129,7 +129,7 @@ class Scanner {
         return bestCombination
     }
     func rotate() -> Scanner {
-        Scanner(id: id, beacons: beacons.map { $0.rotate() })
+        Scanner(id: id, beacons: Set(beacons.map { $0.rotate() }))
     }
     
     func invertAxis() -> Scanner {
