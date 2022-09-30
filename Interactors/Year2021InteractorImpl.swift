@@ -1487,6 +1487,14 @@ private extension Year2021InteractorImpl {
     
     @objc
     func day20question1() -> String {
+        let input = readCSV("InputYear2021Day20").components(separatedBy: "\n\n")
+        let algorithm = input[0]
+        var image = input[1].components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+        image = getSharpImage(image, algorithm, 2)
+        let result = image.map { $0.filter { $0 == "#" }.count }.reduce(0, +)
+        return "\(result)"
+    }
+    
         
         for _ in 0..<2 {
             let borderValue = borderBlack ? "." : "#"
