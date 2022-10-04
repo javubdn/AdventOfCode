@@ -1549,6 +1549,22 @@ private extension Year2021InteractorImpl {
         return image
     }
     
+    @objc
+    func day21question1() -> String {
+        var positions = (8, 4)
+        var score = (0, 0)
+        var plays1 = true
+        var tiradas = 0
+        while score.0 < 1000 && score.1 < 1000 {
+            var position = plays1 ? positions.0 : positions.1
+            position += 3*(tiradas + 1) % 100 + 3
+            position = position%10 == 0 ? 10 : position%10
+            score = plays1 ? ( score.0 + position, score.1) : (score.0, score.1 + position)
+            positions = (plays1 ? position : positions.0, plays1 ? positions.1 : position)
+            tiradas += 3
+            plays1 = !plays1
+        }
+        let result = score.0 >= 1000 ? score.1 * tiradas : score.0 * tiradas
         return "\(result)"
     }
     
