@@ -1526,9 +1526,10 @@ private extension Year2021InteractorImpl {
         return ""
     }
     
+    private func getSharpImage(_ image: [[String]], _ algorithm: String, _ interactions: Int) -> [[String]] {
+        var image = image
         var borderBlack = true
-        
-        for _ in 0..<50 {
+        for _ in 0..<interactions {
             let borderValue = borderBlack ? "." : "#"
             image = image.map { [borderValue]+$0+[borderValue] }
             image.insert([String](repeating: borderValue, count: image[0].count), at: 0)
@@ -1545,9 +1546,9 @@ private extension Year2021InteractorImpl {
             image = image2
             borderBlack = borderBlack ? (algorithm.first! == ".") : (algorithm.last! == ".")
         }
-        
-        let result = image.map { $0.filter { $0 == "#" }.count }.reduce(0, +)
-        
+        return image
+    }
+    
         return "\(result)"
     }
     
