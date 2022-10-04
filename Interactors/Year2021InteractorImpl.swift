@@ -1579,13 +1579,43 @@ private extension Year2021InteractorImpl {
                 }
                 value += image[yPos][xPos] == "." ? "0" : "1"
             }
+    private func winnersByUniverse(_ universe: (Int, Int, Int, Int, Bool)) -> (Int, Int) {
+        guard universe.2 < 21 else {
+            return (1, 0)
+        }
+        guard universe.3 < 21 else {
+            return (0, 1)
         }
         
-        if let number = Int(value, radix: 2) {
-            return String(algorithm[number])
+        if let value = universesWinners[universeString(universe)] {
+            return value
         }
+        let nextUniverses = [(3, 1), (4, 3), (5, 6), (6, 7), (7, 6), (8, 3), (9, 1)]
+        var totalWinners = (0, 0)
+        for nextUniverse in nextUniverses {
+            if universe.4 {
+                let winners = winnersByUniverse(((universe.0 + nextUniverse.0 - 1 ) % 10 + 1,
+                                                universe.1,
+                                                universe.2 + (universe.0 + nextUniverse.0 - 1 ) % 10 + 1,
+                                                universe.3,
+                                                 false))
+                totalWinners.0 += winners.0*nextUniverse.1
+                totalWinners.1 += winners.1*nextUniverse.1
+            } else {
+                let winners = winnersByUniverse((universe.0,
+                                                 (universe.1 + nextUniverse.0 - 1 ) % 10 + 1,
+                                                 universe.2,
+                                                 universe.3 + (universe.1 + nextUniverse.0 - 1 ) % 10 + 1,
+                                                 true))
+                totalWinners.0 += winners.0*nextUniverse.1
+                totalWinners.1 += winners.1*nextUniverse.1
+            }
+        }
+        universesWinners[universeString(universe)] = totalWinners
         
-        return ""
+        return totalWinners
+    }
+    
     private func universeString(_ universe: (Int, Int, Int, Int, Bool)) -> String {
         "\(universe.0)-\(universe.1)-\(universe.2)-\(universe.3)-\(universe.4 ? "true": "false")"
     }
