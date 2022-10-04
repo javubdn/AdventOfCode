@@ -1519,9 +1519,11 @@ private extension Year2021InteractorImpl {
             }
         }
         
-        let result = image.map { $0.filter { $0 == "#" }.count }.reduce(0, +)
+        if let number = Int(value, radix: 2) {
+            return String(algorithm[number])
+        }
         
-        return "\(result)"
+        return ""
     }
     
     @objc
