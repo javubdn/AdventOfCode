@@ -1586,6 +1586,8 @@ private extension Year2021InteractorImpl {
         }
         
         return ""
+    private func universeString(_ universe: (Int, Int, Int, Int, Bool)) -> String {
+        "\(universe.0)-\(universe.1)-\(universe.2)-\(universe.3)-\(universe.4 ? "true": "false")"
     }
     
 }
