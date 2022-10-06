@@ -1568,17 +1568,6 @@ private extension Year2021InteractorImpl {
         return "\(result)"
     }
     
-    private func generatePixel(_ algorithm: String, _ image: [[String]], _ x: Int, _ y: Int, _ borderBlack: Bool) -> String {
-        var value = ""
-        
-        for yPos in y-1...y+1 {
-            for xPos in x-1...x+1 {
-                guard yPos >= 0 && yPos < image.count && xPos >= 0 && xPos < image[yPos].count else {
-                    value += borderBlack ? "0" : "1"
-                    continue
-                }
-                value += image[yPos][xPos] == "." ? "0" : "1"
-            }
     private func winnersByUniverse(_ universe: (Int, Int, Int, Int, Bool)) -> (Int, Int) {
         guard universe.2 < 21 else {
             return (1, 0)
