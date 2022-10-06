@@ -1582,23 +1582,13 @@ private extension Year2021InteractorImpl {
         let nextUniverses = [(3, 1), (4, 3), (5, 6), (6, 7), (7, 6), (8, 3), (9, 1)]
         var totalWinners = (0, 0)
         for nextUniverse in nextUniverses {
-            if universe.4 {
-                let winners = winnersByUniverse(((universe.0 + nextUniverse.0 - 1 ) % 10 + 1,
-                                                universe.1,
-                                                universe.2 + (universe.0 + nextUniverse.0 - 1 ) % 10 + 1,
-                                                universe.3,
-                                                 false))
-                totalWinners.0 += winners.0*nextUniverse.1
-                totalWinners.1 += winners.1*nextUniverse.1
-            } else {
-                let winners = winnersByUniverse((universe.0,
-                                                 (universe.1 + nextUniverse.0 - 1 ) % 10 + 1,
-                                                 universe.2,
-                                                 universe.3 + (universe.1 + nextUniverse.0 - 1 ) % 10 + 1,
-                                                 true))
-                totalWinners.0 += winners.0*nextUniverse.1
-                totalWinners.1 += winners.1*nextUniverse.1
-            }
+            let winners = winnersByUniverse((universe.4 ? (universe.0 + nextUniverse.0 - 1 ) % 10 + 1 : universe.0,
+                                             universe.4 ? universe.1 : (universe.1 + nextUniverse.0 - 1 ) % 10 + 1,
+                                             universe.4 ? universe.2 + (universe.0 + nextUniverse.0 - 1 ) % 10 + 1 : universe.2,
+                                             universe.4 ? universe.3 : universe.3 + (universe.1 + nextUniverse.0 - 1 ) % 10 + 1,
+                                             !universe.4))
+            totalWinners.0 += winners.0 * nextUniverse.1
+            totalWinners.1 += winners.1 * nextUniverse.1
         }
         universesWinners[universeString(universe)] = totalWinners
         
