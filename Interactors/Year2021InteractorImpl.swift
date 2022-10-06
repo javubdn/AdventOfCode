@@ -1606,4 +1606,14 @@ private extension Year2021InteractorImpl {
         "\(universe.0)-\(universe.1)-\(universe.2)-\(universe.3)-\(universe.4 ? "true": "false")"
     }
     
+    struct RebootStep {
+        let on: Bool
+        let minX: Int
+        let maxX: Int
+        let minY: Int
+        let maxY: Int
+        let minZ: Int
+        let maxZ: Int
+    }
+    
 }
