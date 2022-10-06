@@ -12,6 +12,7 @@ class Year2021InteractorImpl: NSObject {
     var descendants8 = [Int](repeating: -1, count: 256)
     var numberCharacters14: [String: [Int: [String: Int]]] = [:]
     var minorRiskBestPath: [String: Int] = [:]
+    var universesWinners: [String: (Int, Int)] = [:]
 }
 
 extension Year2021InteractorImpl: YearInteractor {
