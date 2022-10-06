@@ -85,18 +85,16 @@ class Scanner {
         self.beacons = beacons
     }
     
-    convenience init(from input: String, firstBeaconId: Int) {
+    convenience init(from input: String) {
         var lines = input.components(separatedBy: .newlines)
         let scannerName = lines.removeFirst()
         let regex = try! NSRegularExpression(pattern: #"--- scanner ([0-9]+) ---"#)
         let matches = regex.matches(in: scannerName, options: [], range: NSRange(scannerName.startIndex..., in: scannerName))
         let match = matches.first!
         let id = Int(String(scannerName[Range(match.range(at: 1), in: scannerName)!]))!
-        var beaconId = firstBeaconId
         let beacons = lines.map { item -> Beacon in
             let values = item.components(separatedBy: ",")
             let beacon = Beacon(Int(values[0])!, Int(values[1])!, Int(values[2])!)
-            beaconId += 1
             return beacon
         }.sorted()
         self.init(id: id, beacons: Set(beacons))
