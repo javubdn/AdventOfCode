@@ -1569,6 +1569,12 @@ private extension Year2021InteractorImpl {
         return "\(result)"
     }
     
+    @objc
+    func day21question2() -> String {
+        let winners = winnersByUniverse((8, 4, 0, 0, true))
+        return "\(max(winners.0, winners.1))"
+    }
+    
     private func winnersByUniverse(_ universe: (Int, Int, Int, Int, Bool)) -> (Int, Int) {
         guard universe.2 < 21 else {
             return (1, 0)
