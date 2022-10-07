@@ -60,4 +60,8 @@ class RebootStep {
                           min(maxZ, other.maxZ))
     }
     
+    func volume() -> Int {
+        (maxX - minX) * (maxY - minY) * (maxZ - minZ)
+    }
+    
 }
