@@ -1423,7 +1423,7 @@ private extension Year2021InteractorImpl {
     
     @objc
     func day19question1() -> String {
-//        var scanners = readCSV("InputYear2021Day19").components(separatedBy: "\n\n").map { Scanner(from: $0, firstBeaconId: 0) }
+//        var scanners = readCSV("InputYear2021Day19").components(separatedBy: "\n\n").map { Scanner(from: $0) }
 //        let reference = scanners.removeFirst()
 //        while !scanners.isEmpty {
 //            let currentScanner = scanners.removeFirst()
@@ -1440,7 +1440,7 @@ private extension Year2021InteractorImpl {
     
     @objc
     func day19question2() -> String {
-//        var scanners = readCSV("InputYear2021Day19").components(separatedBy: "\n\n").map { Scanner(from: $0, firstBeaconId: 0) }
+//        var scanners = readCSV("InputYear2021Day19").components(separatedBy: "\n\n").map { Scanner(from: $0) }
 //        let reference = scanners.removeFirst()
 //        var foundScanners = Set([Point3D(0, 0, 0)])
 //        while !scanners.isEmpty {
