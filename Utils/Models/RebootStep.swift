@@ -43,4 +43,10 @@ class RebootStep {
         self.init(on, minX, maxX, minY, maxY, minZ, maxZ)
     }
     
+    func intersects(_ other: RebootStep) -> Bool {
+        minX <= other.maxX && maxX >= other.minX
+        && minY <= other.maxY && maxY >= other.minY
+        && minZ <= other.maxZ && maxZ >= other.minZ
+    }
+    
 }
