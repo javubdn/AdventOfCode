@@ -19,6 +19,11 @@ class Amphipod {
     let type: AmphipodType
     var position: (Int, Int)
     
+    init(type: AmphipodType, position: (Int, Int)) {
+        self.type = type
+        self.position = position
+    }
+    
 }
 
 class DiagramSituation {
