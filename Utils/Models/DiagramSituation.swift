@@ -9,5 +9,9 @@ import Foundation
 
 class DiagramSituation {
     
+    let distribution: [[String]]
+    let targets: [(Int, Int)]
+    let amphipods: [Amphipod]
+    
     
 }
