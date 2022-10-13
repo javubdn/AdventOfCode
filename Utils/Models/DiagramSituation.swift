@@ -19,5 +19,20 @@ class DiagramSituation {
         self.amphipods = amphipods
     }
     
+    convenience init(_ input: String) {
+        var distribution = input.components(separatedBy: .newlines).map { $0.map { String($0) } }
+        let amphipods = distribution.enumerated().flatMap { line -> [Amphipod] in
+            line.element.enumerated().compactMap { element -> Amphipod? in
+                guard element.element != "#" && element.element != "." && element.element != " " else { return nil }
+                return Amphipod(type: AmphipodType(rawValue: element.element)!, position: (line.offset, element.offset))
+            }
+        }
+        var targets = amphipods.map { $0.position }
+        targets.forEach { distribution[$0.0][$0.1] = "." }
+        var t: [AmphipodType: [(Int, Int)]]
+        let wat = Dictionary(grouping: targets.sorted { $0.1 < $1.1 }, by: { $0.1 })
+        self.init(distribution: distribution, targets: targets, amphipods: amphipods)
+    }
+    
     
 }
