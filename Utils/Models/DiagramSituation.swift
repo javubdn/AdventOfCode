@@ -7,6 +7,13 @@
 
 import Foundation
 
+enum AmphipodType: String {
+    case amber = "A"
+    case bronze = "B"
+    case copper = "C"
+    case desert = "D"
+}
+
 class DiagramSituation {
     
     let distribution: [[String]]
