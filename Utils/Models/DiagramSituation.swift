@@ -14,6 +14,10 @@ enum AmphipodType: String {
     case desert = "D"
 }
 
+class Amphipod {
+    
+}
+
 class DiagramSituation {
     
     let distribution: [[String]]
