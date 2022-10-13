@@ -16,6 +16,9 @@ enum AmphipodType: String {
 
 class Amphipod {
     
+    let type: AmphipodType
+    var position: (Int, Int)
+    
 }
 
 class DiagramSituation {
