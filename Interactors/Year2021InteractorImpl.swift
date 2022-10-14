@@ -1623,16 +1623,6 @@ private extension Year2021InteractorImpl {
         return "\(result)"
     }
     
-    struct RebootStep {
-        let on: Bool
-        let minX: Int
-        let maxX: Int
-        let minY: Int
-        let maxY: Int
-        let minZ: Int
-        let maxZ: Int
-    }
-    
     private func getRebootStep(_ input: String) -> RebootStep {
         let elements = input.components(separatedBy: ",")
         let firstPart = elements[0].components(separatedBy: "=")
