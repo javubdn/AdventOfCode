@@ -1623,20 +1623,6 @@ private extension Year2021InteractorImpl {
         return "\(result)"
     }
     
-    private func getRebootStep(_ input: String) -> RebootStep {
-        let elements = input.components(separatedBy: ",")
-        let firstPart = elements[0].components(separatedBy: "=")
-        let intervalX = firstPart[1].components(separatedBy: "..")
-        let on = firstPart[0].components(separatedBy: .whitespaces)[0] == "on"
-        let minX = Int(intervalX[0])!
-        let maxX = Int(intervalX[1])!
-        let intervalY = elements[1].components(separatedBy: "=")[1].components(separatedBy: "..")
-        let minY = Int(intervalY[0])!
-        let maxY = Int(intervalY[1])!
-        let intervalZ = elements[2].components(separatedBy: "=")[1].components(separatedBy: "..")
-        let minZ = Int(intervalZ[0])!
-        let maxZ = Int(intervalZ[1])!
-        return RebootStep(on: on, minX: minX, maxX: maxX, minY: minY, maxY: maxY, minZ: minZ, maxZ: maxZ)
     }
     
 }
