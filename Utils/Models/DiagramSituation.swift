@@ -14,6 +14,12 @@ enum AmphipodType: String {
     case desert = "D"
 }
 
+enum AmphipodStatus {
+    case origin
+    case middle
+    case final
+}
+
 class Amphipod {
     
     let type: AmphipodType
