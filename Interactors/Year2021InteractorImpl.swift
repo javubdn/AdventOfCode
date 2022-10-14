@@ -1613,6 +1613,13 @@ private extension Year2021InteractorImpl {
         return "\(result)"
     }
     
+    @objc
+    func day22question2() -> String {
+        let input = readCSV("InputYear2021Day22").components(separatedBy: .newlines).map { RebootStep($0) }
+        let result = RebootStep.solve(input)
+        return "\(result)"
+    }
+    
         return "\(result)"
     }
     
