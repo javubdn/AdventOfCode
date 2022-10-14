@@ -1608,26 +1608,11 @@ private extension Year2021InteractorImpl {
     
     @objc
     func day22question1() -> String {
-        let input = readCSV("InputYear2021Day21").components(separatedBy: .newlines).map { getRebootStep($0) }
-        var cube = [[[Bool]]](repeating: [[Bool]](repeating: [Bool](repeating: false, count: 101), count: 101), count: 101)
-        for item in input {
-            guard item.minX >= -50 && item.minX <= 50,
-                  item.maxX >= -50 && item.maxX <= 50,
-                  item.minY >= -50 && item.minY <= 50,
-                  item.maxY >= -50 && item.maxY <= 50,
-                  item.minZ >= -50 && item.minZ <= 50,
-                  item.maxZ >= -50 && item.maxZ <= 50 else {
-                continue
-            }
-            for x in item.minX...item.maxX {
-                for y in item.minY...item.maxY {
-                    for z in item.minZ...item.maxZ {
-                        cube[x+50][y+50][z+50] = item.on
-                    }
-                }
-            }
-        }
-        let result = cube.map { $0.map { $0.filter { $0 }.count }.reduce(0, +) }.reduce(0, +)
+        let input = readCSV("InputYear2021Day22").components(separatedBy: .newlines).map { RebootStep($0) }
+        let result = RebootStep.solve(input.filter { $0.intersects(RebootStep(true, -50, 50, -50, 50, -50, 50)) })
+        return "\(result)"
+    }
+    
         return "\(result)"
     }
     
