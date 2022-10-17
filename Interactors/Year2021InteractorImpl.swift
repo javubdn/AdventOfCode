@@ -70,18 +70,6 @@ private extension Year2021InteractorImpl {
     
     @objc
     func day1question1() -> String {
-        for entrada in stride(from: 2, to: 20, by: 2) {
-            var values = [""]
-            for _ in 1...entrada {
-                values = values.flatMap { [$0+"C", $0+"X"] }
-            }
-            
-            let result = values.filter { value in
-                let numbers = Utils.countChars(value)
-                return numbers["C"] == numbers["X"]
-            }.count
-            print("Entrada: \(entrada) ---> \(result) / \(values.count) --> \(result*100/values.count)%")
-        }
         let input = valuesFromExcel("InputDay1").map { Int($0)! }
         var answer = 0
         input.enumerated().forEach { item in
