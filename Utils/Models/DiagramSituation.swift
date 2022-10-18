@@ -67,7 +67,7 @@ class Amphipod {
 class DiagramSituation {
     
     let distribution: [[String]]
-    let targets: [(Int, Int)]
+    let targets: [AmphipodType: [(Int, Int)]]
     let amphipods: [Amphipod]
     
     init(distribution: [[String]], targets: [(Int, Int)], amphipods: [Amphipod]) {
