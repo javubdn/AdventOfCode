@@ -39,6 +39,50 @@ class Amphipod {
         true
     }
     
+    func possiblePositions(_ diagram: DiagramSituation) -> [(Int, Int)] {
+        var positions: [(Int, Int)] = []
+        var positionsToReview = [position]
+        var visitedPositions: [(Int, Int)] = [] // = diagram.forbiddenPositions()
+        while !positionsToReview.isEmpty {
+            let currentPosition = positionsToReview.removeFirst()
+            for difference in [(-1, 0), (1, 0), (0, -1), (0, 1)] {
+                let nextPosition = (currentPosition.0+difference.0, currentPosition.1+difference.1)
+                if diagram.distribution[nextPosition.0][nextPosition.1] == "."
+                    && !diagram.isThereAmphipod(nextPosition)
+                    && !visitedPositions.contains(where: { $0.0 == nextPosition.0 && $0.1 == nextPosition.1}) {
+                    positions.append(nextPosition)
+                    positionsToReview.append(nextPosition)
+                }
+            }
+            
+//            if diagram.distribution[currentPosition.0-1][currentPosition.1] == "."
+//                && !visitedPositions.contains(where: { $0.0 == currentPosition.0 && $0.1 == currentPosition.1}) {
+//                positions.append(currentPosition)
+//                positionsToReview.append((currentPosition.0-1, currentPosition.1))
+//            }
+//            if diagram.distribution[currentPosition.0+1][currentPosition.1] == "."
+//                && !visitedPositions.contains(where: { $0.0 == currentPosition.0 && $0.1 == currentPosition.1}) {
+//                positions.append(currentPosition)
+//                positionsToReview.append((currentPosition.0+1, currentPosition.1))
+//            }
+//            if diagram.distribution[currentPosition.0][currentPosition.1-1] == "."
+//                && !visitedPositions.contains(where: { $0.0 == currentPosition.0 && $0.1 == currentPosition.1}) {
+//                positions.append(currentPosition)
+//                positionsToReview.append((currentPosition.0, currentPosition.1-1))
+//            }
+//            if diagram.distribution[currentPosition.0][currentPosition.1+1] == "."
+//                && !visitedPositions.contains(where: { $0.0 == currentPosition.0 && $0.1 == currentPosition.1}) {
+//                positions.append(currentPosition)
+//                positionsToReview.append((currentPosition.0, currentPosition.1+1))
+//            }
+            visitedPositions.append(currentPosition)
+        }
+        positions = positions.filter { item in
+            !diagram.forbiddenPositions().contains { item.0 == $0 && item.1 == $1}
+        }
+        return positions
+    }
+    
 }
 
 class DiagramSituation {
