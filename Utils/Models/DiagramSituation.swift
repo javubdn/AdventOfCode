@@ -54,27 +54,6 @@ class Amphipod {
                     positionsToReview.append(nextPosition)
                 }
             }
-            
-//            if diagram.distribution[currentPosition.0-1][currentPosition.1] == "."
-//                && !visitedPositions.contains(where: { $0.0 == currentPosition.0 && $0.1 == currentPosition.1}) {
-//                positions.append(currentPosition)
-//                positionsToReview.append((currentPosition.0-1, currentPosition.1))
-//            }
-//            if diagram.distribution[currentPosition.0+1][currentPosition.1] == "."
-//                && !visitedPositions.contains(where: { $0.0 == currentPosition.0 && $0.1 == currentPosition.1}) {
-//                positions.append(currentPosition)
-//                positionsToReview.append((currentPosition.0+1, currentPosition.1))
-//            }
-//            if diagram.distribution[currentPosition.0][currentPosition.1-1] == "."
-//                && !visitedPositions.contains(where: { $0.0 == currentPosition.0 && $0.1 == currentPosition.1}) {
-//                positions.append(currentPosition)
-//                positionsToReview.append((currentPosition.0, currentPosition.1-1))
-//            }
-//            if diagram.distribution[currentPosition.0][currentPosition.1+1] == "."
-//                && !visitedPositions.contains(where: { $0.0 == currentPosition.0 && $0.1 == currentPosition.1}) {
-//                positions.append(currentPosition)
-//                positionsToReview.append((currentPosition.0, currentPosition.1+1))
-//            }
             visitedPositions.append(currentPosition)
         }
         positions = positions.filter { item in
