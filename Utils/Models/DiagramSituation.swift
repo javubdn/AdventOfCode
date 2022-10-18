@@ -31,6 +31,10 @@ class Amphipod {
         self.position = position
     }
     
+    func isBlocking() -> Bool {
+        position.0 == 1 && (position.1 == 3 || position.1 == 5 || position.1 == 7 || position.1 == 9)
+    }
+    
 }
 
 class DiagramSituation {
