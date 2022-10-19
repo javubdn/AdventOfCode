@@ -65,7 +65,7 @@ class Amphipod {
                     positionsToReview.append((nextPosition.0, nextPosition.1, currentPosition.2+1))
                 }
             }
-            visitedPositions.append(currentPosition)
+            visitedPositions.append((currentPosition.0, currentPosition.1))
         }
         positions = positions.filter { item in
             !diagram.forbiddenPositions().contains { item.0 == $0 && item.1 == $1}
