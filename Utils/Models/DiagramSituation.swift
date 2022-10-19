@@ -37,6 +37,7 @@ class Amphipod {
     
     init(type: AmphipodType, position: (Int, Int)) {
         self.type = type
+        self.cost = type.cost()
         self.position = position
     }
     
