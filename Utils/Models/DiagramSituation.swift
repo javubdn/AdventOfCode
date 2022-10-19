@@ -70,6 +70,14 @@ class Amphipod {
         positions = positions.filter { item in
             !diagram.forbiddenPositions().contains { item.0 == $0 && item.1 == $1}
         }
+        if status == .middle {
+            let correctPositions = diagram.targets[type]!
+            positions = positions.filter { position in
+                correctPositions.contains(where: { correctPosition in
+                    correctPosition.0 == position.0 && correctPosition.1 == position.1
+                })
+            }
+        }
         return positions
     }
     
