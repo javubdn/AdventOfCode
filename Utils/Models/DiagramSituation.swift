@@ -33,6 +33,7 @@ class Amphipod {
     let type: AmphipodType
     var position: (Int, Int)
     var status: AmphipodStatus = .origin
+    var cost: Int = 0
     
     init(type: AmphipodType, position: (Int, Int)) {
         self.type = type
