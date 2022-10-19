@@ -61,8 +61,8 @@ class Amphipod {
                 if diagram.distribution[nextPosition.0][nextPosition.1] == "."
                     && !diagram.isThereAmphipod(nextPosition)
                     && !visitedPositions.contains(where: { $0.0 == nextPosition.0 && $0.1 == nextPosition.1}) {
-                    positions.append(nextPosition)
-                    positionsToReview.append(nextPosition)
+                    positions.append((nextPosition.0, nextPosition.1, currentPosition.2+1))
+                    positionsToReview.append((nextPosition.0, nextPosition.1, currentPosition.2+1))
                 }
             }
             visitedPositions.append(currentPosition)
