@@ -49,10 +49,11 @@ class Amphipod {
         true
     }
     
-    func possiblePositions(_ diagram: DiagramSituation) -> [(Int, Int)] {
-        var positions: [(Int, Int)] = []
-        var positionsToReview = [position]
-        var visitedPositions: [(Int, Int)] = [] // = diagram.forbiddenPositions()
+    func possiblePositions(_ diagram: DiagramSituation) -> [(Int, Int, Int)] {
+        guard status != .final else { return [] }
+        var positions: [(Int, Int, Int)] = []
+        var positionsToReview = [(position.0, position.1, 0)]
+        var visitedPositions: [(Int, Int)] = []
         while !positionsToReview.isEmpty {
             let currentPosition = positionsToReview.removeFirst()
             for difference in [(-1, 0), (1, 0), (0, -1), (0, 1)] {
