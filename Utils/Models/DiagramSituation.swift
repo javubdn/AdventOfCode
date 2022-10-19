@@ -12,6 +12,14 @@ enum AmphipodType: String {
     case bronze = "B"
     case copper = "C"
     case desert = "D"
+    func cost() -> Int {
+        switch self {
+        case .amber: return 1
+        case .bronze: return 10
+        case .copper: return 100
+        case .desert: return 1000
+        }
+    }
 }
 
 enum AmphipodStatus {
