@@ -127,6 +127,10 @@ class DiagramSituation {
         amphipods.filter { !isCorrectAmphipod($0, amphipods) }
     }
     
+    func forbiddenPositions() -> [(Int, Int)] {
+        [(1, 3), (1, 5), (1, 7), (1, 9)]
+    }
+    
     }
     
 }
