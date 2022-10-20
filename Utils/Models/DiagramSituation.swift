@@ -123,12 +123,6 @@ class DiagramSituation {
         return 444
     }
     
-    func createCombinations() -> [DiagramSituation] {
-        for amphipod in amphipods {
-            if isCorrectAmphipod(amphipod) { continue }
-
-        }
-        return []
     }
     
 }
