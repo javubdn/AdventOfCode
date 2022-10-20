@@ -123,6 +123,10 @@ class DiagramSituation {
         return 444
     }
     
+    func incorrectAmphipods(_ amphipods: [Amphipod]) -> [Amphipod] {
+        amphipods.filter { !isCorrectAmphipod($0, amphipods) }
+    }
+    
     }
     
 }
