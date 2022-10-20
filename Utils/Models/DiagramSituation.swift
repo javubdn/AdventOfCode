@@ -119,6 +119,11 @@ class DiagramSituation {
     }
     
     func calculateMovements() -> Int {
+        let wrongAmphipods = incorrectAmphipods()
+        guard wrongAmphipods.count > 0 else { return cost }
+        for wrongAmphipod in wrongAmphipods {
+            let movements = wrongAmphipod.possiblePositions(self)
+        }
         return 444
     }
     
