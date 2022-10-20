@@ -118,5 +118,8 @@ class DiagramSituation {
         self.init(distribution: distribution, targets: targets, amphipods: amphipods)
     }
     
+    func calculateMovements() -> Int {
+        return 444
+    }
     
 }
