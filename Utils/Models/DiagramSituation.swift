@@ -49,7 +49,7 @@ class Amphipod {
         true
     }
     
-    func possiblePositions(_ diagram: DiagramSituation) -> [(Int, Int, Int)] {
+    func possiblePositions(_ diagram: DiagramSituation, _ amphipods: [Amphipod]) -> [(Int, Int, Int)] {
         guard status != .final else { return [] }
         var positions: [(Int, Int, Int)] = []
         var positionsToReview = [(position.0, position.1, 0)]
