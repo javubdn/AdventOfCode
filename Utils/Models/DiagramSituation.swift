@@ -59,7 +59,7 @@ class Amphipod {
             for difference in [(-1, 0), (1, 0), (0, -1), (0, 1)] {
                 let nextPosition = (currentPosition.0+difference.0, currentPosition.1+difference.1)
                 if diagram.distribution[nextPosition.0][nextPosition.1] == "."
-                    && !diagram.isThereAmphipod(nextPosition)
+                    && !diagram.isThereAmphipod(nextPosition, amphipods)
                     && !visitedPositions.contains(where: { $0.0 == nextPosition.0 && $0.1 == nextPosition.1}) {
                     positions.append((nextPosition.0, nextPosition.1, currentPosition.2+1))
                     positionsToReview.append((nextPosition.0, nextPosition.1, currentPosition.2+1))
