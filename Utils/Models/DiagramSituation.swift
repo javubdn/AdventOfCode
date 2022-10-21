@@ -72,12 +72,6 @@ class Amphipod {
         }
         
         if status == .middle {
-            let correctPositions = diagram.targets[type]!
-            positions = positions.filter { position in
-                correctPositions.contains(where: { correctPosition in
-                    correctPosition.0 == position.0 && correctPosition.1 == position.1
-                })
-            }
         }
         return positions
     }
