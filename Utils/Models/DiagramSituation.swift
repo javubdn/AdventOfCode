@@ -137,6 +137,9 @@ class DiagramSituation {
         return positions
     }
     
+    func giveMovements(_ amphipod: Amphipod) -> [Amphipod] {
+//        amphipod.position.
+        []
     }
     
     }
