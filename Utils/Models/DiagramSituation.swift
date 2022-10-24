@@ -137,6 +137,10 @@ class DiagramSituation {
         return positions
     }
     
+    func isThereAmphipod(_ position: (Int, Int), _ amphipods: [Amphipod]) -> Bool {
+        !amphipods.filter { $0.position.0 == position.0 && $0.position.1 == position.1 }.isEmpty
+    }
+    
     func giveMovements(_ amphipod: Amphipod) -> [Amphipod] {
 //        amphipod.position.
         []
