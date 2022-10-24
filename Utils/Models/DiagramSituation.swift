@@ -124,8 +124,6 @@ class DiagramSituation {
         amphipods.filter { !isCorrectAmphipod($0, amphipods) }
     }
     
-    func forbiddenPositions() -> [(Int, Int)] {
-        [(1, 3), (1, 5), (1, 7), (1, 9)]
     func isCorrectAmphipod(_ amphipod: Amphipod, _ amphipods: [Amphipod]) -> Bool {
         let position = amphipod.position
         let positions = targets[amphipod.type]!
