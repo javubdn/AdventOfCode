@@ -126,6 +126,12 @@ class DiagramSituation {
     
     func forbiddenPositions() -> [(Int, Int)] {
         [(1, 3), (1, 5), (1, 7), (1, 9)]
+    func isCorrectAmphipod(_ amphipod: Amphipod, _ amphipods: [Amphipod]) -> Bool {
+        let position = amphipod.position
+        let positions = targets[amphipod.type]!
+        return positions.contains { $0.0 == position.0 && $0.1 == position.1 } && !isBlocking(amphipod, amphipods)
+    }
+    
     func isBlocking(_ amphipod: Amphipod, _ amphipods: [Amphipod]) -> Bool {
         let positions = targets[amphipod.type]!
         let amphipodsFilter = amphipods.filter { positions.last!.0 == $0.position.0 && positions.last!.1 == $0.position.1 }
