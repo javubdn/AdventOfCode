@@ -89,6 +89,22 @@ class AmphipodsSituation {
     
 }
 
+extension AmphipodsSituation: Hashable {
+    
+    func hash(into hasher: inout Hasher) { }
+    
+    static func == (lhs: AmphipodsSituation, rhs: AmphipodsSituation) -> Bool {
+        var equals = true
+        for item in lhs.amphipods {
+            equals = equals && rhs.amphipods.contains { rhsAmphipod in
+                rhsAmphipod.position.0 == item.position.0 && rhsAmphipod.position.1 == item.position.1 && rhsAmphipod.type == item.type
+            }
+        }
+        return equals
+    }
+    
+}
+
 class DiagramSituation {
     
     let distribution: [[String]]
