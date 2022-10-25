@@ -143,8 +143,6 @@ class DiagramSituation {
     }
     
     func calculateMovements() -> Int {
-        var situations = [(amphipods, 0)]
-//                    situations.append((newAmphipods, situation.1 + movement.2*newAmphipod.cost))
         }
         
         return 444
