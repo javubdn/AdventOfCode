@@ -144,7 +144,7 @@ class DiagramSituation {
     
     func calculateMovements() -> Int {
         }
-        
+
         return 444
     }
     
