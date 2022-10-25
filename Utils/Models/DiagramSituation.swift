@@ -112,6 +112,8 @@ class DiagramSituation {
     let amphipods: [Amphipod]
     var cost = 0
     
+    var amphipodsSituations: [AmphipodsSituation: Int] = [:]
+    
     init(distribution: [[String]], targets: [AmphipodType: [(Int, Int)]], amphipods: [Amphipod]) {
         self.distribution = distribution
         self.targets = targets
