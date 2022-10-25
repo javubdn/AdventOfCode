@@ -143,6 +143,7 @@ class DiagramSituation {
     }
     
     func calculateMovements() -> Int {
+        var allSituations: [AmphipodsSituation: Int] = [:]
         }
 
         return 444
