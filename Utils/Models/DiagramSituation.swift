@@ -80,6 +80,15 @@ class Amphipod {
     
 }
 
+class AmphipodsSituation {
+    var amphipods: [Amphipod]
+    
+    init(amphipods: [Amphipod] ) {
+        self.amphipods = amphipods
+    }
+    
+}
+
 class DiagramSituation {
     
     let distribution: [[String]]
