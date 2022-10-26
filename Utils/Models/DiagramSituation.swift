@@ -149,6 +149,7 @@ class DiagramSituation {
             let situation = situations.removeFirst()
             let currentAmphipods = situation.0.amphipods
             let wrongAmphipods = incorrectAmphipods(currentAmphipods)
+            if wrongAmphipods.count == 0 { return situation.1 }
             }
         }
 
