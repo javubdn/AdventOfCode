@@ -147,6 +147,7 @@ class DiagramSituation {
         var situations = [(AmphipodsSituation(amphipods: amphipods), 0)]
         while !situations.isEmpty {
             let situation = situations.removeFirst()
+            let currentAmphipods = situation.0.amphipods
             }
         }
 
