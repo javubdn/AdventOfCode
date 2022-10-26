@@ -146,6 +146,7 @@ class DiagramSituation {
         var allSituations: [AmphipodsSituation: Int] = [:]
         var situations = [(AmphipodsSituation(amphipods: amphipods), 0)]
         while !situations.isEmpty {
+            let situation = situations.removeFirst()
             }
         }
 
