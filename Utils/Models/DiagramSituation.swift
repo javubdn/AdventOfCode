@@ -151,6 +151,7 @@ class DiagramSituation {
             let wrongAmphipods = incorrectAmphipods(currentAmphipods)
             if wrongAmphipods.count == 0 { return situation.1 }
             for wrongAmphipod in wrongAmphipods {
+                let movements = wrongAmphipod.possiblePositions(self, currentAmphipods)
                 }
             }
         }
