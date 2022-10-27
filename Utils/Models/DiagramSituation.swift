@@ -164,8 +164,11 @@ class DiagramSituation {
                     let amphipodsSituation = AmphipodsSituation(amphipods: newAmphipods)
                     let newCost = situation.1 + movement.2*newAmphipod.cost
 
+                    if allSituations.contains(amphipodsSituation) {
+                        continue
                     } else {
                         allSituations[amphipodsSituation] = newCost
+                        allSituations.insert(amphipodsSituation)
                     }
                 }
             }
