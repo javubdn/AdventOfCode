@@ -154,6 +154,7 @@ class DiagramSituation {
                 let movements = wrongAmphipod.possiblePositions(self, currentAmphipods)
                 for movement in movements {
                     var newAmphipods = currentAmphipods.filter { $0.position.0 != wrongAmphipod.position.0 || $0.position.1 != wrongAmphipod.position.1 }
+                    let newAmphipod = Amphipod(type: wrongAmphipod.type, position: (movement.0, movement.1))
                 }
             }
         }
