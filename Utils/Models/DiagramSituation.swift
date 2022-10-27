@@ -163,6 +163,16 @@ class DiagramSituation {
                     newAmphipods.append(newAmphipod)
                     let amphipodsSituation = AmphipodsSituation(amphipods: newAmphipods)
                     let newCost = situation.1 + movement.2*newAmphipod.cost
+
+                    if let costSituation = allSituations[amphipodsSituation] {
+                        if costSituation > newCost {
+                            allSituations[amphipodsSituation] = newCost
+                        } else {
+                            continue
+                        }
+                    } else {
+                        allSituations[amphipodsSituation] = newCost
+                    }
                 }
             }
         }
