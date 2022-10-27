@@ -160,6 +160,7 @@ class DiagramSituation {
                     } else if newAmphipod.status == .middle {
                         newAmphipod.status = .final
                     }
+                    newAmphipods.append(newAmphipod)
                 }
             }
         }
