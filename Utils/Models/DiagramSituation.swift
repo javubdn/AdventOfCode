@@ -162,6 +162,7 @@ class DiagramSituation {
                     }
                     newAmphipods.append(newAmphipod)
                     let amphipodsSituation = AmphipodsSituation(amphipods: newAmphipods)
+                    let newCost = situation.1 + movement.2*newAmphipod.cost
                 }
             }
         }
