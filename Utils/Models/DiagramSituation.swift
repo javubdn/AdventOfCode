@@ -161,6 +161,7 @@ class DiagramSituation {
                         newAmphipod.status = .final
                     }
                     newAmphipods.append(newAmphipod)
+                    let amphipodsSituation = AmphipodsSituation(amphipods: newAmphipods)
                 }
             }
         }
