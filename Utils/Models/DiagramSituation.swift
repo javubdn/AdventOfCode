@@ -170,6 +170,10 @@ class DiagramSituation {
                         allSituations.insert(amphipodsSituation)
                     }
                     
+                    if let index = situations.firstIndex(where: { $0.1 > newCost }) {
+                        situations.insert((amphipodsSituation, newCost), at: index)
+                    } else {
+                        situations.append((amphipodsSituation, newCost))
                     }
 
                 }
