@@ -170,10 +170,6 @@ class DiagramSituation {
                         allSituations.insert(amphipodsSituation)
                     }
                     
-                    if situations.contains(where: { situation in
-                        situation.0 == amphipodsSituation
-                    }) {
-                        continue
                     }
                 }
             }
