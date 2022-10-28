@@ -167,7 +167,6 @@ class DiagramSituation {
                     if allSituations.contains(amphipodsSituation) {
                         continue
                     } else {
-                        allSituations[amphipodsSituation] = newCost
                         allSituations.insert(amphipodsSituation)
                     }
                 }
