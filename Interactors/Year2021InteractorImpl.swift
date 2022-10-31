@@ -1644,6 +1644,13 @@ private extension Year2021InteractorImpl {
 //
 //
 //        }
+        let input = """
+#############
+#...........#
+###B#C#B#D###
+  #A#D#C#A#
+  #########
+"""
         return "\(result)"
     }
     
