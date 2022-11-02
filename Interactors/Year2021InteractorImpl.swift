@@ -1651,6 +1651,7 @@ private extension Year2021InteractorImpl {
   #A#D#C#A#
   #########
 """
+        let distr = DiagramSituation(input)
         return "\(result)"
     }
     
