@@ -150,6 +150,7 @@ class DiagramSituation {
     }
     
     func calculateMovements() -> Int {
+        var allSituations: [AmphipodsSituation: Int] = [:]
         var situations = [(AmphipodsSituation(amphipods: amphipods), 0)]
         while !situations.isEmpty {
             let situation = situations.removeFirst()
