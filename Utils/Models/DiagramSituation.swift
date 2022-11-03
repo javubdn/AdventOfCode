@@ -142,6 +142,10 @@ class DiagramSituation {
 //            .reduce(into: [AmphipodType: [(Int, Int)]]()) { partialResult, point in
 //                partialResult[point.keys.first!] = point.values.first!
 //            }
+        let targets: [AmphipodType: [(Int, Int)]] = [.amber: [(2, 3), (3, 3)],
+                                                     .bronze: [(2, 5), (3, 5)],
+                                                     .copper: [(2, 7), (3, 7)],
+                                                     .desert: [(2, 9), (3, 9)]]
         self.init(distribution: distribution, targets: targets, amphipods: amphipods)
     }
     
