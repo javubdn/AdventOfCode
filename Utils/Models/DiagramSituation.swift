@@ -74,8 +74,6 @@ class Amphipod {
         let correctPosition = diagram.amphipodTarget(self, amphipods)
         let possiblePositions = positions.filter { correctPosition.0 == $0.0 && correctPosition.1 == $0.1 }
         if status == .middle {
-            let correctPosition = diagram.amphipodTarget(self, amphipods)
-            positions = positions.filter { correctPosition.0 == $0.0 && correctPosition.1 == $0.1 }
         }
         return positions
     }
