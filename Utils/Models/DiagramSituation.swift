@@ -238,8 +238,6 @@ class DiagramSituation {
         let amphipodInLastPlace = amphipods.filter { amp in
             amp.position.0 == possibleSolutions.last!.0 && amp.position.1 == possibleSolutions.last!.1
         }
-        if amphipodInLastPlace.isEmpty || amphipodInLastPlace.first!.type != amphipod.type {
-            return possibleSolutions.last!
         } else {
             return possibleSolutions.first!
         }
