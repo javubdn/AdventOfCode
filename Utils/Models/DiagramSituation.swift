@@ -239,7 +239,6 @@ class DiagramSituation {
             amp.position.0 == possibleSolutions.last!.0 && amp.position.1 == possibleSolutions.last!.1
         }
         } else {
-            return possibleSolutions.first!
         }
         
     }
