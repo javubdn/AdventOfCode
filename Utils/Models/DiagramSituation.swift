@@ -173,6 +173,13 @@ class DiagramSituation {
                     let amphipodsSituation = AmphipodsSituation(amphipods: newAmphipods)
                     let newCost = situation.1 + movement.2*newAmphipod.cost
 
+                    if let value = allSituations[amphipodsSituation] {
+                        if value <= newCost {
+                            continue
+                        } else {
+                            allSituations[amphipodsSituation] = newCost
+                            situations = situations.filter { $0.0 != amphipodsSituation }
+                        }
                     } else {
                         allSituations[amphipodsSituation] = newCost
                     }
