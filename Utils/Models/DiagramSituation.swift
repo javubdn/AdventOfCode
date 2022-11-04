@@ -174,7 +174,6 @@ class DiagramSituation {
                     let newCost = situation.1 + movement.2*newAmphipod.cost
 
                     } else {
-                        allSituations.insert(amphipodsSituation)
                     }
                     
                     if let index = situations.firstIndex(where: { $0.1 > newCost }) {
