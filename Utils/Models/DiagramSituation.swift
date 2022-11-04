@@ -240,7 +240,6 @@ class DiagramSituation {
         }
         } else {
         }
-        
     }
     
 }
