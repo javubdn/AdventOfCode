@@ -1670,6 +1670,4 @@ private extension Year2021InteractorImpl {
         return "\(result)"
     }
     
-    }
-    
 }
