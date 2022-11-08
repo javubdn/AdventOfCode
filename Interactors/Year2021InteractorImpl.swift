@@ -1644,13 +1644,6 @@ private extension Year2021InteractorImpl {
 //
 //
 //        }
-        let input = """
-#############
-#...........#
-###B#C#B#D###
-  #A#D#C#A#
-  #########
-"""
         let distr = DiagramSituation(input)
         let result = distr.calculateMovements()
         return "\(result)"
