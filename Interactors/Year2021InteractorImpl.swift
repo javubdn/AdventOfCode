@@ -1622,49 +1622,6 @@ private extension Year2021InteractorImpl {
     
     @objc
     func day23question1() -> String {
-//        let input = """
-//#############
-//#...........#
-//###B#C#B#D###
-//  #A#D#C#A#
-//  #########
-//""".components(separatedBy: .newlines).map { $0.map { String($0) } }
-//
-//        var distributions: [([[String]], Int)] = [(input, 0)]
-//        while !distributions.isEmpty {
-//            let distribution = distributions.removeFirst()
-//            let matrix = distribution.0
-//            if matrix[2][3] == "A" && matrix[3][3] == "A"
-//                && matrix[2][5] == "B" && matrix[3][5] == "B"
-//                && matrix[2][7] == "C" && matrix[2][3] == "C"
-//                && matrix[2][9] == "D" && matrix[2][3] == "D" {
-//                return "\(distribution.1)"
-//            }
-//
-//
-//
-//        }
-//        let input = """
-//#############
-//#...........#
-//###B#C#B#D###
-//  #A#D#C#A#
-//  #########
-//"""
-//        let input = """
-//#############
-//#...........#
-//###A#D#B#C###
-//  #A#B#C#D#
-//  #########
-//"""
-//        let input = """
-//#############
-//#...........#
-//###D#A#C#A###
-//  #D#B#C#B#
-//  #########
-//"""
     
     @objc
     func day23question2() -> String {
