@@ -1622,6 +1622,11 @@ private extension Year2021InteractorImpl {
     
     @objc
     func day23question1() -> String {
+        let input = readCSV("InputYear2021Day23")
+        let distr = DiagramSituation(input)
+        let result = distr.calculateMovements()
+        return "\(result)"
+    }
     
     @objc
     func day23question2() -> String {
