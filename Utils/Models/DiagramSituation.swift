@@ -235,6 +235,11 @@ class DiagramSituation {
         if amphipodInLastPlace.isEmpty {
             return (possibleSolutions.last!, true)
         } else {
+            if amphipodInLastPlace.first!.type == amphipod.type {
+                return (possibleSolutions.first!, true)
+            } else {
+                return (possibleSolutions.last!, false)
+            }
         }
     }
     
