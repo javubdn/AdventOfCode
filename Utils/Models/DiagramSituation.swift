@@ -76,7 +76,6 @@ class Amphipod {
         if status == .middle {
             positions = possiblePositions
         } else {
-            positions = possiblePositions.count == 0 ? positions : possiblePositions
         }
         return positions
     }
