@@ -168,6 +168,7 @@ class DiagramSituation {
 //                    } else if newAmphipod.status == .middle {
 //                        newAmphipod.status = .final
 //                    }
+                    newAmphipod.status = movement.0 == 1 ? .middle : .final
                     newAmphipods.append(newAmphipod)
                     let amphipodsSituation = AmphipodsSituation(amphipods: newAmphipods)
                     let newCost = situation.1 + movement.2*newAmphipod.cost
