@@ -213,6 +213,7 @@ class DiagramSituation {
         case .amber: positions.append(contentsOf: [(2, 5), (3, 5), (4, 5), (5, 5), (2, 7), (3, 7), (4, 7), (5, 7), (2, 9), (3, 9), (4, 9), (5, 9)])
         case .bronze: positions.append(contentsOf: [(2, 3), (3, 3), (4, 3), (5, 3), (2, 7), (3, 7), (4, 7), (5, 7), (2, 9), (3, 9), (4, 9), (5, 9)])
         case .copper: positions.append(contentsOf: [(2, 3), (3, 3), (4, 3), (5, 3), (2, 5), (3, 5), (4, 5), (5, 5), (2, 9), (3, 9), (4, 9), (5, 9)])
+        case .desert: positions.append(contentsOf: [(2, 3), (3, 3), (4, 3), (5, 3), (2, 5), (3, 5), (4, 5), (5, 5), (2, 7), (3, 7), (4, 7), (5, 7)])
         }
         return positions
     }
