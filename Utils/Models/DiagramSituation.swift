@@ -210,6 +210,7 @@ class DiagramSituation {
     func forbiddenPositions(_ type: AmphipodType ) -> [(Int, Int)] {
         var positions = [(1, 3), (1, 5), (1, 7), (1, 9)]
         switch type {
+        case .amber: positions.append(contentsOf: [(2, 5), (3, 5), (4, 5), (5, 5), (2, 7), (3, 7), (4, 7), (5, 7), (2, 9), (3, 9), (4, 9), (5, 9)])
         }
         return positions
     }
