@@ -303,7 +303,7 @@ class DiagramSituation {
             if amphipodInLastPlace.first!.type == amphipod.type {
                 return (possibleSolutions.first!, true)
             } else {
-                return (possibleSolutions.last!, false)
+                return (targets.last!, false)
             }
         }
     }
