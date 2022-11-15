@@ -295,7 +295,7 @@ class DiagramSituation {
     
     private func amphipodTarget(_ type: AmphipodType, _ targets: [(Int, Int)], _ amphipods: [Amphipod]) -> ((Int, Int), Bool) {
         let amphipodInLastPlace = amphipods.filter { amp in
-            amp.position.0 == possibleSolutions.last!.0 && amp.position.1 == possibleSolutions.last!.1
+            amp.position.0 == targets.last!.0 && amp.position.1 == targets.last!.1
         }
         if amphipodInLastPlace.isEmpty {
             return (possibleSolutions.last!, true)
