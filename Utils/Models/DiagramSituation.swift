@@ -298,7 +298,7 @@ class DiagramSituation {
             amp.position.0 == targets.last!.0 && amp.position.1 == targets.last!.1
         }
         if amphipodInLastPlace.isEmpty {
-            return (possibleSolutions.last!, true)
+            return (targets.last!, true)
         } else {
             if amphipodInLastPlace.first!.type == amphipod.type {
                 return (possibleSolutions.first!, true)
