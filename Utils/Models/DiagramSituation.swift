@@ -290,6 +290,7 @@ class DiagramSituation {
 //                return (possibleSolutions.last!, false)
 //            }
 //        }
+        amphipodTarget(amphipod.type, targets[amphipod.type]!, amphipods)
         let amphipodInLastPlace = amphipods.filter { amp in
             amp.position.0 == possibleSolutions.last!.0 && amp.position.1 == possibleSolutions.last!.1
         }
