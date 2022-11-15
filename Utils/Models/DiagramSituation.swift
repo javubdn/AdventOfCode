@@ -293,6 +293,7 @@ class DiagramSituation {
         amphipodTarget(amphipod.type, targets[amphipod.type]!, amphipods)
     }
     
+    private func amphipodTarget(_ type: AmphipodType, _ targets: [(Int, Int)], _ amphipods: [Amphipod]) -> ((Int, Int), Bool) {
         let amphipodInLastPlace = amphipods.filter { amp in
             amp.position.0 == possibleSolutions.last!.0 && amp.position.1 == possibleSolutions.last!.1
         }
