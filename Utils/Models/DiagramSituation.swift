@@ -300,8 +300,10 @@ class DiagramSituation {
         if amphipodInLastPlace.isEmpty {
             return (targets.last!, true)
         } else {
-            if amphipodInLastPlace.first!.type == amphipod.type {
-                return (possibleSolutions.first!, true)
+            if amphipodInLastPlace.first!.type == type {
+                var targets = targets
+                _ = targets.removeLast()
+                return amphipodTarget(type, targets, amphipods)
             } else {
                 return (targets.last!, false)
             }
