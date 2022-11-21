@@ -138,14 +138,6 @@ class DiagramSituation {
         let positions = amphipods.map { $0.position }
         positions.forEach { distribution[$0.0][$0.1] = "." }
         let sortedPositions = Dictionary(grouping: positions.sorted { $0.1 < $1.1 }, by: { $0.1 })
-        let positionKeys = sortedPositions.keys.sorted { $0 < $1 }
-            
-//        let targets: [AmphipodType: [(Int, Int)]] = [.amber, .bronze, .copper, .desert]
-//            .enumerated()
-//            .map { [$0.element: sortedPositions[positionKeys[$0.offset]]!] }
-//            .reduce(into: [AmphipodType: [(Int, Int)]]()) { partialResult, point in
-//                partialResult[point.keys.first!] = point.values.first!
-//            }
         let targets: [AmphipodType: [(Int, Int)]] = [.amber: [(2, 3), (3, 3), (4, 3), (5, 3)],
                                                      .bronze: [(2, 5), (3, 5), (4, 5), (5, 5)],
                                                      .copper: [(2, 7), (3, 7), (4, 7), (5, 7)],
