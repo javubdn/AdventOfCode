@@ -189,40 +189,6 @@ class DiagramSituation {
         return 0
     }
     
-//    func calculateMovements() -> Int {
-//        var situations = [(amphipods, 0)]
-//        while !situations.isEmpty {
-//            let situation = situations.removeFirst()
-//            let currentAmphipods = situation.0
-//            let wrongAmphipods = incorrectAmphipods(currentAmphipods)
-//            if wrongAmphipods.count == 0 { return situation.1 }
-//            for wrongAmphipod in wrongAmphipods {
-//                let movements = wrongAmphipod.possiblePositions(self, currentAmphipods)
-//                for movement in movements {
-//                    var newAmphipods = currentAmphipods.filter { $0.position.0 != wrongAmphipod.position.0 || $0.position.1 != wrongAmphipod.position.1 }
-//                    let newAmphipod = Amphipod(type: wrongAmphipod.type, position: (movement.0, movement.1))
-//                    if newAmphipod.status == .origin {
-//                        newAmphipod.status = .middle
-//                    } else if newAmphipod.status == .middle {
-//                        newAmphipod.status = .final
-//                    }
-//                    newAmphipods.append(newAmphipod)
-//
-////                    situations.append((newAmphipods, situation.1 + movement.2*newAmphipod.cost))
-//
-//                    if let index = situations.firstIndex(where: { $0.1 > situation.1 + movement.2*newAmphipod.cost }) {
-//                        situations.insert((newAmphipods, situation.1 + movement.2*newAmphipod.cost), at: index)
-//                    } else {
-//                        situations.append((newAmphipods, situation.1 + movement.2*newAmphipod.cost))
-//                    }
-//
-//                }
-//            }
-//        }
-//
-//        return 444
-//    }
-    
     func incorrectAmphipods(_ amphipods: [Amphipod]) -> [Amphipod] {
         amphipods.filter { !isCorrectAmphipod($0, amphipods) }
     }
