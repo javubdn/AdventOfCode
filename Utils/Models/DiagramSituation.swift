@@ -75,6 +75,8 @@ class Amphipod {
         let possiblePositions = positions.filter { correctPosition.0.0 == $0.0 && correctPosition.0.1 == $0.1 }
         if status == .middle {
             positions = possiblePositions
+        } else if correctPosition.1 {
+            positions = possiblePositions.count == 0 ? positions : possiblePositions
         } else {
             
             if correctPosition.1 {
