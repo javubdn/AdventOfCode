@@ -186,6 +186,7 @@ class DiagramSituation {
             }
         }
 
+        return 0
     }
     
 //    func calculateMovements() -> Int {
