@@ -78,6 +78,8 @@ class Amphipod {
         } else if correctPosition.1 {
             positions = possiblePositions.count == 0 ? positions : possiblePositions
         } else {
+            positions = positions.filter { position in
+                !diagram.targets[type]!.contains { position.0 == $0.0 && position.1 == $0.1 }
             }
         }
         return positions
