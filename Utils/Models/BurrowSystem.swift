@@ -7,6 +7,8 @@
 
 import Foundation
 
+protocol Location {
+    
     
 }
 
