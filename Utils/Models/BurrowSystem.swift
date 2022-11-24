@@ -49,6 +49,14 @@ class Room: Location {
         self.occupant = occupant
     }
     
+    func canMove(_ location: Location, _ burrow: Burrow) -> Bool {
+        switch location {
+        case let hallway as Hallway: return canMoveHallway(hallway, burrow)
+        case let room as Room: return canMoveRoom(room, burrow)
+        default: return false
+        }
+    }
+    
 }
 
 class Burrow: Hashable {
