@@ -57,6 +57,16 @@ class Room: Location {
         }
     }
     
+    private func canMoveHallway(_ hallway: Hallway, _ burrow: Burrow) -> Bool {
+        guard matches(self) else { return true }
+        for nextRoom in (room, burrow) {
+            if !matches(nextRoom) {
+                return true
+            }
+        }
+        return false
+    }
+    
 }
 
 class Burrow: Hashable {
