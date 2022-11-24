@@ -9,6 +9,8 @@ import Foundation
 
 protocol Location {
     
+    var occupant: Amphipod? { get set }
+    
     
 }
 
