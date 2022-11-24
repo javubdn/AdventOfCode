@@ -124,6 +124,8 @@ class BurrowSystem {
     
     func isDone(_ burrow: Burrow) -> Bool {
         for location in burrow.locations {
+            guard let room = location as? Room else { continue }
+            if !matches(room) { return false }
         }
         return true
     }
