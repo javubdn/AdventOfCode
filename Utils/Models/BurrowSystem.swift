@@ -124,12 +124,6 @@ class BurrowSystem {
     
     func isDone(_ burrow: Burrow) -> Bool {
         for location in burrow.locations {
-            if location is Hallway {
-                continue
-            }
-            if matches(location) {
-                return false
-            }
         }
         return true
     }
