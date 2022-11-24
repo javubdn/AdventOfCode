@@ -67,6 +67,18 @@ class Room: Location {
         return false
     }
     
+    private func canMoveRoom(_ room: Room, _ burrow: Burrow) -> Bool {
+        guard type != room.type else { return false }
+        guard occupant!.type != type else { return false}
+        guard occupant!.type == room.type else { return false}
+        for nextRoom in (room, burrow) {
+            if !matches(nextRoom) {
+                return false
+            }
+        }
+        return true
+    }
+    
 }
 
 class Burrow: Hashable {
