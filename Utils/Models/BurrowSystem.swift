@@ -11,7 +11,6 @@ protocol Location {
     
     var id: Int { get }
     var occupant: Amphipod? { get set }
-    
     func canMove(_ location: Location, _ burrow: Burrow) -> Bool
     
 }
