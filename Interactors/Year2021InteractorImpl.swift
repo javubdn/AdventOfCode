@@ -1641,6 +1641,8 @@ private extension Year2021InteractorImpl {
                              17: Room(type: .desert, id: 17, occupant: Amphipod(type: .amber, position: (0, 0))),
                              18: Hallway(id: 18), 19: Hallway(id: 19)
                             ])
+        let neighbours = [[2], [1, 3], [2, 4, 6], [3, 5], [4], [3, 7], [6, 8, 10], [7, 9], [8], [7, 11], [10, 12, 14], [11, 13], [12], [11, 15], [14, 16, 18], [15, 17], [16], [15, 19], [18]
+        ]
     }
     
     @objc
