@@ -23,6 +23,7 @@ class Hallway: Location {
     
     init(id: Int, occupant: Amphipod? = nil) {
         self.id = id
+        self.occupant = occupant
     }
     
     func canMove(_ location: Location, _ burrow: Burrow) -> Bool {
