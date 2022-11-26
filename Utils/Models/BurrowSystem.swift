@@ -69,6 +69,10 @@ class Room: Location {
     
     private func canMoveHallway(_ hallway: Hallway, _ burrow: Burrow) -> Bool {
         guard BurrowSystem.matches(self) else { return true }
+        let rooms = burrow.locations.values.filter { location in
+            guard let myRoom = location as? Room else { return false }
+            return myRoom.type == type && myRoom.id > id
+        }
                 return true
             }
         }
