@@ -85,8 +85,6 @@ class Room: Location {
         guard type != room.type else { return false }
         guard occupant!.type != type else { return false}
         guard occupant!.type == room.type else { return false}
-        for nextRoom in (room, burrow) {
-            if !matches(nextRoom) {
                 return false
             }
         }
