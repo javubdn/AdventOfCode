@@ -41,6 +41,10 @@ class Hallway: Location {
         return true
     }
     
+    func copy() -> Location {
+        Hallway(id: id, occupant: occupant)
+    }
+    
 }
 
 class Room: Location {
