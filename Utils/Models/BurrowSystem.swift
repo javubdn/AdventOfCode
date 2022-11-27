@@ -127,8 +127,6 @@ class Burrow: Hashable {
 
 class BurrowSystem {
     
-    func solve(_ initial: Burrow) -> Int {
-        var states = [(initial, 0)]
         var seen = Set<Burrow>()
 
         while !states.isEmpty {
