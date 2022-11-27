@@ -106,7 +106,7 @@ class Room: Location {
 
 class Burrow: Hashable {
     
-    let locations: [Location]
+    let locations: [Int: Location]
     
     func hash(into hasher: inout Hasher) { }
     
