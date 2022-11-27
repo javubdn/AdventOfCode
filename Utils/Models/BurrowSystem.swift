@@ -98,6 +98,10 @@ class Room: Location {
         return true
     }
     
+    func copy() -> Location {
+        Room(type: type, id: id, occupant: occupant)
+    }
+    
 }
 
 class Burrow: Hashable {
