@@ -111,6 +111,12 @@ class Burrow: Hashable {
     func hash(into hasher: inout Hasher) { }
     
     static func == (lhs: Burrow, rhs: Burrow) -> Bool {
+        for key in lhs.locations.keys {
+            if lhs.locations[key]?.occupant?.type != rhs.locations[key]?.occupant?.type {
+                return false
+            }
+        }
+        return true
     }
     
     init(_ locations: [Location]) {
