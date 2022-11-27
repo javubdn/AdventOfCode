@@ -111,8 +111,6 @@ class Burrow: Hashable {
     func hash(into hasher: inout Hasher) { }
     
     static func == (lhs: Burrow, rhs: Burrow) -> Bool {
-        //TODO: calcular esto
-        return true
     }
     
     init(_ locations: [Location]) {
