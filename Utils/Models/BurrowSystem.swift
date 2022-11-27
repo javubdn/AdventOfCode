@@ -119,7 +119,7 @@ class Burrow: Hashable {
         return true
     }
     
-    init(_ locations: [Location]) {
+    init(_ locations: [Int: Location]) {
         self.locations = locations
     }
     
