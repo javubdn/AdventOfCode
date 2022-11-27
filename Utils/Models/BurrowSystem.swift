@@ -90,6 +90,8 @@ class Room: Location {
             guard let myRoom = location as? Room else { return false }
             return myRoom.type == type && myRoom.id > room.id
         }
+        for nextRoom in rooms {
+            if !BurrowSystem.matches(nextRoom as! Room) {
                 return false
             }
         }
