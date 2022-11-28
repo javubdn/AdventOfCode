@@ -129,6 +129,8 @@ class BurrowSystem {
     
     let burrow: Burrow
     let neighbours: [[Int]]
+    let doorWays: [AmphipodType: Int] = [.amber: 3, .bronze: 7, .copper: 11, .desert: 15]
+    
     init(burrow: Burrow, neighbours: [[Int]]) {
         self.burrow = burrow
         self.neighbours = neighbours
