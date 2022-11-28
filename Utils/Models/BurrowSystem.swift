@@ -136,10 +136,12 @@ class BurrowSystem {
         self.neighbours = neighbours
     }
     
+    func solve() -> Int {
+        var states = [(burrow, 0)]
         var seen = Set<Burrow>()
-
+        
         while !states.isEmpty {
-            var (current, cost) = states.removeFirst()
+            let (current, cost) = states.removeFirst()
             if seen.contains(current) {
                 continue
             }
@@ -150,7 +152,11 @@ class BurrowSystem {
             
             for (nextBurrow, burrowCost) in nextburrows(current) {
                 let nextCost = cost + burrowCost
-                states.append((nextBurrow, nextCost))
+                if let index = states.firstIndex(where: { $0.1 > nextCost }) {
+                    states.insert((nextBurrow, nextCost), at: index)
+                } else {
+                    states.append((nextBurrow, nextCost))
+                }
             }
         }
         return 0
