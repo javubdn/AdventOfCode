@@ -174,7 +174,9 @@ class BurrowSystem {
         var burrows: [(Burrow, Int)] = []
         for id in 1...burrow.locations.count {
             let moves = nextMoves(burrow, id)
-            for (moveCost, nextId) in moves {
+            for move in moves {
+                let moveCost = move.cost
+                let nextId = move.nextId
                 let nextburrow = swap(burrow, id, nextId)
                 burrows.append((nextburrow, moveCost))
             }
