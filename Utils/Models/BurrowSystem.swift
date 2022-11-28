@@ -129,6 +129,11 @@ class BurrowSystem {
     
     let burrow: Burrow
     let neighbours: [[Int]]
+    init(burrow: Burrow, neighbours: [[Int]]) {
+        self.burrow = burrow
+        self.neighbours = neighbours
+    }
+    
         var seen = Set<Burrow>()
 
         while !states.isEmpty {
