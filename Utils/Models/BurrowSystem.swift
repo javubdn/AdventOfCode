@@ -184,9 +184,6 @@ class BurrowSystem {
         return burrows
     }
     
-    private func nextMoves(_ burrow: Burrow, _ id: Int) -> [] {
-        amphipod = burrow[idx].occupant
-        isnothing(amphipod) && return []
         
         # Starting at the indicated location, perform a breadth-first search for
             # all the spaces that can be reached from the given location.
