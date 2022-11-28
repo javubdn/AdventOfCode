@@ -171,8 +171,7 @@ class BurrowSystem {
     }
     
     private func nextburrows(_ burrow: Burrow) -> [(Burrow, Int)] {
-        let burrows: [(Burrow, Int)] = []
-        
+        var burrows: [(Burrow, Int)] = []
         for id in 1...burrow.locations.count {
             let moves = nextMoves(burrow, id)
             for (moveCost, nextId) in moves {
