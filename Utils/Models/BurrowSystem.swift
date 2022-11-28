@@ -127,6 +127,8 @@ class Burrow: Hashable {
 
 class BurrowSystem {
     
+    let burrow: Burrow
+    let neighbours: [[Int]]
         var seen = Set<Burrow>()
 
         while !states.isEmpty {
