@@ -13,4 +13,8 @@ struct Heap<Element> {
         elements.isEmpty
     }
 
+    var count: Int {
+        elements.count
+    }
+    
 }
