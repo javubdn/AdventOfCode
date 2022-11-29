@@ -21,4 +21,8 @@ struct Heap<Element> {
         elements.first
     }
     
+    func isRoot(_ index: Int) -> Bool {
+        index == 0
+    }
+
 }
