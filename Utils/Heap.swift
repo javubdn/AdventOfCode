@@ -17,4 +17,8 @@ struct Heap<Element> {
         elements.count
     }
     
+    func peek() -> Element? {
+        elements.first
+    }
+    
 }
