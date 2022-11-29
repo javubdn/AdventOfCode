@@ -33,4 +33,8 @@ struct Heap<Element> {
         2 * index + 2
     }
 
+    func parentIndex(of index: Int) -> Int {
+        (index - 1) / 2
+    }
+    
 }
