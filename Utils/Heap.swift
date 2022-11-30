@@ -48,4 +48,9 @@ struct Heap<Element> {
         return childIndex
     }
         
+    func highestPriorityIndex(for parent: Int) -> Int {
+        highestPriorityIndex(of: highestPriorityIndex(of: parent, and: leftChildIndex(of: parent)),
+                             and: rightChildIndex(of: parent))
+    }
+    
 }
