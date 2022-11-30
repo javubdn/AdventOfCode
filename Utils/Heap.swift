@@ -58,4 +58,9 @@ struct Heap<Element> {
         elements.swapAt(firstIndex, secondIndex)
     }
     
+    mutating func enqueue(_ element: Element) {
+        elements.append(element)
+        siftUp(elementAtIndex: count - 1)
+    }
+    
 }
