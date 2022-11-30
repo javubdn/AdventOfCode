@@ -82,4 +82,13 @@ struct Heap<Element> {
         return element
     }
     
+    mutating func siftDown(elementAtIndex index: Int) {
+        let childIndex = highestPriorityIndex(for: index)
+        if index == childIndex {
+            return
+        }
+        swapElement(at: index, with: childIndex)
+        siftDown(elementAtIndex: childIndex)
+    }
+    
 }
