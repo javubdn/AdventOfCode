@@ -72,4 +72,14 @@ struct Heap<Element> {
         siftUp(elementAtIndex: parent)
     }
     
+    mutating func dequeue() -> Element? {
+        guard !isEmpty else { return nil }
+        swapElement(at: 0, with: count - 1)
+        let element = elements.removeLast()
+        if !isEmpty {
+            siftDown(elementAtIndex: 0)
+        }
+        return element
+    }
+    
 }
