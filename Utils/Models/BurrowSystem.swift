@@ -192,12 +192,6 @@ class BurrowSystem {
         visited  = Set{Int64}()
         moves    = Set{Move}()
         
-        while !isempty(queue)
-                (cost, current) = pop!(queue)
-                
-                for neighbor in NEIGHBORS[current]
-                neighbor ∈ visited && continue
-                isempty(burrow[neighbor]) || continue
                 
                 
     private func canMove(_ location1: Location, _ location2: Location, _ burrow: Burrow) -> Bool {
