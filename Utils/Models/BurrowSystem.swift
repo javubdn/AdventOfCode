@@ -210,6 +210,10 @@ class BurrowSystem {
                 push!(visited, current)
                 end
                 return moves
+    private func canMove(_ location1: Location, _ location2: Location, _ burrow: Burrow) -> Bool {
+        location1.canMove(location2, burrow)
+    }
+    
     static func matches(_ room: Room) -> Bool {
         guard let amphipod = room.occupant else { return false }
         return amphipod.type == room.type
