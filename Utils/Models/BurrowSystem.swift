@@ -210,6 +210,15 @@ class BurrowSystem {
                 push!(visited, current)
                 end
                 return moves
+    func swap(_ burrow: Burrow, _ id1: Int, _ id2: Int) -> Burrow {
+        var locations: [Int: Location] = [:]
+        for id in burrow.locations.keys {
+            locations[id] = burrow.locations[id]?.copy()
+        }
+        let aux = locations[id1]!.occupant
+        locations[id1]!.occupant = locations[id2]!.occupant
+        locations[id2]!.occupant = aux
+        return Burrow(locations)
     }
     
 }
