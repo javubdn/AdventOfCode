@@ -199,8 +199,6 @@ class BurrowSystem {
                 neighbor ∈ visited && continue
                 isempty(burrow[neighbor]) || continue
                 
-                nextcost = cost + movecost
-                pushfirst!(queue, (nextcost, neighbor))
                 
     private func canMove(_ location1: Location, _ location2: Location, _ burrow: Burrow) -> Bool {
         location1.canMove(location2, burrow)
