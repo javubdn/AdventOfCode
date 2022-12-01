@@ -184,6 +184,11 @@ class BurrowSystem {
         return burrows
     }
     
+    struct Move: Hashable {
+        let nextId: Int
+        let cost: Int
+    }
+    
         
         
                 
