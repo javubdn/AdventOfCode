@@ -185,12 +185,6 @@ class BurrowSystem {
     }
     
         
-        # Starting at the indicated location, perform a breadth-first search for
-            # all the spaces that can be reached from the given location.
-                movecost = COST[amphipod]
-                queue    = Vector{Move}([(0, idx)])
-        visited  = Set{Int64}()
-        moves    = Set{Move}()
         
                 
                 
