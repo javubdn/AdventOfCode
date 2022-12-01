@@ -202,14 +202,6 @@ class BurrowSystem {
                 nextcost = cost + movecost
                 pushfirst!(queue, (nextcost, neighbor))
                 
-                # Don't keep any moves that would stop in a doorway.
-                neighbor ∈ values(DOORWAYS) && continue
-                canmove(burrow[idx], burrow[neighbor], burrow) || continue
-                push!(moves, (nextcost, neighbor))
-                end
-                push!(visited, current)
-                end
-                return moves
     private func canMove(_ location1: Location, _ location2: Location, _ burrow: Burrow) -> Bool {
         location1.canMove(location2, burrow)
     }
