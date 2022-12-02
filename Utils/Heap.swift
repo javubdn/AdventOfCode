@@ -49,7 +49,7 @@ struct Heap<Element> {
         (index - 1) / 2
     }
     
-    func isHigherPriority(at firstIndex: Int, than secondIndex: Int) -> Bool {
+    private func isHigherPriority(at firstIndex: Int, than secondIndex: Int) -> Bool {
         priorityFunction(elements[firstIndex], elements[secondIndex])
     }
     
