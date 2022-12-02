@@ -37,7 +37,7 @@ struct Heap<Element> {
         index == 0
     }
 
-    func leftChildIndex(of index: Int) -> Int {
+    private func leftChildIndex(of index: Int) -> Int {
         2 * index + 1
     }
 
