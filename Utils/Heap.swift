@@ -15,6 +15,12 @@ struct Heap<Element> {
         buildHeap()
     }
 
+    private mutating func buildHeap() {
+        for index in (0..<count/2).reversed() {
+            siftDown(elementAtIndex: index)
+        }
+    }
+    
     var isEmpty: Bool {
         elements.isEmpty
     }
