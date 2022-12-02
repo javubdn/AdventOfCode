@@ -25,7 +25,7 @@ struct Heap<Element> {
         elements.isEmpty
     }
 
-    var count: Int {
+    private var count: Int {
         elements.count
     }
     
