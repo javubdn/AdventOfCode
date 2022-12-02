@@ -41,7 +41,7 @@ struct Heap<Element> {
         2 * index + 1
     }
 
-    func rightChildIndex(of index: Int) -> Int {
+    private func rightChildIndex(of index: Int) -> Int {
         2 * index + 2
     }
 
