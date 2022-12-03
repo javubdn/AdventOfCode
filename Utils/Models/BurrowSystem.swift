@@ -35,7 +35,7 @@ class Hallway: Location {
             return myRoom.type == room.type && myRoom.id > room.id
         }
         for nextRoom in rooms {
-            if !BurrowSystem.matches(nextRoom as! Room) {
+            if !BurrowSystem.matches(nextRoom) {
                 return false
             }
         }
