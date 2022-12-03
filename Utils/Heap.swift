@@ -53,7 +53,7 @@ struct Heap<Element> {
         priorityFunction(elements[firstIndex], elements[secondIndex])
     }
     
-    func highestPriorityIndex(of parentIndex: Int, and childIndex: Int) -> Int {
+    private func highestPriorityIndex(of parentIndex: Int, and childIndex: Int) -> Int {
         guard childIndex < count && isHigherPriority(at: childIndex, than: parentIndex) else {
             return parentIndex
         }
