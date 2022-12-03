@@ -75,7 +75,7 @@ struct Heap<Element> {
         siftUp(elementAtIndex: count - 1)
     }
     
-    mutating func siftUp(elementAtIndex index: Int) {
+    private mutating func siftUp(elementAtIndex index: Int) {
         let parent = parentIndex(of: index)
         guard !isRoot(index), isHigherPriority(at: index, than: parent) else {
             return
