@@ -65,7 +65,7 @@ struct Heap<Element> {
                              and: rightChildIndex(of: parent))
     }
     
-    mutating func swapElement(at firstIndex: Int, with secondIndex: Int) {
+    private mutating func swapElement(at firstIndex: Int, with secondIndex: Int) {
         guard firstIndex != secondIndex else { return }
         elements.swapAt(firstIndex, secondIndex)
     }
