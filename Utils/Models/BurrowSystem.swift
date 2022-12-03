@@ -46,6 +46,10 @@ class Hallway: Location {
         Hallway(id: id, occupant: occupant)
     }
     
+    func setOccupant(_ occupant: Amphipod?) {
+        self.occupant = occupant
+    }
+    
 }
 
 class Room: Location {
