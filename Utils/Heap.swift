@@ -94,7 +94,7 @@ struct Heap<Element> {
         return element
     }
     
-    mutating func siftDown(elementAtIndex index: Int) {
+    private mutating func siftDown(elementAtIndex index: Int) {
         let childIndex = highestPriorityIndex(for: index)
         if index == childIndex {
             return
