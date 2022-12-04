@@ -93,10 +93,6 @@ class Room: Location {
         guard occupant!.type != type else { return false}
         guard occupant!.type == room.type else { return false}
         
-        let rooms = burrow.locations.values.filter { location in
-            guard let myRoom = location as? Room else { return false }
-            return myRoom.type == type && myRoom.id > room.id
-        }
         for nextRoom in rooms {
             if !BurrowSystem.matches(nextRoom as! Room) {
                 return false
