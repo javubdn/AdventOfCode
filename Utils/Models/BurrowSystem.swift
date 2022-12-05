@@ -137,6 +137,10 @@ class Burrow: Hashable {
         } as! [Room]
     }
     
+    func size() -> Int {
+        locations.count
+    }
+    
     static func == (lhs: Burrow, rhs: Burrow) -> Bool {
         for key in lhs.locations.keys {
             if lhs.locations[key]?.occupant?.type != rhs.locations[key]?.occupant?.type {
