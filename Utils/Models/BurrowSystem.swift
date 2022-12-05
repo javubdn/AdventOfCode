@@ -130,6 +130,13 @@ class Burrow: Hashable {
         locations[id-1]
     }
     
+    func getRooms(_ type: AmphipodType, _ id: Int) -> [Room] {
+        locations.filter { location in
+            guard let room = location as? Room else { return false }
+            return room.type == type && room.id > id
+        } as! [Room]
+    }
+    
     static func == (lhs: Burrow, rhs: Burrow) -> Bool {
         for key in lhs.locations.keys {
             if lhs.locations[key]?.occupant?.type != rhs.locations[key]?.occupant?.type {
