@@ -120,6 +120,9 @@ class Burrow: Hashable {
     
     let locations: [Location]
     
+    init(_ locations: [Location]) {
+        self.locations = locations
+    }
     
     func hash(into hasher: inout Hasher) { }
     
