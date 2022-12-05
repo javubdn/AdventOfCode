@@ -110,6 +110,10 @@ class Room: Location {
         Room(type: type, id: id, occupant: occupant)
     }
     
+    func setOccupant(_ occupant: Amphipod?) {
+        self.occupant = occupant
+    }
+    
 }
 
 class Burrow: Hashable {
