@@ -99,7 +99,7 @@ class Room: Location {
 //        }
         let rooms = burrow.getRooms(room.type, room.id)
         for nextRoom in rooms {
-            if !BurrowSystem.matches(nextRoom as! Room) {
+            if !BurrowSystem.matches(nextRoom) {
                 return false
             }
         }
