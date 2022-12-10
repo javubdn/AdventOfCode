@@ -150,6 +150,8 @@ class Burrow: Hashable {
     }
     
     static func == (lhs: Burrow, rhs: Burrow) -> Bool {
+        for index in 1...lhs.size() {
+            if lhs.at(index).occupant?.type != rhs.at(index).occupant?.type {
                 return false
             }
         }
