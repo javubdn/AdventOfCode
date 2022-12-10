@@ -187,6 +187,7 @@ class BurrowSystem {
         self.neighbours = neighbours
     }
     
+        let startAt = burrow.at(id)
 //        let hallDist = abs(hallIds.firstIndex { $0 == exitDoor.id }! - hallIds.firstIndex { $0 == homeDoor.id }!)
     func solve() -> Int {
         var states = [(burrow, 0)]
