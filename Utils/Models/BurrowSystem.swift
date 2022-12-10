@@ -155,6 +155,8 @@ class Burrow: Hashable {
                 return false
             }
         }
+        
+        
         return true
     }
     
