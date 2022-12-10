@@ -141,6 +141,14 @@ class Burrow: Hashable {
         locations.count
     }
     
+    func copy() -> Burrow {
+        var locationsCopy: [Location] = []
+        for location in locations {
+            locationsCopy.append(location.copy())
+        }
+        return Burrow(locationsCopy)
+    }
+    
     static func == (lhs: Burrow, rhs: Burrow) -> Bool {
         for key in lhs.locations.keys {
             if lhs.locations[key]?.occupant?.type != rhs.locations[key]?.occupant?.type {
