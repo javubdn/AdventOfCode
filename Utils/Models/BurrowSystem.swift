@@ -309,10 +309,33 @@ class BurrowSystem {
         let cost: Int
     }
     
+    private func nextMoves(_ burrow: Burrow, _ id: Int) -> Set<Move> {
+        guard let amphipod = burrow.at(id).occupant else { return [] }
         
+        let moveCost = amphipod.cost
+        var queue = [(0, id)]
+        var visited = Set<Int>()
+        var moves = Set<Move>()
         
+        while !queue.isEmpty {
+            let (cost, current) = queue.removeFirst()
+            
+            for neighbor in neighbours[current-1] {
+                guard !visited.contains(neighbor) else { continue }
+                guard burrow.at(neighbor).occupant == nil else { continue }
                 
+                let nextCost = cost + moveCost
+                queue.append((nextCost, neighbor))
                 
+                if doorWays.values.contains(neighbor) { continue }
+                if !canMove(burrow.at(id), burrow.at(neighbor), burrow) { continue }
+                moves.insert(Move(nextId: neighbor, cost: nextCost))
+            }
+            visited.insert(current)
+        }
+        return moves
+    }
+    
     private func canMove(_ location1: Location, _ location2: Location, _ burrow: Burrow) -> Bool {
         location1.canMove(location2, burrow)
     }
