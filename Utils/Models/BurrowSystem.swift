@@ -311,6 +311,11 @@ class BurrowSystem {
 //        locations[id1]!.occupant = locations[id2]!.occupant
 //        locations[id2]!.occupant = aux
 //        return Burrow(locations)
+        let burrowCopy = burrow.copy()
+        let aux = burrowCopy.at(id1).occupant
+        burrowCopy.at(id1).setOccupant(burrowCopy.at(id2).occupant)
+        burrowCopy.at(id2).setOccupant(aux)
+        return burrowCopy
     }
     
 }
