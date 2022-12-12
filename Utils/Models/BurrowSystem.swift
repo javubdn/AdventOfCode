@@ -234,8 +234,22 @@ class BurrowSystem {
         return total
     }
     
+    func simplePathCost(_ burrow: Burrow, _ id: Int) -> Int {
         let startAt = burrow.at(id)
+        let amphipod = startAt.occupant!
+        let exitDist = distToHall(startAt)
+        let exitDoor = startAt is Hallway ? startAt : burrow.at(doorWays[(startAt as! Room).type]!)
+        
+        let homeDoor = burrow.at(doorWays[amphipod.type]!)
+        let hallIds = [1, 2, 3, 6, 7, 10, 11, 14, 15, 18, 19]
+        
 //        let hallDist = abs(hallIds.firstIndex { $0 == exitDoor.id }! - hallIds.firstIndex { $0 == homeDoor.id }!)
+        let hallDist = abs(exitDoor.id - homeDoor.id)
+        let moveCost = amphipod.cost
+        let fullDist = Double(exitDist) + Double(hallDist) + 1.5
+        return Int(floor(fullDist * Double(moveCost)))
+    }
+    
     func distToHall(_ location: Location) -> Int {
         //TODO: Adaptarlo para 4 rooms por tipo
         guard let room = location as? Room else { return 0 }
