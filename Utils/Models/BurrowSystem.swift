@@ -236,6 +236,12 @@ class BurrowSystem {
     
         let startAt = burrow.at(id)
 //        let hallDist = abs(hallIds.firstIndex { $0 == exitDoor.id }! - hallIds.firstIndex { $0 == homeDoor.id }!)
+    func distToHall(_ location: Location) -> Int {
+        //TODO: Adaptarlo para 4 rooms por tipo
+        guard let room = location as? Room else { return 0 }
+        return room.id % 2 == 0 ? 1 : 2
+    }
+    
     func solve() -> Int {
         var states = [(burrow, 0)]
         var seen = Set<Burrow>()
