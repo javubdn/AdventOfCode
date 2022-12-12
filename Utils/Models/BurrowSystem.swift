@@ -187,6 +187,53 @@ class BurrowSystem {
         self.neighbours = neighbours
     }
     
+    func solveH() -> Int {
+        var states = Heap(elements: [(burrow, distance(burrow))]) { $0.1 < $1.1 }
+        var open: Set<Burrow> = Set<Burrow>([burrow])
+        var costs: [Burrow: Int] = [burrow: 0]
+
+        while !states.isEmpty {
+            let (current, currentDistance) = states.dequeue()!
+            if currentDistance == costs[current]! {
+                return costs[current]!
+            }
+            open.remove(current)
+            for (nextBurrow, burrowCost) in nextburrows(current) {
+                let foundCost = costs[current]! + burrowCost
+                if let cost = costs[nextBurrow] {
+                    if foundCost >= cost {
+                        continue
+                    }
+                }
+                costs[nextBurrow] = foundCost
+                if open.contains(nextBurrow) {
+                    continue
+                }
+                open.insert(nextBurrow)
+                let nextDistance = distance(nextBurrow)
+                let totalCost = nextDistance + foundCost
+                states.enqueue((nextBurrow, totalCost))
+            }
+        }
+
+        return 0
+    }
+    
+    func distance(_ burrow: Burrow) -> Int {
+        var total = 0
+        for id in 1...burrow.size() {
+            let location = burrow.at(id)
+            guard let _ = location.occupant else { continue }
+            if let room = location as? Room {
+                if BurrowSystem.matches(room) {
+                    continue
+                }
+            }
+            total += simplePathCost(burrow, id)
+        }
+        return total
+    }
+    
         let startAt = burrow.at(id)
 //        let hallDist = abs(hallIds.firstIndex { $0 == exitDoor.id }! - hallIds.firstIndex { $0 == homeDoor.id }!)
     func solve() -> Int {
