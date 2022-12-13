@@ -1677,6 +1677,10 @@ private extension Year2021InteractorImpl {
                              Room(type: .desert, id: 4, occupant: Amphipod(type: .bronze, position: (0, 0))),
                              Hallway(id: 10), Hallway(id: 11)
                             ])
+        let neighbours = [[2], [1, 3], [2, 4, 8], [3, 5], [4, 6], [5, 7], [6], [3, 9], [8, 10, 14], [9, 11], [10, 12], [11, 13], [12], [9, 15], [14, 16, 20], [15, 17], [16, 18], [17, 19], [18], [15, 21], [20, 22, 26], [21, 23], [22, 24], [23, 25], [24], [21, 27], [26]]
+        let burrowSystem = BurrowSystem(burrow: burrow, neighbours: neighbours)
+        let result = burrowSystem.solveH()
+        return "\(result)"
     }
     
 }
