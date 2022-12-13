@@ -1654,7 +1654,6 @@ private extension Year2021InteractorImpl {
 //        let distr = DiagramSituation(input)
 //        let result = distr.calculateMovements()
 //        return "\(result)"
-        "47665"
     }
     
 }
