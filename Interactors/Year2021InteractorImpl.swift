@@ -1655,6 +1655,28 @@ private extension Year2021InteractorImpl {
 //        let result = distr.calculateMovements()
 //        return "\(result)"
 //        "47665"
+        let burrow = Burrow([Hallway(id: 1), Hallway(id: 2), Hallway(id: 3),
+                             Room(type: .amber, id: 1, occupant: Amphipod(type: .desert, position: (0, 0))),
+                             Room(type: .amber, id: 2, occupant: Amphipod(type: .desert, position: (0, 0))),
+                             Room(type: .amber, id: 3, occupant: Amphipod(type: .desert, position: (0, 0))),
+                             Room(type: .amber, id: 4, occupant: Amphipod(type: .desert, position: (0, 0))),
+                             Hallway(id: 4), Hallway(id: 5),
+                             Room(type: .bronze, id: 1, occupant: Amphipod(type: .amber, position: (0, 0))),
+                             Room(type: .bronze, id: 2, occupant: Amphipod(type: .copper, position: (0, 0))),
+                             Room(type: .bronze, id: 3, occupant: Amphipod(type: .bronze, position: (0, 0))),
+                             Room(type: .bronze, id: 4, occupant: Amphipod(type: .copper, position: (0, 0))),
+                             Hallway(id: 6), Hallway(id: 7),
+                             Room(type: .copper, id: 1, occupant: Amphipod(type: .copper, position: (0, 0))),
+                             Room(type: .copper, id: 2, occupant: Amphipod(type: .bronze, position: (0, 0))),
+                             Room(type: .copper, id: 3, occupant: Amphipod(type: .amber, position: (0, 0))),
+                             Room(type: .copper, id: 4, occupant: Amphipod(type: .bronze, position: (0, 0))),
+                             Hallway(id: 8), Hallway(id: 9),
+                             Room(type: .desert, id: 1, occupant: Amphipod(type: .amber, position: (0, 0))),
+                             Room(type: .desert, id: 2, occupant: Amphipod(type: .amber, position: (0, 0))),
+                             Room(type: .desert, id: 3, occupant: Amphipod(type: .copper, position: (0, 0))),
+                             Room(type: .desert, id: 4, occupant: Amphipod(type: .bronze, position: (0, 0))),
+                             Hallway(id: 10), Hallway(id: 11)
+                            ])
     }
     
 }
