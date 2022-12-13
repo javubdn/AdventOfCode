@@ -1627,22 +1627,6 @@ private extension Year2021InteractorImpl {
 //        let result = distr.calculateMovements()
 //        return "\(result)"
         "19167"
-        let burrow = Burrow([1: Hallway(id: 1), 2: Hallway(id: 2), 3: Hallway(id: 3),
-                             4: Room(type: .amber, id: 4, occupant: Amphipod(type: .bronze, position: (0, 0))),
-                             5: Room(type: .amber, id: 5, occupant: Amphipod(type: .amber, position: (0, 0))),
-                             6: Hallway(id: 6), 7: Hallway(id: 7),
-                             8: Room(type: .bronze, id: 8, occupant: Amphipod(type: .copper, position: (0, 0))),
-                             9: Room(type: .bronze, id: 9, occupant: Amphipod(type: .desert, position: (0, 0))),
-                             10: Hallway(id: 10), 11: Hallway(id: 11),
-                             12: Room(type: .copper, id: 12, occupant: Amphipod(type: .bronze, position: (0, 0))),
-                             13: Room(type: .copper, id: 13, occupant: Amphipod(type: .copper, position: (0, 0))),
-                             14: Hallway(id: 14), 15: Hallway(id: 15),
-                             16: Room(type: .desert, id: 16, occupant: Amphipod(type: .desert, position: (0, 0))),
-                             17: Room(type: .desert, id: 17, occupant: Amphipod(type: .amber, position: (0, 0))),
-                             18: Hallway(id: 18), 19: Hallway(id: 19)
-                            ])
-        let neighbours = [[2], [1, 3], [2, 4, 6], [3, 5], [4], [3, 7], [6, 8, 10], [7, 9], [8], [7, 11], [10, 12, 14], [11, 13], [12], [11, 15], [14, 16, 18], [15, 17], [16], [15, 19], [18]
-        ]
     }
     
     @objc
