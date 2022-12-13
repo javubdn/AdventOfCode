@@ -13,7 +13,7 @@ protocol Location {
     var occupant: AmphipodType? { get set }
     func canMove(_ location: Location, _ burrow: Burrow) -> Bool
     func copy() -> Location
-    func setOccupant(_ occupant: Amphipod?)
+    func setOccupant(_ occupant: AmphipodType?)
     
 }
 
