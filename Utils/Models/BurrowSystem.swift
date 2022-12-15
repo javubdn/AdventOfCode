@@ -43,7 +43,7 @@ class Hallway: Location {
         Hallway(id: id, occupant: occupant)
     }
     
-    func setOccupant(_ occupant: Amphipod?) {
+    func setOccupant(_ occupant: AmphipodType?) {
         self.occupant = occupant
     }
     
