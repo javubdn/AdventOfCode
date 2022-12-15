@@ -20,7 +20,7 @@ protocol Location {
 class Hallway: Location {
     
     let id: Int
-    var occupant: Amphipod? = nil
+    var occupant: AmphipodType? = nil
     
     init(id: Int, occupant: Amphipod? = nil) {
         self.id = id
