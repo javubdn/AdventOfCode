@@ -55,7 +55,7 @@ class Room: Location {
     let id: Int
     var occupant: AmphipodType?
     
-    init(type: AmphipodType, id: Int, occupant: Amphipod? = nil) {
+    init(type: AmphipodType, id: Int, occupant: AmphipodType? = nil) {
         self.type = type
         self.id = id
         self.occupant = occupant
