@@ -22,7 +22,7 @@ class Hallway: Location {
     let id: Int
     var occupant: AmphipodType? = nil
     
-    init(id: Int, occupant: Amphipod? = nil) {
+    init(id: Int, occupant: AmphipodType? = nil) {
         self.id = id
         self.occupant = occupant
     }
