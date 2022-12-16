@@ -159,7 +159,7 @@ class BurrowSystem {
         self.neighbours = neighbours
     }
     
-    func solveH() -> Int {
+    func solve() -> Int {
         var states = Heap(elements: [(burrow, distance(burrow))]) { $0.1 < $1.1 }
         var open: Set<Burrow> = Set<Burrow>([burrow])
         var costs: [Burrow: Int] = [burrow: 0]
