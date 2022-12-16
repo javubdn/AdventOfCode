@@ -82,8 +82,8 @@ class Room: Location {
     
     private func canMoveRoom(_ room: Room, _ burrow: Burrow) -> Bool {
         guard type != room.type else { return false }
-        guard occupant!.type != type else { return false}
-        guard occupant!.type == room.type else { return false}
+        guard occupant! != type else { return false}
+        guard occupant! == room.type else { return false}
         
 //        let rooms = burrow.locations.values.filter { location in
 //            guard let myRoom = location as? Room else { return false }
