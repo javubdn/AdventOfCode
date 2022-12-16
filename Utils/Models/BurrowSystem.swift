@@ -98,7 +98,7 @@ class Room: Location {
         Room(type: type, id: id, occupant: occupant)
     }
     
-    func setOccupant(_ occupant: Amphipod?) {
+    func setOccupant(_ occupant: AmphipodType?) {
         self.occupant = occupant
     }
     
