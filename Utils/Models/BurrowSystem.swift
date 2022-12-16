@@ -163,7 +163,7 @@ class BurrowSystem {
         var states = Heap(elements: [(burrow, distance(burrow))]) { $0.1 < $1.1 }
         var open: Set<Burrow> = Set<Burrow>([burrow])
         var costs: [Burrow: Int] = [burrow: 0]
-
+        
         while !states.isEmpty {
             let (current, currentDistance) = states.dequeue()!
             if currentDistance == costs[current]! {
