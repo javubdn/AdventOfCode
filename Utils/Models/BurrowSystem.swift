@@ -192,7 +192,7 @@ class BurrowSystem {
     }
     
     func distance(_ burrow: Burrow) -> Int {
-        var total = 0
+        var total: Double = 0
         for id in 1...burrow.size() {
             let location = burrow.at(id)
             guard let _ = location.occupant else { continue }
