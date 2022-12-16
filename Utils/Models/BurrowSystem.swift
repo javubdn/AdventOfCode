@@ -143,22 +143,6 @@ class Burrow: Hashable {
                 return false
             }
         }
-        
-        
-//        for locationL in lhs.locations {
-//            guard let locationR = rhs.locations.first(where: { $0.id == locationL.id }) else {
-//                return false
-//            }
-//            if locationL.occupant?.type != locationR.occupant?.type {
-//                return false
-//            }
-//        }
-        
-//        for key in lhs.locations.keys {
-//            if lhs.locations[key]?.occupant?.type != rhs.locations[key]?.occupant?.type {
-//                return false
-//            }
-//        }
         return true
     }
     
