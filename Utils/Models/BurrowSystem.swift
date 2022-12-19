@@ -172,6 +172,9 @@ class BurrowSystem {
             open.remove(current)
             for (nextBurrow, burrowCost) in nextburrows(current) {
                 let foundCost = costs[current]! + burrowCost
+                if foundCost == 19167 {
+                    print(foundCost)
+                }
                 if let cost = costs[nextBurrow] {
                     if foundCost >= cost {
                         continue
