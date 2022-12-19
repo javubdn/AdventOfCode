@@ -200,7 +200,7 @@ class BurrowSystem {
             let location = burrow.at(id)
             guard let _ = location.occupant else { continue }
             if let room = location as? Room {
-                if BurrowSystem.matches(room) {
+                if BurrowSystem.matches(room) && !block(burrow, id) {
                     continue
                 }
             }
