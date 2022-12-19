@@ -206,7 +206,8 @@ class BurrowSystem {
             }
             total += simplePathCost(burrow, id)
         }
-        return total
+//        return total
+        return Int(floor(total))
     }
     
     func simplePathCost(_ burrow: Burrow, _ id: Int) -> Int {
