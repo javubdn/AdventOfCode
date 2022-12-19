@@ -210,7 +210,7 @@ class BurrowSystem {
         return Int(floor(total))
     }
     
-    func simplePathCost(_ burrow: Burrow, _ id: Int) -> Int {
+    func simplePathCost(_ burrow: Burrow, _ id: Int) -> Double {
         let startAt = burrow.at(id)
         let amphipod = startAt.occupant!
         let exitDist = distToHall(startAt)
