@@ -215,9 +215,9 @@ class BurrowSystem {
         let amphipod = startAt.occupant!
         let exitDist = distToHall(startAt)
         
-        let homeDoor = burrow.at(doorWays[amphipod.type]!)
         let hallIds = [1, 2, 3, 6, 7, 10, 11, 14, 15, 18, 19]
         let exitDoor = startAt is Hallway ? startAt : burrow.at(doorWays[(startAt as! Room).type]!)
+        let homeDoor = burrow.at(doorWays[amphipod]!)
         
 //        let hallDist = abs(hallIds.firstIndex { $0 == exitDoor.id }! - hallIds.firstIndex { $0 == homeDoor.id }!)
         let hallDist = abs(exitDoor.id - homeDoor.id)
