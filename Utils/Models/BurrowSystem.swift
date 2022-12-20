@@ -219,6 +219,7 @@ class BurrowSystem {
         let homeDoor = burrow.at(doorWays[amphipod]!)
         
         var hallDist = abs(exitDoor.id - homeDoor.id)
+        hallDist += hallDist == 0 ? 2 : 0
         let fullDist = Double(exitDist) + Double(hallDist) + 1.5
         return Int(floor(fullDist * Double(moveCost)))
     }
