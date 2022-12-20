@@ -222,6 +222,7 @@ class BurrowSystem {
         hallDist += hallDist == 0 ? 2 : 0
         let fullDist = Double(exitDist) + Double(hallDist) + 1.5
 //        return Int(floor(fullDist * Double(amphipod.cost())))
+        return fullDist * Double(amphipod.cost())
     }
     
     func distToHall(_ location: Location) -> Int {
