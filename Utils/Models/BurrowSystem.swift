@@ -226,7 +226,6 @@ class BurrowSystem {
     }
     
     func distToHall(_ location: Location) -> Int {
-        //TODO: Adaptarlo para 4 rooms por tipo
         guard let room = location as? Room else { return 0 }
         return room.id % 2 == 0 ? 1 : 2
     }
