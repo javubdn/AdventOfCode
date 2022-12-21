@@ -251,7 +251,7 @@ class BurrowSystem {
     private func nextMoves(_ burrow: Burrow, _ id: Int) -> Set<Move> {
         guard let amphipod = burrow.at(id).occupant else { return [] }
         
-        let moveCost = amphipod.cost
+        let moveCost = amphipod.cost()
         var queue = [(0, id)]
         var visited = Set<Int>()
         var moves = Set<Move>()
