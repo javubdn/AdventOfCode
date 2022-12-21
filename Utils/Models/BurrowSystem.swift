@@ -227,6 +227,9 @@ class BurrowSystem {
     
     func distToHall(_ location: Location) -> Int {
         guard let room = location as? Room else { return 0 }
+        return room.id
+//        guard let room = location as? Room else { return 0 }
+//        return room.id % 2 == 0 ? 1 : 2
     }
     
     private func nextburrows(_ burrow: Burrow) -> [(Burrow, Int)] {
