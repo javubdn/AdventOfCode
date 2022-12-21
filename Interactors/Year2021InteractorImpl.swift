@@ -1681,6 +1681,44 @@ private extension Year2021InteractorImpl {
         let burrowSystem = BurrowSystem(burrow: burrow, neighbours: neighbours)
         let result = burrowSystem.solveH()
         return "\(result)"
+    private func executeMonad(_ instructions: [AluInst], _ input: [Int]) -> (Int, Int, Int, Int) {
+        var values = [0, 0, 0, 0]
+        var indexInput = 0
+        
+        for instruction in instructions {
+            let param1Index: Int
+            switch instruction.param1 {
+            case "w": param1Index = 0
+            case "x": param1Index = 1
+            case "y": param1Index = 2
+            case "z": param1Index = 3
+            default: param1Index = 0
+            }
+            var param2Value: Int
+            switch instruction.param2 {
+            case "": param2Value = 0
+            case "w": param2Value = values[0]
+            case "x": param2Value = values[1]
+            case "y": param2Value = values[2]
+            case "z": param2Value = values[3]
+            default: param2Value = Int(instruction.param2)!
+            }
+            
+            switch instruction.type {
+            case .inp:
+                values[param1Index] = input[indexInput]
+                indexInput += 1
+            case .add: values[param1Index] += param2Value
+            case .mul: values[param1Index] *= param2Value
+            case .div: values[param1Index] /= param2Value
+            case .mod: values[param1Index] %= param2Value
+            case .eql: values[param1Index] = values[param1Index] == param2Value ? 1 : 0
+            }
+        }
+        
+        return (values[0], values[1], values[2], values[3])
+    }
+    
     }
     
 }
