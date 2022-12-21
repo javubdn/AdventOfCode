@@ -286,6 +286,21 @@ class BurrowSystem {
         guard let amphipod = room.occupant else { return false }
         return amphipod == room.type
     }
+    
+    private func block(_ burrow: Burrow, _ id: Int) -> Bool {
+        guard burrow.at(id) is Room else { return false }
+        var nextId = id + 1
+        while let nextRoom = burrow.at(nextId) as? Room {
+            if let occupant = nextRoom.occupant {
+                if occupant != nextRoom.type {
+                    return true
+                }
+            } else {
+                return true
+            }
+            nextId += 1
+        }
+        return false
     }
     
     func swap(_ burrow: Burrow, _ id1: Int, _ id2: Int) -> Burrow {
