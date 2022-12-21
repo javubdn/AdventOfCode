@@ -281,7 +281,8 @@ class BurrowSystem {
     
     static func matches(_ room: Room) -> Bool {
         guard let amphipod = room.occupant else { return false }
-        return amphipod.type == room.type
+        return amphipod == room.type
+    }
     }
     
     func swap(_ burrow: Burrow, _ id1: Int, _ id2: Int) -> Burrow {
