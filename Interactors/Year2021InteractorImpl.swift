@@ -1641,6 +1641,22 @@ private extension Year2021InteractorImpl {
 //                             Room(type: .desert, id: 2, occupant: .bronze),
 //                             Hallway(id: 10), Hallway(id: 11)
 //                            ])
+////        let testBurrow = Burrow([
+////            Hallway(id: 1),
+////            Hallway(id: 2),                Hallway(id: 3),
+////            Room(type: .amber, id: 1, occupant: .bronze),
+////            Room(type: .amber, id: 2, occupant: .amber),
+////            Hallway(id: 4),                Hallway(id: 5),
+////            Room(type: .bronze, id: 1, occupant: .copper),
+////            Room(type: .bronze, id: 2, occupant: .desert),
+////            Hallway(id: 6),                Hallway(id: 7),
+////            Room(type: .copper, id: 1, occupant: .bronze),
+////            Room(type: .copper, id: 2, occupant: .copper),
+////            Hallway(id: 8),                Hallway(id: 9),
+////            Room(type: .desert, id: 1, occupant: .desert),
+////            Room(type: .desert, id: 2, occupant: .amber),
+////            Hallway(id: 10),               Hallway(id: 11)
+////        ])
 //                             Room(type: .amber, id: 1, occupant: Amphipod(type: .desert, position: (0, 0))),
 //                             Room(type: .amber, id: 2, occupant: Amphipod(type: .desert, position: (0, 0))),
 //                             Hallway(id: 4), Hallway(id: 5),
