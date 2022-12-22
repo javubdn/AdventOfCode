@@ -1690,6 +1690,12 @@ private extension Year2021InteractorImpl {
         case eql
     }
     
+    struct AluInst {
+        let type: AluType
+        let param1: String
+        let param2: String
+    }
+    
     private func executeMonad(_ instructions: [AluInst], _ input: [Int]) -> (Int, Int, Int, Int) {
         var values = [0, 0, 0, 0]
         var indexInput = 0
