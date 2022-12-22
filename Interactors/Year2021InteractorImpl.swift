@@ -1664,6 +1664,8 @@ private extension Year2021InteractorImpl {
 //        return "\(result)"
     }
     
+    @objc
+    func day23question2() -> String {
 //                             Room(type: .amber, id: 1, occupant: Amphipod(type: .desert, position: (0, 0))),
 //                             Room(type: .amber, id: 2, occupant: Amphipod(type: .desert, position: (0, 0))),
 //                             Hallway(id: 4), Hallway(id: 5),
@@ -1683,6 +1685,7 @@ private extension Year2021InteractorImpl {
 //        let result = burrowSystem.solveH()
 //        return "\(result)"
     }
+ 
     
     @objc
     func day23question2() -> String {
