@@ -1681,6 +1681,15 @@ private extension Year2021InteractorImpl {
         let burrowSystem = BurrowSystem(burrow: burrow, neighbours: neighbours)
         let result = burrowSystem.solveH()
         return "\(result)"
+    enum AluType {
+        case inp
+        case add
+        case mul
+        case div
+        case mod
+        case eql
+    }
+    
     private func executeMonad(_ instructions: [AluInst], _ input: [Int]) -> (Int, Int, Int, Int) {
         var values = [0, 0, 0, 0]
         var indexInput = 0
