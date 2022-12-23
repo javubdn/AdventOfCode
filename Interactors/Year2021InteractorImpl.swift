@@ -1700,6 +1700,22 @@ private extension Year2021InteractorImpl {
     }
  
     
+    private func reduce(_ input: [Int]) -> [Int] {
+        var items = input
+        var index = input.count - 1
+        while index >= 0 {
+            let newValue = items[index] - 1
+            if newValue == 0 {
+                items[index] = 9
+                index -= 1
+            } else {
+                items[index] = newValue
+                return items
+            }
+        }
+        return [0]
+    }
+    
     @objc
     func day23question2() -> String {
 //        let input = readCSV("InputYear2021Day23Part2")
