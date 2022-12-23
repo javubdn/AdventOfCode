@@ -1796,4 +1796,10 @@ private extension Year2021InteractorImpl {
         return z
     }
     
+    private struct MonadParameters {
+        let a: Int
+        let b: Int
+        let c: Int
+    }
+    
 }
