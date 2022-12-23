@@ -1670,6 +1670,7 @@ private extension Year2021InteractorImpl {
 //        let distr = DiagramSituation(input)
 //        let result = distr.calculateMovements()
 //        return "\(result)"
+        "47665"
 //                             Room(type: .amber, id: 1, occupant: Amphipod(type: .desert, position: (0, 0))),
 //                             Room(type: .amber, id: 2, occupant: Amphipod(type: .desert, position: (0, 0))),
 //                             Hallway(id: 4), Hallway(id: 5),
