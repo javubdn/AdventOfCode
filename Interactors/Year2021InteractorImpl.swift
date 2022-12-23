@@ -1717,38 +1717,6 @@ private extension Year2021InteractorImpl {
     }
     
     @objc
-    func day23question2() -> String {
-//        let input = readCSV("InputYear2021Day23Part2")
-//        let distr = DiagramSituation(input)
-//        let result = distr.calculateMovements()
-//        return "\(result)"
-//        "47665"
-        let burrow = Burrow([Hallway(id: 1), Hallway(id: 2), Hallway(id: 3),
-                             Room(type: .amber, id: 1, occupant: Amphipod(type: .desert, position: (0, 0))),
-                             Room(type: .amber, id: 2, occupant: Amphipod(type: .desert, position: (0, 0))),
-                             Room(type: .amber, id: 3, occupant: Amphipod(type: .desert, position: (0, 0))),
-                             Room(type: .amber, id: 4, occupant: Amphipod(type: .desert, position: (0, 0))),
-                             Hallway(id: 4), Hallway(id: 5),
-                             Room(type: .bronze, id: 1, occupant: Amphipod(type: .amber, position: (0, 0))),
-                             Room(type: .bronze, id: 2, occupant: Amphipod(type: .copper, position: (0, 0))),
-                             Room(type: .bronze, id: 3, occupant: Amphipod(type: .bronze, position: (0, 0))),
-                             Room(type: .bronze, id: 4, occupant: Amphipod(type: .copper, position: (0, 0))),
-                             Hallway(id: 6), Hallway(id: 7),
-                             Room(type: .copper, id: 1, occupant: Amphipod(type: .copper, position: (0, 0))),
-                             Room(type: .copper, id: 2, occupant: Amphipod(type: .bronze, position: (0, 0))),
-                             Room(type: .copper, id: 3, occupant: Amphipod(type: .amber, position: (0, 0))),
-                             Room(type: .copper, id: 4, occupant: Amphipod(type: .bronze, position: (0, 0))),
-                             Hallway(id: 8), Hallway(id: 9),
-                             Room(type: .desert, id: 1, occupant: Amphipod(type: .amber, position: (0, 0))),
-                             Room(type: .desert, id: 2, occupant: Amphipod(type: .amber, position: (0, 0))),
-                             Room(type: .desert, id: 3, occupant: Amphipod(type: .copper, position: (0, 0))),
-                             Room(type: .desert, id: 4, occupant: Amphipod(type: .bronze, position: (0, 0))),
-                             Hallway(id: 10), Hallway(id: 11)
-                            ])
-        let neighbours = [[2], [1, 3], [2, 4, 8], [3, 5], [4, 6], [5, 7], [6], [3, 9], [8, 10, 14], [9, 11], [10, 12], [11, 13], [12], [9, 15], [14, 16, 20], [15, 17], [16, 18], [17, 19], [18], [15, 21], [20, 22, 26], [21, 23], [22, 24], [23, 25], [24], [21, 27], [26]]
-        let burrowSystem = BurrowSystem(burrow: burrow, neighbours: neighbours)
-        let result = burrowSystem.solveH()
-        return "\(result)"
     enum AluType {
         case inp
         case add
