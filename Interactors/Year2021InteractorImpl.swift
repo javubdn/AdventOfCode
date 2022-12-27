@@ -1816,4 +1816,23 @@ private extension Year2021InteractorImpl {
         z % 26 + parameters.b != w ? (z/parameters.a) * 26 + w + parameters.c : z/parameters.a
     }
     
+    private func executeDay24() -> (Int, Int) {
+        let input = getMonadParameters(readCSV("InputYear2021Day24").components(separatedBy: .newlines))
+        var zValues = [0: (0, 0)]
+        input.forEach { parameters in
+            var zValuesThisRound: [Int: (Int, Int)] = [:]
+            zValues.forEach { (z, minMax) in
+                (1...9).forEach { digit in
+                    let newValueForZ = magicFunctionMonad(parameters, z, digit)
+                    if (parameters.a == 1 || (parameters.a == 26 && newValueForZ < z)) {
+                        zValuesThisRound[newValueForZ] = (min(zValuesThisRound[newValueForZ]?.0 ?? Int.max, minMax.0*10 + digit),
+                                                          max(zValuesThisRound[newValueForZ]?.1 ?? Int.min, minMax.1*10 + digit))
+                    }
+                }
+            }
+            zValues = zValuesThisRound
+        }
+        return zValues[0]!
+    }
+    
 }
