@@ -1791,6 +1791,8 @@ private extension Year2021InteractorImpl {
         for index in 0..<14 {
             if z % 26 + extras[index] != input[index] {
                 z = (z/divisors[index]) * 26 + input[index] + adders[index]
+            } else {
+                z = (z/divisors[index])
             }
         }
         return z
