@@ -1812,4 +1812,8 @@ private extension Year2021InteractorImpl {
         }
     }
     
+    private func magicFunctionMonad(_ parameters: MonadParameters, _ z: Int, _ w: Int) -> Int {
+        z % 26 + parameters.b != w ? (z/parameters.a) * 26 + w + parameters.c : z/parameters.a
+    }
+    
 }
