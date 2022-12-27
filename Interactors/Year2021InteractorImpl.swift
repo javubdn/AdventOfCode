@@ -1804,4 +1804,12 @@ private extension Year2021InteractorImpl {
         let c: Int
     }
     
+    private func getMonadParameters(_ input: [String]) -> [MonadParameters] {
+        input.chunked(into: 18).map {
+            MonadParameters(a: Int($0[4].components(separatedBy: .whitespaces)[2])!,
+                            b: Int($0[5].components(separatedBy: .whitespaces)[2])!,
+                            c: Int($0[15].components(separatedBy: .whitespaces)[2])!)
+        }
+    }
+    
 }
