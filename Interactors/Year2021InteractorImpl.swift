@@ -1699,6 +1699,28 @@ private extension Year2021InteractorImpl {
 //        return "\(result)"
     }
  
+    @objc
+    func day24question1() -> String {
+        let instructions = readCSV("InputYear2021Day24").components(separatedBy: .newlines).map { getAluInst($0) }
+
+        let flipa = getMonadParameters(readCSV("InputYear2021Day24").components(separatedBy: .newlines))
+        var zValues = [0: (0, 0)]
+        flipa.forEach { parameters in
+            var zValuesThisRound: [Int: (Int, Int)] = [:]
+            zValues.forEach { (z, minMax) in
+                (1...9).forEach { digit in
+                    let newValueForZ = magicFunctionMonad(parameters, z, digit)
+                    if (parameters.a == 1 || (parameters.a == 26 && newValueForZ < z)) {
+                        zValuesThisRound[newValueForZ] = (min(zValuesThisRound[newValueForZ]?.0 ?? Int.max, minMax.0*10 + digit),
+                                                          max(zValuesThisRound[newValueForZ]?.1 ?? Int.min, minMax.1*10 + digit))
+                    }
+                }
+            }
+            zValues = zValuesThisRound
+        }
+        print(zValues[0])
+        
+    }
     
     private func reduce(_ input: [Int]) -> [Int] {
         var items = input
