@@ -1786,7 +1786,7 @@ private extension Year2021InteractorImpl {
         return (values[0], values[1], values[2], values[3])
     }
     
-    private func magicFunction(_ input: [Int], _ extras: [Int], _ adders: [Int]) -> Int {
+    private func magicFunction(_ input: [Int], _ extras: [Int], _ adders: [Int], _ divisors: [Int]) -> Int {
         var z = 0
         for index in 0..<14 {
             if z % 26 + extras[index] != input[index] {
