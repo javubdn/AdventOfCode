@@ -1708,7 +1708,6 @@ private extension Year2021InteractorImpl {
                                   [12, 11, 10, 10, -16, 14, 12, -4, 15, -7, -8, -4, -15, -8],
                                   [6, 12, 5, 10, 7, 0, 4, 12, 14, 13, 10, 11, 9, 9],
                                   [1, 1, 1, 1, 26, 1, 1, 26, 1, 26, 26, 26, 26, 26])
-//            let (w, x, y, z) = executeMonad(instructions, input)
             if z == 0 {
                 return input.map { "\($0)" }.joined()
             }
