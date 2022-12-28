@@ -1701,10 +1701,6 @@ private extension Year2021InteractorImpl {
  
     @objc
     func day24question1() -> String {
-//            }
-//            zValues = zValuesThisRound
-//        }
-//        print(zValues[0])
         
         
     }
