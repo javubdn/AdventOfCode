@@ -1726,22 +1726,6 @@ private extension Year2021InteractorImpl {
         let param2: String
     }
     
-    private func getAluInst(_ input: String) -> AluInst {
-        let elements = input.components(separatedBy: .whitespaces)
-        let type: AluType
-        switch elements[0] {
-        case "inp": type = .inp
-        case "add": type = .add
-        case "mul": type = .mul
-        case "div": type = .div
-        case "mod": type = .mod
-        case "eql": type = .eql
-        default: type = .eql
-        }
-        let param2 = elements.count == 3 ? elements[2] : ""
-        return AluInst(type: type, param1: elements[1], param2: param2)
-    }
-    
     private func executeMonad(_ instructions: [AluInst], _ input: [Int]) -> (Int, Int, Int, Int) {
         var values = [0, 0, 0, 0]
         var indexInput = 0
