@@ -1707,22 +1707,6 @@ private extension Year2021InteractorImpl {
         "99893999291967"
     }
     
-    private func reduce(_ input: [Int]) -> [Int] {
-        var items = input
-        var index = input.count - 1
-        while index >= 0 {
-            let newValue = items[index] - 1
-            if newValue == 0 {
-                items[index] = 9
-                index -= 1
-            } else {
-                items[index] = newValue
-                return items
-            }
-        }
-        return [0]
-    }
-    
     @objc
     func day24question2() -> String {
 //        "\(executeDay24().0)"
