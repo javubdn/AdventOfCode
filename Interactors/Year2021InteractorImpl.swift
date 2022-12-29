@@ -1724,6 +1724,9 @@ private extension Year2021InteractorImpl {
     }
     
     @objc
+    func day24question2() -> String {
+    }
+    
     enum AluType {
         case inp
         case add
