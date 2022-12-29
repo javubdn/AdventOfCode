@@ -1701,9 +1701,7 @@ private extension Year2021InteractorImpl {
  
     @objc
     func day24question1() -> String {
-        
 //        "\(executeDay24().1)"
-        
         "99893999291967"
     }
     
