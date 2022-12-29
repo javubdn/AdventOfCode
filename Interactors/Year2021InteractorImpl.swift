@@ -1725,6 +1725,7 @@ private extension Year2021InteractorImpl {
     
     @objc
     func day24question2() -> String {
+        "\(executeDay24().0)"
     }
     
     enum AluType {
