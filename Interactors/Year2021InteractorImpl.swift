@@ -1704,6 +1704,7 @@ private extension Year2021InteractorImpl {
         
 //        "\(executeDay24().1)"
         
+        "99893999291967"
     }
     
     private func reduce(_ input: [Int]) -> [Int] {
