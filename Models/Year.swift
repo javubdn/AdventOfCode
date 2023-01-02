@@ -15,6 +15,7 @@ enum Year {
     case nineteen
     case twenty
     case twentyOne
+    case twentyTwo
     
     func value() -> Int {
         switch self {
@@ -32,6 +33,8 @@ enum Year {
             return 2020
         case .twentyOne:
             return 2021
+        case .twentyTwo:
+            return 2022
         }
     }
 }
