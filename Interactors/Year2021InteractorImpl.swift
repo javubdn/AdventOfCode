@@ -1828,6 +1828,12 @@ private extension Year2021InteractorImpl {
             steps += 1
         }
     }
+    
+    @objc
+    func day25question2() -> String {
+        ""
+    }
+    
     private func moveRight(_ cucumbersMap: [[String]]) -> ([[String]], Int) {
         let width = cucumbersMap.first!.count
         var cucumbersMap = cucumbersMap
