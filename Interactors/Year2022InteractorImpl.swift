@@ -11,3 +11,7 @@ class Year2022InteractorImpl: NSObject {
     
 }
 
+extension Year2022InteractorImpl: YearInteractor {
+    
+    
+}
