@@ -1813,6 +1813,21 @@ private extension Year2021InteractorImpl {
         return zValues[0]!
     }
     
+    @objc
+    func day25question1() -> String {
+        var cucumbersMap = readCSV("InputYear2021Day25").components(separatedBy: .newlines).map { Array($0).map { String($0) } }
+        var steps = 1
+        while true {
+            let movesRight: Int
+            let movesDown: Int
+            (cucumbersMap, movesRight) = moveRight(cucumbersMap)
+            (cucumbersMap, movesDown) = moveDown(cucumbersMap)
+            if movesRight == 0 && movesDown == 0 {
+                return "\(steps)"
+            }
+            steps += 1
+        }
+    }
     private func moveRight(_ cucumbersMap: [[String]]) -> ([[String]], Int) {
         let width = cucumbersMap.first!.count
         var cucumbersMap = cucumbersMap
