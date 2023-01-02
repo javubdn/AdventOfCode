@@ -1829,4 +1829,20 @@ private extension Year2021InteractorImpl {
         return (cucumbersMap, coordenates.count)
     }
     
+    private func moveDown(_ cucumbersMap: [[String]]) -> ([[String]], Int) {
+        let height = cucumbersMap.count
+        var cucumbersMap = cucumbersMap
+        let coordenates = cucumbersMap.enumerated().flatMap { row in
+            row.element.enumerated().filter { item in
+                item.element == "v" && cucumbersMap[(row.offset + 1) % height][item.offset] == "."
+            }.map { (row.offset, $0.offset) }
+        }
+        coordenates.forEach { coordenate in
+            cucumbersMap[coordenate.0][coordenate.1] = "."
+            cucumbersMap[(coordenate.0 + 1) % height][coordenate.1] = "v"
+        }
+        
+        return (cucumbersMap, coordenates.count)
+    }
+    
 }
