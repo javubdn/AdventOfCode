@@ -23,6 +23,7 @@ extension MainInteractorImpl: MainInteractor {
         case .nineteen: interactor = Year2019InteractorImpl()
         case .twenty: interactor = Year2020InteractorImpl()
         case .twentyOne: interactor = Year2021InteractorImpl()
+        case .twentyTwo: interactor = Year2022InteractorImpl()
         }
         
         return interactor.calculate(day: day, question: question)
