@@ -1813,4 +1813,20 @@ private extension Year2021InteractorImpl {
         return zValues[0]!
     }
     
+    private func moveRight(_ cucumbersMap: [[String]]) -> ([[String]], Int) {
+        let width = cucumbersMap.first!.count
+        var cucumbersMap = cucumbersMap
+        let coordenates = cucumbersMap.enumerated().flatMap { row in
+            row.element.enumerated().filter { item in
+                item.element == ">" && cucumbersMap[row.offset][(item.offset + 1) % width] == "."
+            }.map { (row.offset, $0.offset) }
+        }
+        coordenates.forEach { coordenate in
+            cucumbersMap[coordenate.0][coordenate.1] = "."
+            cucumbersMap[coordenate.0][(coordenate.1 + 1) % width] = ">"
+        }
+        
+        return (cucumbersMap, coordenates.count)
+    }
+    
 }
