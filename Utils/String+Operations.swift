@@ -38,6 +38,10 @@ extension String {
         MD5().map { String(format: "%02hhx", $0) }.joined()
     }
     
+    func splitInHalf() -> (first: String, second: String) {
+        (first: String(prefix(count/2)), second: String(suffix(count/2)))
+    }
+    
 }
 
 extension StringProtocol {
