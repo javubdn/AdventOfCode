@@ -50,5 +50,13 @@ extension Year2022InteractorImpl: YearInteractor {
         return expected + mine
     }
     
+    private func getPriorityObject(_ input: String) -> Int {
+        let values = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        let (first, second) = input.splitInHalf()
+        let item = first.first { second.contains($0) }!
+        let result = values.distance(from: values.startIndex, to: values.firstIndex(of: item)!) + 1
+        return result
+    }
+    
     
 }
