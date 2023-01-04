@@ -37,5 +37,13 @@ extension Year2022InteractorImpl: YearInteractor {
         return mine + (result == 0 ? 3 : result == 1 ? 6 : 0)
     }
     
+    private func getScoreRPS2(_ input: String) -> Int {
+        let elements = input.components(separatedBy: .whitespaces)
+        let oponent = elements[0] == "A" ? 1 : elements[0] == "B" ? 2 : 3
+        let expected = elements[1] == "X" ? 0 : elements[1] == "Y" ? 3 : 6
+        let mine = expected == 3 ? oponent : expected == 0 ? (oponent % 3) + 2 - (oponent == 2 ? 3 : 0) : (oponent % 3) + 1
+        return expected + mine
+    }
+    
     
 }
