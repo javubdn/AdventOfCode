@@ -29,6 +29,11 @@ extension Year2022InteractorImpl: YearInteractor {
         "\(readCSV("InputYear2022Day2").components(separatedBy: .newlines).map { getScoreRPS($0) }.reduce(0, +))"
     }
     
+    @objc
+    func day2question2() -> String {
+        "\(readCSV("InputYear2022Day2").components(separatedBy: .newlines).map { getScoreRPS2($0) }.reduce(0, +))"
+    }
+    
     private func getScoreRPS(_ input: String) -> Int {
         let elements = input.components(separatedBy: .whitespaces)
         let oponent = elements[0] == "A" ? 1 : elements[0] == "B" ? 2 : 3
