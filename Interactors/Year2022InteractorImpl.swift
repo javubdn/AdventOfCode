@@ -24,5 +24,10 @@ extension Year2022InteractorImpl: YearInteractor {
         return "\(values[0] + values[1] + values[2])"
     }
     
+    @objc
+    func day2question1() -> String {
+        "\(readCSV("InputYear2022Day2").components(separatedBy: .newlines).map { getScoreRPS($0) }.reduce(0, +))"
+    }
+    
     
 }
