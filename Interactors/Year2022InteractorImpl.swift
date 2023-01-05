@@ -79,5 +79,16 @@ extension Year2022InteractorImpl: YearInteractor {
         return result
     }
     
+    @objc
+    func day4question1() -> String {
+        let input = readCSV("InputYear2022Day4")
+            .components(separatedBy: .newlines)
+            .map { $0.components(separatedBy: ",")
+                .map { $0.components(separatedBy: "-")
+                    .map { Int($0)! } } }
+        let result = input.filter { ($0[0][0] <= $0[1][0] && $0[0][1] >= $0[1][1]) || ($0[0][0] >= $0[1][0] && $0[0][1] <= $0[1][1]) }.count
+        return "\(result)"
+    }
+    
     
 }
