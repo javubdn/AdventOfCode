@@ -57,6 +57,13 @@ extension Year2022InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day3question2() -> String {
+        let input = readCSV("InputYear2022Day3").components(separatedBy: .newlines)
+        let result = input.chunked(into: 3).map { getPriorityGroup($0) }.reduce(0, +)
+        return "\(result)"
+    }
+    
     private func getPriorityObject(_ input: String) -> Int {
         let values = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         let (first, second) = input.splitInHalf()
