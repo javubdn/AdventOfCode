@@ -101,5 +101,11 @@ extension Year2022InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    private struct MoveStack {
+        let move: Int
+        let from: Int
+        let to: Int
+    }
+    
     
 }
