@@ -65,5 +65,12 @@ extension Year2022InteractorImpl: YearInteractor {
         return result
     }
     
+    private func getPriorityGroup(_ input: [String]) -> Int {
+        let values = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        let item = input[0].first { input[1].contains($0) && input[2].contains($0) }!
+        let result = values.distance(from: values.startIndex, to: values.firstIndex(of: item)!) + 1
+        return result
+    }
+    
     
 }
