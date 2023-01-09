@@ -175,5 +175,14 @@ extension Year2022InteractorImpl: YearInteractor {
         return ""
     }
     
+    private func getSizesFromDirectories(_ directory: Directory) -> Int {
+        var sum = 0
+        for item in directory.children {
+            guard let d = item as? Directory else { continue }
+            sum += getSizesFromDirectories(d)
+        }
+        return sum + (directory.size <= 100000 ? directory.size : 0)
+    }
+    
     
 }
