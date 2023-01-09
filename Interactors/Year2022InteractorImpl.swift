@@ -128,5 +128,17 @@ extension Year2022InteractorImpl: YearInteractor {
         return (stacks, moveStacks)
     }
     
+    private func executeDay5(_ reversed: Bool) -> String {
+        let input = readCSV("InputYear2022Day5")
+        var (stacks, instructions) = getDistribution(input)
+        for instruction in instructions {
+            if let values = stacks[instruction.from-1].pop(instruction.move) {
+                stacks[instruction.to-1].push(reversed ? values.reversed() : values)
+            }
+        }
+        let result = stacks.map { $0.peek() ?? " " }.joined()
+        return "\(result)"
+    }
+    
     
 }
