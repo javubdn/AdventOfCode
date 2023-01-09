@@ -150,5 +150,20 @@ extension Year2022InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    private func executeDay6(_ validation: Int) -> String {
+        let input = readCSV("InputYear2022Day6")
+        for index in validation-1..<input.count {
+            let dict = input[(index-validation+1)...index].reduce([Character: Int]()) { partialResult, char in
+                var p = partialResult
+                p[char] = (p[char] ?? 0) + 1
+                return p
+            }
+            if dict.count == validation {
+                return "\(index+1)"
+            }
+        }
+        return ""
+    }
+    
     
 }
