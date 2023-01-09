@@ -150,6 +150,11 @@ extension Year2022InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day6question1() -> String {
+        executeDay6(4)
+    }
+    
     private func executeDay6(_ validation: Int) -> String {
         let input = readCSV("InputYear2022Day6")
         for index in validation-1..<input.count {
