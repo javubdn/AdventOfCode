@@ -107,5 +107,26 @@ extension Year2022InteractorImpl: YearInteractor {
         let to: Int
     }
     
+    private func getDistribution(_ input: String) -> ([Stack<String>], [MoveStack]) {
+        let elements = input.components(separatedBy: "\n\n")
+        var valuesStack = elements[0].components(separatedBy: .newlines)
+        let stackNumber = Int(String(valuesStack.removeLast().replacingOccurrences(of: " ", with: "").last!))!
+        var stacks = [Stack<String>](repeating: Stack<String>(), count: stackNumber)
+        while !valuesStack.isEmpty {
+            let items = valuesStack.removeLast()
+            for index in 1...stackNumber {
+                let position = (index-1)*4+1
+                if items[position] != " " {
+                    stacks[index-1].push(String(items[position]))
+                }
+            }
+        }
+        let moveStacks = elements[1].components(separatedBy: .newlines).map { element in
+            let items = element.components(separatedBy: .whitespaces)
+            return MoveStack(move: Int(items[1])!, from: Int(items[3])!, to: Int(items[5])!)
+        }
+        return (stacks, moveStacks)
+    }
+    
     
 }
