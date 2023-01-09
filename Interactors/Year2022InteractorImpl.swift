@@ -101,6 +101,11 @@ extension Year2022InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day5question1() -> String {
+        executeDay5(true)
+    }
+    
     private struct MoveStack {
         let move: Int
         let from: Int
