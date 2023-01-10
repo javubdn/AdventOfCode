@@ -184,5 +184,19 @@ extension Year2022InteractorImpl: YearInteractor {
         return sum + (directory.size <= 100000 ? directory.size : 0)
     }
     
+    private func minimumDirectorySize(_ directory: Directory, _ minimumSize: Int) -> (Int, Bool) {
+        var minimum = Int.max
+        var validChildren = false
+        for item in directory.children {
+            guard let d = item as? Directory else { continue }
+            let (size, valid) = minimumDirectorySize(d, minimumSize)
+            guard valid else { continue }
+            validChildren = true
+            minimum = min(minimum, size)
+        }
+        let bestValue = validChildren ? minimum : directory.size
+        return (bestValue, bestValue >= minimumSize)
+    }
+    
     
 }
