@@ -198,5 +198,33 @@ extension Year2022InteractorImpl: YearInteractor {
         return (bestValue, bestValue >= minimumSize)
     }
     
+    private func getMainDirectory(_ input: [String]) -> Directory {
+        var mainDirectory: Directory!
+        var currentDirectory: Directory? = nil
+        input.forEach { item in
+            let elements = item.components(separatedBy: .whitespaces)
+            if elements[0] == "$" {
+                guard elements[1] == "cd" else { return }
+                switch elements[2] {
+                case "/":
+                    mainDirectory = Directory("/")
+                    currentDirectory = mainDirectory
+                case "..": currentDirectory = currentDirectory?.parent
+                default:
+                    let directory = currentDirectory?.children.first { item in
+                        guard let directory = item as? Directory else { return false }
+                        return directory.name == elements[2]
+                    }
+                    currentDirectory = directory as? Directory
+                }
+            } else {
+                let newItem: DirectoryTree = elements[0] == "dir" ? Directory(elements[1]) : File(elements[1], Int(elements[0])!)
+                newItem.setParent(currentDirectory)
+                currentDirectory?.add(newItem)
+            }
+        }
+        return mainDirectory
+    }
+    
     
 }
