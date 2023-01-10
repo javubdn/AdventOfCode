@@ -183,6 +183,15 @@ extension Year2022InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day7question2() -> String {
+        let input = readCSV("InputYear2022Day7").components(separatedBy: .newlines)
+        let mainDirectory = getMainDirectory(input)
+        let needed = mainDirectory.size - 40_000_000
+        let result = minimumDirectorySize(mainDirectory, needed).0
+        return "\(result)"
+    }
+    
     private func getSizesFromDirectories(_ directory: Directory) -> Int {
         var sum = 0
         for item in directory.children {
