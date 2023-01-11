@@ -29,6 +29,9 @@ class Directory: DirectoryTree {
         item.setParent(self)
     }
     
+    func setParent(_ parent: Directory?) {
+        self.parent = parent
+    }
 }
 
 }
