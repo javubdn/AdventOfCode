@@ -13,3 +13,5 @@ protocol DirectoryTree {
 
 class Directory: DirectoryTree {
 }
+
+}
