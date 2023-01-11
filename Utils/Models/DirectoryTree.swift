@@ -24,6 +24,11 @@ class Directory: DirectoryTree {
         self.parent = parent
     }
     
+    func add(_ item: DirectoryTree) {
+        children.append(item)
+        item.setParent(self)
+    }
+    
 }
 
 }
