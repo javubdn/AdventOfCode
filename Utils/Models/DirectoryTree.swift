@@ -34,4 +34,5 @@ class Directory: DirectoryTree {
     }
 }
 
+class File: DirectoryTree {
 }
