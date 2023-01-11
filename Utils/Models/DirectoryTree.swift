@@ -12,6 +12,9 @@ protocol DirectoryTree {
 }
 
 class Directory: DirectoryTree {
+    var size: Int {
+        children.map { $0.size }.reduce(0, +)
+    }
 }
 
 }
