@@ -11,3 +11,5 @@ protocol DirectoryTree {
     func setParent(_ parent: Directory?)
 }
 
+class Directory: DirectoryTree {
+}
