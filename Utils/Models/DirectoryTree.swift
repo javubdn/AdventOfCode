@@ -45,4 +45,8 @@ class File: DirectoryTree {
         self.parent = parent
     }
     
+    func setParent(_ parent: Directory?) {
+        self.parent = parent
+    }
+    
 }
