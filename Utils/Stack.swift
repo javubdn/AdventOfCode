@@ -6,4 +6,6 @@
 //
 
 struct Stack<T> {
+    var array: [T] = []
+    
 }
