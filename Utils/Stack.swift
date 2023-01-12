@@ -8,4 +8,8 @@
 struct Stack<T> {
     var array: [T] = []
     
+    mutating func push(_ element: T) {
+         array.append(element)
+    }
+    
 }
