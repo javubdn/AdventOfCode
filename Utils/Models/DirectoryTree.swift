@@ -12,6 +12,7 @@ protocol DirectoryTree {
 }
 
 class Directory: DirectoryTree {
+    
     let name: String
     var size: Int {
         children.map { $0.size }.reduce(0, +)
@@ -32,9 +33,11 @@ class Directory: DirectoryTree {
     func setParent(_ parent: Directory?) {
         self.parent = parent
     }
+    
 }
 
 class File: DirectoryTree {
+    
     let name: String
     let size: Int
     var parent: Directory?
