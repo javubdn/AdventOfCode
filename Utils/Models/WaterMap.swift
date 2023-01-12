@@ -7,24 +7,6 @@
 
 import Foundation
 
-private class Position: Hashable {
-    
-    let x: Int
-    let y: Int
-    
-    init(x: Int, y: Int) {
-        self.x = x
-        self.y = y
-    }
-    
-    func hash(into hasher: inout Hasher) { }
-    
-    static func == (lhs: Position, rhs: Position) -> Bool {
-        lhs.x == rhs.x && lhs.y == rhs.y
-    }
-    
-}
-
 private struct ActionQueue: Hashable {
     let action: Action
     let x: Int
