@@ -12,4 +12,8 @@ struct Stack<T> {
          array.append(element)
     }
     
+    mutating func push(_ elements: [T]) {
+        array.append(contentsOf: elements)
+    }
+    
 }
