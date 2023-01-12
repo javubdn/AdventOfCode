@@ -35,4 +35,14 @@ class Directory: DirectoryTree {
 }
 
 class File: DirectoryTree {
+    let name: String
+    let size: Int
+    var parent: Directory?
+    
+    init(_ name: String, _ size: Int, parent: Directory? = nil) {
+        self.name = name
+        self.size = size
+        self.parent = parent
+    }
+    
 }
