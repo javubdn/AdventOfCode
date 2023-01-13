@@ -318,5 +318,35 @@ extension Year2022InteractorImpl: YearInteractor {
         return "\(bestView)"
     }
     
+    private func positionsOnTail(_ instructions: [(String, Int)], _ knots: Int) -> Int {
+        var knotsPositions: [Position] = []
+        for _ in 0..<knots {
+            knotsPositions.append(Position(x: 0, y: 0))
+        }
+        
+        var totalPositions: Set<Position> = Set()
+        totalPositions.insert(knotsPositions.last!)
+        
+        for instruction in instructions {
+            for _ in 0..<instruction.1 {
+                knotsPositions.first!.y += instruction.0 == "U" ? -1 : instruction.0 == "D" ? 1 : 0
+                knotsPositions.first!.x += instruction.0 == "L" ? -1 : instruction.0 == "R" ? 1 : 0
+                for index in 1..<knotsPositions.count {
+                    guard abs(knotsPositions[index-1].x-knotsPositions[index].x) > 1 || abs(knotsPositions[index-1].y-knotsPositions[index].y) > 1 else {
+                        continue
+                    }
+                    let newX = knotsPositions[index-1].x-knotsPositions[index].x == 2 ? knotsPositions[index-1].x - 1 : knotsPositions[index-1].x-knotsPositions[index].x == -2 ? knotsPositions[index-1].x + 1 : knotsPositions[index-1].x
+                    let newY = knotsPositions[index-1].y-knotsPositions[index].y == 2 ? knotsPositions[index-1].y - 1 : knotsPositions[index-1].y-knotsPositions[index].y == -2 ? knotsPositions[index-1].y + 1 : knotsPositions[index-1].y
+                    let newPosition = Position(x: newX, y: newY)
+                    if index == knotsPositions.count-1 {
+                        totalPositions.insert(newPosition)
+                    }
+                    knotsPositions[index] = newPosition
+                }
+            }
+        }
+        return totalPositions.count
+    }
+    
     
 }
