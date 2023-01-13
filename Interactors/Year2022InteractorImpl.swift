@@ -243,5 +243,53 @@ extension Year2022InteractorImpl: YearInteractor {
         return mainDirectory
     }
     
+    @objc
+    func day8question1() -> String {
+        let input = readCSV("InputYear2022Day8").components(separatedBy: .newlines).map { $0.map { Int(String($0))! } }
+        var visibles = [[(Bool, Bool, Bool, Bool)]](repeating: [(Bool, Bool, Bool, Bool)](repeating: (true, true, true, true),
+                                                                                          count: input[0].count),
+                                                    count: input.count)
+        var topHidden = input.first!
+        var bottomHidden = input.last!
+        var leftHidden = input.map { $0.first! }
+        var rightHidden = input.map { $0.last! }
+        for i in 1..<input.count-1 {
+            for j in 1..<input[0].count {
+                let minor = input[i][j] <= topHidden[j]
+                visibles[i][j].0 = !minor
+                topHidden[j] = minor ? topHidden[j] : input[i][j]
+            }
+        }
+        for i in stride(from: input.count-2, through: 1, by: -1) {
+            for j in 1..<input[0].count {
+                if input[i][j] <= bottomHidden[j] {
+                    visibles[i][j].1 = false
+                } else {
+                    bottomHidden[j] = input[i][j]
+                }
+            }
+        }
+        for j in 1..<input[0].count-1 {
+            for i in 1..<input.count {
+                if input[i][j] <= leftHidden[i] {
+                    visibles[i][j].2 = false
+                } else {
+                    leftHidden[i] = input[i][j]
+                }
+            }
+        }
+        for j in stride(from: input[0].count-2, through: 1, by: -1) {
+            for i in 1..<input.count {
+                if input[i][j] <= rightHidden[i] {
+                    visibles[i][j].3 = false
+                } else {
+                    rightHidden[i] = input[i][j]
+                }
+            }
+        }
+        let result = visibles.map { $0.filter { $0.0 || $0.1 || $0.2 || $0.3 }.count }.reduce(0, +)
+        return "\(result)"
+    }
+    
     
 }
