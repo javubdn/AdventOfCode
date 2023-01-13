@@ -291,5 +291,32 @@ extension Year2022InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day8question2() -> String {
+        let input = readCSV("InputYear2022Day8").components(separatedBy: .newlines).map { $0.map { Int(String($0))! } }
+        var bestView = 0
+        
+        for row in 1..<input.count-1 {
+            for col in 1..<input[0].count-1 {
+                var scenicScore = 1
+                for address in 1...4 {
+                    var nextRow = address == 1 ? row - 1 : address == 2 ? row + 1 : row
+                    var nextCol = address == 3 ? col - 1 : address == 4 ? col + 1 : col
+                    var trees = 0
+                firstLoop:
+                    while nextRow >= 0 && nextRow < input.count && nextCol >= 0 && nextCol < input[0].count {
+                        trees += 1
+                        guard input[nextRow][nextCol] < input[row][col] else { break firstLoop }
+                        nextRow = address == 1 ? nextRow - 1 : address == 2 ? nextRow + 1 : nextRow
+                        nextCol = address == 3 ? nextCol - 1 : address == 4 ? nextCol + 1 : nextCol
+                    }
+                    scenicScore *= trees
+                }
+                bestView = max(bestView, scenicScore)
+            }
+        }
+        return "\(bestView)"
+    }
+    
     
 }
