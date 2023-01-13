@@ -28,4 +28,9 @@ struct Stack<T> {
         return Array(items)
     }
     
+    func peek() -> T? {
+        guard !array.isEmpty else { return nil }
+        return array.last
+    }
+    
 }
