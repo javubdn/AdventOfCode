@@ -16,4 +16,9 @@ struct Stack<T> {
         array.append(contentsOf: elements)
     }
     
+    mutating func pop() -> T? {
+        guard !array.isEmpty else { return nil }
+        return array.removeLast()
+    }
+    
 }
