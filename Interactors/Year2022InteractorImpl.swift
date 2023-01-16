@@ -378,28 +378,6 @@ extension Year2022InteractorImpl: YearInteractor {
     @objc
     func day10question2() -> String {
         let input = readCSV("InputYear2022Day10").components(separatedBy: .newlines)
-//        var x = 1
-//        var cycle = 1
-//        var first = true
-//        var index = 0
-//        var crt = [[Bool]](repeating: [Bool](repeating: false, count: 40), count: 6)
-//        while index < input.count {
-//            let pixelX = (cycle-1)%40
-//            if x == pixelX || x-1 == pixelX || x+1 == pixelX {
-//                crt[(cycle-1)/40][pixelX] = true
-//            }
-//            let instruction = input[index].components(separatedBy: .whitespaces)
-//            if instruction[0] == "addx" {
-//                if !first {
-//                    x += Int(instruction[1])!
-//                    index += 1
-//                }
-//                first = !first
-//            } else {
-//                index += 1
-//            }
-//            cycle += 1
-//        }
         let (_, crt) = executeCycleProgram(input)
         let names = crt.map { values in
             values.map { $0 ? "#" : "." }.joined()
