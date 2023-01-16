@@ -328,6 +328,16 @@ extension Year2022InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day9question2() -> String {
+        let input = readCSV("InputYear2022Day9").components(separatedBy: .newlines).map { instruction in
+            let values = instruction.components(separatedBy: .whitespaces)
+            return (values[0], Int(values[1])!)
+        }
+        let result = positionsOnTail(input, 10)
+        return "\(result)"
+    }
+    
     private func positionsOnTail(_ instructions: [(String, Int)], _ knots: Int) -> Int {
         var knotsPositions: [Position] = []
         for _ in 0..<knots {
