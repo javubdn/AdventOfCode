@@ -429,5 +429,26 @@ extension Year2022InteractorImpl: YearInteractor {
         return "ZRARLFZU"
     }
     
+    private func executeCycleProgram(_ input: [String]) -> (Int, [[Bool]]) {
+        var x = 1
+        var first = true
+        var index = 0
+        var total = 0
+        var crt = [[Bool]](repeating: [Bool](repeating: false, count: 40), count: 6)
+        for cycle in 1... {
+            if (cycle - 20) % 40 == 0 {
+                total += cycle * x
+            }
+            let pixelX = (cycle-1)%40
+            crt[(cycle-1)/40][pixelX] = x == pixelX || x-1 == pixelX || x+1 == pixelX
+            let instruction = input[index].components(separatedBy: .whitespaces)
+            index += ((instruction[0] == "addx" && !first) || instruction[0] == "noop") ? 1 : 0
+            guard index < input.count else { break }
+            x += (instruction[0] == "addx" && !first) ? Int(instruction[1])! : 0
+            first = instruction[0] == "addx" ? !first : first
+        }
+        return (total, crt)
+    }
+    
     
 }
