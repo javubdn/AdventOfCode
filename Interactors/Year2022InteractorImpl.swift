@@ -442,6 +442,29 @@ extension Year2022InteractorImpl: YearInteractor {
         return Monkey(id: id, items: items, operation: operation, value: value, divisible: divisible, trueMonkey: trueMonkey, falseMonkey: falseMonkey)
     }
     
+    private func getMonkeyWorries(_ monkeys: [Monkey], _ rounds: Int, _ worryDivides: Bool) -> Int {
+        let modulo = monkeys.map { $0.divisible }.reduce(1, *)
+        for _ in 0..<rounds {
+            for monkey in monkeys {
+                while !monkey.items.isEmpty {
+                    let item = monkey.items.removeFirst()
+                    let operand = monkey.value == "old" ? item : Int(monkey.value)!
+                    var value = monkey.operation == "+" ? item + operand : item * operand
+                    value /= worryDivides ? 3 : 1
+                    value = value % modulo
+                    if value % monkey.divisible == 0 {
+                        monkeys[monkey.trueMonkey].items.append(value)
+                    } else {
+                        monkeys[monkey.falseMonkey].items.append(value)
+                    }
+                    monkey.inspected += 1
+                }
+            }
+        }
+        let values = monkeys.map { $0.inspected }.sorted { $0 > $1 }
+        return values[0] * values[1]
+    }
+    
     }
     
 }
