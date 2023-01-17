@@ -407,6 +407,13 @@ extension Year2022InteractorImpl: YearInteractor {
         return (total, crt)
     }
     
+    @objc
+    func day11question1() -> String {
+        let monkeys = readCSV("InputYear2022Day11").components(separatedBy: "\n\n").map { getMonkey($0) }
+        let result = getMonkeyWorries(monkeys, 20, true)
+        return "\(result)"
+    }
+    
     private class Monkey {
         let id: Int
         var items: [Int]
