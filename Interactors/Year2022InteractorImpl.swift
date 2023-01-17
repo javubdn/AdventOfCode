@@ -407,5 +407,7 @@ extension Year2022InteractorImpl: YearInteractor {
         return (total, crt)
     }
     
+    private class Monkey {
+    }
     
 }
