@@ -428,6 +428,20 @@ extension Year2022InteractorImpl: YearInteractor {
         }
     }
     
+    private func getMonkey(_ input: String) -> Monkey {
+        let regex = try! NSRegularExpression(pattern: #"Monkey ([0-9]+):\n( )*Starting items: ([,; 0-9]+)\n( )*Operation: new = old ([\+\*]+) ([a-z0-9]+)\n( )*Test: divisible by ([0-9]+)\n( )*If true: throw to monkey ([0-9]+)\n( )*If false: throw to monkey ([0-9]+)"#)
+        let matches = regex.matches(in: input, options: [], range: NSRange(input.startIndex..., in: input))
+        let match = matches.first!
+        let id = Int(String(input[Range(match.range(at: 1), in: input)!]))!
+        let items = String(input[Range(match.range(at: 3), in: input)!]).components(separatedBy: ", ").map { Int($0)! }
+        let operation = String(input[Range(match.range(at: 5), in: input)!])
+        let value = String(input[Range(match.range(at: 6), in: input)!])
+        let divisible = Int(String(input[Range(match.range(at: 8), in: input)!]))!
+        let trueMonkey = Int(String(input[Range(match.range(at: 10), in: input)!]))!
+        let falseMonkey = Int(String(input[Range(match.range(at: 12), in: input)!]))!
+        return Monkey(id: id, items: items, operation: operation, value: value, divisible: divisible, trueMonkey: trueMonkey, falseMonkey: falseMonkey)
+    }
+    
     }
     
 }
