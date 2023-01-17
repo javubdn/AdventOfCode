@@ -408,6 +408,26 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
     private class Monkey {
+        let id: Int
+        var items: [Int]
+        let operation: String
+        let value: String
+        let divisible: Int
+        let trueMonkey: Int
+        let falseMonkey: Int
+        var inspected: Int = 0
+        
+        init(id: Int, items: [Int], operation: String, value: String, divisible: Int, trueMonkey: Int, falseMonkey: Int) {
+            self.id = id
+            self.items = items
+            self.operation = operation
+            self.value = value
+            self.divisible = divisible
+            self.trueMonkey = trueMonkey
+            self.falseMonkey = falseMonkey
+        }
+    }
+    
     }
     
 }
