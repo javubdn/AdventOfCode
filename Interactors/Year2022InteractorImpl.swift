@@ -479,6 +479,32 @@ extension Year2022InteractorImpl: YearInteractor {
         return values[0] * values[1]
     }
     
+    private func getBestPath(_ mapRiver: [[String]], _ initialValues: [(Int, Int)], _ lastPosition: (Int, Int)) -> Int {
+        var solutions: [Int] = []
+        for initialValue in initialValues {
+            var visited = [[Bool]](repeating: [Bool](repeating: false, count: mapRiver[0].count), count: mapRiver.count)
+            var positions = Heap(elements: [(initialValue, 0)]) { $0.1 < $1.1 }
+            while !positions.isEmpty {
+                let currentPosition = positions.dequeue()!
+                guard !visited[currentPosition.0.0][currentPosition.0.1] else { continue }
+                if currentPosition.0 == lastPosition {
+                    solutions.append(currentPosition.1)
+                    break
+                }
+                visited[currentPosition.0.0][currentPosition.0.1] = true
+                for movement in 1...4 {
+                    let newY = movement == 1 ? currentPosition.0.0 - 1 : movement == 2 ? currentPosition.0.0 + 1 : currentPosition.0.0
+                    let newX = movement == 3 ? currentPosition.0.1 - 1 : movement == 4 ? currentPosition.0.1 + 1 : currentPosition.0.1
+                    guard newY >= 0 && newY < mapRiver.count && newX >= 0 && newX < mapRiver[0].count else { continue }
+                    guard Int(mapRiver[newY][newX].first!.asciiValue!) - Int(mapRiver[currentPosition.0.0][currentPosition.0.1].first!.asciiValue!) <= 1 else { continue }
+                    guard !visited[newY][newX] else { continue }
+                    positions.enqueue(((newY, newX), currentPosition.1 + 1))
+                }
+            }
+        }
+        return solutions.min()!
+    }
+    
     }
     
 }
