@@ -490,6 +490,20 @@ extension Year2022InteractorImpl: YearInteractor {
         let result = getBestPath(mapRiver, [initialPosition], lastPosition)
         return "\(result)"
     }
+    
+    @objc
+    func day12question2() -> String {
+        var mapRiver = readCSV("InputYear2022Day12").components(separatedBy: .newlines).map { $0.map { String($0) } }
+        let coordinates = Utils.cartesianProduct(lhs: Array(0...mapRiver.count-1), rhs: Array(0...mapRiver[0].count-1))
+        let initialPosition = coordinates.first { mapRiver[$0.0][$0.1] == "S" }!
+        let lastPosition = coordinates.first { mapRiver[$0.0][$0.1] == "E" }!
+        mapRiver[initialPosition.0][initialPosition.1] = "a"
+        mapRiver[lastPosition.0][lastPosition.1] = "z"
+        let initialValues = coordinates.filter { mapRiver[$0.0][$0.1] == "a" }
+        let result = getBestPath(mapRiver, initialValues, lastPosition)
+        return "\(result)"
+    }
+    
     private func getBestPath(_ mapRiver: [[String]], _ initialValues: [(Int, Int)], _ lastPosition: (Int, Int)) -> Int {
         var solutions: [Int] = []
         for initialValue in initialValues {
