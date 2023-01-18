@@ -503,6 +503,7 @@ extension Year2022InteractorImpl: YearInteractor {
         let initialValues = coordinates.filter { mapRiver[$0.0][$0.1] == "a" }
         let result = getBestPath(mapRiver, initialValues, lastPosition)
         return "\(result)"
+        "451"
     }
     
     private func getBestPath(_ mapRiver: [[String]], _ initialValues: [(Int, Int)], _ lastPosition: (Int, Int)) -> Int {
