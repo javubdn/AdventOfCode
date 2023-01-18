@@ -489,6 +489,7 @@ extension Year2022InteractorImpl: YearInteractor {
         mapRiver[lastPosition.0][lastPosition.1] = "z"
         let result = getBestPath(mapRiver, [initialPosition], lastPosition)
         return "\(result)"
+        "462"
     }
     
     @objc
