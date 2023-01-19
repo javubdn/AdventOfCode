@@ -44,7 +44,6 @@ class PackageTree {
             case ",":
                 if thereisValue {
                     let package = PackageTree(value: currentValue, packages: nil)
-//                    if values.last!.packages == nil { values.last!.packages = [] }
                     values.last!.packages!.append(package)
                     currentValue = 0
                     thereisValue = false
