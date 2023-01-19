@@ -12,4 +12,9 @@ class PackageTree {
     var value: Int?
     var packages: [PackageTree]?
     
+    init(value: Int?, packages: [PackageTree]?) {
+        self.value = value
+        self.packages = packages
+    }
+    
 }
