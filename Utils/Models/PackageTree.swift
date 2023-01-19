@@ -40,7 +40,6 @@ class PackageTree {
                     break
                 }
                 let lastPackage = values.removeLast()
-//                if values.last!.packages == nil { values.last!.packages = [] }
                 values.last!.packages!.append(lastPackage)
             case ",":
                 if thereisValue {
