@@ -8,5 +8,8 @@
 import Foundation
 
 class PackageTree {
+    
     var value: Int?
+    var packages: [PackageTree]?
+    
 }
