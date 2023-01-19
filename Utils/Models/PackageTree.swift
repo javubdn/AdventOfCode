@@ -57,4 +57,24 @@ class PackageTree {
         self.init(value: nil, packages: values.first!.packages)
     }
     
+    func correctOrder(_ second: PackageTree) -> Int {
+        if let firstItem = value, let secondItem = second.value {
+            return firstItem < secondItem ? 0 : firstItem > secondItem ? 1 : 2
+        }
+        if let firstItem = packages, let secondItem = second.packages {
+            var index = 0
+            while index < firstItem.count {
+                guard index < secondItem.count else { return 1 }
+                let currentItemOrder = firstItem[index].correctOrder(secondItem[index])
+                if currentItemOrder != 2 { return currentItemOrder }
+                index += 1
+            }
+            return 0
+        }
+        if let firstItem = value {
+            return PackageTree(value: nil, packages: [PackageTree(value: firstItem, packages: nil)]).correctOrder(second)
+        }
+        return correctOrder(PackageTree(value: nil, packages: [PackageTree(value: second.value!, packages: nil)]))
+    }
+    
 }
