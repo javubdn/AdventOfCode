@@ -76,3 +76,24 @@ class PackageTree {
     }
     
 }
+
+extension PackageTree: Equatable {
+    
+    static func == (lhs: PackageTree, rhs: PackageTree) -> Bool {
+        if let firstItem = lhs.value, let secondItem = rhs.value {
+            return firstItem == secondItem
+        }
+        if let firstItem = lhs.packages, let secondItem = rhs.packages {
+            guard firstItem.count == secondItem.count else { return false }
+            var index = 0
+            while index < firstItem.count {
+                let currentItemOrder = firstItem[index] == secondItem[index]
+                if !currentItemOrder { return false }
+                index += 1
+            }
+            return true
+        }
+        return false
+    }
+    
+}
