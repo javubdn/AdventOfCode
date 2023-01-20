@@ -568,6 +568,43 @@ extension Year2022InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day13question2() -> String {
+//        var input = """
+//[1,1,3,1,1]
+//[1,1,5,1,1]
+//
+//[[1],[2,3,4]]
+//[[1],4]
+//
+//[9]
+//[[8,7,6]]
+//
+//[[4,4],4,4]
+//[[4,4],4,4,4]
+//
+//[7,7,7,7]
+//[7,7,7]
+//
+//[]
+//[3]
+//
+//[[[]]]
+//[[]]
+//
+//[1,[2,[3,[4,[5,6,7]]]],8,9]
+//[1,[2,[3,[4,[5,6,0]]]],8,9]
+//"""
+        var input = readCSV("InputYear2022Day13")
+        input = input.replacingOccurrences(of: "\n\n", with: "\n")
+        input.append("\n[[2]]\n[[6]]")
+        let packages = input.components(separatedBy: .newlines).map { PackageTree($0) }
+        let orderedPackages = packages.sorted { $0.correctOrder($1) == 0 }
+        let first = orderedPackages.firstIndex { $0 == PackageTree("[[2]]") }!
+        let second = orderedPackages.firstIndex { $0 == PackageTree("[[6]]") }!
+        return "\((first+1)*(second+1))"
+    }
+    
     }
     
 }
