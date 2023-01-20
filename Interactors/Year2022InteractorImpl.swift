@@ -605,6 +605,20 @@ extension Year2022InteractorImpl: YearInteractor {
         return "\((first+1)*(second+1))"
     }
     
+    private func correctOrder(_ pair: [String]) -> Bool {
+        let left = pair[0].replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "").components(separatedBy: ",").map { Int($0) ?? 0 }
+        let right = pair[1].replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "").components(separatedBy: ",").map { Int($0) ?? 0 }
+        guard left.count == right.count else {
+            return left.count < right.count
+        }
+        for index in 0..<left.count {
+            if left[index] > right[index] {
+                return false
+            }
+        }
+        return true
+    }
+    
     }
     
 }
