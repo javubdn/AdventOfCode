@@ -6,4 +6,5 @@
 //
 
 class SandMap {
+    fileprivate var rock: Set<Position> = []
 }
