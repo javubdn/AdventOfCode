@@ -11,4 +11,5 @@ class SandMap {
     private var minX: Int
     private var minY: Int
     private var maxX: Int
+    private var maxY: Int
 }
