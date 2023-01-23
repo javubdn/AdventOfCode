@@ -10,4 +10,5 @@ class SandMap {
     fileprivate var sand: Set<Position> = []
     private var minX: Int
     private var minY: Int
+    private var maxX: Int
 }
