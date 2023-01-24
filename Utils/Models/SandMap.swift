@@ -6,6 +6,7 @@
 //
 
 private struct ActionQueue: Hashable {
+    let x: Int
 }
 
 class SandMap {
