@@ -19,4 +19,6 @@ class SandMap {
     private var maxX: Int
     private var maxY: Int
     private var queue: Set<ActionQueue> = []
+    private var isFloor = false
+    
 }
