@@ -68,4 +68,37 @@ class SandMap {
         
     }
     
+    func run(_ x: Int, _ y: Int) {
+//        queue.insert(ActionQueue(x: x, y: y))
+    externalLoop:
+        while true {
+//            let instruction = queue.removeFirst()
+//            fall(instruction.x, instruction.y)
+            var y = 0
+            var x = 500
+            while y <= maxY {
+                if pile(x, y+1) {
+                    if pile(x-1, y+1) {
+                        if pile(x+1, y+1) {
+                            sand.insert(Position(x: x, y: y))
+                            if y <= 0 {
+                                break externalLoop
+                            }
+                            break
+                        } else {
+                            x += 1
+                        }
+                    } else {
+                        x -= 1
+                    }
+                }
+                y += 1
+            }
+            if y > maxY {
+                break
+                
+            }
+        }
+    }
+    
 }
