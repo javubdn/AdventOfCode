@@ -5,6 +5,9 @@
 //  Created by Javier Castillo on 19/1/23.
 //
 
+private struct ActionQueue: Hashable {
+}
+
 class SandMap {
     fileprivate var rock: Set<Position> = []
     fileprivate var sand: Set<Position> = []
