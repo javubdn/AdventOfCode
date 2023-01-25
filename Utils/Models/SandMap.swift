@@ -65,6 +65,7 @@ class SandMap {
 //            maxX = rock.max { $0.x < $1.x }!.x
             maxY = rock.max { $0.y < $1.y }!.y
 //            minX = Int.max
+//            maxX = Int.min
         }
         
     }
