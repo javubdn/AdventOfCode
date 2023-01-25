@@ -60,7 +60,6 @@ class SandMap {
                 }
                 previousPoint = point
             }
-            minX = rock.min { $0.x < $1.x }!.x
             minY = rock.min { $0.y < $1.y }!.y
             maxX = rock.max { $0.x < $1.x }!.x
             maxY = rock.max { $0.y < $1.y }!.y
