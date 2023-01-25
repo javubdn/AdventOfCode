@@ -111,4 +111,7 @@ class SandMap {
         sand.filter { $0.y <= maxY }.count
     }
     
+    func printS() {
+    }
+    
 }
