@@ -120,6 +120,10 @@ class SandMap {
         for sn in sand {
             sandMap[sn.y][sn.x-minX+1] = "o"
         }
+        let valu = sandMap.map { $0.joined() }
+        valu.forEach { print($0) }
+    }
+    
     }
     
 }
