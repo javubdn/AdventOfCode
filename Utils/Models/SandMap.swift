@@ -130,6 +130,7 @@ class SandMap {
     
     private func fall(_ x: Int, _ y: Int) {
         var y = y
+        var x = x
     }
     
 }
