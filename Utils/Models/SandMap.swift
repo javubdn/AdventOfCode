@@ -117,6 +117,9 @@ class SandMap {
             sandMap[rc.y][rc.x-minX+1] = "#"
         }
         
+        for sn in sand {
+            sandMap[sn.y][sn.x-minX+1] = "o"
+        }
     }
     
 }
