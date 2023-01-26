@@ -128,6 +128,7 @@ class SandMap {
         rock.contains(Position(x: x, y: y)) || sand.contains(Position(x: x, y: y))
     }
     
+    private func fall(_ x: Int, _ y: Int) {
     }
     
 }
