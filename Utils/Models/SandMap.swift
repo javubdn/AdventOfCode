@@ -113,6 +113,10 @@ class SandMap {
     
     func printS() {
         var sandMap: [[String]] = [[String]](repeating: [String](repeating: ".", count: maxX-minX+3), count: maxY+1)
+        for rc in rock {
+            sandMap[rc.y][rc.x-minX+1] = "#"
+        }
+        
     }
     
 }
