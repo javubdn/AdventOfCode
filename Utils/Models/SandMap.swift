@@ -124,6 +124,26 @@ class SandMap {
     private func fall(_ x: Int, _ y: Int) {
         var y = y
         var x = x
+        while y <= maxY {
+            if pile(x, y+1) {
+                if pile(x-1, y+1) {
+                    if pile(x+1, y+1) {
+                        sand.insert(Position(x: x, y: y))
+                        if y > 0 {
+                            queue.insert(ActionQueue(x: 500, y: 0))
+                        }
+                        return
+                    } else {
+                        x += 1
+                    }
+                } else {
+                    x -= 1
+                }
+            }
+            y += 1
+        }
+    }
+    
     }
     
 }
