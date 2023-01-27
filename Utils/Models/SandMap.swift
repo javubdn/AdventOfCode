@@ -144,6 +144,7 @@ class SandMap {
         }
     }
     
+    private let sandSource = Position(x: 500, y: 0)
     }
     
 }
