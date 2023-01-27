@@ -145,6 +145,7 @@ class SandMap {
     }
     
     private let sandSource = Position(x: 500, y: 0)
+    private func down(_ position: Position) -> Position { Position(x: position.x, y: position.y+1)  }
     }
     
 }
