@@ -149,6 +149,25 @@ class SandMap {
     private func downLeft(_ position: Position) -> Position { Position(x: position.x-1, y: position.y+1)  }
     private func downRight(_ position: Position) -> Position { Position(x: position.x+1, y: position.y+1)  }
     
+    private func dropSand(_ voidStartsAt: Int) -> Int {
+        var start = sandSource
+        var landed = 0
+        while true {
+            let next = [down(start), downLeft(start), downRight(start)].first { !rock.contains($0) }
+            if next == nil && start == sandSource {
+                return landed
+            } else if next == nil {
+                rock.insert(start)
+                landed += 1
+                start = sandSource
+            } else if next!.y == voidStartsAt {
+                return landed
+            } else {
+                start = next!
+            }
+        }
+    }
+    
     }
     
 }
