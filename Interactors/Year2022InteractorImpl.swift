@@ -571,9 +571,10 @@ extension Year2022InteractorImpl: YearInteractor {
     
     @objc
     func day14question1() -> String {
-        let input = readCSV("InputYear2022Day14")
-        let sandMap = SandMap(input.components(separatedBy: .newlines))
-        let result = sandMap.solutionPart1()
+//        let input = readCSV("InputYear2022Day14")
+//        let sandMap = SandMap(input.components(separatedBy: .newlines))
+//        let result = sandMap.solutionPart1()
+//        return "\(result)"
         return "\(result)"
     }
     
