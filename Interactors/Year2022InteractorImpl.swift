@@ -578,6 +578,14 @@ extension Year2022InteractorImpl: YearInteractor {
         "665"
     }
     
+    @objc
+    func day14question2() -> String {
+        let input = readCSV("InputYear2022Day14")
+        let sandMap = SandMap(input.components(separatedBy: .newlines), true)
+        let result = sandMap.solutionPart2()
+        return "\(result)"
+    }
+    
         return "\(result)"
     }
     
