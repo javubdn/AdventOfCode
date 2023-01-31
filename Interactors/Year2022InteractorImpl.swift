@@ -606,6 +606,20 @@ extension Year2022InteractorImpl: YearInteractor {
 //Sensor at x=20, y=1: closest beacon is at x=15, y=3
 //"""
         let input = readCSV("InputYear2022Day15")
+        let beaconRules = input.components(separatedBy: .newlines).map { getBeaconRule($0) }
+        let beacons = Set(beaconRules.map { Position(x: $0.beaconX, y: $0.beaconY) })
+        let referenceY = 2000000
+        var minX = Int.max
+        var maxX = Int.min
+        for beaconRule in beaconRules {
+            let distance = abs(beaconRule.sensorX-beaconRule.beaconX)+abs(beaconRule.sensorY-beaconRule.beaconY)
+            let distanceY = distance - abs(referenceY-beaconRule.sensorY)
+            guard distanceY > 0 else { continue }
+            minX = min(minX, beaconRule.sensorX - distanceY)
+            maxX = max(maxX, beaconRule.sensorX + distanceY)
+        }
+        let beaconsInLine = beacons.filter { $0.y == referenceY && $0.x >= minX && $0.x <= maxX }.count
+        let result = maxX - minX + 1 - beaconsInLine
         return "\(result)"
     }
     
