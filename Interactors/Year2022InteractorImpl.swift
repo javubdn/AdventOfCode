@@ -642,6 +642,17 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
         return "\(result)"
+    struct BeaconRule {
+        let sensorX: Int
+        let sensorY: Int
+        let beaconX: Int
+        let beaconY: Int
+        var radius: Int {
+            abs(sensorX-beaconX)+abs(sensorY-beaconY)
+        }
+        func inRange(_ point: Position) -> Bool {
+            abs(point.x-sensorX)+abs(point.y-sensorY) <= radius
+        }
     }
     
     }
