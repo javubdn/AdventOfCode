@@ -587,6 +587,8 @@ extension Year2022InteractorImpl: YearInteractor {
         "25434"
     }
     
+    @objc
+    func day15question1() -> String {
         return "\(result)"
     }
     
