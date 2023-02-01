@@ -626,7 +626,6 @@ extension Year2022InteractorImpl: YearInteractor {
         let input = readCSV("InputYear2022Day15")
         let beaconRules = input.components(separatedBy: .newlines).map { getBeaconRule($0) }
         let beacons = Set(beaconRules.map { Position(x: $0.beaconX, y: $0.beaconY) })
-        var maxX = Int.min
         for beaconRule in beaconRules {
             let distance = abs(beaconRule.sensorX-beaconRule.beaconX)+abs(beaconRule.sensorY-beaconRule.beaconY)
             let distanceY = distance - abs(referenceY-beaconRule.sensorY)
