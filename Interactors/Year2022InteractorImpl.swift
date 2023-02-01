@@ -627,6 +627,22 @@ extension Year2022InteractorImpl: YearInteractor {
         let beaconRules = input.components(separatedBy: .newlines).map { getBeaconRule($0) }
         let beacons = Set(beaconRules.map { Position(x: $0.beaconX, y: $0.beaconY) })
         var solution = (0, 0)
+//    extenalLoop:
+//        for x in 0...4_000_000 {
+//            for y in 0...4_000_000 {
+//                var found = true
+//                for beaconRule in beaconRules {
+//                    if abs(x-beaconRule.sensorX)+abs(y-beaconRule.sensorY) <= beaconRule.radius {
+//                        found = false
+//                        break
+//                    }
+//                }
+//                if found {
+//                    solution = (x, y)
+//                    break extenalLoop
+//                }
+//            }
+//        }
         
         for beaconRule in beaconRules {
             let distance = abs(beaconRule.sensorX-beaconRule.beaconX)+abs(beaconRule.sensorY-beaconRule.beaconY)
