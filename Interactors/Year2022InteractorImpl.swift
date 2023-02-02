@@ -645,7 +645,6 @@ extension Year2022InteractorImpl: YearInteractor {
 //        }
         
         for beaconRule in beaconRules {
-            guard distanceY > 0 else { continue }
             minX = min(minX, beaconRule.sensorX - distanceY)
             maxX = max(maxX, beaconRule.sensorX + distanceY)
         }
