@@ -57,4 +57,20 @@ class Position: Hashable {
         x >= rangeX.0 && x <= rangeX.1 && y >= rangeY.0 && y <= rangeY.1
     }
     
+    private func lineOnRect(_ insidePoint: Position, _ outsidePoint: Position, _ minX: Int, _ minY: Int, _ maxX: Int, _ maxY: Int) -> (Int, Int) {
+        
+        let vx = outsidePoint.x - insidePoint.x
+        let vy = outsidePoint.y - insidePoint.y
+        let ex = vx > 0 ? maxX : minX
+        let ey = vy > 0 ? maxY : minY
+        
+        if vx == 0 { return (minX, ey) }
+        if vy == 0 { return (ex, minY) }
+        
+        let tx = (ex - minX) / vx
+        let ty = (ey - minY) / vy
+        
+        return tx <= ty ? (ex, minY + tx * vy) : (minX + ty * vx, ey)
+    }
+    
 }
