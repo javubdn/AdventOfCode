@@ -669,6 +669,15 @@ extension Year2022InteractorImpl: YearInteractor {
         }
     }
     
+    private func getBeaconRule(_ input: String) -> BeaconRule {
+        let regex = try! NSRegularExpression(pattern: #"Sensor at x=(-*[0-9]+), y=(-*[0-9]+): closest beacon is at x=(-*[0-9]+), y=(-*[0-9]+)"#)
+        let matches = regex.matches(in: input, options: [], range: NSRange(input.startIndex..., in: input))
+        let match = matches.first!
+        let sensorX = Int(String(input[Range(match.range(at: 1), in: input)!]))!
+        let sensorY = Int(String(input[Range(match.range(at: 2), in: input)!]))!
+        let beaconX = Int(String(input[Range(match.range(at: 3), in: input)!]))!
+        let beaconY = Int(String(input[Range(match.range(at: 4), in: input)!]))!
+        return BeaconRule(sensorX: sensorX, sensorY: sensorY, beaconX: beaconX, beaconY: beaconY)
     }
     
 }
