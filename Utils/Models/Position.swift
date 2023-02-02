@@ -39,4 +39,18 @@ class Position: Hashable {
         return []
     }
     
+    private func lineNoRange(_ to: Position) -> [Position] {
+        var positions: [Position] = []
+        
+        var previousPoint = self
+        let distanceX = to.x - x
+        let distanceY = to.y - y
+        let slope = distanceY/distanceX
+        while previousPoint.x <= to.x {
+            positions.append(previousPoint)
+            previousPoint = Position(x: previousPoint.x+1, y: previousPoint.y+slope)
+        }
+        return positions
+    }
+    
 }
