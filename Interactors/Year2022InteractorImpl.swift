@@ -647,7 +647,6 @@ extension Year2022InteractorImpl: YearInteractor {
 //        }
         
         for beaconRule in beaconRules {
-            maxX = max(maxX, beaconRule.sensorX + distanceY)
         }
         let beaconsInLine = beacons.filter { $0.y == referenceY && $0.x >= minX && $0.x <= maxX }.count
         let result = maxX - minX + 1 - beaconsInLine
