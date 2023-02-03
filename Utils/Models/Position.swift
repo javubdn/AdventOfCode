@@ -70,7 +70,6 @@ class Position: Hashable {
         let tx = (ex - insidePoint.x) / vx
         let ty = (ey - insidePoint.y) / vy
         
-        return tx <= ty ? (ex, minY + tx * vy) : (minX + ty * vx, ey)
     }
     
 }
