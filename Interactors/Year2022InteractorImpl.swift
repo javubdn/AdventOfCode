@@ -626,6 +626,12 @@ extension Year2022InteractorImpl: YearInteractor {
 //Sensor at x=20, y=1: closest beacon is at x=15, y=3
 //"""
         let input = readCSV("InputYear2022Day15")
+        
+        /*
+         *
+         *
+         
+        
         let beaconRules = input.components(separatedBy: .newlines).map { getBeaconRule($0) }
         let beacons = Set(beaconRules.map { Position(x: $0.beaconX, y: $0.beaconY) })
         var solution = (0, 0)
