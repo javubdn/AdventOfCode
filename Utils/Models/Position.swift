@@ -21,6 +21,10 @@ class Position: Hashable {
         lhs.x == rhs.x && lhs.y == rhs.y
     }
     
+    func distance(to other: Position) -> Int {
+        abs(x - other.x) + abs(y - other.y)
+    }
+    
     func line(_ to: Position, _ rangeX: (Int, Int)? = nil, _ rangeY: (Int, Int)? = nil ) -> [Position] {
         guard let rangeX = rangeX, let rangeY = rangeY else {
             return lineNoRange(to)
