@@ -664,6 +664,12 @@ extension Year2022InteractorImpl: YearInteractor {
             let pointsLeftUp = left.line(up, (0, 4_000_000), (0, 4_000_000))
             let pointsLeftDown = left.line(down, (0, 4_000_000), (0, 4_000_000))
             
+            if let answer = pointsUpRight.first(where: { point in
+                beaconRules.first { $0.inRange(point) } != nil
+            }) {
+                solution = (answer.x, answer.y)
+                break
+            }
         }
         let beaconsInLine = beacons.filter { $0.y == referenceY && $0.x >= minX && $0.x <= maxX }.count
         let result = maxX - minX + 1 - beaconsInLine
