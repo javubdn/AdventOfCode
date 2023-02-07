@@ -676,6 +676,12 @@ extension Year2022InteractorImpl: YearInteractor {
                 solution = (answer.x, answer.y)
                 break
             }
+            if let answer = pointsLeftUp.first(where: { point in
+                beaconRules.first { $0.inRange(point) } != nil
+            }) {
+                solution = (answer.x, answer.y)
+                break
+            }
         }
         let beaconsInLine = beacons.filter { $0.y == referenceY && $0.x >= minX && $0.x <= maxX }.count
         let result = maxX - minX + 1 - beaconsInLine
