@@ -695,6 +695,9 @@ extension Year2022InteractorImpl: YearInteractor {
 //            for point in pointsDownRight {
 //                allPoints.insert(point)
 //            }
+//            for point in pointsLeftUp {
+//                allPoints.insert(point)
+//            }
 //            }
         }
         let beaconsInLine = beacons.filter { $0.y == referenceY && $0.x >= minX && $0.x <= maxX }.count
