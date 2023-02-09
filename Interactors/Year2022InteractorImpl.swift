@@ -723,6 +723,7 @@ extension Year2022InteractorImpl: YearInteractor {
          
          */
         let sensors = input.components(separatedBy: .newlines).map { getSensor($0) }
+        let cave = Array(0...4_000_000)
     }
     
     struct BeaconRule {
