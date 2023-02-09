@@ -724,7 +724,6 @@ extension Year2022InteractorImpl: YearInteractor {
          */
     }
     
-        return "\(result)"
     struct BeaconRule {
         let sensorX: Int
         let sensorY: Int
