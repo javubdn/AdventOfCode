@@ -704,6 +704,17 @@ extension Year2022InteractorImpl: YearInteractor {
             
 //            allPoints = allPoints.union(up.line(right, (0, 4_000_000), (0, 4_000_000)))
 //            allPoints = allPoints.union(down.line(right, (0, 4_000_000), (0, 4_000_000)))
+//            allPoints = allPoints.union(left.line(up, (0, 4_000_000), (0, 4_000_000)))
+//            allPoints = allPoints.union(left.line(down, (0, 4_000_000), (0, 4_000_000)))
+//            allPoints.formUnion(up.line(right, (0, 4_000_000), (0, 4_000_000)))
+//            allPoints.formUnion(down.line(right, (0, 4_000_000), (0, 4_000_000)))
+//            allPoints.formUnion(left.line(up, (0, 4_000_000), (0, 4_000_000)))
+//            allPoints.formUnion(left.line(down, (0, 4_000_000), (0, 4_000_000)))
+//            if let answer = allPoints.first(where: { point in
+//                beaconRules.first { $0.inRange(point) } != nil
+//            }) {
+//                solution = (answer.x, answer.y)
+//                break
 //            }
         }
         let beaconsInLine = beacons.filter { $0.y == referenceY && $0.x >= minX && $0.x <= maxX }.count
