@@ -717,7 +717,6 @@ extension Year2022InteractorImpl: YearInteractor {
 //                break
 //            }
         }
-        let result = maxX - minX + 1 - beaconsInLine
         return "\(result)"
     }
     
