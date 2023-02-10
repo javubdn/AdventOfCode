@@ -629,31 +629,6 @@ extension Year2022InteractorImpl: YearInteractor {
             let pointsLeftUp = left.line(up, (0, 4_000_000), (0, 4_000_000))
             let pointsLeftDown = left.line(down, (0, 4_000_000), (0, 4_000_000))
             
-            if let answer = pointsUpRight.first(where: { point in
-                beaconRules.first { $0.inRange(point) } != nil
-            }) {
-                solution = (answer.x, answer.y)
-                break
-            }
-            if let answer = pointsDownRight.first(where: { point in
-                beaconRules.first { $0.inRange(point) } != nil
-            }) {
-                solution = (answer.x, answer.y)
-                break
-            }
-            if let answer = pointsLeftUp.first(where: { point in
-                beaconRules.first { $0.inRange(point) } != nil
-            }) {
-                solution = (answer.x, answer.y)
-                break
-            }
-            if let answer = pointsLeftDown.first(where: { point in
-                beaconRules.first { $0.inRange(point) } != nil
-            }) {
-                solution = (answer.x, answer.y)
-                break
-            }
-            
 //            allPoints.formUnion(up.line(right, (0, 4_000_000), (0, 4_000_000)))
 //            allPoints.formUnion(down.line(right, (0, 4_000_000), (0, 4_000_000)))
 //            allPoints.formUnion(left.line(up, (0, 4_000_000), (0, 4_000_000)))
