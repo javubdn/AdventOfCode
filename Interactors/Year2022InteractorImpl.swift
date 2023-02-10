@@ -609,8 +609,6 @@ extension Year2022InteractorImpl: YearInteractor {
     
     @objc
     func day15question2() -> String {
-        let input = readCSV("InputYear2022Day15")
-        
         /*
          *
          *
