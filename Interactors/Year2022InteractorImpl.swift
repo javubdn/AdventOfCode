@@ -654,19 +654,6 @@ extension Year2022InteractorImpl: YearInteractor {
                 break
             }
             
-//            for point in pointsUpRight {
-//                allPoints.insert(point)
-//            }
-//            for point in pointsDownRight {
-//                allPoints.insert(point)
-//            }
-//            for point in pointsLeftUp {
-//                allPoints.insert(point)
-//            }
-//            for point in pointsLeftDown {
-//                allPoints.insert(point)
-//            }
-            
 //            allPoints = allPoints.union(up.line(right, (0, 4_000_000), (0, 4_000_000)))
 //            allPoints = allPoints.union(down.line(right, (0, 4_000_000), (0, 4_000_000)))
 //            allPoints = allPoints.union(left.line(up, (0, 4_000_000), (0, 4_000_000)))
