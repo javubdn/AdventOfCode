@@ -609,6 +609,7 @@ extension Year2022InteractorImpl: YearInteractor {
     
     @objc
     func day15question2() -> String {
+//        let input = readCSV("InputYear2022Day15")
 //            allPoints.formUnion(up.line(right, (0, 4_000_000), (0, 4_000_000)))
 //            allPoints.formUnion(down.line(right, (0, 4_000_000), (0, 4_000_000)))
 //            allPoints.formUnion(left.line(up, (0, 4_000_000), (0, 4_000_000)))
