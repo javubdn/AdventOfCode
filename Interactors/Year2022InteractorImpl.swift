@@ -614,6 +614,7 @@ extension Year2022InteractorImpl: YearInteractor {
 //        let beacons = Set(beaconRules.map { Position(x: $0.beaconX, y: $0.beaconY) })
 //        var solution = (0, 0)
 //            var allPoints: Set<Position> = Set([])
+//            let up = Position(x: beaconRule.sensorX, y: beaconRule.sensorY - beaconRule.radius - 1)
 //            allPoints.formUnion(up.line(right, (0, 4_000_000), (0, 4_000_000)))
 //            allPoints.formUnion(down.line(right, (0, 4_000_000), (0, 4_000_000)))
 //            allPoints.formUnion(left.line(up, (0, 4_000_000), (0, 4_000_000)))
