@@ -622,6 +622,7 @@ extension Year2022InteractorImpl: YearInteractor {
 //            let pointsUpRight = up.line(right, (0, 4_000_000), (0, 4_000_000))
 //            let pointsDownRight = down.line(right, (0, 4_000_000), (0, 4_000_000))
 //            let pointsLeftUp = left.line(up, (0, 4_000_000), (0, 4_000_000))
+//            let pointsLeftDown = left.line(down, (0, 4_000_000), (0, 4_000_000))
 //            allPoints.formUnion(up.line(right, (0, 4_000_000), (0, 4_000_000)))
 //            allPoints.formUnion(down.line(right, (0, 4_000_000), (0, 4_000_000)))
 //            allPoints.formUnion(left.line(up, (0, 4_000_000), (0, 4_000_000)))
