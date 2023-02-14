@@ -618,6 +618,7 @@ extension Year2022InteractorImpl: YearInteractor {
 //            let down = Position(x: beaconRule.sensorX, y: beaconRule.sensorY + beaconRule.radius + 1)
 //            let left = Position(x: beaconRule.sensorX - beaconRule.radius - 1, y: beaconRule.sensorY)
 //            let right = Position(x: beaconRule.sensorX + beaconRule.radius + 1, y: beaconRule.sensorY)
+//
 //            allPoints.formUnion(up.line(right, (0, 4_000_000), (0, 4_000_000)))
 //            allPoints.formUnion(down.line(right, (0, 4_000_000), (0, 4_000_000)))
 //            allPoints.formUnion(left.line(up, (0, 4_000_000), (0, 4_000_000)))
