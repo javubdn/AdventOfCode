@@ -613,6 +613,7 @@ extension Year2022InteractorImpl: YearInteractor {
 //        let beaconRules = input.components(separatedBy: .newlines).map { getBeaconRule($0) }
 //        let beacons = Set(beaconRules.map { Position(x: $0.beaconX, y: $0.beaconY) })
 //        var solution = (0, 0)
+//        for beaconRule in beaconRules {
 //            var allPoints: Set<Position> = Set([])
 //            let up = Position(x: beaconRule.sensorX, y: beaconRule.sensorY - beaconRule.radius - 1)
 //            let down = Position(x: beaconRule.sensorX, y: beaconRule.sensorY + beaconRule.radius + 1)
@@ -636,6 +637,7 @@ extension Year2022InteractorImpl: YearInteractor {
 //            }
         let sensors = input.components(separatedBy: .newlines).map { getSensor($0) }
         let cave = Array(0...4_000_000)
+//        }
     }
     
     struct BeaconRule {
