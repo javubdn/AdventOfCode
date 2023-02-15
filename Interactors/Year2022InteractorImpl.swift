@@ -637,6 +637,7 @@ extension Year2022InteractorImpl: YearInteractor {
 //            }
 //        }
 //
+//        let result = solution.0 * 4_000_000 + solution.1
     }
     
     struct BeaconRule {
