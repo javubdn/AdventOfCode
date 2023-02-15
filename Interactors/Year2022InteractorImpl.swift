@@ -668,6 +668,7 @@ extension Year2022InteractorImpl: YearInteractor {
     
     private class Sensor {
         
+        let location: Position
         
     }
 }
