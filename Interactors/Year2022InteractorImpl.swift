@@ -635,7 +635,6 @@ extension Year2022InteractorImpl: YearInteractor {
 //                solution = (answer.x, answer.y)
 //                break
 //            }
-        let cave = Array(0...4_000_000)
 //        }
     }
     
