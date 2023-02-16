@@ -684,4 +684,7 @@ extension Year2022InteractorImpl: YearInteractor {
         
     }
     
+    private func getSensor(_ input: String) -> Sensor {
+    }
+    
 }
