@@ -672,5 +672,11 @@ extension Year2022InteractorImpl: YearInteractor {
         let closestBeacon: Position
         var distance: Int = 0
         
+        init(location: Position, closestBeacon: Position) {
+            self.location = location
+            self.closestBeacon = closestBeacon
+            distance = location.distance(to: closestBeacon)
+        }
+        
     }
 }
