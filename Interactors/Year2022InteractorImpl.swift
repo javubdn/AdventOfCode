@@ -685,6 +685,7 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
     private func getSensor(_ input: String) -> Sensor {
+        let regex = try! NSRegularExpression(pattern: #"Sensor at x=(-*[0-9]+), y=(-*[0-9]+): closest beacon is at x=(-*[0-9]+), y=(-*[0-9]+)"#)
     }
     
 }
