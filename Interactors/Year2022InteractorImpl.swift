@@ -681,5 +681,6 @@ extension Year2022InteractorImpl: YearInteractor {
         func isInRange(_ other: Position) -> Bool {
             location.distance(to: other) <= distance
         }
+        
     }
 }
