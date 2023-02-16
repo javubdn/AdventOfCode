@@ -678,5 +678,8 @@ extension Year2022InteractorImpl: YearInteractor {
             distance = location.distance(to: closestBeacon)
         }
         
+        func isInRange(_ other: Position) -> Bool {
+            location.distance(to: other) <= distance
+        }
     }
 }
