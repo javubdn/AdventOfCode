@@ -691,6 +691,7 @@ extension Year2022InteractorImpl: YearInteractor {
         let sensorX = Int(String(input[Range(match.range(at: 1), in: input)!]))!
         let sensorY = Int(String(input[Range(match.range(at: 2), in: input)!]))!
         let beaconX = Int(String(input[Range(match.range(at: 3), in: input)!]))!
+        let beaconY = Int(String(input[Range(match.range(at: 4), in: input)!]))!
     }
     
 }
