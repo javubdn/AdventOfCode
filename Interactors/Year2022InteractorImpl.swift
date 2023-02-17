@@ -689,6 +689,7 @@ extension Year2022InteractorImpl: YearInteractor {
         let matches = regex.matches(in: input, options: [], range: NSRange(input.startIndex..., in: input))
         let match = matches.first!
         let sensorX = Int(String(input[Range(match.range(at: 1), in: input)!]))!
+        let sensorY = Int(String(input[Range(match.range(at: 2), in: input)!]))!
     }
     
 }
