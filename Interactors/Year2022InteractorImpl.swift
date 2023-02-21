@@ -673,6 +673,7 @@ extension Year2022InteractorImpl: YearInteractor {
         let bestSolution = lastStuff(valves, "AA", 30)
         var bestSolution = 0
         var states: [(String, [String], Int, Int)] = [("AA", [], 0, 30)]
+        let maximumOpened = valves.filter { $0.rate > 0 }.count
         }
         
     }
