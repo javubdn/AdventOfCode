@@ -672,6 +672,7 @@ extension Year2022InteractorImpl: YearInteractor {
 //        let bestSolution = newStuff(valves, "AA", 30)
         let bestSolution = lastStuff(valves, "AA", 30)
         var bestSolution = 0
+        var states: [(String, [String], Int, Int)] = [("AA", [], 0, 30)]
         }
         
     }
