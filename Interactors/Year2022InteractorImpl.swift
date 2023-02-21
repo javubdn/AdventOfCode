@@ -670,6 +670,7 @@ extension Year2022InteractorImpl: YearInteractor {
         let valves = input.components(separatedBy: .newlines).map { getValve($0) }
 //        let bestSolution = recursiveStuff(valves, 30, [], "AA")
 //        let bestSolution = newStuff(valves, "AA", 30)
+        let bestSolution = lastStuff(valves, "AA", 30)
         }
         
     }
