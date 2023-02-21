@@ -667,6 +667,7 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
 //        let input = readCSV("InputYear2022Day16")
+        let valves = input.components(separatedBy: .newlines).map { getValve($0) }
         }
         
     }
