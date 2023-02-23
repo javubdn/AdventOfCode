@@ -691,6 +691,7 @@ Valve JJ has flow rate=21; tunnel leads to valve II
                 continue
             }
             
+                var opened = currentState.1
         }
         
     }
