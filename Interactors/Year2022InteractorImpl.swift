@@ -675,6 +675,7 @@ Valve FF has flow rate=0; tunnels lead to valves EE, GG
 Valve GG has flow rate=0; tunnels lead to valves FF, HH
 Valve HH has flow rate=22; tunnel leads to valve GG
 Valve II has flow rate=0; tunnels lead to valves AA, JJ
+Valve JJ has flow rate=21; tunnel leads to valve II
 //        let input = readCSV("InputYear2022Day16")
         let valves = input.components(separatedBy: .newlines).map { getValve($0) }
 //        let bestSolution = recursiveStuff(valves, 30, [], "AA")
