@@ -686,6 +686,11 @@ Valve JJ has flow rate=21; tunnel leads to valve II
         let maximumOpened = valves.filter { $0.rate > 0 }.count
         let valvesNotOpened = valves.filter { $0.rate == 0 }.map { $0.name }
             let currentState = states.removeFirst()
+            if currentState.3 == 0 {
+                bestSolution = max(bestSolution, currentState.2)
+                continue
+            }
+            
         }
         
     }
