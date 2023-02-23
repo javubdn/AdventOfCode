@@ -693,6 +693,7 @@ Valve JJ has flow rate=21; tunnel leads to valve II
             
                 var opened = currentState.1
                 opened.append(currentState.0)
+                    let remainingMinutes = currentState.3 - 1
         }
         
     }
