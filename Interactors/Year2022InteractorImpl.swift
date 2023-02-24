@@ -706,6 +706,10 @@ Valve JJ has flow rate=21; tunnel leads to valve II
                 
             }
             let currentValve = valves.first { $0.name == currentState.0 }!
+                states.append((destiny,
+                               currentState.1,
+                               currentState.2 + pressureReleased(valves, currentState.1),
+                               currentState.3 - 1))
         }
         
     }
