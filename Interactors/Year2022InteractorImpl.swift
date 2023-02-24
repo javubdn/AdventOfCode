@@ -705,6 +705,7 @@ Valve JJ has flow rate=21; tunnel leads to valve II
                                currentState.3 - 1))
                 
             }
+            let currentValve = valves.first { $0.name == currentState.0 }!
         }
         
     }
