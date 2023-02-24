@@ -698,6 +698,11 @@ Valve JJ has flow rate=21; tunnel leads to valve II
                     bestSolution = max(bestSolution, currentState.2 + remainingMinutes * pressureReleased(valves, opened) + pressureReleased(valves, currentState.1))
                     continue
                 }
+                states.append((currentState.0,
+                               opened,
+                               currentState.2 + pressureReleased(valves, opened),
+                               currentState.3 - 1))
+                
         }
         
     }
