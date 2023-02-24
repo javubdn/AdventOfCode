@@ -691,6 +691,7 @@ Valve JJ has flow rate=21; tunnel leads to valve II
                 continue
             }
             
+            if !currentState.1.contains(currentState.0) && !valvesNotOpened.contains(currentState.0) {
                 var opened = currentState.1
                 opened.append(currentState.0)
                 if opened.count == maximumOpened {
@@ -703,6 +704,7 @@ Valve JJ has flow rate=21; tunnel leads to valve II
                                currentState.2 + pressureReleased(valves, opened),
                                currentState.3 - 1))
                 
+            }
         }
         
     }
