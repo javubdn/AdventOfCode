@@ -666,7 +666,6 @@ extension Year2022InteractorImpl: YearInteractor {
         return BeaconRule(sensorX: sensorX, sensorY: sensorY, beaconX: beaconX, beaconY: beaconY)
     }
     
-Valve II has flow rate=0; tunnels lead to valves AA, JJ
 Valve JJ has flow rate=21; tunnel leads to valve II
 //        let input = readCSV("InputYear2022Day16")
         let valves = input.components(separatedBy: .newlines).map { getValve($0) }
