@@ -666,7 +666,6 @@ extension Year2022InteractorImpl: YearInteractor {
         return BeaconRule(sensorX: sensorX, sensorY: sensorY, beaconX: beaconX, beaconY: beaconY)
     }
     
-//        let input = readCSV("InputYear2022Day16")
         let valves = input.components(separatedBy: .newlines).map { getValve($0) }
 //        let bestSolution = recursiveStuff(valves, 30, [], "AA")
 //        let bestSolution = newStuff(valves, "AA", 30)
