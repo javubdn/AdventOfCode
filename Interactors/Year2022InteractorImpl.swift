@@ -674,6 +674,7 @@ Valve EE has flow rate=3; tunnels lead to valves FF, DD
 Valve FF has flow rate=0; tunnels lead to valves EE, GG
 Valve GG has flow rate=0; tunnels lead to valves FF, HH
 Valve HH has flow rate=22; tunnel leads to valve GG
+Valve II has flow rate=0; tunnels lead to valves AA, JJ
         let valves = input.components(separatedBy: .newlines).map { getValve($0) }
 //        let bestSolution = recursiveStuff(valves, 30, [], "AA")
 //        let bestSolution = newStuff(valves, "AA", 30)
