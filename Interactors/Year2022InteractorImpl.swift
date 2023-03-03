@@ -724,6 +724,7 @@ Valve JJ has flow rate=21; tunnel leads to valve II
         let match = matches.first!
         let name = String(input[Range(match.range(at: 1), in: input)!])
         let rate = Int(String(input[Range(match.range(at: 2), in: input)!]))!
+        let valves = String(input[Range(match.range(at: 6), in: input)!]).components(separatedBy: ", ")
     }
     
 }
