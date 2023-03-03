@@ -734,4 +734,7 @@ Valve JJ has flow rate=21; tunnel leads to valve II
         valves.filter { opened.contains($0.name) }.map { $0.rate }.reduce(0, +)
     }
     
+        guard valves.filter( { $0.rate > 0 } ).count != opened.count else {
+            return remaining * pressureReleased(valves, opened)
+        }
 }
