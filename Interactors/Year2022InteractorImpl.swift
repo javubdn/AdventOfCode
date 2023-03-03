@@ -730,4 +730,8 @@ Valve JJ has flow rate=21; tunnel leads to valve II
         return Valve(name: name, rate: rate, valves: valves)
     }
     
+    private func pressureReleased(_ valves: [Valve], _ opened: [String]) -> Int {
+        valves.filter { opened.contains($0.name) }.map { $0.rate }.reduce(0, +)
+    }
+    
 }
