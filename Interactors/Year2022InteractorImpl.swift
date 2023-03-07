@@ -742,4 +742,5 @@ Valve JJ has flow rate=21; tunnel leads to valve II
         }
         let missing = valves.filter { $0.rate > 0 && !opened.contains($0.name) }
         var bestCost = Int.min
+            let time = navigateValve(current, miss.name, valves, [])
 }
