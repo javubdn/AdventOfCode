@@ -746,4 +746,5 @@ Valve JJ has flow rate=21; tunnel leads to valve II
             let newRemaining = remaining - time - 1
                 var opened = opened
                 var newCost = (time + 1) * pressureReleased(valves, opened)
+                opened.append(miss.name)
 }
