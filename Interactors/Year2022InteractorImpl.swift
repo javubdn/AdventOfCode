@@ -740,4 +740,5 @@ Valve JJ has flow rate=21; tunnel leads to valve II
         if let cost = valvesCombinations[getValveCombination(opened, current, remaining)] {
             return cost
         }
+        let missing = valves.filter { $0.rate > 0 && !opened.contains($0.name) }
 }
