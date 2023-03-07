@@ -744,4 +744,5 @@ Valve JJ has flow rate=21; tunnel leads to valve II
         var bestCost = Int.min
             let time = navigateValve(current, miss.name, valves, [])
             let newRemaining = remaining - time - 1
+                var opened = opened
 }
