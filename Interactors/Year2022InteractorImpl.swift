@@ -737,4 +737,7 @@ Valve JJ has flow rate=21; tunnel leads to valve II
         guard valves.filter( { $0.rate > 0 } ).count != opened.count else {
             return remaining * pressureReleased(valves, opened)
         }
+        if let cost = valvesCombinations[getValveCombination(opened, current, remaining)] {
+            return cost
+        }
 }
