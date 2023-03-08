@@ -666,7 +666,6 @@ extension Year2022InteractorImpl: YearInteractor {
         return BeaconRule(sensorX: sensorX, sensorY: sensorY, beaconX: beaconX, beaconY: beaconY)
     }
     
-        let valves = input.components(separatedBy: .newlines).map { getValve($0) }
         let bestSolution = lastStuff(valves, "AA", 30)
         var bestSolution = 0
         var states: [(String, [String], Int, Int)] = [("AA", [], 0, 30)]
