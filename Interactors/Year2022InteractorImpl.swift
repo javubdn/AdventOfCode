@@ -666,7 +666,6 @@ extension Year2022InteractorImpl: YearInteractor {
         return BeaconRule(sensorX: sensorX, sensorY: sensorY, beaconX: beaconX, beaconY: beaconY)
     }
     
-        var states: [(String, [String], Int, Int)] = [("AA", [], 0, 30)]
         let maximumOpened = valves.filter { $0.rate > 0 }.count
         let valvesNotOpened = valves.filter { $0.rate == 0 }.map { $0.name }
         while !states.isEmpty {
