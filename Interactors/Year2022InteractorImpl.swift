@@ -667,7 +667,6 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
         while !states.isEmpty {
-            let currentState = states.removeFirst()
             if currentState.3 == 0 {
                 bestSolution = max(bestSolution, currentState.2)
                 continue
