@@ -668,7 +668,6 @@ extension Year2022InteractorImpl: YearInteractor {
     
         while !states.isEmpty {
             if !currentState.1.contains(currentState.0) && !valvesNotOpened.contains(currentState.0) {
-                opened.append(currentState.0)
                 if opened.count == maximumOpened {
                     let remainingMinutes = currentState.3 - 1
                     bestSolution = max(bestSolution, currentState.2 + remainingMinutes * pressureReleased(valves, opened) + pressureReleased(valves, currentState.1))
