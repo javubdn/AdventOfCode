@@ -667,11 +667,6 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
         while !states.isEmpty {
-            if currentState.3 == 0 {
-                bestSolution = max(bestSolution, currentState.2)
-                continue
-            }
-            
             if !currentState.1.contains(currentState.0) && !valvesNotOpened.contains(currentState.0) {
                 var opened = currentState.1
                 opened.append(currentState.0)
