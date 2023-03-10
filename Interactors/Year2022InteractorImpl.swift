@@ -667,13 +667,6 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
         while !states.isEmpty {
-            if !currentState.1.contains(currentState.0) && !valvesNotOpened.contains(currentState.0) {
-                states.append((currentState.0,
-                               opened,
-                               currentState.2 + pressureReleased(valves, opened),
-                               currentState.3 - 1))
-                
-            }
             let currentValve = valves.first { $0.name == currentState.0 }!
             for destiny in currentValve.valves {
                 states.append((destiny,
