@@ -666,6 +666,10 @@ extension Year2022InteractorImpl: YearInteractor {
         return BeaconRule(sensorX: sensorX, sensorY: sensorY, beaconX: beaconX, beaconY: beaconY)
     }
     
+    struct Valve {
+        let name: String
+        let rate: Int
+        let valves: [String]
     }
     
     private func getValve(_ input: String) -> Valve {
