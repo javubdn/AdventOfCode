@@ -667,7 +667,6 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
         while !states.isEmpty {
-            let currentValve = valves.first { $0.name == currentState.0 }!
             for destiny in currentValve.valves {
                 states.append((destiny,
                                currentState.1,
