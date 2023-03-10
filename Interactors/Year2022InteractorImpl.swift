@@ -699,4 +699,5 @@ extension Year2022InteractorImpl: YearInteractor {
                 var opened = opened
                 var newCost = (time + 1) * pressureReleased(valves, opened)
                 opened.append(miss.name)
+                newCost += recursiveStuff(valves, newRemaining, opened, miss.name)
 }
