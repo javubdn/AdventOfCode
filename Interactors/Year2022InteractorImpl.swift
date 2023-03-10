@@ -666,11 +666,6 @@ extension Year2022InteractorImpl: YearInteractor {
         return BeaconRule(sensorX: sensorX, sensorY: sensorY, beaconX: beaconX, beaconY: beaconY)
     }
     
-        while !states.isEmpty {
-                
-        }
-        
-        */ //"1651"
     }
     
     private func getValve(_ input: String) -> Valve {
