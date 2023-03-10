@@ -668,9 +668,6 @@ extension Year2022InteractorImpl: YearInteractor {
     
         while !states.isEmpty {
             if !currentState.1.contains(currentState.0) && !valvesNotOpened.contains(currentState.0) {
-                if opened.count == maximumOpened {
-                    continue
-                }
                 states.append((currentState.0,
                                opened,
                                currentState.2 + pressureReleased(valves, opened),
