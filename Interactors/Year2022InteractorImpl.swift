@@ -667,12 +667,6 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
         while !states.isEmpty {
-            for destiny in currentValve.valves {
-                states.append((destiny,
-                               currentState.1,
-                               currentState.2 + pressureReleased(valves, currentState.1),
-                               currentState.3 - 1))
-            }
                 
         }
         
