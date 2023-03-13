@@ -666,6 +666,7 @@ extension Year2022InteractorImpl: YearInteractor {
         return BeaconRule(sensorX: sensorX, sensorY: sensorY, beaconX: beaconX, beaconY: beaconY)
     }
     
+//Valve AA has flow rate=0; tunnels lead to valves DD, II, BB
     struct Valve {
         let name: String
         let rate: Int
