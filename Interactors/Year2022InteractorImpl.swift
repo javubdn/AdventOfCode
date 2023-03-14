@@ -678,6 +678,7 @@ extension Year2022InteractorImpl: YearInteractor {
 //Valve II has flow rate=0; tunnels lead to valves AA, JJ
 //Valve JJ has flow rate=21; tunnel leads to valve II
 //"""
+        let input = readCSV("InputYear2022Day16")
     struct Valve {
         let name: String
         let rate: Int
