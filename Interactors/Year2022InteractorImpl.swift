@@ -703,6 +703,7 @@ extension Year2022InteractorImpl: YearInteractor {
         valves.filter { opened.contains($0.name) }.map { $0.rate }.reduce(0, +)
     }
     
+    func recursiveStuff(_ valves: [Valve], _ remaining: Int, _ opened: [String], _ current: String) -> Int {
         guard valves.filter( { $0.rate > 0 } ).count != opened.count else {
             return remaining * pressureReleased(valves, opened)
         }
@@ -727,4 +728,6 @@ extension Year2022InteractorImpl: YearInteractor {
         }
         valvesCombinations[getValveCombination(opened, current, remaining)] = bestCost
         return bestCost
+    }
+    
 }
