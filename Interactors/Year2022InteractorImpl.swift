@@ -713,11 +713,14 @@ extension Year2022InteractorImpl: YearInteractor {
         var bestCost = Int.min
             let time = navigateValve(current, miss.name, valves, [])
             let newRemaining = remaining - time - 1
+            if newRemaining > 0 {
                 var opened = opened
                 var newCost = (time + 1) * pressureReleased(valves, opened)
                 opened.append(miss.name)
                 newCost += recursiveStuff(valves, newRemaining, opened, miss.name)
                 bestCost = max(bestCost, newCost)
+            } else {
                 let newCost = remaining * pressureReleased(valves, opened)
                 bestCost = max(bestCost, newCost)
+            }
 }
