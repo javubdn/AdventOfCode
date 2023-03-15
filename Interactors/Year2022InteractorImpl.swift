@@ -725,4 +725,5 @@ extension Year2022InteractorImpl: YearInteractor {
                 bestCost = max(bestCost, newCost)
             }
         }
+        valvesCombinations[getValveCombination(opened, current, remaining)] = bestCost
 }
