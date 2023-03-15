@@ -711,6 +711,7 @@ extension Year2022InteractorImpl: YearInteractor {
         }
         let missing = valves.filter { $0.rate > 0 && !opened.contains($0.name) }
         var bestCost = Int.min
+        for miss in missing {
             let time = navigateValve(current, miss.name, valves, [])
             let newRemaining = remaining - time - 1
             if newRemaining > 0 {
@@ -723,4 +724,5 @@ extension Year2022InteractorImpl: YearInteractor {
                 let newCost = remaining * pressureReleased(valves, opened)
                 bestCost = max(bestCost, newCost)
             }
+        }
 }
