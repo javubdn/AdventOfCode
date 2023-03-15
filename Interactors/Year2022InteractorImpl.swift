@@ -718,4 +718,5 @@ extension Year2022InteractorImpl: YearInteractor {
                 opened.append(miss.name)
                 newCost += recursiveStuff(valves, newRemaining, opened, miss.name)
                 bestCost = max(bestCost, newCost)
+                let newCost = remaining * pressureReleased(valves, opened)
 }
