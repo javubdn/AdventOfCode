@@ -726,4 +726,5 @@ extension Year2022InteractorImpl: YearInteractor {
             }
         }
         valvesCombinations[getValveCombination(opened, current, remaining)] = bestCost
+        return bestCost
 }
