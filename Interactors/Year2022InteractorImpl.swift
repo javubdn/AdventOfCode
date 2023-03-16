@@ -735,4 +735,5 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
         let openedValves = valves.filter { $0.rate > 0 }
+        let permutations = Utils.permutations(openedValves)
 }
