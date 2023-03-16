@@ -741,4 +741,5 @@ extension Year2022InteractorImpl: YearInteractor {
             var timeRemaining = time
             var value = 0
             var opened: [String] = []
+                let timeCost = navigateValve(current, item.name, valves, [])
 }
