@@ -738,4 +738,5 @@ extension Year2022InteractorImpl: YearInteractor {
         let permutations = Utils.permutations(openedValves)
         var bestCost = Int.min
             var current = initial
+            var timeRemaining = time
 }
