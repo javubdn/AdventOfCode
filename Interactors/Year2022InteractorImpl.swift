@@ -734,4 +734,5 @@ extension Year2022InteractorImpl: YearInteractor {
         opened.sorted { $0 < $1 }.joined(separator: "-") + "-" + current + "-" + "\(remaining)"
     }
     
+        let openedValves = valves.filter { $0.rate > 0 }
 }
