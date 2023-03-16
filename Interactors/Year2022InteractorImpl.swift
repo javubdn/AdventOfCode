@@ -740,4 +740,5 @@ extension Year2022InteractorImpl: YearInteractor {
             var current = initial
             var timeRemaining = time
             var value = 0
+            var opened: [String] = []
 }
