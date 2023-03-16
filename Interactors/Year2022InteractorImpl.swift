@@ -739,4 +739,5 @@ extension Year2022InteractorImpl: YearInteractor {
         var bestCost = Int.min
             var current = initial
             var timeRemaining = time
+            var value = 0
 }
