@@ -741,6 +741,7 @@ extension Year2022InteractorImpl: YearInteractor {
             var timeRemaining = time
             var value = 0
             var opened: [String] = []
+            for item in permutation {
                 let timeCost = navigateValve(current, item.name, valves, [])
                 if timeRemaining > timeCost + 1 {
                     value += (timeCost + 1) * pressureReleased(valves, opened)
@@ -752,4 +753,5 @@ extension Year2022InteractorImpl: YearInteractor {
                     timeRemaining = 0
                     break
                 }
+            }
 }
