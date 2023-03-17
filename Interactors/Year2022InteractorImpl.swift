@@ -746,4 +746,5 @@ extension Year2022InteractorImpl: YearInteractor {
                     timeRemaining -= timeCost + 1
                     opened.append(item.name)
                     current = item.name
+                    value += timeRemaining * pressureReleased(valves, opened)
 }
