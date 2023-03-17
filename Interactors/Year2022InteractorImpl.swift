@@ -742,4 +742,5 @@ extension Year2022InteractorImpl: YearInteractor {
             var value = 0
             var opened: [String] = []
                 let timeCost = navigateValve(current, item.name, valves, [])
+                    value += (timeCost + 1) * pressureReleased(valves, opened)
 }
