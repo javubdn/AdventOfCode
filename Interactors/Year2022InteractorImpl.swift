@@ -737,6 +737,7 @@ extension Year2022InteractorImpl: YearInteractor {
         let openedValves = valves.filter { $0.rate > 0 }
         let permutations = Utils.permutations(openedValves)
         var bestCost = Int.min
+        for permutation in permutations {
             var current = initial
             var timeRemaining = time
             var value = 0
@@ -756,4 +757,5 @@ extension Year2022InteractorImpl: YearInteractor {
             }
             value += timeRemaining * pressureReleased(valves, opened)
             bestCost = max(bestCost, value)
+        }
 }
