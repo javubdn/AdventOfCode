@@ -762,4 +762,5 @@ extension Year2022InteractorImpl: YearInteractor {
         return bestCost
     }
     
+        var closedValves = valves.filter { $0.rate > 0 }
 }
