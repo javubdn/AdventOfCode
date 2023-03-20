@@ -755,4 +755,5 @@ extension Year2022InteractorImpl: YearInteractor {
                 }
             }
             value += timeRemaining * pressureReleased(valves, opened)
+            bestCost = max(bestCost, value)
 }
