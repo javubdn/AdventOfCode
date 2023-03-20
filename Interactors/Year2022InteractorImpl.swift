@@ -754,4 +754,5 @@ extension Year2022InteractorImpl: YearInteractor {
                     break
                 }
             }
+            value += timeRemaining * pressureReleased(valves, opened)
 }
