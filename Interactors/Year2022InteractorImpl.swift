@@ -734,6 +734,7 @@ extension Year2022InteractorImpl: YearInteractor {
         opened.sorted { $0 < $1 }.joined(separator: "-") + "-" + current + "-" + "\(remaining)"
     }
     
+    private func newStuff(_ valves: [Valve], _ initial: String, _ time: Int) -> Int {
         let openedValves = valves.filter { $0.rate > 0 }
         let permutations = Utils.permutations(openedValves)
         var bestCost = Int.min
@@ -759,4 +760,6 @@ extension Year2022InteractorImpl: YearInteractor {
             bestCost = max(bestCost, value)
         }
         return bestCost
+    }
+    
 }
