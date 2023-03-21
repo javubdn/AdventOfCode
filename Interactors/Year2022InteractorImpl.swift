@@ -772,5 +772,8 @@ extension Year2022InteractorImpl: YearInteractor {
                 guard remainingTime >= timeCost + 1 else { return (valve, timeCost, 0) }
                 return (valve, timeCost, (remainingTime - (timeCost + 1)) * valve.rate)
             }.max { $0.2 > $1.2 }
+            guard let bestValve else {
+                break
+            }
         var closedValves = valves.filter { $0.rate > 0 }
 }
