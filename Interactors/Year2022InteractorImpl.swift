@@ -765,5 +765,6 @@ extension Year2022InteractorImpl: YearInteractor {
         var closedValves = valves.filter { $0.rate > 0 }
         var openedValves: [String] = []
         var remainingTime = time
+        var bestResult = 0
         var closedValves = valves.filter { $0.rate > 0 }
 }
