@@ -775,5 +775,6 @@ extension Year2022InteractorImpl: YearInteractor {
             guard let bestValve else {
                 break
             }
+            remainingTime -= bestValve.1 + 1
         var closedValves = valves.filter { $0.rate > 0 }
 }
