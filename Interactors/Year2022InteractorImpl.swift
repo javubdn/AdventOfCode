@@ -790,4 +790,5 @@ extension Year2022InteractorImpl: YearInteractor {
         return bestResult
         */
         var closedValves = valves.filter { $0.rate > 0 }
+        var current = initial
 }
