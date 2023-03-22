@@ -762,6 +762,7 @@ extension Year2022InteractorImpl: YearInteractor {
         return bestCost
     }
     
+        /*
         var closedValves = valves.filter { $0.rate > 0 }
         var openedValves: [String] = []
         var remainingTime = time
@@ -787,5 +788,6 @@ extension Year2022InteractorImpl: YearInteractor {
         }
         bestResult += remainingTime * pressureReleased(valves, openedValves)
         return bestResult
+        */
         var closedValves = valves.filter { $0.rate > 0 }
 }
