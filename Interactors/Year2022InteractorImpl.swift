@@ -778,5 +778,6 @@ extension Year2022InteractorImpl: YearInteractor {
             remainingTime -= bestValve.1 + 1
             bestResult += (bestValve.1 + 1) * pressureReleased(valves, openedValves)
             openedValves.append(bestValve.0.name)
+            currentValve = bestValve.0.name
         var closedValves = valves.filter { $0.rate > 0 }
 }
