@@ -780,5 +780,8 @@ extension Year2022InteractorImpl: YearInteractor {
             openedValves.append(bestValve.0.name)
             currentValve = bestValve.0.name
             closedValves.removeAll { $0.name == bestValve.0.name }
+            if closedValves.isEmpty {
+                break
+            }
         var closedValves = valves.filter { $0.rate > 0 }
 }
