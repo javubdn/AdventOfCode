@@ -785,5 +785,6 @@ extension Year2022InteractorImpl: YearInteractor {
                 break
             }
         }
+        bestResult += remainingTime * pressureReleased(valves, openedValves)
         var closedValves = valves.filter { $0.rate > 0 }
 }
