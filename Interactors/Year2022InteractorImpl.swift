@@ -797,10 +797,13 @@ extension Year2022InteractorImpl: YearInteractor {
         
         var zValuesThisRound: [Int: (Int, Int)] = [:]
         
+        closedValves.forEach { valve in
             let timeCost = navigateValve(current, valve.name, valves, [])
             if remainingTime >= timeCost + 1 {
                 remainingTime -= timeCost + 1
             } else {
                 
             }
+        }
+        
 }
