@@ -793,4 +793,6 @@ extension Year2022InteractorImpl: YearInteractor {
         var current = initial
         var remainingTime = time
         
+        var zValues = [0: (0, 0)]
+        
 }
