@@ -795,4 +795,6 @@ extension Year2022InteractorImpl: YearInteractor {
         
         var zValues = [0: (0, 0)]
         
+        var zValuesThisRound: [Int: (Int, Int)] = [:]
+        
 }
