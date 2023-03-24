@@ -762,6 +762,7 @@ extension Year2022InteractorImpl: YearInteractor {
         return bestCost
     }
     
+    private func lastStuff(_ valves: [Valve], _ initial: String, _ time: Int) -> Int {
         /*
         var closedValves = valves.filter { $0.rate > 0 }
         var openedValves: [String] = []
@@ -813,4 +814,6 @@ extension Year2022InteractorImpl: YearInteractor {
         
         
         return 0
+    }
+    
 }
