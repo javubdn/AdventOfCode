@@ -812,4 +812,5 @@ extension Year2022InteractorImpl: YearInteractor {
         
         
         
+        return 0
 }
