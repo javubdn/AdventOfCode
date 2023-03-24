@@ -822,4 +822,5 @@ extension Year2022InteractorImpl: YearInteractor {
             return 1
         }
         var used = used
+        used.append(from)
 }
