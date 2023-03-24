@@ -816,4 +816,5 @@ extension Year2022InteractorImpl: YearInteractor {
         return 0
     }
     
+        guard !used.contains(from) else { return Int.max }
 }
