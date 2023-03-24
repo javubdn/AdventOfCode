@@ -823,4 +823,5 @@ extension Year2022InteractorImpl: YearInteractor {
         }
         var used = used
         used.append(from)
+        var bestCost = Int.max
 }
