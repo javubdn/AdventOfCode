@@ -818,4 +818,7 @@ extension Year2022InteractorImpl: YearInteractor {
     
         guard !used.contains(from) else { return Int.max }
         let fromValve = valves.first { $0.name == from }!
+        if let _ = fromValve.valves.first(where: { $0 == to }) {
+            return 1
+        }
 }
