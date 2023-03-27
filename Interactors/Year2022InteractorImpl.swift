@@ -667,7 +667,6 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
 //        let input = """
-//Valve DD has flow rate=20; tunnels lead to valves CC, AA, EE
 //Valve EE has flow rate=3; tunnels lead to valves FF, DD
 //Valve FF has flow rate=0; tunnels lead to valves EE, GG
 //Valve GG has flow rate=0; tunnels lead to valves FF, HH
