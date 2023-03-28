@@ -812,4 +812,5 @@ extension Year2022InteractorImpl: YearInteractor {
         used.append(from)
         var bestCost = Int.max
             let cost = navigateValve(valveName, to, valves, used)
+            bestCost = min(bestCost, cost)
 }
