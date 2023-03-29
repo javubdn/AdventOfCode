@@ -669,10 +669,6 @@ extension Year2022InteractorImpl: YearInteractor {
         let valvesPath = ValvesPathFinder(input)
         let bestSolution = valvesPath.searchPaths("AA", 30)
         return "\(bestSolution)"
-    struct Valve {
-        let name: String
-        let rate: Int
-        let valves: [String]
     }
     
     private func getValve(_ input: String) -> Valve {
