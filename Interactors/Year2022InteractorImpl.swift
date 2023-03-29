@@ -8,7 +8,6 @@
 import Foundation
 
 class Year2022InteractorImpl: NSObject {
-    var valvesCombinations: [String: Int] = [:]
 }
 
 extension Year2022InteractorImpl: YearInteractor {
