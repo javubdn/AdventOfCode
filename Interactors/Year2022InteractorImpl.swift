@@ -672,7 +672,6 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
     private func getValve(_ input: String) -> Valve {
-        let name = String(input[Range(match.range(at: 1), in: input)!])
         let rate = Int(String(input[Range(match.range(at: 2), in: input)!]))!
         let valves = String(input[Range(match.range(at: 6), in: input)!]).components(separatedBy: ", ")
         return Valve(name: name, rate: rate, valves: valves)
