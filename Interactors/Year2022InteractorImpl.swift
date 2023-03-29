@@ -672,7 +672,6 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
     private func getValve(_ input: String) -> Valve {
-        let regex = try! NSRegularExpression(pattern: #"Valve ([A-Z]+) has flow rate=([0-9]+); tunnel(s)? lead(s)? to valve(s)? ([, A-Z]+)"#)
         let matches = regex.matches(in: input, options: [], range: NSRange(input.startIndex..., in: input))
         let match = matches.first!
         let name = String(input[Range(match.range(at: 1), in: input)!])
