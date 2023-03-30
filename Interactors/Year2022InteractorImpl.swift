@@ -677,7 +677,6 @@ extension Year2022InteractorImpl: YearInteractor {
     
     func recursiveStuff(_ valves: [Valve], _ remaining: Int, _ opened: [String], _ current: String) -> Int {
         guard valves.filter( { $0.rate > 0 } ).count != opened.count else {
-            return remaining * pressureReleased(valves, opened)
         }
         if let cost = valvesCombinations[getValveCombination(opened, current, remaining)] {
             return cost
