@@ -677,7 +677,6 @@ extension Year2022InteractorImpl: YearInteractor {
     
     func recursiveStuff(_ valves: [Valve], _ remaining: Int, _ opened: [String], _ current: String) -> Int {
         if let cost = valvesCombinations[getValveCombination(opened, current, remaining)] {
-            return cost
         }
         let missing = valves.filter { $0.rate > 0 && !opened.contains($0.name) }
         var bestCost = Int.min
