@@ -671,7 +671,6 @@ extension Year2022InteractorImpl: YearInteractor {
         return "\(bestSolution)"
     }
     
-    private func getValve(_ input: String) -> Valve {
     }
     
     private func pressureReleased(_ valves: [Valve], _ opened: [String]) -> Int {
