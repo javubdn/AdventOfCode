@@ -672,7 +672,6 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
     private func getValve(_ input: String) -> Valve {
-        return Valve(name: name, rate: rate, valves: valves)
     }
     
     private func pressureReleased(_ valves: [Valve], _ opened: [String]) -> Int {
