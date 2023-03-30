@@ -674,7 +674,6 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
     private func pressureReleased(_ valves: [Valve], _ opened: [String]) -> Int {
-        valves.filter { opened.contains($0.name) }.map { $0.rate }.reduce(0, +)
     }
     
     func recursiveStuff(_ valves: [Valve], _ remaining: Int, _ opened: [String], _ current: String) -> Int {
