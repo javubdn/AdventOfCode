@@ -678,7 +678,6 @@ extension Year2022InteractorImpl: YearInteractor {
     func recursiveStuff(_ valves: [Valve], _ remaining: Int, _ opened: [String], _ current: String) -> Int {
         for miss in missing {
             if newRemaining > 0 {
-                opened.append(miss.name)
                 newCost += recursiveStuff(valves, newRemaining, opened, miss.name)
                 bestCost = max(bestCost, newCost)
             } else {
