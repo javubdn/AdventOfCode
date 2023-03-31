@@ -677,7 +677,6 @@ extension Year2022InteractorImpl: YearInteractor {
     
     func recursiveStuff(_ valves: [Valve], _ remaining: Int, _ opened: [String], _ current: String) -> Int {
         for miss in missing {
-            let time = navigateValve(current, miss.name, valves, [])
             let newRemaining = remaining - time - 1
             if newRemaining > 0 {
                 var opened = opened
