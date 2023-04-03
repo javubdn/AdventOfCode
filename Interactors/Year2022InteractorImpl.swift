@@ -679,7 +679,6 @@ extension Year2022InteractorImpl: YearInteractor {
         for miss in missing {
             if newRemaining > 0 {
             } else {
-                let newCost = remaining * pressureReleased(valves, opened)
                 bestCost = max(bestCost, newCost)
             }
         }
