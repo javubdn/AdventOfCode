@@ -676,7 +676,6 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
     func recursiveStuff(_ valves: [Valve], _ remaining: Int, _ opened: [String], _ current: String) -> Int {
-        return bestCost
     }
     
     private func getValveCombination(_ opened: [String], _ current: String, _ remaining: Int) -> String {
