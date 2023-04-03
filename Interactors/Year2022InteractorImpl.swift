@@ -679,7 +679,6 @@ extension Year2022InteractorImpl: YearInteractor {
         for miss in missing {
             if newRemaining > 0 {
             } else {
-                bestCost = max(bestCost, newCost)
             }
         }
         valvesCombinations[getValveCombination(opened, current, remaining)] = bestCost
