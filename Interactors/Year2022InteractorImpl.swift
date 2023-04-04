@@ -678,7 +678,6 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
     private func getValveCombination(_ opened: [String], _ current: String, _ remaining: Int) -> String {
-        opened.sorted { $0 < $1 }.joined(separator: "-") + "-" + current + "-" + "\(remaining)"
     }
     
     private func newStuff(_ valves: [Valve], _ initial: String, _ time: Int) -> Int {
