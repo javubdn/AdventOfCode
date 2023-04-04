@@ -680,7 +680,6 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
     private func newStuff(_ valves: [Valve], _ initial: String, _ time: Int) -> Int {
-        var bestCost = Int.min
         for permutation in permutations {
             var current = initial
             var timeRemaining = time
