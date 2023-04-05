@@ -683,7 +683,6 @@ extension Year2022InteractorImpl: YearInteractor {
         for permutation in permutations {
             for item in permutation {
                 if timeRemaining > timeCost + 1 {
-                    current = item.name
                 } else {
                     value += timeRemaining * pressureReleased(valves, opened)
                     timeRemaining = 0
