@@ -681,7 +681,6 @@ extension Year2022InteractorImpl: YearInteractor {
     
     private func newStuff(_ valves: [Valve], _ initial: String, _ time: Int) -> Int {
         for permutation in permutations {
-            var opened: [String] = []
             for item in permutation {
                 let timeCost = navigateValve(current, item.name, valves, [])
                 if timeRemaining > timeCost + 1 {
