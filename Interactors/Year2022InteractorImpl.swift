@@ -682,7 +682,6 @@ extension Year2022InteractorImpl: YearInteractor {
     private func newStuff(_ valves: [Valve], _ initial: String, _ time: Int) -> Int {
         for permutation in permutations {
             for item in permutation {
-                let timeCost = navigateValve(current, item.name, valves, [])
                 if timeRemaining > timeCost + 1 {
                     value += (timeCost + 1) * pressureReleased(valves, opened)
                     timeRemaining -= timeCost + 1
