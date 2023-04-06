@@ -680,7 +680,6 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
     private func newStuff(_ valves: [Valve], _ initial: String, _ time: Int) -> Int {
-        return bestCost
     }
     
     private func lastStuff(_ valves: [Valve], _ initial: String, _ time: Int) -> Int {
