@@ -681,7 +681,6 @@ extension Year2022InteractorImpl: YearInteractor {
     
     private func newStuff(_ valves: [Valve], _ initial: String, _ time: Int) -> Int {
         for permutation in permutations {
-            value += timeRemaining * pressureReleased(valves, opened)
             bestCost = max(bestCost, value)
         }
         return bestCost
