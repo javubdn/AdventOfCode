@@ -683,7 +683,6 @@ extension Year2022InteractorImpl: YearInteractor {
     
     private func lastStuff(_ valves: [Valve], _ initial: String, _ time: Int) -> Int {
         /*
-        var currentValve = initial
         while remainingTime > 0 {
             let bestValve = closedValves.map { valve -> (Valve, Int, Int) in
                 let timeCost = navigateValve(currentValve, valve.name, valves, [])
