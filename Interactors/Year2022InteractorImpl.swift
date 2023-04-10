@@ -685,7 +685,6 @@ extension Year2022InteractorImpl: YearInteractor {
         /*
         while remainingTime > 0 {
             let bestValve = closedValves.map { valve -> (Valve, Int, Int) in
-                let timeCost = navigateValve(currentValve, valve.name, valves, [])
                 guard remainingTime >= timeCost + 1 else { return (valve, timeCost, 0) }
                 return (valve, timeCost, (remainingTime - (timeCost + 1)) * valve.rate)
             }.max { $0.2 > $1.2 }
