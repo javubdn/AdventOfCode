@@ -684,7 +684,6 @@ extension Year2022InteractorImpl: YearInteractor {
     private func lastStuff(_ valves: [Valve], _ initial: String, _ time: Int) -> Int {
         /*
         while remainingTime > 0 {
-            openedValves.append(bestValve.0.name)
             currentValve = bestValve.0.name
             closedValves.removeAll { $0.name == bestValve.0.name }
             if closedValves.isEmpty {
