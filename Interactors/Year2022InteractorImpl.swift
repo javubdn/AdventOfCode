@@ -684,9 +684,6 @@ extension Year2022InteractorImpl: YearInteractor {
     private func lastStuff(_ valves: [Valve], _ initial: String, _ time: Int) -> Int {
         /*
         while remainingTime > 0 {
-            guard let bestValve else {
-                break
-            }
             remainingTime -= bestValve.1 + 1
             bestResult += (bestValve.1 + 1) * pressureReleased(valves, openedValves)
             openedValves.append(bestValve.0.name)
