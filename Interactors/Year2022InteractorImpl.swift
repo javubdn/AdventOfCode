@@ -683,7 +683,6 @@ extension Year2022InteractorImpl: YearInteractor {
     
     private func lastStuff(_ valves: [Valve], _ initial: String, _ time: Int) -> Int {
         /*
-        return bestResult
         */
         /*
         var closedValves = valves.filter { $0.rate > 0 }
