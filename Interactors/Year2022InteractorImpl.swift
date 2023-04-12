@@ -683,8 +683,6 @@ extension Year2022InteractorImpl: YearInteractor {
     
     private func lastStuff(_ valves: [Valve], _ initial: String, _ time: Int) -> Int {
         /*
-        while remainingTime > 0 {
-        }
         bestResult += remainingTime * pressureReleased(valves, openedValves)
         return bestResult
         */
