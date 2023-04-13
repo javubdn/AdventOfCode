@@ -685,7 +685,6 @@ extension Year2022InteractorImpl: YearInteractor {
         
         closedValves.forEach { valve in
             if remainingTime >= timeCost + 1 {
-                remainingTime -= timeCost + 1
             } else {
                 
             }
