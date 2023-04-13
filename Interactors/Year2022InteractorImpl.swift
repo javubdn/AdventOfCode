@@ -683,7 +683,6 @@ extension Year2022InteractorImpl: YearInteractor {
     
         
         
-        closedValves.forEach { valve in
         }
         
         zValues = zValuesThisRound
