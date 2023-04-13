@@ -682,7 +682,6 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
         
-        var zValuesThisRound: [Int: (Int, Int)] = [:]
         
         closedValves.forEach { valve in
             let timeCost = navigateValve(current, valve.name, valves, [])
