@@ -681,7 +681,6 @@ extension Year2022InteractorImpl: YearInteractor {
     
     }
     
-    private func lastStuff(_ valves: [Valve], _ initial: String, _ time: Int) -> Int {
         /*
         
         var zValuesThisRound: [Int: (Int, Int)] = [:]
