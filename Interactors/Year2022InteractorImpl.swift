@@ -688,7 +688,6 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
     func navigateValve(_ from: String, _ to: String, _ valves: [Valve], _ used: [String]) -> Int {
-        guard !used.contains(from) else { return Int.max }
         let fromValve = valves.first { $0.name == from }!
         if let _ = fromValve.valves.first(where: { $0 == to }) {
             return 1
