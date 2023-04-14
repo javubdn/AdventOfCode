@@ -688,7 +688,6 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
     func navigateValve(_ from: String, _ to: String, _ valves: [Valve], _ used: [String]) -> Int {
-        var used = used
         used.append(from)
         var bestCost = Int.max
         for valveName in fromValve.valves {
