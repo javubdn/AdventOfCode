@@ -675,10 +675,6 @@ extension Year2022InteractorImpl: YearInteractor {
     
     @objc
     func day16question2() -> String {
-        let input = readCSV("InputYear2022Day16")
-        let valvesPath = ValvesPathFinder(input)
-        let bestSolution = valvesPath.searchPath2(("AA", "AA"), 26)
-        return "\(bestSolution)"
     }
     
     }
