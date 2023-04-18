@@ -687,7 +687,6 @@ extension Year2022InteractorImpl: YearInteractor {
         
     }
     
-    func navigateValve(_ from: String, _ to: String, _ valves: [Valve], _ used: [String]) -> Int {
     }
     
 }
