@@ -665,6 +665,8 @@ extension Year2022InteractorImpl: YearInteractor {
         return BeaconRule(sensorX: sensorX, sensorY: sensorY, beaconX: beaconX, beaconY: beaconY)
     }
     
+    @objc
+    func day16question1() -> String {
         let input = readCSV("InputYear2022Day16")
         let valvesPath = ValvesPathFinder(input)
         let bestSolution = valvesPath.searchPaths("AA", 30)
