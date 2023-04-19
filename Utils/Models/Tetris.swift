@@ -15,6 +15,7 @@ class Tetris {
     
     private class TetrisState: Hashable {
         
+        let peaks: [Int]
     }
     
     
