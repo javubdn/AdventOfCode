@@ -19,6 +19,7 @@ class Tetris {
         let currentBlock: Int
         let currentIndex: Int
         
+            self.peaks = peaks
     }
     
     
