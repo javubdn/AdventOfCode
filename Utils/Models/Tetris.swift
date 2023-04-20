@@ -27,6 +27,7 @@ class Tetris {
         
         func hash(into hasher: inout Hasher) { }
         
+            lhs.peaks == rhs.peaks && lhs.currentBlock == rhs.currentBlock && lhs.currentIndex == rhs.currentIndex
     }
     
     
