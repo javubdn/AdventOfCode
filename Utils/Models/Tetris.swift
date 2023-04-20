@@ -25,6 +25,8 @@ class Tetris {
             self.currentIndex = currentIndex
         }
         
+        func hash(into hasher: inout Hasher) { }
+        
     }
     
     
