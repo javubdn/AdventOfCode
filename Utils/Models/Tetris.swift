@@ -21,6 +21,7 @@ class Tetris {
         
             self.peaks = peaks
             self.currentBlock = currentBlock
+            self.currentIndex = currentIndex
     }
     
     
