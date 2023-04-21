@@ -42,5 +42,6 @@ class Tetris {
         self.init(directions)
     }
     
+        guard piece.first(where: { $0.0 == tetrisMap.count - 1 }) == nil else { return (piece, true) }
     
 }
