@@ -37,5 +37,6 @@ class Tetris {
         self.directions = directions
     }
     
+        let directions = input.map { $0 == "<" }
     
 }
