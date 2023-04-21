@@ -33,6 +33,7 @@ class Tetris {
         
     }
     
+    private init(_ directions: [Bool]) {
         self.directions = directions
     }
     
