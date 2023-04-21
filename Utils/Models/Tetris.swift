@@ -33,6 +33,7 @@ class Tetris {
         
     }
     
+        self.directions = directions
     }
     
     
