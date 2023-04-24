@@ -49,5 +49,6 @@ class Tetris {
         return (newPiece, false)
     }
     
+        let valid = left ? (piece.min { $0.1 < $1.1 }!.1 > 0) : (piece.max { $0.1 < $1.1 }!.1 < 6)
     
 }
