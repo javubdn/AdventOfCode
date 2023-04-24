@@ -56,5 +56,6 @@ class Tetris {
         return piece.map { ($0.0, $0.1 + (left ? -1 : 1)) }
     }
     
+        var directionsIndex = directionsIndex
     
 }
