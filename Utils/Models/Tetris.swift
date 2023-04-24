@@ -51,5 +51,6 @@ class Tetris {
     
         let valid = left ? (piece.min { $0.1 < $1.1 }!.1 > 0) : (piece.max { $0.1 < $1.1 }!.1 < 6)
         guard valid else { return piece }
+        guard piece.first(where: { tetrisMap[$0.0][$0.1 + (left ? -1 : 1)] }) == nil else { return piece }
     
 }
