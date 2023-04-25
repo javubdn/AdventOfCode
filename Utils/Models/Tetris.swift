@@ -68,5 +68,6 @@ class Tetris {
         let item = index % 5
         insertLines(linesToInsert[item])
         var piece = pieces[item]
+            piece = move(piece, directions[directionsIndex%directions.count])
     
 }
