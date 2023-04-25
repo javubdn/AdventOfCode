@@ -58,5 +58,6 @@ class Tetris {
     
         var directionsIndex = directionsIndex
         insertLines(3)
+        let linesToInsert = [1, 3, 3, 4, 2]
     
 }
