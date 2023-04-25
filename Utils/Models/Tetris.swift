@@ -57,5 +57,6 @@ class Tetris {
     }
     
         var directionsIndex = directionsIndex
+        insertLines(3)
     
 }
