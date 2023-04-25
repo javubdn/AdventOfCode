@@ -67,5 +67,6 @@ class Tetris {
         ]
         let item = index % 5
         insertLines(linesToInsert[item])
+        var piece = pieces[item]
     
 }
