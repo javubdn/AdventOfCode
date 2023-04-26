@@ -70,5 +70,6 @@ class Tetris {
         var piece = pieces[item]
             piece = move(piece, directions[directionsIndex%directions.count])
             directionsIndex += 1
+            let (pieceFall, finish) = fall(piece)
     
 }
