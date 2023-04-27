@@ -72,5 +72,6 @@ class Tetris {
             directionsIndex += 1
             let (pieceFall, finish) = fall(piece)
             if finish { break }
+            piece = pieceFall
     
 }
