@@ -68,10 +68,12 @@ class Tetris {
         let item = index % 5
         insertLines(linesToInsert[item])
         var piece = pieces[item]
+        while true {
             piece = move(piece, directions[directionsIndex%directions.count])
             directionsIndex += 1
             let (pieceFall, finish) = fall(piece)
             if finish { break }
             piece = pieceFall
+        }
     
 }
