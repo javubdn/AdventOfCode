@@ -56,6 +56,7 @@ class Tetris {
         return piece.map { ($0.0, $0.1 + (left ? -1 : 1)) }
     }
     
+    private func insertPiece(_ index: Int, _ directionsIndex: Int) -> Int {
         var directionsIndex = directionsIndex
         insertLines(3)
         let linesToInsert = [1, 3, 3, 4, 2]
@@ -79,5 +80,7 @@ class Tetris {
         let filesToRemove = tetrisMap.enumerated().first { $0.element.filter { $0 }.count > 0 }!.offset
         tetrisMap.removeFirst(filesToRemove)
         return directionsIndex
+    }
+    
     
 }
