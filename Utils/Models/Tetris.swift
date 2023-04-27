@@ -75,5 +75,6 @@ class Tetris {
             if finish { break }
             piece = pieceFall
         }
+        piece.forEach { tetrisMap[$0.0][$0.1] = true }
     
 }
