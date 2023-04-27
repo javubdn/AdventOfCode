@@ -76,5 +76,6 @@ class Tetris {
             piece = pieceFall
         }
         piece.forEach { tetrisMap[$0.0][$0.1] = true }
+        let filesToRemove = tetrisMap.enumerated().first { $0.element.filter { $0 }.count > 0 }!.offset
     
 }
