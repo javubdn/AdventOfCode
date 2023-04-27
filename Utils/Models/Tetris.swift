@@ -82,5 +82,6 @@ class Tetris {
         return directionsIndex
     }
     
+            tetrisMap.insert([Bool](repeating: false, count: 7), at: 0)
     
 }
