@@ -94,5 +94,6 @@ class Tetris {
         }
         let minValue = peaks.min()!
         peaks = peaks.map { $0 - minValue }
+        return peaks
     
 }
