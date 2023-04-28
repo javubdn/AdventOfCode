@@ -93,5 +93,6 @@ class Tetris {
             peaks.append(tetrisMap.enumerated().first { $0.element[item] }?.offset ?? tetrisMap.count)
         }
         let minValue = peaks.min()!
+        peaks = peaks.map { $0 - minValue }
     
 }
