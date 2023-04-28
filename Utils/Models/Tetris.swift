@@ -89,5 +89,6 @@ class Tetris {
     }
     
         var peaks: [Int] = []
+            peaks.append(tetrisMap.enumerated().first { $0.element[item] }?.offset ?? tetrisMap.count)
     
 }
