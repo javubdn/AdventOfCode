@@ -88,5 +88,6 @@ class Tetris {
         }
     }
     
+        var peaks: [Int] = []
     
 }
