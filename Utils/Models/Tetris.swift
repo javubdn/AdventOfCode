@@ -98,5 +98,6 @@ class Tetris {
         return peaks
     }
     
+        var directionsIndex = 0
     
 }
