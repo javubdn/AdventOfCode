@@ -102,5 +102,8 @@ class Tetris {
         var states: [TetrisState: (Int, Int)] = [:]
         
             directionsIndex = insertPiece(index, directionsIndex)
+            let newState = TetrisState(peaks: getPeaks(),
+                                       currentBlock: index%5,
+                                       currentIndex: directionsIndex%directions.count)
     
 }
