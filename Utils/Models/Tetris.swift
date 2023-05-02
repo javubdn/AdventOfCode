@@ -99,5 +99,7 @@ class Tetris {
     }
     
         var directionsIndex = 0
+        var states: [TetrisState: (Int, Int)] = [:]
+        
     
 }
