@@ -106,5 +106,6 @@ class Tetris {
                                        currentBlock: index%5,
                                        currentIndex: directionsIndex%directions.count)
                 let stepsDiff = index - previousState.0
+                let heightDiff = tetrisMap.count - previousState.1
     
 }
