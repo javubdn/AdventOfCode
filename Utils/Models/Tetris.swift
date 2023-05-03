@@ -105,6 +105,7 @@ class Tetris {
             let newState = TetrisState(peaks: getPeaks(),
                                        currentBlock: index%5,
                                        currentIndex: directionsIndex%directions.count)
+            if let previousState = states[newState] {
                 let stepsDiff = index - previousState.0
                 let heightDiff = tetrisMap.count - previousState.1
                 let numberTimes = (input - previousState.0) / stepsDiff
@@ -116,5 +117,6 @@ class Tetris {
                     directionsIndex = insertPiece(i, directionsIndex)
                 }
                 return currentHeight + (tetrisMap.count - tetrisHeight)
+            }
     
 }
