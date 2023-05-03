@@ -112,5 +112,6 @@ class Tetris {
                 let finalSteps = input - (numberTimes * stepsDiff + previousState.0)
                 let tetrisHeight = tetrisMap.count
                 let minIndex = (index + 1) % 5
+                    directionsIndex = insertPiece(i, directionsIndex)
     
 }
