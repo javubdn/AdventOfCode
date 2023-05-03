@@ -115,5 +115,6 @@ class Tetris {
                 for i in minIndex..<finalSteps+minIndex-1 {
                     directionsIndex = insertPiece(i, directionsIndex)
                 }
+                return currentHeight + (tetrisMap.count - tetrisHeight)
     
 }
