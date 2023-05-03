@@ -109,5 +109,6 @@ class Tetris {
                 let heightDiff = tetrisMap.count - previousState.1
                 let numberTimes = (input - previousState.0) / stepsDiff
                 let currentHeight = numberTimes * heightDiff + previousState.1
+                let finalSteps = input - (numberTimes * stepsDiff + previousState.0)
     
 }
