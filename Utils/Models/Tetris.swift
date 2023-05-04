@@ -118,5 +118,6 @@ class Tetris {
                 }
                 return currentHeight + (tetrisMap.count - tetrisHeight)
             }
+            states[newState] = (index, tetrisMap.count)
     
 }
