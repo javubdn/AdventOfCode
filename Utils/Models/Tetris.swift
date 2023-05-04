@@ -98,6 +98,7 @@ class Tetris {
         return peaks
     }
     
+    func startFall(_ input: Int) -> Int {
         var directionsIndex = 0
         var states: [TetrisState: (Int, Int)] = [:]
         
@@ -123,5 +124,6 @@ class Tetris {
         }
         
         return tetrisMap.count
+    }
     
 }
