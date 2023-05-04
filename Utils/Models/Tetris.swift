@@ -122,5 +122,6 @@ class Tetris {
             states[newState] = (index, tetrisMap.count)
         }
         
+        return tetrisMap.count
     
 }
