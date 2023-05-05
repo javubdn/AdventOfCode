@@ -690,6 +690,8 @@ extension Year2022InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day17question2() -> String {
         let input = readCSV("InputYear2022Day17")
         let tetris = Tetris(input)
         let result = tetris.startFall(1_000_000_000_000)
