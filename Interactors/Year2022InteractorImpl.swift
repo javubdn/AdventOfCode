@@ -691,6 +691,7 @@ extension Year2022InteractorImpl: YearInteractor {
     }
     
         let input = readCSV("InputYear2022Day17")
+        let tetris = Tetris(input)
     }
     
     }
