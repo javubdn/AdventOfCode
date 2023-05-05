@@ -690,6 +690,7 @@ extension Year2022InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+        let input = readCSV("InputYear2022Day17")
     }
     
     }
