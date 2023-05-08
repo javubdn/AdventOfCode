@@ -704,6 +704,7 @@ extension Year2022InteractorImpl: YearInteractor {
     
     struct LavaDrop: Equatable {
         
+        let x: Int
         
         }
         
