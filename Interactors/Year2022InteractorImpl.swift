@@ -708,6 +708,7 @@ extension Year2022InteractorImpl: YearInteractor {
         let y: Int
         let z: Int
         
+            x == other.x && y == other.y && z == other.z
         }
         
     }
