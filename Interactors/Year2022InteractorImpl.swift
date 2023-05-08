@@ -714,6 +714,7 @@ extension Year2022InteractorImpl: YearInteractor {
         
             ((x == other.x + 1 || x == other.x - 1) && y == other.y && z == other.z)
             || ((y == other.y + 1 || y == other.y - 1) && x == other.x && z == other.z)
+            || ((z == other.z + 1 || z == other.z - 1) && x == other.x && y == other.y)
     }
     
     }
