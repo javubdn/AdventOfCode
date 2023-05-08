@@ -706,6 +706,7 @@ extension Year2022InteractorImpl: YearInteractor {
         
         let x: Int
         let y: Int
+        let z: Int
         
         }
         
