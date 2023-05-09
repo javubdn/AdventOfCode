@@ -702,6 +702,7 @@ extension Year2022InteractorImpl: YearInteractor {
     
     }
     
+    /*
     struct LavaDrop: Equatable {
         
         let x: Int
@@ -718,6 +719,7 @@ extension Year2022InteractorImpl: YearInteractor {
             || ((z == other.z + 1 || z == other.z - 1) && x == other.x && y == other.y)
         }
     }
+    */
     
     }
     
