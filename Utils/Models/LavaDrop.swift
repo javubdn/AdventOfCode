@@ -10,5 +10,6 @@ import Foundation
 class LavaDrop {
     
     let x: Int
+    let y: Int
 }
 
