@@ -13,5 +13,6 @@ class LavaDrop {
     let y: Int
     let z: Int
     
+        self.x = x
 }
 
