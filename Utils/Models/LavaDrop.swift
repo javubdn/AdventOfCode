@@ -11,5 +11,7 @@ class LavaDrop {
     
     let x: Int
     let y: Int
+    let z: Int
+    
 }
 
