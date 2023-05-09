@@ -9,5 +9,6 @@ import Foundation
 
 class LavaDrop {
     
+    let x: Int
 }
 
