@@ -19,5 +19,6 @@ class LavaDrop {
         self.z = z
     }
     
+        ((x == other.x + 1 || x == other.x - 1) && y == other.y && z == other.z)
 }
 
