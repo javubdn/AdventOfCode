@@ -13,8 +13,11 @@ class LavaDrop {
     let y: Int
     let z: Int
     
+    init(_ x: Int, _ y: Int, _ z: Int) {
         self.x = x
         self.y = y
         self.z = z
+    }
+    
 }
 
