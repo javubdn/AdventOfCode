@@ -25,5 +25,6 @@ class LavaDrop {
         || ((z == other.z + 1 || z == other.z - 1) && x == other.x && y == other.y)
     }
     
+        [LavaDrop(x, y, z-1), LavaDrop(x, y, z+1),
 }
 
