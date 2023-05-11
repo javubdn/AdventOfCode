@@ -33,3 +33,4 @@ class LavaDrop {
     
 }
 
+    func hash(into hasher: inout Hasher) { }
