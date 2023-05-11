@@ -25,8 +25,11 @@ class LavaDrop {
         || ((z == other.z + 1 || z == other.z - 1) && x == other.x && y == other.y)
     }
     
+    func collindants() -> [LavaDrop] {
         [LavaDrop(x, y, z-1), LavaDrop(x, y, z+1),
          LavaDrop(x, y-1, z), LavaDrop(x, y+1, z),
          LavaDrop(x-1, y, z), LavaDrop(x+1, y, z)]
+    }
+    
 }
 
