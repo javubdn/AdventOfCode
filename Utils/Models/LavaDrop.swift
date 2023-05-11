@@ -33,7 +33,12 @@ class LavaDrop {
     
 }
 
+extension LavaDrop: Hashable {
+    
     func hash(into hasher: inout Hasher) { }
+    
     static func == (lhs: LavaDrop, rhs: LavaDrop) -> Bool {
         lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z
     }
+    
+}
