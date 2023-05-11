@@ -27,5 +27,6 @@ class LavaDrop {
     
         [LavaDrop(x, y, z-1), LavaDrop(x, y, z+1),
          LavaDrop(x, y-1, z), LavaDrop(x, y+1, z),
+         LavaDrop(x-1, y, z), LavaDrop(x+1, y, z)]
 }
 
