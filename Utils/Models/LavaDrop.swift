@@ -34,3 +34,4 @@ class LavaDrop {
 }
 
     func hash(into hasher: inout Hasher) { }
+        lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z
