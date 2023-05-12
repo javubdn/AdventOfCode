@@ -718,6 +718,7 @@ extension Year2022InteractorImpl: YearInteractor {
             let values = item.components(separatedBy: ",")
             return LavaDrop(Int(values[0])!, Int(values[1])!, Int(values[2])!)
         }
+            drops.filter { $0.collindant(drop) }.count
     }
     
     }
