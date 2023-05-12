@@ -714,8 +714,10 @@ extension Year2022InteractorImpl: YearInteractor {
 //2,3,5
 //"""
         let input = readCSV("InputYear2022Day18")
+        let drops = input.components(separatedBy: .newlines).map { item in
             let values = item.components(separatedBy: ",")
             return LavaDrop(Int(values[0])!, Int(values[1])!, Int(values[2])!)
+        }
     }
     
     }
