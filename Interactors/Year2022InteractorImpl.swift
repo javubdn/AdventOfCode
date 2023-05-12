@@ -722,6 +722,7 @@ extension Year2022InteractorImpl: YearInteractor {
             drops.filter { $0.collindant(drop) }.count
         }.reduce(0, +)
         let result = drops.count * 6 - collindants
+        return "\(result)"
     }
     
     }
