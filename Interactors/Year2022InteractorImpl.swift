@@ -714,6 +714,7 @@ extension Year2022InteractorImpl: YearInteractor {
 //2,3,5
 //"""
         let input = readCSV("InputYear2022Day18")
+            let values = item.components(separatedBy: ",")
     }
     
     }
