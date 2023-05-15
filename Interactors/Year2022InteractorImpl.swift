@@ -732,6 +732,7 @@ extension Year2022InteractorImpl: YearInteractor {
 //            let values = item.components(separatedBy: ",")
 //            return LavaDrop(Int(values[0])!, Int(values[1])!, Int(values[2])!)
 //        }
+//        let minX = drops.min { $0.x < $1.x }!.x
     }
     
     /*
