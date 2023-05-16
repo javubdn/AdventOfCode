@@ -740,6 +740,7 @@ extension Year2022InteractorImpl: YearInteractor {
 //        let maxZ = drops.min { $0.z > $1.z }!.z
 //        var queue = [LavaDrop(minX, minY, minZ)]
 //        var seen: Set<LavaDrop> = Set()
+//        var total = 0
     }
     
     /*
