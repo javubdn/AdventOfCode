@@ -742,6 +742,7 @@ extension Year2022InteractorImpl: YearInteractor {
 //        var seen: Set<LavaDrop> = Set()
 //        var total = 0
 //            let drop = queue.removeFirst()
+//            guard !seen.contains(drop) else { continue }
     }
     
     /*
