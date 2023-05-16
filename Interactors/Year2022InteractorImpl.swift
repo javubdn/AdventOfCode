@@ -736,6 +736,7 @@ extension Year2022InteractorImpl: YearInteractor {
 //        let maxX = drops.min { $0.x > $1.x }!.x
 //        let minY = drops.min { $0.y < $1.y }!.y
 //        let maxY = drops.min { $0.y > $1.y }!.y
+//        let minZ = drops.min { $0.z < $1.z }!.z
     }
     
     /*
