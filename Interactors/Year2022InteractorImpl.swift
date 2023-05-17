@@ -744,6 +744,7 @@ extension Year2022InteractorImpl: YearInteractor {
 //            let drop = queue.removeFirst()
 //            guard !seen.contains(drop) else { continue }
 //                    && $0.y >= minY - 1 && $0.y <= maxY + 1
+//                    && $0.z >= minZ - 1 && $0.z <= maxZ + 1
     }
     
     /*
