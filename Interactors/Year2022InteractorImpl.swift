@@ -743,6 +743,7 @@ extension Year2022InteractorImpl: YearInteractor {
 //        var total = 0
 //            let drop = queue.removeFirst()
 //            guard !seen.contains(drop) else { continue }
+//                    && $0.y >= minY - 1 && $0.y <= maxY + 1
     }
     
     /*
