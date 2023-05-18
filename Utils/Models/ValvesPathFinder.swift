@@ -39,6 +39,7 @@ class ValvesPathFinder {
     }
     
     private func calculateShortestPaths() -> [String: [String: Int]] {
+        var s: [String: [String: Int]] = [:]
         
         var shortestPaths = rooms.values.associate {
             it.name to it.paths.associateWith { 1 }.toMutableMap()
