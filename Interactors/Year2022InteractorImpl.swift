@@ -748,12 +748,14 @@ extension Year2022InteractorImpl: YearInteractor {
 //                    && $0.y >= minY - 1 && $0.y <= maxY + 1
 //                    && $0.z >= minZ - 1 && $0.z <= maxZ + 1
 //                }
+//                .forEach { collinder in
 //                    seen.insert(drop)
 //                    if drops.contains(collinder) {
 //                        total += 1
 //                    } else {
 //                        queue.append(collinder)
 //                    }
+//                }
     }
     
     /*
