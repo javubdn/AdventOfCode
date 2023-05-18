@@ -16,6 +16,7 @@ class ValvesPathFinder {
     }
     
     private let valves: [ValveRoom]
+    private var cheapestPathCosts: [String: [String: Int]] = [:]
     
     private init(valves: [ValveRoom]) {
         self.valves = valves
