@@ -741,6 +741,7 @@ extension Year2022InteractorImpl: YearInteractor {
 //        var queue = [LavaDrop(minX, minY, minZ)]
 //        var seen: Set<LavaDrop> = Set()
 //        var total = 0
+//        while !queue.isEmpty {
 //            let drop = queue.removeFirst()
 //            guard !seen.contains(drop) else { continue }
 //            drop.collindants()
@@ -756,6 +757,7 @@ extension Year2022InteractorImpl: YearInteractor {
 //                        queue.append(collinder)
 //                    }
 //                }
+//        }
     }
     
     /*
