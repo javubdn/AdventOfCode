@@ -727,6 +727,8 @@ extension Year2022InteractorImpl: YearInteractor {
         return "\(result)"
     }
     
+    @objc
+    func day18question2() -> String {
 //        let input = readCSV("InputYear2022Day18")
 //        let drops = input.components(separatedBy: .newlines).map { item -> LavaDrop in
 //            let values = item.components(separatedBy: ",")
