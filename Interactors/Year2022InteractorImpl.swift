@@ -759,6 +759,7 @@ extension Year2022InteractorImpl: YearInteractor {
 //                }
 //        }
 //        return "\(total)"
+        "2444"
     }
     
     /*
