@@ -43,7 +43,6 @@ class ValvesPathFinder {
         
         shortestPaths.keys.permutations(3).forEach { (waypoint, from, to) ->
             shortestPaths[from, to] = minOf(
-                shortestPaths[from, to], // Existing Path
                 shortestPaths[from, waypoint] + shortestPaths[waypoint, to] // New Path
             )
         }
