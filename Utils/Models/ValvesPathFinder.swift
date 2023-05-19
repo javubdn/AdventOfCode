@@ -42,7 +42,6 @@ class ValvesPathFinder {
         var s: [String: [String: Int]] = [:]
         
         var shortestPaths = rooms.values.associate {
-            it.name to it.paths.associateWith { 1 }.toMutableMap()
         }.toMutableMap()
 
         shortestPaths.keys.permutations(3).forEach { (waypoint, from, to) ->
