@@ -43,7 +43,6 @@ class ValvesPathFinder {
         
         shortestPaths.keys.permutations(3).forEach { (waypoint, from, to) ->
             shortestPaths[from, to] = minOf(
-                shortestPaths[from, waypoint] + shortestPaths[waypoint, to] // New Path
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
