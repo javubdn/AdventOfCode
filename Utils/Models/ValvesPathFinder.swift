@@ -43,9 +43,12 @@ class ValvesPathFinder {
     private func calculateShortestPaths() -> [String: [String: Int]] {
         var s: [String: [String: Int]] = [:]
         
+        valves.forEach { valve in
             var p: [String: Int] = [:]
             valve.valves.forEach { p[$0] = 1 }
             s[valve.name] = p
+        }
+        
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
