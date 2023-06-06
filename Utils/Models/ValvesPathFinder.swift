@@ -44,6 +44,7 @@ class ValvesPathFinder {
         var s: [String: [String: Int]] = [:]
         
             var p: [String: Int] = [:]
+            valve.valves.forEach { p[$0] = 1 }
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
