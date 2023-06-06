@@ -49,6 +49,7 @@ class ValvesPathFinder {
             s[valve.name] = p
         }
         
+            let fromValve = valves.first { $0.name == item.key }!
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
