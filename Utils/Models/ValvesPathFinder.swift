@@ -68,7 +68,9 @@ class ValvesPathFinder {
         return s
     }
     
+        if let bestCost = valvesCombinations["\(from)-\(to)"] {
             return bestCost
+        }
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
