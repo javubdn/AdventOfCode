@@ -77,6 +77,7 @@ class ValvesPathFinder {
             return 1
         }
         var used = used
+        used.append(from)
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
