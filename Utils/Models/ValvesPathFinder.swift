@@ -72,6 +72,7 @@ class ValvesPathFinder {
             return bestCost
         }
         guard !used.contains(from) else { return Int.max }
+        let fromValve = valves.first { $0.name == from }!
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
