@@ -68,6 +68,7 @@ class ValvesPathFinder {
         return s
     }
     
+            return bestCost
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
