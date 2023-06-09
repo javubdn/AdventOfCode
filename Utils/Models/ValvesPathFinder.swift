@@ -79,8 +79,10 @@ class ValvesPathFinder {
         var used = used
         used.append(from)
         var bestCost = Int.max
+        for valveName in fromValve.valves {
             let cost = navigateValve(valveName, to, used)
             bestCost = min(bestCost, cost)
+        }
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
