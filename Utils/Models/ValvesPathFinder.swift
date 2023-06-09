@@ -84,7 +84,9 @@ class ValvesPathFinder {
             bestCost = min(bestCost, cost)
         }
         let solution = bestCost == Int.max ? Int.max : bestCost + 1
+        if solution != Int.max {
             valvesCombinations["\(from)-\(to)"] = solution
+        }
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
