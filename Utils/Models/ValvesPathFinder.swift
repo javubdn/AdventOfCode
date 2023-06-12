@@ -89,6 +89,7 @@ class ValvesPathFinder {
             valvesCombinations["\(from)-\(to)"] = solution
         }
         return solution
+    }
     
     
             )
