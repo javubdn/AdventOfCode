@@ -95,6 +95,7 @@ class ValvesPathFinder {
                 seen1.insert(item.key)
                                    timeAllowed,
                                    seen1,
+                                   timeTaken + item.value + 1,
     
             )
         }
