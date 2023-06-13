@@ -93,6 +93,7 @@ class ValvesPathFinder {
     
                 var seen1 = seen
                 seen1.insert(item.key)
+                return searchPaths(item.key,
                                    timeAllowed,
                                    seen1,
                                    timeTaken + item.value + 1,
