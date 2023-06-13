@@ -94,6 +94,7 @@ class ValvesPathFinder {
                 var seen1 = seen
                 seen1.insert(item.key)
                                    timeAllowed,
+                                   seen1,
     
             )
         }
