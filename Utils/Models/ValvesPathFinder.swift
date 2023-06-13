@@ -91,6 +91,7 @@ class ValvesPathFinder {
         return solution
     }
     
+                var seen1 = seen
     
             )
         }
