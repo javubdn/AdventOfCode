@@ -96,6 +96,7 @@ class ValvesPathFinder {
                                    timeAllowed,
                                    seen1,
                                    timeTaken + item.value + 1,
+                                   totalFlow + (timeAllowed - timeTaken - item.value - 1) * valves.first { $0.name == item.key }!.rate)
     
             )
         }
