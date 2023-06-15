@@ -91,6 +91,7 @@ class ValvesPathFinder {
         return solution
     }
     
+        let valveWays = cheapestPathCosts[location]!
             .filter { !seen.contains($0.key) }
             .filter { $0.value + timeTaken + 1 < timeAllowed }
             .map { item in
@@ -101,6 +102,8 @@ class ValvesPathFinder {
                                    seen1,
                                    timeTaken + item.value + 1,
                                    totalFlow + (timeAllowed - timeTaken - item.value - 1) * valves.first { $0.name == item.key }!.rate)
+            }
+        
     
             )
         }
