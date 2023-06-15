@@ -91,6 +91,7 @@ class ValvesPathFinder {
         return solution
     }
     
+                     _ timeAllowed: Int,
         let valveWays = cheapestPathCosts[location]!
             .filter { !seen.contains($0.key) }
             .filter { $0.value + timeTaken + 1 < timeAllowed }
