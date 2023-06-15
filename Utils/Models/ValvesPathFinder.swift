@@ -91,6 +91,7 @@ class ValvesPathFinder {
         return solution
     }
     
+            .filter { $0.value + timeTaken + 1 < timeAllowed }
             .map { item in
                 var seen1 = seen
                 seen1.insert(item.key)
