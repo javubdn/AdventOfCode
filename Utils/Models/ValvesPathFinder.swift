@@ -108,6 +108,7 @@ class ValvesPathFinder {
                                    totalFlow + (timeAllowed - timeTaken - item.value - 1) * valves.first { $0.name == item.key }!.rate)
             }
         
+        guard valveWays.count > 0 else { return totalFlow }
     
             )
         }
