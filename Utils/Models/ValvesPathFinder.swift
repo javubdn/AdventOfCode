@@ -117,6 +117,7 @@ class ValvesPathFinder {
             return costForDemiMovement(location.0, location.1, seen, timeAllowed, timeTaken, timeCurrentValve.1, totalFlow)
             let validNamesA = getValidValves(location.0, seen, timeTaken, timeAllowed).map { $0.key }
             let validNamesB = getValidValves(location.1, seen, timeTaken, timeAllowed).map { $0.key }
+            
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
