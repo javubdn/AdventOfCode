@@ -113,6 +113,7 @@ class ValvesPathFinder {
         return valveWays.max()!
     }
     
+            return costForDemiMovement(location.1, location.0, seen, timeAllowed, timeTaken, timeCurrentValve.0, totalFlow)
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
