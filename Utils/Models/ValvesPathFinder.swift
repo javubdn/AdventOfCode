@@ -111,6 +111,7 @@ class ValvesPathFinder {
         
         guard valveWays.count > 0 else { return totalFlow }
         return valveWays.max()!
+    }
     
             )
         }
