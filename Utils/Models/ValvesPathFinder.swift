@@ -122,6 +122,7 @@ class ValvesPathFinder {
                 .filter { $0.0 != $0.1 }
                 var seen1 = seen
                 seen1.insert(combination.0)
+                seen1.insert(combination.1)
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
