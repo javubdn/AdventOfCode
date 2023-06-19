@@ -118,6 +118,7 @@ class ValvesPathFinder {
             let validNamesA = getValidValves(location.0, seen, timeTaken, timeAllowed).map { $0.key }
             let validNamesB = getValidValves(location.1, seen, timeTaken, timeAllowed).map { $0.key }
             
+                .filter { $0.0 != $0.1 }
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
