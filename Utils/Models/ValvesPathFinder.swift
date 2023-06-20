@@ -129,6 +129,7 @@ class ValvesPathFinder {
                 let flow2 = (timeAllowed - timeTaken - cheapestPathCosts[location.1]![combination.1]! - 1) * item2.rate
                 let newTimeTaken = min(cheapestPathCosts[location.0]![combination.0]!, cheapestPathCosts[location.1]![combination.1]!) + 1
                 let newTime1 = cheapestPathCosts[location.0]![combination.0]! + 1 - newTimeTaken
+                let newTime2 = cheapestPathCosts[location.1]![combination.1]! + 1 - newTimeTaken
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
