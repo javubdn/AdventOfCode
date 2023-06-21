@@ -142,6 +142,7 @@ class ValvesPathFinder {
             }
             
             guard combinationCosts.count > 0 else { return totalFlow }
+            return combinationCosts.max()!
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
