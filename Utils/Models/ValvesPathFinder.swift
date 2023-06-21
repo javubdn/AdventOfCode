@@ -113,8 +113,11 @@ class ValvesPathFinder {
         return valveWays.max()!
     }
     
+        if timeCurrentValve.0 > 0 {
             return costForDemiMovement(location.1, location.0, seen, timeAllowed, timeTaken, timeCurrentValve.0, totalFlow)
+        } else if timeCurrentValve.1 > 0 {
             return costForDemiMovement(location.0, location.1, seen, timeAllowed, timeTaken, timeCurrentValve.1, totalFlow)
+        } else {
             let validNamesA = getValidValves(location.0, seen, timeTaken, timeAllowed).map { $0.key }
             let validNamesB = getValidValves(location.1, seen, timeTaken, timeAllowed).map { $0.key }
             
@@ -143,6 +146,7 @@ class ValvesPathFinder {
             
             guard combinationCosts.count > 0 else { return totalFlow }
             return combinationCosts.max()!
+        }
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
