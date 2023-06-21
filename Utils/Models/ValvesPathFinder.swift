@@ -113,6 +113,13 @@ class ValvesPathFinder {
         return valveWays.max()!
     }
     
+    func searchPath2(_ location: (String, String),
+                     _ timeAllowed: Int,
+                     _ seen: Set<String> = Set(),
+                     _ timeTaken: Int = 0,
+                     _ timeCurrentValve: (Int, Int) = (0, 0),
+                     _ totalFlow: Int = 0) -> Int {
+        
         if timeCurrentValve.0 > 0 {
             return costForDemiMovement(location.1, location.0, seen, timeAllowed, timeTaken, timeCurrentValve.0, totalFlow)
         } else if timeCurrentValve.1 > 0 {
@@ -147,6 +154,8 @@ class ValvesPathFinder {
             guard combinationCosts.count > 0 else { return totalFlow }
             return combinationCosts.max()!
         }
+    }
+    
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
