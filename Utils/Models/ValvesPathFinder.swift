@@ -120,6 +120,8 @@ class ValvesPathFinder {
             
             let validCombinations = Utils.cartesianProduct(lhs: validNamesA, rhs: validNamesB)
                 .filter { $0.0 != $0.1 }
+            
+            let combinationCosts = validCombinations.map { combination in
                 var seen1 = seen
                 seen1.insert(combination.0)
                 seen1.insert(combination.1)
@@ -137,6 +139,8 @@ class ValvesPathFinder {
                                    (newTime1, newTime2),
                                    totalFlow + flow1 + flow2
                 )
+            }
+            
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
