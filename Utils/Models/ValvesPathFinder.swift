@@ -157,6 +157,7 @@ class ValvesPathFinder {
     }
     
         let validValves = getValidValves(locationFinished, seen, timeTaken, timeAllowed)
+            var seen1 = seen
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
