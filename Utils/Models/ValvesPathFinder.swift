@@ -163,6 +163,12 @@ class ValvesPathFinder {
             let newTimeTaken = min(valve.value + 1, timeMovement)
             let newTime1 = timeMovement - newTimeTaken
             let newTime2 = valve.value + 1 - newTimeTaken
+            return searchPath2((locationMovement, valve.key),
+                               timeAllowed,
+                               seen1,
+                               timeTaken + newTimeTaken,
+                               (newTime1, newTime2),
+                               totalFlow + flow
             )
         }
         val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
