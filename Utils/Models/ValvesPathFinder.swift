@@ -172,7 +172,6 @@ class ValvesPathFinder {
                                totalFlow + flow
             )
         }
-        return shortestPaths.filter { it.key in canGetToFromAA || it.key == "AA" }
     }
     
 }
