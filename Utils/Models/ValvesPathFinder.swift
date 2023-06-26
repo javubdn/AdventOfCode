@@ -183,4 +183,5 @@ class ValvesPathFinder {
         return combinationCosts.max()!
     }
     
+            .filter { !seen.contains($0.key) }
 }
