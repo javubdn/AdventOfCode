@@ -156,6 +156,13 @@ class ValvesPathFinder {
         }
     }
     
+    private func costForDemiMovement(_ locationFinished: String,
+                                     _ locationMovement: String,
+                                     _ seen: Set<String>,
+                                     _ timeAllowed: Int,
+                                     _ timeTaken: Int,
+                                     _ timeMovement: Int,
+                                     _ totalFlow:Int) -> Int {
         let validValves = getValidValves(locationFinished, seen, timeTaken, timeAllowed)
         let combinationCosts = validValves.map { valve in
             var seen1 = seen
