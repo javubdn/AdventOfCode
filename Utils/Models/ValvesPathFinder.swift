@@ -172,7 +172,6 @@ class ValvesPathFinder {
                                totalFlow + flow
             )
         }
-        val canGetToFromAA: Set<String> = shortestPaths.getValue("AA").keys
         return shortestPaths.filter { it.key in canGetToFromAA || it.key == "AA" }
     }
     
