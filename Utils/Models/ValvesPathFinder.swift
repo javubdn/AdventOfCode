@@ -172,6 +172,7 @@ class ValvesPathFinder {
                                totalFlow + flow
             )
         }
+        guard combinationCosts.count > 0 else { return totalFlow }
     }
     
 }
