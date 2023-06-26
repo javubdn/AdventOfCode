@@ -172,7 +172,6 @@ class ValvesPathFinder {
                                totalFlow + flow
             )
         }
-        val zeroFlowRooms = rooms.values.filter { it.flowRate == 0 || it.name == "AA" }.map { it.name }.toSet()
         shortestPaths.values.forEach { it.keys.removeAll(zeroFlowRooms) }
         val canGetToFromAA: Set<String> = shortestPaths.getValue("AA").keys
         return shortestPaths.filter { it.key in canGetToFromAA || it.key == "AA" }
