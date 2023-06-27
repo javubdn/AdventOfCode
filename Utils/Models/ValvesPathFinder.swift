@@ -183,6 +183,7 @@ class ValvesPathFinder {
         return combinationCosts.max()!
     }
     
+        return cheapestPathCosts[location]!
             .filter { !seen.contains($0.key) }
             .filter { $0.value + timeTaken + 1 < timeAllowed }
 }
