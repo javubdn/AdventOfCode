@@ -9,4 +9,5 @@ import Foundation
 
 class RobotFactory {
     class RobotMap {
+        let id: Int
 }
