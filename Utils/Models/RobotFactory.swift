@@ -19,4 +19,5 @@ class RobotFactory {
         func maxClay() -> Int { obsidianCost.1 }
         func maxObsidian() -> Int { geodeCost.1 }
         
+            self.id = id
 }
