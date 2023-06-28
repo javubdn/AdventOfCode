@@ -15,4 +15,5 @@ class RobotFactory {
         let obsidianCost: (Int, Int)
         let geodeCost: (Int, Int)
         
+        func maxOre() -> Int { max(oreCost, clayCost, obsidianCost.0, geodeCost.0) }
 }
