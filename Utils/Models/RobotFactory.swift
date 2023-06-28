@@ -20,4 +20,5 @@ class RobotFactory {
         func maxObsidian() -> Int { geodeCost.1 }
         
             self.id = id
+            self.oreCost = oreCost
 }
