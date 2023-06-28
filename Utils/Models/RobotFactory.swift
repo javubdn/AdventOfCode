@@ -12,4 +12,5 @@ class RobotFactory {
         let id: Int
         let oreCost: Int
         let clayCost: Int
+        let obsidianCost: (Int, Int)
 }
