@@ -22,4 +22,5 @@ class RobotFactory {
             self.id = id
             self.oreCost = oreCost
             self.clayCost = clayCost
+            self.obsidianCost = obsidianCost
 }
