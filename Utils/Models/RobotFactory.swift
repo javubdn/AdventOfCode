@@ -27,4 +27,5 @@ class RobotFactory {
             self.geodeCost = geodeCost
         }
         
+            var maxGeodes = 0
 }
