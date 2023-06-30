@@ -27,6 +27,7 @@ class RobotFactory {
             self.geodeCost = geodeCost
         }
         
+        func calculateGeodesFound(_ timeBudget: Int) -> Int {
             var maxGeodes = 0
             var states = [StateRobot(a: 1, b: 0, c: 0, d: 0, e: 1, f: 0, g: 0, h: 0, i: 1)]
             while !states.isEmpty {
@@ -37,4 +38,6 @@ class RobotFactory {
                 maxGeodes = max(maxGeodes, state.h)
             }
             return maxGeodes
+        }
+        
 }
