@@ -33,4 +33,5 @@ class RobotFactory {
                 if state.canOutproduceBest(maxGeodes, timeBudget) {
                     states.append(contentsOf: state.calculateNextStates(self, timeBudget))
                 }
+                maxGeodes = max(maxGeodes, state.h)
 }
