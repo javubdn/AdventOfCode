@@ -36,4 +36,5 @@ class RobotFactory {
                 }
                 maxGeodes = max(maxGeodes, state.h)
             }
+            return maxGeodes
 }
