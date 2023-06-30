@@ -40,4 +40,15 @@ class RobotFactory {
             return maxGeodes
         }
         
+//            var states = [(1, 0, 0, 0, 0, 0, 0, 0, cycles)]
+//            var bestResult = 0
+//            while !states.isEmpty {
+//                let state = states.removeFirst()
+//                if state.8 == 0 {
+//                    bestResult = max(bestResult, state.7)
+//                    continue
+//                }
+//                states.append(contentsOf: getStates(state))
+//            }
+//            return bestResult
 }
