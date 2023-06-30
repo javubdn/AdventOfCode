@@ -29,9 +29,11 @@ class RobotFactory {
         
             var maxGeodes = 0
             var states = [StateRobot(a: 1, b: 0, c: 0, d: 0, e: 1, f: 0, g: 0, h: 0, i: 1)]
+            while !states.isEmpty {
                 let state = states.removeFirst()
                 if state.canOutproduceBest(maxGeodes, timeBudget) {
                     states.append(contentsOf: state.calculateNextStates(self, timeBudget))
                 }
                 maxGeodes = max(maxGeodes, state.h)
+            }
 }
