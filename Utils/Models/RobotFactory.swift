@@ -50,6 +50,7 @@ class RobotFactory {
             var clayBots = state.1
             var obsBots = state.2
             var geoBots = state.3
+            var ores = state.4
 //            }
 //            return bestResult
 }
