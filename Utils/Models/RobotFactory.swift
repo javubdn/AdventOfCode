@@ -46,6 +46,7 @@ class RobotFactory {
             return result
         }
         
+            var oreBots = state.0
 //            }
 //            return bestResult
 }
