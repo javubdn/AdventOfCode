@@ -40,9 +40,12 @@ class RobotFactory {
             return maxGeodes
         }
         
+        func bestObsidian(_ cycles: Int) -> Int {
             let stateMain = StateRobot(a: 1, b: 0, c: 0, d: 0, e: 0, f: 0, g: 0, h: 0, i: cycles)
             let result = recurs(stateMain)
             return result
+        }
+        
 //            }
 //            return bestResult
 }
