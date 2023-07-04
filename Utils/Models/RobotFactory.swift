@@ -54,6 +54,7 @@ class RobotFactory {
             var clays = state.5
             var obsids = state.6
             var geos = state.7
+            let time = state.8
 //            }
 //            return bestResult
 }
