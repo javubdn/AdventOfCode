@@ -57,6 +57,7 @@ class RobotFactory {
             let time = state.8
             var newOres = false
             var newClays = false
+            var newObs = false
 //            }
 //            return bestResult
 }
