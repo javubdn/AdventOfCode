@@ -56,6 +56,7 @@ class RobotFactory {
             var geos = state.7
             let time = state.8
             var newOres = false
+            var newClays = false
 //            }
 //            return bestResult
 }
