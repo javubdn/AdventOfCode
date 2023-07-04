@@ -61,5 +61,4 @@ class RobotFactory {
             var newGeos = false
             
 //            }
-//            return bestResult
 }
