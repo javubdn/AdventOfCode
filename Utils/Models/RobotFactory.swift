@@ -55,6 +55,7 @@ class RobotFactory {
             var obsids = state.6
             var geos = state.7
             let time = state.8
+            var newOres = false
 //            }
 //            return bestResult
 }
