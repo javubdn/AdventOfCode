@@ -58,6 +58,8 @@ class RobotFactory {
             var newOres = false
             var newClays = false
             var newObs = false
+            var newGeos = false
+            
 //            }
 //            return bestResult
 }
