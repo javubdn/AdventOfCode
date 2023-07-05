@@ -65,4 +65,5 @@ class RobotFactory {
 //                ores -= geodeCost.0
 //                obsids -= geodeCost.1
 //            }
+//                newObs = true
 }
