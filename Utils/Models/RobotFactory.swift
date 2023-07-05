@@ -61,5 +61,6 @@ class RobotFactory {
             var newGeos = false
             
 //                newGeos = true
+//                ores -= geodeCost.0
 //            }
 }
