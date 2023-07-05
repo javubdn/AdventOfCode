@@ -60,5 +60,6 @@ class RobotFactory {
             var newObs = false
             var newGeos = false
             
+//                newGeos = true
 //            }
 }
