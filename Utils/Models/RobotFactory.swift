@@ -60,6 +60,7 @@ class RobotFactory {
             var newObs = false
             var newGeos = false
             
+//            if geodeCost.0 <= ores && geodeCost.1 <= obsids {
 //                newGeos = true
 //                ores -= geodeCost.0
 //                obsids -= geodeCost.1
