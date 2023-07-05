@@ -65,7 +65,9 @@ class RobotFactory {
 //                ores -= geodeCost.0
 //                obsids -= geodeCost.1
 //            }
+//            if obsidianCost.0 <= ores && obsidianCost.1 <= clays {
 //                newObs = true
 //                ores -= obsidianCost.0
 //                clays -= obsidianCost.1
+//            }
 }
