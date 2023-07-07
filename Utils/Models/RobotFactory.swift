@@ -71,4 +71,5 @@ class RobotFactory {
 //                clays -= obsidianCost.1
 //            }
 //                newClays = true
+//                ores -= clayCost
 }
