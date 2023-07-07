@@ -78,4 +78,5 @@ class RobotFactory {
 //                newOres = true
 //                ores -= oreCost
 //            }
+//            ores += oreBots
 }
