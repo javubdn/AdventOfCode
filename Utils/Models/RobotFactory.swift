@@ -82,4 +82,5 @@ class RobotFactory {
 //            clays += clayBots
 //            obsids += obsBots
 //            geos += geoBots
+//            oreBots += newOres ? 1 : 0
 }
