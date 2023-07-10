@@ -89,4 +89,5 @@ class RobotFactory {
 //
 //            let statusBasic = (oreBots, clayBots, obsBots, geoBots, ores+oreBots, clays+clayBots, obsids+obsBots, geos+geoBots, time - 1)
 //
+                                states.append(getNewState(state, (first, second, third, fourth)))
 }
