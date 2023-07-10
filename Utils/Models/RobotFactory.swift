@@ -81,4 +81,5 @@ class RobotFactory {
 //            ores += oreBots
 //            clays += clayBots
 //            obsids += obsBots
+//            geos += geoBots
 }
