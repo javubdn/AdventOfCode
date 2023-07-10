@@ -87,4 +87,6 @@ class RobotFactory {
 //            obsBots += newObs ? 1 : 0
 //            geoBots += newGeos ? 1 : 0
 //
+//            let statusBasic = (oreBots, clayBots, obsBots, geoBots, ores+oreBots, clays+clayBots, obsids+obsBots, geos+geoBots, time - 1)
+//
 }
