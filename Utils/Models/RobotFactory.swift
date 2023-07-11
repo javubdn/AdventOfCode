@@ -46,6 +46,7 @@ class RobotFactory {
             return result
         }
         
+        private func getStates(_ state: (Int, Int, Int, Int, Int, Int, Int, Int, Int)) -> [(Int, Int, Int, Int, Int, Int, Int, Int, Int)] {
             var oreBots = state.0
             var clayBots = state.1
             var obsBots = state.2
@@ -103,4 +104,6 @@ class RobotFactory {
             }
             
             return states
+        }
+        
 }
