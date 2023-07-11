@@ -89,6 +89,7 @@ class RobotFactory {
 //
 //            let statusBasic = (oreBots, clayBots, obsBots, geoBots, ores+oreBots, clays+clayBots, obsids+obsBots, geos+geoBots, time - 1)
 //
+            for first in [true, false] {
                 for second in [true, false] {
                     for third in [true, false] {
                         for fourth in [true, false] {
@@ -98,4 +99,6 @@ class RobotFactory {
                         }
                     }
                 }
+            }
+            
 }
