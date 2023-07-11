@@ -102,4 +102,5 @@ class RobotFactory {
                 }
             }
             
+            return states
 }
