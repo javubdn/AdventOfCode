@@ -106,4 +106,5 @@ class RobotFactory {
             return states
         }
         
+            var state = state
 }
