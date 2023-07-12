@@ -113,4 +113,5 @@ class RobotFactory {
                 state.0 = oresAfterOre
             }
                 let (canClays, oresAfterClay) = canGetClay(state.0)
+                guard canClays else { return false }
 }
