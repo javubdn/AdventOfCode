@@ -108,4 +108,5 @@ class RobotFactory {
         
             var state = state
                 let (canOres, oresAfterOre) = canGetOre(state.0)
+                guard canOres else { return false }
 }
