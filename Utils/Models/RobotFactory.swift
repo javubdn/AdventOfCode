@@ -124,4 +124,5 @@ class RobotFactory {
                 state.1 = claysAfterObs
             }
                 let (canGeods, _) = canGetGeods(state.0, state.2)
+                guard canGeods else { return false}
 }
