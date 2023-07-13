@@ -120,4 +120,5 @@ class RobotFactory {
                 let (canObs, (oresAfterObs, claysAfterObs)) = canGetObs(state.0, state.1)
                 guard canObs else { return false }
                 state.0 = oresAfterObs
+                state.1 = claysAfterObs
 }
