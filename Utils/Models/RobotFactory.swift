@@ -123,4 +123,5 @@ class RobotFactory {
                 state.0 = oresAfterObs
                 state.1 = claysAfterObs
             }
+                let (canGeods, _) = canGetGeods(state.0, state.2)
 }
