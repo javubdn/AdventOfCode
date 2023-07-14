@@ -132,4 +132,5 @@ class RobotFactory {
             return true
         }
         
+            var newState = state
 }
