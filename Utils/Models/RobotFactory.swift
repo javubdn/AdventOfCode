@@ -128,4 +128,5 @@ class RobotFactory {
                 guard canGeods else { return false}
             }
             
+            return true
 }
