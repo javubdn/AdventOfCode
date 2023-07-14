@@ -137,4 +137,8 @@ class RobotFactory {
                 newState.4 -= oreCost
                 newState.0 += 1
             }
+            if combination.1 {
+                newState.4 -= clayCost
+                newState.1 += 1
+            }
 }
