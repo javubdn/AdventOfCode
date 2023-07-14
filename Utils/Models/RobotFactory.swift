@@ -146,4 +146,9 @@ class RobotFactory {
                 newState.5 -= obsidianCost.1
                 newState.2 += 1
              }
+            if combination.3 {
+                newState.4 -= geodeCost.0
+                newState.6 -= geodeCost.1
+                newState.3 += 1
+            }
 }
