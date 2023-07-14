@@ -123,6 +123,9 @@ class RobotFactory {
                 state.0 = oresAfterObs
                 state.1 = claysAfterObs
             }
+            if combination.3 {
                 let (canGeods, _) = canGetGeods(state.0, state.2)
                 guard canGeods else { return false}
+            }
+            
 }
