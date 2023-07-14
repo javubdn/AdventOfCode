@@ -133,4 +133,8 @@ class RobotFactory {
         }
         
             var newState = state
+            if combination.0 {
+                newState.4 -= oreCost
+                newState.0 += 1
+            }
 }
