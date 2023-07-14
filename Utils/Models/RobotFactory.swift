@@ -106,6 +106,7 @@ class RobotFactory {
             return states
         }
         
+        private func isPossibleState(_ state: (Int, Int, Int, Int), _ combination: (Bool, Bool, Bool, Bool)) -> Bool {
             var state = state
             if combination.0 {
                 let (canOres, oresAfterOre) = canGetOre(state.0)
@@ -129,4 +130,6 @@ class RobotFactory {
             }
             
             return true
+        }
+        
 }
