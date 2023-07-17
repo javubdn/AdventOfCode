@@ -151,4 +151,5 @@ class RobotFactory {
                 newState.6 -= geodeCost.1
                 newState.3 += 1
             }
+            newState.4 += state.0
 }
