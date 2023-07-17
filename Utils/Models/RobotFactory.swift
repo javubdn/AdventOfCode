@@ -132,6 +132,8 @@ class RobotFactory {
             return true
         }
         
+        private func getNewState(_ state: (Int, Int, Int, Int, Int, Int, Int, Int, Int),
+                                 _ combination: (Bool, Bool, Bool, Bool)) -> (Int, Int, Int, Int, Int, Int, Int, Int, Int) {
             var newState = state
             if combination.0 {
                 newState.4 -= oreCost
@@ -157,4 +159,6 @@ class RobotFactory {
             newState.7 += state.3
             newState.8 -= 1
             return newState
+        }
+        
 }
