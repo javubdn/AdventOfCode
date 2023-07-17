@@ -161,4 +161,5 @@ class RobotFactory {
             return newState
         }
         
+            (oreCost <= ores, ores - oreCost)
 }
