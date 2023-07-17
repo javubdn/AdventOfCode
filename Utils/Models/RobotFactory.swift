@@ -156,4 +156,5 @@ class RobotFactory {
             newState.6 += state.2
             newState.7 += state.3
             newState.8 -= 1
+            return newState
 }
