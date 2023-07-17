@@ -152,4 +152,5 @@ class RobotFactory {
                 newState.3 += 1
             }
             newState.4 += state.0
+            newState.5 += state.1
 }
