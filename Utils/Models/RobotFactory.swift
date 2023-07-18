@@ -161,5 +161,8 @@ class RobotFactory {
             return newState
         }
         
+        private func canGetOre(_ ores: Int) -> (Bool, Int) {
             (oreCost <= ores, ores - oreCost)
+        }
+        
 }
