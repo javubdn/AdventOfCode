@@ -169,5 +169,8 @@ class RobotFactory {
             (clayCost <= ores, ores - clayCost)
         }
         
+        private func canGetObs(_ ores: Int, _ clays: Int) -> (Bool, (Int, Int)) {
             (obsidianCost.0 <= ores && obsidianCost.1 <= clays, (ores - obsidianCost.0, clays - obsidianCost.1))
+        }
+        
 }
