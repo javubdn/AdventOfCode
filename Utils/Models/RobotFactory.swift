@@ -165,5 +165,8 @@ class RobotFactory {
             (oreCost <= ores, ores - oreCost)
         }
         
+        private func canGetClay(_ ores: Int) -> (Bool, Int) {
             (clayCost <= ores, ores - clayCost)
+        }
+        
 }
