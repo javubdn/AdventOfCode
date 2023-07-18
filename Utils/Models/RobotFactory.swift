@@ -173,5 +173,8 @@ class RobotFactory {
             (obsidianCost.0 <= ores && obsidianCost.1 <= clays, (ores - obsidianCost.0, clays - obsidianCost.1))
         }
         
+        private func canGetGeods(_ ores: Int, _ obsids: Int) -> (Bool, (Int, Int)) {
             (geodeCost.0 <= ores && geodeCost.1 <= obsids, (ores - geodeCost.0, obsids - geodeCost.1))
+        }
+        
 }
