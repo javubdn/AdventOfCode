@@ -165,4 +165,5 @@ class RobotFactory {
             (oreCost <= ores, ores - oreCost)
         }
         
+            (clayCost <= ores, ores - clayCost)
 }
