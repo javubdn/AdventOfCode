@@ -181,4 +181,5 @@ class RobotFactory {
             let b: Int
             let c: Int
             let d: Int
+            let e: Int
 }
