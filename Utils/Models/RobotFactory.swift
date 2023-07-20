@@ -187,7 +187,10 @@ class RobotFactory {
             let h: Int
             let i: Int
             
+            func canOutproduceBest(_ maxGeodes: Int, _ timeBudget: Int) -> Bool {
                 let timeLeft = timeBudget - i
                 let potentialProduction = d*timeLeft + ((timeLeft * (timeLeft+1))/2)
                 return h + potentialProduction > maxGeodes
+            }
+            
 }
