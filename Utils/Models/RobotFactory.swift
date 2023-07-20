@@ -188,4 +188,5 @@ class RobotFactory {
             let i: Int
             
                 let timeLeft = timeBudget - i
+                let potentialProduction = d*timeLeft + ((timeLeft * (timeLeft+1))/2)
 }
