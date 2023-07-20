@@ -194,4 +194,5 @@ class RobotFactory {
             }
             
                 guard i < timeBudget else { return [] }
+                var nextStates: [StateRobot] = []
 }
