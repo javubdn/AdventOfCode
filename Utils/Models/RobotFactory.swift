@@ -187,4 +187,5 @@ class RobotFactory {
             let h: Int
             let i: Int
             
+                let timeLeft = timeBudget - i
 }
