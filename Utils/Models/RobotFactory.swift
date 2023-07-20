@@ -193,4 +193,5 @@ class RobotFactory {
                 return h + potentialProduction > maxGeodes
             }
             
+                guard i < timeBudget else { return [] }
 }
