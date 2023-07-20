@@ -195,4 +195,5 @@ class RobotFactory {
             
                 guard i < timeBudget else { return [] }
                 var nextStates: [StateRobot] = []
+                    nextStates.append(<#T##newElement: RobotFactory.RobotMap.StateRobot##RobotFactory.RobotMap.StateRobot#>) += blueprint.oreRobot.scheduleBuild(this)
 }
