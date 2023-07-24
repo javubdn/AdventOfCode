@@ -199,4 +199,5 @@ class RobotFactory {
                     nextStates.append(<#T##newElement: RobotFactory.RobotMap.StateRobot##RobotFactory.RobotMap.StateRobot#>) += blueprint.oreRobot.scheduleBuild(this)
                 }
                                     nextStates += blueprint.clayRobot.scheduleBuild(this)
+                                    nextStates += blueprint.obsidianRobot.scheduleBuild(this)
 }
