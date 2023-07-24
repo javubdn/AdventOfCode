@@ -200,4 +200,5 @@ class RobotFactory {
                 }
                                     nextStates += blueprint.clayRobot.scheduleBuild(this)
                                     nextStates += blueprint.obsidianRobot.scheduleBuild(this)
+                                    nextStates += blueprint.geodeRobot.scheduleBuild(this)
 }
