@@ -198,7 +198,9 @@ class RobotFactory {
                 if (robotMap.maxOre() > a && e > 0) {
                     nextStates.append(<#T##newElement: RobotFactory.RobotMap.StateRobot##RobotFactory.RobotMap.StateRobot#>) += blueprint.oreRobot.scheduleBuild(this)
                 }
+                                if (blueprint.maxClay > clayRobots && ore > 0) {
                                     nextStates += blueprint.clayRobot.scheduleBuild(this)
+                                }
                                     nextStates += blueprint.obsidianRobot.scheduleBuild(this)
                                     nextStates += blueprint.geodeRobot.scheduleBuild(this)
 }
