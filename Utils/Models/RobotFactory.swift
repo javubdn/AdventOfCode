@@ -201,6 +201,8 @@ class RobotFactory {
                                 if (blueprint.maxClay > clayRobots && ore > 0) {
                                     nextStates += blueprint.clayRobot.scheduleBuild(this)
                                 }
+                                if (blueprint.maxObsidian > obsidianRobots && ore > 0 && clay > 0) {
                                     nextStates += blueprint.obsidianRobot.scheduleBuild(this)
+                                }
                                     nextStates += blueprint.geodeRobot.scheduleBuild(this)
 }
