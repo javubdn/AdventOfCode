@@ -208,4 +208,5 @@ class RobotFactory {
                                     nextStates += blueprint.geodeRobot.scheduleBuild(this)
                                 }
                             }
+                            return nextStates.filter { it.time <= timeBudget }
 }
