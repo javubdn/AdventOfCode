@@ -207,4 +207,5 @@ class RobotFactory {
                                 if (ore > 0 && obsidian > 0) {
                                     nextStates += blueprint.geodeRobot.scheduleBuild(this)
                                 }
+                            }
 }
