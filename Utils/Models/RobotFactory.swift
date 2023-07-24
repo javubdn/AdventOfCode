@@ -198,4 +198,5 @@ class RobotFactory {
                 if (robotMap.maxOre() > a && e > 0) {
                     nextStates.append(<#T##newElement: RobotFactory.RobotMap.StateRobot##RobotFactory.RobotMap.StateRobot#>) += blueprint.oreRobot.scheduleBuild(this)
                 }
+                                    nextStates += blueprint.clayRobot.scheduleBuild(this)
 }
