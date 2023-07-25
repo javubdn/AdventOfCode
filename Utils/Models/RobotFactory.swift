@@ -193,6 +193,7 @@ class RobotFactory {
                 return h + potentialProduction > maxGeodes
             }
             
+            func calculateNextStates(_ robotMap: RobotMap, _ timeBudget: Int) -> [StateRobot] {
                 guard i < timeBudget else { return [] }
                 var nextStates: [StateRobot] = []
                 if (robotMap.maxOre() > a && e > 0) {
@@ -210,4 +211,5 @@ class RobotFactory {
                             }
                             return nextStates.filter { it.time <= timeBudget }
                 return []
+            }
 }
