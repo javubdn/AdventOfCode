@@ -177,6 +177,7 @@ class RobotFactory {
             (geodeCost.0 <= ores && geodeCost.1 <= obsids, (ores - geodeCost.0, obsids - geodeCost.1))
         }
         
+        struct StateRobot: Hashable {
             let a: Int
             let b: Int
             let c: Int
@@ -212,4 +213,6 @@ class RobotFactory {
                             return nextStates.filter { it.time <= timeBudget }
                 return []
             }
+        }
+        
 }
