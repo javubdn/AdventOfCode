@@ -215,4 +215,6 @@ class RobotFactory {
             }
         }
         
+        var statustus: [StateRobot: Int] = [:]
+        
 }
