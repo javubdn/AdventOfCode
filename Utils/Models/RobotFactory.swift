@@ -209,4 +209,5 @@ class RobotFactory {
                                 }
                             }
                             return nextStates.filter { it.time <= timeBudget }
+                return []
 }
