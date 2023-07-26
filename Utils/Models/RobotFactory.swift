@@ -219,4 +219,5 @@ class RobotFactory {
         
             var oreBots = state.a
             var clayBots = state.b
+            var obsBots = state.c
 }
