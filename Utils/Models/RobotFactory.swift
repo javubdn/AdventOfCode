@@ -218,4 +218,5 @@ class RobotFactory {
         var statustus: [StateRobot: Int] = [:]
         
             var oreBots = state.a
+            var clayBots = state.b
 }
