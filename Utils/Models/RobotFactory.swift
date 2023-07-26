@@ -224,4 +224,5 @@ class RobotFactory {
             var ores = state.e
             var clays = state.f
             var obsids = state.g
+            var geos = state.h
 }
