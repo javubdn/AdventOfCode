@@ -222,4 +222,5 @@ class RobotFactory {
             var obsBots = state.c
             var geoBots = state.d
             var ores = state.e
+            var clays = state.f
 }
