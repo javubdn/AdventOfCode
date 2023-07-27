@@ -225,4 +225,5 @@ class RobotFactory {
             var clays = state.f
             var obsids = state.g
             var geos = state.h
+            let time = state.i
 }
