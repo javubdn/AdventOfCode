@@ -231,4 +231,5 @@ class RobotFactory {
             var newObs = false
             var newGeos = false
             
+                                states.append(getNewStateH(state, (first, second, third, fourth)))
 }
