@@ -228,4 +228,5 @@ class RobotFactory {
             let time = state.i
             var newOres = false
             var newClays = false
+            var newObs = false
 }
