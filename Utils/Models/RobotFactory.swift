@@ -227,4 +227,5 @@ class RobotFactory {
             var geos = state.h
             let time = state.i
             var newOres = false
+            var newClays = false
 }
