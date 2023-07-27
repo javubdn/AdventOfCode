@@ -226,4 +226,5 @@ class RobotFactory {
             var obsids = state.g
             var geos = state.h
             let time = state.i
+            var newOres = false
 }
