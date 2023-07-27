@@ -231,7 +231,9 @@ class RobotFactory {
             var newObs = false
             var newGeos = false
             
+                        for fourth in [true, false] {
                             if isPossibleState((ores, clays, obsids, geos), (first, second, third, fourth)) {
                                 states.append(getNewStateH(state, (first, second, third, fourth)))
                             }
+                        }
 }
