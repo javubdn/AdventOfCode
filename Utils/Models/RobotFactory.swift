@@ -231,6 +231,7 @@ class RobotFactory {
             var newObs = false
             var newGeos = false
             
+            var states: [StateRobot] = []
             for first in [true, false] {
                 for second in [true, false] {
                     for third in [true, false] {
