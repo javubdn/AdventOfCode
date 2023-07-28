@@ -217,6 +217,7 @@ class RobotFactory {
         
         var statustus: [StateRobot: Int] = [:]
         
+        private func getStatesH(_ state: StateRobot) -> [StateRobot] {
             var oreBots = state.a
             var clayBots = state.b
             var obsBots = state.c
@@ -245,4 +246,6 @@ class RobotFactory {
             }
             
             return states
+        }
+        
 }
