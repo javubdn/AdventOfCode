@@ -244,4 +244,5 @@ class RobotFactory {
                 }
             }
             
+            return states
 }
