@@ -231,6 +231,7 @@ class RobotFactory {
             var newObs = false
             var newGeos = false
             
+            for first in [true, false] {
                 for second in [true, false] {
                     for third in [true, false] {
                         for fourth in [true, false] {
@@ -240,4 +241,6 @@ class RobotFactory {
                         }
                     }
                 }
+            }
+            
 }
