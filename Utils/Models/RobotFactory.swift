@@ -248,4 +248,5 @@ class RobotFactory {
             return states
         }
         
+            var (a, b, c, d, e, f, g, h, i) = (state.a, state.b, state.c, state.d, state.e, state.f, state.g, state.h, state.i)
 }
