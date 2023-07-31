@@ -253,4 +253,5 @@ class RobotFactory {
                 e -= oreCost
                 a += 1
             }
+                e -= clayCost
 }
