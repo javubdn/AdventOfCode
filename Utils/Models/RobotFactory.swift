@@ -258,4 +258,5 @@ class RobotFactory {
                 b += 1
             }
                 e -= obsidianCost.0
+                f -= obsidianCost.1
 }
