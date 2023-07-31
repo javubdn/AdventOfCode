@@ -253,6 +253,8 @@ class RobotFactory {
                 e -= oreCost
                 a += 1
             }
+            if combination.1 {
                 e -= clayCost
                 b += 1
+            }
 }
