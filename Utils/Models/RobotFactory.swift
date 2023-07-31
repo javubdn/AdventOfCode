@@ -257,4 +257,5 @@ class RobotFactory {
                 e -= clayCost
                 b += 1
             }
+                e -= obsidianCost.0
 }
