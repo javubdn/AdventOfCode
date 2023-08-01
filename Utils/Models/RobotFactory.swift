@@ -262,7 +262,9 @@ class RobotFactory {
                 f -= obsidianCost.1
                 c += 1
              }
+            if combination.3 {
                 e -= geodeCost.0
                 g -= geodeCost.1
                 d += 1
+            }
 }
