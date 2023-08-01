@@ -257,7 +257,9 @@ class RobotFactory {
                 e -= clayCost
                 b += 1
             }
+            if combination.2 {
                 e -= obsidianCost.0
                 f -= obsidianCost.1
                 c += 1
+             }
 }
