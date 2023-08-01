@@ -268,4 +268,5 @@ class RobotFactory {
                 d += 1
             }
             e += state.a
+            f += state.b
 }
