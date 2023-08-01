@@ -263,4 +263,5 @@ class RobotFactory {
                 c += 1
              }
                 e -= geodeCost.0
+                g -= geodeCost.1
 }
