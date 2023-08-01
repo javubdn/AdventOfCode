@@ -267,4 +267,5 @@ class RobotFactory {
                 g -= geodeCost.1
                 d += 1
             }
+            e += state.a
 }
