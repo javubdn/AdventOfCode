@@ -280,4 +280,5 @@ class RobotFactory {
             if let st = statustus[state] {
                 return st
             }
+            guard state.i > 0 else { return state.h }
 }
