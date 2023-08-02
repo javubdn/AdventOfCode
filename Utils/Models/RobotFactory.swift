@@ -248,6 +248,8 @@ class RobotFactory {
             return states
         }
         
+        private func getNewStateH(_ state: StateRobot,
+                                 _ combination: (Bool, Bool, Bool, Bool)) -> StateRobot {
             var (a, b, c, d, e, f, g, h, i) = (state.a, state.b, state.c, state.d, state.e, state.f, state.g, state.h, state.i)
             if combination.0 {
                 e -= oreCost
@@ -273,4 +275,6 @@ class RobotFactory {
             h += state.d
             i -= 1
             return StateRobot(a: a, b: b, c: c, d: d, e: e, f: f, g: g, h: h, i: i)
+        }
+        
 }
