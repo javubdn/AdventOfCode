@@ -272,4 +272,5 @@ class RobotFactory {
             g += state.c
             h += state.d
             i -= 1
+            return StateRobot(a: a, b: b, c: c, d: d, e: e, f: f, g: g, h: h, i: i)
 }
