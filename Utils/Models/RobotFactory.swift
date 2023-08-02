@@ -281,4 +281,5 @@ class RobotFactory {
                 return st
             }
             guard state.i > 0 else { return state.h }
+            let states = getStatesH(state)
 }
