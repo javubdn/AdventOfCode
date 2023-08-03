@@ -290,4 +290,6 @@ class RobotFactory {
         
     }
     
+    var robotMap: [RobotMap] = []
+    
 }
