@@ -288,4 +288,6 @@ class RobotFactory {
             return minim
         }
         
+    }
+    
 }
