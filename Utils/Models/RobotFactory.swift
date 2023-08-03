@@ -283,4 +283,5 @@ class RobotFactory {
             guard state.i > 0 else { return state.h }
             let states = getStatesH(state)
             let minim = states.map { recurs($0) }.max()!
+            statustus[state] = minim
 }
