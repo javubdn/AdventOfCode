@@ -301,4 +301,5 @@ class RobotFactory {
         let obsidianOreCost = Int(String(input[Range(match.range(at: 4), in: input)!]))!
         let obsidianClayCost = Int(String(input[Range(match.range(at: 5), in: input)!]))!
         let geodeOreCost = Int(String(input[Range(match.range(at: 6), in: input)!]))!
+        let geodeObsidianCost = Int(String(input[Range(match.range(at: 7), in: input)!]))!
 }
