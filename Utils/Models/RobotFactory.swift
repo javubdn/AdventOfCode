@@ -306,4 +306,5 @@ class RobotFactory {
         robotMap.append(RobotMap(id, oreCost, clayOreCost, (obsidianOreCost, obsidianClayCost), (geodeOreCost, geodeObsidianCost)))
     }
     
+        robotMap.map { $0.bestObsidian(24) * $0.id }.reduce(0, +)
 }
