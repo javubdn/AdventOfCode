@@ -22,6 +22,7 @@ class RobotFactory {
         let clayRobot = RobotBlueprint(0, 1, 0, 0, clayOreCost)
         let obsidianRobot = RobotBlueprint(0, 0, 1, 0, obsidianOreCost, obsidianClayCost)
         let geodeRobot = RobotBlueprint(0, 0, 0, 1, geodeOreCost, 0, geodeObsidianCost)
+        blueprints.append(BluePrint(id, oreRobot, clayRobot, obsidianRobot, geodeRobot))
     class RobotMap {
         let id: Int
         let oreCost: Int
