@@ -33,6 +33,7 @@ class RobotFactory {
         blueprints.map { calculateGeodesFound($0, 24) * $0.id }.reduce(0, +)
     }
     
+        var maxGeodes = 0
     class RobotMap {
         let id: Int
         let oreCost: Int
