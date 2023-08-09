@@ -29,7 +29,10 @@ class RobotFactory {
         blueprints.append(BluePrint(id, oreRobot, clayRobot, obsidianRobot, geodeRobot))
     }
     
+    func executeCalculation() -> Int {
         blueprints.map { calculateGeodesFound($0, 24) * $0.id }.reduce(0, +)
+    }
+    
     class RobotMap {
         let id: Int
         let oreCost: Int
