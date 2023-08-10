@@ -39,6 +39,7 @@ class RobotFactory {
             if state.canOutproduceBest(maxGeodes, timeBudget) {
                 state.calculateNextStates(blueprint, timeBudget).forEach { states.enqueue($0) }
             }
+            maxGeodes = max(maxGeodes, state.geodes)
     class RobotMap {
         let id: Int
         let oreCost: Int
