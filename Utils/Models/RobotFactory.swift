@@ -34,6 +34,7 @@ class RobotFactory {
     }
     
         var maxGeodes = 0
+        var states = Heap(elements: [StateRobot()]) { $0.geodes > $1.geodes }
     class RobotMap {
         let id: Int
         let oreCost: Int
