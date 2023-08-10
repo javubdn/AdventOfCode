@@ -33,6 +33,7 @@ class RobotFactory {
         blueprints.map { calculateGeodesFound($0, 24) * $0.id }.reduce(0, +)
     }
     
+    func calculateGeodesFound(_ blueprint: BluePrint ,_ timeBudget: Int) -> Int {
         var maxGeodes = 0
         var states = Heap(elements: [StateRobot()]) { $0.geodes > $1.geodes }
         while !states.isEmpty {
@@ -43,6 +44,8 @@ class RobotFactory {
             maxGeodes = max(maxGeodes, state.geodes)
         }
         return maxGeodes
+    }
+    
     class RobotMap {
         let id: Int
         let oreCost: Int
