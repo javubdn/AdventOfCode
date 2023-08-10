@@ -36,6 +36,7 @@ class RobotFactory {
         var maxGeodes = 0
         var states = Heap(elements: [StateRobot()]) { $0.geodes > $1.geodes }
             let state = states.dequeue()!
+                state.calculateNextStates(blueprint, timeBudget).forEach { states.enqueue($0) }
     class RobotMap {
         let id: Int
         let oreCost: Int
