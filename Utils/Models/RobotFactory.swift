@@ -42,6 +42,7 @@ class RobotFactory {
             }
             maxGeodes = max(maxGeodes, state.geodes)
         }
+        return maxGeodes
     class RobotMap {
         let id: Int
         let oreCost: Int
