@@ -50,6 +50,7 @@ class RobotFactory {
         let ore: Int
         let oreRobots: Int
         let clay: Int
+        let clayRobots: Int
     class RobotMap {
         let id: Int
         let oreCost: Int
