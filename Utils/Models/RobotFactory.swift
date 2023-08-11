@@ -46,6 +46,7 @@ class RobotFactory {
         return maxGeodes
     }
     
+        let time: Int
     class RobotMap {
         let id: Int
         let oreCost: Int
