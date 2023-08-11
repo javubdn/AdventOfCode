@@ -53,6 +53,7 @@ class RobotFactory {
         let clayRobots: Int
         let obsidian: Int
         let obsidianRobots: Int
+        let geodes: Int
     class RobotMap {
         let id: Int
         let oreCost: Int
