@@ -65,6 +65,7 @@ class RobotFactory {
              _ geodes: Int = 0,
              _ geodeRobots: Int = 0) {
             self.time = time
+            self.ore = ore
     class RobotMap {
         let id: Int
         let oreCost: Int
