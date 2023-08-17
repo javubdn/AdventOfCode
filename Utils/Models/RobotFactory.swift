@@ -79,6 +79,7 @@ class RobotFactory {
             let timeLeft = timeBudget - time
 //            let potentialProduction = geodeRobots*(timeLeft+1) + ((timeLeft * (timeLeft+1))/2)
             let potentialProduction = (0...timeLeft).map { $0 + geodeRobots }.reduce(0, +)
+            return geodes + potentialProduction > maxGeodes
     class RobotMap {
         let id: Int
         let oreCost: Int
