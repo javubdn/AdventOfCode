@@ -77,6 +77,7 @@ class RobotFactory {
         }
         
             let timeLeft = timeBudget - time
+//            let potentialProduction = geodeRobots*(timeLeft+1) + ((timeLeft * (timeLeft+1))/2)
     class RobotMap {
         let id: Int
         let oreCost: Int
