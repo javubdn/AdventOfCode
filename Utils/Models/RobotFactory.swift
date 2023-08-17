@@ -76,6 +76,7 @@ class RobotFactory {
             self.geodeRobots = geodeRobots
         }
         
+            let timeLeft = timeBudget - time
     class RobotMap {
         let id: Int
         let oreCost: Int
