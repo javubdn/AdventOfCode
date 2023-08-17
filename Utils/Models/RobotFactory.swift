@@ -56,6 +56,7 @@ class RobotFactory {
         let geodes: Int
         let geodeRobots: Int
         
+        init(_ time: Int = 1,
              _ ore: Int = 1,
              _ oreRobots: Int = 1,
              _ clay: Int = 0,
@@ -73,6 +74,7 @@ class RobotFactory {
             self.obsidianRobots = obsidianRobots
             self.geodes = geodes
             self.geodeRobots = geodeRobots
+        }
     class RobotMap {
         let id: Int
         let oreCost: Int
