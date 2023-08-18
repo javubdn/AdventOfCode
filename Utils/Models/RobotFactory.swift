@@ -86,6 +86,7 @@ class RobotFactory {
             guard time < timeBudget else { return [] }
             var nextStates: [StateRobot] = []
 //                nextStates.append(blueprint.oreRobot.scheduleBuild(self))
+//                nextStates.append(blueprint.clayRobot.scheduleBuild(self))
     class RobotMap {
         let id: Int
         let oreCost: Int
