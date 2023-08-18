@@ -88,6 +88,7 @@ class RobotFactory {
 //                nextStates.append(blueprint.oreRobot.scheduleBuild(self))
 //                nextStates.append(blueprint.clayRobot.scheduleBuild(self))
 //                nextStates.append(blueprint.obsidianRobot.scheduleBuild(self))
+//                nextStates.append(blueprint.geodeRobot.scheduleBuild(self))
     class RobotMap {
         let id: Int
         let oreCost: Int
