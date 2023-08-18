@@ -83,6 +83,7 @@ class RobotFactory {
             return geodes + potentialProduction > maxGeodes
         }
         
+            guard time < timeBudget else { return [] }
     class RobotMap {
         let id: Int
         let oreCost: Int
