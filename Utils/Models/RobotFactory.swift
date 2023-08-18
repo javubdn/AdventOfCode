@@ -84,6 +84,7 @@ class RobotFactory {
         }
         
             guard time < timeBudget else { return [] }
+            var nextStates: [StateRobot] = []
     class RobotMap {
         let id: Int
         let oreCost: Int
