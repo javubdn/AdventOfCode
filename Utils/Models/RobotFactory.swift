@@ -97,6 +97,7 @@ class RobotFactory {
 //            if oreRobots > 0 && obsidianRobots > 0 {
 //                nextStates.append(blueprint.geodeRobot.scheduleBuild(self))
 //            }
+                nextStates.append(oreState)
     class RobotMap {
         let id: Int
         let oreCost: Int
