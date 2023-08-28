@@ -94,7 +94,9 @@ class RobotFactory {
 //            if blueprint.maxObsidian() > obsidianRobots && oreRobots > 0 && clayRobots > 0 {
 //                nextStates.append(blueprint.obsidianRobot.scheduleBuild(self))
 //            }
+//            if oreRobots > 0 && obsidianRobots > 0 {
 //                nextStates.append(blueprint.geodeRobot.scheduleBuild(self))
+//            }
     class RobotMap {
         let id: Int
         let oreCost: Int
