@@ -100,6 +100,7 @@ class RobotFactory {
                 nextStates.append(oreState)
                 nextStates.append(clayState)
                 nextStates.append(obsidianState)
+                nextStates.append(geodeState)
     class RobotMap {
         let id: Int
         let oreCost: Int
