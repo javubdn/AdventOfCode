@@ -97,7 +97,9 @@ class RobotFactory {
 //            if oreRobots > 0 && obsidianRobots > 0 {
 //                nextStates.append(blueprint.geodeRobot.scheduleBuild(self))
 //            }
+            if let oreState = blueprint.oreRobot.scheduleBuild(self) {
                 nextStates.append(oreState)
+            }
                 nextStates.append(clayState)
                 nextStates.append(obsidianState)
                 nextStates.append(geodeState)
