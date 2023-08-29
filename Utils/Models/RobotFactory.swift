@@ -83,6 +83,7 @@ class RobotFactory {
             return geodes + potentialProduction > maxGeodes
         }
         
+        func calculateNextStates(_ blueprint: BluePrint, _ timeBudget: Int) -> [StateRobot] {
             guard time < timeBudget else { return [] }
             var nextStates: [StateRobot] = []
 //            if blueprint.maxOre() > oreRobots && oreRobots > 0 {
@@ -110,6 +111,7 @@ class RobotFactory {
                 nextStates.append(geodeState)
             }
             return nextStates.filter { $0.time <= timeBudget }
+        }
     class RobotMap {
         let id: Int
         let oreCost: Int
