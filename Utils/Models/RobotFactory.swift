@@ -115,6 +115,7 @@ class RobotFactory {
         }
     }
 
+        let id: Int
     class RobotMap {
         let id: Int
         let oreCost: Int
