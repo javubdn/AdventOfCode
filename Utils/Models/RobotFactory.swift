@@ -109,6 +109,7 @@ class RobotFactory {
             if let geodeState = blueprint.geodeRobot.scheduleBuild(self) {
                 nextStates.append(geodeState)
             }
+            return nextStates.filter { $0.time <= timeBudget }
     class RobotMap {
         let id: Int
         let oreCost: Int
