@@ -106,7 +106,9 @@ class RobotFactory {
             if let obsidianState = blueprint.obsidianRobot.scheduleBuild(self) {
                 nextStates.append(obsidianState)
             }
+            if let geodeState = blueprint.geodeRobot.scheduleBuild(self) {
                 nextStates.append(geodeState)
+            }
     class RobotMap {
         let id: Int
         let oreCost: Int
