@@ -46,6 +46,7 @@ class RobotFactory {
         return maxGeodes
     }
     
+    class StateRobot {
         let time: Int
         let ore: Int
         let oreRobots: Int
@@ -112,6 +113,8 @@ class RobotFactory {
             }
             return nextStates.filter { $0.time <= timeBudget }
         }
+    }
+
     class RobotMap {
         let id: Int
         let oreCost: Int
