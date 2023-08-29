@@ -100,7 +100,9 @@ class RobotFactory {
             if let oreState = blueprint.oreRobot.scheduleBuild(self) {
                 nextStates.append(oreState)
             }
+            if let clayState = blueprint.clayRobot.scheduleBuild(self) {
                 nextStates.append(clayState)
+            }
                 nextStates.append(obsidianState)
                 nextStates.append(geodeState)
     class RobotMap {
