@@ -103,7 +103,9 @@ class RobotFactory {
             if let clayState = blueprint.clayRobot.scheduleBuild(self) {
                 nextStates.append(clayState)
             }
+            if let obsidianState = blueprint.obsidianRobot.scheduleBuild(self) {
                 nextStates.append(obsidianState)
+            }
                 nextStates.append(geodeState)
     class RobotMap {
         let id: Int
