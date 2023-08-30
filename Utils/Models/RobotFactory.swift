@@ -124,6 +124,7 @@ class RobotFactory {
              _ oreRobot: RobotBlueprint,
              _ clayRobot: RobotBlueprint,
              _ obsidianRobot: RobotBlueprint,
+             _ geodeRobot: RobotBlueprint) {
     class RobotMap {
         let id: Int
         let oreCost: Int
