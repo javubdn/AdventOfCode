@@ -123,6 +123,7 @@ class RobotFactory {
         
              _ oreRobot: RobotBlueprint,
              _ clayRobot: RobotBlueprint,
+             _ obsidianRobot: RobotBlueprint,
     class RobotMap {
         let id: Int
         let oreCost: Int
