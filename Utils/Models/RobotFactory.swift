@@ -125,6 +125,7 @@ class RobotFactory {
              _ clayRobot: RobotBlueprint,
              _ obsidianRobot: RobotBlueprint,
              _ geodeRobot: RobotBlueprint) {
+            self.id = id
     class RobotMap {
         let id: Int
         let oreCost: Int
