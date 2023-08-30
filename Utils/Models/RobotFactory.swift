@@ -117,6 +117,7 @@ class RobotFactory {
 
         let id: Int
         let oreRobot: RobotBlueprint
+        let clayRobot: RobotBlueprint
     class RobotMap {
         let id: Int
         let oreCost: Int
