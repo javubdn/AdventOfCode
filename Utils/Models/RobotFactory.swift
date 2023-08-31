@@ -133,7 +133,10 @@ class RobotFactory {
             self.geodeRobot = geodeRobot
         }
         
+        func maxOre() -> Int {
             max(oreRobot.oreCost, clayRobot.oreCost, obsidianRobot.oreCost, geodeRobot.oreCost)
+        }
+
     class RobotMap {
         let id: Int
         let oreCost: Int
