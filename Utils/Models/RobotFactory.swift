@@ -127,6 +127,7 @@ class RobotFactory {
              _ geodeRobot: RobotBlueprint) {
             self.id = id
             self.oreRobot = oreRobot
+            self.clayRobot = clayRobot
     class RobotMap {
         let id: Int
         let oreCost: Int
