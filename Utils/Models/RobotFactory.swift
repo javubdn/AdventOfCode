@@ -137,6 +137,7 @@ class RobotFactory {
             max(oreRobot.oreCost, clayRobot.oreCost, obsidianRobot.oreCost, geodeRobot.oreCost)
         }
 
+            max(oreRobot.clayCost, clayRobot.clayCost, obsidianRobot.clayCost, geodeRobot.clayCost)
     class RobotMap {
         let id: Int
         let oreCost: Int
