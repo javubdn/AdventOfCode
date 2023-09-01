@@ -115,6 +115,7 @@ class RobotFactory {
         }
     }
 
+    class BluePrint {
         let id: Int
         let oreRobot: RobotBlueprint
         let clayRobot: RobotBlueprint
@@ -145,6 +146,8 @@ class RobotFactory {
             max(oreRobot.obsidianCost, clayRobot.obsidianCost, obsidianRobot.obsidianCost, geodeRobot.obsidianCost)
         }
 
+    }
+    
     class RobotMap {
         let id: Int
         let oreCost: Int
