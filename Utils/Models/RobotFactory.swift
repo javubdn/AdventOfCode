@@ -150,6 +150,7 @@ class RobotFactory {
     
         let oreRobotsBuilt: Int
         let clayRobotsBuilt: Int
+        let obsidianRobotsBuilt: Int
     class RobotMap {
         let id: Int
         let oreCost: Int
