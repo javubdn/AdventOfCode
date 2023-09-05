@@ -162,6 +162,7 @@ class RobotFactory {
              _ oreCost: Int,
              _ clayCost: Int = 0,
              _ obsidianCost: Int = 0) {
+            self.oreRobotsBuilt = oreRobotsBuilt
     class RobotMap {
         let id: Int
         let oreCost: Int
