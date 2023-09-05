@@ -163,6 +163,7 @@ class RobotFactory {
              _ clayCost: Int = 0,
              _ obsidianCost: Int = 0) {
             self.oreRobotsBuilt = oreRobotsBuilt
+            self.clayRobotsBuilt = clayRobotsBuilt
     class RobotMap {
         let id: Int
         let oreCost: Int
