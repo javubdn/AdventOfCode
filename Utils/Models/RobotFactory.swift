@@ -166,6 +166,7 @@ class RobotFactory {
             self.clayRobotsBuilt = clayRobotsBuilt
             self.obsidianRobotsBuilt = obsidianRobotsBuilt
             self.geodeRobotsBuilt = geodeRobotsBuilt
+            self.oreCost = oreCost
     class RobotMap {
         let id: Int
         let oreCost: Int
