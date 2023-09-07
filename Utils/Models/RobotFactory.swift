@@ -172,6 +172,7 @@ class RobotFactory {
             self.obsidianCost = obsidianCost
         }
         
+            let neededOre = oreCost - productionState.ore
     class RobotMap {
         let id: Int
         let oreCost: Int
