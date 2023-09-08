@@ -173,6 +173,7 @@ class RobotFactory {
         }
         
             let neededOre = oreCost - productionState.ore
+            let neededClay = clayCost - productionState.clay
     class RobotMap {
         let id: Int
         let oreCost: Int
