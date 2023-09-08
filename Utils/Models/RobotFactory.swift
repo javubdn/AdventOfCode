@@ -178,6 +178,8 @@ class RobotFactory {
             if oreRobotsBuilt == 1 || clayRobotsBuilt == 1 {
                 return (neededOre <= 0 ? 0 : Int(ceil(Double(neededOre)/Double(productionState.oreRobots)))) + 1
                 guard productionState.clayRobots > 0 else { return Int.max }
+                return max(neededOre <= 0 ? 0 : Int(ceil(Double(neededOre)/Double(productionState.oreRobots))),
+                           neededClay <= 0 ? 0 : Int(ceil(Double(neededClay) / Double(productionState.clayRobots)))) + 1
     class RobotMap {
         let id: Int
         let oreCost: Int
