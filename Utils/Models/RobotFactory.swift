@@ -175,6 +175,7 @@ class RobotFactory {
             let neededOre = oreCost - productionState.ore
             let neededClay = clayCost - productionState.clay
             let neededObsidian = obsidianCost - productionState.obsidian
+                return (neededOre <= 0 ? 0 : Int(ceil(Double(neededOre)/Double(productionState.oreRobots)))) + 1
     class RobotMap {
         let id: Int
         let oreCost: Int
