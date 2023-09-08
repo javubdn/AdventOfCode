@@ -174,6 +174,7 @@ class RobotFactory {
         
             let neededOre = oreCost - productionState.ore
             let neededClay = clayCost - productionState.clay
+            let neededObsidian = obsidianCost - productionState.obsidian
     class RobotMap {
         let id: Int
         let oreCost: Int
