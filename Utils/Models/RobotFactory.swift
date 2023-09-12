@@ -190,6 +190,7 @@ class RobotFactory {
             
 //            max(oreCost <= productionState.ore ? 0 : Int(ceil(Double(oreCost - productionState.ore)/Double(productionState.oreRobots))),
 //                clayCost <= productionState.clay ? 0 : Int(ceil(Double(clayCost - productionState.clay) / Double(productionState.clayRobots))),
+//                obsidianCost <= productionState.obsidian ? 0 : Int(ceil(Double(obsidianCost - productionState.obsidian) / Double(productionState.obsidianRobots)))
     class RobotMap {
         let id: Int
         let oreCost: Int
