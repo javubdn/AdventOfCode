@@ -188,6 +188,7 @@ class RobotFactory {
                        ) + 1
             }
             
+//            max(oreCost <= productionState.ore ? 0 : Int(ceil(Double(oreCost - productionState.ore)/Double(productionState.oreRobots))),
     class RobotMap {
         let id: Int
         let oreCost: Int
