@@ -196,6 +196,7 @@ class RobotFactory {
         }
         
             let timeRequired = timeUntilBuild(state)
+                return nil
     class RobotMap {
         let id: Int
         let oreCost: Int
