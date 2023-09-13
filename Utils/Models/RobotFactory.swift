@@ -200,6 +200,7 @@ class RobotFactory {
                 return nil
             }
                               (state.ore - oreCost) + (timeRequired * state.oreRobots),
+                              state.oreRobots + oreRobotsBuilt,
     class RobotMap {
         let id: Int
         let oreCost: Int
