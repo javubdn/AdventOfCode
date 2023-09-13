@@ -172,6 +172,7 @@ class RobotFactory {
             self.obsidianCost = obsidianCost
         }
         
+        private func timeUntilBuild(_ productionState: StateRobot) -> Int {
             let neededOre = oreCost - productionState.ore
             let neededClay = clayCost - productionState.clay
             let neededObsidian = obsidianCost - productionState.obsidian
@@ -192,6 +193,8 @@ class RobotFactory {
 //                clayCost <= productionState.clay ? 0 : Int(ceil(Double(clayCost - productionState.clay) / Double(productionState.clayRobots))),
 //                obsidianCost <= productionState.obsidian ? 0 : Int(ceil(Double(obsidianCost - productionState.obsidian) / Double(productionState.obsidianRobots)))
 //            ) + 1
+        }
+        
     class RobotMap {
         let id: Int
         let oreCost: Int
