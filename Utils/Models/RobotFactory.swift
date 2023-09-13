@@ -196,7 +196,9 @@ class RobotFactory {
         }
         
             let timeRequired = timeUntilBuild(state)
+            guard timeRequired != Int.max else {
                 return nil
+            }
     class RobotMap {
         let id: Int
         let oreCost: Int
