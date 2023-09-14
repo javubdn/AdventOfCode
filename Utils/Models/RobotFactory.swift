@@ -213,6 +213,8 @@ class RobotFactory {
             )
         }
     }
+}
+    /*
     class RobotMap {
         let id: Int
         let oreCost: Int
@@ -516,3 +518,4 @@ class RobotFactory {
     }
     
 }
+*/
