@@ -199,6 +199,7 @@ class RobotFactory {
             guard timeRequired != Int.max else {
                 return nil
             }
+            return StateRobot(state.time + timeRequired,
                               (state.ore - oreCost) + (timeRequired * state.oreRobots),
                               state.oreRobots + oreRobotsBuilt,
                               (state.clay - clayCost) + (timeRequired * state.clayRobots),
@@ -207,6 +208,7 @@ class RobotFactory {
                               state.obsidianRobots + obsidianRobotsBuilt,
                               state.geodes + (timeRequired * state.geodeRobots),
                               state.geodeRobots + geodeRobotsBuilt
+            )
     class RobotMap {
         let id: Int
         let oreCost: Int
