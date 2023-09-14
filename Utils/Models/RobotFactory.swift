@@ -195,6 +195,7 @@ class RobotFactory {
 //            ) + 1
         }
         
+        func scheduleBuild(_ state: StateRobot) -> StateRobot? {
             let timeRequired = timeUntilBuild(state)
             guard timeRequired != Int.max else {
                 return nil
@@ -209,6 +210,7 @@ class RobotFactory {
                               state.geodes + (timeRequired * state.geodeRobots),
                               state.geodeRobots + geodeRobotsBuilt
             )
+        }
     class RobotMap {
         let id: Int
         let oreCost: Int
