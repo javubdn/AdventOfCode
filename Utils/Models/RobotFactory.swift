@@ -203,6 +203,7 @@ class RobotFactory {
                               state.oreRobots + oreRobotsBuilt,
                               (state.clay - clayCost) + (timeRequired * state.clayRobots),
                               state.clayRobots + clayRobotsBuilt,
+                              (state.obsidian - obsidianCost) + (timeRequired * state.obsidianRobots),
     class RobotMap {
         let id: Int
         let oreCost: Int
