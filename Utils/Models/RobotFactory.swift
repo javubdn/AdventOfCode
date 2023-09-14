@@ -148,6 +148,7 @@ class RobotFactory {
 
     }
     
+    class RobotBlueprint {
         let oreRobotsBuilt: Int
         let clayRobotsBuilt: Int
         let obsidianRobotsBuilt: Int
@@ -211,6 +212,7 @@ class RobotFactory {
                               state.geodeRobots + geodeRobotsBuilt
             )
         }
+    }
     class RobotMap {
         let id: Int
         let oreCost: Int
