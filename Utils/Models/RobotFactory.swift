@@ -91,7 +91,6 @@ class RobotFactory {
 //            if blueprint.maxClay() > clayRobots && oreRobots > 0 {
 //            }
 //            if blueprint.maxObsidian() > obsidianRobots && oreRobots > 0 && clayRobots > 0 {
-//                nextStates.append(blueprint.obsidianRobot.scheduleBuild(self))
 //            }
 //            if oreRobots > 0 && obsidianRobots > 0 {
 //                nextStates.append(blueprint.geodeRobot.scheduleBuild(self))
