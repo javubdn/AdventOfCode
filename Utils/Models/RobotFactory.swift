@@ -175,6 +175,7 @@ class RobotFactory {
                 return max(neededOre <= 0 ? 0 : Int(ceil(Double(neededOre)/Double(productionState.oreRobots))),
                            neededObsidian <= 0 ? 0 : Int(ceil(Double(neededObsidian) / Double(productionState.obsidianRobots)))
                        ) + 1
+            }            
         }
         
         func scheduleBuild(_ state: StateRobot) -> StateRobot? {
