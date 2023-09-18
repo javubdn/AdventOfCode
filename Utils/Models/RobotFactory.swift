@@ -175,7 +175,6 @@ class RobotFactory {
                 return max(neededOre <= 0 ? 0 : Int(ceil(Double(neededOre)/Double(productionState.oreRobots))),
                            neededObsidian <= 0 ? 0 : Int(ceil(Double(neededObsidian) / Double(productionState.obsidianRobots)))
                        ) + 1
-//                obsidianCost <= productionState.obsidian ? 0 : Int(ceil(Double(obsidianCost - productionState.obsidian) / Double(productionState.obsidianRobots)))
 //            ) + 1
         }
         
