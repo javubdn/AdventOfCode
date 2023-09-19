@@ -198,7 +198,6 @@ class RobotFactory {
 }
     /*
     class RobotMap {
-        let clayCost: Int
         let obsidianCost: (Int, Int)
         let geodeCost: (Int, Int)
         
