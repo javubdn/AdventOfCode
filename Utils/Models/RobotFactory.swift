@@ -198,8 +198,6 @@ class RobotFactory {
 }
     /*
     class RobotMap {
-        let geodeCost: (Int, Int)
-        
         func maxOre() -> Int { max(oreCost, clayCost, obsidianCost.0, geodeCost.0) }
         func maxClay() -> Int { obsidianCost.1 }
         func maxObsidian() -> Int { geodeCost.1 }
