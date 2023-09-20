@@ -199,7 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         init(_ id: Int, _ oreCost: Int, _ clayCost: Int, _ obsidianCost: (Int, Int), _ geodeCost: (Int, Int)) {
-            self.obsidianCost = obsidianCost
             self.geodeCost = geodeCost
         }
         
