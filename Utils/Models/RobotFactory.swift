@@ -200,7 +200,6 @@ class RobotFactory {
     class RobotMap {
         func calculateGeodesFound(_ timeBudget: Int) -> Int {
             while !states.isEmpty {
-                let state = states.removeFirst()
                 if state.canOutproduceBest(maxGeodes, timeBudget) {
                     states.append(contentsOf: state.calculateNextStates(self, timeBudget))
                 }
