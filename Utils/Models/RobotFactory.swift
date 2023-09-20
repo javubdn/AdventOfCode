@@ -198,9 +198,6 @@ class RobotFactory {
 }
     /*
     class RobotMap {
-        init(_ id: Int, _ oreCost: Int, _ clayCost: Int, _ obsidianCost: (Int, Int), _ geodeCost: (Int, Int)) {
-        }
-        
         func calculateGeodesFound(_ timeBudget: Int) -> Int {
             var maxGeodes = 0
             var states = [StateRobot(a: 1, b: 0, c: 0, d: 0, e: 1, f: 0, g: 0, h: 0, i: 1)]
