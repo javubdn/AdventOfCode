@@ -199,8 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         func calculateGeodesFound(_ timeBudget: Int) -> Int {
-            while !states.isEmpty {
-            }
             return maxGeodes
         }
         
