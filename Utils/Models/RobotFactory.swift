@@ -199,7 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         func bestObsidian(_ cycles: Int) -> Int {
-            let result = recurs(stateMain)
             return result
         }
         
