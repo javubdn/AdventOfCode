@@ -201,7 +201,6 @@ class RobotFactory {
         func calculateGeodesFound(_ timeBudget: Int) -> Int {
             while !states.isEmpty {
                 if state.canOutproduceBest(maxGeodes, timeBudget) {
-                    states.append(contentsOf: state.calculateNextStates(self, timeBudget))
                 }
                 maxGeodes = max(maxGeodes, state.h)
             }
