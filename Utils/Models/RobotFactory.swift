@@ -199,7 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         func calculateGeodesFound(_ timeBudget: Int) -> Int {
-            return maxGeodes
         }
         
         func bestObsidian(_ cycles: Int) -> Int {
