@@ -199,7 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         private func getStates(_ state: (Int, Int, Int, Int, Int, Int, Int, Int, Int)) -> [(Int, Int, Int, Int, Int, Int, Int, Int, Int)] {
-            var clayBots = state.1
             var obsBots = state.2
             var geoBots = state.3
             var ores = state.4
