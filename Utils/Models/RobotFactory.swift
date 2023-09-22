@@ -198,9 +198,6 @@ class RobotFactory {
 }
     /*
     class RobotMap {
-        func bestObsidian(_ cycles: Int) -> Int {
-        }
-        
         private func getStates(_ state: (Int, Int, Int, Int, Int, Int, Int, Int, Int)) -> [(Int, Int, Int, Int, Int, Int, Int, Int, Int)] {
             var oreBots = state.0
             var clayBots = state.1
