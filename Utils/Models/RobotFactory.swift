@@ -199,8 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         private func getStates(_ state: (Int, Int, Int, Int, Int, Int, Int, Int, Int)) -> [(Int, Int, Int, Int, Int, Int, Int, Int, Int)] {
-            var newGeos = false
-            
 //            if geodeCost.0 <= ores && geodeCost.1 <= obsids {
 //                newGeos = true
 //                ores -= geodeCost.0
