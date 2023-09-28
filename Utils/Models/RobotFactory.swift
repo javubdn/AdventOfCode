@@ -199,7 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         private func getStates(_ state: (Int, Int, Int, Int, Int, Int, Int, Int, Int)) -> [(Int, Int, Int, Int, Int, Int, Int, Int, Int)] {
-//            geos += geoBots
 //            oreBots += newOres ? 1 : 0
 //            clayBots += newClays ? 1 : 0
 //            obsBots += newObs ? 1 : 0
