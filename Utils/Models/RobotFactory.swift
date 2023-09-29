@@ -198,9 +198,6 @@ class RobotFactory {
 }
     /*
     class RobotMap {
-        private func getStates(_ state: (Int, Int, Int, Int, Int, Int, Int, Int, Int)) -> [(Int, Int, Int, Int, Int, Int, Int, Int, Int)] {
-        }
-        
         private func isPossibleState(_ state: (Int, Int, Int, Int), _ combination: (Bool, Bool, Bool, Bool)) -> Bool {
             var state = state
             if combination.0 {
