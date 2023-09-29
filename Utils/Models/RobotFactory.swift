@@ -200,8 +200,6 @@ class RobotFactory {
     class RobotMap {
         private func getStates(_ state: (Int, Int, Int, Int, Int, Int, Int, Int, Int)) -> [(Int, Int, Int, Int, Int, Int, Int, Int, Int)] {
             for first in [true, false] {
-                for second in [true, false] {
-                }
             }
             
             return states
