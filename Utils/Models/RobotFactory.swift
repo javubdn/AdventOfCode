@@ -200,7 +200,6 @@ class RobotFactory {
     class RobotMap {
         private func isPossibleState(_ state: (Int, Int, Int, Int), _ combination: (Bool, Bool, Bool, Bool)) -> Bool {
             if combination.0 {
-                state.0 = oresAfterOre
             }
             if combination.1 {
                 let (canClays, oresAfterClay) = canGetClay(state.0)
