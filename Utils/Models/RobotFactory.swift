@@ -199,8 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         private func isPossibleState(_ state: (Int, Int, Int, Int), _ combination: (Bool, Bool, Bool, Bool)) -> Bool {
-            if combination.0 {
-            }
             if combination.1 {
                 let (canClays, oresAfterClay) = canGetClay(state.0)
                 guard canClays else { return false }
