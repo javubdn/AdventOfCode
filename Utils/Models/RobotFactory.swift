@@ -200,7 +200,6 @@ class RobotFactory {
     class RobotMap {
         private func isPossibleState(_ state: (Int, Int, Int, Int), _ combination: (Bool, Bool, Bool, Bool)) -> Bool {
             if combination.3 {
-                guard canGeods else { return false}
             }
             
             return true
