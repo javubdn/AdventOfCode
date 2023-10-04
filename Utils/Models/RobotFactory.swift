@@ -199,7 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         private func isPossibleState(_ state: (Int, Int, Int, Int), _ combination: (Bool, Bool, Bool, Bool)) -> Bool {
-            return true
         }
         
         private func getNewState(_ state: (Int, Int, Int, Int, Int, Int, Int, Int, Int),
