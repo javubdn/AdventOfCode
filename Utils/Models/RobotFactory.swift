@@ -201,7 +201,6 @@ class RobotFactory {
         private func getNewState(_ state: (Int, Int, Int, Int, Int, Int, Int, Int, Int),
                                  _ combination: (Bool, Bool, Bool, Bool)) -> (Int, Int, Int, Int, Int, Int, Int, Int, Int) {
             if combination.0 {
-                newState.4 -= oreCost
                 newState.0 += 1
             }
             if combination.1 {
