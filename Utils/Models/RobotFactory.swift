@@ -201,7 +201,6 @@ class RobotFactory {
         private func getNewState(_ state: (Int, Int, Int, Int, Int, Int, Int, Int, Int),
                                  _ combination: (Bool, Bool, Bool, Bool)) -> (Int, Int, Int, Int, Int, Int, Int, Int, Int) {
             if combination.3 {
-                newState.4 -= geodeCost.0
                 newState.6 -= geodeCost.1
                 newState.3 += 1
             }
