@@ -200,8 +200,6 @@ class RobotFactory {
     class RobotMap {
         private func getNewState(_ state: (Int, Int, Int, Int, Int, Int, Int, Int, Int),
                                  _ combination: (Bool, Bool, Bool, Bool)) -> (Int, Int, Int, Int, Int, Int, Int, Int, Int) {
-            if combination.1 {
-            }
             if combination.2 {
                 newState.4 -= obsidianCost.0
                 newState.5 -= obsidianCost.1
