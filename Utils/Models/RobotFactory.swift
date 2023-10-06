@@ -200,7 +200,6 @@ class RobotFactory {
     class RobotMap {
         private func getNewState(_ state: (Int, Int, Int, Int, Int, Int, Int, Int, Int),
                                  _ combination: (Bool, Bool, Bool, Bool)) -> (Int, Int, Int, Int, Int, Int, Int, Int, Int) {
-            newState.7 += state.3
             newState.8 -= 1
             return newState
         }
