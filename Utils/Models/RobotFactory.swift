@@ -199,7 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         private func canGetGeods(_ ores: Int, _ obsids: Int) -> (Bool, (Int, Int)) {
-            (geodeCost.0 <= ores && geodeCost.1 <= obsids, (ores - geodeCost.0, obsids - geodeCost.1))
         }
         
         struct StateRobot: Hashable {
