@@ -198,9 +198,6 @@ class RobotFactory {
 }
     /*
     class RobotMap {
-        private func canGetClay(_ ores: Int) -> (Bool, Int) {
-        }
-        
         private func canGetObs(_ ores: Int, _ clays: Int) -> (Bool, (Int, Int)) {
             (obsidianCost.0 <= ores && obsidianCost.1 <= clays, (ores - obsidianCost.0, clays - obsidianCost.1))
         }
