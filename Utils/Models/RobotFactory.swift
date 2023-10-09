@@ -198,9 +198,6 @@ class RobotFactory {
 }
     /*
     class RobotMap {
-        private func canGetGeods(_ ores: Int, _ obsids: Int) -> (Bool, (Int, Int)) {
-        }
-        
         struct StateRobot: Hashable {
             let a: Int
             let b: Int
