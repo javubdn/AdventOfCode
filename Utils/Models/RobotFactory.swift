@@ -199,7 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         struct StateRobot: Hashable {
-            let h: Int
             let i: Int
             
             func canOutproduceBest(_ maxGeodes: Int, _ timeBudget: Int) -> Bool {
