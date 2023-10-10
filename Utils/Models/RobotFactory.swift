@@ -199,7 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         struct StateRobot: Hashable {
-            let b: Int
             let c: Int
             let d: Int
             let e: Int
