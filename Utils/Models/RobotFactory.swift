@@ -200,7 +200,6 @@ class RobotFactory {
     class RobotMap {
         struct StateRobot: Hashable {
             func calculateNextStates(_ robotMap: RobotMap, _ timeBudget: Int) -> [StateRobot] {
-                var nextStates: [StateRobot] = []
                 if (robotMap.maxOre() > a && e > 0) {
                     nextStates.append(<#T##newElement: RobotFactory.RobotMap.StateRobot##RobotFactory.RobotMap.StateRobot#>) += blueprint.oreRobot.scheduleBuild(this)
                 }
