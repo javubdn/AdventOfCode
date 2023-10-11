@@ -200,7 +200,6 @@ class RobotFactory {
     class RobotMap {
         struct StateRobot: Hashable {
             func canOutproduceBest(_ maxGeodes: Int, _ timeBudget: Int) -> Bool {
-                return h + potentialProduction > maxGeodes
             }
             
             func calculateNextStates(_ robotMap: RobotMap, _ timeBudget: Int) -> [StateRobot] {
