@@ -200,8 +200,6 @@ class RobotFactory {
     class RobotMap {
         struct StateRobot: Hashable {
             func calculateNextStates(_ robotMap: RobotMap, _ timeBudget: Int) -> [StateRobot] {
-                if (robotMap.maxOre() > a && e > 0) {
-                }
                                 if (blueprint.maxClay > clayRobots && ore > 0) {
                                     nextStates += blueprint.clayRobot.scheduleBuild(this)
                                 }
