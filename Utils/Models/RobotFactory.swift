@@ -200,8 +200,6 @@ class RobotFactory {
     class RobotMap {
         struct StateRobot: Hashable {
             func calculateNextStates(_ robotMap: RobotMap, _ timeBudget: Int) -> [StateRobot] {
-                                if (ore > 0 && obsidian > 0) {
-                                }
                             }
                             return nextStates.filter { it.time <= timeBudget }
                 return []
