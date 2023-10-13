@@ -200,8 +200,6 @@ class RobotFactory {
     class RobotMap {
         struct StateRobot: Hashable {
             func calculateNextStates(_ robotMap: RobotMap, _ timeBudget: Int) -> [StateRobot] {
-                                if (blueprint.maxObsidian > obsidianRobots && ore > 0 && clay > 0) {
-                                }
                                 if (ore > 0 && obsidian > 0) {
                                     nextStates += blueprint.geodeRobot.scheduleBuild(this)
                                 }
