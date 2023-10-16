@@ -199,8 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         struct StateRobot: Hashable {
-            func calculateNextStates(_ robotMap: RobotMap, _ timeBudget: Int) -> [StateRobot] {
-            }
         }
         
         var statustus: [StateRobot: Int] = [:]
