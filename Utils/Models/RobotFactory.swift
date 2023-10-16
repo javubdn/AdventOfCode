@@ -198,9 +198,6 @@ class RobotFactory {
 }
     /*
     class RobotMap {
-        struct StateRobot: Hashable {
-        }
-        
         var statustus: [StateRobot: Int] = [:]
         
         private func getStatesH(_ state: StateRobot) -> [StateRobot] {
