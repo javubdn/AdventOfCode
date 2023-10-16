@@ -198,8 +198,6 @@ class RobotFactory {
 }
     /*
     class RobotMap {
-        var statustus: [StateRobot: Int] = [:]
-        
         private func getStatesH(_ state: StateRobot) -> [StateRobot] {
             var oreBots = state.a
             var clayBots = state.b
