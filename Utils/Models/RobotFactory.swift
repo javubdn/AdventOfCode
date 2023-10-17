@@ -199,7 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         private func getStatesH(_ state: StateRobot) -> [StateRobot] {
-            var newOres = false
             var newClays = false
             var newObs = false
             var newGeos = false
