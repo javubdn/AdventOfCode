@@ -199,7 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         private func getStatesH(_ state: StateRobot) -> [StateRobot] {
-            var ores = state.e
             var clays = state.f
             var obsids = state.g
             var geos = state.h
