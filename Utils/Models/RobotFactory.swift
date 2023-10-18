@@ -201,8 +201,6 @@ class RobotFactory {
         private func getStatesH(_ state: StateRobot) -> [StateRobot] {
             for first in [true, false] {
                 for second in [true, false] {
-                    for third in [true, false] {
-                    }
                 }
             }
             
