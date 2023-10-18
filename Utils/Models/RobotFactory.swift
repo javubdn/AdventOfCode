@@ -204,7 +204,6 @@ class RobotFactory {
                     for third in [true, false] {
                         for fourth in [true, false] {
                             if isPossibleState((ores, clays, obsids, geos), (first, second, third, fourth)) {
-                                states.append(getNewStateH(state, (first, second, third, fourth)))
                             }
                         }
                     }
