@@ -203,8 +203,6 @@ class RobotFactory {
                 for second in [true, false] {
                     for third in [true, false] {
                         for fourth in [true, false] {
-                            if isPossibleState((ores, clays, obsids, geos), (first, second, third, fourth)) {
-                            }
                         }
                     }
                 }
