@@ -199,7 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         private func getStatesH(_ state: StateRobot) -> [StateRobot] {
-            var states: [StateRobot] = []
             for first in [true, false] {
                 for second in [true, false] {
                     for third in [true, false] {
