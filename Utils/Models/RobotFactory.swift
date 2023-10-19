@@ -201,7 +201,6 @@ class RobotFactory {
         private func getNewStateH(_ state: StateRobot,
                                  _ combination: (Bool, Bool, Bool, Bool)) -> StateRobot {
             if combination.0 {
-                a += 1
             }
             if combination.1 {
                 e -= clayCost
