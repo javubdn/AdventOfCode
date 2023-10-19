@@ -199,9 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         private func getStatesH(_ state: StateRobot) -> [StateRobot] {
-            for first in [true, false] {
-            }
-            
             return states
         }
         
