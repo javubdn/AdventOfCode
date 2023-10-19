@@ -198,9 +198,6 @@ class RobotFactory {
 }
     /*
     class RobotMap {
-        private func getStatesH(_ state: StateRobot) -> [StateRobot] {
-        }
-        
         private func getNewStateH(_ state: StateRobot,
                                  _ combination: (Bool, Bool, Bool, Bool)) -> StateRobot {
             var (a, b, c, d, e, f, g, h, i) = (state.a, state.b, state.c, state.d, state.e, state.f, state.g, state.h, state.i)
