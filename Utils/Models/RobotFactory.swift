@@ -201,7 +201,6 @@ class RobotFactory {
         private func getNewStateH(_ state: StateRobot,
                                  _ combination: (Bool, Bool, Bool, Bool)) -> StateRobot {
             if combination.3 {
-                g -= geodeCost.1
                 d += 1
             }
             e += state.a
