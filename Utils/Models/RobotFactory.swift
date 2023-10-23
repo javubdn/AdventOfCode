@@ -200,7 +200,6 @@ class RobotFactory {
     class RobotMap {
         private func getNewStateH(_ state: StateRobot,
                                  _ combination: (Bool, Bool, Bool, Bool)) -> StateRobot {
-            e += state.a
             f += state.b
             g += state.c
             h += state.d
