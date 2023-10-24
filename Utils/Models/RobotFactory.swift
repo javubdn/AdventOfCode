@@ -199,7 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         private func getNewStateH(_ state: StateRobot,
-                                 _ combination: (Bool, Bool, Bool, Bool)) -> StateRobot {
         }
         
         private func recurs(_ state: StateRobot) -> Int {
