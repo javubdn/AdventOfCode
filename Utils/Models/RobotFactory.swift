@@ -198,9 +198,6 @@ class RobotFactory {
 }
     /*
     class RobotMap {
-        private func getNewStateH(_ state: StateRobot,
-        }
-        
         private func recurs(_ state: StateRobot) -> Int {
             if let st = statustus[state] {
                 return st
