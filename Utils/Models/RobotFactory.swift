@@ -199,7 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         private func recurs(_ state: StateRobot) -> Int {
-            let minim = states.map { recurs($0) }.max()!
             statustus[state] = minim
             return minim
         }
