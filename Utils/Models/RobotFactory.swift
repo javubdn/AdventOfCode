@@ -198,9 +198,6 @@ class RobotFactory {
 }
     /*
     class RobotMap {
-        private func recurs(_ state: StateRobot) -> Int {
-        }
-        
     }
     
     var robotMap: [RobotMap] = []
