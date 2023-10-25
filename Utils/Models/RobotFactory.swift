@@ -199,7 +199,6 @@ class RobotFactory {
     /*
     class RobotMap {
         private func recurs(_ state: StateRobot) -> Int {
-            return minim
         }
         
     }
