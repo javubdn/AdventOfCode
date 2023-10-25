@@ -197,9 +197,6 @@ class RobotFactory {
     }
 }
     /*
-    class RobotMap {
-    }
-    
     var robotMap: [RobotMap] = []
     
     func addMap(_ input: String) {
