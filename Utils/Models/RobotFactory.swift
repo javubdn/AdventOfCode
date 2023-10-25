@@ -197,7 +197,6 @@ class RobotFactory {
     }
 }
     /*
-    
     func addMap(_ input: String) {
         let regex = try! NSRegularExpression(pattern: #"Blueprint ([0-9]+): Each ore robot costs ([0-9]+) ore. Each clay robot costs ([0-9]+) ore. Each obsidian robot costs ([0-9]+) ore and ([0-9]+) clay. Each geode robot costs ([0-9]+) ore and ([0-9]+) obsidian."#)
         let matches = regex.matches(in: input, options: [], range: NSRange(input.startIndex..., in: input))
