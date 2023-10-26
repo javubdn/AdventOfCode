@@ -198,7 +198,6 @@ class RobotFactory {
 }
     /*
     func addMap(_ input: String) {
-        robotMap.append(RobotMap(id, oreCost, clayOreCost, (obsidianOreCost, obsidianClayCost), (geodeOreCost, geodeObsidianCost)))
     }
     
     func executeCalculation() -> Int {
