@@ -198,7 +198,6 @@ class RobotFactory {
 }
     /*
     func addMap(_ input: String) {
-        let geodeOreCost = Int(String(input[Range(match.range(at: 6), in: input)!]))!
         let geodeObsidianCost = Int(String(input[Range(match.range(at: 7), in: input)!]))!
         robotMap.append(RobotMap(id, oreCost, clayOreCost, (obsidianOreCost, obsidianClayCost), (geodeOreCost, geodeObsidianCost)))
     }
