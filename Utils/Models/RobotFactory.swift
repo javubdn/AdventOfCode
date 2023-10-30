@@ -197,7 +197,6 @@ class RobotFactory {
     }
 }
     /*
-    }
     
     func executeCalculation() -> Int {
         robotMap.map { $0.bestObsidian(24) * $0.id }.reduce(0, +)
