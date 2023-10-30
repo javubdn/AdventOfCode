@@ -197,7 +197,6 @@ class RobotFactory {
     }
 }
     /*
-    func executeCalculation() -> Int {
     }
     
 }
