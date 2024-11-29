@@ -1,0 +1,1524 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C2064FD727590D6700F203DC /* CSV in Frameworks */ = {isa = PBXBuildFile; productRef = C2064FD627590D6700F203DC /* CSV */; };
+		C24E8C322758BB6F007E3A2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C24E8C302758BB6F007E3A2B /* Main.storyboard */; };
+		C24E8C372758BB72007E3A2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C24E8C352758BB72007E3A2B /* LaunchScreen.storyboard */; };
+		C24E8C472758C2E4007E3A2B /* CoreXLSX in Frameworks */ = {isa = PBXBuildFile; productRef = C24E8C462758C2E4007E3A2B /* CoreXLSX */; };
+		C2C926C1285CAA550070C143 /* BigInt in Frameworks */ = {isa = PBXBuildFile; productRef = C2C926C0285CAA550070C143 /* BigInt */; };
+		C2F6F1412CF9CAF100C14AD4 /* RebootStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F1372CF9CAF100C14AD4 /* RebootStep.swift */; };
+		C2F6F1422CF9CAF100C14AD4 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F13A2CF9CAF100C14AD4 /* Scanner.swift */; };
+		C2F6F1432CF9CAF100C14AD4 /* PlutoMaze.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F1352CF9CAF100C14AD4 /* PlutoMaze.swift */; };
+		C2F6F1442CF9CAF100C14AD4 /* MineCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F1322CF9CAF100C14AD4 /* MineCart.swift */; };
+		C2F6F1452CF9CAF100C14AD4 /* Moon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F1332CF9CAF100C14AD4 /* Moon.swift */; };
+		C2F6F1462CF9CAF100C14AD4 /* SandMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F1392CF9CAF100C14AD4 /* SandMap.swift */; };
+		C2F6F1472CF9CAF100C14AD4 /* Intcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F12E2CF9CAF100C14AD4 /* Intcode.swift */; };
+		C2F6F1492CF9CAF100C14AD4 /* DiagramSituation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F1292CF9CAF100C14AD4 /* DiagramSituation.swift */; };
+		C2F6F14A2CF9CAF100C14AD4 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F13E2CF9CAF100C14AD4 /* Tile.swift */; };
+		C2F6F14B2CF9CAF100C14AD4 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F1362CF9CAF100C14AD4 /* Position.swift */; };
+		C2F6F14C2CF9CAF100C14AD4 /* Cup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F1282CF9CAF100C14AD4 /* Cup.swift */; };
+		C2F6F14D2CF9CAF100C14AD4 /* SnailFishNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F13C2CF9CAF100C14AD4 /* SnailFishNumber.swift */; };
+		C2F6F14E2CF9CAF100C14AD4 /* DirectoryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F12A2CF9CAF100C14AD4 /* DirectoryTree.swift */; };
+		C2F6F14F2CF9CAF100C14AD4 /* LavaDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F12F2CF9CAF100C14AD4 /* LavaDrop.swift */; };
+		C2F6F1502CF9CAF100C14AD4 /* Bronkerbosch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F1252CF9CAF100C14AD4 /* Bronkerbosch.swift */; };
+		C2F6F1512CF9CAF100C14AD4 /* MathNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F1302CF9CAF100C14AD4 /* MathNode.swift */; };
+		C2F6F1522CF9CAF100C14AD4 /* InmuneGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F12D2CF9CAF100C14AD4 /* InmuneGroup.swift */; };
+		C2F6F1532CF9CAF100C14AD4 /* Tetris.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F13D2CF9CAF100C14AD4 /* Tetris.swift */; };
+		C2F6F1542CF9CAF100C14AD4 /* ValvesPathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F13F2CF9CAF100C14AD4 /* ValvesPathFinder.swift */; };
+		C2F6F1552CF9CAF100C14AD4 /* WaterMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F1402CF9CAF100C14AD4 /* WaterMap.swift */; };
+		C2F6F1562CF9CAF100C14AD4 /* DutyDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F12B2CF9CAF100C14AD4 /* DutyDate.swift */; };
+		C2F6F1572CF9CAF100C14AD4 /* Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F1312CF9CAF100C14AD4 /* Maze.swift */; };
+		C2F6F1582CF9CAF100C14AD4 /* HexagonalTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F12C2CF9CAF100C14AD4 /* HexagonalTile.swift */; };
+		C2F6F15A2CF9CAF100C14AD4 /* Shuffler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F13B2CF9CAF100C14AD4 /* Shuffler.swift */; };
+		C2F6F15B2CF9CAF100C14AD4 /* PackageTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F1342CF9CAF100C14AD4 /* PackageTree.swift */; };
+		C2F6F15C2CF9CAF100C14AD4 /* CombatCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F1272CF9CAF100C14AD4 /* CombatCharacter.swift */; };
+		C2F6F1612CF9CB8400C14AD4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F1602CF9CB8400C14AD4 /* Utils.swift */; };
+		C2F6F1622CF9CB8400C14AD4 /* StringProtocol+Subscripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F15F2CF9CB8400C14AD4 /* StringProtocol+Subscripts.swift */; };
+		C2F6F1632CF9CB8400C14AD4 /* String+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F15E2CF9CB8400C14AD4 /* String+Operations.swift */; };
+		C2F6F1642CF9CB8400C14AD4 /* Array+Chunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F15D2CF9CB8400C14AD4 /* Array+Chunk.swift */; };
+		C2F6F1772CF9CD4600C14AD4 /* InputYear2015Day13.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1702CF9CD4600C14AD4 /* InputYear2015Day13.csv */; };
+		C2F6F1782CF9CD4600C14AD4 /* InputYear2015Day3.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1692CF9CD4600C14AD4 /* InputYear2015Day3.csv */; };
+		C2F6F1792CF9CD4600C14AD4 /* InputYear2015Day6.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F16B2CF9CD4600C14AD4 /* InputYear2015Day6.csv */; };
+		C2F6F17A2CF9CD4600C14AD4 /* InputYear2015Day8.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F16D2CF9CD4600C14AD4 /* InputYear2015Day8.csv */; };
+		C2F6F17B2CF9CD4600C14AD4 /* InputYear2015Day9.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F16E2CF9CD4600C14AD4 /* InputYear2015Day9.csv */; };
+		C2F6F17C2CF9CD4600C14AD4 /* InputYear2015Day16.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1732CF9CD4600C14AD4 /* InputYear2015Day16.csv */; };
+		C2F6F17D2CF9CD4600C14AD4 /* InputYear2015Day19.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1752CF9CD4600C14AD4 /* InputYear2015Day19.csv */; };
+		C2F6F17E2CF9CD4600C14AD4 /* InputYear2015Day15.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1722CF9CD4600C14AD4 /* InputYear2015Day15.csv */; };
+		C2F6F17F2CF9CD4600C14AD4 /* InputYear2015Day7.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F16C2CF9CD4600C14AD4 /* InputYear2015Day7.csv */; };
+		C2F6F1802CF9CD4600C14AD4 /* InputYear2015Day1.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1672CF9CD4600C14AD4 /* InputYear2015Day1.csv */; };
+		C2F6F1812CF9CD4600C14AD4 /* InputYear2015Day2.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1682CF9CD4600C14AD4 /* InputYear2015Day2.csv */; };
+		C2F6F1822CF9CD4600C14AD4 /* InputYear2015Day23.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1762CF9CD4600C14AD4 /* InputYear2015Day23.csv */; };
+		C2F6F1832CF9CD4600C14AD4 /* InputYear2015Day5.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F16A2CF9CD4600C14AD4 /* InputYear2015Day5.csv */; };
+		C2F6F1842CF9CD4600C14AD4 /* InputYear2015Day12.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F16F2CF9CD4600C14AD4 /* InputYear2015Day12.csv */; };
+		C2F6F1852CF9CD4600C14AD4 /* InputYear2015Day14.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1712CF9CD4600C14AD4 /* InputYear2015Day14.csv */; };
+		C2F6F1862CF9CD4600C14AD4 /* InputYear2015Day18.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1742CF9CD4600C14AD4 /* InputYear2015Day18.csv */; };
+		C2F6F1982CF9CD6D00C14AD4 /* InputYear2016Day12.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1912CF9CD6D00C14AD4 /* InputYear2016Day12.csv */; };
+		C2F6F1992CF9CD6D00C14AD4 /* InputYear2016Day9.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F18F2CF9CD6D00C14AD4 /* InputYear2016Day9.csv */; };
+		C2F6F19A2CF9CD6D00C14AD4 /* InputYear2016Day21.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1932CF9CD6D00C14AD4 /* InputYear2016Day21.csv */; };
+		C2F6F19B2CF9CD6D00C14AD4 /* InputYear2016Day2.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1892CF9CD6D00C14AD4 /* InputYear2016Day2.csv */; };
+		C2F6F19C2CF9CD6D00C14AD4 /* InputYear2016Day8.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F18E2CF9CD6D00C14AD4 /* InputYear2016Day8.csv */; };
+		C2F6F19D2CF9CD6D00C14AD4 /* InputYear2016Day10.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1902CF9CD6D00C14AD4 /* InputYear2016Day10.csv */; };
+		C2F6F19E2CF9CD6D00C14AD4 /* InputYear2016Day22.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1942CF9CD6D00C14AD4 /* InputYear2016Day22.csv */; };
+		C2F6F19F2CF9CD6D00C14AD4 /* InputYear2016Day20.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1922CF9CD6D00C14AD4 /* InputYear2016Day20.csv */; };
+		C2F6F1A02CF9CD6D00C14AD4 /* InputYear2016Day25.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1972CF9CD6D00C14AD4 /* InputYear2016Day25.csv */; };
+		C2F6F1A12CF9CD6D00C14AD4 /* InputYear2016Day4.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F18B2CF9CD6D00C14AD4 /* InputYear2016Day4.csv */; };
+		C2F6F1A22CF9CD6D00C14AD4 /* InputYear2016Day6.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F18C2CF9CD6D00C14AD4 /* InputYear2016Day6.csv */; };
+		C2F6F1A32CF9CD6D00C14AD4 /* InputYear2016Day3.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F18A2CF9CD6D00C14AD4 /* InputYear2016Day3.csv */; };
+		C2F6F1A42CF9CD6D00C14AD4 /* InputYear2016Day24.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1962CF9CD6D00C14AD4 /* InputYear2016Day24.csv */; };
+		C2F6F1A52CF9CD6D00C14AD4 /* InputYear2016Day1.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1882CF9CD6D00C14AD4 /* InputYear2016Day1.csv */; };
+		C2F6F1A62CF9CD6D00C14AD4 /* InputYear2016Day7.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F18D2CF9CD6D00C14AD4 /* InputYear2016Day7.csv */; };
+		C2F6F1A72CF9CD6D00C14AD4 /* InputYear2016Day23.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1952CF9CD6D00C14AD4 /* InputYear2016Day23.csv */; };
+		C2F6F1BB2CF9CD9300C14AD4 /* InputYear2017Day8.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1AE2CF9CD9300C14AD4 /* InputYear2017Day8.csv */; };
+		C2F6F1BC2CF9CD9300C14AD4 /* InputYear2017Day23.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1B92CF9CD9300C14AD4 /* InputYear2017Day23.csv */; };
+		C2F6F1BD2CF9CD9300C14AD4 /* InputYear2017Day7.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1AD2CF9CD9300C14AD4 /* InputYear2017Day7.csv */; };
+		C2F6F1BE2CF9CD9300C14AD4 /* InputYear2017Day12.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1B12CF9CD9300C14AD4 /* InputYear2017Day12.csv */; };
+		C2F6F1BF2CF9CD9300C14AD4 /* InputYear2017Day16.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1B32CF9CD9300C14AD4 /* InputYear2017Day16.csv */; };
+		C2F6F1C02CF9CD9300C14AD4 /* InputYear2017Day11.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1B02CF9CD9300C14AD4 /* InputYear2017Day11.csv */; };
+		C2F6F1C12CF9CD9300C14AD4 /* InputYear2017Day21.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1B72CF9CD9300C14AD4 /* InputYear2017Day21.csv */; };
+		C2F6F1C22CF9CD9300C14AD4 /* InputYear2017Day22.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1B82CF9CD9300C14AD4 /* InputYear2017Day22.csv */; };
+		C2F6F1C32CF9CD9300C14AD4 /* InputYear2017Day9.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1AF2CF9CD9300C14AD4 /* InputYear2017Day9.csv */; };
+		C2F6F1C42CF9CD9300C14AD4 /* InputYear2017Day19.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1B52CF9CD9300C14AD4 /* InputYear2017Day19.csv */; };
+		C2F6F1C52CF9CD9300C14AD4 /* InputYear2017Day1.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1A92CF9CD9300C14AD4 /* InputYear2017Day1.csv */; };
+		C2F6F1C62CF9CD9300C14AD4 /* InputYear2017Day24.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1BA2CF9CD9300C14AD4 /* InputYear2017Day24.csv */; };
+		C2F6F1C72CF9CD9300C14AD4 /* InputYear2017Day13.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1B22CF9CD9300C14AD4 /* InputYear2017Day13.csv */; };
+		C2F6F1C82CF9CD9300C14AD4 /* InputYear2017Day18.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1B42CF9CD9300C14AD4 /* InputYear2017Day18.csv */; };
+		C2F6F1C92CF9CD9300C14AD4 /* InputYear2017Day4.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1AB2CF9CD9300C14AD4 /* InputYear2017Day4.csv */; };
+		C2F6F1CA2CF9CD9300C14AD4 /* InputYear2017Day5.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1AC2CF9CD9300C14AD4 /* InputYear2017Day5.csv */; };
+		C2F6F1CB2CF9CD9300C14AD4 /* InputYear2017Day2.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1AA2CF9CD9300C14AD4 /* InputYear2017Day2.csv */; };
+		C2F6F1CC2CF9CD9300C14AD4 /* InputYear2017Day20.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1B62CF9CD9300C14AD4 /* InputYear2017Day20.csv */; };
+		C2F6F1E42CF9CDB600C14AD4 /* InputYear2018Day8.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1D52CF9CDB600C14AD4 /* InputYear2018Day8.csv */; };
+		C2F6F1E52CF9CDB600C14AD4 /* InputYear2018Day20.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1DE2CF9CDB600C14AD4 /* InputYear2018Day20.csv */; };
+		C2F6F1E62CF9CDB600C14AD4 /* InputYear2018Day2.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1CF2CF9CDB600C14AD4 /* InputYear2018Day2.csv */; };
+		C2F6F1E72CF9CDB600C14AD4 /* InputYear2018Day4.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1D12CF9CDB600C14AD4 /* InputYear2018Day4.csv */; };
+		C2F6F1E82CF9CDB600C14AD4 /* InputYear2018Day21.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1DF2CF9CDB600C14AD4 /* InputYear2018Day21.csv */; };
+		C2F6F1E92CF9CDB600C14AD4 /* InputYear2018Day24_inmuneSystem.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1E22CF9CDB600C14AD4 /* InputYear2018Day24_inmuneSystem.csv */; };
+		C2F6F1EA2CF9CDB600C14AD4 /* InputYear2018Day15.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1D92CF9CDB600C14AD4 /* InputYear2018Day15.csv */; };
+		C2F6F1EB2CF9CDB600C14AD4 /* InputYear2018Day16.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1DA2CF9CDB600C14AD4 /* InputYear2018Day16.csv */; };
+		C2F6F1EC2CF9CDB600C14AD4 /* InputYear2018Day1.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1CE2CF9CDB600C14AD4 /* InputYear2018Day1.csv */; };
+		C2F6F1ED2CF9CDB600C14AD4 /* InputYear2018Day18.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1DC2CF9CDB600C14AD4 /* InputYear2018Day18.csv */; };
+		C2F6F1EE2CF9CDB600C14AD4 /* InputYear2018Day7.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1D42CF9CDB600C14AD4 /* InputYear2018Day7.csv */; };
+		C2F6F1EF2CF9CDB600C14AD4 /* InputYear2018Day12.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1D72CF9CDB600C14AD4 /* InputYear2018Day12.csv */; };
+		C2F6F1F02CF9CDB600C14AD4 /* InputYear2018Day5.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1D22CF9CDB600C14AD4 /* InputYear2018Day5.csv */; };
+		C2F6F1F12CF9CDB600C14AD4 /* InputYear2018Day19.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1DD2CF9CDB600C14AD4 /* InputYear2018Day19.csv */; };
+		C2F6F1F22CF9CDB600C14AD4 /* InputYear2018Day23.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1E02CF9CDB600C14AD4 /* InputYear2018Day23.csv */; };
+		C2F6F1F32CF9CDB600C14AD4 /* InputYear2018Day10.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1D62CF9CDB600C14AD4 /* InputYear2018Day10.csv */; };
+		C2F6F1F42CF9CDB600C14AD4 /* InputYear2018Day17.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1DB2CF9CDB600C14AD4 /* InputYear2018Day17.csv */; };
+		C2F6F1F52CF9CDB600C14AD4 /* InputYear2018Day24_infections.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1E12CF9CDB600C14AD4 /* InputYear2018Day24_infections.csv */; };
+		C2F6F1F62CF9CDB600C14AD4 /* InputYear2018Day3.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1D02CF9CDB600C14AD4 /* InputYear2018Day3.csv */; };
+		C2F6F1F72CF9CDB600C14AD4 /* InputYear2018Day13.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1D82CF9CDB600C14AD4 /* InputYear2018Day13.csv */; };
+		C2F6F1F82CF9CDB600C14AD4 /* InputYear2018Day6.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1D32CF9CDB600C14AD4 /* InputYear2018Day6.csv */; };
+		C2F6F1F92CF9CDB600C14AD4 /* InputYear2018Day25.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1E32CF9CDB600C14AD4 /* InputYear2018Day25.csv */; };
+		C2F6F2142CF9CDD400C14AD4 /* InputYear2019Day1.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1FB2CF9CDD400C14AD4 /* InputYear2019Day1.csv */; };
+		C2F6F2152CF9CDD400C14AD4 /* InputYear2019Day2.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1FC2CF9CDD400C14AD4 /* InputYear2019Day2.csv */; };
+		C2F6F2162CF9CDD400C14AD4 /* InputYear2019Day6.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1FF2CF9CDD400C14AD4 /* InputYear2019Day6.csv */; };
+		C2F6F2172CF9CDD400C14AD4 /* InputYear2019Day5.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1FE2CF9CDD400C14AD4 /* InputYear2019Day5.csv */; };
+		C2F6F2182CF9CDD400C14AD4 /* InputYear2019Day18Part2.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F20C2CF9CDD400C14AD4 /* InputYear2019Day18Part2.csv */; };
+		C2F6F2192CF9CDD400C14AD4 /* InputYear2019Day7.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2002CF9CDD400C14AD4 /* InputYear2019Day7.csv */; };
+		C2F6F21A2CF9CDD400C14AD4 /* InputYear2019Day11.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2042CF9CDD400C14AD4 /* InputYear2019Day11.csv */; };
+		C2F6F21B2CF9CDD400C14AD4 /* InputYear2019Day18.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F20B2CF9CDD400C14AD4 /* InputYear2019Day18.csv */; };
+		C2F6F21C2CF9CDD400C14AD4 /* InputYear2019Day19.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F20D2CF9CDD400C14AD4 /* InputYear2019Day19.csv */; };
+		C2F6F21D2CF9CDD400C14AD4 /* InputYear2019Day20.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F20E2CF9CDD400C14AD4 /* InputYear2019Day20.csv */; };
+		C2F6F21E2CF9CDD400C14AD4 /* InputYear2019Day22.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2102CF9CDD400C14AD4 /* InputYear2019Day22.csv */; };
+		C2F6F21F2CF9CDD400C14AD4 /* InputYear2019Day16.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2092CF9CDD400C14AD4 /* InputYear2019Day16.csv */; };
+		C2F6F2202CF9CDD400C14AD4 /* InputYear2019Day17.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F20A2CF9CDD400C14AD4 /* InputYear2019Day17.csv */; };
+		C2F6F2212CF9CDD400C14AD4 /* InputYear2019Day3.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F1FD2CF9CDD400C14AD4 /* InputYear2019Day3.csv */; };
+		C2F6F2222CF9CDD400C14AD4 /* InputYear2019Day15.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2082CF9CDD400C14AD4 /* InputYear2019Day15.csv */; };
+		C2F6F2232CF9CDD400C14AD4 /* InputYear2019Day24.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2122CF9CDD400C14AD4 /* InputYear2019Day24.csv */; };
+		C2F6F2242CF9CDD400C14AD4 /* InputYear2019Day8.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2012CF9CDD400C14AD4 /* InputYear2019Day8.csv */; };
+		C2F6F2252CF9CDD400C14AD4 /* InputYear2019Day12.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2052CF9CDD400C14AD4 /* InputYear2019Day12.csv */; };
+		C2F6F2262CF9CDD400C14AD4 /* InputYear2019Day14.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2072CF9CDD400C14AD4 /* InputYear2019Day14.csv */; };
+		C2F6F2272CF9CDD400C14AD4 /* InputYear2019Day9.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2022CF9CDD400C14AD4 /* InputYear2019Day9.csv */; };
+		C2F6F2282CF9CDD400C14AD4 /* InputYear2019Day13.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2062CF9CDD400C14AD4 /* InputYear2019Day13.csv */; };
+		C2F6F2292CF9CDD400C14AD4 /* InputYear2019Day21.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F20F2CF9CDD400C14AD4 /* InputYear2019Day21.csv */; };
+		C2F6F22A2CF9CDD400C14AD4 /* InputYear2019Day10.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2032CF9CDD400C14AD4 /* InputYear2019Day10.csv */; };
+		C2F6F22B2CF9CDD400C14AD4 /* InputYear2019Day23.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2112CF9CDD400C14AD4 /* InputYear2019Day23.csv */; };
+		C2F6F22C2CF9CDD400C14AD4 /* InputYear2019Day25.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2132CF9CDD400C14AD4 /* InputYear2019Day25.csv */; };
+		C2F6F2442CF9CE2300C14AD4 /* InputYear2020Day13.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F23A2CF9CE2300C14AD4 /* InputYear2020Day13.csv */; };
+		C2F6F2452CF9CE2300C14AD4 /* InputYear2020Day14.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F23B2CF9CE2300C14AD4 /* InputYear2020Day14.csv */; };
+		C2F6F2462CF9CE2300C14AD4 /* InputYear2020Day8.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2352CF9CE2300C14AD4 /* InputYear2020Day8.csv */; };
+		C2F6F2472CF9CE2300C14AD4 /* InputYear2020Day18.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F23E2CF9CE2300C14AD4 /* InputYear2020Day18.csv */; };
+		C2F6F2482CF9CE2300C14AD4 /* InputYear2020Day22.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2422CF9CE2300C14AD4 /* InputYear2020Day22.csv */; };
+		C2F6F2492CF9CE2300C14AD4 /* InputYear2020Day21.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2412CF9CE2300C14AD4 /* InputYear2020Day21.csv */; };
+		C2F6F24A2CF9CE2300C14AD4 /* InputYear2020Day1.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F22E2CF9CE2300C14AD4 /* InputYear2020Day1.csv */; };
+		C2F6F24B2CF9CE2300C14AD4 /* InputYear2020Day4.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2312CF9CE2300C14AD4 /* InputYear2020Day4.csv */; };
+		C2F6F24C2CF9CE2300C14AD4 /* InputYear2020Day9.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2362CF9CE2300C14AD4 /* InputYear2020Day9.csv */; };
+		C2F6F24D2CF9CE2300C14AD4 /* InputYear2020Day10.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2372CF9CE2300C14AD4 /* InputYear2020Day10.csv */; };
+		C2F6F24E2CF9CE2300C14AD4 /* InputYear2020Day19.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F23F2CF9CE2300C14AD4 /* InputYear2020Day19.csv */; };
+		C2F6F24F2CF9CE2300C14AD4 /* InputYear2020Day3.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2302CF9CE2300C14AD4 /* InputYear2020Day3.csv */; };
+		C2F6F2502CF9CE2300C14AD4 /* InputYear2020Day5.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2322CF9CE2300C14AD4 /* InputYear2020Day5.csv */; };
+		C2F6F2512CF9CE2300C14AD4 /* InputYear2020Day6.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2332CF9CE2300C14AD4 /* InputYear2020Day6.csv */; };
+		C2F6F2522CF9CE2300C14AD4 /* InputYear2020Day7.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2342CF9CE2300C14AD4 /* InputYear2020Day7.csv */; };
+		C2F6F2532CF9CE2300C14AD4 /* InputYear2020Day11.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2382CF9CE2300C14AD4 /* InputYear2020Day11.csv */; };
+		C2F6F2542CF9CE2300C14AD4 /* InputYear2020Day12.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2392CF9CE2300C14AD4 /* InputYear2020Day12.csv */; };
+		C2F6F2552CF9CE2300C14AD4 /* InputYear2020Day16.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F23C2CF9CE2300C14AD4 /* InputYear2020Day16.csv */; };
+		C2F6F2562CF9CE2300C14AD4 /* InputYear2020Day17.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F23D2CF9CE2300C14AD4 /* InputYear2020Day17.csv */; };
+		C2F6F2572CF9CE2300C14AD4 /* InputYear2020Day24.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2432CF9CE2300C14AD4 /* InputYear2020Day24.csv */; };
+		C2F6F2582CF9CE2300C14AD4 /* InputYear2020Day20.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2402CF9CE2300C14AD4 /* InputYear2020Day20.csv */; };
+		C2F6F2592CF9CE2300C14AD4 /* InputYear2020Day2.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F22F2CF9CE2300C14AD4 /* InputYear2020Day2.csv */; };
+		C2F6F2702CF9CE4D00C14AD4 /* InputDay9.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2612CF9CE4D00C14AD4 /* InputDay9.csv */; };
+		C2F6F2712CF9CE4D00C14AD4 /* InputYear2021Day19.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2692CF9CE4D00C14AD4 /* InputYear2021Day19.csv */; };
+		C2F6F2722CF9CE4D00C14AD4 /* InputDay2.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F25C2CF9CE4D00C14AD4 /* InputDay2.csv */; };
+		C2F6F2732CF9CE4D00C14AD4 /* InputDay14.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2662CF9CE4D00C14AD4 /* InputDay14.csv */; };
+		C2F6F2742CF9CE4D00C14AD4 /* InputYear2021Day18.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2682CF9CE4D00C14AD4 /* InputYear2021Day18.csv */; };
+		C2F6F2752CF9CE4D00C14AD4 /* InputYear2021Day23Part2.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F26D2CF9CE4D00C14AD4 /* InputYear2021Day23Part2.csv */; };
+		C2F6F2762CF9CE4D00C14AD4 /* InputDay13.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2652CF9CE4D00C14AD4 /* InputDay13.csv */; };
+		C2F6F2772CF9CE4D00C14AD4 /* InputDay10.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2622CF9CE4D00C14AD4 /* InputDay10.csv */; };
+		C2F6F2782CF9CE4D00C14AD4 /* InputYear2021Day25.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F26F2CF9CE4D00C14AD4 /* InputYear2021Day25.csv */; };
+		C2F6F2792CF9CE4D00C14AD4 /* InputYear2021Day20.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F26A2CF9CE4D00C14AD4 /* InputYear2021Day20.csv */; };
+		C2F6F27A2CF9CE4D00C14AD4 /* InputYear2021Day24.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F26E2CF9CE4D00C14AD4 /* InputYear2021Day24.csv */; };
+		C2F6F27B2CF9CE4D00C14AD4 /* InputDay11.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2632CF9CE4D00C14AD4 /* InputDay11.csv */; };
+		C2F6F27C2CF9CE4D00C14AD4 /* InputDay12.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2642CF9CE4D00C14AD4 /* InputDay12.csv */; };
+		C2F6F27D2CF9CE4D00C14AD4 /* InputDay4.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F25E2CF9CE4D00C14AD4 /* InputDay4.csv */; };
+		C2F6F27E2CF9CE4D00C14AD4 /* InputYear2021Day22.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F26B2CF9CE4D00C14AD4 /* InputYear2021Day22.csv */; };
+		C2F6F27F2CF9CE4D00C14AD4 /* InputYear2021Day23.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F26C2CF9CE4D00C14AD4 /* InputYear2021Day23.csv */; };
+		C2F6F2802CF9CE4D00C14AD4 /* InputDay15.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2672CF9CE4D00C14AD4 /* InputDay15.csv */; };
+		C2F6F2812CF9CE4D00C14AD4 /* InputDay3.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F25D2CF9CE4D00C14AD4 /* InputDay3.csv */; };
+		C2F6F2822CF9CE4D00C14AD4 /* InputDay8.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2602CF9CE4D00C14AD4 /* InputDay8.csv */; };
+		C2F6F2832CF9CE4D00C14AD4 /* InputDay1.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F25B2CF9CE4D00C14AD4 /* InputDay1.xlsx */; };
+		C2F6F2842CF9CE4D00C14AD4 /* InputDay5.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F25F2CF9CE4D00C14AD4 /* InputDay5.csv */; };
+		C2F6F2892CF9CE7A00C14AD4 /* MainConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2872CF9CE7A00C14AD4 /* MainConfigurator.swift */; };
+		C2F6F28A2CF9CE7A00C14AD4 /* YearSelectorConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2882CF9CE7A00C14AD4 /* YearSelectorConfigurator.swift */; };
+		C2F6F28B2CF9CE7A00C14AD4 /* DetailConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2862CF9CE7A00C14AD4 /* DetailConfigurator.swift */; };
+		C2F6F28F2CF9CEB300C14AD4 /* Detail2019_25View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F28E2CF9CEB300C14AD4 /* Detail2019_25View.swift */; };
+		C2F6F2972CF9CED300C14AD4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2932CF9CED300C14AD4 /* MainViewController.swift */; };
+		C2F6F2982CF9CED300C14AD4 /* YearSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2952CF9CED300C14AD4 /* YearSelectorViewController.swift */; };
+		C2F6F2992CF9CED300C14AD4 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2902CF9CED300C14AD4 /* DayView.swift */; };
+		C2F6F29A2CF9CED300C14AD4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2912CF9CED300C14AD4 /* DetailViewController.swift */; };
+		C2F6F29B2CF9CED300C14AD4 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2922CF9CED300C14AD4 /* DetailViewController.xib */; };
+		C2F6F29C2CF9CED300C14AD4 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2942CF9CED300C14AD4 /* MainViewController.xib */; };
+		C2F6F29D2CF9CED300C14AD4 /* YearSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2962CF9CED300C14AD4 /* YearSelectorViewController.xib */; };
+		C2F6F2A32CF9CF1000C14AD4 /* MainPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2A02CF9CF1000C14AD4 /* MainPresenterImpl.swift */; };
+		C2F6F2A42CF9CF1000C14AD4 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F29F2CF9CF1000C14AD4 /* MainPresenter.swift */; };
+		C2F6F2A52CF9CF1000C14AD4 /* YearSelectorPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2A22CF9CF1000C14AD4 /* YearSelectorPresenterImpl.swift */; };
+		C2F6F2A62CF9CF1000C14AD4 /* YearSelectorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2A12CF9CF1000C14AD4 /* YearSelectorPresenter.swift */; };
+		C2F6F2AC2CF9CF4400C14AD4 /* MainRouterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2A92CF9CF4400C14AD4 /* MainRouterImpl.swift */; };
+		C2F6F2AD2CF9CF4400C14AD4 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2A82CF9CF4400C14AD4 /* MainRouter.swift */; };
+		C2F6F2AE2CF9CF4400C14AD4 /* YearSelectorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2AA2CF9CF4400C14AD4 /* YearSelectorRouter.swift */; };
+		C2F6F2AF2CF9CF4400C14AD4 /* YearSelectorRouterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2AB2CF9CF4400C14AD4 /* YearSelectorRouterImpl.swift */; };
+		C2F6F2BC2CF9CFA800C14AD4 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2B12CF9CFA800C14AD4 /* MainInteractor.swift */; };
+		C2F6F2BD2CF9CFA800C14AD4 /* MainInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2B22CF9CFA800C14AD4 /* MainInteractorImpl.swift */; };
+		C2F6F2BE2CF9CFA800C14AD4 /* Year2017InteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2B52CF9CFA800C14AD4 /* Year2017InteractorImpl.swift */; };
+		C2F6F2BF2CF9CFA800C14AD4 /* Year2019InteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2B72CF9CFA800C14AD4 /* Year2019InteractorImpl.swift */; };
+		C2F6F2C02CF9CFA800C14AD4 /* Year2016InteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2B42CF9CFA800C14AD4 /* Year2016InteractorImpl.swift */; };
+		C2F6F2C12CF9CFA800C14AD4 /* Year2020InteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2B82CF9CFA800C14AD4 /* Year2020InteractorImpl.swift */; };
+		C2F6F2C22CF9CFA800C14AD4 /* Year2021InteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2B92CF9CFA800C14AD4 /* Year2021InteractorImpl.swift */; };
+		C2F6F2C32CF9CFA800C14AD4 /* Year2015InteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2B32CF9CFA800C14AD4 /* Year2015InteractorImpl.swift */; };
+		C2F6F2C52CF9CFA800C14AD4 /* YearInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2BB2CF9CFA800C14AD4 /* YearInteractor.swift */; };
+		C2F6F2C62CF9CFA800C14AD4 /* Year2018InteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2B62CF9CFA800C14AD4 /* Year2018InteractorImpl.swift */; };
+		C2F6F2CB2CF9D00F00C14AD4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2CA2CF9D00F00C14AD4 /* ViewController.swift */; };
+		C2F6F2CC2CF9D00F00C14AD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2C72CF9D00F00C14AD4 /* AppDelegate.swift */; };
+		C2F6F2CE2CF9D00F00C14AD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2C82CF9D00F00C14AD4 /* Assets.xcassets */; };
+		C2F6F2CF2CF9D1EA00C14AD4 /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F11F2CF9CA3D00C14AD4 /* Year.swift */; };
+		C2F6F2D02CF9D1FA00C14AD4 /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F1222CF9CA7000C14AD4 /* GameStatus.swift */; };
+		C2F6F2D12CF9D20A00C14AD4 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F1232CF9CA8400C14AD4 /* Direction.swift */; };
+		C2F6F2D22CF9D20F00C14AD4 /* FractalGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F1242CF9CA9900C14AD4 /* FractalGrid.swift */; };
+		C2F6F2D82CF9D35400C14AD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2D42CF9D35400C14AD4 /* LaunchScreen.storyboard */; };
+		C2F6F2D92CF9D35400C14AD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2D62CF9D35400C14AD4 /* Main.storyboard */; };
+		C2F6F2DB2CF9D3EE00C14AD4 /* Year2022InteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2DA2CF9D3EE00C14AD4 /* Year2022InteractorImpl.swift */; };
+		C2F6F2DE2CF9D4D800C14AD4 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2DD2CF9D4D800C14AD4 /* Stack.swift */; };
+		C2F6F2DF2CF9D4D800C14AD4 /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F2DC2CF9D4D800C14AD4 /* Heap.swift */; };
+		C2F6F2F82CF9D59900C14AD4 /* InputYear2022Day12.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2EC2CF9D59900C14AD4 /* InputYear2022Day12.csv */; };
+		C2F6F2F92CF9D59900C14AD4 /* InputYear2022Day18.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2F22CF9D59900C14AD4 /* InputYear2022Day18.csv */; };
+		C2F6F2FA2CF9D59900C14AD4 /* InputYear2022Day6.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2E62CF9D59900C14AD4 /* InputYear2022Day6.csv */; };
+		C2F6F2FB2CF9D59900C14AD4 /* InputYear2022Day22_Map.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2F62CF9D59900C14AD4 /* InputYear2022Day22_Map.csv */; };
+		C2F6F2FC2CF9D59900C14AD4 /* InputYear2022Day1.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2E12CF9D59900C14AD4 /* InputYear2022Day1.csv */; };
+		C2F6F2FD2CF9D59900C14AD4 /* InputYear2022Day8.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2E82CF9D59900C14AD4 /* InputYear2022Day8.csv */; };
+		C2F6F2FE2CF9D59900C14AD4 /* InputYear2022Day7.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2E72CF9D59900C14AD4 /* InputYear2022Day7.csv */; };
+		C2F6F2FF2CF9D59900C14AD4 /* InputYear2022Day3.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2E32CF9D59900C14AD4 /* InputYear2022Day3.csv */; };
+		C2F6F3002CF9D59900C14AD4 /* InputYear2022Day15.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2EF2CF9D59900C14AD4 /* InputYear2022Day15.csv */; };
+		C2F6F3012CF9D59900C14AD4 /* InputYear2022Day19.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2F32CF9D59900C14AD4 /* InputYear2022Day19.csv */; };
+		C2F6F3022CF9D59900C14AD4 /* InputYear2022Day10.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2EA2CF9D59900C14AD4 /* InputYear2022Day10.csv */; };
+		C2F6F3032CF9D59900C14AD4 /* InputYear2022Day22_Path.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2F72CF9D59900C14AD4 /* InputYear2022Day22_Path.csv */; };
+		C2F6F3042CF9D59900C14AD4 /* InputYear2022Day11.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2EB2CF9D59900C14AD4 /* InputYear2022Day11.csv */; };
+		C2F6F3052CF9D59900C14AD4 /* InputYear2022Day4.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2E42CF9D59900C14AD4 /* InputYear2022Day4.csv */; };
+		C2F6F3062CF9D59900C14AD4 /* InputYear2022Day14.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2EE2CF9D59900C14AD4 /* InputYear2022Day14.csv */; };
+		C2F6F3072CF9D59900C14AD4 /* InputYear2022Day21.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2F52CF9D59900C14AD4 /* InputYear2022Day21.csv */; };
+		C2F6F3082CF9D59900C14AD4 /* InputYear2022Day2.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2E22CF9D59900C14AD4 /* InputYear2022Day2.csv */; };
+		C2F6F3092CF9D59900C14AD4 /* InputYear2022Day5.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2E52CF9D59900C14AD4 /* InputYear2022Day5.csv */; };
+		C2F6F30A2CF9D59900C14AD4 /* InputYear2022Day13.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2ED2CF9D59900C14AD4 /* InputYear2022Day13.csv */; };
+		C2F6F30B2CF9D59900C14AD4 /* InputYear2022Day16.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2F02CF9D59900C14AD4 /* InputYear2022Day16.csv */; };
+		C2F6F30C2CF9D59900C14AD4 /* InputYear2022Day17.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2F12CF9D59900C14AD4 /* InputYear2022Day17.csv */; };
+		C2F6F30D2CF9D59900C14AD4 /* InputYear2022Day9.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2E92CF9D59900C14AD4 /* InputYear2022Day9.csv */; };
+		C2F6F30E2CF9D59900C14AD4 /* InputYear2022Day20.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2F42CF9D59900C14AD4 /* InputYear2022Day20.csv */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C24E8C272758BB6F007E3A2B /* AdventOfCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdventOfCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C24E8C312758BB6F007E3A2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C24E8C362758BB72007E3A2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C2F6F11F2CF9CA3D00C14AD4 /* Year.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
+		C2F6F1222CF9CA7000C14AD4 /* GameStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
+		C2F6F1232CF9CA8400C14AD4 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		C2F6F1242CF9CA9900C14AD4 /* FractalGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalGrid.swift; sourceTree = "<group>"; };
+		C2F6F1252CF9CAF100C14AD4 /* Bronkerbosch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bronkerbosch.swift; sourceTree = "<group>"; };
+		C2F6F1272CF9CAF100C14AD4 /* CombatCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatCharacter.swift; sourceTree = "<group>"; };
+		C2F6F1282CF9CAF100C14AD4 /* Cup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cup.swift; sourceTree = "<group>"; };
+		C2F6F1292CF9CAF100C14AD4 /* DiagramSituation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagramSituation.swift; sourceTree = "<group>"; };
+		C2F6F12A2CF9CAF100C14AD4 /* DirectoryTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryTree.swift; sourceTree = "<group>"; };
+		C2F6F12B2CF9CAF100C14AD4 /* DutyDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DutyDate.swift; sourceTree = "<group>"; };
+		C2F6F12C2CF9CAF100C14AD4 /* HexagonalTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonalTile.swift; sourceTree = "<group>"; };
+		C2F6F12D2CF9CAF100C14AD4 /* InmuneGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InmuneGroup.swift; sourceTree = "<group>"; };
+		C2F6F12E2CF9CAF100C14AD4 /* Intcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intcode.swift; sourceTree = "<group>"; };
+		C2F6F12F2CF9CAF100C14AD4 /* LavaDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LavaDrop.swift; sourceTree = "<group>"; };
+		C2F6F1302CF9CAF100C14AD4 /* MathNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathNode.swift; sourceTree = "<group>"; };
+		C2F6F1312CF9CAF100C14AD4 /* Maze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maze.swift; sourceTree = "<group>"; };
+		C2F6F1322CF9CAF100C14AD4 /* MineCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineCart.swift; sourceTree = "<group>"; };
+		C2F6F1332CF9CAF100C14AD4 /* Moon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moon.swift; sourceTree = "<group>"; };
+		C2F6F1342CF9CAF100C14AD4 /* PackageTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageTree.swift; sourceTree = "<group>"; };
+		C2F6F1352CF9CAF100C14AD4 /* PlutoMaze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlutoMaze.swift; sourceTree = "<group>"; };
+		C2F6F1362CF9CAF100C14AD4 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		C2F6F1372CF9CAF100C14AD4 /* RebootStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RebootStep.swift; sourceTree = "<group>"; };
+		C2F6F1392CF9CAF100C14AD4 /* SandMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandMap.swift; sourceTree = "<group>"; };
+		C2F6F13A2CF9CAF100C14AD4 /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
+		C2F6F13B2CF9CAF100C14AD4 /* Shuffler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffler.swift; sourceTree = "<group>"; };
+		C2F6F13C2CF9CAF100C14AD4 /* SnailFishNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnailFishNumber.swift; sourceTree = "<group>"; };
+		C2F6F13D2CF9CAF100C14AD4 /* Tetris.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tetris.swift; sourceTree = "<group>"; };
+		C2F6F13E2CF9CAF100C14AD4 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		C2F6F13F2CF9CAF100C14AD4 /* ValvesPathFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValvesPathFinder.swift; sourceTree = "<group>"; };
+		C2F6F1402CF9CAF100C14AD4 /* WaterMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterMap.swift; sourceTree = "<group>"; };
+		C2F6F15D2CF9CB8400C14AD4 /* Array+Chunk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Chunk.swift"; sourceTree = "<group>"; };
+		C2F6F15E2CF9CB8400C14AD4 /* String+Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Operations.swift"; sourceTree = "<group>"; };
+		C2F6F15F2CF9CB8400C14AD4 /* StringProtocol+Subscripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringProtocol+Subscripts.swift"; sourceTree = "<group>"; };
+		C2F6F1602CF9CB8400C14AD4 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		C2F6F1672CF9CD4600C14AD4 /* InputYear2015Day1.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2015Day1.csv; sourceTree = "<group>"; };
+		C2F6F1682CF9CD4600C14AD4 /* InputYear2015Day2.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2015Day2.csv; sourceTree = "<group>"; };
+		C2F6F1692CF9CD4600C14AD4 /* InputYear2015Day3.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2015Day3.csv; sourceTree = "<group>"; };
+		C2F6F16A2CF9CD4600C14AD4 /* InputYear2015Day5.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2015Day5.csv; sourceTree = "<group>"; };
+		C2F6F16B2CF9CD4600C14AD4 /* InputYear2015Day6.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2015Day6.csv; sourceTree = "<group>"; };
+		C2F6F16C2CF9CD4600C14AD4 /* InputYear2015Day7.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2015Day7.csv; sourceTree = "<group>"; };
+		C2F6F16D2CF9CD4600C14AD4 /* InputYear2015Day8.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2015Day8.csv; sourceTree = "<group>"; };
+		C2F6F16E2CF9CD4600C14AD4 /* InputYear2015Day9.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2015Day9.csv; sourceTree = "<group>"; };
+		C2F6F16F2CF9CD4600C14AD4 /* InputYear2015Day12.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2015Day12.csv; sourceTree = "<group>"; };
+		C2F6F1702CF9CD4600C14AD4 /* InputYear2015Day13.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2015Day13.csv; sourceTree = "<group>"; };
+		C2F6F1712CF9CD4600C14AD4 /* InputYear2015Day14.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2015Day14.csv; sourceTree = "<group>"; };
+		C2F6F1722CF9CD4600C14AD4 /* InputYear2015Day15.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2015Day15.csv; sourceTree = "<group>"; };
+		C2F6F1732CF9CD4600C14AD4 /* InputYear2015Day16.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2015Day16.csv; sourceTree = "<group>"; };
+		C2F6F1742CF9CD4600C14AD4 /* InputYear2015Day18.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2015Day18.csv; sourceTree = "<group>"; };
+		C2F6F1752CF9CD4600C14AD4 /* InputYear2015Day19.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2015Day19.csv; sourceTree = "<group>"; };
+		C2F6F1762CF9CD4600C14AD4 /* InputYear2015Day23.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2015Day23.csv; sourceTree = "<group>"; };
+		C2F6F1882CF9CD6D00C14AD4 /* InputYear2016Day1.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2016Day1.csv; sourceTree = "<group>"; };
+		C2F6F1892CF9CD6D00C14AD4 /* InputYear2016Day2.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2016Day2.csv; sourceTree = "<group>"; };
+		C2F6F18A2CF9CD6D00C14AD4 /* InputYear2016Day3.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2016Day3.csv; sourceTree = "<group>"; };
+		C2F6F18B2CF9CD6D00C14AD4 /* InputYear2016Day4.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2016Day4.csv; sourceTree = "<group>"; };
+		C2F6F18C2CF9CD6D00C14AD4 /* InputYear2016Day6.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2016Day6.csv; sourceTree = "<group>"; };
+		C2F6F18D2CF9CD6D00C14AD4 /* InputYear2016Day7.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2016Day7.csv; sourceTree = "<group>"; };
+		C2F6F18E2CF9CD6D00C14AD4 /* InputYear2016Day8.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2016Day8.csv; sourceTree = "<group>"; };
+		C2F6F18F2CF9CD6D00C14AD4 /* InputYear2016Day9.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2016Day9.csv; sourceTree = "<group>"; };
+		C2F6F1902CF9CD6D00C14AD4 /* InputYear2016Day10.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2016Day10.csv; sourceTree = "<group>"; };
+		C2F6F1912CF9CD6D00C14AD4 /* InputYear2016Day12.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2016Day12.csv; sourceTree = "<group>"; };
+		C2F6F1922CF9CD6D00C14AD4 /* InputYear2016Day20.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2016Day20.csv; sourceTree = "<group>"; };
+		C2F6F1932CF9CD6D00C14AD4 /* InputYear2016Day21.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2016Day21.csv; sourceTree = "<group>"; };
+		C2F6F1942CF9CD6D00C14AD4 /* InputYear2016Day22.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2016Day22.csv; sourceTree = "<group>"; };
+		C2F6F1952CF9CD6D00C14AD4 /* InputYear2016Day23.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2016Day23.csv; sourceTree = "<group>"; };
+		C2F6F1962CF9CD6D00C14AD4 /* InputYear2016Day24.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2016Day24.csv; sourceTree = "<group>"; };
+		C2F6F1972CF9CD6D00C14AD4 /* InputYear2016Day25.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2016Day25.csv; sourceTree = "<group>"; };
+		C2F6F1A92CF9CD9300C14AD4 /* InputYear2017Day1.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2017Day1.csv; sourceTree = "<group>"; };
+		C2F6F1AA2CF9CD9300C14AD4 /* InputYear2017Day2.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2017Day2.csv; sourceTree = "<group>"; };
+		C2F6F1AB2CF9CD9300C14AD4 /* InputYear2017Day4.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2017Day4.csv; sourceTree = "<group>"; };
+		C2F6F1AC2CF9CD9300C14AD4 /* InputYear2017Day5.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2017Day5.csv; sourceTree = "<group>"; };
+		C2F6F1AD2CF9CD9300C14AD4 /* InputYear2017Day7.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2017Day7.csv; sourceTree = "<group>"; };
+		C2F6F1AE2CF9CD9300C14AD4 /* InputYear2017Day8.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2017Day8.csv; sourceTree = "<group>"; };
+		C2F6F1AF2CF9CD9300C14AD4 /* InputYear2017Day9.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2017Day9.csv; sourceTree = "<group>"; };
+		C2F6F1B02CF9CD9300C14AD4 /* InputYear2017Day11.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2017Day11.csv; sourceTree = "<group>"; };
+		C2F6F1B12CF9CD9300C14AD4 /* InputYear2017Day12.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2017Day12.csv; sourceTree = "<group>"; };
+		C2F6F1B22CF9CD9300C14AD4 /* InputYear2017Day13.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2017Day13.csv; sourceTree = "<group>"; };
+		C2F6F1B32CF9CD9300C14AD4 /* InputYear2017Day16.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2017Day16.csv; sourceTree = "<group>"; };
+		C2F6F1B42CF9CD9300C14AD4 /* InputYear2017Day18.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2017Day18.csv; sourceTree = "<group>"; };
+		C2F6F1B52CF9CD9300C14AD4 /* InputYear2017Day19.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2017Day19.csv; sourceTree = "<group>"; };
+		C2F6F1B62CF9CD9300C14AD4 /* InputYear2017Day20.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2017Day20.csv; sourceTree = "<group>"; };
+		C2F6F1B72CF9CD9300C14AD4 /* InputYear2017Day21.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2017Day21.csv; sourceTree = "<group>"; };
+		C2F6F1B82CF9CD9300C14AD4 /* InputYear2017Day22.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2017Day22.csv; sourceTree = "<group>"; };
+		C2F6F1B92CF9CD9300C14AD4 /* InputYear2017Day23.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2017Day23.csv; sourceTree = "<group>"; };
+		C2F6F1BA2CF9CD9300C14AD4 /* InputYear2017Day24.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2017Day24.csv; sourceTree = "<group>"; };
+		C2F6F1CE2CF9CDB600C14AD4 /* InputYear2018Day1.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day1.csv; sourceTree = "<group>"; };
+		C2F6F1CF2CF9CDB600C14AD4 /* InputYear2018Day2.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day2.csv; sourceTree = "<group>"; };
+		C2F6F1D02CF9CDB600C14AD4 /* InputYear2018Day3.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day3.csv; sourceTree = "<group>"; };
+		C2F6F1D12CF9CDB600C14AD4 /* InputYear2018Day4.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day4.csv; sourceTree = "<group>"; };
+		C2F6F1D22CF9CDB600C14AD4 /* InputYear2018Day5.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day5.csv; sourceTree = "<group>"; };
+		C2F6F1D32CF9CDB600C14AD4 /* InputYear2018Day6.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day6.csv; sourceTree = "<group>"; };
+		C2F6F1D42CF9CDB600C14AD4 /* InputYear2018Day7.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day7.csv; sourceTree = "<group>"; };
+		C2F6F1D52CF9CDB600C14AD4 /* InputYear2018Day8.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day8.csv; sourceTree = "<group>"; };
+		C2F6F1D62CF9CDB600C14AD4 /* InputYear2018Day10.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day10.csv; sourceTree = "<group>"; };
+		C2F6F1D72CF9CDB600C14AD4 /* InputYear2018Day12.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day12.csv; sourceTree = "<group>"; };
+		C2F6F1D82CF9CDB600C14AD4 /* InputYear2018Day13.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day13.csv; sourceTree = "<group>"; };
+		C2F6F1D92CF9CDB600C14AD4 /* InputYear2018Day15.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day15.csv; sourceTree = "<group>"; };
+		C2F6F1DA2CF9CDB600C14AD4 /* InputYear2018Day16.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day16.csv; sourceTree = "<group>"; };
+		C2F6F1DB2CF9CDB600C14AD4 /* InputYear2018Day17.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day17.csv; sourceTree = "<group>"; };
+		C2F6F1DC2CF9CDB600C14AD4 /* InputYear2018Day18.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day18.csv; sourceTree = "<group>"; };
+		C2F6F1DD2CF9CDB600C14AD4 /* InputYear2018Day19.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day19.csv; sourceTree = "<group>"; };
+		C2F6F1DE2CF9CDB600C14AD4 /* InputYear2018Day20.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day20.csv; sourceTree = "<group>"; };
+		C2F6F1DF2CF9CDB600C14AD4 /* InputYear2018Day21.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day21.csv; sourceTree = "<group>"; };
+		C2F6F1E02CF9CDB600C14AD4 /* InputYear2018Day23.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day23.csv; sourceTree = "<group>"; };
+		C2F6F1E12CF9CDB600C14AD4 /* InputYear2018Day24_infections.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day24_infections.csv; sourceTree = "<group>"; };
+		C2F6F1E22CF9CDB600C14AD4 /* InputYear2018Day24_inmuneSystem.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day24_inmuneSystem.csv; sourceTree = "<group>"; };
+		C2F6F1E32CF9CDB600C14AD4 /* InputYear2018Day25.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2018Day25.csv; sourceTree = "<group>"; };
+		C2F6F1FB2CF9CDD400C14AD4 /* InputYear2019Day1.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day1.csv; sourceTree = "<group>"; };
+		C2F6F1FC2CF9CDD400C14AD4 /* InputYear2019Day2.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day2.csv; sourceTree = "<group>"; };
+		C2F6F1FD2CF9CDD400C14AD4 /* InputYear2019Day3.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day3.csv; sourceTree = "<group>"; };
+		C2F6F1FE2CF9CDD400C14AD4 /* InputYear2019Day5.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day5.csv; sourceTree = "<group>"; };
+		C2F6F1FF2CF9CDD400C14AD4 /* InputYear2019Day6.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day6.csv; sourceTree = "<group>"; };
+		C2F6F2002CF9CDD400C14AD4 /* InputYear2019Day7.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day7.csv; sourceTree = "<group>"; };
+		C2F6F2012CF9CDD400C14AD4 /* InputYear2019Day8.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day8.csv; sourceTree = "<group>"; };
+		C2F6F2022CF9CDD400C14AD4 /* InputYear2019Day9.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day9.csv; sourceTree = "<group>"; };
+		C2F6F2032CF9CDD400C14AD4 /* InputYear2019Day10.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day10.csv; sourceTree = "<group>"; };
+		C2F6F2042CF9CDD400C14AD4 /* InputYear2019Day11.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day11.csv; sourceTree = "<group>"; };
+		C2F6F2052CF9CDD400C14AD4 /* InputYear2019Day12.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day12.csv; sourceTree = "<group>"; };
+		C2F6F2062CF9CDD400C14AD4 /* InputYear2019Day13.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day13.csv; sourceTree = "<group>"; };
+		C2F6F2072CF9CDD400C14AD4 /* InputYear2019Day14.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day14.csv; sourceTree = "<group>"; };
+		C2F6F2082CF9CDD400C14AD4 /* InputYear2019Day15.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day15.csv; sourceTree = "<group>"; };
+		C2F6F2092CF9CDD400C14AD4 /* InputYear2019Day16.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day16.csv; sourceTree = "<group>"; };
+		C2F6F20A2CF9CDD400C14AD4 /* InputYear2019Day17.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day17.csv; sourceTree = "<group>"; };
+		C2F6F20B2CF9CDD400C14AD4 /* InputYear2019Day18.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day18.csv; sourceTree = "<group>"; };
+		C2F6F20C2CF9CDD400C14AD4 /* InputYear2019Day18Part2.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day18Part2.csv; sourceTree = "<group>"; };
+		C2F6F20D2CF9CDD400C14AD4 /* InputYear2019Day19.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day19.csv; sourceTree = "<group>"; };
+		C2F6F20E2CF9CDD400C14AD4 /* InputYear2019Day20.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day20.csv; sourceTree = "<group>"; };
+		C2F6F20F2CF9CDD400C14AD4 /* InputYear2019Day21.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day21.csv; sourceTree = "<group>"; };
+		C2F6F2102CF9CDD400C14AD4 /* InputYear2019Day22.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day22.csv; sourceTree = "<group>"; };
+		C2F6F2112CF9CDD400C14AD4 /* InputYear2019Day23.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day23.csv; sourceTree = "<group>"; };
+		C2F6F2122CF9CDD400C14AD4 /* InputYear2019Day24.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day24.csv; sourceTree = "<group>"; };
+		C2F6F2132CF9CDD400C14AD4 /* InputYear2019Day25.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2019Day25.csv; sourceTree = "<group>"; };
+		C2F6F22E2CF9CE2300C14AD4 /* InputYear2020Day1.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day1.csv; sourceTree = "<group>"; };
+		C2F6F22F2CF9CE2300C14AD4 /* InputYear2020Day2.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day2.csv; sourceTree = "<group>"; };
+		C2F6F2302CF9CE2300C14AD4 /* InputYear2020Day3.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day3.csv; sourceTree = "<group>"; };
+		C2F6F2312CF9CE2300C14AD4 /* InputYear2020Day4.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day4.csv; sourceTree = "<group>"; };
+		C2F6F2322CF9CE2300C14AD4 /* InputYear2020Day5.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day5.csv; sourceTree = "<group>"; };
+		C2F6F2332CF9CE2300C14AD4 /* InputYear2020Day6.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day6.csv; sourceTree = "<group>"; };
+		C2F6F2342CF9CE2300C14AD4 /* InputYear2020Day7.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day7.csv; sourceTree = "<group>"; };
+		C2F6F2352CF9CE2300C14AD4 /* InputYear2020Day8.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day8.csv; sourceTree = "<group>"; };
+		C2F6F2362CF9CE2300C14AD4 /* InputYear2020Day9.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day9.csv; sourceTree = "<group>"; };
+		C2F6F2372CF9CE2300C14AD4 /* InputYear2020Day10.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day10.csv; sourceTree = "<group>"; };
+		C2F6F2382CF9CE2300C14AD4 /* InputYear2020Day11.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day11.csv; sourceTree = "<group>"; };
+		C2F6F2392CF9CE2300C14AD4 /* InputYear2020Day12.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day12.csv; sourceTree = "<group>"; };
+		C2F6F23A2CF9CE2300C14AD4 /* InputYear2020Day13.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day13.csv; sourceTree = "<group>"; };
+		C2F6F23B2CF9CE2300C14AD4 /* InputYear2020Day14.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day14.csv; sourceTree = "<group>"; };
+		C2F6F23C2CF9CE2300C14AD4 /* InputYear2020Day16.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day16.csv; sourceTree = "<group>"; };
+		C2F6F23D2CF9CE2300C14AD4 /* InputYear2020Day17.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day17.csv; sourceTree = "<group>"; };
+		C2F6F23E2CF9CE2300C14AD4 /* InputYear2020Day18.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day18.csv; sourceTree = "<group>"; };
+		C2F6F23F2CF9CE2300C14AD4 /* InputYear2020Day19.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day19.csv; sourceTree = "<group>"; };
+		C2F6F2402CF9CE2300C14AD4 /* InputYear2020Day20.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day20.csv; sourceTree = "<group>"; };
+		C2F6F2412CF9CE2300C14AD4 /* InputYear2020Day21.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day21.csv; sourceTree = "<group>"; };
+		C2F6F2422CF9CE2300C14AD4 /* InputYear2020Day22.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day22.csv; sourceTree = "<group>"; };
+		C2F6F2432CF9CE2300C14AD4 /* InputYear2020Day24.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2020Day24.csv; sourceTree = "<group>"; };
+		C2F6F25B2CF9CE4D00C14AD4 /* InputDay1.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = InputDay1.xlsx; sourceTree = "<group>"; };
+		C2F6F25C2CF9CE4D00C14AD4 /* InputDay2.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputDay2.csv; sourceTree = "<group>"; };
+		C2F6F25D2CF9CE4D00C14AD4 /* InputDay3.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputDay3.csv; sourceTree = "<group>"; };
+		C2F6F25E2CF9CE4D00C14AD4 /* InputDay4.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputDay4.csv; sourceTree = "<group>"; };
+		C2F6F25F2CF9CE4D00C14AD4 /* InputDay5.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputDay5.csv; sourceTree = "<group>"; };
+		C2F6F2602CF9CE4D00C14AD4 /* InputDay8.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputDay8.csv; sourceTree = "<group>"; };
+		C2F6F2612CF9CE4D00C14AD4 /* InputDay9.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputDay9.csv; sourceTree = "<group>"; };
+		C2F6F2622CF9CE4D00C14AD4 /* InputDay10.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputDay10.csv; sourceTree = "<group>"; };
+		C2F6F2632CF9CE4D00C14AD4 /* InputDay11.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputDay11.csv; sourceTree = "<group>"; };
+		C2F6F2642CF9CE4D00C14AD4 /* InputDay12.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputDay12.csv; sourceTree = "<group>"; };
+		C2F6F2652CF9CE4D00C14AD4 /* InputDay13.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputDay13.csv; sourceTree = "<group>"; };
+		C2F6F2662CF9CE4D00C14AD4 /* InputDay14.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputDay14.csv; sourceTree = "<group>"; };
+		C2F6F2672CF9CE4D00C14AD4 /* InputDay15.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputDay15.csv; sourceTree = "<group>"; };
+		C2F6F2682CF9CE4D00C14AD4 /* InputYear2021Day18.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2021Day18.csv; sourceTree = "<group>"; };
+		C2F6F2692CF9CE4D00C14AD4 /* InputYear2021Day19.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2021Day19.csv; sourceTree = "<group>"; };
+		C2F6F26A2CF9CE4D00C14AD4 /* InputYear2021Day20.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2021Day20.csv; sourceTree = "<group>"; };
+		C2F6F26B2CF9CE4D00C14AD4 /* InputYear2021Day22.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2021Day22.csv; sourceTree = "<group>"; };
+		C2F6F26C2CF9CE4D00C14AD4 /* InputYear2021Day23.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2021Day23.csv; sourceTree = "<group>"; };
+		C2F6F26D2CF9CE4D00C14AD4 /* InputYear2021Day23Part2.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2021Day23Part2.csv; sourceTree = "<group>"; };
+		C2F6F26E2CF9CE4D00C14AD4 /* InputYear2021Day24.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2021Day24.csv; sourceTree = "<group>"; };
+		C2F6F26F2CF9CE4D00C14AD4 /* InputYear2021Day25.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2021Day25.csv; sourceTree = "<group>"; };
+		C2F6F2862CF9CE7A00C14AD4 /* DetailConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailConfigurator.swift; sourceTree = "<group>"; };
+		C2F6F2872CF9CE7A00C14AD4 /* MainConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainConfigurator.swift; sourceTree = "<group>"; };
+		C2F6F2882CF9CE7A00C14AD4 /* YearSelectorConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearSelectorConfigurator.swift; sourceTree = "<group>"; };
+		C2F6F28E2CF9CEB300C14AD4 /* Detail2019_25View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail2019_25View.swift; sourceTree = "<group>"; };
+		C2F6F2902CF9CED300C14AD4 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		C2F6F2912CF9CED300C14AD4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C2F6F2922CF9CED300C14AD4 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		C2F6F2932CF9CED300C14AD4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C2F6F2942CF9CED300C14AD4 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		C2F6F2952CF9CED300C14AD4 /* YearSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearSelectorViewController.swift; sourceTree = "<group>"; };
+		C2F6F2962CF9CED300C14AD4 /* YearSelectorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YearSelectorViewController.xib; sourceTree = "<group>"; };
+		C2F6F29F2CF9CF1000C14AD4 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		C2F6F2A02CF9CF1000C14AD4 /* MainPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterImpl.swift; sourceTree = "<group>"; };
+		C2F6F2A12CF9CF1000C14AD4 /* YearSelectorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearSelectorPresenter.swift; sourceTree = "<group>"; };
+		C2F6F2A22CF9CF1000C14AD4 /* YearSelectorPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearSelectorPresenterImpl.swift; sourceTree = "<group>"; };
+		C2F6F2A82CF9CF4400C14AD4 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		C2F6F2A92CF9CF4400C14AD4 /* MainRouterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouterImpl.swift; sourceTree = "<group>"; };
+		C2F6F2AA2CF9CF4400C14AD4 /* YearSelectorRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearSelectorRouter.swift; sourceTree = "<group>"; };
+		C2F6F2AB2CF9CF4400C14AD4 /* YearSelectorRouterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearSelectorRouterImpl.swift; sourceTree = "<group>"; };
+		C2F6F2B12CF9CFA800C14AD4 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
+		C2F6F2B22CF9CFA800C14AD4 /* MainInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractorImpl.swift; sourceTree = "<group>"; };
+		C2F6F2B32CF9CFA800C14AD4 /* Year2015InteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Year2015InteractorImpl.swift; sourceTree = "<group>"; };
+		C2F6F2B42CF9CFA800C14AD4 /* Year2016InteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Year2016InteractorImpl.swift; sourceTree = "<group>"; };
+		C2F6F2B52CF9CFA800C14AD4 /* Year2017InteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Year2017InteractorImpl.swift; sourceTree = "<group>"; };
+		C2F6F2B62CF9CFA800C14AD4 /* Year2018InteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Year2018InteractorImpl.swift; sourceTree = "<group>"; };
+		C2F6F2B72CF9CFA800C14AD4 /* Year2019InteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Year2019InteractorImpl.swift; sourceTree = "<group>"; };
+		C2F6F2B82CF9CFA800C14AD4 /* Year2020InteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Year2020InteractorImpl.swift; sourceTree = "<group>"; };
+		C2F6F2B92CF9CFA800C14AD4 /* Year2021InteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Year2021InteractorImpl.swift; sourceTree = "<group>"; };
+		C2F6F2BB2CF9CFA800C14AD4 /* YearInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearInteractor.swift; sourceTree = "<group>"; };
+		C2F6F2C72CF9D00F00C14AD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C2F6F2C82CF9D00F00C14AD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C2F6F2C92CF9D00F00C14AD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2F6F2CA2CF9D00F00C14AD4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C2F6F2D32CF9D35400C14AD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C2F6F2D52CF9D35400C14AD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		C2F6F2DA2CF9D3EE00C14AD4 /* Year2022InteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Year2022InteractorImpl.swift; sourceTree = "<group>"; };
+		C2F6F2DC2CF9D4D800C14AD4 /* Heap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heap.swift; sourceTree = "<group>"; };
+		C2F6F2DD2CF9D4D800C14AD4 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		C2F6F2E12CF9D59900C14AD4 /* InputYear2022Day1.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day1.csv; sourceTree = "<group>"; };
+		C2F6F2E22CF9D59900C14AD4 /* InputYear2022Day2.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day2.csv; sourceTree = "<group>"; };
+		C2F6F2E32CF9D59900C14AD4 /* InputYear2022Day3.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day3.csv; sourceTree = "<group>"; };
+		C2F6F2E42CF9D59900C14AD4 /* InputYear2022Day4.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day4.csv; sourceTree = "<group>"; };
+		C2F6F2E52CF9D59900C14AD4 /* InputYear2022Day5.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day5.csv; sourceTree = "<group>"; };
+		C2F6F2E62CF9D59900C14AD4 /* InputYear2022Day6.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day6.csv; sourceTree = "<group>"; };
+		C2F6F2E72CF9D59900C14AD4 /* InputYear2022Day7.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day7.csv; sourceTree = "<group>"; };
+		C2F6F2E82CF9D59900C14AD4 /* InputYear2022Day8.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day8.csv; sourceTree = "<group>"; };
+		C2F6F2E92CF9D59900C14AD4 /* InputYear2022Day9.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day9.csv; sourceTree = "<group>"; };
+		C2F6F2EA2CF9D59900C14AD4 /* InputYear2022Day10.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day10.csv; sourceTree = "<group>"; };
+		C2F6F2EB2CF9D59900C14AD4 /* InputYear2022Day11.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day11.csv; sourceTree = "<group>"; };
+		C2F6F2EC2CF9D59900C14AD4 /* InputYear2022Day12.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day12.csv; sourceTree = "<group>"; };
+		C2F6F2ED2CF9D59900C14AD4 /* InputYear2022Day13.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day13.csv; sourceTree = "<group>"; };
+		C2F6F2EE2CF9D59900C14AD4 /* InputYear2022Day14.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day14.csv; sourceTree = "<group>"; };
+		C2F6F2EF2CF9D59900C14AD4 /* InputYear2022Day15.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day15.csv; sourceTree = "<group>"; };
+		C2F6F2F02CF9D59900C14AD4 /* InputYear2022Day16.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day16.csv; sourceTree = "<group>"; };
+		C2F6F2F12CF9D59900C14AD4 /* InputYear2022Day17.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day17.csv; sourceTree = "<group>"; };
+		C2F6F2F22CF9D59900C14AD4 /* InputYear2022Day18.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day18.csv; sourceTree = "<group>"; };
+		C2F6F2F32CF9D59900C14AD4 /* InputYear2022Day19.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day19.csv; sourceTree = "<group>"; };
+		C2F6F2F42CF9D59900C14AD4 /* InputYear2022Day20.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day20.csv; sourceTree = "<group>"; };
+		C2F6F2F52CF9D59900C14AD4 /* InputYear2022Day21.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day21.csv; sourceTree = "<group>"; };
+		C2F6F2F62CF9D59900C14AD4 /* InputYear2022Day22_Map.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day22_Map.csv; sourceTree = "<group>"; };
+		C2F6F2F72CF9D59900C14AD4 /* InputYear2022Day22_Path.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day22_Path.csv; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C24E8C242758BB6F007E3A2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C24E8C472758C2E4007E3A2B /* CoreXLSX in Frameworks */,
+				C2C926C1285CAA550070C143 /* BigInt in Frameworks */,
+				C2064FD727590D6700F203DC /* CSV in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C24E8C1E2758BB6F007E3A2B = {
+			isa = PBXGroup;
+			children = (
+				C2F6F11D2CF9CA2700C14AD4 /* AdventOfCode */,
+				C24E8C292758BB6F007E3A2B /* AdventOfCode */,
+				C24E8C282758BB6F007E3A2B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C24E8C282758BB6F007E3A2B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C24E8C272758BB6F007E3A2B /* AdventOfCode.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C24E8C292758BB6F007E3A2B /* AdventOfCode */ = {
+			isa = PBXGroup;
+			children = (
+				C24E8C302758BB6F007E3A2B /* Main.storyboard */,
+				C24E8C352758BB72007E3A2B /* LaunchScreen.storyboard */,
+			);
+			path = AdventOfCode;
+			sourceTree = "<group>";
+		};
+		C2F6F11D2CF9CA2700C14AD4 /* AdventOfCode */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F2D72CF9D35400C14AD4 /* Base.lproj */,
+				C2F6F2C72CF9D00F00C14AD4 /* AppDelegate.swift */,
+				C2F6F2C82CF9D00F00C14AD4 /* Assets.xcassets */,
+				C2F6F2C92CF9D00F00C14AD4 /* Info.plist */,
+				C2F6F2CA2CF9D00F00C14AD4 /* ViewController.swift */,
+				C2F6F2B02CF9CF8C00C14AD4 /* Interactors */,
+				C2F6F2A72CF9CF1D00C14AD4 /* Routers */,
+				C2F6F29E2CF9CEEB00C14AD4 /* Presenters */,
+				C2F6F28C2CF9CE8F00C14AD4 /* Views */,
+				C2F6F2852CF9CE5E00C14AD4 /* Configurators */,
+				C2F6F1652CF9CB9400C14AD4 /* Inputs */,
+				C2F6F1202CF9CA5900C14AD4 /* Utils */,
+				C2F6F11E2CF9CA3100C14AD4 /* Models */,
+			);
+			path = AdventOfCode;
+			sourceTree = "<group>";
+		};
+		C2F6F11E2CF9CA3100C14AD4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F11F2CF9CA3D00C14AD4 /* Year.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C2F6F1202CF9CA5900C14AD4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F2DC2CF9D4D800C14AD4 /* Heap.swift */,
+				C2F6F2DD2CF9D4D800C14AD4 /* Stack.swift */,
+				C2F6F15D2CF9CB8400C14AD4 /* Array+Chunk.swift */,
+				C2F6F15E2CF9CB8400C14AD4 /* String+Operations.swift */,
+				C2F6F15F2CF9CB8400C14AD4 /* StringProtocol+Subscripts.swift */,
+				C2F6F1602CF9CB8400C14AD4 /* Utils.swift */,
+				C2F6F1212CF9CA6300C14AD4 /* Models */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C2F6F1212CF9CA6300C14AD4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F1252CF9CAF100C14AD4 /* Bronkerbosch.swift */,
+				C2F6F1272CF9CAF100C14AD4 /* CombatCharacter.swift */,
+				C2F6F1282CF9CAF100C14AD4 /* Cup.swift */,
+				C2F6F1292CF9CAF100C14AD4 /* DiagramSituation.swift */,
+				C2F6F12A2CF9CAF100C14AD4 /* DirectoryTree.swift */,
+				C2F6F12B2CF9CAF100C14AD4 /* DutyDate.swift */,
+				C2F6F12C2CF9CAF100C14AD4 /* HexagonalTile.swift */,
+				C2F6F12D2CF9CAF100C14AD4 /* InmuneGroup.swift */,
+				C2F6F12E2CF9CAF100C14AD4 /* Intcode.swift */,
+				C2F6F12F2CF9CAF100C14AD4 /* LavaDrop.swift */,
+				C2F6F1302CF9CAF100C14AD4 /* MathNode.swift */,
+				C2F6F1312CF9CAF100C14AD4 /* Maze.swift */,
+				C2F6F1322CF9CAF100C14AD4 /* MineCart.swift */,
+				C2F6F1332CF9CAF100C14AD4 /* Moon.swift */,
+				C2F6F1342CF9CAF100C14AD4 /* PackageTree.swift */,
+				C2F6F1352CF9CAF100C14AD4 /* PlutoMaze.swift */,
+				C2F6F1362CF9CAF100C14AD4 /* Position.swift */,
+				C2F6F1372CF9CAF100C14AD4 /* RebootStep.swift */,
+				C2F6F1392CF9CAF100C14AD4 /* SandMap.swift */,
+				C2F6F13A2CF9CAF100C14AD4 /* Scanner.swift */,
+				C2F6F13B2CF9CAF100C14AD4 /* Shuffler.swift */,
+				C2F6F13C2CF9CAF100C14AD4 /* SnailFishNumber.swift */,
+				C2F6F13D2CF9CAF100C14AD4 /* Tetris.swift */,
+				C2F6F13E2CF9CAF100C14AD4 /* Tile.swift */,
+				C2F6F13F2CF9CAF100C14AD4 /* ValvesPathFinder.swift */,
+				C2F6F1402CF9CAF100C14AD4 /* WaterMap.swift */,
+				C2F6F1242CF9CA9900C14AD4 /* FractalGrid.swift */,
+				C2F6F1232CF9CA8400C14AD4 /* Direction.swift */,
+				C2F6F1222CF9CA7000C14AD4 /* GameStatus.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C2F6F1652CF9CB9400C14AD4 /* Inputs */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F2E02CF9D56500C14AD4 /* 2022 */,
+				C2F6F25A2CF9CE3000C14AD4 /* 2021 */,
+				C2F6F22D2CF9CE0400C14AD4 /* 2020 */,
+				C2F6F1FA2CF9CDC200C14AD4 /* 2019 */,
+				C2F6F1CD2CF9CDA100C14AD4 /* 2018 */,
+				C2F6F1A82CF9CD7D00C14AD4 /* 2017 */,
+				C2F6F1872CF9CD5700C14AD4 /* 2016 */,
+				C2F6F1662CF9CB9F00C14AD4 /* 2015 */,
+			);
+			path = Inputs;
+			sourceTree = "<group>";
+		};
+		C2F6F1662CF9CB9F00C14AD4 /* 2015 */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F1672CF9CD4600C14AD4 /* InputYear2015Day1.csv */,
+				C2F6F1682CF9CD4600C14AD4 /* InputYear2015Day2.csv */,
+				C2F6F1692CF9CD4600C14AD4 /* InputYear2015Day3.csv */,
+				C2F6F16A2CF9CD4600C14AD4 /* InputYear2015Day5.csv */,
+				C2F6F16B2CF9CD4600C14AD4 /* InputYear2015Day6.csv */,
+				C2F6F16C2CF9CD4600C14AD4 /* InputYear2015Day7.csv */,
+				C2F6F16D2CF9CD4600C14AD4 /* InputYear2015Day8.csv */,
+				C2F6F16E2CF9CD4600C14AD4 /* InputYear2015Day9.csv */,
+				C2F6F16F2CF9CD4600C14AD4 /* InputYear2015Day12.csv */,
+				C2F6F1702CF9CD4600C14AD4 /* InputYear2015Day13.csv */,
+				C2F6F1712CF9CD4600C14AD4 /* InputYear2015Day14.csv */,
+				C2F6F1722CF9CD4600C14AD4 /* InputYear2015Day15.csv */,
+				C2F6F1732CF9CD4600C14AD4 /* InputYear2015Day16.csv */,
+				C2F6F1742CF9CD4600C14AD4 /* InputYear2015Day18.csv */,
+				C2F6F1752CF9CD4600C14AD4 /* InputYear2015Day19.csv */,
+				C2F6F1762CF9CD4600C14AD4 /* InputYear2015Day23.csv */,
+			);
+			path = 2015;
+			sourceTree = "<group>";
+		};
+		C2F6F1872CF9CD5700C14AD4 /* 2016 */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F1882CF9CD6D00C14AD4 /* InputYear2016Day1.csv */,
+				C2F6F1892CF9CD6D00C14AD4 /* InputYear2016Day2.csv */,
+				C2F6F18A2CF9CD6D00C14AD4 /* InputYear2016Day3.csv */,
+				C2F6F18B2CF9CD6D00C14AD4 /* InputYear2016Day4.csv */,
+				C2F6F18C2CF9CD6D00C14AD4 /* InputYear2016Day6.csv */,
+				C2F6F18D2CF9CD6D00C14AD4 /* InputYear2016Day7.csv */,
+				C2F6F18E2CF9CD6D00C14AD4 /* InputYear2016Day8.csv */,
+				C2F6F18F2CF9CD6D00C14AD4 /* InputYear2016Day9.csv */,
+				C2F6F1902CF9CD6D00C14AD4 /* InputYear2016Day10.csv */,
+				C2F6F1912CF9CD6D00C14AD4 /* InputYear2016Day12.csv */,
+				C2F6F1922CF9CD6D00C14AD4 /* InputYear2016Day20.csv */,
+				C2F6F1932CF9CD6D00C14AD4 /* InputYear2016Day21.csv */,
+				C2F6F1942CF9CD6D00C14AD4 /* InputYear2016Day22.csv */,
+				C2F6F1952CF9CD6D00C14AD4 /* InputYear2016Day23.csv */,
+				C2F6F1962CF9CD6D00C14AD4 /* InputYear2016Day24.csv */,
+				C2F6F1972CF9CD6D00C14AD4 /* InputYear2016Day25.csv */,
+			);
+			path = 2016;
+			sourceTree = "<group>";
+		};
+		C2F6F1A82CF9CD7D00C14AD4 /* 2017 */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F1A92CF9CD9300C14AD4 /* InputYear2017Day1.csv */,
+				C2F6F1AA2CF9CD9300C14AD4 /* InputYear2017Day2.csv */,
+				C2F6F1AB2CF9CD9300C14AD4 /* InputYear2017Day4.csv */,
+				C2F6F1AC2CF9CD9300C14AD4 /* InputYear2017Day5.csv */,
+				C2F6F1AD2CF9CD9300C14AD4 /* InputYear2017Day7.csv */,
+				C2F6F1AE2CF9CD9300C14AD4 /* InputYear2017Day8.csv */,
+				C2F6F1AF2CF9CD9300C14AD4 /* InputYear2017Day9.csv */,
+				C2F6F1B02CF9CD9300C14AD4 /* InputYear2017Day11.csv */,
+				C2F6F1B12CF9CD9300C14AD4 /* InputYear2017Day12.csv */,
+				C2F6F1B22CF9CD9300C14AD4 /* InputYear2017Day13.csv */,
+				C2F6F1B32CF9CD9300C14AD4 /* InputYear2017Day16.csv */,
+				C2F6F1B42CF9CD9300C14AD4 /* InputYear2017Day18.csv */,
+				C2F6F1B52CF9CD9300C14AD4 /* InputYear2017Day19.csv */,
+				C2F6F1B62CF9CD9300C14AD4 /* InputYear2017Day20.csv */,
+				C2F6F1B72CF9CD9300C14AD4 /* InputYear2017Day21.csv */,
+				C2F6F1B82CF9CD9300C14AD4 /* InputYear2017Day22.csv */,
+				C2F6F1B92CF9CD9300C14AD4 /* InputYear2017Day23.csv */,
+				C2F6F1BA2CF9CD9300C14AD4 /* InputYear2017Day24.csv */,
+			);
+			path = 2017;
+			sourceTree = "<group>";
+		};
+		C2F6F1CD2CF9CDA100C14AD4 /* 2018 */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F1CE2CF9CDB600C14AD4 /* InputYear2018Day1.csv */,
+				C2F6F1CF2CF9CDB600C14AD4 /* InputYear2018Day2.csv */,
+				C2F6F1D02CF9CDB600C14AD4 /* InputYear2018Day3.csv */,
+				C2F6F1D12CF9CDB600C14AD4 /* InputYear2018Day4.csv */,
+				C2F6F1D22CF9CDB600C14AD4 /* InputYear2018Day5.csv */,
+				C2F6F1D32CF9CDB600C14AD4 /* InputYear2018Day6.csv */,
+				C2F6F1D42CF9CDB600C14AD4 /* InputYear2018Day7.csv */,
+				C2F6F1D52CF9CDB600C14AD4 /* InputYear2018Day8.csv */,
+				C2F6F1D62CF9CDB600C14AD4 /* InputYear2018Day10.csv */,
+				C2F6F1D72CF9CDB600C14AD4 /* InputYear2018Day12.csv */,
+				C2F6F1D82CF9CDB600C14AD4 /* InputYear2018Day13.csv */,
+				C2F6F1D92CF9CDB600C14AD4 /* InputYear2018Day15.csv */,
+				C2F6F1DA2CF9CDB600C14AD4 /* InputYear2018Day16.csv */,
+				C2F6F1DB2CF9CDB600C14AD4 /* InputYear2018Day17.csv */,
+				C2F6F1DC2CF9CDB600C14AD4 /* InputYear2018Day18.csv */,
+				C2F6F1DD2CF9CDB600C14AD4 /* InputYear2018Day19.csv */,
+				C2F6F1DE2CF9CDB600C14AD4 /* InputYear2018Day20.csv */,
+				C2F6F1DF2CF9CDB600C14AD4 /* InputYear2018Day21.csv */,
+				C2F6F1E02CF9CDB600C14AD4 /* InputYear2018Day23.csv */,
+				C2F6F1E12CF9CDB600C14AD4 /* InputYear2018Day24_infections.csv */,
+				C2F6F1E22CF9CDB600C14AD4 /* InputYear2018Day24_inmuneSystem.csv */,
+				C2F6F1E32CF9CDB600C14AD4 /* InputYear2018Day25.csv */,
+			);
+			path = 2018;
+			sourceTree = "<group>";
+		};
+		C2F6F1FA2CF9CDC200C14AD4 /* 2019 */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F1FB2CF9CDD400C14AD4 /* InputYear2019Day1.csv */,
+				C2F6F1FC2CF9CDD400C14AD4 /* InputYear2019Day2.csv */,
+				C2F6F1FD2CF9CDD400C14AD4 /* InputYear2019Day3.csv */,
+				C2F6F1FE2CF9CDD400C14AD4 /* InputYear2019Day5.csv */,
+				C2F6F1FF2CF9CDD400C14AD4 /* InputYear2019Day6.csv */,
+				C2F6F2002CF9CDD400C14AD4 /* InputYear2019Day7.csv */,
+				C2F6F2012CF9CDD400C14AD4 /* InputYear2019Day8.csv */,
+				C2F6F2022CF9CDD400C14AD4 /* InputYear2019Day9.csv */,
+				C2F6F2032CF9CDD400C14AD4 /* InputYear2019Day10.csv */,
+				C2F6F2042CF9CDD400C14AD4 /* InputYear2019Day11.csv */,
+				C2F6F2052CF9CDD400C14AD4 /* InputYear2019Day12.csv */,
+				C2F6F2062CF9CDD400C14AD4 /* InputYear2019Day13.csv */,
+				C2F6F2072CF9CDD400C14AD4 /* InputYear2019Day14.csv */,
+				C2F6F2082CF9CDD400C14AD4 /* InputYear2019Day15.csv */,
+				C2F6F2092CF9CDD400C14AD4 /* InputYear2019Day16.csv */,
+				C2F6F20A2CF9CDD400C14AD4 /* InputYear2019Day17.csv */,
+				C2F6F20B2CF9CDD400C14AD4 /* InputYear2019Day18.csv */,
+				C2F6F20C2CF9CDD400C14AD4 /* InputYear2019Day18Part2.csv */,
+				C2F6F20D2CF9CDD400C14AD4 /* InputYear2019Day19.csv */,
+				C2F6F20E2CF9CDD400C14AD4 /* InputYear2019Day20.csv */,
+				C2F6F20F2CF9CDD400C14AD4 /* InputYear2019Day21.csv */,
+				C2F6F2102CF9CDD400C14AD4 /* InputYear2019Day22.csv */,
+				C2F6F2112CF9CDD400C14AD4 /* InputYear2019Day23.csv */,
+				C2F6F2122CF9CDD400C14AD4 /* InputYear2019Day24.csv */,
+				C2F6F2132CF9CDD400C14AD4 /* InputYear2019Day25.csv */,
+			);
+			path = 2019;
+			sourceTree = "<group>";
+		};
+		C2F6F22D2CF9CE0400C14AD4 /* 2020 */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F22E2CF9CE2300C14AD4 /* InputYear2020Day1.csv */,
+				C2F6F22F2CF9CE2300C14AD4 /* InputYear2020Day2.csv */,
+				C2F6F2302CF9CE2300C14AD4 /* InputYear2020Day3.csv */,
+				C2F6F2312CF9CE2300C14AD4 /* InputYear2020Day4.csv */,
+				C2F6F2322CF9CE2300C14AD4 /* InputYear2020Day5.csv */,
+				C2F6F2332CF9CE2300C14AD4 /* InputYear2020Day6.csv */,
+				C2F6F2342CF9CE2300C14AD4 /* InputYear2020Day7.csv */,
+				C2F6F2352CF9CE2300C14AD4 /* InputYear2020Day8.csv */,
+				C2F6F2362CF9CE2300C14AD4 /* InputYear2020Day9.csv */,
+				C2F6F2372CF9CE2300C14AD4 /* InputYear2020Day10.csv */,
+				C2F6F2382CF9CE2300C14AD4 /* InputYear2020Day11.csv */,
+				C2F6F2392CF9CE2300C14AD4 /* InputYear2020Day12.csv */,
+				C2F6F23A2CF9CE2300C14AD4 /* InputYear2020Day13.csv */,
+				C2F6F23B2CF9CE2300C14AD4 /* InputYear2020Day14.csv */,
+				C2F6F23C2CF9CE2300C14AD4 /* InputYear2020Day16.csv */,
+				C2F6F23D2CF9CE2300C14AD4 /* InputYear2020Day17.csv */,
+				C2F6F23E2CF9CE2300C14AD4 /* InputYear2020Day18.csv */,
+				C2F6F23F2CF9CE2300C14AD4 /* InputYear2020Day19.csv */,
+				C2F6F2402CF9CE2300C14AD4 /* InputYear2020Day20.csv */,
+				C2F6F2412CF9CE2300C14AD4 /* InputYear2020Day21.csv */,
+				C2F6F2422CF9CE2300C14AD4 /* InputYear2020Day22.csv */,
+				C2F6F2432CF9CE2300C14AD4 /* InputYear2020Day24.csv */,
+			);
+			path = 2020;
+			sourceTree = "<group>";
+		};
+		C2F6F25A2CF9CE3000C14AD4 /* 2021 */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F25B2CF9CE4D00C14AD4 /* InputDay1.xlsx */,
+				C2F6F25C2CF9CE4D00C14AD4 /* InputDay2.csv */,
+				C2F6F25D2CF9CE4D00C14AD4 /* InputDay3.csv */,
+				C2F6F25E2CF9CE4D00C14AD4 /* InputDay4.csv */,
+				C2F6F25F2CF9CE4D00C14AD4 /* InputDay5.csv */,
+				C2F6F2602CF9CE4D00C14AD4 /* InputDay8.csv */,
+				C2F6F2612CF9CE4D00C14AD4 /* InputDay9.csv */,
+				C2F6F2622CF9CE4D00C14AD4 /* InputDay10.csv */,
+				C2F6F2632CF9CE4D00C14AD4 /* InputDay11.csv */,
+				C2F6F2642CF9CE4D00C14AD4 /* InputDay12.csv */,
+				C2F6F2652CF9CE4D00C14AD4 /* InputDay13.csv */,
+				C2F6F2662CF9CE4D00C14AD4 /* InputDay14.csv */,
+				C2F6F2672CF9CE4D00C14AD4 /* InputDay15.csv */,
+				C2F6F2682CF9CE4D00C14AD4 /* InputYear2021Day18.csv */,
+				C2F6F2692CF9CE4D00C14AD4 /* InputYear2021Day19.csv */,
+				C2F6F26A2CF9CE4D00C14AD4 /* InputYear2021Day20.csv */,
+				C2F6F26B2CF9CE4D00C14AD4 /* InputYear2021Day22.csv */,
+				C2F6F26C2CF9CE4D00C14AD4 /* InputYear2021Day23.csv */,
+				C2F6F26D2CF9CE4D00C14AD4 /* InputYear2021Day23Part2.csv */,
+				C2F6F26E2CF9CE4D00C14AD4 /* InputYear2021Day24.csv */,
+				C2F6F26F2CF9CE4D00C14AD4 /* InputYear2021Day25.csv */,
+			);
+			path = 2021;
+			sourceTree = "<group>";
+		};
+		C2F6F2852CF9CE5E00C14AD4 /* Configurators */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F2862CF9CE7A00C14AD4 /* DetailConfigurator.swift */,
+				C2F6F2872CF9CE7A00C14AD4 /* MainConfigurator.swift */,
+				C2F6F2882CF9CE7A00C14AD4 /* YearSelectorConfigurator.swift */,
+			);
+			path = Configurators;
+			sourceTree = "<group>";
+		};
+		C2F6F28C2CF9CE8F00C14AD4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F2902CF9CED300C14AD4 /* DayView.swift */,
+				C2F6F2912CF9CED300C14AD4 /* DetailViewController.swift */,
+				C2F6F2922CF9CED300C14AD4 /* DetailViewController.xib */,
+				C2F6F2932CF9CED300C14AD4 /* MainViewController.swift */,
+				C2F6F2942CF9CED300C14AD4 /* MainViewController.xib */,
+				C2F6F2952CF9CED300C14AD4 /* YearSelectorViewController.swift */,
+				C2F6F2962CF9CED300C14AD4 /* YearSelectorViewController.xib */,
+				C2F6F28D2CF9CE9B00C14AD4 /* DetailViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C2F6F28D2CF9CE9B00C14AD4 /* DetailViews */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F28E2CF9CEB300C14AD4 /* Detail2019_25View.swift */,
+			);
+			path = DetailViews;
+			sourceTree = "<group>";
+		};
+		C2F6F29E2CF9CEEB00C14AD4 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F29F2CF9CF1000C14AD4 /* MainPresenter.swift */,
+				C2F6F2A02CF9CF1000C14AD4 /* MainPresenterImpl.swift */,
+				C2F6F2A12CF9CF1000C14AD4 /* YearSelectorPresenter.swift */,
+				C2F6F2A22CF9CF1000C14AD4 /* YearSelectorPresenterImpl.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		C2F6F2A72CF9CF1D00C14AD4 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F2A82CF9CF4400C14AD4 /* MainRouter.swift */,
+				C2F6F2A92CF9CF4400C14AD4 /* MainRouterImpl.swift */,
+				C2F6F2AA2CF9CF4400C14AD4 /* YearSelectorRouter.swift */,
+				C2F6F2AB2CF9CF4400C14AD4 /* YearSelectorRouterImpl.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
+		C2F6F2B02CF9CF8C00C14AD4 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F2DA2CF9D3EE00C14AD4 /* Year2022InteractorImpl.swift */,
+				C2F6F2B12CF9CFA800C14AD4 /* MainInteractor.swift */,
+				C2F6F2B22CF9CFA800C14AD4 /* MainInteractorImpl.swift */,
+				C2F6F2B32CF9CFA800C14AD4 /* Year2015InteractorImpl.swift */,
+				C2F6F2B42CF9CFA800C14AD4 /* Year2016InteractorImpl.swift */,
+				C2F6F2B52CF9CFA800C14AD4 /* Year2017InteractorImpl.swift */,
+				C2F6F2B62CF9CFA800C14AD4 /* Year2018InteractorImpl.swift */,
+				C2F6F2B72CF9CFA800C14AD4 /* Year2019InteractorImpl.swift */,
+				C2F6F2B82CF9CFA800C14AD4 /* Year2020InteractorImpl.swift */,
+				C2F6F2B92CF9CFA800C14AD4 /* Year2021InteractorImpl.swift */,
+				C2F6F2BB2CF9CFA800C14AD4 /* YearInteractor.swift */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		C2F6F2D72CF9D35400C14AD4 /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F2D42CF9D35400C14AD4 /* LaunchScreen.storyboard */,
+				C2F6F2D62CF9D35400C14AD4 /* Main.storyboard */,
+			);
+			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+		C2F6F2E02CF9D56500C14AD4 /* 2022 */ = {
+			isa = PBXGroup;
+			children = (
+				C2F6F2E12CF9D59900C14AD4 /* InputYear2022Day1.csv */,
+				C2F6F2E22CF9D59900C14AD4 /* InputYear2022Day2.csv */,
+				C2F6F2E32CF9D59900C14AD4 /* InputYear2022Day3.csv */,
+				C2F6F2E42CF9D59900C14AD4 /* InputYear2022Day4.csv */,
+				C2F6F2E52CF9D59900C14AD4 /* InputYear2022Day5.csv */,
+				C2F6F2E62CF9D59900C14AD4 /* InputYear2022Day6.csv */,
+				C2F6F2E72CF9D59900C14AD4 /* InputYear2022Day7.csv */,
+				C2F6F2E82CF9D59900C14AD4 /* InputYear2022Day8.csv */,
+				C2F6F2E92CF9D59900C14AD4 /* InputYear2022Day9.csv */,
+				C2F6F2EA2CF9D59900C14AD4 /* InputYear2022Day10.csv */,
+				C2F6F2EB2CF9D59900C14AD4 /* InputYear2022Day11.csv */,
+				C2F6F2EC2CF9D59900C14AD4 /* InputYear2022Day12.csv */,
+				C2F6F2ED2CF9D59900C14AD4 /* InputYear2022Day13.csv */,
+				C2F6F2EE2CF9D59900C14AD4 /* InputYear2022Day14.csv */,
+				C2F6F2EF2CF9D59900C14AD4 /* InputYear2022Day15.csv */,
+				C2F6F2F02CF9D59900C14AD4 /* InputYear2022Day16.csv */,
+				C2F6F2F12CF9D59900C14AD4 /* InputYear2022Day17.csv */,
+				C2F6F2F22CF9D59900C14AD4 /* InputYear2022Day18.csv */,
+				C2F6F2F32CF9D59900C14AD4 /* InputYear2022Day19.csv */,
+				C2F6F2F42CF9D59900C14AD4 /* InputYear2022Day20.csv */,
+				C2F6F2F52CF9D59900C14AD4 /* InputYear2022Day21.csv */,
+				C2F6F2F62CF9D59900C14AD4 /* InputYear2022Day22_Map.csv */,
+				C2F6F2F72CF9D59900C14AD4 /* InputYear2022Day22_Path.csv */,
+			);
+			path = 2022;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C24E8C262758BB6F007E3A2B /* AdventOfCode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C24E8C3B2758BB72007E3A2B /* Build configuration list for PBXNativeTarget "AdventOfCode" */;
+			buildPhases = (
+				C24E8C232758BB6F007E3A2B /* Sources */,
+				C24E8C242758BB6F007E3A2B /* Frameworks */,
+				C24E8C252758BB6F007E3A2B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AdventOfCode;
+			packageProductDependencies = (
+				C24E8C462758C2E4007E3A2B /* CoreXLSX */,
+				C2064FD627590D6700F203DC /* CSV */,
+				C2C926C0285CAA550070C143 /* BigInt */,
+			);
+			productName = AdventOfCode;
+			productReference = C24E8C272758BB6F007E3A2B /* AdventOfCode.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C24E8C1F2758BB6F007E3A2B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					C24E8C262758BB6F007E3A2B = {
+						CreatedOnToolsVersion = 13.0;
+					};
+				};
+			};
+			buildConfigurationList = C24E8C222758BB6F007E3A2B /* Build configuration list for PBXProject "AdventOfCode" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C24E8C1E2758BB6F007E3A2B;
+			packageReferences = (
+				C24E8C452758C2E4007E3A2B /* XCRemoteSwiftPackageReference "CoreXLSX" */,
+				C2064FD527590D6700F203DC /* XCRemoteSwiftPackageReference "CSV.swift" */,
+				C2C926BF285CAA550070C143 /* XCRemoteSwiftPackageReference "BigInt" */,
+			);
+			productRefGroup = C24E8C282758BB6F007E3A2B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C24E8C262758BB6F007E3A2B /* AdventOfCode */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C24E8C252758BB6F007E3A2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C24E8C372758BB72007E3A2B /* LaunchScreen.storyboard in Resources */,
+				C2F6F2442CF9CE2300C14AD4 /* InputYear2020Day13.csv in Resources */,
+				C2F6F2452CF9CE2300C14AD4 /* InputYear2020Day14.csv in Resources */,
+				C2F6F2462CF9CE2300C14AD4 /* InputYear2020Day8.csv in Resources */,
+				C2F6F2472CF9CE2300C14AD4 /* InputYear2020Day18.csv in Resources */,
+				C2F6F2482CF9CE2300C14AD4 /* InputYear2020Day22.csv in Resources */,
+				C2F6F2492CF9CE2300C14AD4 /* InputYear2020Day21.csv in Resources */,
+				C2F6F24A2CF9CE2300C14AD4 /* InputYear2020Day1.csv in Resources */,
+				C2F6F24B2CF9CE2300C14AD4 /* InputYear2020Day4.csv in Resources */,
+				C2F6F24C2CF9CE2300C14AD4 /* InputYear2020Day9.csv in Resources */,
+				C2F6F24D2CF9CE2300C14AD4 /* InputYear2020Day10.csv in Resources */,
+				C2F6F24E2CF9CE2300C14AD4 /* InputYear2020Day19.csv in Resources */,
+				C2F6F24F2CF9CE2300C14AD4 /* InputYear2020Day3.csv in Resources */,
+				C2F6F2502CF9CE2300C14AD4 /* InputYear2020Day5.csv in Resources */,
+				C2F6F2512CF9CE2300C14AD4 /* InputYear2020Day6.csv in Resources */,
+				C2F6F2522CF9CE2300C14AD4 /* InputYear2020Day7.csv in Resources */,
+				C2F6F2532CF9CE2300C14AD4 /* InputYear2020Day11.csv in Resources */,
+				C2F6F2542CF9CE2300C14AD4 /* InputYear2020Day12.csv in Resources */,
+				C2F6F2552CF9CE2300C14AD4 /* InputYear2020Day16.csv in Resources */,
+				C2F6F2562CF9CE2300C14AD4 /* InputYear2020Day17.csv in Resources */,
+				C2F6F2572CF9CE2300C14AD4 /* InputYear2020Day24.csv in Resources */,
+				C2F6F2582CF9CE2300C14AD4 /* InputYear2020Day20.csv in Resources */,
+				C2F6F2F82CF9D59900C14AD4 /* InputYear2022Day12.csv in Resources */,
+				C2F6F2F92CF9D59900C14AD4 /* InputYear2022Day18.csv in Resources */,
+				C2F6F2FA2CF9D59900C14AD4 /* InputYear2022Day6.csv in Resources */,
+				C2F6F2FB2CF9D59900C14AD4 /* InputYear2022Day22_Map.csv in Resources */,
+				C2F6F2FC2CF9D59900C14AD4 /* InputYear2022Day1.csv in Resources */,
+				C2F6F2FD2CF9D59900C14AD4 /* InputYear2022Day8.csv in Resources */,
+				C2F6F2FE2CF9D59900C14AD4 /* InputYear2022Day7.csv in Resources */,
+				C2F6F2FF2CF9D59900C14AD4 /* InputYear2022Day3.csv in Resources */,
+				C2F6F3002CF9D59900C14AD4 /* InputYear2022Day15.csv in Resources */,
+				C2F6F3012CF9D59900C14AD4 /* InputYear2022Day19.csv in Resources */,
+				C2F6F3022CF9D59900C14AD4 /* InputYear2022Day10.csv in Resources */,
+				C2F6F3032CF9D59900C14AD4 /* InputYear2022Day22_Path.csv in Resources */,
+				C2F6F3042CF9D59900C14AD4 /* InputYear2022Day11.csv in Resources */,
+				C2F6F3052CF9D59900C14AD4 /* InputYear2022Day4.csv in Resources */,
+				C2F6F3062CF9D59900C14AD4 /* InputYear2022Day14.csv in Resources */,
+				C2F6F3072CF9D59900C14AD4 /* InputYear2022Day21.csv in Resources */,
+				C2F6F3082CF9D59900C14AD4 /* InputYear2022Day2.csv in Resources */,
+				C2F6F3092CF9D59900C14AD4 /* InputYear2022Day5.csv in Resources */,
+				C2F6F30A2CF9D59900C14AD4 /* InputYear2022Day13.csv in Resources */,
+				C2F6F30B2CF9D59900C14AD4 /* InputYear2022Day16.csv in Resources */,
+				C2F6F30C2CF9D59900C14AD4 /* InputYear2022Day17.csv in Resources */,
+				C2F6F30D2CF9D59900C14AD4 /* InputYear2022Day9.csv in Resources */,
+				C2F6F30E2CF9D59900C14AD4 /* InputYear2022Day20.csv in Resources */,
+				C2F6F2592CF9CE2300C14AD4 /* InputYear2020Day2.csv in Resources */,
+				C24E8C322758BB6F007E3A2B /* Main.storyboard in Resources */,
+				C2F6F1772CF9CD4600C14AD4 /* InputYear2015Day13.csv in Resources */,
+				C2F6F1782CF9CD4600C14AD4 /* InputYear2015Day3.csv in Resources */,
+				C2F6F1792CF9CD4600C14AD4 /* InputYear2015Day6.csv in Resources */,
+				C2F6F17A2CF9CD4600C14AD4 /* InputYear2015Day8.csv in Resources */,
+				C2F6F17B2CF9CD4600C14AD4 /* InputYear2015Day9.csv in Resources */,
+				C2F6F17C2CF9CD4600C14AD4 /* InputYear2015Day16.csv in Resources */,
+				C2F6F17D2CF9CD4600C14AD4 /* InputYear2015Day19.csv in Resources */,
+				C2F6F1982CF9CD6D00C14AD4 /* InputYear2016Day12.csv in Resources */,
+				C2F6F1BB2CF9CD9300C14AD4 /* InputYear2017Day8.csv in Resources */,
+				C2F6F1BC2CF9CD9300C14AD4 /* InputYear2017Day23.csv in Resources */,
+				C2F6F1BD2CF9CD9300C14AD4 /* InputYear2017Day7.csv in Resources */,
+				C2F6F1BE2CF9CD9300C14AD4 /* InputYear2017Day12.csv in Resources */,
+				C2F6F1BF2CF9CD9300C14AD4 /* InputYear2017Day16.csv in Resources */,
+				C2F6F1C02CF9CD9300C14AD4 /* InputYear2017Day11.csv in Resources */,
+				C2F6F1C12CF9CD9300C14AD4 /* InputYear2017Day21.csv in Resources */,
+				C2F6F1C22CF9CD9300C14AD4 /* InputYear2017Day22.csv in Resources */,
+				C2F6F1C32CF9CD9300C14AD4 /* InputYear2017Day9.csv in Resources */,
+				C2F6F1C42CF9CD9300C14AD4 /* InputYear2017Day19.csv in Resources */,
+				C2F6F1C52CF9CD9300C14AD4 /* InputYear2017Day1.csv in Resources */,
+				C2F6F1C62CF9CD9300C14AD4 /* InputYear2017Day24.csv in Resources */,
+				C2F6F1C72CF9CD9300C14AD4 /* InputYear2017Day13.csv in Resources */,
+				C2F6F1C82CF9CD9300C14AD4 /* InputYear2017Day18.csv in Resources */,
+				C2F6F1C92CF9CD9300C14AD4 /* InputYear2017Day4.csv in Resources */,
+				C2F6F1CA2CF9CD9300C14AD4 /* InputYear2017Day5.csv in Resources */,
+				C2F6F1CB2CF9CD9300C14AD4 /* InputYear2017Day2.csv in Resources */,
+				C2F6F1CC2CF9CD9300C14AD4 /* InputYear2017Day20.csv in Resources */,
+				C2F6F1992CF9CD6D00C14AD4 /* InputYear2016Day9.csv in Resources */,
+				C2F6F19A2CF9CD6D00C14AD4 /* InputYear2016Day21.csv in Resources */,
+				C2F6F19B2CF9CD6D00C14AD4 /* InputYear2016Day2.csv in Resources */,
+				C2F6F19C2CF9CD6D00C14AD4 /* InputYear2016Day8.csv in Resources */,
+				C2F6F19D2CF9CD6D00C14AD4 /* InputYear2016Day10.csv in Resources */,
+				C2F6F19E2CF9CD6D00C14AD4 /* InputYear2016Day22.csv in Resources */,
+				C2F6F19F2CF9CD6D00C14AD4 /* InputYear2016Day20.csv in Resources */,
+				C2F6F1A02CF9CD6D00C14AD4 /* InputYear2016Day25.csv in Resources */,
+				C2F6F1A12CF9CD6D00C14AD4 /* InputYear2016Day4.csv in Resources */,
+				C2F6F1A22CF9CD6D00C14AD4 /* InputYear2016Day6.csv in Resources */,
+				C2F6F1A32CF9CD6D00C14AD4 /* InputYear2016Day3.csv in Resources */,
+				C2F6F1A42CF9CD6D00C14AD4 /* InputYear2016Day24.csv in Resources */,
+				C2F6F1A52CF9CD6D00C14AD4 /* InputYear2016Day1.csv in Resources */,
+				C2F6F1A62CF9CD6D00C14AD4 /* InputYear2016Day7.csv in Resources */,
+				C2F6F1A72CF9CD6D00C14AD4 /* InputYear2016Day23.csv in Resources */,
+				C2F6F17E2CF9CD4600C14AD4 /* InputYear2015Day15.csv in Resources */,
+				C2F6F17F2CF9CD4600C14AD4 /* InputYear2015Day7.csv in Resources */,
+				C2F6F2D82CF9D35400C14AD4 /* LaunchScreen.storyboard in Resources */,
+				C2F6F2D92CF9D35400C14AD4 /* Main.storyboard in Resources */,
+				C2F6F1802CF9CD4600C14AD4 /* InputYear2015Day1.csv in Resources */,
+				C2F6F1812CF9CD4600C14AD4 /* InputYear2015Day2.csv in Resources */,
+				C2F6F1822CF9CD4600C14AD4 /* InputYear2015Day23.csv in Resources */,
+				C2F6F1832CF9CD4600C14AD4 /* InputYear2015Day5.csv in Resources */,
+				C2F6F1842CF9CD4600C14AD4 /* InputYear2015Day12.csv in Resources */,
+				C2F6F1852CF9CD4600C14AD4 /* InputYear2015Day14.csv in Resources */,
+				C2F6F1862CF9CD4600C14AD4 /* InputYear2015Day18.csv in Resources */,
+				C2F6F1E42CF9CDB600C14AD4 /* InputYear2018Day8.csv in Resources */,
+				C2F6F1E52CF9CDB600C14AD4 /* InputYear2018Day20.csv in Resources */,
+				C2F6F1E62CF9CDB600C14AD4 /* InputYear2018Day2.csv in Resources */,
+				C2F6F1E72CF9CDB600C14AD4 /* InputYear2018Day4.csv in Resources */,
+				C2F6F1E82CF9CDB600C14AD4 /* InputYear2018Day21.csv in Resources */,
+				C2F6F1E92CF9CDB600C14AD4 /* InputYear2018Day24_inmuneSystem.csv in Resources */,
+				C2F6F1EA2CF9CDB600C14AD4 /* InputYear2018Day15.csv in Resources */,
+				C2F6F1EB2CF9CDB600C14AD4 /* InputYear2018Day16.csv in Resources */,
+				C2F6F1EC2CF9CDB600C14AD4 /* InputYear2018Day1.csv in Resources */,
+				C2F6F2CE2CF9D00F00C14AD4 /* Assets.xcassets in Resources */,
+				C2F6F1ED2CF9CDB600C14AD4 /* InputYear2018Day18.csv in Resources */,
+				C2F6F1EE2CF9CDB600C14AD4 /* InputYear2018Day7.csv in Resources */,
+				C2F6F1EF2CF9CDB600C14AD4 /* InputYear2018Day12.csv in Resources */,
+				C2F6F1F02CF9CDB600C14AD4 /* InputYear2018Day5.csv in Resources */,
+				C2F6F1F12CF9CDB600C14AD4 /* InputYear2018Day19.csv in Resources */,
+				C2F6F1F22CF9CDB600C14AD4 /* InputYear2018Day23.csv in Resources */,
+				C2F6F1F32CF9CDB600C14AD4 /* InputYear2018Day10.csv in Resources */,
+				C2F6F2142CF9CDD400C14AD4 /* InputYear2019Day1.csv in Resources */,
+				C2F6F2152CF9CDD400C14AD4 /* InputYear2019Day2.csv in Resources */,
+				C2F6F2162CF9CDD400C14AD4 /* InputYear2019Day6.csv in Resources */,
+				C2F6F2172CF9CDD400C14AD4 /* InputYear2019Day5.csv in Resources */,
+				C2F6F2182CF9CDD400C14AD4 /* InputYear2019Day18Part2.csv in Resources */,
+				C2F6F2192CF9CDD400C14AD4 /* InputYear2019Day7.csv in Resources */,
+				C2F6F21A2CF9CDD400C14AD4 /* InputYear2019Day11.csv in Resources */,
+				C2F6F21B2CF9CDD400C14AD4 /* InputYear2019Day18.csv in Resources */,
+				C2F6F21C2CF9CDD400C14AD4 /* InputYear2019Day19.csv in Resources */,
+				C2F6F21D2CF9CDD400C14AD4 /* InputYear2019Day20.csv in Resources */,
+				C2F6F21E2CF9CDD400C14AD4 /* InputYear2019Day22.csv in Resources */,
+				C2F6F21F2CF9CDD400C14AD4 /* InputYear2019Day16.csv in Resources */,
+				C2F6F2202CF9CDD400C14AD4 /* InputYear2019Day17.csv in Resources */,
+				C2F6F2212CF9CDD400C14AD4 /* InputYear2019Day3.csv in Resources */,
+				C2F6F2222CF9CDD400C14AD4 /* InputYear2019Day15.csv in Resources */,
+				C2F6F2232CF9CDD400C14AD4 /* InputYear2019Day24.csv in Resources */,
+				C2F6F2242CF9CDD400C14AD4 /* InputYear2019Day8.csv in Resources */,
+				C2F6F2252CF9CDD400C14AD4 /* InputYear2019Day12.csv in Resources */,
+				C2F6F2262CF9CDD400C14AD4 /* InputYear2019Day14.csv in Resources */,
+				C2F6F2272CF9CDD400C14AD4 /* InputYear2019Day9.csv in Resources */,
+				C2F6F2282CF9CDD400C14AD4 /* InputYear2019Day13.csv in Resources */,
+				C2F6F2292CF9CDD400C14AD4 /* InputYear2019Day21.csv in Resources */,
+				C2F6F22A2CF9CDD400C14AD4 /* InputYear2019Day10.csv in Resources */,
+				C2F6F22B2CF9CDD400C14AD4 /* InputYear2019Day23.csv in Resources */,
+				C2F6F22C2CF9CDD400C14AD4 /* InputYear2019Day25.csv in Resources */,
+				C2F6F1F42CF9CDB600C14AD4 /* InputYear2018Day17.csv in Resources */,
+				C2F6F1F52CF9CDB600C14AD4 /* InputYear2018Day24_infections.csv in Resources */,
+				C2F6F1F62CF9CDB600C14AD4 /* InputYear2018Day3.csv in Resources */,
+				C2F6F1F72CF9CDB600C14AD4 /* InputYear2018Day13.csv in Resources */,
+				C2F6F1F82CF9CDB600C14AD4 /* InputYear2018Day6.csv in Resources */,
+				C2F6F1F92CF9CDB600C14AD4 /* InputYear2018Day25.csv in Resources */,
+				C2F6F2702CF9CE4D00C14AD4 /* InputDay9.csv in Resources */,
+				C2F6F2712CF9CE4D00C14AD4 /* InputYear2021Day19.csv in Resources */,
+				C2F6F2722CF9CE4D00C14AD4 /* InputDay2.csv in Resources */,
+				C2F6F2732CF9CE4D00C14AD4 /* InputDay14.csv in Resources */,
+				C2F6F2742CF9CE4D00C14AD4 /* InputYear2021Day18.csv in Resources */,
+				C2F6F2752CF9CE4D00C14AD4 /* InputYear2021Day23Part2.csv in Resources */,
+				C2F6F2762CF9CE4D00C14AD4 /* InputDay13.csv in Resources */,
+				C2F6F2772CF9CE4D00C14AD4 /* InputDay10.csv in Resources */,
+				C2F6F2782CF9CE4D00C14AD4 /* InputYear2021Day25.csv in Resources */,
+				C2F6F2792CF9CE4D00C14AD4 /* InputYear2021Day20.csv in Resources */,
+				C2F6F27A2CF9CE4D00C14AD4 /* InputYear2021Day24.csv in Resources */,
+				C2F6F27B2CF9CE4D00C14AD4 /* InputDay11.csv in Resources */,
+				C2F6F27C2CF9CE4D00C14AD4 /* InputDay12.csv in Resources */,
+				C2F6F29B2CF9CED300C14AD4 /* DetailViewController.xib in Resources */,
+				C2F6F29C2CF9CED300C14AD4 /* MainViewController.xib in Resources */,
+				C2F6F29D2CF9CED300C14AD4 /* YearSelectorViewController.xib in Resources */,
+				C2F6F27D2CF9CE4D00C14AD4 /* InputDay4.csv in Resources */,
+				C2F6F27E2CF9CE4D00C14AD4 /* InputYear2021Day22.csv in Resources */,
+				C2F6F27F2CF9CE4D00C14AD4 /* InputYear2021Day23.csv in Resources */,
+				C2F6F2802CF9CE4D00C14AD4 /* InputDay15.csv in Resources */,
+				C2F6F2812CF9CE4D00C14AD4 /* InputDay3.csv in Resources */,
+				C2F6F2822CF9CE4D00C14AD4 /* InputDay8.csv in Resources */,
+				C2F6F2832CF9CE4D00C14AD4 /* InputDay1.xlsx in Resources */,
+				C2F6F2842CF9CE4D00C14AD4 /* InputDay5.csv in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C24E8C232758BB6F007E3A2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2F6F2DB2CF9D3EE00C14AD4 /* Year2022InteractorImpl.swift in Sources */,
+				C2F6F2AC2CF9CF4400C14AD4 /* MainRouterImpl.swift in Sources */,
+				C2F6F2AD2CF9CF4400C14AD4 /* MainRouter.swift in Sources */,
+				C2F6F2AE2CF9CF4400C14AD4 /* YearSelectorRouter.swift in Sources */,
+				C2F6F2AF2CF9CF4400C14AD4 /* YearSelectorRouterImpl.swift in Sources */,
+				C2F6F2892CF9CE7A00C14AD4 /* MainConfigurator.swift in Sources */,
+				C2F6F28A2CF9CE7A00C14AD4 /* YearSelectorConfigurator.swift in Sources */,
+				C2F6F28B2CF9CE7A00C14AD4 /* DetailConfigurator.swift in Sources */,
+				C2F6F1612CF9CB8400C14AD4 /* Utils.swift in Sources */,
+				C2F6F1622CF9CB8400C14AD4 /* StringProtocol+Subscripts.swift in Sources */,
+				C2F6F1632CF9CB8400C14AD4 /* String+Operations.swift in Sources */,
+				C2F6F2D22CF9D20F00C14AD4 /* FractalGrid.swift in Sources */,
+				C2F6F1642CF9CB8400C14AD4 /* Array+Chunk.swift in Sources */,
+				C2F6F2D12CF9D20A00C14AD4 /* Direction.swift in Sources */,
+				C2F6F2A32CF9CF1000C14AD4 /* MainPresenterImpl.swift in Sources */,
+				C2F6F2A42CF9CF1000C14AD4 /* MainPresenter.swift in Sources */,
+				C2F6F2A52CF9CF1000C14AD4 /* YearSelectorPresenterImpl.swift in Sources */,
+				C2F6F2A62CF9CF1000C14AD4 /* YearSelectorPresenter.swift in Sources */,
+				C2F6F28F2CF9CEB300C14AD4 /* Detail2019_25View.swift in Sources */,
+				C2F6F2BC2CF9CFA800C14AD4 /* MainInteractor.swift in Sources */,
+				C2F6F2BD2CF9CFA800C14AD4 /* MainInteractorImpl.swift in Sources */,
+				C2F6F2BE2CF9CFA800C14AD4 /* Year2017InteractorImpl.swift in Sources */,
+				C2F6F2BF2CF9CFA800C14AD4 /* Year2019InteractorImpl.swift in Sources */,
+				C2F6F2C02CF9CFA800C14AD4 /* Year2016InteractorImpl.swift in Sources */,
+				C2F6F2C12CF9CFA800C14AD4 /* Year2020InteractorImpl.swift in Sources */,
+				C2F6F2C22CF9CFA800C14AD4 /* Year2021InteractorImpl.swift in Sources */,
+				C2F6F2C32CF9CFA800C14AD4 /* Year2015InteractorImpl.swift in Sources */,
+				C2F6F2C52CF9CFA800C14AD4 /* YearInteractor.swift in Sources */,
+				C2F6F2C62CF9CFA800C14AD4 /* Year2018InteractorImpl.swift in Sources */,
+				C2F6F1412CF9CAF100C14AD4 /* RebootStep.swift in Sources */,
+				C2F6F1422CF9CAF100C14AD4 /* Scanner.swift in Sources */,
+				C2F6F1432CF9CAF100C14AD4 /* PlutoMaze.swift in Sources */,
+				C2F6F1442CF9CAF100C14AD4 /* MineCart.swift in Sources */,
+				C2F6F2D02CF9D1FA00C14AD4 /* GameStatus.swift in Sources */,
+				C2F6F1452CF9CAF100C14AD4 /* Moon.swift in Sources */,
+				C2F6F1462CF9CAF100C14AD4 /* SandMap.swift in Sources */,
+				C2F6F1472CF9CAF100C14AD4 /* Intcode.swift in Sources */,
+				C2F6F1492CF9CAF100C14AD4 /* DiagramSituation.swift in Sources */,
+				C2F6F2CF2CF9D1EA00C14AD4 /* Year.swift in Sources */,
+				C2F6F14A2CF9CAF100C14AD4 /* Tile.swift in Sources */,
+				C2F6F14B2CF9CAF100C14AD4 /* Position.swift in Sources */,
+				C2F6F14C2CF9CAF100C14AD4 /* Cup.swift in Sources */,
+				C2F6F14D2CF9CAF100C14AD4 /* SnailFishNumber.swift in Sources */,
+				C2F6F14E2CF9CAF100C14AD4 /* DirectoryTree.swift in Sources */,
+				C2F6F14F2CF9CAF100C14AD4 /* LavaDrop.swift in Sources */,
+				C2F6F1502CF9CAF100C14AD4 /* Bronkerbosch.swift in Sources */,
+				C2F6F1512CF9CAF100C14AD4 /* MathNode.swift in Sources */,
+				C2F6F1522CF9CAF100C14AD4 /* InmuneGroup.swift in Sources */,
+				C2F6F1532CF9CAF100C14AD4 /* Tetris.swift in Sources */,
+				C2F6F1542CF9CAF100C14AD4 /* ValvesPathFinder.swift in Sources */,
+				C2F6F1552CF9CAF100C14AD4 /* WaterMap.swift in Sources */,
+				C2F6F1562CF9CAF100C14AD4 /* DutyDate.swift in Sources */,
+				C2F6F1572CF9CAF100C14AD4 /* Maze.swift in Sources */,
+				C2F6F1582CF9CAF100C14AD4 /* HexagonalTile.swift in Sources */,
+				C2F6F2CB2CF9D00F00C14AD4 /* ViewController.swift in Sources */,
+				C2F6F2CC2CF9D00F00C14AD4 /* AppDelegate.swift in Sources */,
+				C2F6F15A2CF9CAF100C14AD4 /* Shuffler.swift in Sources */,
+				C2F6F15B2CF9CAF100C14AD4 /* PackageTree.swift in Sources */,
+				C2F6F15C2CF9CAF100C14AD4 /* CombatCharacter.swift in Sources */,
+				C2F6F2972CF9CED300C14AD4 /* MainViewController.swift in Sources */,
+				C2F6F2982CF9CED300C14AD4 /* YearSelectorViewController.swift in Sources */,
+				C2F6F2992CF9CED300C14AD4 /* DayView.swift in Sources */,
+				C2F6F29A2CF9CED300C14AD4 /* DetailViewController.swift in Sources */,
+				C2F6F2DE2CF9D4D800C14AD4 /* Stack.swift in Sources */,
+				C2F6F2DF2CF9D4D800C14AD4 /* Heap.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C24E8C302758BB6F007E3A2B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C24E8C312758BB6F007E3A2B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C24E8C352758BB72007E3A2B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C24E8C362758BB72007E3A2B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C2F6F2D42CF9D35400C14AD4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2F6F2D32CF9D35400C14AD4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C2F6F2D62CF9D35400C14AD4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2F6F2D52CF9D35400C14AD4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C24E8C392758BB72007E3A2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C24E8C3A2758BB72007E3A2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C24E8C3C2758BB72007E3A2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6D9KPH9M54;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AdventOfCode/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.grifols.AdventOfCode;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C24E8C3D2758BB72007E3A2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6D9KPH9M54;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AdventOfCode/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.grifols.AdventOfCode;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C24E8C222758BB6F007E3A2B /* Build configuration list for PBXProject "AdventOfCode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C24E8C392758BB72007E3A2B /* Debug */,
+				C24E8C3A2758BB72007E3A2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C24E8C3B2758BB72007E3A2B /* Build configuration list for PBXNativeTarget "AdventOfCode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C24E8C3C2758BB72007E3A2B /* Debug */,
+				C24E8C3D2758BB72007E3A2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C2064FD527590D6700F203DC /* XCRemoteSwiftPackageReference "CSV.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yaslab/CSV.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		C24E8C452758C2E4007E3A2B /* XCRemoteSwiftPackageReference "CoreXLSX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CoreOffice/CoreXLSX.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.1;
+			};
+		};
+		C2C926BF285CAA550070C143 /* XCRemoteSwiftPackageReference "BigInt" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/attaswift/BigInt";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C2064FD627590D6700F203DC /* CSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2064FD527590D6700F203DC /* XCRemoteSwiftPackageReference "CSV.swift" */;
+			productName = CSV;
+		};
+		C24E8C462758C2E4007E3A2B /* CoreXLSX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C24E8C452758C2E4007E3A2B /* XCRemoteSwiftPackageReference "CoreXLSX" */;
+			productName = CoreXLSX;
+		};
+		C2C926C0285CAA550070C143 /* BigInt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2C926BF285CAA550070C143 /* XCRemoteSwiftPackageReference "BigInt" */;
+			productName = BigInt;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = C24E8C1F2758BB6F007E3A2B /* Project object */;
+}
