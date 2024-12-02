@@ -246,6 +246,8 @@
 		C2F6F30C2CF9D59900C14AD4 /* InputYear2022Day17.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2F12CF9D59900C14AD4 /* InputYear2022Day17.csv */; };
 		C2F6F30D2CF9D59900C14AD4 /* InputYear2022Day9.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2E92CF9D59900C14AD4 /* InputYear2022Day9.csv */; };
 		C2F6F30E2CF9D59900C14AD4 /* InputYear2022Day20.csv in Resources */ = {isa = PBXBuildFile; fileRef = C2F6F2F42CF9D59900C14AD4 /* InputYear2022Day20.csv */; };
+		C2F6F3112CF9FB6100C14AD4 /* CubeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F3102CF9FB6100C14AD4 /* CubeMap.swift */; };
+		C2F6F3122CF9FB6100C14AD4 /* BurrowSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F6F30F2CF9FB6100C14AD4 /* BurrowSystem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -487,6 +489,8 @@
 		C2F6F2F52CF9D59900C14AD4 /* InputYear2022Day21.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day21.csv; sourceTree = "<group>"; };
 		C2F6F2F62CF9D59900C14AD4 /* InputYear2022Day22_Map.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day22_Map.csv; sourceTree = "<group>"; };
 		C2F6F2F72CF9D59900C14AD4 /* InputYear2022Day22_Path.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = InputYear2022Day22_Path.csv; sourceTree = "<group>"; };
+		C2F6F30F2CF9FB6100C14AD4 /* BurrowSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurrowSystem.swift; sourceTree = "<group>"; };
+		C2F6F3102CF9FB6100C14AD4 /* CubeMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeMap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -574,6 +578,8 @@
 		C2F6F1212CF9CA6300C14AD4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C2F6F30F2CF9FB6100C14AD4 /* BurrowSystem.swift */,
+				C2F6F3102CF9FB6100C14AD4 /* CubeMap.swift */,
 				C2F6F1252CF9CAF100C14AD4 /* Bronkerbosch.swift */,
 				C2F6F1272CF9CAF100C14AD4 /* CombatCharacter.swift */,
 				C2F6F1282CF9CAF100C14AD4 /* Cup.swift */,
@@ -869,9 +875,9 @@
 		C2F6F2B02CF9CF8C00C14AD4 /* Interactors */ = {
 			isa = PBXGroup;
 			children = (
-				C2F6F2DA2CF9D3EE00C14AD4 /* Year2022InteractorImpl.swift */,
 				C2F6F2B12CF9CFA800C14AD4 /* MainInteractor.swift */,
 				C2F6F2B22CF9CFA800C14AD4 /* MainInteractorImpl.swift */,
+				C2F6F2BB2CF9CFA800C14AD4 /* YearInteractor.swift */,
 				C2F6F2B32CF9CFA800C14AD4 /* Year2015InteractorImpl.swift */,
 				C2F6F2B42CF9CFA800C14AD4 /* Year2016InteractorImpl.swift */,
 				C2F6F2B52CF9CFA800C14AD4 /* Year2017InteractorImpl.swift */,
@@ -879,7 +885,7 @@
 				C2F6F2B72CF9CFA800C14AD4 /* Year2019InteractorImpl.swift */,
 				C2F6F2B82CF9CFA800C14AD4 /* Year2020InteractorImpl.swift */,
 				C2F6F2B92CF9CFA800C14AD4 /* Year2021InteractorImpl.swift */,
-				C2F6F2BB2CF9CFA800C14AD4 /* YearInteractor.swift */,
+				C2F6F2DA2CF9D3EE00C14AD4 /* Year2022InteractorImpl.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -1202,6 +1208,8 @@
 				C2F6F2C52CF9CFA800C14AD4 /* YearInteractor.swift in Sources */,
 				C2F6F2C62CF9CFA800C14AD4 /* Year2018InteractorImpl.swift in Sources */,
 				C2F6F1412CF9CAF100C14AD4 /* RebootStep.swift in Sources */,
+				C2F6F3112CF9FB6100C14AD4 /* CubeMap.swift in Sources */,
+				C2F6F3122CF9FB6100C14AD4 /* BurrowSystem.swift in Sources */,
 				C2F6F1422CF9CAF100C14AD4 /* Scanner.swift in Sources */,
 				C2F6F1432CF9CAF100C14AD4 /* PlutoMaze.swift in Sources */,
 				C2F6F1442CF9CAF100C14AD4 /* MineCart.swift in Sources */,
