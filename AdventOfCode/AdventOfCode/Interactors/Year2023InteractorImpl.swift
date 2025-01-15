@@ -720,6 +720,35 @@ extension Year2023InteractorImpl: YearInteractor {
     
     @objc
     func day13question1() -> String {
+//        let input = """
+//#.##..##.
+//..#.##.#.
+//##......#
+//##......#
+//..#.##.#.
+//..##..##.
+//#.#.##.#.
+//
+//#...##..#
+//#....#..#
+//..##..###
+//#####.##.
+//#####.##.
+//..##..###
+//#....#..#
+//"""
+        let solution = readCSV("InputYear2023Day13").components(separatedBy: "\n\n")
+            .map { $0.components(separatedBy: .newlines).map { $0.map { String($0) } } }
+            .map { pattern in
+                let (item, vertical) = getMirror(pattern)
+                return vertical ? item : 100*item
+            }
+            .reduce(0, +)
+        return "\(solution)"
+    }
+    
+    @objc
+    func day13question2() -> String {
         let input = """
 #.##..##.
 ..#.##.#.
@@ -740,16 +769,11 @@ extension Year2023InteractorImpl: YearInteractor {
         let solution = input.components(separatedBy: "\n\n")
             .map { $0.components(separatedBy: .newlines).map { $0.map { String($0) } } }
             .map { pattern in
-                let (item, vertical) = getMirror(pattern)
+                let (item, vertical) = getMirrorSmudge(pattern)
                 return vertical ? item : 100*item
             }
             .reduce(0, +)
         return "\(solution)"
-    }
-    
-    @objc
-    func day13question2() -> String {
-        return ""
     }
     
     private func getMirror(_ pattern: [[String]]) -> (Int, Bool) {
@@ -757,39 +781,67 @@ extension Year2023InteractorImpl: YearInteractor {
         if horizontal != -1 {
             return (horizontal, false)
         }
-        return (4, true)
+        return (isMirrorVertical(pattern), true)
     }
     
     private func isMirrorHorizontal(_ pattern: [[String]]) -> Int {
         let pattern = pattern.map { $0.joined()}
-        for i in 0..<pattern.count {
+        for i in 0..<pattern.count-1 {
             let line = pattern[i]
-            for j in i+1..<pattern.count {
-                let secondLine = pattern[j]
-                if line == secondLine {
-                    if validateMirroring(pattern, i, j) {
-                        return i
-                    }
+            let secondLine = pattern[i+1]
+            if line == secondLine {
+                if validateMirroring(pattern, i) {
+                    return i+1
                 }
             }
         }
         return -1
     }
     
-    private func isMirrorVertical(_ pattern: [[String]]) {
-        
+    private func isMirrorVertical(_ pattern: [[String]]) -> Int {
+        isMirrorHorizontal(inversePattern(pattern))
     }
     
-    private func validateMirroring(_ pattern: [String], _ first: Int, _ last: Int) -> Bool {
-        guard (first+last)%2 == 1 else { return false }
+    private func validateMirroring(_ pattern: [String], _ first: Int) -> Bool {
         var first = first
-        var last = last
-        while first < last {
-            if pattern[first] != pattern[last] { return false }
-            first += 1
-            last -= 1
+        var second = first+1
+        while first >= 0 && second < pattern.count {
+            if pattern[first] != pattern[second] { return false }
+            first -= 1
+            second += 1
         }
         return true
     }
+    
+    private func inversePattern(_ pattern: [[String]]) -> [[String]]  {
+        var result: [[String]] = []
+        for i in 0..<pattern[0].count {
+            var item: [String] = []
+            for j in 0..<pattern.count {
+                item.append(pattern[j][i])
+            }
+            result.append(item)
+        }
+        return result
+    }
+    
+    private func getMirrorSmudge(_ pattern: [[String]]) -> (Int, Bool) {
+        for i in 0..<pattern.count {
+            for j in 0..<pattern[i].count {
+                var currentPattern = pattern
+                currentPattern[i][j] = currentPattern[i][j] == "." ? "#" : "."
+                let horizontal = isMirrorHorizontal(currentPattern)
+                if horizontal != -1 {
+                    return (horizontal, false)
+                }
+                let vertical = isMirrorVertical(currentPattern)
+                if vertical != -1 {
+                    return (vertical, false)
+                }
+            }
+        }
+        return (0, true)
+    }
+    
 
 }
