@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YearSelectorViewController" customModule="AdventOfCode" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hD2-on-Ahz" userLabel="mainView">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LhS-wG-yPk">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfI-Wx-TWt" userLabel="contentView">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="257"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="AmH-eh-dta">
+                                            <rect key="frame" x="40" y="40" width="334" height="177"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Advent of Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOk-YX-Eni" userLabel="titleLabel">
+                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="31.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selecciona un año" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cQ-sV-XCY" userLabel="selectYearLabel">
+                                                    <rect key="frame" x="0.0" y="51.5" width="334" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CHU-mI-7GM" userLabel="yearSelector">
+                                                    <rect key="frame" x="0.0" y="92" width="334" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaQ-vv-S8O" userLabel="acceptButton">
+                                                    <rect key="frame" x="0.0" y="146" width="334" height="31"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Aceptar"/>
+                                                    <connections>
+                                                        <action selector="acceptButtonPressed:" destination="-1" eventType="touchUpInside" id="9Sm-K2-hET"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="AmH-eh-dta" firstAttribute="top" secondItem="rfI-Wx-TWt" secondAttribute="top" constant="40" id="85l-NE-DqJ"/>
+                                        <constraint firstAttribute="trailing" secondItem="AmH-eh-dta" secondAttribute="trailing" constant="40" id="Dg3-bw-HFj"/>
+                                        <constraint firstItem="AmH-eh-dta" firstAttribute="leading" secondItem="rfI-Wx-TWt" secondAttribute="leading" constant="40" id="eOO-iO-MnK"/>
+                                        <constraint firstAttribute="bottom" secondItem="AmH-eh-dta" secondAttribute="bottom" constant="40" id="jIF-gS-avI"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="rfI-Wx-TWt" firstAttribute="top" secondItem="LhS-wG-yPk" secondAttribute="top" id="KMx-3n-Iho"/>
+                                <constraint firstAttribute="bottom" secondItem="rfI-Wx-TWt" secondAttribute="bottom" id="RKa-Lu-yQZ"/>
+                                <constraint firstAttribute="trailing" secondItem="rfI-Wx-TWt" secondAttribute="trailing" id="UxB-Bh-pjK"/>
+                                <constraint firstItem="rfI-Wx-TWt" firstAttribute="leading" secondItem="LhS-wG-yPk" secondAttribute="leading" id="lLu-cO-a4I"/>
+                            </constraints>
+                        </scrollView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="LhS-wG-yPk" firstAttribute="leading" secondItem="hD2-on-Ahz" secondAttribute="leading" id="AxY-W7-8JM"/>
+                        <constraint firstItem="LhS-wG-yPk" firstAttribute="top" secondItem="hD2-on-Ahz" secondAttribute="top" id="QBz-FG-lgu"/>
+                        <constraint firstItem="rfI-Wx-TWt" firstAttribute="width" secondItem="hD2-on-Ahz" secondAttribute="width" id="Xgc-p3-J9v"/>
+                        <constraint firstAttribute="trailing" secondItem="LhS-wG-yPk" secondAttribute="trailing" id="sfk-zQ-BVj"/>
+                        <constraint firstAttribute="bottom" secondItem="LhS-wG-yPk" secondAttribute="bottom" id="yq1-oZ-H5n"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hD2-on-Ahz" secondAttribute="trailing" id="Bgw-fo-kgw"/>
+                <constraint firstItem="hD2-on-Ahz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jya-rv-n92"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hD2-on-Ahz" secondAttribute="bottom" id="oOf-HU-sAk"/>
+                <constraint firstItem="hD2-on-Ahz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="qlC-ue-DSa"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="48"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
