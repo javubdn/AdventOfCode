@@ -1,4 +1,3 @@
-//  PlutoMaze.swift
 //  AdventOfCode
 //
 //  Created by Javier Castillo on 10/6/22.
