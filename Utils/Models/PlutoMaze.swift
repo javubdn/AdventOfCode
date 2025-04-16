@@ -1,4 +1,3 @@
-//  Created by Javier Castillo on 10/6/22.
 //
 
 import Foundation
