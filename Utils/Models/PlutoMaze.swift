@@ -7,7 +7,6 @@ class PlutoMaze {
              PointPlutoMaze(x: x+1, y: y)]
         }
     }
-    
     struct PointPortal: Hashable {
         let point: PointPlutoMaze
         let keyName: String
