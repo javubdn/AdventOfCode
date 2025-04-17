@@ -8,7 +8,6 @@ class PlutoMaze {
         }
     }
     struct PointPortal: Hashable {
-        let point: PointPlutoMaze
         let keyName: String
         let intern: Bool
         func teleport(_ portals: Set<PointPortal>) -> PointPlutoMaze? {
