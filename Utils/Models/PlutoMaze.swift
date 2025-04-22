@@ -1,6 +1,5 @@
 class PlutoMaze {
     struct PointPlutoMaze: Hashable {
-        }
     }
     struct PointPortal: Hashable {
         let intern: Bool
