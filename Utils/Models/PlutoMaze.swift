@@ -1,7 +1,6 @@
 class PlutoMaze {
     struct PointPlutoMaze: Hashable {
         func neighbors() -> [PointPlutoMaze] {
-             PointPlutoMaze(x: x-1, y: y),
              PointPlutoMaze(x: x+1, y: y)]
         }
     }
