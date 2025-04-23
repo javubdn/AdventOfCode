@@ -3,7 +3,6 @@ class PlutoMaze {
         let point: PointPlutoMaze
         let level: Int
     }
-    
     private let portals: Set<PointPortal>
     private let openSpaces: Set<PointPlutoMaze>
     
