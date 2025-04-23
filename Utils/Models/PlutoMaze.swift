@@ -1,5 +1,4 @@
 class PlutoMaze {
-    
     struct PositionLevel: Hashable {
         let point: PointPlutoMaze
         let level: Int
