@@ -1,5 +1,4 @@
 class PlutoMaze {
-    struct PointPortal: Hashable {
     }
     
     struct PositionLevel: Hashable {
