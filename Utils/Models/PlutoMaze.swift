@@ -1,5 +1,4 @@
 class PlutoMaze {
-    private let portals: Set<PointPortal>
     private let openSpaces: Set<PointPlutoMaze>
     
     init(openSpaces: Set<PointPlutoMaze>, portals: Set<PointPortal>) {
