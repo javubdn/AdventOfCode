@@ -1,7 +1,6 @@
 class PlutoMaze {
     
     init(openSpaces: Set<PointPlutoMaze>, portals: Set<PointPortal>) {
-        self.portals = portals
     }
     
     convenience init(from input: [String]) {
