@@ -1,5 +1,4 @@
 class PlutoMaze {
-    
     convenience init(from input: [String]) {
         var openSpaces: Set<PointPlutoMaze> = Set()
         var portals: Set<PointPortal> = Set()
