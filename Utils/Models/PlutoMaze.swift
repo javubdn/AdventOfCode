@@ -1,6 +1,5 @@
 class PlutoMaze {
     convenience init(from input: [String]) {
-        var portals: Set<PointPortal> = Set()
         let hole = PlutoMaze.getHole(input)
         input.enumerated().forEach { y, row in
             row.enumerated().forEach { x, c in
