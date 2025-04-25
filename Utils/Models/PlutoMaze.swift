@@ -20,7 +20,6 @@ class PlutoMaze {
                         let portalY = neighbor.offset == 1 && (y == 0 || input[y-1][x] != ".") ? y + 1 : y
                         let keyName = String(c) + String(input[neighbor.element.y][neighbor.element.x])
                         let intern = PlutoMaze.isInsideHole(place, hole: hole)
-                        let portal = PointPortal(point: PointPlutoMaze(x: portalX, y: portalY), keyName: keyName, intern: intern)
                         portals.insert(portal)
                     }
                 }
