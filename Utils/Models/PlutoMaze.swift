@@ -6,7 +6,6 @@ class PlutoMaze {
                 if c == "." { openSpaces.insert(place) }
                 if "ABCDEFGHIJKLMNOPQRSTUVWXYZ".contains(c) {
                     let neighbor = place.neighbors().enumerated().first { point in
-                        }
                         return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".contains(input[point.element.y][point.element.x])
                     }
                     if let neighbor = neighbor,
