@@ -7,7 +7,6 @@ class PlutoMaze {
                 if "ABCDEFGHIJKLMNOPQRSTUVWXYZ".contains(c) {
                     let neighbor = place.neighbors().enumerated().first { point in
                         guard point.element.y >= 0 && point.element.y < input.count else {
-                            return false
                         }
                         guard point.element.x >= 0 && point.element.x < input[point.element.y].count else {
                             return false
