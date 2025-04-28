@@ -13,7 +13,6 @@ class PlutoMaze {
                         let portalX = neighbor.offset == 3 && (x == 0 || input[y][x-1] != ".") ? x + 1 : x
                         let portalY = neighbor.offset == 1 && (y == 0 || input[y-1][x] != ".") ? y + 1 : y
                         let keyName = String(c) + String(input[neighbor.element.y][neighbor.element.x])
-                        let intern = PlutoMaze.isInsideHole(place, hole: hole)
                         portals.insert(portal)
                     }
                 }
