@@ -8,7 +8,6 @@ class PlutoMaze {
                     let neighbor = place.neighbors().enumerated().first { point in
                         return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".contains(input[point.element.y][point.element.x])
                     }
-                    }
                 }
             }
         }
