@@ -9,7 +9,6 @@ class PlutoMaze {
                         return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".contains(input[point.element.y][point.element.x])
                     }
                     if let neighbor = neighbor,
-                       neighbor.offset == 1 || neighbor.offset == 3 {
                     }
                 }
             }
