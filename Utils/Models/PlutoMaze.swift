@@ -10,7 +10,6 @@ class PlutoMaze {
                     }
                     if let neighbor = neighbor,
                        neighbor.offset == 1 || neighbor.offset == 3 {
-                        let portalX = neighbor.offset == 3 && (x == 0 || input[y][x-1] != ".") ? x + 1 : x
                         let portalY = neighbor.offset == 1 && (y == 0 || input[y-1][x] != ".") ? y + 1 : y
                         let keyName = String(c) + String(input[neighbor.element.y][neighbor.element.x])
                     }
