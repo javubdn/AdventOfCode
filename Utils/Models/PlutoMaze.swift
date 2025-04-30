@@ -4,7 +4,6 @@ class PlutoMaze {
             row.enumerated().forEach { x, c in
                 let place = PointPlutoMaze(x: x, y: y)
                 if c == "." { openSpaces.insert(place) }
-                if "ABCDEFGHIJKLMNOPQRSTUVWXYZ".contains(c) {
                 }
             }
         }
