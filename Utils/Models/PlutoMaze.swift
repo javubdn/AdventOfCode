@@ -5,7 +5,6 @@ class PlutoMaze {
                 let place = PointPlutoMaze(x: x, y: y)
                 if c == "." { openSpaces.insert(place) }
                 if "ABCDEFGHIJKLMNOPQRSTUVWXYZ".contains(c) {
-                    }
                 }
             }
         }
