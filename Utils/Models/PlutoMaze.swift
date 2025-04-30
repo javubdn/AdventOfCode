@@ -2,7 +2,6 @@ class PlutoMaze {
     convenience init(from input: [String]) {
         input.enumerated().forEach { y, row in
             row.enumerated().forEach { x, c in
-                let place = PointPlutoMaze(x: x, y: y)
             }
         }
         self.init(openSpaces: openSpaces, portals: portals)
