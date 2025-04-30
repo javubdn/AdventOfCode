@@ -3,7 +3,6 @@ class PlutoMaze {
         input.enumerated().forEach { y, row in
             row.enumerated().forEach { x, c in
                 let place = PointPlutoMaze(x: x, y: y)
-                if c == "." { openSpaces.insert(place) }
             }
         }
         self.init(openSpaces: openSpaces, portals: portals)
