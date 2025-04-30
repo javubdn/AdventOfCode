@@ -2,7 +2,6 @@ class PlutoMaze {
     convenience init(from input: [String]) {
         input.enumerated().forEach { y, row in
         }
-        self.init(openSpaces: openSpaces, portals: portals)
     }
     
     private static func getHole(_ input: [String]) -> ((Int, Int), Int, Int) {
