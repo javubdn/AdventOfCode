@@ -1,5 +1,4 @@
 class PlutoMaze {
-    
     private static func getHole(_ input: [String]) -> ((Int, Int), Int, Int) {
         var input = input
         input = input.map { $0.replacingOccurrences(of: ".", with: "#") }
