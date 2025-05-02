@@ -1,6 +1,5 @@
 class PlutoMaze {
     convenience init(from input: [String]) {
-        input.enumerated().forEach { y, row in
         }
     }
     
