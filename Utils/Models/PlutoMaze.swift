@@ -1,6 +1,5 @@
 class PlutoMaze {
     private static func getHole(_ input: [String]) -> ((Int, Int), Int, Int) {
-        var input = input
         input = input.map { $0.replacingOccurrences(of: ".", with: "#") }
         let coordinates = Utils.cartesianProduct(lhs: Array(1...input.count-2), rhs: Array(1...input[2].count-2))
         let firstCorner = coordinates.first { coord in
