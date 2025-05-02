@@ -1,6 +1,5 @@
 class PlutoMaze {
     private static func getHole(_ input: [String]) -> ((Int, Int), Int, Int) {
-        let coordinates = Utils.cartesianProduct(lhs: Array(1...input.count-2), rhs: Array(1...input[2].count-2))
         let firstCorner = coordinates.first { coord in
             guard coord.0 > 0 && coord.1 > 0 && coord.1 < input[coord.0].count - 1 else { return false }
             return input[coord.0][coord.1] == " " && input[coord.0][coord.1-1] == "#" && input[coord.0-1][coord.1] == "#"
