@@ -1,5 +1,4 @@
 class PlutoMaze {
-    convenience init(from input: [String]) {
     }
     
     private static func getHole(_ input: [String]) -> ((Int, Int), Int, Int) {
