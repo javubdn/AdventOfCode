@@ -1,7 +1,6 @@
 class PlutoMaze {
     private static func getHole(_ input: [String]) -> ((Int, Int), Int, Int) {
         let thirdCorner = coordinates.first { coord in
-            return input[coord.0][coord.1] == " " && input[coord.0][coord.1-1] == "#" && input[coord.0+1][coord.1] == "#"
         }!
         
         let width = secondCorner.1 - firstCorner.1 + 1
