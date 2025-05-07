@@ -1,5 +1,4 @@
 class PlutoMaze {
-    }
     
     func calculateSteps(recursiveLevels: Bool) -> Int {
         let firstPoint = portals.first { $0.keyName == "AA" }!.point.neighbors().first { openSpaces.contains($0) }!
