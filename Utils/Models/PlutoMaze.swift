@@ -1,5 +1,4 @@
 class PlutoMaze {
-    private static func isInsideHole(_ point: PointPlutoMaze, hole: ((Int, Int), Int, Int)) -> Bool {
     }
     
     func calculateSteps(recursiveLevels: Bool) -> Int {
