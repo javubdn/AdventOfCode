@@ -1,5 +1,4 @@
 class PlutoMaze {
-    private static func getHole(_ input: [String]) -> ((Int, Int), Int, Int) {
     }
     
     private static func isInsideHole(_ point: PointPlutoMaze, hole: ((Int, Int), Int, Int)) -> Bool {
