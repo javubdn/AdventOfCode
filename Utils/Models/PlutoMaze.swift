@@ -1,8 +1,6 @@
 class PlutoMaze {
     
     func calculateSteps(recursiveLevels: Bool) -> Int {
-        var visited = Set([PositionLevel(point: portals.first { $0.keyName == "AA" }!.point, level: 0),
-                           PositionLevel(point: firstPoint, level: 0)])
         while !movements.isEmpty {
             let movement = movements.removeFirst()
             var position = movement.0
