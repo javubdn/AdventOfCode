@@ -2,7 +2,6 @@ class PlutoMaze {
     
     func calculateSteps(recursiveLevels: Bool) -> Int {
         while !movements.isEmpty {
-            var position = movement.0
             var level = movement.1
             if position == lastPoint && level == 0 {
                 return movement.2
