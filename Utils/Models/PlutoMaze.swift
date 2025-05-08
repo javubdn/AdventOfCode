@@ -2,7 +2,6 @@ class PlutoMaze {
     
     func calculateSteps(recursiveLevels: Bool) -> Int {
         while !movements.isEmpty {
-            var level = movement.1
             if let portal = portals.first(where: { $0.point == position }) {
                 if (portal.intern || level > 0 || !recursiveLevels),
                     let newPosition = portal.teleport(portals) {
