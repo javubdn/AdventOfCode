@@ -4,7 +4,6 @@ class PlutoMaze {
         while !movements.isEmpty {
             var level = movement.1
             if position == lastPoint && level == 0 {
-                return movement.2
             }
             if let portal = portals.first(where: { $0.point == position }) {
                 if (portal.intern || level > 0 || !recursiveLevels),
