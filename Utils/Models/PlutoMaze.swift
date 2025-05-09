@@ -4,7 +4,6 @@ class PlutoMaze {
         while !movements.isEmpty {
             if let portal = portals.first(where: { $0.point == position }) {
                 if (portal.intern || level > 0 || !recursiveLevels),
-                    let newPosition = portal.teleport(portals) {
                 }
             }
             let neighbors = position.neighbors()
