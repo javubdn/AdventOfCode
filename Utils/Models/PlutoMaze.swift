@@ -5,7 +5,6 @@ class PlutoMaze {
             if let portal = portals.first(where: { $0.point == position }) {
                 if (portal.intern || level > 0 || !recursiveLevels),
                     let newPosition = portal.teleport(portals) {
-                    position = newPosition
                     level += !recursiveLevels ? 0 : portal.intern ? 1 : -1
                     visited.insert(PositionLevel(point: position, level: level))
                     position = position.neighbors().first { openSpaces.contains($0) }!
