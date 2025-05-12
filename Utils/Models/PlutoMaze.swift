@@ -2,7 +2,6 @@ class PlutoMaze {
     
     func calculateSteps(recursiveLevels: Bool) -> Int {
         while !movements.isEmpty {
-                    && !visited.contains(PositionLevel(point: $0, level: level))}
             neighbors.forEach { neighbor in
                 visited.insert(PositionLevel(point: neighbor, level: level))
                 movements.append((neighbor, level, movement.2 + 1))
