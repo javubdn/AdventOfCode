@@ -2,7 +2,6 @@ class PlutoMaze {
     
     func calculateSteps(recursiveLevels: Bool) -> Int {
         while !movements.isEmpty {
-            if let portal = portals.first(where: { $0.point == position }) {
             }
             let neighbors = position.neighbors()
                 .filter { (openSpaces.contains($0)
