@@ -1,4 +1,3 @@
-//
 
 class Position: Hashable {
     
