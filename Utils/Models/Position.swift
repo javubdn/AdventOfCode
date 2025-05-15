@@ -1,7 +1,6 @@
 
 class Position: Hashable {
     
-    init(x: Int, y: Int) {
     }
     
     func hash(into hasher: inout Hasher) { }
