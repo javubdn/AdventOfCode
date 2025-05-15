@@ -2,7 +2,6 @@
 class Position: Hashable {
     
     init(x: Int, y: Int) {
-        self.y = y
     }
     
     func hash(into hasher: inout Hasher) { }
