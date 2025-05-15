@@ -1,7 +1,6 @@
 
 class Position: Hashable {
     
-    var y: Int
     
     init(x: Int, y: Int) {
         self.x = x
