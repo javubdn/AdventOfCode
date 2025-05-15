@@ -1,7 +1,6 @@
 
 class Position: Hashable {
     
-    var x: Int
     var y: Int
     
     init(x: Int, y: Int) {
