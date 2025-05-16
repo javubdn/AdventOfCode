@@ -2,7 +2,6 @@
 class Position: Hashable {
     func hash(into hasher: inout Hasher) { }
     
-    
     func line(_ to: Position, _ rangeX: (Int, Int)? = nil, _ rangeY: (Int, Int)? = nil ) -> [Position] {
         guard let rangeX = rangeX, let rangeY = rangeY else {
             return lineNoRange(to)
