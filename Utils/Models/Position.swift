@@ -2,7 +2,6 @@
 class Position: Hashable {
     func hash(into hasher: inout Hasher) { }
     
-    }
     
     func distance(to other: Position) -> Int {
         abs(x - other.x) + abs(y - other.y)
