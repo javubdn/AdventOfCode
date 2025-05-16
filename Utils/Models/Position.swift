@@ -4,7 +4,6 @@ class Position: Hashable {
     
     
     func distance(to other: Position) -> Int {
-        abs(x - other.x) + abs(y - other.y)
     }
     
     func line(_ to: Position, _ rangeX: (Int, Int)? = nil, _ rangeY: (Int, Int)? = nil ) -> [Position] {
