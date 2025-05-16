@@ -3,7 +3,6 @@ class Position: Hashable {
     func hash(into hasher: inout Hasher) { }
     
     static func == (lhs: Position, rhs: Position) -> Bool {
-        lhs.x == rhs.x && lhs.y == rhs.y
     }
     
     func distance(to other: Position) -> Int {
