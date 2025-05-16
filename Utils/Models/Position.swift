@@ -3,7 +3,6 @@ class Position: Hashable {
     func hash(into hasher: inout Hasher) { }
     
     
-    func distance(to other: Position) -> Int {
     }
     
     func line(_ to: Position, _ rangeX: (Int, Int)? = nil, _ rangeY: (Int, Int)? = nil ) -> [Position] {
