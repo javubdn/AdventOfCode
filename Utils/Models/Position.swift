@@ -2,7 +2,6 @@
 class Position: Hashable {
     func line(_ to: Position, _ rangeX: (Int, Int)? = nil, _ rangeY: (Int, Int)? = nil ) -> [Position] {
         if inRange(rangeX, rangeY) && !to.inRange(rangeX, rangeY) {
-            return Position(x: middlePoint.0, y: middlePoint.1).lineNoRange(to)
         }
         return []
     }
