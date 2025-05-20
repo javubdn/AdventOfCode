@@ -1,7 +1,6 @@
 
 class Position: Hashable {
     func line(_ to: Position, _ rangeX: (Int, Int)? = nil, _ rangeY: (Int, Int)? = nil ) -> [Position] {
-        }
         return []
     }
     
