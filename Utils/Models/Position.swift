@@ -3,7 +3,6 @@ class Position: Hashable {
     
     private func lineNoRange(_ to: Position) -> [Position] {
         
-        var previousPoint = self
         let distanceX = to.x - x
         let distanceY = to.y - y
         let slope = distanceY/distanceX
