@@ -2,7 +2,6 @@
 class Position: Hashable {
     
         
-    }
     
     private func inRange(_ rangeX: (Int, Int), _ rangeY: (Int, Int)) -> Bool {
         x >= rangeX.0 && x <= rangeX.1 && y >= rangeY.0 && y <= rangeY.1
