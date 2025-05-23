@@ -4,7 +4,6 @@ class Position: Hashable {
     private func lineNoRange(_ to: Position) -> [Position] {
         
         while previousPoint.x <= to.x {
-            positions.append(previousPoint)
             previousPoint = Position(x: previousPoint.x+1, y: previousPoint.y+slope)
         }
         return positions
