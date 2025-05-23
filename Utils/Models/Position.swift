@@ -3,7 +3,6 @@ class Position: Hashable {
     
     private func lineNoRange(_ to: Position) -> [Position] {
         
-        while previousPoint.x <= to.x {
         }
         return positions
     }
