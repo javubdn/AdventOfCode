@@ -4,7 +4,6 @@ class Position: Hashable {
         
     
     private func inRange(_ rangeX: (Int, Int), _ rangeY: (Int, Int)) -> Bool {
-        x >= rangeX.0 && x <= rangeX.1 && y >= rangeY.0 && y <= rangeY.1
     }
     
     private func lineOnRect(_ insidePoint: Position, _ outsidePoint: Position, _ minX: Int, _ minY: Int, _ maxX: Int, _ maxY: Int) -> (Int, Int) {
