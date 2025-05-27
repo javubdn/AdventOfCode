@@ -6,7 +6,6 @@ class Position: Hashable {
     
     private func lineOnRect(_ insidePoint: Position, _ outsidePoint: Position, _ minX: Int, _ minY: Int, _ maxX: Int, _ maxY: Int) -> (Int, Int) {
         
-        let ey = vy > 0 ? maxY : minY
         
         if vx == 0 { return (minX, ey) }
         if vy == 0 { return (ex, minY) }
