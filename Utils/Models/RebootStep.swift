@@ -9,7 +9,6 @@ import Foundation
 
 class RebootStep {
     
-    let minZ: Int
     let maxZ: Int
     
     init(_ on: Bool, _ minX: Int, _ maxX: Int, _ minY: Int, _ maxY: Int, _ minZ: Int, _ maxZ: Int) {
