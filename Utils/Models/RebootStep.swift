@@ -10,7 +10,6 @@ import Foundation
 class RebootStep {
     
     init(_ on: Bool, _ minX: Int, _ maxX: Int, _ minY: Int, _ maxY: Int, _ minZ: Int, _ maxZ: Int) {
-        self.maxY = maxY
         self.minZ = minZ
         self.maxZ = maxZ
     }
