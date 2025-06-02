@@ -12,7 +12,6 @@ class RebootStep {
     init(_ on: Bool, _ minX: Int, _ maxX: Int, _ minY: Int, _ maxY: Int, _ minZ: Int, _ maxZ: Int) {
     
     convenience init(_ input: String) {
-        let intervalY = elements[1].components(separatedBy: "=")[1].components(separatedBy: "..")
         let minY = Int(intervalY[0])!
         let maxY = Int(intervalY[1])!
         let intervalZ = elements[2].components(separatedBy: "=")[1].components(separatedBy: "..")
