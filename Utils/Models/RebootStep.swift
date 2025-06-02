@@ -12,7 +12,6 @@ class RebootStep {
     init(_ on: Bool, _ minX: Int, _ maxX: Int, _ minY: Int, _ maxY: Int, _ minZ: Int, _ maxZ: Int) {
     
     convenience init(_ input: String) {
-        let intervalX = firstPart[1].components(separatedBy: "..")
         let on = firstPart[0].components(separatedBy: .whitespaces)[0] == "on"
         let minX = Int(intervalX[0])!
         let maxX = Int(intervalX[1])!
