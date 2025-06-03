@@ -11,7 +11,6 @@ class RebootStep {
     
     init(_ on: Bool, _ minX: Int, _ maxX: Int, _ minY: Int, _ maxY: Int, _ minZ: Int, _ maxZ: Int) {
     
-    convenience init(_ input: String) {
     }
     
     func intersects(_ other: RebootStep) -> Bool {
