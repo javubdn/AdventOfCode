@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 class RebootStep {
     func intersects(_ other: RebootStep) -> Bool {
         minX <= other.maxX && maxX >= other.minX
