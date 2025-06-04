@@ -13,7 +13,6 @@ class RebootStep {
         && minY <= other.maxY && maxY >= other.minY
         && minZ <= other.maxZ && maxZ >= other.minZ
     }
-    
     func intersect(_ other: RebootStep) -> RebootStep? {
         guard intersects(other) else { return nil }
         return RebootStep(!on,
