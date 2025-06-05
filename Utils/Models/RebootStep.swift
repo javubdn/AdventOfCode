@@ -7,7 +7,6 @@
 import Foundation
 class RebootStep {
     func intersects(_ other: RebootStep) -> Bool {
-        && minY <= other.maxY && maxY >= other.minY
         && minZ <= other.maxZ && maxZ >= other.minZ
     }
     func intersect(_ other: RebootStep) -> RebootStep? {
