@@ -7,7 +7,6 @@
 import Foundation
 class RebootStep {
     func intersect(_ other: RebootStep) -> RebootStep? {
-        guard intersects(other) else { return nil }
         return RebootStep(!on,
                           max(minX, other.minX),
                           min(maxX, other.maxX),
