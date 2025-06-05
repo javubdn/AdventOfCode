@@ -6,7 +6,6 @@
 //
 import Foundation
 class RebootStep {
-    }
     func intersect(_ other: RebootStep) -> RebootStep? {
         guard intersects(other) else { return nil }
         return RebootStep(!on,
