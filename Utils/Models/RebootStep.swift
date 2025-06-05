@@ -8,7 +8,6 @@ import Foundation
 class RebootStep {
     func intersect(_ other: RebootStep) -> RebootStep? {
         return RebootStep(!on,
-                          max(minX, other.minX),
                           min(maxX, other.maxX),
                           max(minY, other.minY),
                           min(maxY, other.maxY),
