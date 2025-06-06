@@ -7,7 +7,6 @@
 import Foundation
 class RebootStep {
     func intersect(_ other: RebootStep) -> RebootStep? {
-        return RebootStep(!on,
     }
     func volume() -> Int {
         (maxX - minX + 1) * (maxY - minY + 1) * (maxZ - minZ + 1) * (on ? 1 : -1)
