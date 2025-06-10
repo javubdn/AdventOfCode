@@ -6,7 +6,6 @@
 //
 import Foundation
 class RebootStep {
-            if cube.on { volumes.append(cube) }
         }
         return volumes.map { $0.volume() }.reduce(0, +)
     }
