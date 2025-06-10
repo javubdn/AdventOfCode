@@ -6,7 +6,6 @@
 //
 import Foundation
 class RebootStep {
-        }
         return volumes.map { $0.volume() }.reduce(0, +)
     }
     
