@@ -6,7 +6,6 @@
 //
 import Foundation
 class RebootStep {
-    func volume() -> Int {
     }
     static func solve(_ cubesToUse: [RebootStep]) -> Int {
         var volumes: [RebootStep] = []
