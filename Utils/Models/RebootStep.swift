@@ -6,7 +6,6 @@
 //
 import Foundation
 class RebootStep {
-        var volumes: [RebootStep] = []
         cubesToUse.forEach { cube in
             volumes.append(contentsOf: volumes.compactMap { $0.intersect(cube) })
             if cube.on { volumes.append(cube) }
