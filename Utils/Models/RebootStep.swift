@@ -6,6 +6,5 @@
 //
 import Foundation
 class RebootStep {
-    }
     
 }
