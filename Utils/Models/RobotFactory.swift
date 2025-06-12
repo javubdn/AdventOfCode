@@ -13,7 +13,6 @@ class RobotFactory {
     
     func addMap(_ input: String) {
         let matches = regex.matches(in: input, options: [], range: NSRange(input.startIndex..., in: input))
-        let match = matches.first!
         let id = Int(String(input[Range(match.range(at: 1), in: input)!]))!
         let oreCost = Int(String(input[Range(match.range(at: 2), in: input)!]))!
         let clayOreCost = Int(String(input[Range(match.range(at: 3), in: input)!]))!
