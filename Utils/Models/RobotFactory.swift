@@ -15,7 +15,6 @@ class RobotFactory {
     }
     
     func executeCalculation() -> Int {
-        blueprints.map { calculateGeodesFound($0, 24) * $0.id }.reduce(0, +)
     }
     
     func calculateGeodesFound(_ blueprint: BluePrint ,_ timeBudget: Int) -> Int {
