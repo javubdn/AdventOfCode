@@ -12,7 +12,6 @@ class RobotFactory {
     var blueprints: [BluePrint] = []
     
     func addMap(_ input: String) {
-        blueprints.append(BluePrint(id, oreRobot, clayRobot, obsidianRobot, geodeRobot))
     }
     
     func executeCalculation() -> Int {
