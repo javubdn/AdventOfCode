@@ -12,7 +12,6 @@ class RobotFactory {
     var blueprints: [BluePrint] = []
     
     func addMap(_ input: String) {
-        let geodeObsidianCost = Int(String(input[Range(match.range(at: 7), in: input)!]))!
         let oreRobot = RobotBlueprint(1, 0, 0, 0, oreCost)
         let clayRobot = RobotBlueprint(0, 1, 0, 0, clayOreCost)
         let obsidianRobot = RobotBlueprint(0, 0, 1, 0, obsidianOreCost, obsidianClayCost)
