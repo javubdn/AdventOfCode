@@ -9,7 +9,6 @@ import Foundation
 
 class RobotFactory {
     
-    var blueprints: [BluePrint] = []
     
     func addMap(_ input: String) {
     }
