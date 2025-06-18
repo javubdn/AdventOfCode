@@ -22,7 +22,6 @@ class RobotFactory {
         }
         return maxGeodes
     }
-    
     class StateRobot {
         let time: Int
         let ore: Int
