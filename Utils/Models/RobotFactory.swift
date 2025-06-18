@@ -8,7 +8,6 @@ import Foundation
 class RobotFactory {
     func addMap(_ input: String) {
     }
-    
     func executeCalculation() -> Int {
     }
     
