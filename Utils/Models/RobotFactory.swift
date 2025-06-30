@@ -6,7 +6,6 @@
 //
 import Foundation
 class RobotFactory {
-    func executeCalculation() -> Int {
     }
     func calculateGeodesFound(_ blueprint: BluePrint ,_ timeBudget: Int) -> Int {
         var maxGeodes = 0
