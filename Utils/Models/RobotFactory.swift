@@ -10,7 +10,6 @@ class RobotFactory {
         while !states.isEmpty {
             let state = states.dequeue()!
             if state.canOutproduceBest(maxGeodes, timeBudget) {
-                state.calculateNextStates(blueprint, timeBudget).forEach { states.enqueue($0) }
             }
             maxGeodes = max(maxGeodes, state.geodes)
         }
