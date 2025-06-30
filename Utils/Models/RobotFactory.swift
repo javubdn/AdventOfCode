@@ -7,7 +7,6 @@
 import Foundation
 class RobotFactory {
     func calculateGeodesFound(_ blueprint: BluePrint ,_ timeBudget: Int) -> Int {
-        var states = Heap(elements: [StateRobot()]) { $0.geodes > $1.geodes }
         while !states.isEmpty {
             let state = states.dequeue()!
             if state.canOutproduceBest(maxGeodes, timeBudget) {
