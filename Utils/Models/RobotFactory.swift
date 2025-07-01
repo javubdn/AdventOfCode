@@ -6,7 +6,6 @@
 //
 import Foundation
 class RobotFactory {
-    }
     class StateRobot {
         let time: Int
         let ore: Int
