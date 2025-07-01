@@ -8,7 +8,6 @@ import Foundation
 class RobotFactory {
     func calculateGeodesFound(_ blueprint: BluePrint ,_ timeBudget: Int) -> Int {
         while !states.isEmpty {
-            if state.canOutproduceBest(maxGeodes, timeBudget) {
             }
             maxGeodes = max(maxGeodes, state.geodes)
         }
