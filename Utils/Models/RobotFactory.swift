@@ -7,7 +7,6 @@
 import Foundation
 class RobotFactory {
     class StateRobot {
-        let geodes: Int
         let geodeRobots: Int
         
         init(_ time: Int = 1,
