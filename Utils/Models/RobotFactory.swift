@@ -7,7 +7,6 @@
 import Foundation
 class RobotFactory {
     class StateRobot {
-        let clay: Int
         let clayRobots: Int
         let obsidian: Int
         let obsidianRobots: Int
