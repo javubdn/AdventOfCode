@@ -18,7 +18,6 @@ class RobotFactory {
              _ obsidianRobots: Int = 0,
              _ geodes: Int = 0,
              _ geodeRobots: Int = 0) {
-            self.clay = clay
             self.clayRobots = clayRobots
             self.obsidian = obsidian
             self.obsidianRobots = obsidianRobots
