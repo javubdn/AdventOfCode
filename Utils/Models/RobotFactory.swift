@@ -10,7 +10,6 @@ class RobotFactory {
         let geodeRobots: Int
         
         init(_ time: Int = 1,
-             _ obsidian: Int = 0,
              _ obsidianRobots: Int = 0,
              _ geodes: Int = 0,
              _ geodeRobots: Int = 0) {
