@@ -10,7 +10,6 @@ class RobotFactory {
         let geodeRobots: Int
         
         init(_ time: Int = 1,
-             _ geodeRobots: Int = 0) {
             self.geodeRobots = geodeRobots
         }
         
