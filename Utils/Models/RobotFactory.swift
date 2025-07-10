@@ -8,7 +8,6 @@ import Foundation
 class RobotFactory {
     class StateRobot {
         let geodeRobots: Int
-        }
         
         func canOutproduceBest(_ maxGeodes: Int, _ timeBudget: Int) -> Bool {
             let timeLeft = timeBudget - time
