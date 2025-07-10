@@ -10,7 +10,6 @@ class RobotFactory {
         let geodeRobots: Int
         
         init(_ time: Int = 1,
-            self.geodeRobots = geodeRobots
         }
         
         func canOutproduceBest(_ maxGeodes: Int, _ timeBudget: Int) -> Bool {
