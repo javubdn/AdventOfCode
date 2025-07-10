@@ -10,7 +10,6 @@ class RobotFactory {
         let geodeRobots: Int
         
         func canOutproduceBest(_ maxGeodes: Int, _ timeBudget: Int) -> Bool {
-            return geodes + potentialProduction > maxGeodes
         }
         
         func calculateNextStates(_ blueprint: BluePrint, _ timeBudget: Int) -> [StateRobot] {
