@@ -10,7 +10,6 @@ class RobotFactory {
         let geodeRobots: Int
         
         func canOutproduceBest(_ maxGeodes: Int, _ timeBudget: Int) -> Bool {
-            let potentialProduction = (0...timeLeft).map { $0 + geodeRobots }.reduce(0, +)
             return geodes + potentialProduction > maxGeodes
         }
         
