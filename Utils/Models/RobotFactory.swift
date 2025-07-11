@@ -9,7 +9,6 @@ class RobotFactory {
     class StateRobot {
         
         func calculateNextStates(_ blueprint: BluePrint, _ timeBudget: Int) -> [StateRobot] {
-            guard time < timeBudget else { return [] }
             var nextStates: [StateRobot] = []
             if let oreState = blueprint.oreRobot.scheduleBuild(self) {
                 nextStates.append(oreState)
