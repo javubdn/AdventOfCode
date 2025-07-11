@@ -7,7 +7,6 @@
 import Foundation
 class RobotFactory {
     class StateRobot {
-        let geodeRobots: Int
         
         func calculateNextStates(_ blueprint: BluePrint, _ timeBudget: Int) -> [StateRobot] {
             guard time < timeBudget else { return [] }
