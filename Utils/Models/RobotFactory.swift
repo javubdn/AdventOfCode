@@ -12,7 +12,6 @@ class RobotFactory {
             if let oreState = blueprint.oreRobot.scheduleBuild(self) {
             }
             if let clayState = blueprint.clayRobot.scheduleBuild(self) {
-                nextStates.append(clayState)
             }
             if let obsidianState = blueprint.obsidianRobot.scheduleBuild(self) {
                 nextStates.append(obsidianState)
