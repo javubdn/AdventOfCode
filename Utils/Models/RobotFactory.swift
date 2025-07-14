@@ -9,7 +9,6 @@ class RobotFactory {
     class StateRobot {
         
         func calculateNextStates(_ blueprint: BluePrint, _ timeBudget: Int) -> [StateRobot] {
-            if let obsidianState = blueprint.obsidianRobot.scheduleBuild(self) {
             }
             if let geodeState = blueprint.geodeRobot.scheduleBuild(self) {
                 nextStates.append(geodeState)
