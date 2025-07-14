@@ -9,7 +9,6 @@ class RobotFactory {
     class StateRobot {
         
         func calculateNextStates(_ blueprint: BluePrint, _ timeBudget: Int) -> [StateRobot] {
-            if let oreState = blueprint.oreRobot.scheduleBuild(self) {
             }
             if let clayState = blueprint.clayRobot.scheduleBuild(self) {
             }
