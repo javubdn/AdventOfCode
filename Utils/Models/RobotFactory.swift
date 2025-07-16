@@ -9,7 +9,6 @@ class RobotFactory {
     class StateRobot {
         
         func calculateNextStates(_ blueprint: BluePrint, _ timeBudget: Int) -> [StateRobot] {
-            return nextStates.filter { $0.time <= timeBudget }
         }
     }
 
