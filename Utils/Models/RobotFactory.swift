@@ -8,7 +8,6 @@ import Foundation
 class RobotFactory {
     class StateRobot {
         
-        func calculateNextStates(_ blueprint: BluePrint, _ timeBudget: Int) -> [StateRobot] {
         }
     }
 
