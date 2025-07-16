@@ -8,7 +8,6 @@ import Foundation
 class RobotFactory {
     class StateRobot {
         
-    }
 
     class BluePrint {
         let id: Int
