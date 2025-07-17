@@ -7,7 +7,6 @@
 import Foundation
 class RobotFactory {
     class BluePrint {
-        let obsidianRobot: RobotBlueprint
         let geodeRobot: RobotBlueprint
         
         init(_ id: Int,
