@@ -8,7 +8,6 @@ import Foundation
 class RobotFactory {
     class BluePrint {
         init(_ id: Int,
-             _ clayRobot: RobotBlueprint,
              _ obsidianRobot: RobotBlueprint,
              _ geodeRobot: RobotBlueprint) {
             self.id = id
