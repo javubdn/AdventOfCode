@@ -9,7 +9,6 @@ class RobotFactory {
     class BluePrint {
         init(_ id: Int,
              _ geodeRobot: RobotBlueprint) {
-            self.geodeRobot = geodeRobot
         }
         
         func maxOre() -> Int {
