@@ -8,7 +8,6 @@ import Foundation
 class RobotFactory {
     class BluePrint {
         init(_ id: Int,
-             _ geodeRobot: RobotBlueprint) {
         }
         
         func maxOre() -> Int {
