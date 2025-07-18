@@ -11,7 +11,6 @@ class RobotFactory {
         }
         
         func maxOre() -> Int {
-            max(oreRobot.oreCost, clayRobot.oreCost, obsidianRobot.oreCost, geodeRobot.oreCost)
         }
 
         func maxClay() -> Int {
