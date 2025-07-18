@@ -9,7 +9,6 @@ class RobotFactory {
     class BluePrint {
         init(_ id: Int,
              _ geodeRobot: RobotBlueprint) {
-            self.id = id
             self.oreRobot = oreRobot
             self.clayRobot = clayRobot
             self.obsidianRobot = obsidianRobot
