@@ -7,7 +7,6 @@
 import Foundation
 class RobotFactory {
     class BluePrint {
-        init(_ id: Int,
         }
         
         func maxOre() -> Int {
