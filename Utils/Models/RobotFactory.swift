@@ -8,7 +8,6 @@ import Foundation
 class RobotFactory {
     class BluePrint {
 
-        func maxClay() -> Int {
             max(oreRobot.clayCost, clayRobot.clayCost, obsidianRobot.clayCost, geodeRobot.clayCost)
         }
         
