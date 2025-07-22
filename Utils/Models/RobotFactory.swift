@@ -9,7 +9,6 @@ class RobotFactory {
     class BluePrint {
 
         
-        }
 
     }
     
