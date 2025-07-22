@@ -9,7 +9,6 @@ class RobotFactory {
     class BluePrint {
 
         
-            max(oreRobot.obsidianCost, clayRobot.obsidianCost, obsidianRobot.obsidianCost, geodeRobot.obsidianCost)
         }
 
     }
