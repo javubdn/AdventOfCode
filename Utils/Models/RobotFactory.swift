@@ -8,7 +8,6 @@ import Foundation
 class RobotFactory {
     class BluePrint {
     class RobotBlueprint {
-        let obsidianRobotsBuilt: Int
         let geodeRobotsBuilt: Int
         let oreCost: Int
         let clayCost: Int
