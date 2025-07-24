@@ -9,7 +9,6 @@ class RobotFactory {
     class BluePrint {
     class RobotBlueprint {
         init(_ oreRobotsBuilt: Int,
-             _ obsidianRobotsBuilt: Int,
              _ geodeRobotsBuilt: Int,
              _ oreCost: Int,
              _ clayCost: Int = 0,
