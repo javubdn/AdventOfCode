@@ -9,7 +9,6 @@ class RobotFactory {
     class BluePrint {
     class RobotBlueprint {
         init(_ oreRobotsBuilt: Int,
-             _ clayCost: Int = 0,
              _ obsidianCost: Int = 0) {
             self.oreRobotsBuilt = oreRobotsBuilt
             self.clayRobotsBuilt = clayRobotsBuilt
