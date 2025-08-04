@@ -10,7 +10,6 @@ class RobotFactory {
     class RobotBlueprint {
         init(_ oreRobotsBuilt: Int,
              _ obsidianCost: Int = 0) {
-            self.obsidianCost = obsidianCost
         }
         
         private func timeUntilBuild(_ productionState: StateRobot) -> Int {
