@@ -8,7 +8,6 @@ import Foundation
 class RobotFactory {
     class BluePrint {
     class RobotBlueprint {
-             _ obsidianCost: Int = 0) {
         }
         
         private func timeUntilBuild(_ productionState: StateRobot) -> Int {
