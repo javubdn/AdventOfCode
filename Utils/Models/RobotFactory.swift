@@ -12,7 +12,6 @@ class RobotFactory {
             if oreRobotsBuilt == 1 || clayRobotsBuilt == 1 {
             } else if obsidianRobotsBuilt == 1 {
             } else {
-                guard productionState.obsidianRobots > 0 else { return Int.max }
                 return max(neededOre <= 0 ? 0 : Int(ceil(Double(neededOre)/Double(productionState.oreRobots))),
                            neededObsidian <= 0 ? 0 : Int(ceil(Double(neededObsidian) / Double(productionState.obsidianRobots)))
                        ) + 1
