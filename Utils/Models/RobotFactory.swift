@@ -9,7 +9,6 @@ class RobotFactory {
     class BluePrint {
     class RobotBlueprint {
         private func timeUntilBuild(_ productionState: StateRobot) -> Int {
-            let neededOre = oreCost - productionState.ore
             let neededClay = clayCost - productionState.clay
             let neededObsidian = obsidianCost - productionState.obsidian
             if oreRobotsBuilt == 1 || clayRobotsBuilt == 1 {
