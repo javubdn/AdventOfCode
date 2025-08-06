@@ -9,7 +9,6 @@ class RobotFactory {
     class BluePrint {
     class RobotBlueprint {
         private func timeUntilBuild(_ productionState: StateRobot) -> Int {
-            if oreRobotsBuilt == 1 || clayRobotsBuilt == 1 {
             } else if obsidianRobotsBuilt == 1 {
             } else {
                 return max(neededOre <= 0 ? 0 : Int(ceil(Double(neededOre)/Double(productionState.oreRobots))),
