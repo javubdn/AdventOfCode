@@ -10,7 +10,6 @@ class RobotFactory {
     class RobotBlueprint {
         private func timeUntilBuild(_ productionState: StateRobot) -> Int {
         }
-        
         func scheduleBuild(_ state: StateRobot) -> StateRobot? {
             let timeRequired = timeUntilBuild(state)
             guard timeRequired != Int.max else {
