@@ -16,7 +16,6 @@ class RobotFactory {
                 return nil
             }
             return StateRobot(state.time + timeRequired,
-                              state.geodes + (timeRequired * state.geodeRobots),
                               state.geodeRobots + geodeRobotsBuilt
             )
         }
