@@ -8,7 +8,6 @@ import Foundation
 class RobotFactory {
     class BluePrint {
     class RobotBlueprint {
-        }
         func scheduleBuild(_ state: StateRobot) -> StateRobot? {
             let timeRequired = timeUntilBuild(state)
             guard timeRequired != Int.max else {
