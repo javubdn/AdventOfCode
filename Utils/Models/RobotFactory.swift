@@ -8,7 +8,6 @@ import Foundation
 class RobotFactory {
     class BluePrint {
     class RobotBlueprint {
-        private func timeUntilBuild(_ productionState: StateRobot) -> Int {
         }
         func scheduleBuild(_ state: StateRobot) -> StateRobot? {
             let timeRequired = timeUntilBuild(state)
