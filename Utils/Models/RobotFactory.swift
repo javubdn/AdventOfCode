@@ -9,7 +9,6 @@ class RobotFactory {
     class BluePrint {
     class RobotBlueprint {
         func scheduleBuild(_ state: StateRobot) -> StateRobot? {
-            guard timeRequired != Int.max else {
                 return nil
             }
             return StateRobot(state.time + timeRequired,
