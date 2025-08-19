@@ -7,7 +7,6 @@
 import Foundation
 class RobotFactory {
     class RobotBlueprint {
-        func scheduleBuild(_ state: StateRobot) -> StateRobot? {
         }
     }
 }
