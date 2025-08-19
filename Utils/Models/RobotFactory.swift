@@ -6,6 +6,5 @@
 //
 import Foundation
 class RobotFactory {
-    class RobotBlueprint {
     }
 }
