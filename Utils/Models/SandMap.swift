@@ -6,7 +6,6 @@
 //
 
 private struct ActionQueue: Hashable {
-    let x: Int
     let y: Int
 }
 
