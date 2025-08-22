@@ -10,7 +10,6 @@ private struct ActionQueue: Hashable {
 
 class SandMap {
     
-    fileprivate var rock: Set<Position> = []
     fileprivate var sand: Set<Position> = []
     private var minX: Int
     private var minY: Int
