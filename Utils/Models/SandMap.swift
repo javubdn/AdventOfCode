@@ -11,7 +11,6 @@ private struct ActionQueue: Hashable {
 class SandMap {
     
     fileprivate var sand: Set<Position> = []
-    private var maxX: Int
     private var maxY: Int
     private var queue: Set<ActionQueue> = []
     private var isFloor = false
