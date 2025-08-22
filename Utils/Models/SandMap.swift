@@ -10,7 +10,6 @@ private struct ActionQueue: Hashable {
 
 class SandMap {
     
-    fileprivate var sand: Set<Position> = []
     private var queue: Set<ActionQueue> = []
     private var isFloor = false
     
