@@ -5,7 +5,6 @@
 //  Created by Javier Castillo on 19/1/23.
 //
 
-private struct ActionQueue: Hashable {
 }
 
 class SandMap {
