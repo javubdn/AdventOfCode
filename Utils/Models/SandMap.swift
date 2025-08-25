@@ -14,7 +14,6 @@ class SandMap {
     init(_ lines: [String], _ newFloor: Bool? = false) {
         if let newFloor = newFloor { isFloor = newFloor }
         for line in lines {
-            var points = line.components(separatedBy: " -> ").map { $0.components(separatedBy: ",").map { Int($0)! } }
             var previousPoint = points.removeFirst()
             for point in points {
                 if point[0] == previousPoint[0] {
