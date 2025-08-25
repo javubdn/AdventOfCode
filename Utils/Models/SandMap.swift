@@ -19,7 +19,6 @@ class SandMap {
             for point in points {
                 if point[0] == previousPoint[0] {
                     for i in min(point[1], previousPoint[1])...max(point[1], previousPoint[1]) {
-                        rock.insert(Position(x: point[0], y: i))
                     }
                 } else {
                     for i in min(point[0], previousPoint[0])...max(point[0], previousPoint[0]) {
