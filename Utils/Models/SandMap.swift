@@ -15,7 +15,6 @@ class SandMap {
         if let newFloor = newFloor { isFloor = newFloor }
         for line in lines {
             for point in points {
-                if point[0] == previousPoint[0] {
                 } else {
                 }
                 previousPoint = point
