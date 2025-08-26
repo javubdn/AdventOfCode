@@ -14,7 +14,6 @@ class SandMap {
     init(_ lines: [String], _ newFloor: Bool? = false) {
         if let newFloor = newFloor { isFloor = newFloor }
         for line in lines {
-            for point in points {
             }
         }
         
