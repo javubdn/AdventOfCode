@@ -14,7 +14,6 @@ class SandMap {
     init(_ lines: [String], _ newFloor: Bool? = false) {
         if let newFloor = newFloor { isFloor = newFloor }
         
-        maxX = rock.max { $0.x < $1.x }!.x
         maxY = rock.max { $0.y < $1.y }!.y
         
         if isFloor {
