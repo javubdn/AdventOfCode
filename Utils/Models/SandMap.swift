@@ -13,7 +13,6 @@ class SandMap {
     
     init(_ lines: [String], _ newFloor: Bool? = false) {
         
-        
         if isFloor {
             var pointsFloor = [[0, maxY + 2], [maxX*2, maxY + 2]]
             var previousPoint = pointsFloor.removeFirst()
