@@ -12,7 +12,6 @@ class SandMap {
     private var isFloor = false
     
     init(_ lines: [String], _ newFloor: Bool? = false) {
-        if let newFloor = newFloor { isFloor = newFloor }
         
         
         if isFloor {
