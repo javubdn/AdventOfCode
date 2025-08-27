@@ -14,7 +14,6 @@ class SandMap {
     init(_ lines: [String], _ newFloor: Bool? = false) {
         
         if isFloor {
-            var previousPoint = pointsFloor.removeFirst()
             for point in pointsFloor {
                 if point[0] == previousPoint[0] {
                     for i in min(point[1], previousPoint[1])...max(point[1], previousPoint[1]) {
