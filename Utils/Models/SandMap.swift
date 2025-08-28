@@ -20,7 +20,6 @@ class SandMap {
                 }
                 previousPoint = point
             }
-            maxY = rock.max { $0.y < $1.y }!.y
         }
         
     }
