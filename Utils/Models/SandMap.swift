@@ -17,7 +17,6 @@ class SandMap {
             for point in pointsFloor {
                 if point[0] == previousPoint[0] {
                 } else {
-                    }
                 }
                 previousPoint = point
             }
