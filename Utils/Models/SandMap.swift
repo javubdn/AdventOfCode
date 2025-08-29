@@ -13,7 +13,6 @@ class SandMap {
     
     init(_ lines: [String], _ newFloor: Bool? = false) {
         
-        }
         
     }
     
