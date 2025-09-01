@@ -27,7 +27,6 @@ class SandMap {
                         if pile(x+1, y+1) {
                             sand.insert(Position(x: x, y: y))
                             if isFloor {
-                                minX = min(minX, x)
                                 maxX = max(maxX, x)
                             }
                             if y <= 0 {
