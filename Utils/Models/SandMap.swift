@@ -25,7 +25,6 @@ class SandMap {
                 if pile(x, y+1) {
                     if pile(x-1, y+1) {
                         if pile(x+1, y+1) {
-                            sand.insert(Position(x: x, y: y))
                             break
                         } else {
                             x += 1
