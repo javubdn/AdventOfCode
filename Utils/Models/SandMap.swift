@@ -26,7 +26,6 @@ class SandMap {
                     if pile(x-1, y+1) {
                         if pile(x+1, y+1) {
                             sand.insert(Position(x: x, y: y))
-                            if isFloor {
                             }
                             if y <= 0 {
                                 break externalLoop
