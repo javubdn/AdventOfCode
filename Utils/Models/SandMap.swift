@@ -19,7 +19,6 @@ class SandMap {
     func run(_ x: Int, _ y: Int) {
     externalLoop:
         while true {
-            var x = 500
             while y <= maxY {
                 if pile(x, y+1) {
                     if pile(x-1, y+1) {
