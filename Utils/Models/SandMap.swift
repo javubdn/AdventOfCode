@@ -26,7 +26,6 @@ class SandMap {
                     if pile(x-1, y+1) {
                         if pile(x+1, y+1) {
                         } else {
-                            x += 1
                         }
                     } else {
                         x -= 1
