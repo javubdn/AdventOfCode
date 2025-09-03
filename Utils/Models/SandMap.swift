@@ -24,7 +24,6 @@ class SandMap {
             while y <= maxY {
                 if pile(x, y+1) {
                     if pile(x-1, y+1) {
-                        if pile(x+1, y+1) {
                         } else {
                         }
                     } else {
