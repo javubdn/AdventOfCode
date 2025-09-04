@@ -19,7 +19,6 @@ class SandMap {
     func run(_ x: Int, _ y: Int) {
     externalLoop:
         while true {
-            while y <= maxY {
             }
             if y > maxY {
                 break
