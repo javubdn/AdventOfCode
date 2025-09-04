@@ -20,7 +20,6 @@ class SandMap {
     externalLoop:
         while true {
             while y <= maxY {
-                if pile(x, y+1) {
                 }
                 y += 1
             }
