@@ -17,7 +17,6 @@ class SandMap {
     }
     
     func run(_ x: Int, _ y: Int) {
-    externalLoop:
     }
     
     func countSand() -> Int {
