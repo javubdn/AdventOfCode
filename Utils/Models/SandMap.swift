@@ -20,7 +20,6 @@ class SandMap {
     externalLoop:
         while true {
             if y > maxY {
-                break
                 
             }
         }
