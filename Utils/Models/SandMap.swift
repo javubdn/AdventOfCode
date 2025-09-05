@@ -18,7 +18,6 @@ class SandMap {
     
     func run(_ x: Int, _ y: Int) {
     externalLoop:
-        while true {
         }
     }
     
