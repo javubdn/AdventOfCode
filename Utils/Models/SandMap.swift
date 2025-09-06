@@ -11,7 +11,6 @@ class SandMap {
     private var queue: Set<ActionQueue> = []
     private var isFloor = false
     
-    }
     
     func run(_ x: Int, _ y: Int) {
     }
