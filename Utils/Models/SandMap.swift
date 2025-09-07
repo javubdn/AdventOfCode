@@ -17,7 +17,6 @@ class SandMap {
     
     func printS() {
         var sandMap: [[String]] = [[String]](repeating: [String](repeating: ".", count: maxX-minX+3), count: maxY+1)
-        }
         
         for sn in sand {
             sandMap[sn.y][sn.x-minX+1] = "o"
