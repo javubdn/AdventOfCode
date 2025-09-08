@@ -16,7 +16,6 @@ class SandMap {
     }
     
     func printS() {
-        valu.forEach { print($0) }
     }
     
     private func pile(_ x: Int, _ y: Int) -> Bool {
