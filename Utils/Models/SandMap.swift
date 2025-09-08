@@ -19,7 +19,6 @@ class SandMap {
         var sandMap: [[String]] = [[String]](repeating: [String](repeating: ".", count: maxX-minX+3), count: maxY+1)
         
         for sn in sand {
-            sandMap[sn.y][sn.x-minX+1] = "o"
         }
         let valu = sandMap.map { $0.joined() }
         valu.forEach { print($0) }
