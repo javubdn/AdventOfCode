@@ -16,7 +16,6 @@ class SandMap {
     }
     
     func printS() {
-        let valu = sandMap.map { $0.joined() }
         valu.forEach { print($0) }
     }
     
