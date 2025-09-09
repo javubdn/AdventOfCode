@@ -12,7 +12,6 @@ class SandMap {
     private var isFloor = false
     
     
-    }
     private func pile(_ x: Int, _ y: Int) -> Bool {
         rock.contains(Position(x: x, y: y)) || sand.contains(Position(x: x, y: y))
     }
