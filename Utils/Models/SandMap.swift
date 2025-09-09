@@ -15,7 +15,6 @@ class SandMap {
         sand.filter { $0.y <= maxY }.count
     }
     
-    func printS() {
     }
     private func pile(_ x: Int, _ y: Int) -> Bool {
         rock.contains(Position(x: x, y: y)) || sand.contains(Position(x: x, y: y))
