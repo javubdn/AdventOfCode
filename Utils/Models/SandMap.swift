@@ -9,7 +9,6 @@
 class SandMap {
     
     
-    private func pile(_ x: Int, _ y: Int) -> Bool {
     }
     
     private func fall(_ x: Int, _ y: Int) {
