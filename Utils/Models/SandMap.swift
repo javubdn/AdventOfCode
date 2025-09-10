@@ -17,7 +17,6 @@ class SandMap {
                     if pile(x+1, y+1) {
                         sand.insert(Position(x: x, y: y))
                         if y > 0 {
-                            queue.insert(ActionQueue(x: 500, y: 0))
                         }
                         return
                     } else {
