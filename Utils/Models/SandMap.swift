@@ -17,7 +17,6 @@ class SandMap {
                 } else {
                 }
             }
-            y += 1
         }
     }
     
