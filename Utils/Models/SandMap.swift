@@ -11,7 +11,6 @@ class SandMap {
     
     
     private func fall(_ x: Int, _ y: Int) {
-        }
     }
     
     private let sandSource = Position(x: 500, y: 0)
