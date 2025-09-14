@@ -9,7 +9,6 @@
 class SandMap {
     
     
-    private func fall(_ x: Int, _ y: Int) {
     }
     
     
