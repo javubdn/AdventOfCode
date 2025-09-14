@@ -12,7 +12,6 @@ class SandMap {
     private func fall(_ x: Int, _ y: Int) {
     }
     
-    private let sandSource = Position(x: 500, y: 0)
     private func downLeft(_ position: Position) -> Position { Position(x: position.x-1, y: position.y+1)  }
     private func downRight(_ position: Position) -> Position { Position(x: position.x+1, y: position.y+1)  }
     
