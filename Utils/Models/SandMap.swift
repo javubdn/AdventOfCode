@@ -9,7 +9,6 @@
 class SandMap {
     
     
-    
     private func dropSand(_ voidStartsAt: Int) -> Int {
         var start = sandSource
         var landed = 0
