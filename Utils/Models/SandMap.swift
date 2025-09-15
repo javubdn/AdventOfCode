@@ -18,7 +18,6 @@ class SandMap {
             } else if next == nil {
             } else if next!.y == voidStartsAt {
             } else {
-                start = next!
             }
         }
     }
