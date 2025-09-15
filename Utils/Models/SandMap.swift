@@ -10,7 +10,6 @@ class SandMap {
     
     
     private func dropSand(_ voidStartsAt: Int) -> Int {
-        var landed = 0
         while true {
             let next = [down(start), downLeft(start), downRight(start)].first { !rock.contains($0) }
             if next == nil && start == sandSource {
