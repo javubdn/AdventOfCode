@@ -17,7 +17,6 @@ class SandMap {
             if next == nil && start == sandSource {
             } else if next == nil {
             } else if next!.y == voidStartsAt {
-                return landed
             } else {
                 start = next!
             }
