@@ -16,7 +16,6 @@ class SandMap {
             let next = [down(start), downLeft(start), downRight(start)].first { !rock.contains($0) }
             if next == nil && start == sandSource {
             } else if next == nil {
-                rock.insert(start)
                 landed += 1
                 start = sandSource
             } else if next!.y == voidStartsAt {
