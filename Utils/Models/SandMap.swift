@@ -15,7 +15,6 @@ class SandMap {
         while true {
             let next = [down(start), downLeft(start), downRight(start)].first { !rock.contains($0) }
             if next == nil && start == sandSource {
-                return landed
             } else if next == nil {
                 rock.insert(start)
                 landed += 1
