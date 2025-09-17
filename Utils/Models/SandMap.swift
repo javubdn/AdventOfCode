@@ -11,7 +11,6 @@ class SandMap {
     
     private func dropSand(_ voidStartsAt: Int) -> Int {
         while true {
-            if next == nil && start == sandSource {
             } else if next == nil {
             } else if next!.y == voidStartsAt {
             } else {
