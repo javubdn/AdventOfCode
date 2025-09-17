@@ -11,7 +11,6 @@ class SandMap {
     
     private func dropSand(_ voidStartsAt: Int) -> Int {
         while true {
-            let next = [down(start), downLeft(start), downRight(start)].first { !rock.contains($0) }
             if next == nil && start == sandSource {
             } else if next == nil {
             } else if next!.y == voidStartsAt {
