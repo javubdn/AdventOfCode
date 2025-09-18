@@ -16,6 +16,5 @@ class SandMap {
         dropSand(maxY + 1)
     }
     
-    }
     
 }
