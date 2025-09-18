@@ -18,7 +18,6 @@ class SandMap {
     
     func solutionPart2() -> Int {
         let maxX: Int = rock.max { $0.x > $1.x }!.x
-        }
         return dropSand(maxY + 3) + 1
     }
     
