@@ -13,7 +13,6 @@ class SandMap {
     }
     
     func solutionPart1() -> Int {
-        dropSand(maxY + 1)
     }
     
     
