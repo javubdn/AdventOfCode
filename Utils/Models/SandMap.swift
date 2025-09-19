@@ -12,7 +12,6 @@ class SandMap {
     private func dropSand(_ voidStartsAt: Int) -> Int {
     }
     
-    func solutionPart1() -> Int {
     }
     
     
