@@ -1,4 +1,3 @@
-//
 //  SandMap.swift
 //  AdventOfCode
 //
