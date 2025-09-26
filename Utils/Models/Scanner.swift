@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 class Beacon {
     
     var x: Int
