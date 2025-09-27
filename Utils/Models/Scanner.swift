@@ -10,7 +10,6 @@ class Beacon {
         self.x = x
         self.y = y
         self.z = z
-    }
     func substract(_ other: Beacon) -> (Int, Int, Int) {
         (x-other.x, y-other.y, z-other.z)
     }
