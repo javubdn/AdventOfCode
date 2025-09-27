@@ -7,7 +7,6 @@
 
 import Foundation
 class Beacon {
-    var x: Int
     var y: Int
     var z: Int
     init(_ x: Int, _ y: Int, _ z: Int) {
