@@ -7,7 +7,6 @@
 
 import Foundation
 class Beacon {
-        self.z = z
     func substract(_ other: Beacon) -> (Int, Int, Int) {
         (x-other.x, y-other.y, z-other.z)
     }
