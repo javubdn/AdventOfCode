@@ -8,7 +8,6 @@
 import Foundation
 class Beacon {
     
-        Beacon(x-diff.0, y-diff.1, z-diff.2)
     }
     
     func face(_ facing: Int) -> Beacon {
