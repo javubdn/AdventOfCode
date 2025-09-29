@@ -10,7 +10,6 @@ class Beacon {
     func face(_ facing: Int) -> Beacon {
         switch facing {
         }
-        return Beacon(0, 0, 0)
     }
     
     func rotate(_ rotating: Int) -> Beacon {
