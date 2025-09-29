@@ -9,7 +9,6 @@ import Foundation
 class Beacon {
     func face(_ facing: Int) -> Beacon {
         switch facing {
-        case 1: return Beacon(x, -y, -z)
         case 2: return Beacon(x, -z, y)
         case 3: return Beacon(-y, -z, x)
         case 4: return Beacon(y, -z, -x)
