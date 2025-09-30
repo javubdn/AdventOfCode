@@ -10,7 +10,6 @@ class Beacon {
     
     func rotate(_ rotating: Int) -> Beacon {
         switch rotating {
-        case 2: return Beacon(-x, -y, z)
         case 3: return Beacon(y, -x, z)
         default: assertionFailure("Invalid rotation")
         }
