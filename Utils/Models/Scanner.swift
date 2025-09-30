@@ -8,7 +8,6 @@
 import Foundation
 class Beacon {
     func face(_ facing: Int) -> Beacon {
-        }
     }
     
     func rotate(_ rotating: Int) -> Beacon {
