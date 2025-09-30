@@ -10,7 +10,6 @@ class Beacon {
     
     func rotate(_ rotating: Int) -> Beacon {
         switch rotating {
-        case 0: return self
         case 1: return Beacon(-y, x, z)
         case 2: return Beacon(-x, -y, z)
         case 3: return Beacon(y, -x, z)
