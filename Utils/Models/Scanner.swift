@@ -9,7 +9,6 @@ import Foundation
 class Beacon {
     
     func rotate(_ rotating: Int) -> Beacon {
-        }
         return Beacon(0, 0, 0)
     }
     
