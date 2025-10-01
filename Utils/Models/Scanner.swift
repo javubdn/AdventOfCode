@@ -7,7 +7,6 @@
 
 import Foundation
 class Beacon {
-    
 }
 
 extension Beacon: Equatable {
