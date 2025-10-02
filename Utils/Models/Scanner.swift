@@ -11,7 +11,6 @@ class Beacon {
 
 extension Beacon: Equatable {
     
-    static func == (lhs: Beacon, rhs: Beacon) -> Bool {
     }
     
 }
