@@ -9,7 +9,6 @@ import Foundation
 class Beacon {
 }
 
-}
 
 extension Beacon: Hashable {
     func hash(into hasher: inout Hasher) { }
