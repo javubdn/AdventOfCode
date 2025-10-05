@@ -12,7 +12,6 @@ class Beacon {
 extension Beacon: Comparable {
     
     static func < (lhs: Beacon, rhs: Beacon) -> Bool {
-        lhs.x < rhs.x || (lhs.x == rhs.x && lhs.y < rhs.y) || (lhs.x == rhs.x && lhs.y == rhs.y && lhs.z < rhs.z)
     }
     
 }
