@@ -10,7 +10,6 @@ class Beacon {
 }
 
 extension Beacon: Comparable {
-    
 }
 
 extension Beacon: Hashable {
