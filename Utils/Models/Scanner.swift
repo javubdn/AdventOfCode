@@ -11,7 +11,6 @@ class Beacon {
 
 extension Beacon: Comparable {
     
-    static func < (lhs: Beacon, rhs: Beacon) -> Bool {
     }
     
 }
