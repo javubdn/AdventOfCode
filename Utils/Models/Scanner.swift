@@ -9,7 +9,6 @@ import Foundation
 class Beacon {
 }
 
-}
 
 class Scanner {
     
