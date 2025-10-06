@@ -10,7 +10,6 @@ import Foundation
 
 class Scanner {
     
-    var beacons: Set<Beacon>
     var position: (x: Int, y: Int, z: Int)?
     var reference: Scanner?
     
