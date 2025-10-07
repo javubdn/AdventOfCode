@@ -10,7 +10,6 @@ import Foundation
 
 class Scanner {
     
-    var reference: Scanner?
     
     convenience init(from input: String) {
         var lines = input.components(separatedBy: .newlines)
