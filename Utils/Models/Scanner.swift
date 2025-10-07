@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class Scanner {
     
     convenience init(from input: String) {
