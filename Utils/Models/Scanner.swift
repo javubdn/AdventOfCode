@@ -13,7 +13,6 @@ class Scanner {
     var reference: Scanner?
     
     init(id: Int, beacons: Set<Beacon>) {
-        self.id = id
         self.beacons = beacons
     }
     
