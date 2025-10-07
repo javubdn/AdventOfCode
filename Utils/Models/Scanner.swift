@@ -12,7 +12,6 @@ class Scanner {
     
     var reference: Scanner?
     
-    init(id: Int, beacons: Set<Beacon>) {
     }
     
     convenience init(from input: String) {
