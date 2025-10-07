@@ -10,7 +10,6 @@ import Foundation
 
 class Scanner {
     
-    
     convenience init(from input: String) {
         var lines = input.components(separatedBy: .newlines)
         let scannerName = lines.removeFirst()
