@@ -10,7 +10,6 @@ import Foundation
 class Scanner {
     
     convenience init(from input: String) {
-        var lines = input.components(separatedBy: .newlines)
         let scannerName = lines.removeFirst()
         let regex = try! NSRegularExpression(pattern: #"--- scanner ([0-9]+) ---"#)
         let matches = regex.matches(in: scannerName, options: [], range: NSRange(scannerName.startIndex..., in: scannerName))
