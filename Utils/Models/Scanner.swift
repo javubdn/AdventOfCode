@@ -16,7 +16,6 @@ class Scanner {
         let matches = regex.matches(in: scannerName, options: [], range: NSRange(scannerName.startIndex..., in: scannerName))
         let match = matches.first!
         let id = Int(String(scannerName[Range(match.range(at: 1), in: scannerName)!]))!
-        let beacons = lines.map { item -> Beacon in
         }.sorted()
         self.init(id: id, beacons: Set(beacons))
     }
