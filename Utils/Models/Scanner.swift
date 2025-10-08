@@ -17,7 +17,6 @@ class Scanner {
         let match = matches.first!
         let id = Int(String(scannerName[Range(match.range(at: 1), in: scannerName)!]))!
         let beacons = lines.map { item -> Beacon in
-            return beacon
         }.sorted()
         self.init(id: id, beacons: Set(beacons))
     }
