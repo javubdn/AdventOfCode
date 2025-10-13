@@ -9,7 +9,6 @@ import Foundation
 
 class Scanner {
     
-    convenience init(from input: String) {
     }
     
     func commonBeacons(with other: Scanner) -> (Int, Int, Int)? {
