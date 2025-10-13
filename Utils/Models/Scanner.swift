@@ -10,7 +10,6 @@ import Foundation
 class Scanner {
     
     convenience init(from input: String) {
-        self.init(id: id, beacons: Set(beacons))
     }
     
     func commonBeacons(with other: Scanner) -> (Int, Int, Int)? {
