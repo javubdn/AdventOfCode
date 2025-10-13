@@ -10,7 +10,6 @@ import Foundation
 class Scanner {
     
     convenience init(from input: String) {
-        let id = Int(String(scannerName[Range(match.range(at: 1), in: scannerName)!]))!
         self.init(id: id, beacons: Set(beacons))
     }
     
