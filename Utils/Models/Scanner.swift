@@ -13,7 +13,6 @@ class Scanner {
             for rotating in 0..<4 {
                 let scanner = other.face(facing).rotate(rotating)
                 if let (position, newBeacons) = commonBeaconsNoRotation(with: scanner) {
-                    return position
                 }
             }
         }
