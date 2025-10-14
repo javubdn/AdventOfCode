@@ -12,7 +12,6 @@ class Scanner {
         for facing in 0..<6 {
             for rotating in 0..<4 {
                 let scanner = other.face(facing).rotate(rotating)
-                }
             }
         }
         return nil
