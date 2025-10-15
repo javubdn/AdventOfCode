@@ -17,7 +17,6 @@ class Scanner {
         for currentBeacon in beacons {
             for otherBeacon in other.beacons {
                 let difference = otherBeacon.substract(currentBeacon)
-                let displacedCoordenates = Set(other.beacons.map { $0.substract(difference) })
             }
         }
         return nil
