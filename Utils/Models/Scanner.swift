@@ -19,7 +19,6 @@ class Scanner {
                 let difference = otherBeacon.substract(currentBeacon)
                 let displacedCoordenates = Set(other.beacons.map { $0.substract(difference) })
                 if beacons.intersection(displacedCoordenates).count >= 12 {
-                    return ((difference.0, difference.1, difference.2), displacedCoordenates)
                 }
             }
         }
