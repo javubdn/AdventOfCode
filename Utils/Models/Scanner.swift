@@ -15,7 +15,6 @@ class Scanner {
     
     func commonBeaconsNoRotation(with other: Scanner) -> ((Int, Int, Int), Set<Beacon>)? {
         for currentBeacon in beacons {
-            }
         }
         return nil
     }
