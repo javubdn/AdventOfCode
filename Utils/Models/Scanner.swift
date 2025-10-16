@@ -9,7 +9,6 @@ import Foundation
 
 class Scanner {
     func commonBeacons(with other: Scanner) -> (Int, Int, Int)? {
-        }
     }
     
     func commonBeaconsNoRotation(with other: Scanner) -> ((Int, Int, Int), Set<Beacon>)? {
