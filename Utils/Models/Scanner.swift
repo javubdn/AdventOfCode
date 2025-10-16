@@ -9,7 +9,6 @@ import Foundation
 
 class Scanner {
     func commonBeacons(with other: Scanner) -> (Int, Int, Int)? {
-        for facing in 0..<6 {
         }
     }
     
