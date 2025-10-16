@@ -9,7 +9,6 @@ import Foundation
 
 class Scanner {
     
-    
     func face(_ facing: Int) -> Scanner {
         Scanner(id: id, beacons: Set(beacons.map { $0.face(facing) }))
     }
