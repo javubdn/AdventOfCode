@@ -10,7 +10,6 @@ import Foundation
 class Scanner {
     
     
-    func rotate(_ rotating: Int) -> Scanner {
     }
     
 }
