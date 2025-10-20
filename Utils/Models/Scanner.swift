@@ -1,3 +1,0 @@
-//
-//  Scanner.swift
-//  AdventOfCode
