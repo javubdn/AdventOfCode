@@ -11,7 +11,6 @@ import BigInt
 class Shuffler {
     
     enum ShuffleType {
-        case increment
     }
     
     struct ShuffleInstruction {
