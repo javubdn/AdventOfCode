@@ -11,7 +11,6 @@ import BigInt
 class Shuffler {
     
     enum ShuffleType {
-        case cut
         case increment
     }
     
