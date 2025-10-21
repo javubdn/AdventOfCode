@@ -10,7 +10,6 @@ import BigInt
 
 class Shuffler {
     
-    enum ShuffleType {
     }
     
     struct ShuffleInstruction {
