@@ -12,7 +12,6 @@ class Shuffler {
     
     
     struct ShuffleInstruction {
-        let type: ShuffleType
         let value: Int
     }
     
