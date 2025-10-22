@@ -12,7 +12,6 @@ class Shuffler {
     
     init(instructions: [ShuffleInstruction]) {
     }
-    
     convenience init(from input: [String]) {
         var instructions: [ShuffleInstruction] = []
         input.forEach { line in
