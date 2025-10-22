@@ -10,7 +10,6 @@ import BigInt
 
 class Shuffler {
     
-    struct ShuffleInstruction {
     }
     
     let instructions: [ShuffleInstruction]
