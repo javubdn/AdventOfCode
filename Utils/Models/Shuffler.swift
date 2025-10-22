@@ -10,7 +10,6 @@ import BigInt
 
 class Shuffler {
     
-    
     init(instructions: [ShuffleInstruction]) {
         self.instructions = instructions
     }
