@@ -11,7 +11,6 @@ import BigInt
 class Shuffler {
     
     init(instructions: [ShuffleInstruction]) {
-        self.instructions = instructions
     }
     
     convenience init(from input: [String]) {
