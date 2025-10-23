@@ -15,7 +15,6 @@ class Shuffler {
             let items = line.components(separatedBy: .whitespaces)
             if items[0] == "cut" {
             } else if items[1] == "into" {
-                instructions.append(ShuffleInstruction(type: .newStack, value: 0))
             } else {
                 instructions.append(ShuffleInstruction(type: .increment, value: Int(items[3])!))
             }
