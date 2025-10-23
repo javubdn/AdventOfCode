@@ -17,7 +17,6 @@ class Shuffler {
             } else {
             }
         }
-        self.init(instructions: instructions)
     }
     
     func shuffle(_ numberCards: Int) -> [Int] {
