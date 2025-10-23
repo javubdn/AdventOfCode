@@ -11,7 +11,6 @@ import BigInt
 class Shuffler {
     
     convenience init(from input: [String]) {
-        var instructions: [ShuffleInstruction] = []
         input.forEach { line in
             let items = line.components(separatedBy: .whitespaces)
             if items[0] == "cut" {
