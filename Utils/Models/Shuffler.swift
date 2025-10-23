@@ -10,7 +10,6 @@ import BigInt
 
 class Shuffler {
     
-    }
     convenience init(from input: [String]) {
         var instructions: [ShuffleInstruction] = []
         input.forEach { line in
