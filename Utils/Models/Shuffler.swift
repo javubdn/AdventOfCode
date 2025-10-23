@@ -12,7 +12,6 @@ class Shuffler {
     
     convenience init(from input: [String]) {
         input.forEach { line in
-            let items = line.components(separatedBy: .whitespaces)
             if items[0] == "cut" {
             } else if items[1] == "into" {
             } else {
