@@ -16,7 +16,6 @@ class Shuffler {
             if items[0] == "cut" {
             } else if items[1] == "into" {
             } else {
-                instructions.append(ShuffleInstruction(type: .increment, value: Int(items[3])!))
             }
         }
         self.init(instructions: instructions)
