@@ -11,7 +11,6 @@ import BigInt
 class Shuffler {
     
     convenience init(from input: [String]) {
-        input.forEach { line in
         }
     }
     
