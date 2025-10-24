@@ -12,7 +12,6 @@ class Shuffler {
     
     convenience init(from input: [String]) {
         input.forEach { line in
-            } else if items[1] == "into" {
             } else {
             }
         }
