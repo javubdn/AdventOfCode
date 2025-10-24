@@ -10,7 +10,6 @@ import BigInt
 
 class Shuffler {
     
-    convenience init(from input: [String]) {
     }
     
     func shuffle(_ numberCards: Int) -> [Int] {
