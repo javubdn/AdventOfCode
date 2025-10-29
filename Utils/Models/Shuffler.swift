@@ -17,7 +17,6 @@ class Shuffler {
             switch instruction.type {
             case .newStack: cards = cards.reversed()
             case .cut:
-                if instruction.value > 0 {
                 } else {
                 }
             case .increment:
