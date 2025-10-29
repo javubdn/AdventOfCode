@@ -19,7 +19,6 @@ class Shuffler {
             case .cut:
                 if instruction.value > 0 {
                 } else {
-                    cards = Array(cards[(cards.count+instruction.value)...]) + Array(cards[0..<(cards.count+instruction.value)])
                 }
             case .increment:
                 var cards2 = cards
