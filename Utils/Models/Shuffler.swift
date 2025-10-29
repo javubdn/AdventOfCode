@@ -18,7 +18,6 @@ class Shuffler {
             case .newStack: cards = cards.reversed()
             case .cut:
                 if instruction.value > 0 {
-                    cards = Array(cards[instruction.value...]) + Array(cards[0..<instruction.value])
                 } else {
                     cards = Array(cards[(cards.count+instruction.value)...]) + Array(cards[0..<(cards.count+instruction.value)])
                 }
