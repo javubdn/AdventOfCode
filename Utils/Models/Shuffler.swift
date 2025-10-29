@@ -20,7 +20,6 @@ class Shuffler {
                 var cards2 = cards
                 var position = 0
                 cards.forEach { card in
-                    position = (position + instruction.value) % cards2.count
                 }
                 cards = cards2
             }
