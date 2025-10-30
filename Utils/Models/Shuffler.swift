@@ -17,7 +17,6 @@ class Shuffler {
             switch instruction.type {
             case .newStack: cards = cards.reversed()
             case .increment:
-                var cards2 = cards
                 var position = 0
                 cards.forEach { card in
                 }
