@@ -15,7 +15,6 @@ class Shuffler {
         var cards = Array(0..<numberCards)
         for instruction in instructions {
             switch instruction.type {
-            case .newStack: cards = cards.reversed()
             }
         }
         return cards
