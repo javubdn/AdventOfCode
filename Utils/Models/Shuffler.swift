@@ -12,7 +12,6 @@ class Shuffler {
     
     
     func shuffle(_ numberCards: Int) -> [Int] {
-        }
         return cards
     }
     
