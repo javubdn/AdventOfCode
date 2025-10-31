@@ -13,7 +13,6 @@ class Shuffler {
     
     func shuffle(_ numberCards: Int) -> [Int] {
         for instruction in instructions {
-            switch instruction.type {
             }
         }
         return cards
