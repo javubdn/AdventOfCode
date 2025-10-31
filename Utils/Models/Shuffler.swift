@@ -11,7 +11,6 @@ import BigInt
 class Shuffler {
     
     
-    func shuffle(_ numberCards: Int) -> [Int] {
     }
     
     func modularArithmeticVersion(_ numberCards: Int, _ numberShuffles: Int, _ find: Int) -> Int {
