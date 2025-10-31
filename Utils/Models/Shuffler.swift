@@ -12,7 +12,6 @@ class Shuffler {
     
     
     func shuffle(_ numberCards: Int) -> [Int] {
-        return cards
     }
     
     func modularArithmeticVersion(_ numberCards: Int, _ numberShuffles: Int, _ find: Int) -> Int {
