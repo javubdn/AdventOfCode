@@ -17,7 +17,6 @@ class Shuffler {
         var memory = [BigInt(1), BigInt(0)]
         instructions.reversed().forEach { instruction in
             switch instruction.type {
-            case .cut:
             case .newStack:
                 memory[0] = -memory[0]
                 memory[1] = -memory[1] - 1
