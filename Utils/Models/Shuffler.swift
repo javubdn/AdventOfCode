@@ -18,7 +18,6 @@ class Shuffler {
         instructions.reversed().forEach { instruction in
             switch instruction.type {
             case .cut:
-                memory[1] = memory[1] + BigInt(instruction.value)
             case .newStack:
                 memory[0] = -memory[0]
                 memory[1] = -memory[1] - 1
