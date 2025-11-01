@@ -19,7 +19,6 @@ class Shuffler {
             switch instruction.type {
             case .cut:
                 memory[1] = memory[1] + BigInt(instruction.value)
-            case .increment:
             case .newStack:
                 memory[0] = -memory[0]
                 memory[1] = -memory[1] - 1
