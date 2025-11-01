@@ -20,7 +20,6 @@ class Shuffler {
             case .cut:
                 memory[1] = memory[1] + BigInt(instruction.value)
             case .increment:
-                memory[0] *= val
                 memory[1] *= val
             case .newStack:
                 memory[0] = -memory[0]
