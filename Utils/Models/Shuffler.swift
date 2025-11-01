@@ -20,7 +20,6 @@ class Shuffler {
             case .cut:
                 memory[1] = memory[1] + BigInt(instruction.value)
             case .increment:
-                let exponent = Int(numberCardsBI - BigInt(2))
                 let potencia = BigInt(instruction.value).power(exponent)
                 let val = potencia.modulus(numberCardsBI)
                 memory[0] *= val
