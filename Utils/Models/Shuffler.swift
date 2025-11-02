@@ -18,7 +18,6 @@ class Shuffler {
         instructions.reversed().forEach { instruction in
             switch instruction.type {
             case .newStack:
-                memory[1] = -memory[1] - 1
             }
             memory[0] = memory[0].modulus(numberCardsBI)
             memory[1] = memory[1].modulus(numberCardsBI)
