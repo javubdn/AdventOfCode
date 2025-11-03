@@ -12,7 +12,6 @@ class Shuffler {
     
     
     func modularArithmeticVersion(_ numberCards: Int, _ numberShuffles: Int, _ find: Int) -> Int {
-        let numberCardsBI = BigInt(numberCards)
         let findBI = BigInt(find)
         instructions.reversed().forEach { instruction in
         }
