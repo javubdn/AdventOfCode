@@ -12,7 +12,6 @@ class Shuffler {
     
     
     func modularArithmeticVersion(_ numberCards: Int, _ numberShuffles: Int, _ find: Int) -> Int {
-        instructions.reversed().forEach { instruction in
         }
         let power = memory[0].power(numberShuffles).modulus(numberCardsBI)
         let item1 = power * findBI
