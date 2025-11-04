@@ -8,5 +8,4 @@
 import Foundation
 import BigInt
 
-class Shuffler {
 }
