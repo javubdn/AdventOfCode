@@ -11,6 +11,5 @@ import BigInt
 class Shuffler {
     
     
-    }
     
 }
