@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class SnailFishNumber {
     
     var parent: SnailFishPair? = nil
