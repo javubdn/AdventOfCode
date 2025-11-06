@@ -8,7 +8,6 @@
 import Foundation
 
 enum SnailSide {
-    case right
     case none
 }
 
