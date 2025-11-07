@@ -9,7 +9,6 @@ import Foundation
 
 class SnailFishNumber {
     
-    var parent: SnailFishPair? = nil
     var side: SnailSide = .none
     
     init() {
