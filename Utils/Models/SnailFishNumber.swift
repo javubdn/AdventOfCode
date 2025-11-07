@@ -10,7 +10,6 @@ import Foundation
 class SnailFishNumber {
     
     func sum(_ other: SnailFishNumber) -> SnailFishPair {
-        let snail = SnailFishPair(left: self, right: other)
         self.side = .left
         self.parent = snail
         other.side = .right
