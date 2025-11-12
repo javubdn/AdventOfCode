@@ -10,7 +10,6 @@ import Foundation
 class SnailFishNumber {
     
     func magnitude() -> Int {
-        0
     }
     
     func getValue() -> String {
