@@ -9,7 +9,6 @@ import Foundation
 
 class SnailFishNumber {
     
-    func sum(_ other: SnailFishNumber) -> SnailFishPair {
     }
     
     func magnitude() -> Int {
