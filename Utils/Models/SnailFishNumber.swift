@@ -10,7 +10,6 @@ import Foundation
 class SnailFishNumber {
     
     
-    func getValue() -> String {
     }
     
     func findGreater9() -> SnailFishValue? {
