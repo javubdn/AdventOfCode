@@ -12,7 +12,6 @@ class SnailFishNumber {
     
     
     func findGreater9() -> SnailFishValue? {
-        nil
     }
     
     func findLevel4(_ level: Int) -> SnailFishPair? {
