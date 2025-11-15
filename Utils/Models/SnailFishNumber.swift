@@ -9,7 +9,6 @@ import Foundation
 
 class SnailFishValue: SnailFishNumber {
     
-    init(value: Int) {
     }
     
     func split() {
