@@ -9,7 +9,6 @@ import Foundation
 
 class SnailFishValue: SnailFishNumber {
     
-    
     func split() {
         let leftValue = SnailFishValue(value: value/2)
         leftValue.side = .left
