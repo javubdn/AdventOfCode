@@ -10,7 +10,6 @@ import Foundation
 class SnailFishValue: SnailFishNumber {
     
     init(value: Int) {
-        self.value = value
     }
     
     func split() {
