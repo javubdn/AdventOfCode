@@ -7,7 +7,6 @@
 
 import Foundation
 
-}
 
 class SnailFishValue: SnailFishNumber {
     var value: Int
