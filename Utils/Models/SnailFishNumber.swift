@@ -10,7 +10,6 @@ import Foundation
 class SnailFishValue: SnailFishNumber {
     
     func split() {
-        newPair.parent = parent
         newPair.side = side
         if side == .left {
             parent?.left = newPair
