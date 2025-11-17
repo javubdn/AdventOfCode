@@ -11,7 +11,6 @@ class SnailFishValue: SnailFishNumber {
     
     func split() {
         if side == .left {
-            parent?.left = newPair
         } else {
             parent?.right = newPair
         }
