@@ -9,7 +9,6 @@ import Foundation
 
 class SnailFishValue: SnailFishNumber {
     
-    func split() {
     }
     
     override func magnitude() -> Int {
