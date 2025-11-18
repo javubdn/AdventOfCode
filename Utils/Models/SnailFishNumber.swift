@@ -10,7 +10,6 @@ import Foundation
 class SnailFishValue: SnailFishNumber {
     
     
-    }
     
     func copy() -> SnailFishValue {
         SnailFishValue(value: value)
