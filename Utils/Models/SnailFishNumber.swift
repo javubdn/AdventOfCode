@@ -11,7 +11,6 @@ class SnailFishValue: SnailFishNumber {
     
     
     override func magnitude() -> Int {
-        value
     }
     
     func copy() -> SnailFishValue {
