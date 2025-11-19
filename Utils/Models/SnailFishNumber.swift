@@ -11,7 +11,6 @@ class SnailFishValue: SnailFishNumber {
     
     
     
-    }
     
 }
 
