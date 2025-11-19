@@ -12,7 +12,6 @@ class SnailFishValue: SnailFishNumber {
     
     
     override func findGreater9() -> SnailFishValue? {
-        value > 9 ? self : nil
     }
     
 }
