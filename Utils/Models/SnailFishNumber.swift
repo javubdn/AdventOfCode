@@ -11,7 +11,6 @@ class SnailFishValue: SnailFishNumber {
     
     
     override func getValue() -> String {
-        "\(value)"
     }
     
     override func findGreater9() -> SnailFishValue? {
