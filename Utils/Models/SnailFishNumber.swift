@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class SnailFishPair: SnailFishNumber {
     
     var left: SnailFishNumber
