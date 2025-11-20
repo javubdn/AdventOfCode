@@ -9,7 +9,6 @@ import Foundation
 
 class SnailFishPair: SnailFishNumber {
     
-    var right: SnailFishNumber
     
     init(left: SnailFishNumber, right: SnailFishNumber) {
         self.left = left
