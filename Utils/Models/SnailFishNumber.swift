@@ -9,7 +9,6 @@ import Foundation
 
 class SnailFishValue: SnailFishNumber {
     
-    
 }
 
 class SnailFishPair: SnailFishNumber {
