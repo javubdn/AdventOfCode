@@ -10,7 +10,6 @@ import Foundation
 class SnailFishPair: SnailFishNumber {
     
     init(left: SnailFishNumber, right: SnailFishNumber) {
-        self.right.parent = self
     }
     
     convenience init(from input: String) {
