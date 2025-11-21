@@ -10,7 +10,6 @@ import Foundation
 class SnailFishPair: SnailFishNumber {
     
     init(left: SnailFishNumber, right: SnailFishNumber) {
-        self.left.side = .left
         self.right.side = .right
         super.init()
         self.left.parent = self
