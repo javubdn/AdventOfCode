@@ -13,7 +13,6 @@ class SnailFishPair: SnailFishNumber {
     }
     
     convenience init(from input: String) {
-        var levels: [[SnailFishNumber]] = [[]]
         for item in input {
             switch item {
             case "[": levels.append([])
