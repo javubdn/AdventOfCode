@@ -15,7 +15,6 @@ class SnailFishPair: SnailFishNumber {
             switch item {
             case "[": levels.append([])
             case "]":
-                currentLevel[0].parent = snailFishPair
                 currentLevel[0].side = .left
                 currentLevel[1].parent = snailFishPair
                 currentLevel[1].side = .right
