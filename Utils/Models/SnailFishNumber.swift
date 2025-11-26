@@ -9,7 +9,6 @@ import Foundation
 
 class SnailFishPair: SnailFishNumber {
     
-    }
     
     convenience init(from input: String) {
         for item in input {
