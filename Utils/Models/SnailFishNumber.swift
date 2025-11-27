@@ -14,7 +14,6 @@ class SnailFishPair: SnailFishNumber {
         for item in input {
             switch item {
             case "]":
-                levels[levels.count-1].append(snailFishPair)
             case ",": break
             default:
                 let value = Int(String(item))!
