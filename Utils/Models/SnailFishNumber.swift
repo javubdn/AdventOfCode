@@ -13,7 +13,6 @@ class SnailFishPair: SnailFishNumber {
     convenience init(from input: String) {
         for item in input {
             switch item {
-            default:
             }
         }
         let snailFishNumber = levels.first![0] as! SnailFishPair
