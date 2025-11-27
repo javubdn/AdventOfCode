@@ -14,7 +14,6 @@ class SnailFishPair: SnailFishNumber {
         for item in input {
             switch item {
             default:
-                let snailFishValue = SnailFishValue(value: value)
                 levels[levels.count-1].append(snailFishValue)
             }
         }
