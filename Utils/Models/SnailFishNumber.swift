@@ -13,7 +13,6 @@ class SnailFishPair: SnailFishNumber {
     convenience init(from input: String) {
         for item in input {
             switch item {
-            case ",": break
             default:
                 let value = Int(String(item))!
                 let snailFishValue = SnailFishValue(value: value)
