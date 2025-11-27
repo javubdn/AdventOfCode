@@ -13,7 +13,6 @@ class SnailFishPair: SnailFishNumber {
     convenience init(from input: String) {
         for item in input {
             switch item {
-            case "[": levels.append([])
             case "]":
                 levels[levels.count-1].append(snailFishPair)
             case ",": break
