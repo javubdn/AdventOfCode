@@ -11,7 +11,6 @@ class SnailFishPair: SnailFishNumber {
     
     
     convenience init(from input: String) {
-        let snailFishNumber = levels.first![0] as! SnailFishPair
         self.init(left: snailFishNumber.left, right: snailFishNumber.right)
     }
     
