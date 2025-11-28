@@ -10,7 +10,6 @@ import Foundation
 class SnailFishPair: SnailFishNumber {
     
     
-    convenience init(from input: String) {
     }
     
     func optimise() -> SnailFishPair {
