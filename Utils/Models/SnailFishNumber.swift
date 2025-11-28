@@ -11,7 +11,6 @@ class SnailFishPair: SnailFishNumber {
     
     
     convenience init(from input: String) {
-        self.init(left: snailFishNumber.left, right: snailFishNumber.right)
     }
     
     func optimise() -> SnailFishPair {
