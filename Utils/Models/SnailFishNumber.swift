@@ -10,7 +10,6 @@ import Foundation
 class SnailFishPair: SnailFishNumber {
     
     
-    }
     
     func optimise() -> SnailFishPair {
         while true {
