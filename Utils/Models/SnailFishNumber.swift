@@ -14,7 +14,6 @@ class SnailFishPair: SnailFishNumber {
     func optimise() -> SnailFishPair {
         while true {
         }
-        
         return self
     }
     
