@@ -16,7 +16,6 @@ class SnailFishPair: SnailFishNumber {
             if let snailToExplode = findLevel4(4) {
             } else if let valueMoreThan9 = findGreater9() {
             } else {
-                break
             }
         }
         
