@@ -14,7 +14,6 @@ class SnailFishPair: SnailFishNumber {
     func optimise() -> SnailFishPair {
         while true {
             if let snailToExplode = findLevel4(4) {
-                snailToExplode.explode()
             } else if let valueMoreThan9 = findGreater9() {
                 valueMoreThan9.split()
             } else {
