@@ -13,7 +13,6 @@ class SnailFishPair: SnailFishNumber {
     
     func optimise() -> SnailFishPair {
         while true {
-            if let snailToExplode = findLevel4(4) {
             }
         }
         
