@@ -12,7 +12,6 @@ class SnailFishPair: SnailFishNumber {
     
     
     func optimise() -> SnailFishPair {
-        return self
     }
     
     override func findLevel4(_ level: Int) -> SnailFishPair? {
