@@ -12,7 +12,6 @@ class SnailFishPair: SnailFishNumber {
     
     
     func optimise() -> SnailFishPair {
-        }
         return self
     }
     
