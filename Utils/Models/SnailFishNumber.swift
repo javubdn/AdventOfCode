@@ -11,7 +11,6 @@ class SnailFishPair: SnailFishNumber {
     
     
     
-    }
     
     override func findLevel4(_ level: Int) -> SnailFishPair? {
         guard level > 0 else {
