@@ -15,7 +15,6 @@ class SnailFishPair: SnailFishNumber {
         if let snail = left.findLevel4(level-1) {
             return snail
         }
-        return right.findLevel4(level-1)
     }
     
     override func findGreater9() -> SnailFishValue? {
