@@ -9,7 +9,6 @@ import Foundation
 
 class SnailFishPair: SnailFishNumber {
     
-    
     override func findGreater9() -> SnailFishValue? {
         if let foundInLeft = left.findGreater9() {
             return foundInLeft
