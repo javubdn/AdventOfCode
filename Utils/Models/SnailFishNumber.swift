@@ -10,7 +10,6 @@ import Foundation
 class SnailFishPair: SnailFishNumber {
     
     override func findLevel4(_ level: Int) -> SnailFishPair? {
-        }
     }
     
     override func findGreater9() -> SnailFishValue? {
