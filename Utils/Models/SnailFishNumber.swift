@@ -9,7 +9,6 @@ import Foundation
 
 class SnailFishPair: SnailFishNumber {
     
-    }
     
     func explode() {
         addValue(to: .left)
