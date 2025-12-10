@@ -11,7 +11,6 @@ class SnailFishPair: SnailFishNumber {
     
     
     func explode() {
-        addValue(to: .left)
         addValue(to: .right)
         let newNode = SnailFishValue(value: 0)
         newNode.parent = parent
