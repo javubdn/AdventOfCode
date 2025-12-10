@@ -9,7 +9,6 @@ import Foundation
 
 class SnailFishPair: SnailFishNumber {
     
-    override func findGreater9() -> SnailFishValue? {
     }
     
     func explode() {
