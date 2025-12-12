@@ -11,7 +11,6 @@ class SnailFishPair: SnailFishNumber {
     
     
     func explode() {
-        newNode.side = side
     }
     
     private func addValue(to side: SnailSide) {
