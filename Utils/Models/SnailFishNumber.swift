@@ -11,7 +11,6 @@ class SnailFishPair: SnailFishNumber {
     
     
     func explode() {
-        newNode.parent = parent
         if side == .left {
             parent?.left = newNode
         } else {
