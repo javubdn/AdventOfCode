@@ -17,7 +17,6 @@ class SnailFishPair: SnailFishNumber {
         var current: SnailFishNumber? = self
         while true {
             guard let currentInside = current else { break }
-            }
             current = currentInside.parent
         }
         if current != nil {
