@@ -18,7 +18,6 @@ class SnailFishPair: SnailFishNumber {
         while true {
             guard let currentInside = current else { break }
             guard currentInside.side == side else {
-                break
             }
             current = currentInside.parent
         }
