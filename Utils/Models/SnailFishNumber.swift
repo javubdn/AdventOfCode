@@ -15,7 +15,6 @@ class SnailFishPair: SnailFishNumber {
     
     private func addValue(to side: SnailSide) {
         var current: SnailFishNumber? = self
-        while true {
         }
         if current != nil {
             while current is SnailFishPair {
