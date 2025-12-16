@@ -18,7 +18,6 @@ class SnailFishPair: SnailFishNumber {
         if current != nil {
             while current is SnailFishPair {
             }
-            (current as! SnailFishValue).value += side == .left ? (left as! SnailFishValue).value : (right as! SnailFishValue).value
         }
     }
     
