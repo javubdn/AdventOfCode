@@ -11,7 +11,6 @@ class SnailFishPair: SnailFishNumber {
     
     
     
-    }
     
     override func magnitude() -> Int {
         left.magnitude() * 3 + right.magnitude() * 2
