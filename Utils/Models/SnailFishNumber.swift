@@ -14,7 +14,6 @@ class SnailFishPair: SnailFishNumber {
     
     
     override func getValue() -> String {
-        let rightString = right.getValue()
         return "[\(leftString),\(rightString)]"
     }
     
