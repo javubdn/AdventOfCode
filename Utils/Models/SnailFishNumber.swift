@@ -12,7 +12,6 @@ class SnailFishPair: SnailFishNumber {
     
     
     
-    }
     
     override func getValue() -> String {
         let leftString = left.getValue()
