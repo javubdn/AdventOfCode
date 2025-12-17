@@ -12,7 +12,6 @@ class SnailFishPair: SnailFishNumber {
     
     
     
-    override func magnitude() -> Int {
     }
     
     override func getValue() -> String {
