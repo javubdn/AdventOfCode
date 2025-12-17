@@ -11,7 +11,6 @@ class SnailFishPair: SnailFishNumber {
     
     
     
-    private func addValue(to side: SnailSide) {
     }
     
     override func magnitude() -> Int {
