@@ -13,7 +13,6 @@ class SnailFishPair: SnailFishNumber {
     
     
     
-    override func getValue() -> String {
     }
     
     func copy() -> SnailFishPair {
