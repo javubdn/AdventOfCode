@@ -14,7 +14,6 @@ class SnailFishPair: SnailFishNumber {
     
     
     override func getValue() -> String {
-        return "[\(leftString),\(rightString)]"
     }
     
     func copy() -> SnailFishPair {
