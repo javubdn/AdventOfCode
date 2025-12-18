@@ -13,5 +13,4 @@ class SnailFishPair: SnailFishNumber {
     
     
     
-    
 }
