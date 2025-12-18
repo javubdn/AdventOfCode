@@ -14,7 +14,6 @@ class SnailFishPair: SnailFishNumber {
     
     
     
-    func copy() -> SnailFishPair {
     }
     
 }
