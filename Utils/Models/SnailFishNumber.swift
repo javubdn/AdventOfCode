@@ -1,4 +1,3 @@
-//
 //  SnailFishNumber.swift
 //  AdventOfCode
 //
