@@ -9,7 +9,6 @@ import Foundation
 
 class Tetris {
     
-    var tetrisMap: [[Bool]] = []
     
     private class TetrisState: Hashable {
         
