@@ -9,7 +9,6 @@ import Foundation
 
 class Tetris {
     
-    let directions: [Bool]
     var highest = 0
     var tetrisMap: [[Bool]] = []
     
