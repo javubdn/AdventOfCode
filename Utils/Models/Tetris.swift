@@ -9,7 +9,6 @@ import Foundation
 
 class Tetris {
     
-    var highest = 0
     var tetrisMap: [[Bool]] = []
     
     private class TetrisState: Hashable {
