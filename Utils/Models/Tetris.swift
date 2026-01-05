@@ -12,7 +12,6 @@ class Tetris {
     
     private class TetrisState: Hashable {
         
-        let peaks: [Int]
         let currentBlock: Int
         let currentIndex: Int
         
