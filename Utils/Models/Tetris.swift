@@ -15,7 +15,6 @@ class Tetris {
         
         init(peaks: [Int], currentBlock: Int, currentIndex: Int) {
             self.peaks = peaks
-            self.currentBlock = currentBlock
             self.currentIndex = currentIndex
         }
         
