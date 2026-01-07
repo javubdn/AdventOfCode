@@ -14,7 +14,6 @@ class Tetris {
         
         
         
-        func hash(into hasher: inout Hasher) { }
         
         static func == (lhs: Tetris.TetrisState, rhs: Tetris.TetrisState) -> Bool {
             lhs.peaks == rhs.peaks && lhs.currentBlock == rhs.currentBlock && lhs.currentIndex == rhs.currentIndex
