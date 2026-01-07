@@ -13,7 +13,6 @@ class Tetris {
     private class TetrisState: Hashable {
         
         
-            self.peaks = peaks
         }
         
         func hash(into hasher: inout Hasher) { }
