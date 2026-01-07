@@ -15,7 +15,6 @@ class Tetris {
         
         
         
-        
     }
     
     private init(_ directions: [Bool]) {
