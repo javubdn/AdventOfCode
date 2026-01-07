@@ -13,7 +13,6 @@ class Tetris {
     private class TetrisState: Hashable {
         
         
-        init(peaks: [Int], currentBlock: Int, currentIndex: Int) {
             self.peaks = peaks
         }
         
