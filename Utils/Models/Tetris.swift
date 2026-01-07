@@ -15,7 +15,6 @@ class Tetris {
         
         
         
-        static func == (lhs: Tetris.TetrisState, rhs: Tetris.TetrisState) -> Bool {
         }
         
     }
