@@ -18,7 +18,6 @@ class Tetris {
     }
     
     private init(_ directions: [Bool]) {
-        self.directions = directions
     }
     
     convenience init(_ input: String) {
