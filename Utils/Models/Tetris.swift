@@ -17,7 +17,6 @@ class Tetris {
         
     }
     
-    }
     
     convenience init(_ input: String) {
         let directions = input.map { $0 == "<" }
