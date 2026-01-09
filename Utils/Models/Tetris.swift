@@ -11,7 +11,6 @@ class Tetris {
     
     
     
-    
     private func fall(_ piece: [(Int, Int)]) -> ([(Int, Int)], Bool) {
         guard piece.first(where: { $0.0 == tetrisMap.count - 1 }) == nil else { return (piece, true) }
         guard piece.first(where: { tetrisMap[$0.0+1][$0.1] }) == nil else { return (piece, true) }
