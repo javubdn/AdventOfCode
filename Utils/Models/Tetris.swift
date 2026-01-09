@@ -10,7 +10,6 @@ import Foundation
 class Tetris {
     
     
-    private class TetrisState: Hashable {
     }
     
     
