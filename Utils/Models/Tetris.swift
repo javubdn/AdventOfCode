@@ -13,7 +13,6 @@ class Tetris {
     private class TetrisState: Hashable {
     }
     
-    convenience init(_ input: String) {
     }
     
     private func fall(_ piece: [(Int, Int)]) -> ([(Int, Int)], Bool) {
