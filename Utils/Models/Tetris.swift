@@ -14,7 +14,6 @@ class Tetris {
     }
     
     convenience init(_ input: String) {
-        self.init(directions)
     }
     
     private func fall(_ piece: [(Int, Int)]) -> ([(Int, Int)], Bool) {
