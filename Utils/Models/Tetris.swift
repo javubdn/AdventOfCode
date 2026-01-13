@@ -14,7 +14,6 @@ class Tetris {
     }
     
     private func move(_ piece: [(Int, Int)], _ left: Bool) -> [(Int, Int)] {
-        return piece.map { ($0.0, $0.1 + (left ? -1 : 1)) }
     }
     
     private func insertPiece(_ index: Int, _ directionsIndex: Int) -> Int {
