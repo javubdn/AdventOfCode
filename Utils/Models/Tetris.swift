@@ -11,7 +11,6 @@ class Tetris {
     
     
     private func fall(_ piece: [(Int, Int)]) -> ([(Int, Int)], Bool) {
-        let newPiece = piece.map { ($0.0 + 1, $0.1) }
         return (newPiece, false)
     }
     
