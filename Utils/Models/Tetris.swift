@@ -14,7 +14,6 @@ class Tetris {
     }
     
     private func move(_ piece: [(Int, Int)], _ left: Bool) -> [(Int, Int)] {
-        guard piece.first(where: { tetrisMap[$0.0][$0.1 + (left ? -1 : 1)] }) == nil else { return piece }
         return piece.map { ($0.0, $0.1 + (left ? -1 : 1)) }
     }
     
