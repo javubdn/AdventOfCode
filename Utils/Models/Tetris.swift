@@ -20,7 +20,6 @@ class Tetris {
         var directionsIndex = directionsIndex
         insertLines(3)
         let linesToInsert = [1, 3, 3, 4, 2]
-        let pieces = [[(0, 2), (0, 3), (0, 4), (0, 5)],
         ]
         let item = index % 5
         insertLines(linesToInsert[item])
