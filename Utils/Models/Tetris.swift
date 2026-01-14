@@ -21,7 +21,6 @@ class Tetris {
         insertLines(3)
         let linesToInsert = [1, 3, 3, 4, 2]
         let pieces = [[(0, 2), (0, 3), (0, 4), (0, 5)],
-                      [(0, 2), (1, 2), (2, 2), (3, 2)],
                       [(0, 2), (0, 3), (1, 2), (1, 3)]
         ]
         let item = index % 5
