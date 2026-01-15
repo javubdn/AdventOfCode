@@ -17,7 +17,6 @@ class Tetris {
     }
     
     private func insertPiece(_ index: Int, _ directionsIndex: Int) -> Int {
-        let linesToInsert = [1, 3, 3, 4, 2]
         let item = index % 5
         insertLines(linesToInsert[item])
         var piece = pieces[item]
