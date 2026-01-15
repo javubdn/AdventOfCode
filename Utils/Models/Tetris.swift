@@ -22,7 +22,6 @@ class Tetris {
         insertLines(linesToInsert[item])
         var piece = pieces[item]
         while true {
-            piece = move(piece, directions[directionsIndex%directions.count])
             directionsIndex += 1
             let (pieceFall, finish) = fall(piece)
             if finish { break }
