@@ -22,7 +22,6 @@ class Tetris {
         insertLines(linesToInsert[item])
         var piece = pieces[item]
         while true {
-            let (pieceFall, finish) = fall(piece)
             if finish { break }
             piece = pieceFall
         }
