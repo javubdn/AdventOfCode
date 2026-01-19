@@ -17,7 +17,6 @@ class Tetris {
     }
     
     private func insertPiece(_ index: Int, _ directionsIndex: Int) -> Int {
-        return directionsIndex
     }
     
     private func insertLines(_ n: Int) {
