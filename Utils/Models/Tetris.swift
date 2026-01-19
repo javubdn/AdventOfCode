@@ -17,7 +17,6 @@ class Tetris {
     }
     
     private func insertPiece(_ index: Int, _ directionsIndex: Int) -> Int {
-        tetrisMap.removeFirst(filesToRemove)
         return directionsIndex
     }
     
