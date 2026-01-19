@@ -17,7 +17,6 @@ class Tetris {
     }
     
     private func insertPiece(_ index: Int, _ directionsIndex: Int) -> Int {
-        let filesToRemove = tetrisMap.enumerated().first { $0.element.filter { $0 }.count > 0 }!.offset
         tetrisMap.removeFirst(filesToRemove)
         return directionsIndex
     }
