@@ -12,7 +12,6 @@ class Tetris {
     
     
     
-    }
     
     private func insertLines(_ n: Int) {
     }
