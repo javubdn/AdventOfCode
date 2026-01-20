@@ -20,7 +20,6 @@ class Tetris {
     }
     
     private func insertLines(_ n: Int) {
-        }
     }
     
     private func getPeaks() -> [Int] {
