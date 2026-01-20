@@ -10,7 +10,6 @@ import Foundation
 class Tetris {
     
     
-    private func fall(_ piece: [(Int, Int)]) -> ([(Int, Int)], Bool) {
     }
     
     private func move(_ piece: [(Int, Int)], _ left: Bool) -> [(Int, Int)] {
