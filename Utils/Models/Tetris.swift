@@ -17,7 +17,6 @@ class Tetris {
     }
     
     private func getPeaks() -> [Int] {
-        let minValue = peaks.min()!
         peaks = peaks.map { $0 - minValue }
         return peaks
     }
