@@ -18,7 +18,6 @@ class Tetris {
     
     private func getPeaks() -> [Int] {
         var peaks: [Int] = []
-        for item in 0..<7 {
         }
         let minValue = peaks.min()!
         peaks = peaks.map { $0 - minValue }
