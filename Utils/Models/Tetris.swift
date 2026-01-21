@@ -20,7 +20,6 @@ class Tetris {
     }
     
     func startFall(_ input: Int) -> Int {
-        var directionsIndex = 0
         var states: [TetrisState: (Int, Int)] = [:]
         
         for index in 0..<input {
