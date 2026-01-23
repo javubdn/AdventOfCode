@@ -23,7 +23,6 @@ class Tetris {
         var states: [TetrisState: (Int, Int)] = [:]
         
         for index in 0..<input {
-            directionsIndex = insertPiece(index, directionsIndex)
             let newState = TetrisState(peaks: getPeaks(),
             if let previousState = states[newState] {
                 let stepsDiff = index - previousState.0
