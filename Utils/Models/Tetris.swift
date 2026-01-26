@@ -25,7 +25,6 @@ class Tetris {
         for index in 0..<input {
             if let previousState = states[newState] {
                 for i in minIndex..<finalSteps+minIndex-1 {
-                    directionsIndex = insertPiece(i, directionsIndex)
                 }
                 return currentHeight + (tetrisMap.count - tetrisHeight)
             }
