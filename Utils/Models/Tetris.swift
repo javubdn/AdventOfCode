@@ -24,7 +24,6 @@ class Tetris {
         
         for index in 0..<input {
             if let previousState = states[newState] {
-                let minIndex = (index + 1) % 5
                 for i in minIndex..<finalSteps+minIndex-1 {
                     directionsIndex = insertPiece(i, directionsIndex)
                 }
