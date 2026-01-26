@@ -24,7 +24,6 @@ class Tetris {
         
         for index in 0..<input {
             if let previousState = states[newState] {
-                }
                 return currentHeight + (tetrisMap.count - tetrisHeight)
             }
             states[newState] = (index, tetrisMap.count)
