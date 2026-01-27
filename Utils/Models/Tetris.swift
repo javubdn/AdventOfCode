@@ -22,7 +22,6 @@ class Tetris {
     func startFall(_ input: Int) -> Int {
         var states: [TetrisState: (Int, Int)] = [:]
         
-        for index in 0..<input {
         }
         
         return tetrisMap.count
