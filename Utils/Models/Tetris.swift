@@ -23,7 +23,6 @@ class Tetris {
         var states: [TetrisState: (Int, Int)] = [:]
         
         for index in 0..<input {
-            if let previousState = states[newState] {
             }
         }
         
