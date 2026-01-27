@@ -22,7 +22,6 @@ class Tetris {
     func startFall(_ input: Int) -> Int {
         
         
-        return tetrisMap.count
     }
     
 }
