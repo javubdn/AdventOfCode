@@ -14,7 +14,6 @@ class Tetris {
     
     
     
-    private func getPeaks() -> [Int] {
     }
     
     func startFall(_ input: Int) -> Int {
