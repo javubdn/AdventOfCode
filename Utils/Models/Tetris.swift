@@ -14,7 +14,6 @@ class Tetris {
     
     
     
-    }
     
     func startFall(_ input: Int) -> Int {
     }
