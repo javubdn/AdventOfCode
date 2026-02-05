@@ -7,7 +7,6 @@
 
 import Foundation
 
-enum Orientation: CaseIterable {
 }
 
 class Tile {
