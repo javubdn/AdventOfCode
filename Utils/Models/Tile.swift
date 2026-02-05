@@ -8,7 +8,6 @@
 import Foundation
 
 enum Orientation: CaseIterable {
-    case east
     case south
     case west
 }
