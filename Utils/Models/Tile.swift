@@ -11,7 +11,6 @@ import Foundation
 class Tile {
 
     enum ValueTile {
-        case white
     }
     
     let id: Int
