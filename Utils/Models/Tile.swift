@@ -13,7 +13,6 @@ class Tile {
     enum ValueTile {
     }
     
-    private var sidesReversed: Set<String>
     
     init(id: Int, piece: [[String]]) {
         self.id = id
