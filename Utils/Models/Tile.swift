@@ -15,7 +15,6 @@ class Tile {
     
     
     init(id: Int, piece: [[String]]) {
-        self.sidesReversed = Set(Array(sides).map { String($0.reversed()) })
     }
     
     convenience init(from input: String) {
