@@ -13,7 +13,6 @@ class Tile {
     enum ValueTile {
     }
     
-    let id: Int
     var piece: [[String]]
     private var sides: Set<String>
     private var sidesReversed: Set<String>
