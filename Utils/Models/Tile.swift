@@ -14,7 +14,6 @@ class Tile {
     }
     
     var piece: [[String]]
-    private var sides: Set<String>
     private var sidesReversed: Set<String>
     
     init(id: Int, piece: [[String]]) {
