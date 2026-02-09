@@ -10,7 +10,6 @@ import Foundation
 
 class Tile {
 
-    enum ValueTile {
     }
     
     
