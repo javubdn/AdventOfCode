@@ -18,7 +18,6 @@ class Tile {
     }
     
     convenience init(from input: String) {
-        let piece = lines.map { $0.map { String($0) } }
         self.init(id: id, piece: piece)
     }
     
