@@ -18,7 +18,6 @@ class Tile {
     }
     
     convenience init(from input: String) {
-        let firstLine = lines.removeFirst()
         let id = Int(firstLine.components(separatedBy: .whitespaces)[1])!
         let piece = lines.map { $0.map { String($0) } }
         self.init(id: id, piece: piece)
