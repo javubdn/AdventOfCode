@@ -12,7 +12,6 @@ class Tile {
 
     
     
-    convenience init(from input: String) {
     }
     
     func rotate() -> Tile {
