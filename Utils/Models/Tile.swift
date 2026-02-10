@@ -11,7 +11,6 @@ import Foundation
 class Tile {
 
     
-    }
     
     convenience init(from input: String) {
     }
