@@ -15,7 +15,6 @@ class Tile {
     
     func rotate() -> Tile {
         let newPiece = Array(0..<piece.count).map { row in
-            Array(0..<piece.count).map { col in
             }
         }
         return Tile(id: id, piece: newPiece)
