@@ -14,7 +14,6 @@ class Tile {
     
     
     
-    func flip() -> Tile {
     }
     
     func combinations() -> [Tile] {
