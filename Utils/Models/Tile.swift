@@ -14,7 +14,6 @@ class Tile {
     
     
     
-    
     func combinations() -> [Tile] {
         var rotations = [self]
         for _ in 0..<3 {
