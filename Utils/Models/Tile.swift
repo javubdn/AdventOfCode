@@ -13,7 +13,6 @@ class Tile {
     
     
     
-    }
     
     func flip() -> Tile {
         Tile(id: id, piece: piece.map { $0.reversed() })
