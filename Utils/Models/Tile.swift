@@ -13,7 +13,6 @@ class Tile {
     
     
     
-    func rotate() -> Tile {
     }
     
     func flip() -> Tile {
