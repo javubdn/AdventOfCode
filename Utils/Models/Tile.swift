@@ -14,7 +14,6 @@ class Tile {
     
     
     func rotate() -> Tile {
-        return Tile(id: id, piece: newPiece)
     }
     
     func flip() -> Tile {
