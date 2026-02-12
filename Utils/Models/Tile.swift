@@ -15,7 +15,6 @@ class Tile {
     
     func combinations() -> [Tile] {
         var rotations = [self]
-        }
         let flips = rotations.map { $0.flip() }
         return rotations + flips
     }
