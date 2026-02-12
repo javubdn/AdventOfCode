@@ -13,7 +13,6 @@ class Tile {
     
     
     
-    }
     
     func sharedSideCount(_ tiles: [Tile]) -> Int {
         sides.filter { side in
