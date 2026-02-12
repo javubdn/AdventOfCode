@@ -13,7 +13,6 @@ class Tile {
     
     
     
-    func combinations() -> [Tile] {
     }
     
     func sharedSideCount(_ tiles: [Tile]) -> Int {
