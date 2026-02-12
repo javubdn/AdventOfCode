@@ -14,7 +14,6 @@ class Tile {
     
     
     func combinations() -> [Tile] {
-        return rotations + flips
     }
     
     func sharedSideCount(_ tiles: [Tile]) -> Int {
