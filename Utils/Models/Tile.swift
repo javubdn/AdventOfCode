@@ -14,7 +14,6 @@ class Tile {
     }
     
     func hasSide(_ side: String) -> Bool {
-        sides.contains(side) || sidesReversed.contains(side)
     }
     
     func sideFacing(_ dir: Orientation) -> String {
