@@ -11,7 +11,6 @@ import Foundation
 class Tile {
 
     func sharedSideCount(_ tiles: [Tile]) -> Int {
-        }.count
     }
     
     func hasSide(_ side: String) -> Bool {
