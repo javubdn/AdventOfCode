@@ -12,7 +12,6 @@ class Tile {
 
     
     
-    
     func sharedSideCount(_ tiles: [Tile]) -> Int {
         sides.filter { side in
             tiles.filter { $0.id != id }.filter { $0.hasSide(side) }.count > 0
