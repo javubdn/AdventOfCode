@@ -11,7 +11,6 @@ import Foundation
 class Tile {
 
     
-    }
     
     func sideFacing(_ dir: Orientation) -> String {
     }
