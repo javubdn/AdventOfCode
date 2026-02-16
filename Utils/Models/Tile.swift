@@ -17,7 +17,6 @@ class Tile {
     }
     
     func sideFacing(_ dir: Orientation) -> String {
-        Tile.sideFacing(piece, dir)
     }
     
     static func sideFacing(_ piece: [[String]], _ dir: Orientation) -> String {
