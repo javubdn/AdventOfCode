@@ -10,7 +10,6 @@ import Foundation
 
 class Tile {
 
-    }
     
     func hasSide(_ side: String) -> Bool {
     }
