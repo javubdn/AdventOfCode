@@ -13,7 +13,6 @@ class Tile {
     
     
     static func sideFacing(_ piece: [[String]], _ dir: Orientation) -> String {
-        }
     }
     
     func isSideShared(_ dir: Orientation, tiles: [Tile]) -> Bool {
