@@ -12,7 +12,6 @@ class Tile {
 
     
     
-    }
     
     func isSideShared(_ dir: Orientation, tiles: [Tile]) -> Bool {
         tiles.filter { $0.id != id }.filter { $0.hasSide(sideFacing(dir)) }.count > 0
