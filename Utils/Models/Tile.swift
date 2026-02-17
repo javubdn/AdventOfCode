@@ -14,7 +14,6 @@ class Tile {
     
     static func sideFacing(_ piece: [[String]], _ dir: Orientation) -> String {
         switch dir {
-        case .south: return piece.last!.joined()
         case .west: return piece.map { $0.first! }.joined()
         case .east: return piece.map { $0.last! }.joined()
         }
