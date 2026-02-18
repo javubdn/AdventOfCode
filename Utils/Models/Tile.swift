@@ -13,7 +13,6 @@ class Tile {
     
     
     
-    func isSideShared(_ dir: Orientation, tiles: [Tile]) -> Bool {
     }
     
     func findAndOrientNeighbor(mySide: Orientation, theirSide: Orientation, tiles: [Tile]) -> Tile {
