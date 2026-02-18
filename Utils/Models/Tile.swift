@@ -15,7 +15,6 @@ class Tile {
     
     
     func findAndOrientNeighbor(mySide: Orientation, theirSide: Orientation, tiles: [Tile]) -> Tile {
-        return correctTile.orientToSide(side: mySideValue, direction: theirSide)
     }
     
     private func orientToSide(side: String, direction: Orientation) -> Tile {
