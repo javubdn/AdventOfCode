@@ -15,7 +15,6 @@ class Tile {
     
     
     func findAndOrientNeighbor(mySide: Orientation, theirSide: Orientation, tiles: [Tile]) -> Tile {
-        let correctTile = tiles.filter { $0.id != id }.first { $0.hasSide(mySideValue) }!
         return correctTile.orientToSide(side: mySideValue, direction: theirSide)
     }
     
