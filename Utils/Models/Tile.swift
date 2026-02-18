@@ -13,7 +13,6 @@ class Tile {
     
     
     
-    }
     
     func findAndOrientNeighbor(mySide: Orientation, theirSide: Orientation, tiles: [Tile]) -> Tile {
         let mySideValue = sideFacing(mySide)
