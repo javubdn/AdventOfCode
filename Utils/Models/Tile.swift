@@ -15,7 +15,6 @@ class Tile {
     
     
     
-    private func orientToSide(side: String, direction: Orientation) -> Tile {
     }
     
     func insetRow(_ row: Int) -> String {
