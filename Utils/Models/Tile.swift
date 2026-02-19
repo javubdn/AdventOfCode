@@ -16,7 +16,6 @@ class Tile {
     
     
     private func orientToSide(side: String, direction: Orientation) -> Tile {
-        combinations().first { $0.sideFacing(direction) == side }!
     }
     
     func insetRow(_ row: Int) -> String {
