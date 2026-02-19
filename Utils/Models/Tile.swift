@@ -15,7 +15,6 @@ class Tile {
     
     
     
-    }
     
     func insetRow(_ row: Int) -> String {
         piece[row].dropFirst().dropLast().joined()
