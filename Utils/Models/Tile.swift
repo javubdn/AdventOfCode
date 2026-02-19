@@ -18,7 +18,6 @@ class Tile {
     
     
     func maskIfFound(_ mask: [(Int, Int)]) -> Bool {
-        let maxWidth = mask.max { $0.1 < $1.1 }!.1
         let maxHeight = mask.max { $0.0 < $1.0 }!.0
         Array(0..<(piece.count - maxHeight)).forEach { y in
             Array(0..<(piece.count - maxWidth)).forEach { x in
