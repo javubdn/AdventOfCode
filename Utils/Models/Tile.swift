@@ -17,7 +17,6 @@ class Tile {
     
     
     func insetRow(_ row: Int) -> String {
-        piece[row].dropFirst().dropLast().joined()
     }
     
     func maskIfFound(_ mask: [(Int, Int)]) -> Bool {
