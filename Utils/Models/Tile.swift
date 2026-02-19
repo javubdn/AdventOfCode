@@ -16,7 +16,6 @@ class Tile {
     
     
     
-    func insetRow(_ row: Int) -> String {
     }
     
     func maskIfFound(_ mask: [(Int, Int)]) -> Bool {
