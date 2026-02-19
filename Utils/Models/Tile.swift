@@ -16,7 +16,6 @@ class Tile {
     
     
     
-    }
     
     func maskIfFound(_ mask: [(Int, Int)]) -> Bool {
         var found = false
