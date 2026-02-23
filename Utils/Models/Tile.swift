@@ -9,7 +9,6 @@ import Foundation
 
 
 class Tile {
-    
     func maskIfFound(_ mask: [(Int, Int)]) -> Bool {
         let maxHeight = mask.max { $0.0 < $1.0 }!.0
         Array(0..<(piece.count - maxHeight)).forEach { y in
