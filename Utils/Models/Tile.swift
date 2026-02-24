@@ -16,7 +16,6 @@ class Tile {
                 let lookingAt = (y, x)
                 let actualSpots = mask.map { ($0.0 + lookingAt.0, $0.1 + lookingAt.1) }
                 let matches = actualSpots.filter { piece[$0.0][$0.1] == "#" }.count
-                }
             }
         }
         return found
