@@ -13,7 +13,6 @@ class Tile {
         let maxHeight = mask.max { $0.0 < $1.0 }!.0
         Array(0..<(piece.count - maxHeight)).forEach { y in
             Array(0..<(piece.count - maxWidth)).forEach { x in
-                let actualSpots = mask.map { ($0.0 + lookingAt.0, $0.1 + lookingAt.1) }
                 let matches = actualSpots.filter { piece[$0.0][$0.1] == "#" }.count
             }
         }
