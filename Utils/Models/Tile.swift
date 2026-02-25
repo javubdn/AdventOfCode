@@ -8,7 +8,6 @@
 import Foundation
 
 class Tile {
-    func maskIfFound(_ mask: [(Int, Int)]) -> Bool {
     }
     
 }
