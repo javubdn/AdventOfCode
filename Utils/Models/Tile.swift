@@ -5,7 +5,6 @@
 //  Created by Javier Castillo on 2/8/22.
 //
 
-import Foundation
 
 class Tile {
     
