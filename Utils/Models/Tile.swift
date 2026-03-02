@@ -1,4 +1,3 @@
 //
 //  Tile.swift
 //  AdventOfCode
-//
