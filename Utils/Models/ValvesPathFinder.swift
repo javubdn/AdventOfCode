@@ -12,7 +12,6 @@ class ValvesPathFinder {
     private var valvesCombinations: [String: Int] = [:]
     
     private struct ValveRoom {
-        let name: String
         let rate: Int
         let valves: [String]
     }
