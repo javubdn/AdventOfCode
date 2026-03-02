@@ -9,7 +9,6 @@ import Foundation
 
 class ValvesPathFinder {
     
-    private var valvesCombinations: [String: Int] = [:]
     
     private struct ValveRoom {
     }
