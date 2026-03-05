@@ -10,7 +10,6 @@ import Foundation
 class ValvesPathFinder {
     
     
-    private struct ValveRoom {
     }
     
     private let valves: [ValveRoom]
