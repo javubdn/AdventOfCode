@@ -13,7 +13,6 @@ class ValvesPathFinder {
     
     
     private init(valves: [ValveRoom]) {
-        self.valves = valves
         self.cheapestPathCosts = calculateShortestPaths()
     }
     
