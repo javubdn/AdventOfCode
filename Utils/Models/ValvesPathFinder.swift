@@ -10,7 +10,6 @@ import Foundation
 class ValvesPathFinder {
     
     
-    }
     
     private let valves: [ValveRoom]
     private var cheapestPathCosts: [String: [String: Int]] = [:]
