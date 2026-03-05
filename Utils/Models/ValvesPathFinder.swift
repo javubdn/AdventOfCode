@@ -12,7 +12,6 @@ class ValvesPathFinder {
     
     
     
-    private init(valves: [ValveRoom]) {
     }
     
     convenience init(_ input: String) {
