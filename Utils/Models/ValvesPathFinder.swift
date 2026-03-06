@@ -14,7 +14,6 @@ class ValvesPathFinder {
     
     
     convenience init(_ input: String) {
-        let valves = input.components(separatedBy: .newlines).map { Self.getValve($0) }
         self.init(valves: valves)
     }
     
