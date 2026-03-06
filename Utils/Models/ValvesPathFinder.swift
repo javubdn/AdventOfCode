@@ -14,7 +14,6 @@ class ValvesPathFinder {
     
     
     convenience init(_ input: String) {
-        self.init(valves: valves)
     }
     
     private static func getValve(_ input: String) -> ValveRoom {
