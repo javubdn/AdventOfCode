@@ -13,7 +13,6 @@ class ValvesPathFinder {
     
     
     
-    convenience init(_ input: String) {
     }
     
     private static func getValve(_ input: String) -> ValveRoom {
