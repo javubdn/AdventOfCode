@@ -15,7 +15,6 @@ class ValvesPathFinder {
     
     
     private static func getValve(_ input: String) -> ValveRoom {
-        let matches = regex.matches(in: input, options: [], range: NSRange(input.startIndex..., in: input))
         let match = matches.first!
         let name = String(input[Range(match.range(at: 1), in: input)!])
         let rate = Int(String(input[Range(match.range(at: 2), in: input)!]))!
