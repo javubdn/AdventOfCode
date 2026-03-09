@@ -19,7 +19,6 @@ class ValvesPathFinder {
         var s: [String: [String: Int]] = [:]
         
         valves.forEach { valve in
-            var p: [String: Int] = [:]
             valve.valves.forEach { p[$0] = 1 }
             s[valve.name] = p
         }
