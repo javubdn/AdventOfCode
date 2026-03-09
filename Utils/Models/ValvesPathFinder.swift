@@ -15,7 +15,6 @@ class ValvesPathFinder {
     
     
     private static func getValve(_ input: String) -> ValveRoom {
-        let valves = String(input[Range(match.range(at: 6), in: input)!]).components(separatedBy: ", ")
         return ValveRoom(name: name, rate: rate, valves: valves)
     }
     
