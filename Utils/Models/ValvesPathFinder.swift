@@ -25,7 +25,6 @@ class ValvesPathFinder {
             let fromValve = valves.first { $0.name == item.key }!
             guard fromValve.rate > 0 || item.key == "AA" else { return }
             s.forEach { item2 in
-                let toValve = valves.first { $0.name == item2.key }!
                 guard toValve.rate > 0 else { return }
                 s[item.key]![item2.key] = navigateValve(item.key, item2.key, [])
             }
