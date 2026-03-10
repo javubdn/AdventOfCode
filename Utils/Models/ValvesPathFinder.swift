@@ -24,7 +24,6 @@ class ValvesPathFinder {
         s.forEach { item in
             let fromValve = valves.first { $0.name == item.key }!
             guard fromValve.rate > 0 || item.key == "AA" else { return }
-            s.forEach { item2 in
             }
         }
         
