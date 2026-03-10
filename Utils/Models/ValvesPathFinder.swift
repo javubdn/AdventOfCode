@@ -24,7 +24,6 @@ class ValvesPathFinder {
         s.forEach { item in
             let fromValve = valves.first { $0.name == item.key }!
             guard fromValve.rate > 0 || item.key == "AA" else { return }
-            }
         }
         
         let zeroFlowRooms = valves.filter { $0.rate == 0 || $0.name == "AA" }.map { $0.name }
