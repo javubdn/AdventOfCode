@@ -18,7 +18,6 @@ class ValvesPathFinder {
     private func calculateShortestPaths() -> [String: [String: Int]] {
         var s: [String: [String: Int]] = [:]
         
-        
         return s
     }
     
