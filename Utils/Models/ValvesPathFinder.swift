@@ -16,7 +16,6 @@ class ValvesPathFinder {
     
     
     private func calculateShortestPaths() -> [String: [String: Int]] {
-        return s
     }
     
     private func navigateValve(_ from: String, _ to: String, _ used: [String]) -> Int {
