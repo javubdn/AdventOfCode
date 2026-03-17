@@ -17,7 +17,6 @@ class ValvesPathFinder {
     
     
     private func navigateValve(_ from: String, _ to: String, _ used: [String]) -> Int {
-        if let bestCost = valvesCombinations["\(from)-\(to)"] {
         }
         guard !used.contains(from) else { return Int.max }
         let fromValve = valves.first { $0.name == from }!
