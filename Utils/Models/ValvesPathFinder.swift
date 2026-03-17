@@ -19,7 +19,6 @@ class ValvesPathFinder {
     private func navigateValve(_ from: String, _ to: String, _ used: [String]) -> Int {
         let fromValve = valves.first { $0.name == from }!
         if let _ = fromValve.valves.first(where: { $0 == to }) {
-            return 1
         }
         var used = used
         used.append(from)
