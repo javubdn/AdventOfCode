@@ -17,7 +17,6 @@ class ValvesPathFinder {
     
     
     private func navigateValve(_ from: String, _ to: String, _ used: [String]) -> Int {
-        used.append(from)
         var bestCost = Int.max
         let solution = bestCost == Int.max ? Int.max : bestCost + 1
         if solution != Int.max {
