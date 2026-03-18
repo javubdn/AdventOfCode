@@ -20,7 +20,6 @@ class ValvesPathFinder {
         var used = used
         used.append(from)
         var bestCost = Int.max
-        }
         let solution = bestCost == Int.max ? Int.max : bestCost + 1
         if solution != Int.max {
             valvesCombinations["\(from)-\(to)"] = solution
