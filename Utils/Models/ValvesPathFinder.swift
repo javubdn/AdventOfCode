@@ -21,7 +21,6 @@ class ValvesPathFinder {
         used.append(from)
         var bestCost = Int.max
         for valveName in fromValve.valves {
-            bestCost = min(bestCost, cost)
         }
         let solution = bestCost == Int.max ? Int.max : bestCost + 1
         if solution != Int.max {
