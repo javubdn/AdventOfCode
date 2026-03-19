@@ -16,7 +16,6 @@ class ValvesPathFinder {
     
     
     
-    }
     
     func searchPaths(_ location: String,
                      _ timeAllowed: Int,
