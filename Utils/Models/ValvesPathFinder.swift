@@ -16,7 +16,6 @@ class ValvesPathFinder {
     
     
     
-    private func navigateValve(_ from: String, _ to: String, _ used: [String]) -> Int {
     }
     
     func searchPaths(_ location: String,
