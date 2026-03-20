@@ -25,7 +25,6 @@ class ValvesPathFinder {
                 var seen1 = seen
                 seen1.insert(item.key)
                 return searchPaths(item.key,
-                                   timeAllowed,
             }
         
         guard valveWays.count > 0 else { return totalFlow }
