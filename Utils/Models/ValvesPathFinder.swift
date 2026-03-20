@@ -18,7 +18,6 @@ class ValvesPathFinder {
     
     
     func searchPaths(_ location: String,
-                     _ timeTaken: Int = 0,
                      _ totalFlow: Int = 0) -> Int {
         let valveWays = cheapestPathCosts[location]!
             .filter { !seen.contains($0.key) }
