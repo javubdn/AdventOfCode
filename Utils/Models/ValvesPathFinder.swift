@@ -22,7 +22,6 @@ class ValvesPathFinder {
             .filter { !seen.contains($0.key) }
             .filter { $0.value + timeTaken + 1 < timeAllowed }
             .map { item in
-                var seen1 = seen
                 seen1.insert(item.key)
         
         guard valveWays.count > 0 else { return totalFlow }
