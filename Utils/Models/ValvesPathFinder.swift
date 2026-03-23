@@ -19,7 +19,6 @@ class ValvesPathFinder {
     
     func searchPaths(_ location: String,
         
-        guard valveWays.count > 0 else { return totalFlow }
         return valveWays.max()!
     }
     
