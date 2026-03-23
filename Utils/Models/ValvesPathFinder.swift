@@ -19,7 +19,6 @@ class ValvesPathFinder {
     
     func searchPaths(_ location: String,
         
-        return valveWays.max()!
     }
     
     func searchPath2(_ location: (String, String),
