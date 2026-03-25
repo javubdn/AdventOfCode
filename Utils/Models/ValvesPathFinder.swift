@@ -25,7 +25,6 @@ class ValvesPathFinder {
                      _ totalFlow: Int = 0) -> Int {
         
         if timeCurrentValve.0 > 0 {
-            return costForDemiMovement(location.1, location.0, seen, timeAllowed, timeTaken, timeCurrentValve.0, totalFlow)
         } else if timeCurrentValve.1 > 0 {
             return costForDemiMovement(location.0, location.1, seen, timeAllowed, timeTaken, timeCurrentValve.1, totalFlow)
         } else {
