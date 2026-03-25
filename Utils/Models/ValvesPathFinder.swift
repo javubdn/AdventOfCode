@@ -22,7 +22,6 @@ class ValvesPathFinder {
     }
     
     func searchPath2(_ location: (String, String),
-                     _ timeAllowed: Int,
                      _ seen: Set<String> = Set(),
                      _ timeTaken: Int = 0,
                      _ timeCurrentValve: (Int, Int) = (0, 0),
