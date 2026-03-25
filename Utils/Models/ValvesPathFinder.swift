@@ -22,7 +22,6 @@ class ValvesPathFinder {
     }
     
     func searchPath2(_ location: (String, String),
-                     _ timeTaken: Int = 0,
                      _ timeCurrentValve: (Int, Int) = (0, 0),
                      _ totalFlow: Int = 0) -> Int {
         
