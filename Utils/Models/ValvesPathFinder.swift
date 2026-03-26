@@ -30,7 +30,6 @@ class ValvesPathFinder {
             
             
             let combinationCosts = validCombinations.map { combination in
-                var seen1 = seen
                 seen1.insert(combination.0)
                 seen1.insert(combination.1)
                 let item1 = valves.first { $0.name == combination.0 }!
