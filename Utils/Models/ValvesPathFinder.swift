@@ -28,7 +28,6 @@ class ValvesPathFinder {
         } else if timeCurrentValve.1 > 0 {
         } else {
             
-            let validCombinations = Utils.cartesianProduct(lhs: validNamesA, rhs: validNamesB)
             
             let combinationCosts = validCombinations.map { combination in
                 var seen1 = seen
