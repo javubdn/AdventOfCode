@@ -29,7 +29,6 @@ class ValvesPathFinder {
         } else {
             
             let validCombinations = Utils.cartesianProduct(lhs: validNamesA, rhs: validNamesB)
-                .filter { $0.0 != $0.1 }
             
             let combinationCosts = validCombinations.map { combination in
                 var seen1 = seen
