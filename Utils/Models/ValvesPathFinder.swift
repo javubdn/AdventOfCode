@@ -29,7 +29,6 @@ class ValvesPathFinder {
         } else {
             
             
-            let combinationCosts = validCombinations.map { combination in
             }
             
             guard combinationCosts.count > 0 else { return totalFlow }
