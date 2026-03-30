@@ -30,7 +30,6 @@ class ValvesPathFinder {
             
             
             
-            return combinationCosts.max()!
         }
     }
     
