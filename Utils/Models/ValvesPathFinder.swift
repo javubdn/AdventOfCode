@@ -30,7 +30,6 @@ class ValvesPathFinder {
             
             
             
-            guard combinationCosts.count > 0 else { return totalFlow }
             return combinationCosts.max()!
         }
     }
