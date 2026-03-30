@@ -30,7 +30,6 @@ class ValvesPathFinder {
             
             
             let combinationCosts = validCombinations.map { combination in
-                let newTime1 = cheapestPathCosts[location.0]![combination.0]! + 1 - newTimeTaken
                 )
             }
             
