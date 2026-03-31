@@ -29,7 +29,6 @@ class ValvesPathFinder {
     private func costForDemiMovement(_ locationFinished: String,
                                      _ locationMovement: String,
                                      _ seen: Set<String>,
-                                     _ timeAllowed: Int,
                                      _ timeTaken: Int,
                                      _ timeMovement: Int,
                                      _ totalFlow:Int) -> Int {
