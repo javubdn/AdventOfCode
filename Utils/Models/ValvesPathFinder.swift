@@ -18,7 +18,6 @@ class ValvesPathFinder {
     
     
         
-    }
     
     
     private func costForDemiMovement(_ locationFinished: String,
