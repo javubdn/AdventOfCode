@@ -31,7 +31,6 @@ class ValvesPathFinder {
             let newTimeTaken = min(valve.value + 1, timeMovement)
             let newTime1 = timeMovement - newTimeTaken
             let newTime2 = valve.value + 1 - newTimeTaken
-            )
         }
         guard combinationCosts.count > 0 else { return totalFlow }
         return combinationCosts.max()!
