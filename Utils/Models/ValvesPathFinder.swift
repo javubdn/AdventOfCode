@@ -34,7 +34,6 @@ class ValvesPathFinder {
             return searchPath2((locationMovement, valve.key),
                                timeAllowed,
                                seen1,
-                               timeTaken + newTimeTaken,
             )
         }
         guard combinationCosts.count > 0 else { return totalFlow }
