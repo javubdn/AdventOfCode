@@ -35,7 +35,6 @@ class ValvesPathFinder {
                                timeAllowed,
                                seen1,
                                timeTaken + newTimeTaken,
-                               (newTime1, newTime2),
             )
         }
         guard combinationCosts.count > 0 else { return totalFlow }
