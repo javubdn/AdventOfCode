@@ -33,7 +33,6 @@ class ValvesPathFinder {
             let newTime2 = valve.value + 1 - newTimeTaken
             return searchPath2((locationMovement, valve.key),
                                timeAllowed,
-                               seen1,
             )
         }
         guard combinationCosts.count > 0 else { return totalFlow }
