@@ -26,7 +26,6 @@ class ValvesPathFinder {
         let validValves = getValidValves(locationFinished, seen, timeTaken, timeAllowed)
         let combinationCosts = validValves.map { valve in
             var seen1 = seen
-            seen1.insert(valve.key)
             let flow = (timeAllowed - timeTaken - valve.value - 1) * valves.first { $0.name == valve.key }!.rate
             let newTimeTaken = min(valve.value + 1, timeMovement)
             let newTime1 = timeMovement - newTimeTaken
