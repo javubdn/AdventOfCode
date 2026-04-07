@@ -23,7 +23,6 @@ class ValvesPathFinder {
     private func costForDemiMovement(_ locationFinished: String,
                                      _ timeMovement: Int,
                                      _ totalFlow:Int) -> Int {
-        let validValves = getValidValves(locationFinished, seen, timeTaken, timeAllowed)
         guard combinationCosts.count > 0 else { return totalFlow }
         return combinationCosts.max()!
     }
