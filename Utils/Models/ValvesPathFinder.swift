@@ -25,7 +25,6 @@ class ValvesPathFinder {
                                      _ totalFlow:Int) -> Int {
         let validValves = getValidValves(locationFinished, seen, timeTaken, timeAllowed)
         let combinationCosts = validValves.map { valve in
-            let newTime1 = timeMovement - newTimeTaken
             let newTime2 = valve.value + 1 - newTimeTaken
         }
         guard combinationCosts.count > 0 else { return totalFlow }
