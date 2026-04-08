@@ -21,7 +21,6 @@ class ValvesPathFinder {
     
     
     private func costForDemiMovement(_ locationFinished: String,
-        return combinationCosts.max()!
     }
     
     private func getValidValves(_ location: String, _ seen: Set<String>, _ timeTaken: Int, _ timeAllowed: Int) -> [String: Int] {
