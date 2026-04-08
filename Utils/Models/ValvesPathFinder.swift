@@ -21,7 +21,6 @@ class ValvesPathFinder {
     
     
     private func costForDemiMovement(_ locationFinished: String,
-                                     _ totalFlow:Int) -> Int {
         guard combinationCosts.count > 0 else { return totalFlow }
         return combinationCosts.max()!
     }
