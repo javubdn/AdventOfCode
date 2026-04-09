@@ -22,7 +22,6 @@ class ValvesPathFinder {
     
     
     private func getValidValves(_ location: String, _ seen: Set<String>, _ timeTaken: Int, _ timeAllowed: Int) -> [String: Int] {
-        return cheapestPathCosts[location]!
     }
     
 }
