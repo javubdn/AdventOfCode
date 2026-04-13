@@ -7,4 +7,3 @@
 
 import Foundation
 
-class ValvesPathFinder {
