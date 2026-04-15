@@ -16,7 +16,6 @@
                     <subviews>
                             <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                             <subviews>
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="257"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="AmH-eh-dta">
                                             <rect key="frame" x="40" y="40" width="334" height="177"/>
