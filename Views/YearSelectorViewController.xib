@@ -19,7 +19,6 @@
                                     <subviews>
                                             <rect key="frame" x="40" y="40" width="334" height="177"/>
                                             <subviews>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
