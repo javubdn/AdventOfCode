@@ -16,7 +16,6 @@
                     <subviews>
                                     <subviews>
                                             <subviews>
-                                                    <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CHU-mI-7GM" userLabel="yearSelector">
                                                     <rect key="frame" x="0.0" y="92" width="334" height="34"/>
