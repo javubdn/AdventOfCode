@@ -15,7 +15,6 @@
                     <subviews>
                                     <subviews>
                                                     <textInputTraits key="textInputTraits"/>
-                                                </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaQ-vv-S8O" userLabel="acceptButton">
                                                     <rect key="frame" x="0.0" y="146" width="334" height="31"/>
                                                     <state key="normal" title="Button"/>
