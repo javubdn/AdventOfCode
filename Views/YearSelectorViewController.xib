@@ -10,7 +10,6 @@
             </connections>
         </placeholder>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <subviews>
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
