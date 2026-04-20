@@ -16,7 +16,6 @@
                                     <subviews>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <rect key="frame" x="0.0" y="146" width="334" height="31"/>
-                                                    <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Aceptar"/>
                                                     <connections>
                                                         <action selector="acceptButtonPressed:" destination="-1" eventType="touchUpInside" id="9Sm-K2-hET"/>
