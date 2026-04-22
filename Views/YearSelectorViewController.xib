@@ -14,7 +14,6 @@
                                     <constraints>
                                         <constraint firstItem="AmH-eh-dta" firstAttribute="top" secondItem="rfI-Wx-TWt" secondAttribute="top" constant="40" id="85l-NE-DqJ"/>
                                         <constraint firstAttribute="trailing" secondItem="AmH-eh-dta" secondAttribute="trailing" constant="40" id="Dg3-bw-HFj"/>
-                                        <constraint firstAttribute="bottom" secondItem="AmH-eh-dta" secondAttribute="bottom" constant="40" id="jIF-gS-avI"/>
                                     </constraints>
                                 </view>
                             </subviews>
