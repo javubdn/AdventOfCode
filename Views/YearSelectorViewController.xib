@@ -15,7 +15,6 @@
                                     </constraints>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="rfI-Wx-TWt" firstAttribute="top" secondItem="LhS-wG-yPk" secondAttribute="top" id="KMx-3n-Iho"/>
                                 <constraint firstAttribute="bottom" secondItem="rfI-Wx-TWt" secondAttribute="bottom" id="RKa-Lu-yQZ"/>
                                 <constraint firstItem="rfI-Wx-TWt" firstAttribute="leading" secondItem="LhS-wG-yPk" secondAttribute="leading" id="lLu-cO-a4I"/>
                             </constraints>
