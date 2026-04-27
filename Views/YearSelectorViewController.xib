@@ -15,7 +15,6 @@
                             </constraints>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="LhS-wG-yPk" secondAttribute="trailing" id="sfk-zQ-BVj"/>
                         <constraint firstAttribute="bottom" secondItem="LhS-wG-yPk" secondAttribute="bottom" id="yq1-oZ-H5n"/>
                     </constraints>
                 </view>
