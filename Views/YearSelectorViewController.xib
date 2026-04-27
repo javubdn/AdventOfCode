@@ -14,7 +14,6 @@
                                     </constraints>
                             </constraints>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="LhS-wG-yPk" firstAttribute="leading" secondItem="hD2-on-Ahz" secondAttribute="leading" id="AxY-W7-8JM"/>
                         <constraint firstItem="LhS-wG-yPk" firstAttribute="top" secondItem="hD2-on-Ahz" secondAttribute="top" id="QBz-FG-lgu"/>
