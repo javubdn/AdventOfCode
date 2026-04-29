@@ -17,7 +17,6 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hD2-on-Ahz" secondAttribute="trailing" id="Bgw-fo-kgw"/>
                 <constraint firstItem="hD2-on-Ahz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jya-rv-n92"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hD2-on-Ahz" secondAttribute="bottom" id="oOf-HU-sAk"/>
