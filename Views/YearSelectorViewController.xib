@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
     </dependencies>
-    <objects>
                     </subviews>
                         <constraint firstAttribute="bottom" secondItem="LhS-wG-yPk" secondAttribute="bottom" id="yq1-oZ-H5n"/>
                     </constraints>
