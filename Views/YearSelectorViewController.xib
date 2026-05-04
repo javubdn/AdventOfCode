@@ -4,7 +4,6 @@
     <dependencies>
     </dependencies>
     <objects>
-            <connections>
                     </subviews>
                         <constraint firstAttribute="bottom" secondItem="LhS-wG-yPk" secondAttribute="bottom" id="yq1-oZ-H5n"/>
                     </constraints>
