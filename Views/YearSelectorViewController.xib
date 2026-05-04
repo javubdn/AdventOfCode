@@ -8,7 +8,6 @@
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
                                     <constraints>
-                                    </constraints>
                     </subviews>
                         <constraint firstAttribute="bottom" secondItem="LhS-wG-yPk" secondAttribute="bottom" id="yq1-oZ-H5n"/>
                     </constraints>
