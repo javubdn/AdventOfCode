@@ -16,7 +16,6 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="drI-UN-gGU" userLabel="mainStackView">
                     <rect key="frame" x="20" y="64" width="374" height="778"/>
-                </stackView>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="drI-UN-gGU" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="8cZ-qy-bfj"/>
