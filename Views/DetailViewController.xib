@@ -12,7 +12,6 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="drI-UN-gGU" userLabel="mainStackView">
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="drI-UN-gGU" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="8cZ-qy-bfj"/>
