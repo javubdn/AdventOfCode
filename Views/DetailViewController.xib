@@ -14,7 +14,6 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="drI-UN-gGU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="uZq-IW-NP2"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="drI-UN-gGU" secondAttribute="trailing" constant="20" id="wh9-h1-AnH"/>
             </constraints>
             <point key="canvasLocation" x="132" y="52"/>
