@@ -14,7 +14,6 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="drI-UN-gGU" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="8cZ-qy-bfj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="drI-UN-gGU" secondAttribute="bottom" constant="20" id="u86-bT-Tds"/>
                 <constraint firstItem="drI-UN-gGU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="uZq-IW-NP2"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="drI-UN-gGU" secondAttribute="trailing" constant="20" id="wh9-h1-AnH"/>
