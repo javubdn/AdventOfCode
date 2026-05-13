@@ -12,7 +12,6 @@
             <connections>
                 <outlet property="mainStackView" destination="5IE-C5-cx2" id="Fwt-qo-5OY"/>
                 <outlet property="yearLabel" destination="afc-eR-ljM" id="onv-3T-f55"/>
-            </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
