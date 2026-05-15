@@ -16,7 +16,6 @@
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Nn-Yx-HuY">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ADS-lN-isB" userLabel="contentView">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="111.5"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5IE-C5-cx2" userLabel="mainStackView">
