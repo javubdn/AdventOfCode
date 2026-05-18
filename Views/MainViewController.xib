@@ -26,7 +26,6 @@
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="5IE-C5-cx2" secondAttribute="bottom" constant="20" id="BKC-xP-ZpN"/>
                                         <constraint firstItem="5IE-C5-cx2" firstAttribute="top" secondItem="ADS-lN-isB" secondAttribute="top" constant="20" id="dEB-VT-97T"/>
                                         <constraint firstAttribute="trailing" secondItem="5IE-C5-cx2" secondAttribute="trailing" constant="20" id="hSj-Cs-T6f"/>
                                         <constraint firstItem="5IE-C5-cx2" firstAttribute="leading" secondItem="ADS-lN-isB" secondAttribute="leading" constant="20" id="osS-x0-V5Y"/>
