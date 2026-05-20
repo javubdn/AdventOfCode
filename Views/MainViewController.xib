@@ -35,7 +35,6 @@
                     <constraints>
                         <constraint firstItem="9Nn-Yx-HuY" firstAttribute="leading" secondItem="mpM-Sf-fw0" secondAttribute="leading" id="23Q-y7-NwC"/>
                         <constraint firstAttribute="trailing" secondItem="9Nn-Yx-HuY" secondAttribute="trailing" id="N2E-Lg-EsX"/>
-                        <constraint firstItem="9Nn-Yx-HuY" firstAttribute="top" secondItem="mpM-Sf-fw0" secondAttribute="top" id="Ybp-Sn-UOC"/>
                     </constraints>
                 </view>
             </subviews>
