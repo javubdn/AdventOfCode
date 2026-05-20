@@ -39,7 +39,6 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="mpM-Sf-fw0" secondAttribute="bottom" id="2r1-bS-yEy"/>
                 <constraint firstItem="mpM-Sf-fw0" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="JK1-mk-ztM"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mpM-Sf-fw0" secondAttribute="trailing" id="LhI-EZ-kCj"/>
                 <constraint firstItem="mpM-Sf-fw0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="M3Y-df-RRZ"/>
