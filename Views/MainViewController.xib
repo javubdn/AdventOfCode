@@ -37,7 +37,6 @@
                         <constraint firstAttribute="trailing" secondItem="9Nn-Yx-HuY" secondAttribute="trailing" id="N2E-Lg-EsX"/>
                     </constraints>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="mpM-Sf-fw0" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="JK1-mk-ztM"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mpM-Sf-fw0" secondAttribute="trailing" id="LhI-EZ-kCj"/>
