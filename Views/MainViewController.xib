@@ -24,7 +24,6 @@
                                 </view>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="ADS-lN-isB" firstAttribute="leading" secondItem="9Nn-Yx-HuY" secondAttribute="leading" id="3UE-I1-u0L"/>
                                 <constraint firstAttribute="bottom" secondItem="ADS-lN-isB" secondAttribute="bottom" id="P3h-mo-zEM"/>
                             </constraints>
                         </scrollView>
