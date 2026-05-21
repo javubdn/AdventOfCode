@@ -32,7 +32,6 @@
                         </scrollView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraint firstAttribute="trailing" secondItem="9Nn-Yx-HuY" secondAttribute="trailing" id="N2E-Lg-EsX"/>
                     </constraints>
             </subviews>
             <constraints>
