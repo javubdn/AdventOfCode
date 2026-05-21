@@ -27,7 +27,6 @@
                                 <constraint firstItem="ADS-lN-isB" firstAttribute="leading" secondItem="9Nn-Yx-HuY" secondAttribute="leading" id="3UE-I1-u0L"/>
                                 <constraint firstAttribute="bottom" secondItem="ADS-lN-isB" secondAttribute="bottom" id="P3h-mo-zEM"/>
                                 <constraint firstItem="ADS-lN-isB" firstAttribute="top" secondItem="9Nn-Yx-HuY" secondAttribute="top" id="iMg-I9-zvI"/>
-                                <constraint firstAttribute="trailing" secondItem="ADS-lN-isB" secondAttribute="trailing" id="wHC-Tl-jR5"/>
                             </constraints>
                         </scrollView>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
