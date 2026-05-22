@@ -25,7 +25,6 @@
             </subviews>
             <constraints>
                 <constraint firstItem="mpM-Sf-fw0" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="JK1-mk-ztM"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mpM-Sf-fw0" secondAttribute="trailing" id="LhI-EZ-kCj"/>
                 <constraint firstItem="mpM-Sf-fw0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="M3Y-df-RRZ"/>
             </constraints>
             <point key="canvasLocation" x="132" y="83"/>
