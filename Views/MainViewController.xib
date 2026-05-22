@@ -17,7 +17,6 @@
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstItem="5IE-C5-cx2" firstAttribute="top" secondItem="ADS-lN-isB" secondAttribute="top" constant="20" id="dEB-VT-97T"/>
                                     </constraints>
                                 </view>
                             </subviews>
