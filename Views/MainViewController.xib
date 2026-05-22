@@ -23,7 +23,6 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <constraints>
                             </constraints>
                         </scrollView>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
