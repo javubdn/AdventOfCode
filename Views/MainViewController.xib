@@ -7,7 +7,6 @@
                             <subviews>
                                     <subviews>
                                             <subviews>
-                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                             </subviews>
                                         </stackView>
