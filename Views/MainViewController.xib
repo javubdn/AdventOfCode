@@ -5,7 +5,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
                             <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                             <subviews>
-                                </view>
                             </subviews>
                         </scrollView>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
