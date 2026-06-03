@@ -8,7 +8,6 @@
                     </constraints>
             </subviews>
             <constraints>
-                <constraint firstItem="mpM-Sf-fw0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="M3Y-df-RRZ"/>
             </constraints>
             <point key="canvasLocation" x="132" y="83"/>
         </view>
