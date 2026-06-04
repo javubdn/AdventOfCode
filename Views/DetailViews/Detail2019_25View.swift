@@ -2,7 +2,6 @@
 //  Detail2019_25View.swift
 //  AdventOfCode
 //
-//  Created by Javier Castillo on 28/6/22.
 //
 
 import UIKit
