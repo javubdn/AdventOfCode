@@ -1,6 +1,5 @@
 //
 //  Detail2019_25View.swift
-//  AdventOfCode
 //
 //
 
