@@ -12,7 +12,6 @@ class Detail2019_25View: UIView {
     
     init(_ mainStackView: UIStackView) {
 
-        instructionsLabel.font = UIFont(name: "Futura-Medium", size: 20.0)
         
         answerTextView.text = "Comando"
         answerTextView.widthAnchor.constraint(equalToConstant: 200).isActive = true
