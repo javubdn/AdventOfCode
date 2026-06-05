@@ -11,7 +11,6 @@ class Detail2019_25View: UIView {
     private var intcode: Intcode? = nil
     
     init(_ mainStackView: UIStackView) {
-        super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 800))
         layer.borderWidth = 2
         layer.borderColor = .init(red: 0, green: 0.2, blue: 0.7, alpha: 1)
         layer.cornerRadius = 5
