@@ -11,7 +11,6 @@ class Detail2019_25View: UIView {
     private var intcode: Intcode? = nil
     
     init(_ mainStackView: UIStackView) {
-
         
         answerTextView.text = "Comando"
         answerTextView.widthAnchor.constraint(equalToConstant: 200).isActive = true
