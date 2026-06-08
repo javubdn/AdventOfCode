@@ -12,7 +12,6 @@ class Detail2019_25View: UIView {
     
     init(_ mainStackView: UIStackView) {
         
-        answerTextView.widthAnchor.constraint(equalToConstant: 200).isActive = true
         answerTextView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         answerTextView.textColor = .lightGray
         answerTextView.delegate = self
