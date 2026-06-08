@@ -12,7 +12,6 @@ class Detail2019_25View: UIView {
     
     init(_ mainStackView: UIStackView) {
         
-        answerTextView.returnKeyType = .done
         
         let actionButton = UIButton()
         actionButton.setTitle("Enviar comando", for: .normal)
