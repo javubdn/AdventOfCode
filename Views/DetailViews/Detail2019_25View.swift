@@ -15,7 +15,6 @@ class Detail2019_25View: UIView {
         
         let actionButton = UIButton()
         actionButton.setTitle("Enviar comando", for: .normal)
-        actionButton.setTitleColor(.blue, for: .normal)
         
         let vStackView = UIStackView(arrangedSubviews: [instructionsLabel, answerTextView, actionButton])
         vStackView.axis = .vertical
