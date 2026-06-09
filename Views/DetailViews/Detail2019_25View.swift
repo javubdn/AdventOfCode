@@ -16,7 +16,6 @@ class Detail2019_25View: UIView {
         let actionButton = UIButton()
         actionButton.setTitle("Enviar comando", for: .normal)
         
-        vStackView.axis = .vertical
         vStackView.spacing = 15
         vStackView.translatesAutoresizingMaskIntoConstraints = false
         
