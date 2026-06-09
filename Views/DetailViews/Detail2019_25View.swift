@@ -15,7 +15,6 @@ class Detail2019_25View: UIView {
         
         
         
-        
         NSLayoutConstraint.activate([
             vStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             vStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
