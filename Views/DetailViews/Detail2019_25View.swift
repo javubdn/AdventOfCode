@@ -17,7 +17,6 @@ class Detail2019_25View: UIView {
         actionButton.setTitle("Enviar comando", for: .normal)
         
         
-        addSubview(vStackView)
         
         NSLayoutConstraint.activate([
             vStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
