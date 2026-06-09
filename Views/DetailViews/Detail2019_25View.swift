@@ -13,7 +13,6 @@ class Detail2019_25View: UIView {
     init(_ mainStackView: UIStackView) {
         
         
-        actionButton.setTitle("Enviar comando", for: .normal)
         
         
         
