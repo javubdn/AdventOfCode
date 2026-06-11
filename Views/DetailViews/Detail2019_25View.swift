@@ -16,7 +16,6 @@ class Detail2019_25View: UIView {
         
         
         NSLayoutConstraint.activate([
-            vStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
         ])
         
         mainStackView.addArrangedSubview(self)
