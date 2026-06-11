@@ -15,7 +15,6 @@ class Detail2019_25View: UIView {
         
         
         
-        NSLayoutConstraint.activate([
         ])
         
         mainStackView.addArrangedSubview(self)
