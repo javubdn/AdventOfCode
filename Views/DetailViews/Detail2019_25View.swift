@@ -55,7 +55,6 @@ class Detail2019_25View: UIView {
         let output = intcode!.readOutput()
         let lines = output.map { value in
             guard value < UInt8.max else {
-                return String(value)
             }
             return String(UnicodeScalar(UInt8(value)))
         }
