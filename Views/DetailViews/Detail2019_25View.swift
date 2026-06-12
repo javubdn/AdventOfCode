@@ -54,7 +54,6 @@ class Detail2019_25View: UIView {
         intcode?.execute()
         let output = intcode!.readOutput()
         let lines = output.map { value in
-            }
             return String(UnicodeScalar(UInt8(value)))
         }
             .joined()
