@@ -16,7 +16,6 @@ class Detail2019_25View: UIView {
         
         
         
-        mainStackView.addArrangedSubview(self)
         translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
         ])
