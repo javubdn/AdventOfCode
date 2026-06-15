@@ -50,7 +50,6 @@ class Detail2019_25View: UIView {
     private func sendCommand(sender: UIButton) {
         let lines = output.map { value in
         }
-        instructionsLabel.text = lines
     }
     
 }
