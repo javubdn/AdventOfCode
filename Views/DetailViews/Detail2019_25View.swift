@@ -48,7 +48,6 @@ class Detail2019_25View: UIView {
     
     @objc
     private func sendCommand(sender: UIButton) {
-        guard let text = answerTextView.text else { return }
         let asciiProgram = (text.lowercased() + "\n").asciiValues.map { Int($0) }
         intcode?.addInput(asciiProgram)
         intcode?.execute()
