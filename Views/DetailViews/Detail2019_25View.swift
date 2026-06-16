@@ -64,7 +64,6 @@ extension Detail2019_25View: UITextFieldDelegate {
     }
     
     private func textViewDidEndEditing(_ textView: UITextView) {
-        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
