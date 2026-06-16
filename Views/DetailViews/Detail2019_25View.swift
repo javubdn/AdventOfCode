@@ -58,7 +58,6 @@ extension Detail2019_25View: UITextFieldDelegate {
     
     private func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
-            textView.textColor = UIColor.black
         }
     }
     
