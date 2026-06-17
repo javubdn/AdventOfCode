@@ -70,7 +70,6 @@ extension Detail2019_25View: UITextFieldDelegate {
         let output = intcode!.readOutput()
         let lines = output.map { value in
         }
-            .joined()
             .trimmingCharacters(in: .newlines)
         instructionsLabel.text = lines
         textField.text = nil
