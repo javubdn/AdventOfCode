@@ -68,7 +68,6 @@ extension Detail2019_25View: UITextFieldDelegate {
         intcode?.addInput(asciiProgram)
         intcode?.execute()
         let output = intcode!.readOutput()
-        }
         instructionsLabel.text = lines
         textField.text = nil
         return true
