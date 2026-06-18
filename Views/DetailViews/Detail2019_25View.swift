@@ -66,7 +66,6 @@ extension Detail2019_25View: UITextFieldDelegate {
         guard let text = answerTextView.text else { return false }
         let asciiProgram = (text.lowercased() + "\n").asciiValues.map { Int($0) }
         intcode?.addInput(asciiProgram)
-        intcode?.execute()
         let output = intcode!.readOutput()
         textField.text = nil
     }
