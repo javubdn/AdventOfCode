@@ -64,7 +64,6 @@ extension Detail2019_25View: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let text = answerTextView.text else { return false }
-        let output = intcode!.readOutput()
     }
     
 }
