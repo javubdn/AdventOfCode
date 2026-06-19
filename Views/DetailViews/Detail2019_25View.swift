@@ -57,7 +57,6 @@ class Detail2019_25View: UIView {
 extension Detail2019_25View: UITextFieldDelegate {
     
     private func textViewDidBeginEditing(_ textView: UITextView) {
-        }
     }
     
     
