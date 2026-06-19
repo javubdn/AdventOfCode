@@ -58,6 +58,5 @@ extension Detail2019_25View: UITextFieldDelegate {
     
     
     
-    
 }
 
