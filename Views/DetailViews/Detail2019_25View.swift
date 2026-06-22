@@ -48,7 +48,6 @@ class Detail2019_25View: UIView {
     
     @objc
     private func sendCommand(sender: UIButton) {
-    }
     
 }
 
