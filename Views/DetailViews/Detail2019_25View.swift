@@ -41,7 +41,6 @@ class Detail2019_25View: UIView {
                 .trimmingCharacters(in: .newlines)
             instructionsLabel.text = lines
         }
-        catch {
         }
     }
     
