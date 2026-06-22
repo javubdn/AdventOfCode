@@ -42,7 +42,6 @@ class Detail2019_25View: UIView {
             instructionsLabel.text = lines
         }
         catch {
-            return
         }
     }
     
