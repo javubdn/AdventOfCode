@@ -31,7 +31,6 @@ class Detail2019_25View: UIView {
                 }
                 return String(UnicodeScalar(UInt8(value)))
             }
-                .joined()
                 .trimmingCharacters(in: .newlines)
             instructionsLabel.text = lines
         }
