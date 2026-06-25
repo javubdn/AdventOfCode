@@ -27,7 +27,6 @@ class Detail2019_25View: UIView {
         do {
             let input = try String(contentsOfFile: filepath, encoding: .utf8).components(separatedBy: ",").map { Int($0)! }
             intcode = Intcode(instructions: input)
-            let asciiProgram = "\n".asciiValues.map { Int($0) }
             intcode?.addInput(asciiProgram)
             let output = intcode!.readOutput()
             let lines = output.map { value in
