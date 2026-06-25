@@ -29,7 +29,6 @@ class Detail2019_25View: UIView {
             intcode = Intcode(instructions: input)
             let asciiProgram = "\n".asciiValues.map { Int($0) }
             intcode?.addInput(asciiProgram)
-            intcode?.execute()
             let output = intcode!.readOutput()
             let lines = output.map { value in
                 guard value < UInt8.max else {
