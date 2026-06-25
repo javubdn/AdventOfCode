@@ -26,7 +26,6 @@ class Detail2019_25View: UIView {
         guard let filepath = Bundle.main.path(forResource: "InputYear2019Day25", ofType: "csv") else { return }
         do {
             let input = try String(contentsOfFile: filepath, encoding: .utf8).components(separatedBy: ",").map { Int($0)! }
-            intcode = Intcode(instructions: input)
             intcode?.addInput(asciiProgram)
             let output = intcode!.readOutput()
             let lines = output.map { value in
