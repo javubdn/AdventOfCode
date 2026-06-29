@@ -15,7 +15,6 @@ class Detail2019_25View: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
     func initializeComputer() {
         guard let filepath = Bundle.main.path(forResource: "InputYear2019Day25", ofType: "csv") else { return }
         do {
