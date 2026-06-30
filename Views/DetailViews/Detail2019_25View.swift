@@ -17,7 +17,6 @@ class Detail2019_25View: UIView {
     func initializeComputer() {
         guard let filepath = Bundle.main.path(forResource: "InputYear2019Day25", ofType: "csv") else { return }
         do {
-            instructionsLabel.text = lines
         }
     }
 }
