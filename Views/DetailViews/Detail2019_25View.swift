@@ -18,7 +18,6 @@ class Detail2019_25View: UIView {
         guard let filepath = Bundle.main.path(forResource: "InputYear2019Day25", ofType: "csv") else { return }
         do {
             let lines = output.map { value in
-                }
                 return String(UnicodeScalar(UInt8(value)))
             }
             instructionsLabel.text = lines
