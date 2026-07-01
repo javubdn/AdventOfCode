@@ -6,7 +6,6 @@ import UIKit
 
 class Detail2019_25View: UIView {
     
-    private var intcode: Intcode? = nil
     init(_ mainStackView: UIStackView) {
     }
     required init?(coder aDecoder: NSCoder) {
