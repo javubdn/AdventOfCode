@@ -5,7 +5,6 @@
 //  Created by Javier Castillo on 2/12/21.
 //
 
-
 class MainViewController: UIViewController {
     
     @IBOutlet weak var mainStackView: UIStackView!
