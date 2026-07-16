@@ -12,7 +12,6 @@ class MainViewController: UIViewController {
     
     
     init(presenter: MainPresenter, currentYear: Year) {
-        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
