@@ -10,7 +10,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var yearLabel: UILabel!
     
-    let currentYear: Year
     var dayViews: [DayView] = []
     
     init(presenter: MainPresenter, currentYear: Year) {
