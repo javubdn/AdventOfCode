@@ -12,7 +12,6 @@ class MainViewController: UIViewController {
     
     
     init(presenter: MainPresenter, currentYear: Year) {
-        self.presenter = presenter
         self.currentYear = currentYear
         super.init(nibName: nil, bundle: nil)
     }
