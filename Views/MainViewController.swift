@@ -11,7 +11,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var yearLabel: UILabel!
     
     
-    init(presenter: MainPresenter, currentYear: Year) {
     }
     
     required init?(coder: NSCoder) {
