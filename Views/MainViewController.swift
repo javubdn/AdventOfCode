@@ -16,7 +16,6 @@ class MainViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    }
     
     private func prepareViews() {
         yearLabel.text = String(currentYear.value())
