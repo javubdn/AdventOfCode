@@ -16,7 +16,6 @@ class MainViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
     }
     
     private func prepareViews() {
