@@ -12,7 +12,6 @@ class MainViewController: UIViewController {
     
     
     
-    }
     
     
     private func prepareViews() {
