@@ -17,7 +17,6 @@ class MainViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        prepareViews()
         calculations()
     }
     
