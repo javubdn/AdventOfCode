@@ -12,7 +12,6 @@ class MainViewController: UIViewController {
     
     
     
-    required init?(coder: NSCoder) {
     }
     
     
