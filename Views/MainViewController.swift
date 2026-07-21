@@ -17,7 +17,6 @@ class MainViewController: UIViewController {
     private func prepareViews() {
         yearLabel.text = String(currentYear.value())
         let numberDaysPerYear = [Year.fifteen: 25,
-                                 Year.eighteen: 25,
                                  Year.nineteen: 25,
                                  Year.twenty: 25,
                                  Year.twentyOne: 25,
