@@ -16,7 +16,6 @@ class MainViewController: UIViewController {
     
     private func prepareViews() {
         yearLabel.text = String(currentYear.value())
-        }
     }
 
     private func calculations() {
