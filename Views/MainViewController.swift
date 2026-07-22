@@ -14,7 +14,6 @@ class MainViewController: UIViewController {
     
     
     
-    private func prepareViews() {
     }
 
     private func calculations() {
