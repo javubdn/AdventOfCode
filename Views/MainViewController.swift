@@ -14,7 +14,6 @@ class MainViewController: UIViewController {
     
     
     
-    }
 
     private func calculations() {
         let queue = DispatchQueue(label: "com.AdventOfCode.queue")
