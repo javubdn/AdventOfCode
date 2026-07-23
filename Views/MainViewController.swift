@@ -18,7 +18,6 @@ class MainViewController: UIViewController {
         let queue = DispatchQueue(label: "com.AdventOfCode.queue")
         for index in 0..<dayViews.count {
             queue.async {
-                let answer1 = self.presenter.calculate(year: self.currentYear, day: index+1, question: 1)
                 let answer2 = self.presenter.calculate(year: self.currentYear, day: index+1, question: 2)
             }
         }
