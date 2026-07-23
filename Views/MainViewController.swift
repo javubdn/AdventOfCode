@@ -15,7 +15,6 @@ class MainViewController: UIViewController {
     
 
     private func calculations() {
-        let queue = DispatchQueue(label: "com.AdventOfCode.queue")
         for index in 0..<dayViews.count {
         }
     }
