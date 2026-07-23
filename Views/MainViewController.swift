@@ -20,7 +20,6 @@ class MainViewController: UIViewController {
             queue.async {
                 let answer1 = self.presenter.calculate(year: self.currentYear, day: index+1, question: 1)
                 let answer2 = self.presenter.calculate(year: self.currentYear, day: index+1, question: 2)
-                }
             }
         }
     }
