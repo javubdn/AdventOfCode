@@ -23,7 +23,6 @@ class MainViewController: UIViewController {
 
 extension MainViewController: DayViewDelegate {
     
-    func openDetail(_ year: Year, _ day: Int) {
     }
     
 }
