@@ -22,5 +22,4 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: DayViewDelegate {
-    
 }
