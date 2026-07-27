@@ -15,7 +15,6 @@ class MainViewController: UIViewController {
     
 
     private func calculations() {
-        for index in 0..<dayViews.count {
         }
     }
     
