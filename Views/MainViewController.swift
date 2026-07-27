@@ -7,7 +7,6 @@
 
 class MainViewController: UIViewController {
     
-    @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var yearLabel: UILabel!
     
     
