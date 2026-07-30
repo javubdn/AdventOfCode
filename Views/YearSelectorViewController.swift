@@ -12,7 +12,6 @@ class YearSelectorViewController: UIViewController {
     let presenter: YearSelectorPresenter
     
     
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
