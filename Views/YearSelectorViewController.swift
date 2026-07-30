@@ -11,7 +11,6 @@ class YearSelectorViewController: UIViewController {
 
     let presenter: YearSelectorPresenter
     
-    init(presenter: YearSelectorPresenter) {
     }
     
     required init?(coder: NSCoder) {
