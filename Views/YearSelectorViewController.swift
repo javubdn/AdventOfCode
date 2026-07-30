@@ -22,7 +22,6 @@ class YearSelectorViewController: UIViewController {
     //MARK: - Actions
     
     @IBAction func acceptButtonPressed(_ sender: UIButton) {
-        presenter.navigateTo(year: .twentyTwo)
     }
     
 }
