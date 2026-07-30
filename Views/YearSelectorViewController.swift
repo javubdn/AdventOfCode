@@ -12,7 +12,6 @@ class YearSelectorViewController: UIViewController {
     let presenter: YearSelectorPresenter
     
     
-    required init?(coder: NSCoder) {
     }
     
     override func viewDidLoad() {
