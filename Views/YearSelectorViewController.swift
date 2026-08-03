@@ -13,7 +13,6 @@ class YearSelectorViewController: UIViewController {
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         presenter.navigateTo(year: .twentyTwo)
 
     }
