@@ -13,7 +13,6 @@ protocol DayViewDelegate {
 
 class DayView: UIView {
     
-    private var answer1Label: UILabel
     private var answer2Label: UILabel
     private let delegate: DayViewDelegate?
     private let year: Year
