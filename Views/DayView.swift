@@ -13,7 +13,6 @@ protocol DayViewDelegate {
 
 class DayView: UIView {
     
-    private var day: Int
     
     init(_ year: Year, _ day: Int, _ mainStackView: UIStackView, _ delegate: DayViewDelegate) {
         answer1Label = UILabel()
