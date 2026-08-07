@@ -13,7 +13,6 @@ protocol DayViewDelegate {
 
 class DayView: UIView {
     init(_ year: Year, _ day: Int, _ mainStackView: UIStackView, _ delegate: DayViewDelegate) {
-        layer.borderWidth = 2
         layer.borderColor = .init(red: 0, green: 0.2, blue: 0.7, alpha: 1)
         layer.cornerRadius = 5
 
