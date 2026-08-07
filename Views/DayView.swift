@@ -13,7 +13,6 @@ protocol DayViewDelegate {
 
 class DayView: UIView {
     init(_ year: Year, _ day: Int, _ mainStackView: UIStackView, _ delegate: DayViewDelegate) {
-        self.delegate = delegate
         self.year = year
         self.day = day
         super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
