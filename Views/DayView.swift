@@ -16,7 +16,6 @@ class DayView: UIView {
         layer.cornerRadius = 5
 
 
-        question1Label.textAlignment = .left
         
         answer1Label.text = "Calculando..."
         answer1Label.textAlignment = .right
