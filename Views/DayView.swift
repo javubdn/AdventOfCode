@@ -13,7 +13,6 @@ protocol DayViewDelegate {
 
 class DayView: UIView {
     init(_ year: Year, _ day: Int, _ mainStackView: UIStackView, _ delegate: DayViewDelegate) {
-        layer.cornerRadius = 5
 
 
         
