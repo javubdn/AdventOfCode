@@ -16,7 +16,6 @@ class DayView: UIView {
         layer.cornerRadius = 5
 
 
-        let question1Label = UILabel()
         question1Label.text = "Primera parte"
         question1Label.textAlignment = .left
         
