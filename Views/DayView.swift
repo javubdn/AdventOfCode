@@ -15,7 +15,6 @@ class DayView: UIView {
     init(_ year: Year, _ day: Int, _ mainStackView: UIStackView, _ delegate: DayViewDelegate) {
         layer.cornerRadius = 5
 
-        let titleDayLabel = UILabel()
 
         let question1Label = UILabel()
         question1Label.text = "Primera parte"
