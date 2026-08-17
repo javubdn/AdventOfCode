@@ -16,7 +16,6 @@ class DayView: UIView {
         layer.cornerRadius = 5
 
         let titleDayLabel = UILabel()
-        titleDayLabel.font = UIFont(name: "Futura-Medium", size: 20.0)
 
         let question1Label = UILabel()
         question1Label.text = "Primera parte"
