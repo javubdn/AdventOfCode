@@ -16,7 +16,6 @@ class DayView: UIView {
         layer.cornerRadius = 5
 
         let titleDayLabel = UILabel()
-        titleDayLabel.text = "Día \(day + 1)"
         titleDayLabel.textAlignment = .center
         titleDayLabel.font = UIFont(name: "Futura-Medium", size: 20.0)
 
