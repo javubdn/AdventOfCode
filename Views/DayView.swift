@@ -16,7 +16,6 @@ class DayView: UIView {
 
 
         
-        answer1Label.text = "Calculando..."
         answer1Label.textAlignment = .right
         
         let q1StackView = UIStackView(arrangedSubviews: [question1Label, answer1Label])
