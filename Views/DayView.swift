@@ -17,7 +17,6 @@ class DayView: UIView {
 
         
         
-        let q1StackView = UIStackView(arrangedSubviews: [question1Label, answer1Label])
         q1StackView.axis = .horizontal
         q1StackView.spacing = 15
 
