@@ -18,7 +18,6 @@ class DayView: UIView {
         
         
 
-        question2Label.text = "Segunda parte"
 
         answer2Label.text = "Calculando..."
         answer2Label.textAlignment = .right
