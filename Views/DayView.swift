@@ -18,7 +18,6 @@ class DayView: UIView {
         
         
 
-        let question2Label = UILabel()
         question2Label.text = "Segunda parte"
         question2Label.textAlignment = .left
 
