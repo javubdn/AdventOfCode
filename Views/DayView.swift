@@ -17,7 +17,6 @@ class DayView: UIView {
 
         
         
-        q1StackView.spacing = 15
 
         let question2Label = UILabel()
         question2Label.text = "Segunda parte"
