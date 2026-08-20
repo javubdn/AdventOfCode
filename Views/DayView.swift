@@ -14,7 +14,6 @@ protocol DayViewDelegate {
 class DayView: UIView {
     init(_ year: Year, _ day: Int, _ mainStackView: UIStackView, _ delegate: DayViewDelegate) {
 
-
         let q2StackView = UIStackView(arrangedSubviews: [question2Label, answer2Label])
         q2StackView.axis = .horizontal
         q2StackView.spacing = 15
