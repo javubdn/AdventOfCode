@@ -15,7 +15,6 @@ class DayView: UIView {
     init(_ year: Year, _ day: Int, _ mainStackView: UIStackView, _ delegate: DayViewDelegate) {
 
 
-        let vStackView = UIStackView(arrangedSubviews: [titleDayLabel, q1StackView, q2StackView])
         vStackView.axis = .vertical
         vStackView.spacing = 15
         vStackView.translatesAutoresizingMaskIntoConstraints = false
