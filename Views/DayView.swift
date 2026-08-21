@@ -15,7 +15,6 @@ class DayView: UIView {
     init(_ year: Year, _ day: Int, _ mainStackView: UIStackView, _ delegate: DayViewDelegate) {
 
 
-        vStackView.translatesAutoresizingMaskIntoConstraints = false
 
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.clickSection(_:))))
         
