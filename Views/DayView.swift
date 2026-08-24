@@ -22,7 +22,6 @@ class DayView: UIView {
         mainStackView.addArrangedSubview(self)
         translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 0),
             trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor, constant: 0)
         ])
         
