@@ -20,7 +20,6 @@ class DayView: UIView {
         addSubview(vStackView)
         
         NSLayoutConstraint.activate([
-            vStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             vStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             vStackView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
             vStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
