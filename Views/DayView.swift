@@ -19,7 +19,6 @@ class DayView: UIView {
         
         addSubview(vStackView)
         
-        translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
         ])
         
