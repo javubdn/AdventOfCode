@@ -19,7 +19,6 @@ class DayView: UIView {
         
         addSubview(vStackView)
         
-        NSLayoutConstraint.activate([
         ])
         
     }
