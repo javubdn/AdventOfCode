@@ -16,7 +16,6 @@ class DayView: UIView {
 
 
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.clickSection(_:))))
-        
         addSubview(vStackView)
         
         ])
