@@ -19,7 +19,6 @@ class DayView: UIView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        delegate = nil
         year = .fifteen
         day = 0
         super.init(coder: aDecoder)
