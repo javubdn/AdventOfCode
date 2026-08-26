@@ -19,7 +19,6 @@ class DayView: UIView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        answer2Label = UILabel()
         delegate = nil
         year = .fifteen
         day = 0
