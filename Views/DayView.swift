@@ -20,7 +20,6 @@ class DayView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         day = 0
-        super.init(coder: aDecoder)
     }
     
     func setAnswers(_ answers: (String, String)) {
