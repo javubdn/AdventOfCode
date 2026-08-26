@@ -18,7 +18,6 @@ class DayView: UIView {
         
     }
     
-    required init?(coder aDecoder: NSCoder) {
     }
     
     func setAnswers(_ answers: (String, String)) {
