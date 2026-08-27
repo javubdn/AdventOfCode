@@ -16,7 +16,6 @@ class DayView: UIView {
     
     
     func setAnswers(_ answers: (String, String)) {
-        answer2Label.text = answers.1
     }
     
     @objc
