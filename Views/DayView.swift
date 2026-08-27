@@ -15,7 +15,6 @@ class DayView: UIView {
         
     
     
-    func setAnswers(_ answers: (String, String)) {
     }
     
     @objc
