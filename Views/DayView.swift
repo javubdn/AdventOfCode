@@ -11,7 +11,6 @@ protocol DayViewDelegate {
     func openDetail(_ year: Year, _ day: Int)
 }
 
-class DayView: UIView {
         
     
     
