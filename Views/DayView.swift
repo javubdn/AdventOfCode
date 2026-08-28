@@ -18,7 +18,6 @@ class DayView: UIView {
     
     @objc
     func clickSection(_ sender: UITapGestureRecognizer) {
-        delegate?.openDetail(year, day)
     }
     
 }
