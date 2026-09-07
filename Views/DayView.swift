@@ -8,7 +8,6 @@
 import UIKit
 
 protocol DayViewDelegate {
-    func openDetail(_ year: Year, _ day: Int)
 }
 
         
