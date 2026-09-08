@@ -20,7 +20,6 @@ private enum Action {
 
 class WaterMap {
     
-    fileprivate var flowing: Set<Position> = []
     private var minX: Int
     private var minY: Int
     private var maxX: Int
