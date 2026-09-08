@@ -20,7 +20,6 @@ private enum Action {
 
 class WaterMap {
     
-    private var queue: Set<ActionQueue> = []
     
     init(_ lines: [String]) {
         
