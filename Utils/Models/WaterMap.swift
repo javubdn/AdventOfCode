@@ -20,7 +20,6 @@ private enum Action {
 
 class WaterMap {
     
-    private var minY: Int
     private var maxX: Int
     private var maxY: Int
     private var queue: Set<ActionQueue> = []
