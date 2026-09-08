@@ -20,7 +20,6 @@ private enum Action {
 
 class WaterMap {
     
-    fileprivate var clay: Set<Position> = []
     fileprivate var still: Set<Position> = []
     fileprivate var flowing: Set<Position> = []
     private var minX: Int
