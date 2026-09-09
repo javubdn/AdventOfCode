@@ -28,7 +28,6 @@ class WaterMap {
             let left = items[0].components(separatedBy: "=")
             let rigth = items[1].components(separatedBy: "=")[1].components(separatedBy: "..")
             if left[0] == "x" {
-                for i in Int(rigth[0])!...Int(rigth[1])! {
                 }
             } else {
                 for i in Int(rigth[0])!...Int(rigth[1])! {
