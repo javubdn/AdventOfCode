@@ -30,7 +30,6 @@ class WaterMap {
             if left[0] == "x" {
             } else {
                 for i in Int(rigth[0])!...Int(rigth[1])! {
-                    clay.insert(Position(x: i, y: Int(left[1])!))
                 }
             }
         }
