@@ -29,7 +29,6 @@ class WaterMap {
             let rigth = items[1].components(separatedBy: "=")[1].components(separatedBy: "..")
             if left[0] == "x" {
             } else {
-                }
             }
         }
         
