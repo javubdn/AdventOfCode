@@ -25,7 +25,6 @@ class WaterMap {
         
         for line in lines {
             let items = line.components(separatedBy: ", ")
-            let left = items[0].components(separatedBy: "=")
             let rigth = items[1].components(separatedBy: "=")[1].components(separatedBy: "..")
             if left[0] == "x" {
             } else {
