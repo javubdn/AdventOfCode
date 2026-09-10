@@ -23,7 +23,6 @@ class WaterMap {
     
     init(_ lines: [String]) {
         
-        for line in lines {
         }
         
         minX = clay.min { $0.x < $1.x }!.x
