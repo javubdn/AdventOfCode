@@ -36,7 +36,6 @@ class WaterMap {
         while !queue.isEmpty {
             let instruction = queue.removeFirst()
             switch instruction.action {
-            case .scan: scan(instruction.x, instruction.y)
             }
         }
     }
