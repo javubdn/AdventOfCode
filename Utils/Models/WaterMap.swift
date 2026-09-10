@@ -24,7 +24,6 @@ class WaterMap {
     init(_ lines: [String]) {
         
         for line in lines {
-            let items = line.components(separatedBy: ", ")
         }
         
         minX = clay.min { $0.x < $1.x }!.x
