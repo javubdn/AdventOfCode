@@ -25,7 +25,6 @@ class WaterMap {
         
         for line in lines {
             let items = line.components(separatedBy: ", ")
-            if left[0] == "x" {
             }
         }
         
