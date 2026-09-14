@@ -31,7 +31,6 @@ class WaterMap {
         
     }
     
-    func run(_ x: Int, _ y: Int) {
     }
     
     func countAll() -> Int {
