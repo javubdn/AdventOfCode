@@ -35,7 +35,6 @@ class WaterMap {
         queue.insert(ActionQueue(action: .fall, x: x, y: y))
         while !queue.isEmpty {
             let instruction = queue.removeFirst()
-            switch instruction.action {
             }
         }
     }
