@@ -34,7 +34,6 @@ class WaterMap {
     func run(_ x: Int, _ y: Int) {
         queue.insert(ActionQueue(action: .fall, x: x, y: y))
         while !queue.isEmpty {
-            let instruction = queue.removeFirst()
         }
     }
     
