@@ -58,7 +58,6 @@ class WaterMap {
     }
     
     private func pile(_ x: Int, _ y: Int) -> Bool {
-        clay.contains(Position(x: x, y: y)) || still.contains(Position(x: x, y: y))
     }
     
     private func stop(_ x: Int, _ y: Int) -> Bool {
