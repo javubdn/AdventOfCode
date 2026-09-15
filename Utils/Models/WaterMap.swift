@@ -58,7 +58,6 @@ class WaterMap {
     }
     
     
-    
     private func fall(_ x: Int, _ y: Int) {
         var y = y
         while y <= maxY && !pile(x, y+1) {
