@@ -57,7 +57,6 @@ class WaterMap {
         valu.forEach { print($0) }
     }
     
-    }
     
     private func stop(_ x: Int, _ y: Int) -> Bool {
         clay.contains(Position(x: x, y: y))
