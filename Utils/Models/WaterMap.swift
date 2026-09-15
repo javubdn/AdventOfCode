@@ -58,7 +58,6 @@ class WaterMap {
     }
     
     
-    private func stop(_ x: Int, _ y: Int) -> Bool {
     }
     
     private func fall(_ x: Int, _ y: Int) {
