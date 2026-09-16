@@ -59,7 +59,6 @@ class WaterMap {
     
     private func fall(_ x: Int, _ y: Int) {
         var y = y
-        }
         if y <= maxY && !flowing.contains(Position(x: x, y: y)) {
             flowing.insert(Position(x: x, y: y))
             queue.insert(ActionQueue(action: .scan, x: x, y: y))
