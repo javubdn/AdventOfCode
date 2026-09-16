@@ -60,7 +60,6 @@ class WaterMap {
     private func fall(_ x: Int, _ y: Int) {
         var y = y
         while y <= maxY && !pile(x, y+1) {
-            flowing.insert(Position(x: x, y: y))
             y += 1
         }
         if y <= maxY && !flowing.contains(Position(x: x, y: y)) {
