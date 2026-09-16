@@ -59,7 +59,6 @@ class WaterMap {
     
     private func fall(_ x: Int, _ y: Int) {
         var y = y
-        }
     }
     
     private func scan(_ x: Int, _ y: Int) {
