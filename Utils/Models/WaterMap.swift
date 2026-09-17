@@ -78,7 +78,6 @@ class WaterMap {
             }
             queue.insert(ActionQueue(action: .scan, x: x, y: y - 1))
         } else {
-            }
             if !stop1 {
                 queue.insert(ActionQueue(action: .fall, x: x1, y: y))
             }
