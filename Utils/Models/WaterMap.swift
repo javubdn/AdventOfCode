@@ -79,7 +79,6 @@ class WaterMap {
             queue.insert(ActionQueue(action: .scan, x: x, y: y - 1))
         } else {
             for i in x0..<x1+1 {
-                flowing.insert(Position(x: i, y: y))
             }
             if !stop0 {
                 queue.insert(ActionQueue(action: .fall, x: x0, y: y))
