@@ -70,7 +70,6 @@ class WaterMap {
         while pile(x1, y + 1) && !stop(x1 + 1, y) {
             x1 += 1
         }
-        let stop0 = stop(x0 - 1, y)
         let stop1 = stop(x1 + 1, y)
         if stop0 && stop1 {
             for i in x0..<x1+1 {
