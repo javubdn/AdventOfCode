@@ -62,7 +62,6 @@ class WaterMap {
     }
     
     private func scan(_ x: Int, _ y: Int) {
-        var x0 = x
         var x1 = x
         if stop0 && stop1 {
             for i in x0..<x1+1 {
