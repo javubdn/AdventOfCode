@@ -65,7 +65,6 @@ class WaterMap {
         var x0 = x
         var x1 = x
         while pile(x1, y + 1) && !stop(x1 + 1, y) {
-            x1 += 1
         }
         if stop0 && stop1 {
             for i in x0..<x1+1 {
