@@ -65,7 +65,6 @@ class WaterMap {
         if stop0 && stop1 {
             queue.insert(ActionQueue(action: .scan, x: x, y: y - 1))
         } else {
-            if !stop1 {
             }
         }
     }
