@@ -63,7 +63,6 @@ class WaterMap {
     
     private func scan(_ x: Int, _ y: Int) {
         if stop0 && stop1 {
-            queue.insert(ActionQueue(action: .scan, x: x, y: y - 1))
         } else {
         }
     }
