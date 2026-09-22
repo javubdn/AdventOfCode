@@ -61,7 +61,6 @@ class WaterMap {
     }
     
     private func scan(_ x: Int, _ y: Int) {
-        }
     }
     
 }
