@@ -50,7 +50,6 @@ class WaterMap {
             waterMap[st.y][st.x-minX+1] = "~"
         }
         
-        }
         let valu = waterMap.map { $0.joined() }
         valu.forEach { print($0) }
     }
