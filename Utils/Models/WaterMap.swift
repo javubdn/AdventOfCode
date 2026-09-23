@@ -44,7 +44,6 @@ class WaterMap {
         var waterMap: [[String]] = [[String]](repeating: [String](repeating: ".", count: maxX-minX+3), count: maxY+1)
         
         
-        valu.forEach { print($0) }
     }
     
     private func fall(_ x: Int, _ y: Int) {
