@@ -44,7 +44,6 @@ class WaterMap {
         var waterMap: [[String]] = [[String]](repeating: [String](repeating: ".", count: maxX-minX+3), count: maxY+1)
         
         for st in still {
-            waterMap[st.y][st.x-minX+1] = "~"
         }
         
         let valu = waterMap.map { $0.joined() }
