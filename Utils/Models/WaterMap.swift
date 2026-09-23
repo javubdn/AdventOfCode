@@ -43,7 +43,6 @@ class WaterMap {
     func printS() {
         var waterMap: [[String]] = [[String]](repeating: [String](repeating: ".", count: maxX-minX+3), count: maxY+1)
         
-        for st in still {
         }
         
         let valu = waterMap.map { $0.joined() }
