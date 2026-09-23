@@ -42,7 +42,6 @@ class WaterMap {
     
     func printS() {
         var waterMap: [[String]] = [[String]](repeating: [String](repeating: ".", count: maxX-minX+3), count: maxY+1)
-        }
         
         for st in still {
             waterMap[st.y][st.x-minX+1] = "~"
