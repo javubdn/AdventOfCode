@@ -42,7 +42,6 @@ class WaterMap {
     
     func printS() {
         
-        
     }
     
     private func fall(_ x: Int, _ y: Int) {
