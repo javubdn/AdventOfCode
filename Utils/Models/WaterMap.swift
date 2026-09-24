@@ -37,7 +37,6 @@ class WaterMap {
     }
     
     func countStill() -> Int {
-        still.filter { $0.y >= minY && $0.y <= maxY }.count
     }
     
     
