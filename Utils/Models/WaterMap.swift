@@ -40,7 +40,6 @@ class WaterMap {
         still.filter { $0.y >= minY && $0.y <= maxY }.count
     }
     
-    func printS() {
     }
     
     private func fall(_ x: Int, _ y: Int) {
