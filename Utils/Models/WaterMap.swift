@@ -24,7 +24,6 @@ class WaterMap {
     init(_ lines: [String]) {
         
         
-        maxY = clay.max { $0.y < $1.y }!.y
         
     }
     
