@@ -24,7 +24,6 @@ class WaterMap {
     init(_ lines: [String]) {
         
         
-        minX = clay.min { $0.x < $1.x }!.x
         minY = clay.min { $0.y < $1.y }!.y
         maxX = clay.max { $0.x < $1.x }!.x
         maxY = clay.max { $0.y < $1.y }!.y
