@@ -30,5 +30,4 @@ class WaterMap {
         still.union(flowing).filter { $0.y >= minY && $0.y <= maxY }.count
     }
     
-    
 }
