@@ -25,7 +25,6 @@ class WaterMap {
         
     }
     
-    func countAll() -> Int {
     }
     
 }
