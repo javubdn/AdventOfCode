@@ -22,7 +22,6 @@ class WaterMap {
     
     
     init(_ lines: [String]) {
-        
     }
     
     
