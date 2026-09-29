@@ -14,7 +14,6 @@ private struct ActionQueue: Hashable {
 }
 
 private enum Action {
-    case fall
     case scan
 }
 
