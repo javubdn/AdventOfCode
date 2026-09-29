@@ -21,7 +21,6 @@ private enum Action {
 class WaterMap {
     
     
-    init(_ lines: [String]) {
     }
     
     
