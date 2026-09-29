@@ -13,7 +13,6 @@ private struct ActionQueue: Hashable {
     let y: Int
 }
 
-private enum Action {
 }
 
 class WaterMap {
