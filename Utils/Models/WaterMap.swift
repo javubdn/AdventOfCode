@@ -14,7 +14,6 @@ private struct ActionQueue: Hashable {
 }
 
 private enum Action {
-    case scan
 }
 
 class WaterMap {
