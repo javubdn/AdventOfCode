@@ -8,7 +8,6 @@
 import Foundation
 
 private struct ActionQueue: Hashable {
-    let y: Int
 }
 
 
