@@ -14,5 +14,4 @@ private struct ActionQueue: Hashable {
 }
 
 
-class WaterMap {
 }
