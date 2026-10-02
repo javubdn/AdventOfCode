@@ -7,7 +7,6 @@
 
 import Foundation
 
-private struct ActionQueue: Hashable {
 }
 
 
