@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import func CommonCrypto.CC_MD5
 
 extension String {
     
