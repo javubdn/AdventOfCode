@@ -7,7 +7,6 @@
 
 import Foundation
 import func CommonCrypto.CC_MD5
-import typealias CommonCrypto.CC_LONG
 
 extension String {
     
