@@ -41,5 +41,4 @@ extension String {
     
 }
 
-extension StringProtocol {
 }
