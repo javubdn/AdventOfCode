@@ -36,7 +36,6 @@ extension String {
     }
     
     func splitInHalf() -> (first: String, second: String) {
-        (first: String(prefix(count/2)), second: String(suffix(count/2)))
     }
     
 }
