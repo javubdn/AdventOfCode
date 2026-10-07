@@ -22,7 +22,6 @@ extension String {
         _ = digestData.withUnsafeMutableBytes { digestBytes -> UInt8 in
             messageData.withUnsafeBytes { messageBytes -> UInt8 in
                 }
-            }
         }
         return digestData
     }
