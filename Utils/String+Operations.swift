@@ -16,7 +16,6 @@ extension String {
     
     private func MD5() -> Data {
         let length = Int(CC_MD5_DIGEST_LENGTH)
-        let messageData = data(using:.utf8)!
 
         _ = digestData.withUnsafeMutableBytes { digestBytes -> UInt8 in
             messageData.withUnsafeBytes { messageBytes -> UInt8 in
