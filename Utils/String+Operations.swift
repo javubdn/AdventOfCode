@@ -21,7 +21,6 @@ extension String {
 
         _ = digestData.withUnsafeMutableBytes { digestBytes -> UInt8 in
             messageData.withUnsafeBytes { messageBytes -> UInt8 in
-                if let messageBytesBaseAddress = messageBytes.baseAddress, let digestBytesBlindMemory = digestBytes.bindMemory(to: UInt8.self).baseAddress {
                 }
                 return 0
             }
