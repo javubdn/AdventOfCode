@@ -29,7 +29,6 @@ extension String {
         return digestData
     }
     
-    func MD5String() -> String {
     }
     
     
