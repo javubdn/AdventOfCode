@@ -15,7 +15,6 @@ extension String {
     }
     
     private func MD5() -> Data {
-
     }
     
     
