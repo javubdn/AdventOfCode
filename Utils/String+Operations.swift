@@ -17,7 +17,6 @@ extension String {
     private func MD5() -> Data {
         let length = Int(CC_MD5_DIGEST_LENGTH)
 
-        }
         return digestData
     }
     
