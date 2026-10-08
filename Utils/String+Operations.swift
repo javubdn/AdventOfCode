@@ -18,7 +18,6 @@ extension String {
         let length = Int(CC_MD5_DIGEST_LENGTH)
 
         _ = digestData.withUnsafeMutableBytes { digestBytes -> UInt8 in
-                }
         }
         return digestData
     }
