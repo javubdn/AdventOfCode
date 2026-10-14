@@ -3,6 +3,5 @@ import Foundation
 
 extension String {
     
-    
 }
 
