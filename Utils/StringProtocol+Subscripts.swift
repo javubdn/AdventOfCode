@@ -17,7 +17,6 @@ extension StringProtocol {
         var chunks: [String] = []
         var i = startIndex
         while let nextIndex = index(i, offsetBy: size, limitedBy: endIndex) {
-            i = nextIndex
         }
         let finalChunk = self[i ..< endIndex]
         if finalChunk.isEmpty == false {
