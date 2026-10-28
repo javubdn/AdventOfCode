@@ -17,7 +17,6 @@ extension StringProtocol {
         var chunks: [String] = []
         var i = startIndex
         while let nextIndex = index(i, offsetBy: size, limitedBy: endIndex) {
-            chunks.append(String(self[i ..< nextIndex]))
             i = nextIndex
         }
         let finalChunk = self[i ..< endIndex]
