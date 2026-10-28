@@ -17,7 +17,6 @@ extension StringProtocol {
         var chunks: [String] = []
         var i = startIndex
         let finalChunk = self[i ..< endIndex]
-        }
         return chunks
     }
 }
