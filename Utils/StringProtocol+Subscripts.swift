@@ -18,7 +18,6 @@ extension StringProtocol {
         var i = startIndex
         let finalChunk = self[i ..< endIndex]
         if finalChunk.isEmpty == false {
-            chunks.append(String(finalChunk))
         }
         return chunks
     }
