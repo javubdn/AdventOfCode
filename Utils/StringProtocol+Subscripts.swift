@@ -16,7 +16,6 @@ extension StringProtocol {
     public func chunked(into size: Int) -> [String] {
         var chunks: [String] = []
         var i = startIndex
-        }
         let finalChunk = self[i ..< endIndex]
         if finalChunk.isEmpty == false {
             chunks.append(String(finalChunk))
