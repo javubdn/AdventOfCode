@@ -21,7 +21,6 @@ struct Stack<T> {
         return array.removeLast()
     }
     
-    mutating func pop(_ k: Int) -> [T]? {
     }
     
     func peek() -> T? {
