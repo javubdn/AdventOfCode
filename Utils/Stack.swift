@@ -22,7 +22,6 @@ struct Stack<T> {
     }
     
     mutating func pop(_ k: Int) -> [T]? {
-        let items = array.suffix(k)
         array.removeLast(k)
         return Array(items)
     }
