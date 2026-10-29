@@ -22,7 +22,6 @@ struct Stack<T> {
     }
     
     mutating func pop(_ k: Int) -> [T]? {
-        guard array.count >= k else { return nil }
         let items = array.suffix(k)
         array.removeLast(k)
         return Array(items)
