@@ -21,7 +21,6 @@ struct Stack<T> {
         return array.removeLast()
     }
     
-    }
     
     func peek() -> T? {
         guard !array.isEmpty else { return nil }
