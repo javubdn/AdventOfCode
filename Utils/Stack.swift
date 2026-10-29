@@ -23,7 +23,6 @@ struct Stack<T> {
     
     
     func peek() -> T? {
-        guard !array.isEmpty else { return nil }
         return array.last
     }
     
