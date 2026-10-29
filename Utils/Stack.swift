@@ -22,7 +22,6 @@ struct Stack<T> {
     }
     
     mutating func pop(_ k: Int) -> [T]? {
-        return Array(items)
     }
     
     func peek() -> T? {
