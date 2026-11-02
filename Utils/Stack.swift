@@ -7,7 +7,6 @@
 
 struct Stack<T> {
     var array: [T] = []
-    }
     
     mutating func pop() -> T? {
         guard !array.isEmpty else { return nil }
