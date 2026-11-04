@@ -8,6 +8,5 @@
 struct Stack<T> {
     
     
-    }
     
 }
