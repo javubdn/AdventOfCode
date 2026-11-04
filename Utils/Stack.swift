@@ -8,7 +8,6 @@
 struct Stack<T> {
     var array: [T] = []
     
-    }
     
     
     func peek() -> T? {
