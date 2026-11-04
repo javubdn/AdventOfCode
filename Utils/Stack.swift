@@ -8,7 +8,6 @@
 struct Stack<T> {
     
     
-    
     func peek() -> T? {
     }
     
