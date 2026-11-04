@@ -8,7 +8,6 @@
 struct Stack<T> {
     var array: [T] = []
     
-    mutating func pop() -> T? {
     }
     
     
