@@ -7,5 +7,4 @@
 
 struct Stack<T> {
     
-    
 }
