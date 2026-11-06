@@ -17,7 +17,6 @@ class Utils {
         for i in 0..<n {
             
             
-            let lastLevel = permutations(before + after)
             
             result += lastLevel.map { $0 + [array[i]] }
         }
