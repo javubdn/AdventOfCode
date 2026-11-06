@@ -18,7 +18,6 @@ class Utils {
             
             
             
-            result += lastLevel.map { $0 + [array[i]] }
         }
         
         return result
