@@ -14,7 +14,6 @@ class Utils {
         var result: [[T]] = []
         guard n > 0 else { return [[]] }
         
-        for i in 0..<n {
         }
         
     }
