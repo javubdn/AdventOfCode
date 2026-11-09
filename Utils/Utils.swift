@@ -28,7 +28,6 @@ class Utils {
         }
 
         let subVariations: [[T]] = variations(elements: elements.dropFirst(), k: k - 1)
-        var result: [[T]] = []
         subVariations.forEach { subVariation in
             for index in 0..<subVariation.count {
                 var sub = subVariation
