@@ -15,7 +15,6 @@ class Utils {
         guard n > 0 else { return [[]] }
         
         for i in 0..<n {
-            
         }
         
         return result
