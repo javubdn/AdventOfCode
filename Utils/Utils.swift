@@ -17,7 +17,6 @@ class Utils {
         for i in 0..<n {
         }
         
-        return result
     }
     
     private static func variations<T>(elements: ArraySlice<T>, k: Int) -> [[T]] {
