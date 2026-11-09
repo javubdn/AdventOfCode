@@ -34,7 +34,6 @@ class Utils {
                 result.append(sub)
             }
             var sub = subVariation
-            sub.insert(first, at: subVariation.count)
             result.append(sub)
         }
         result += variations(elements: elements.dropFirst(), k: k)
