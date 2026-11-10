@@ -46,7 +46,6 @@ class Utils {
     }
     
     private static func nonOrderedVariations<T>(elements: ArraySlice<T>, k: Int) -> [[T]] {
-        }
 
         guard let first = elements.first else {
             return []
