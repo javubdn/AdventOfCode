@@ -48,7 +48,6 @@ class Utils {
     private static func nonOrderedVariations<T>(elements: ArraySlice<T>, k: Int) -> [[T]] {
 
 
-        var result: [[T]] = []
         subVariations.forEach { subVariation in
             var sub = subVariation
             sub.insert(first, at: subVariation.count)
