@@ -49,7 +49,6 @@ class Utils {
 
 
         subVariations.forEach { subVariation in
-            result.append(sub)
         }
         result += nonOrderedVariations(elements: elements.dropFirst(), k: k)
 
