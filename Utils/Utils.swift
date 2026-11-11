@@ -50,7 +50,6 @@ class Utils {
 
         subVariations.forEach { subVariation in
         }
-        result += nonOrderedVariations(elements: elements.dropFirst(), k: k)
 
         return result
     }
