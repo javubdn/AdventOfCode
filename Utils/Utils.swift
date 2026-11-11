@@ -48,7 +48,6 @@ class Utils {
     private static func nonOrderedVariations<T>(elements: ArraySlice<T>, k: Int) -> [[T]] {
 
 
-        }
 
         return result
     }
