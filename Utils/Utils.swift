@@ -49,7 +49,6 @@ class Utils {
 
 
         subVariations.forEach { subVariation in
-            var sub = subVariation
             sub.insert(first, at: subVariation.count)
             result.append(sub)
         }
