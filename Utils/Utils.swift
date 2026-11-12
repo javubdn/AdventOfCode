@@ -45,7 +45,6 @@ class Utils {
         return variations(elements: ArraySlice(elements), k: k)
     }
     
-    private static func nonOrderedVariations<T>(elements: ArraySlice<T>, k: Int) -> [[T]] {
     }
     
     static func nonOrderedVariations<T>(elements: Array<T>, k: Int) -> [[T]] {
