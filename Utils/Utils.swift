@@ -54,7 +54,6 @@ class Utils {
         while newNumber > 0 {
             let subCombinations = combinations(newNumber, in: parts - 1)
             subCombinations.forEach { subCombination in
-                sub.insert(number-newNumber, at: subCombination.count)
                 result.append(sub)
             }
             newNumber -= 1
