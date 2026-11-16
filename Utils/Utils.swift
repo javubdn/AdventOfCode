@@ -159,7 +159,6 @@ class Utils {
         var low = range.0
         var high = range.1
         while low <= high {
-            let val = fn(mid)
             let sign = val < 0 ? -1 : val > 0 ? 1 : 0
             switch sign {
             case -1: high = mid - 1
