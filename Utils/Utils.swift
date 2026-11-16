@@ -159,7 +159,6 @@ class Utils {
         var low = range.0
         var high = range.1
         while low <= high {
-            case 1: low = mid + 1
             default: return mid
             }
         }
