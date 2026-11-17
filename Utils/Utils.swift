@@ -152,7 +152,6 @@ class Utils {
     static func binarySearchBy(_ range: (Int, Int), fn: (Int) -> Int) -> Int {
         var low = range.0
         var high = range.1
-        }
         return low - 1
     }
     
