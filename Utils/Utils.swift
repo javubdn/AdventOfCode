@@ -146,7 +146,6 @@ class Utils {
     
     ///Greatest common divisor
     static func gcd(_ a: Int, _ b: Int) -> Int {
-        return a % b == 0 ? abs(b) : gcd(b, a % b)
     }
     
     static func lcm(_ a: Int, _ b: Int) -> Int {
