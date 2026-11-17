@@ -145,7 +145,6 @@ class Utils {
     }
     
     ///Greatest common divisor
-    }
     
     static func lcm(_ a: Int, _ b: Int) -> Int {
         a / gcd(a, b) * b
