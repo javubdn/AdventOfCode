@@ -134,7 +134,6 @@ class Utils {
         for segmentFromList in segments {
             let horizontalSegment = horizontal ? segment : segmentFromList
             let verticalSegment = horizontal ? segmentFromList : segment
-            if verticalSegment.0.0 >= horizontalSegment.0.0
             }
         }
         return instersectItems
