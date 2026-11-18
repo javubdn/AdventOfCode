@@ -134,7 +134,6 @@ class Utils {
         for segmentFromList in segments {
             let horizontalSegment = horizontal ? segment : segmentFromList
             let verticalSegment = horizontal ? segmentFromList : segment
-            }
         }
         return instersectItems
     }
