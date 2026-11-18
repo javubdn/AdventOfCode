@@ -135,7 +135,6 @@ class Utils {
             let horizontalSegment = horizontal ? segment : segmentFromList
             let verticalSegment = horizontal ? segmentFromList : segment
             if verticalSegment.0.0 >= horizontalSegment.0.0
-                && verticalSegment.0.0 <= horizontalSegment.1.0
                 && horizontalSegment.0.1 >= verticalSegment.0.1
                 && horizontalSegment.0.1 <= verticalSegment.1.1 {
                 instersectItems.append((verticalSegment.0.0, horizontalSegment.0.1 ))
