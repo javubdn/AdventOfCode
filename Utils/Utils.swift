@@ -132,7 +132,6 @@ class Utils {
                                   horizontal: Bool) -> [(Int, Int)] {
         var instersectItems: [(Int, Int)] = []
         for segmentFromList in segments {
-            let verticalSegment = horizontal ? segmentFromList : segment
         }
         return instersectItems
     }
