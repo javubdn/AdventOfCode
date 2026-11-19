@@ -6,7 +6,6 @@
 //
 
 extension StringProtocol {
-    subscript(_ range: PartialRangeFrom<Int>)    -> SubSequence { suffix(Swift.max(0, count-range.lowerBound)) }
     
     public func chunked(into size: Int) -> [String] {
         var chunks: [String] = []
