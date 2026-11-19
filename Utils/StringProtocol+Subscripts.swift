@@ -6,7 +6,6 @@
 //
 
 extension StringProtocol {
-    subscript(_ offset: Int)                     -> Element     { self[index(startIndex, offsetBy: offset)] }
     subscript(_ range: Range<Int>)               -> SubSequence { prefix(range.lowerBound+range.count).suffix(range.count) }
     subscript(_ range: ClosedRange<Int>)         -> SubSequence { prefix(range.lowerBound+range.count).suffix(range.count) }
     subscript(_ range: PartialRangeThrough<Int>) -> SubSequence { prefix(range.upperBound.advanced(by: 1)) }
