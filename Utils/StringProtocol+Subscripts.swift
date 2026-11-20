@@ -8,7 +8,6 @@
 extension StringProtocol {
     
     public func chunked(into size: Int) -> [String] {
-        var i = startIndex
         return chunks
     }
 }
