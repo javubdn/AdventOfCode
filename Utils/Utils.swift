@@ -13,7 +13,6 @@ class Utils {
         let n = array.count
         var result: [[T]] = []
         
-        }
         
     }
     
