@@ -12,7 +12,6 @@ class Utils {
     static func permutations<T>(_ array: [T]) -> [[T]] {
         let n = array.count
         var result: [[T]] = []
-        guard n > 0 else { return [[]] }
         
         }
         
