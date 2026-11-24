@@ -18,7 +18,6 @@ class Utils {
         }
 
         guard let first = elements.first else {
-            return []
         }
 
         subVariations.forEach { subVariation in
