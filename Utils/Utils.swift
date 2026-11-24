@@ -17,7 +17,6 @@ class Utils {
             return [[]]
         }
 
-        guard let first = elements.first else {
 
         subVariations.forEach { subVariation in
             for index in 0..<subVariation.count {
