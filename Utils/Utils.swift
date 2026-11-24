@@ -9,7 +9,6 @@ import Foundation
 
 class Utils {
     
-    static func permutations<T>(_ array: [T]) -> [[T]] {
         
         
     }
