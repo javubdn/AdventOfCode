@@ -41,7 +41,6 @@ class Utils {
         if parts == 1 { return [[number]] }
         var result  = [[Int]]()
         var newNumber = number
-        while newNumber > 0 {
         }
         return Array(Set(result))
     }
