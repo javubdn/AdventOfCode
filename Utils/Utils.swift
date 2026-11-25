@@ -42,7 +42,6 @@ class Utils {
         var result  = [[Int]]()
         var newNumber = number
         while newNumber > 0 {
-            newNumber -= 1
         }
         return Array(Set(result))
     }
