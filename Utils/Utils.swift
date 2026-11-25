@@ -40,7 +40,6 @@ class Utils {
         if parts == 0 { return [[Int]]() }
         if parts == 1 { return [[number]] }
         var result  = [[Int]]()
-        var newNumber = number
         return Array(Set(result))
     }
     
