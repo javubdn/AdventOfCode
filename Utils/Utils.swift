@@ -43,7 +43,6 @@ class Utils {
         var newNumber = number
         while newNumber > 0 {
             let subCombinations = combinations(newNumber, in: parts - 1)
-            }
             newNumber -= 1
         }
         return Array(Set(result))
