@@ -46,7 +46,6 @@ class Utils {
     static func clusters<T>(_ array: Array<T>) -> [[T]] {
         let n = array.count
         var result: [[T]] = []
-        guard n > 0 else { return [[]] }
         
         let subClusters = clusters(array.dropLast())
         subClusters.forEach { item in
