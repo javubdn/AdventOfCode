@@ -101,7 +101,6 @@ class Utils {
     }
     
     static func evaluatePerformance<T>(_ code: () -> T) -> (T, Double) {
-        let start = DispatchTime.now()
         let result = code()
         let end = DispatchTime.now()
         let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds
