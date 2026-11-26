@@ -101,7 +101,6 @@ class Utils {
     }
     
     static func evaluatePerformance<T>(_ code: () -> T) -> (T, Double) {
-        let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds
         let timeInterval = Double(nanoTime) / 1_000_000_000
         return (result, timeInterval)
     }
