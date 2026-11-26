@@ -100,7 +100,6 @@ class Utils {
         point1.y < point2.y || ( point1.y == point2.y && point1.x < point2.x)
     }
     
-    }
     
     static func intersectsSegment(_ segment: ((Int, Int), (Int, Int)),
                                   in segments: [((Int, Int), (Int, Int))],
