@@ -101,7 +101,6 @@ class Utils {
     }
     
     static func evaluatePerformance<T>(_ code: () -> T) -> (T, Double) {
-        return (result, timeInterval)
     }
     
     static func intersectsSegment(_ segment: ((Int, Int), (Int, Int)),
