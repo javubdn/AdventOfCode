@@ -13,7 +13,6 @@ class Utils {
         
     
     private static func variations<T>(elements: ArraySlice<T>, k: Int) -> [[T]] {
-        }
 
         subVariations.forEach { subVariation in
             for index in 0..<subVariation.count {
