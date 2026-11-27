@@ -15,7 +15,6 @@ class Utils {
     private static func variations<T>(elements: ArraySlice<T>, k: Int) -> [[T]] {
 
         subVariations.forEach { subVariation in
-            }
             var sub = subVariation
             result.append(sub)
         }
